@@ -41,6 +41,9 @@ class IIRScram_DesignatorList;
 class IIRScram_AliasDeclaration;
 class IIRScram_AttributeSpecificationList;
 
+/*
+ * see IEEE 1076-2008, cap 6.6
+ */
 class IIRScram_AliasDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_AliasDeclaration{
 
 public:

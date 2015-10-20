@@ -16,7 +16,6 @@
 // intellectual property laws, and all other applicable laws of the
 // U.S., and the terms of this license.
 
-
 // You may modify, distribute, and use the software contained in this package
 // under the terms of the "GNU LIBRARY GENERAL PUBLIC LICENSE" version 2,
 // June 1991. A copy of this license agreement can be found in the file
@@ -45,10 +44,9 @@ class IIRScram_InterfaceDeclaration : public virtual IIRScram_ObjectDeclaration,
 public:
   IIRScram_InterfaceDeclaration() {}
   virtual ~IIRScram_InterfaceDeclaration();
-    
+
   IIR_Boolean _attach_attribute_specification( IIRScram_AttributeSpecification * );
 
-  
   IIR_Boolean is_object() { return TRUE;}
   IIR_Boolean _is_iir_interface_declaration(){ return TRUE; }
 
@@ -72,8 +70,3 @@ protected:
 private:
 };
 #endif
-
-
-
-
-

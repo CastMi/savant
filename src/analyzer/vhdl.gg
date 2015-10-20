@@ -347,6 +347,9 @@ public:
 
   ~VHDLParser(){};
 
+  // This method set not only the location of the token but also
+  // the design_file_name that will be used by the symbol_table
+  // for the scopes.
   void copy_location( ANTLRTokenPtr source, IIR *destination ) {
     ANTLRToken *token = (ANTLRToken *)source.operator->();
     // Remove Scram
@@ -701,7 +704,7 @@ concurrent_procedure_call[ IIRScram_Label *label ] > [IIRScram_ConcurrentStateme
   <<
     // This could be a component instantiaion statement too.  We need to
     // figure out which it is.
-    savant::set<IIRScram_Declaration> *procedure_decls = NULL;
+    savant::set<IIRScram_Declaration*> *procedure_decls = NULL;
     if( temp_name->get_kind() == IIR_INDEXED_NAME ){
       procedure_decls = dynamic_cast<IIRScram_IndexedName *>(temp_name)->_get_prefix()->_symbol_lookup();
     }
@@ -712,20 +715,19 @@ concurrent_procedure_call[ IIRScram_Label *label ] > [IIRScram_ConcurrentStateme
       report_undefined_symbol( temp_name );
     }
     else{
-      IIRScram_Declaration *current_decl = procedure_decls->getElement();
-      while( current_decl != NULL ){
-	if( current_decl->get_kind() == IIR_PROCEDURE_DECLARATION ){
+    for(auto it = procedure_decls->begin(); it != procedure_decls->end(); it++)
+    {
+	if( (*it)->get_kind() == IIR_PROCEDURE_DECLARATION ){
 	  found_procedure = true;
 	}
-	else if( current_decl->get_kind() == IIR_COMPONENT_DECLARATION ){
+	else if( (*it)->get_kind() == IIR_COMPONENT_DECLARATION ){
 	  found_component = true;
 	}
-	current_decl = procedure_decls->getNextElement();
-      }
+    }
     }
 
     if( found_procedure == true && found_component == true ){
-      report_ambiguous_error( temp_name, procedure_decls->convert_set<IIR_Declaration>() );
+      report_ambiguous_error( temp_name, procedure_decls->convert_set<IIR_Declaration*>() );
     }
     else if ( found_procedure == true && found_component == false ){
       proc_call_statement = new IIRScram_ConcurrentProcedureCallStatement();
@@ -2097,21 +2099,20 @@ next_statement[ IIRScram_Label *label ] > [IIRScram_NextStatement *stmt]:
   { 
     vhdl_label > [goto_label]
     <<
-      savant::set<IIR_Declaration> *label_decls = NULL;
+      savant::set<IIR_Declaration*> *label_decls = NULL;
       IIRScram_TextLiteral *label_text =
 	dynamic_cast<IIRScram_TextLiteral *>(goto_label->get_declarator());
-      label_decls = new savant::set<IIR_Declaration>( *(my_symbol_table->find_set(label_text))); 
+      label_decls = new savant::set<IIR_Declaration*>( *(my_symbol_table->find_set(label_text))); 
       if( label_decls == NULL ){
 	report_undefined_symbol( goto_label );
       }
       else{
-        IIR_Declaration *current = label_decls->getElement();
-        while( current != NULL ){
-	  if( current->get_kind() != IIR_LABEL ){
-	    label_decls->remove( current );
+      for(auto it = label_decls->begin(); it != label_decls->end(); it++)
+      {
+	  if( (*it)->get_kind() != IIR_LABEL ){
+	    label_decls->erase( *it );
 	  }
-	  current = label_decls->getNextElement();
-	}
+      }
 	switch( label_decls->size() ){
 	case 0:{
 	  ostringstream err;
@@ -2125,7 +2126,7 @@ next_statement[ IIRScram_Label *label ] > [IIRScram_NextStatement *stmt]:
 	case 1:{
 	  // We don't need this temporary label any more...
 	  delete goto_label;
-	  goto_label = dynamic_cast<IIRScram_Label *>(label_decls->getElement());
+	  goto_label = dynamic_cast<IIRScram_Label *>(*label_decls->begin());
 	  break;
 	}
 	default:{
@@ -2174,21 +2175,20 @@ exit_statement[ IIRScram_Label *label ] > [IIRScram_ExitStatement *stmt]:
   { 
     vhdl_label > [exit_label] 
     <<
-      savant::set<IIR_Declaration> *label_decls = NULL;
+      savant::set<IIR_Declaration*> *label_decls = NULL;
       IIRScram_TextLiteral *label_text =
 	dynamic_cast<IIRScram_TextLiteral *>(exit_label->get_declarator());
-      label_decls = new savant::set<IIR_Declaration>(* ( my_symbol_table->find_set( label_text ) ) ); 
+      label_decls = new savant::set<IIR_Declaration*>(* ( my_symbol_table->find_set( label_text ) ) ); 
       if( label_decls == NULL ){
 	report_undefined_symbol( exit_label );
       }
       else{
-        IIR_Declaration *current = label_decls->getElement();
-        while( current != NULL ){
-	  if( current->get_kind() != IIR_LABEL ){
-	    label_decls->remove( current );
+      for(auto it = label_decls->begin(); it != label_decls->end(); it++)
+      {
+	  if( (*it)->get_kind() != IIR_LABEL ){
+	    label_decls->erase( *it );
 	  }
-	  current = label_decls->getNextElement();
-	}
+      }
 	switch( label_decls->size() ){
 	case 0:{
 	  ostringstream err;
@@ -2202,7 +2202,7 @@ exit_statement[ IIRScram_Label *label ] > [IIRScram_ExitStatement *stmt]:
 	case 1:{
 	  // We don't need this temporary label any more...
 	  delete exit_label;
-	  exit_label = dynamic_cast<IIRScram_Label *>(label_decls->getElement());
+	  exit_label = dynamic_cast<IIRScram_Label *>(*label_decls->begin());
 	  break;
 	}
 	default:{
@@ -3320,7 +3320,7 @@ physical_literal > [IIRScram_PhysicalLiteral *pl]:
   <<
     copy_location( unit_name, $pl );
     constraint_functor *functor = new is_physical_unit_functor();
-    savant::set<IIRScram_Declaration> *unit_decls =
+    savant::set<IIRScram_Declaration*> *unit_decls =
       dynamic_cast<IIRScram_SimpleName *>(unit_name)->IIRScram_Name::_symbol_lookup(functor);
     delete functor;
     if( unit_decls == NULL ){
@@ -3333,7 +3333,7 @@ physical_literal > [IIRScram_PhysicalLiteral *pl]:
         break;
       }
       case 1:{
-        $pl->set_unit_name( dynamic_cast<IIRScram_PhysicalUnit *>(unit_decls->getElement()) );
+        $pl->set_unit_name( dynamic_cast<IIRScram_PhysicalUnit *>(*unit_decls->begin()) );
         break;
       }
       default:{
@@ -3750,18 +3750,19 @@ type_mark > [IIRScram_TypeDefinition *retval]:
           | attribute_through[attribute] > [attribute] ) }
   <<
     constraint_functor *functor = new is_type_functor();
-    savant::set<IIRScram_TypeDefinition> *type_set = dynamic_cast<IIRScram_Name *>(type_name)->_get_rval_set(functor);
+    savant::set<IIRScram_TypeDefinition*> *type_set = dynamic_cast<IIRScram_Name *>(type_name)->_get_rval_set(functor);
     delete functor;
     if( type_set == NULL ){
       report_undefined_symbol( type_name );
     }
     else if( type_set->size() > 1 ){
-      report_ambiguous_error( type_name, type_set->convert_set<IIR_Declaration>() );
+      report_ambiguous_error( type_name, type_set->convert_set<IIR_Declaration*>() );
       panic("type_mark resolution failed in VHDLParser::type_mark");
     }
     else{
       // Then type_set is non-NULL has one element in it.
-      $retval = type_set->getElement();
+      ASSERT( type_set->size() == 1 );
+      $retval = *type_set->begin();
       if( $retval == NULL ){
         ostringstream err;
         err << "|" << *dynamic_cast<IIRScram_Name *>(type_name) << "| was not declared as a type in this scope";
@@ -4340,16 +4341,16 @@ component_declaration[IIR_DeclarationList *decl_list]:
   // good example of doing that is show in the actions for the goto_label
   // in the grammar rule for "next_statement"
   int num_found = 0;
-  savant::set<IIR_LibraryDeclaration> *libraries = library_manager::instance()->get_libraries();
+  savant::set<IIR_LibraryDeclaration*> *libraries = library_manager::instance()->get_libraries();
   IIR_EntityDeclaration *entity = NULL;
   ostringstream err;
 
-  for (IIR_LibraryDeclaration *lib = libraries->getElement();
-       lib != NULL;
-       lib = libraries->getNextElement()) {
+  for (auto lib = libraries->begin();
+       lib != libraries->end();
+       lib++) {
     entity = library_manager::instance()->lookup_entity(FALSE, 
 							component_name, 
-							lib, 
+							*lib, 
 							my_std_package, 
 							my_factory);
     // we found a matching entity
@@ -4803,7 +4804,7 @@ numeric_literal > [ IIRScram *retval ]:
   abstract_literal > [lit] <<$retval = lit;>>
   { (IDENTIFIER)? complex_name > [unit_name]
     <<  
-      savant::set<IIRScram_Declaration> *decl_set = dynamic_cast<IIRScram_Name *>(unit_name)->_symbol_lookup();
+      savant::set<IIRScram_Declaration*> *decl_set = dynamic_cast<IIRScram_Name *>(unit_name)->_symbol_lookup();
       if( decl_set == NULL ){
 	report_undefined_symbol( unit_name );
       }
@@ -4914,7 +4915,7 @@ allocator > [IIRScram_Allocator *alloc]:
 	copy_location( new__, $alloc );
 	IIRScram_UserAttribute *as_attr = dynamic_cast<IIRScram_UserAttribute *>(qualified_expression);
 	
-        savant::set<IIRScram_TypeDefinition> *allocator_types = dynamic_cast<IIRScram_Name *>(qualified_expression)->_get_rval_set();
+        savant::set<IIRScram_TypeDefinition*> *allocator_types = dynamic_cast<IIRScram_Name *>(qualified_expression)->_get_rval_set();
 	if( allocator_types == NULL ){
 	  report_undefined_symbol( qualified_expression );
 	}
@@ -4926,7 +4927,7 @@ allocator > [IIRScram_Allocator *alloc]:
 	  break;
 	}
 	case 1:{
-	  IIRScram_TypeDefinition *allocator_type = allocator_types->getElement();
+	  IIRScram_TypeDefinition *allocator_type = *allocator_types->begin();
 	  $alloc->set_type_mark( allocator_type );
 	  
 	  IIRScram *initializer = dynamic_cast<IIRScram *>(as_attr->get_suffix());
@@ -4941,7 +4942,7 @@ allocator > [IIRScram_Allocator *alloc]:
 	  break;
 	}
 	default:{
-	  report_ambiguous_error( qualified_expression, allocator_types->convert_set<IIR_TypeDefinition>() );
+	  report_ambiguous_error( qualified_expression, allocator_types->convert_set<IIR_TypeDefinition*>() );
 	  break;
 	}
 	}
@@ -5993,8 +5994,8 @@ branch_quantity_declaration[IIR_DeclarationList *decl_list]:
     IIRScram_Declaration                             *terminal_minus_decl    = NULL;
     IIRScram_BranchQuantityDeclaration               *new_decl               = new IIRScram_BranchQuantityDeclaration();
     IIRScram_BranchQuantityDeclaration               *new_quan               = NULL;
-    savant::set<IIRScram_Declaration>                *plus_terminal_decl_set;
-    savant::set<IIRScram_Declaration>                *minus_terminal_decl_set;
+    savant::set<IIRScram_Declaration*>                *plus_terminal_decl_set;
+    savant::set<IIRScram_Declaration*>                *minus_terminal_decl_set;
     savant::set<IIR>                            *nature_decl_set;
     IIRScram_IdentifierList                          *id_list                = NULL;
   >>
@@ -6023,11 +6024,12 @@ branch_quantity_declaration[IIR_DeclarationList *decl_list]:
       report_undefined_symbol(plus_terminal);
     }
     else {
-      terminal_plus_decl = plus_terminal_decl_set->getElement();
+      ASSERT( plus_terminal_decl_set->size() == 1 );
+      terminal_plus_decl = *plus_terminal_decl_set->begin();
       new_decl->set_plus_terminal_name(plus_terminal);
     }
     if (minus_terminal == NULL){
-      IIRScram_Declaration           *plus_terminal_decl     = plus_terminal_decl_set->getElement();
+      IIRScram_Declaration           *plus_terminal_decl     = *plus_terminal_decl_set->begin();
       IIRScram_TypeDefinition        *terminal_nature        = dynamic_cast<IIRScram_TypeDefinition *>(plus_terminal_decl)->_get_subtype();
       IIRScram_Declaration           *nature_decl            = dynamic_cast<IIRScram_Declaration *>(terminal_nature->get_declaration());
 
@@ -6036,7 +6038,8 @@ branch_quantity_declaration[IIR_DeclarationList *decl_list]:
     }
     else {
        minus_terminal_decl_set = dynamic_cast<IIRScram *>(minus_terminal)->_symbol_lookup();
-       terminal_minus_decl      = minus_terminal_decl_set->getElement();
+       ASSERT( minus_terminal_decl_set->size() == 1 );
+       terminal_minus_decl      = *minus_terminal_decl_set->begin();
        new_decl->set_minus_terminal_name(terminal_minus_decl);
     }
     designator = dynamic_cast<IIRScram_Designator *>(new_decl->get_across_aspect_identifier_list()->first());
@@ -6099,9 +6102,9 @@ source_quantity_declaration [IIR_DeclarationList *list]:
     IIRScram                                         *ph_exp         = NULL;
     IIRScram                                         *noise_exp      = NULL;
     IIRScram_Identifier                              *id             = NULL;
-    savant::set<IIRScram_Declaration>                *mag_exp_set    = NULL;
-    savant::set<IIRScram_Declaration>                *ph_exp_set     = NULL;
-    savant::set<IIRScram_Declaration>                *noise_exp_set  = NULL;
+    savant::set<IIRScram_Declaration*>                *mag_exp_set    = NULL;
+    savant::set<IIRScram_Declaration*>                *ph_exp_set     = NULL;
+    savant::set<IIRScram_Declaration*>                *noise_exp_set  = NULL;
   >>
   identifier_list [id_list] COLON subtype_indication > [type_def]
   source_aspect > [mag_exp, ph_exp, noise_exp] SEMI_COLON
@@ -6389,16 +6392,17 @@ nature_mark > [ IIRScram_NatureDefinition *retval ]:
   >>   
   selected_or_simple_name > [nature_name]
   <<
-    savant::set<IIRScram_TypeDefinition> *nature_set = nature_name->_get_rval_set();
+    savant::set<IIRScram_TypeDefinition*> *nature_set = nature_name->_get_rval_set();
     if( nature_set == NULL )  {
       report_undefined_symbol(nature_name);
     }
     else if( nature_set->size() > 1 ){
-      report_ambiguous_error(nature_name, nature_set->convert_set<IIR_TypeDefinition>());
+      report_ambiguous_error(nature_name, nature_set->convert_set<IIR_TypeDefinition*>());
       panic("nature_mark resolution failed in VHDLParser::nature_mark");
     }
     else {
-      $retval = dynamic_cast<IIRScram_NatureDefinition *>(nature_set->getElement());
+      ASSERT( nature_set->size() == 1 );
+      $retval = dynamic_cast<IIRScram_NatureDefinition *>(*nature_set->begin());
       if( $retval == NULL ){
         ostringstream err;
         err << "|" << *dynamic_cast<IIRScram_Name *>(nature_name) << "| was not declared as a nature in this scope";

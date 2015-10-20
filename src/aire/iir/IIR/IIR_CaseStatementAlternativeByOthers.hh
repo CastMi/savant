@@ -31,6 +31,10 @@
 #include "savant_config.hh"
 #include "IIR_CaseStatementAlternative.hh"
 
+/*
+ * Everything not catch from the other choices of the cases.
+ * Other keyword in VHDL.
+ */
 class IIR_CaseStatementAlternativeByOthers : public virtual IIR_CaseStatementAlternative{
 
 public:

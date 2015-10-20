@@ -48,8 +48,8 @@ public:
 
   // This varies depending on the definition.  For Scalar types the get/set operators
   // for AccessTypeDeclaration it builds the deallocate functions, etc.
-  virtual savant::set<IIR_Declaration> *get_implicit_declarations() = 0;
-  virtual void set_implicit_declarations( savant::set<IIR_Declaration> *) = 0;
+  virtual savant::set<IIR_Declaration*> *get_implicit_declarations() = 0;
+  virtual void set_implicit_declarations( savant::set<IIR_Declaration*> *) = 0;
 };
 
 #endif

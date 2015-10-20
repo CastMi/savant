@@ -42,7 +42,7 @@ using std::endl;
 
 IIRScram_TypeDefinition*
 IIRScram_ThroughAttribute::_get_subtype() {
-  savant::set<IIRScram_Declaration>     *nature_decl_set;
+  savant::set<IIRScram_Declaration*>     *nature_decl_set;
   IIRScram_Declaration          *nature_decl = NULL;
   IIRScram_TypeDefinition       *type_def = NULL;
   
@@ -50,7 +50,7 @@ IIRScram_ThroughAttribute::_get_subtype() {
   if (nature_decl_set->size() == 0) {
     return NULL;
   }
-  nature_decl = nature_decl_set->getElement();
+  nature_decl = *nature_decl_set->begin();
   if (nature_decl->get_kind() == IIR_NATURE_DECLARATION ) {
     type_def = dynamic_cast<IIRScram_TypeDefinition *>(dynamic_cast<IIRScram_ScalarNatureDefinition *>
       (dynamic_cast<IIRScram_NatureDeclaration *>(nature_decl)->get_nature())->IIRBase_ScalarNatureDefinition::get_through());

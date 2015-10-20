@@ -34,8 +34,6 @@
 #include "IIRScram_Label.hh"
 #include "IIRScram_List.hh"
 #include "resolution_func.hh"
-#include "set.hh"
-
 
 IIRScram_ExitStatement::~IIRScram_ExitStatement() {}
 

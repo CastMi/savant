@@ -36,8 +36,8 @@
 #include "IIRScram_DesignFile.hh"
 #include "IIRScram_Name.hh"
 #include "IIRScram_TypeDefinition.hh"
-
 #include "set.hh"
+
 using savant::set;
 using std::cerr;
 using std::endl;
@@ -52,156 +52,148 @@ using std::endl;
 
 void 
 IIRScram_Name::set_subtype( IIR_TypeDefinition * ){
-  _report_undefined_scram_fn("set_subtype");
+   _report_undefined_scram_fn("set_subtype");
 }
 
-set<IIRScram_Declaration> *
+set<IIRScram_Declaration*> *
 IIRScram_Name::_symbol_lookup(){
-  _report_undefined_scram_fn("_symbol_lookup()");
-  return NULL;
+   _report_undefined_scram_fn("_symbol_lookup()");
+   return NULL;
 }
 
-set<IIRScram_Declaration> *
+set<IIRScram_Declaration*> *
 IIRScram_Name::_symbol_lookup( IIRScram_Declaration *decl ){
-  set<IIR_Declaration> *decls = decl->find_declarations( dynamic_cast<IIRScram_Name *>(this) );
-  
-  if (decls == NULL)
-    return NULL;
-  else 
-    return decls->convert_set<IIRScram_Declaration>();
+   savant::set<IIR_Declaration*> *decls = decl->find_declarations( dynamic_cast<IIRScram_Name *>(this) );
+
+   if (decls == NULL)
+      return NULL;
+   else 
+      return decls->convert_set<IIRScram_Declaration*>();
 }
 
-set<IIRScram_Declaration> *
-IIRScram_Name::_symbol_lookup( set<IIRScram_Declaration> * ){
-  _report_undefined_scram_fn("_symbol_lookup( set<IIRScram_Declaration> *");
-  
-  return NULL;
+set<IIRScram_Declaration*> *
+IIRScram_Name::_symbol_lookup( set<IIRScram_Declaration*> * ){
+   _report_undefined_scram_fn("_symbol_lookup( set<IIRScram_Declaration*> *");
+
+   return NULL;
 }
 
-set<IIRScram_Declaration> *
+set<IIRScram_Declaration*> *
 IIRScram_Name::_symbol_lookup( constraint_functor *functor ){
-  return IIRScram::_symbol_lookup( functor );
+   return IIRScram::_symbol_lookup( functor );
 }
 
 IIRScram_TextLiteral *
 IIRScram_Name::_get_string(){
-  _report_undefined_scram_fn("IIRScram_TextLiteral *_get_string()");
-  
-  return NULL;
+   _report_undefined_scram_fn("IIRScram_TextLiteral *_get_string()");
+
+   return NULL;
 }
 
-set<IIRScram_TypeDefinition> *
-IIRScram_Name::_get_rval_set( set<IIRScram_TypeDefinition> *search_in,
-			      constraint_functor * ){
-  ASSERT( search_in != NULL );
+set<IIRScram_TypeDefinition*> *
+IIRScram_Name::_get_rval_set( set<IIRScram_TypeDefinition*> *search_in,
+      constraint_functor * ){
+   ASSERT( search_in != NULL );
 
-  set<IIRScram_TypeDefinition> *retval = new set<IIRScram_TypeDefinition>;
-  
-  IIRScram_TypeDefinition *current = search_in->getElement();
-  while( current != NULL ){
-    set<IIRScram_Declaration> *found = NULL;
+   set<IIRScram_TypeDefinition*> *retval = new set<IIRScram_TypeDefinition*>;
 
-    if ( current->find_declarations( dynamic_cast<IIRScram_Name *>(this) ) != NULL ) {
-      found = current->find_declarations( dynamic_cast<IIRScram_Name *>(this) )->convert_set<IIRScram_Declaration>();
-    }
+   for(auto it_ext = search_in->begin(); it_ext != search_in->end(); it_ext++) {
+      set<IIRScram_Declaration*> *found = NULL;
 
-    if( found != NULL ){
-      IIRScram_Declaration *symbol = found->getElement();
-      while( symbol != NULL ){
-	if( symbol != NULL ){
-	  retval->add( symbol->_get_subtype() );
-	}
-	symbol = found->getNextElement();
+      if ( (*it_ext)->find_declarations( dynamic_cast<IIRScram_Name *>(this) ) != NULL ) {
+         found = (*it_ext)->find_declarations( dynamic_cast<IIRScram_Name *>(this) )->convert_set<IIRScram_Declaration*>();
       }
-      delete found;
-    }
-    current = search_in->getNextElement();
-  }
 
-  if( retval->size() == 0 ){
-    delete retval;
-    retval = NULL;
-  }
+      if( found != NULL ){
+         for(auto it_in = found->begin(); it_in != found->end(); it_in++) {
+            if( *it_in != NULL ){
+               retval->insert( (*it_in)->_get_subtype() );
+            }
+         }
+         delete found;
+      }
+   }
 
-  return retval;
+   if( retval->size() == 0 ){
+      delete retval;
+      retval = NULL;
+   }
+
+   return retval;
 }
 
-set<IIRScram_TypeDefinition> *
-IIRScram_Name::_get_rval_set( set<IIRScram_Declaration> *search_in,
-			      constraint_functor * ){
-  ASSERT( search_in != NULL );
+set<IIRScram_TypeDefinition*> *
+IIRScram_Name::_get_rval_set( set<IIRScram_Declaration*> *search_in,
+      constraint_functor * ){
+   ASSERT( search_in != NULL );
 
-  set<IIRScram_TypeDefinition> *retval = new set<IIRScram_TypeDefinition>;
-  
-  IIRScram_Declaration *current = search_in->getElement();
-  while( current != NULL ){
-    set<IIR_Declaration> *found1 = current->find_declarations(this);
-    set<IIRScram_Declaration> *found2 = 0;
-    if( found1 ) {
-      found2 = found1->convert_set<IIRScram_Declaration>();
-      delete found1;
-    }
+   set<IIRScram_TypeDefinition*> *retval = new set<IIRScram_TypeDefinition*>;
 
-    if( found2 != NULL ){
-      IIRScram_Declaration *symbol = found2->getElement();
-      while( symbol != NULL ){
-	if( _get_suffix() != NULL ){
-	  set<IIRScram_Declaration> temp_set( symbol );
-	  retval->add( _get_suffix()->_get_rval_set( &temp_set ) );
-	}
-	else{
-	  retval->add( symbol->_get_subtype() );
-	}
-	symbol = found2->getNextElement();
+   for(auto it_ext = search_in->begin(); it_ext != search_in->end(); it_ext++) {
+      set<IIR_Declaration*> *found1 = (*it_ext)->find_declarations(this);
+      set<IIRScram_Declaration*> *found2 = 0;
+      if( found1 ) {
+         found2 = found1->convert_set<IIRScram_Declaration*>();
+         delete found1;
       }
-      delete found2;
-    }
-    current = search_in->getNextElement();
-  }
 
-  if( retval->size() == 0 ){
-    delete retval;
-    retval = NULL;
-  }
+      if( found2 != NULL ){
+         for(auto it_in = search_in->begin(); it_in != search_in->end(); it_in++) {
+            if( _get_suffix() != NULL ){
+               set<IIRScram_Declaration*> temp_set( *it_in );
+               retval->insert( _get_suffix()->_get_rval_set( &temp_set ) );
+            }
+            else{
+               retval->insert( (*it_in)->_get_subtype() );
+            }
+         }
+         delete found2;
+      }
+   }
 
-  return retval;
+   if( retval->size() == 0 ){
+      delete retval;
+      retval = NULL;
+   }
+
+   return retval;
 }
 
 void 
 IIRScram_Name::_set_suffix(IIRScram *){
-  _report_undefined_scram_fn("_set_suffix");
+   _report_undefined_scram_fn("_set_suffix");
 }
 
 void
 IIRScram_Name::_clone( IIRScram *clone ){
-  ASSERT( clone->_is_iir_name() == TRUE );
-  IIRScram_Name *as_name = dynamic_cast<IIRScram_Name *>(clone);
-  IIRScram::_clone(clone);
+   ASSERT( clone->_is_iir_name() == TRUE );
+   IIRScram_Name *as_name = dynamic_cast<IIRScram_Name *>(clone);
+   IIRScram::_clone(clone);
 
-  as_name->set_prefix( _get_prefix()->_clone() );
+   as_name->set_prefix( _get_prefix()->_clone() );
 }
 
 void 
 IIRScram_Name::_build_lib( IIRScram_LibraryUnit * ){
-  _report_undefined_scram_fn("IIRScram_Name::_build_lib");
+   _report_undefined_scram_fn("IIRScram_Name::_build_lib");
 }
 
 visitor_return_type *IIRScram_Name::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_Name(this, arg);
+   ASSERT(visitor != NULL);
+   return visitor->visit_IIR_Name(this, arg);
 };
 
 IIRScram **
 IIRScram_Name::lookup( IIRScram_Name *,
-		       IIR_Int32 &,
-		       IIRScram *& ){
-  IIRScram** return_array = NULL;
-  cerr << "IIRBase_Name::lookup(IIRScram_Name    *name not implemented yet!"<< endl;
-  abort();
-  return return_array;
+      IIR_Int32 &,
+      IIRScram *& ){
+   IIRScram** return_array = NULL;
+   cerr << "IIRBase_Name::lookup(IIRScram_Name    *name not implemented yet!"<< endl;
+   abort();
+   return return_array;
 }
 
 IIRScram *
 IIRScram_Name::_get_prefix() {
-  return dynamic_cast<IIRScram *>(get_prefix());
+   return dynamic_cast<IIRScram *>(get_prefix());
 }

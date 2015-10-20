@@ -46,18 +46,18 @@ IIRScram_SliceName::_get_mode() {
   return _get_prefix()->_get_mode();
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_SliceName::_get_rval_set(constraint_functor *functor){
   if( _get_subtype() == NULL ){
     return _get_prefix()->_get_rval_set( functor );
   }
   else{
-    return new savant::set<IIRScram_TypeDefinition>( _get_subtype() );
+    return new savant::set<IIRScram_TypeDefinition*>( _get_subtype() );
   }
 }
 
 void 
-IIRScram_SliceName::_type_check( savant::set<IIRScram_TypeDefinition> * ){
+IIRScram_SliceName::_type_check( savant::set<IIRScram_TypeDefinition*> * ){
   ASSERT( is_resolved() == TRUE );
 }
 

@@ -54,8 +54,8 @@ public:
       an integer literal.  */
   void set_subtype( IIR_TypeDefinition * );
 
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0); 
-  void _type_check(savant::set<IIRScram_TypeDefinition>*) {}
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0); 
+  void _type_check(savant::set<IIRScram_TypeDefinition*>*) {}
   IIR_Boolean _is_integer_literal();
   IIRScram *_clone() { return this; }
 

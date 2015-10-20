@@ -94,8 +94,8 @@ public:
 
   IIR_TypeDefinition *get_bottom_base_type();
 
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
-  savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * );
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
+  savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral * );
 
   ostream &print( ostream & );
 

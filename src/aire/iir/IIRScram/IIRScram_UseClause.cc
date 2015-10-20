@@ -56,7 +56,7 @@ IIRScram_UseClause::IIRScram_UseClause(){
 
 void
 IIRScram_UseClause::_type_check(){
-  savant::set<IIRScram_Declaration> *use_clause_decls = _get_selected_name()->_symbol_lookup();
+  savant::set<IIRScram_Declaration*> *use_clause_decls = _get_selected_name()->_symbol_lookup();
 
   if( use_clause_decls == NULL ){
     ostringstream err;
@@ -69,21 +69,20 @@ IIRScram_UseClause::_type_check(){
   IIRScram_Name *tmp_name =  _get_selected_name();
   ASSERT( tmp_name->get_kind() == IIR_SELECTED_NAME );
 
-  IIRScram_Declaration *decl = use_clause_decls->getElement();
-  while( decl != NULL ){
-    tmp_name->_decl_to_decl( decl );
+  for(auto it = use_clause_decls->begin(); it != use_clause_decls->end(); it++)
+  {
+    tmp_name->_decl_to_decl( *it );
     
     if( debug_symbol_table == true ){
       cerr << _get_symbol_table() << " - processing use clause - making |" 
 	   << tmp_name << "| visible!\n";
     }
-    if( decl->is_package_declaration() == TRUE ){
+    if( (*it)->is_package_declaration() == TRUE ){
       _make_interface_visible( _get_symbol_table() );      
     }
     else{
-      _get_symbol_table()->make_visible( decl );
+      _get_symbol_table()->make_visible( *it );
     }
-    decl =  use_clause_decls->getNextElement();    
   }
 
   delete use_clause_decls;
@@ -94,10 +93,10 @@ IIRScram_UseClause::_type_check(){
 void 
 IIRScram_UseClause::_make_interface_visible( symbol_table *sym_tab ){
   ASSERT( _get_selected_name()->is_resolved() == TRUE );
-  savant::set<IIRScram_Declaration> *decls = _get_selected_name()->_symbol_lookup();
+  savant::set<IIRScram_Declaration*> *decls = _get_selected_name()->_symbol_lookup();
   if( decls != 0 ){
     ASSERT( decls->size() == 1 );
-    IIRScram_Declaration *decl = decls->getElement();
+    IIRScram_Declaration *decl = *decls->begin();
     if( sym_tab->in_use_list( decl ) == FALSE ){
       sym_tab->add_to_use_list( decl );
       decl->_make_interface_visible( sym_tab );

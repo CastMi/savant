@@ -34,7 +34,6 @@
 #include "IIRScram_SimpleName.hh"
 #include "IIRScram_TextLiteral.hh"
 #include "error_func.hh"
-#include "set.hh"
 
 #include <sstream>
 using std::ostringstream;

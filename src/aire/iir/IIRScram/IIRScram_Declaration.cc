@@ -40,6 +40,7 @@
 #include "IIRScram_Identifier.hh"
 #include "IIRScram_Label.hh"
 #include "IIRScram_StringLiteral.hh"
+#include "IIRScram_TypeDefinition.hh"
 
 #include "error_func.hh"
 #include "symbol_table.hh"
@@ -103,17 +104,16 @@ IIRScram_Declaration::_check_param( IIRScram_TypeDefinition *, int ){
   return false;
 }
 
-
 // For the next two methods, since we're assuming that we've already
 // correctly resolved everything, we'll just new a set with "this" in it.
-savant::set<IIRScram_Declaration> *
+savant::set<IIRScram_Declaration*> *
 IIRScram_Declaration::_symbol_lookup(){
-  return new savant::set<IIRScram_Declaration>( this );
+  return new savant::set<IIRScram_Declaration*>( this );
 }
 
-savant::set<IIRScram_Declaration> *
-IIRScram_Declaration::_symbol_lookup( savant::set<IIRScram_Declaration> * ){
-  return new savant::set<IIRScram_Declaration>( this );
+savant::set<IIRScram_Declaration*> *
+IIRScram_Declaration::_symbol_lookup( savant::set<IIRScram_Declaration*> * ){
+  return new savant::set<IIRScram_Declaration*>( this );
 }
 
 IIR_Boolean 
@@ -142,7 +142,6 @@ IIRScram_Declaration::_get_name_type() {
   return _get_subtype();
 }
 
-
 IIR_Int32 
 IIRScram_Declaration::get_num_indexes(){
   return 0;
@@ -159,7 +158,6 @@ IIRScram_Declaration::_clone() {
   _report_undefined_scram_fn("IIRScram *_clone()");
   return NULL;
 }
-
 
 void
 IIRScram_Declaration::_clone(IIRScram *cl) {
@@ -180,30 +178,26 @@ IIRScram_Declaration::_clone(IIRScram *cl) {
 }
 
 void 
-IIRScram_Declaration::_add_to_declarative_region( savant::set<IIRScram_Declaration> * ){
+IIRScram_Declaration::_add_to_declarative_region( savant::set<IIRScram_Declaration*> * ){
   _report_undefined_scram_fn("_add_to_declarative_region");
 }
 
 void 
 IIRScram_Declaration::_add_to_declarative_region( IIRScram_DeclarationList *region,
-						  savant::set<IIRScram_Declaration> *set_to_add ){
+						  savant::set<IIRScram_Declaration*> *set_to_add ){
   ASSERT( set_to_add != NULL );
   
   IIRScram_Declaration *current_decl = NULL;
   IIRScram_Declaration *decl_in_region = dynamic_cast<IIRScram_Declaration *>(region->first());
   while( decl_in_region != NULL ){
-    current_decl = set_to_add->getElement();
-    while( current_decl != NULL ){
-      ASSERT( current_decl != decl_in_region );
-      current_decl = set_to_add->getNextElement();
-    }
+     for(auto it = set_to_add->begin(); it != set_to_add->end(); it++) {
+      ASSERT( *it != decl_in_region );
+     }
     decl_in_region = dynamic_cast<IIRScram_Declaration *>(region->successor( decl_in_region ));
   }
 
-  current_decl = set_to_add->getElement();
-  while( current_decl != NULL ){
-    region->append( current_decl );
-    current_decl = set_to_add->getNextElement();
+  for(auto it = set_to_add->begin(); it != set_to_add->end(); it++) {
+    region->append( *it );
   }
 }
 
@@ -256,13 +250,13 @@ IIRScram_Declaration::_make_interface_visible(symbol_table *sym_tab ){
   }
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_Declaration::_get_rval_set( constraint_functor *functor ){
   if (functor != 0 ) {
     ASSERT((*functor)(this) == TRUE );
   }
   ASSERT( _get_subtype() != 0 );
-  return new savant::set<IIRScram_TypeDefinition>( _get_subtype() );
+  return new savant::set<IIRScram_TypeDefinition*>( _get_subtype() );
 }
 
 

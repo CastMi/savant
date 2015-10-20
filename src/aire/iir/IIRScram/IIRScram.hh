@@ -241,7 +241,7 @@ public:
 
   /** The following function is used for building the generic parameter
       set when generic statements occur inside Simultaneous Statements */
-  virtual void _build_generic_parameter_set( savant::set<IIRScram_Declaration> *);
+  virtual void _build_generic_parameter_set( savant::set<IIRScram_Declaration*> *);
 
   /** The following function is used to pick up the resolution function
       for a subtype/type definition. This function is needed as all the
@@ -267,10 +267,10 @@ public:
       accepting an argument essentially narrows the search to be within the
       context of a set of declarations.  I.e. find the "foo.bars" within
       the context of the declarations of "baz"es. */
-  virtual savant::set<IIRScram_Declaration> *_symbol_lookup();
-  virtual savant::set<IIRScram_Declaration> *_symbol_lookup( IIRScram_Declaration *);
-  virtual savant::set<IIRScram_Declaration> *_symbol_lookup( savant::set<IIRScram_Declaration> *);
-  virtual savant::set<IIRScram_Declaration> *_symbol_lookup(constraint_functor *functor);
+  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup();
+  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup( IIRScram_Declaration *);
+  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup( savant::set<IIRScram_Declaration*> *);
+  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup(constraint_functor *functor);
 
   
   IIRScram_Label *_lookup_label( IIR_Boolean complain_on_error );
@@ -287,11 +287,11 @@ public:
       variable "FOO", and we're looking for the target of a variable
       assignment statement, only the variable assignment will be
       considered. */
-  virtual savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
+  virtual savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
 
-  virtual savant::set<IIRScram_TypeDefinition> *_get_rval_set( savant::set<IIRScram_TypeDefinition> *,
+  virtual savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_TypeDefinition*> *,
                                                                constraint_functor *functor = 0 );
-  virtual savant::set<IIRScram_TypeDefinition> *_get_rval_set( savant::set<IIRScram_Declaration> *,
+  virtual savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_Declaration*> *,
                                                                constraint_functor *functor = 0 );
 
   /** This method takes the a set of return values that are context,
@@ -300,12 +300,12 @@ public:
       foo( 1 to  3 ).bar( 1 ) and we know the type of the whole expression,
       and we have a set of types for foo( 1 to 3 ), this method will tell
       us which is correct... */
-  virtual IIRScram_TypeDefinition *_determine_rval_in_set( savant::set<IIRScram_TypeDefinition> *,
+  virtual IIRScram_TypeDefinition *_determine_rval_in_set( savant::set<IIRScram_TypeDefinition*> *,
                                                            IIRScram_TypeDefinition * );
 
   /** Same as previous method, but in cases like: work.foo( 1 ), where the
       prefix has a declaration, but not a type... */
-  virtual IIRScram_Declaration *_determine_decl_in_set( savant::set<IIRScram_Declaration> *,
+  virtual IIRScram_Declaration *_determine_decl_in_set( savant::set<IIRScram_Declaration*> *,
                                                         IIRScram_TypeDefinition * );  
 
   /** This method looks at this node as having been resolved as a formal in
@@ -366,7 +366,7 @@ public:
   /** This is the main call into the semantic processing routines.  The set
       that gets passed in is the list of possible l-values of the node
       being type-checked. */
-  virtual void _type_check( savant::set<IIRScram_TypeDefinition> * );
+  virtual void _type_check( savant::set<IIRScram_TypeDefinition*> * );
   virtual void _type_check( IIRScram_TypeDefinition * );
 
   /** The following methods are used to type check component
@@ -428,7 +428,7 @@ public:
       return "this".  NOTE: This method is intended to be called from
       _type_check of the _containing_ node. I.e. this method is not
       intended to be "recursively descending". */
-  virtual IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition> * );
+  virtual IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition*> * );
   virtual IIRScram *_semantic_transform( IIRScram_TypeDefinition * );
 
   /** This method, defined within the name class, IIRScram_Identifier class, and

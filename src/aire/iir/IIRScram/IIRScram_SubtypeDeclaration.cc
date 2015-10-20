@@ -36,7 +36,6 @@
 #include "IIRScram_AttributeSpecification.hh"
 #include "IIRScram_TextLiteral.hh"
 #include "IIRScram_TypeDefinition.hh"
-#include "set.hh"
 
 IIRScram_SubtypeDeclaration::IIRScram_SubtypeDeclaration() {
   set_attributes(new IIRScram_AttributeSpecificationList());

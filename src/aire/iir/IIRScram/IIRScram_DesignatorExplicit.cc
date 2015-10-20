@@ -39,104 +39,98 @@ using std::cerr;
 
 IIRScram_DesignatorExplicit::~IIRScram_DesignatorExplicit() {}
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_DesignatorExplicit::_get_rval_set(constraint_functor *functor){
-  savant::set<IIRScram_TypeDefinition> *retval = NULL;
-  if( get_signature() == NULL ){
-    retval = _get_name()->_get_rval_set(functor);
-  }
-  else{
-    savant::set<IIRScram_Declaration> *possible_decls;
-    possible_decls = _get_name()->_symbol_lookup();
+   savant::set<IIRScram_TypeDefinition*> *retval = NULL;
+   if( get_signature() == NULL ){
+      retval = _get_name()->_get_rval_set(functor);
+   }
+   else{
+      savant::set<IIRScram_Declaration*> *possible_decls;
+      possible_decls = _get_name()->_symbol_lookup();
 
-    resolve_subprogram_decls( possible_decls,dynamic_cast<IIRScram_Signature*>(get_signature()));
+      resolve_subprogram_decls( possible_decls,dynamic_cast<IIRScram_Signature*>(get_signature()));
 
-    if( possible_decls->size() != 0 ){
-      retval = new savant::set<IIRScram_TypeDefinition>;
-      IIRScram_Declaration *current_decl = possible_decls->getElement();
-      while( current_decl != NULL ){
-	retval->add( current_decl->_get_subtype() );
-	current_decl = possible_decls->getNextElement();
+      if( possible_decls->size() != 0 ){
+         retval = new savant::set<IIRScram_TypeDefinition*>;
+         for(auto it = possible_decls->begin(); it != possible_decls->end(); it++) {
+            retval->insert( (*it)->_get_subtype() );
+         }
       }
-    }
-    
-  }
-
-  return retval;
+   }
+   return retval;
 }
 
-savant::set<IIRScram_Declaration> *
+savant::set<IIRScram_Declaration*> *
 IIRScram_DesignatorExplicit::_symbol_lookup(){
-  savant::set<IIRScram_Declaration> *retval = NULL;
+   savant::set<IIRScram_Declaration*> *retval = NULL;
 
-  if( get_signature() == NULL ){
-    retval = _get_name()->_symbol_lookup();
-  }
-  else{
-    savant::set<IIRScram_Declaration> *possible_decls;
-    possible_decls = _get_name()->_symbol_lookup();
+   if( get_signature() == NULL ){
+      retval = _get_name()->_symbol_lookup();
+   }
+   else{
+      savant::set<IIRScram_Declaration*> *possible_decls;
+      possible_decls = _get_name()->_symbol_lookup();
 
-    resolve_subprogram_decls( possible_decls, dynamic_cast<IIRScram_Signature*>(get_signature()));
+      resolve_subprogram_decls( possible_decls, dynamic_cast<IIRScram_Signature*>(get_signature()));
 
-    if( possible_decls->size() != 0 ){
-      retval = new savant::set<IIRScram_Declaration>;
-      IIRScram_Declaration *current_decl = possible_decls->getElement();
-      while( current_decl != NULL ){
-	retval->add( current_decl );
-	current_decl = possible_decls->getNextElement();
+      if( possible_decls->size() != 0 ){
+         retval = new savant::set<IIRScram_Declaration*>;
+         for(auto it = possible_decls->begin(); it != possible_decls->end(); it++) {
+            retval->insert( *it );
+         }
       }
-    }
-    
-  }
 
-  return retval;
+   }
+
+   return retval;
 }
 
 IIRScram*
 IIRScram_DesignatorExplicit::_clone() {
-  IIRScram_Signature *sig = NULL;
-  IIRScram *name = NULL;
-  IIRScram_DesignatorExplicit *clone = new IIRScram_DesignatorExplicit;
-  IIRScram::_clone(clone);
+   IIRScram_Signature *sig = NULL;
+   IIRScram *name = NULL;
+   IIRScram_DesignatorExplicit *clone = new IIRScram_DesignatorExplicit;
+   IIRScram::_clone(clone);
 
-  name = _get_name()->_clone();
-  clone->set_name(name);
+   name = _get_name()->_clone();
+   clone->set_name(name);
 
-  if (get_signature() != NULL) {
+   if (get_signature() != NULL) {
 
-    sig = dynamic_cast<IIRScram_Signature*>((dynamic_cast<IIRScram *>(get_signature()))->_clone());
-  }
-  clone->set_signature(sig);
+      sig = dynamic_cast<IIRScram_Signature*>((dynamic_cast<IIRScram *>(get_signature()))->_clone());
+   }
+   clone->set_signature(sig);
 
-  return clone;
+   return clone;
 }
 
 IIRScram *
-IIRScram_DesignatorExplicit::_semantic_transform( savant::set<IIRScram_TypeDefinition> *transform_set ){
-  set_name( _get_name()->_semantic_transform( transform_set ) );
-  return this;
+IIRScram_DesignatorExplicit::_semantic_transform( savant::set<IIRScram_TypeDefinition*> *transform_set ){
+   set_name( _get_name()->_semantic_transform( transform_set ) );
+   return this;
 }
 
 void 
-IIRScram_DesignatorExplicit::_type_check( savant::set<IIRScram_TypeDefinition> *check_set ){
-  _get_name()->_type_check( check_set );
+IIRScram_DesignatorExplicit::_type_check( savant::set<IIRScram_TypeDefinition*> *check_set ){
+   _get_name()->_type_check( check_set );
 }
 
 IIRScram *
 IIRScram_DesignatorExplicit::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
-  set_name( _get_name()->_rval_to_decl( my_type ) );
-  
-  return this;
+   set_name( _get_name()->_rval_to_decl( my_type ) );
+
+   return this;
 }
 
 visitor_return_type *
 IIRScram_DesignatorExplicit::_accept_visitor( node_visitor *visitor,
-					      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_DesignatorExplicit(this, arg);
+      visitor_argument_type *arg ){
+   ASSERT(visitor != NULL);
+   return visitor->visit_IIR_DesignatorExplicit(this, arg);
 }
 
 IIRScram *
 IIRScram_DesignatorExplicit::_get_name() {
-  return dynamic_cast<IIRScram *>(get_name());
+   return dynamic_cast<IIRScram *>(get_name());
 }

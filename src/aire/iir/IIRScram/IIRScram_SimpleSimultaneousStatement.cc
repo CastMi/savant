@@ -42,58 +42,58 @@ IIRScram_SimpleSimultaneousStatement::~IIRScram_SimpleSimultaneousStatement() {}
 
 void
 IIRScram_SimpleSimultaneousStatement::_type_check() {
-  savant::set<IIRScram_TypeDefinition> *lexp_lvals = _get_left_expression()->_get_rval_set();
-  if( lexp_lvals == NULL ){
-    report_undefined_symbol( _get_left_expression() );
-    return;
-  }
-  set_right_expression(_get_right_expression()->_semantic_transform(lexp_lvals));
+   savant::set<IIRScram_TypeDefinition*> *lexp_lvals = _get_left_expression()->_get_rval_set();
+   if( lexp_lvals == NULL ){
+      report_undefined_symbol( _get_left_expression() );
+      return;
+   }
+   set_right_expression(_get_right_expression()->_semantic_transform(lexp_lvals));
 
-  savant::set<IIRScram_TypeDefinition> *rexp_rvals= _get_right_expression()->_get_rval_set();
+   savant::set<IIRScram_TypeDefinition*> *rexp_rvals= _get_right_expression()->_get_rval_set();
 
-  if( rexp_rvals == NULL ){
-    report_undefined_symbol( get_right_expression() );
-    return;
-  }
+   if( rexp_rvals == NULL ){
+      report_undefined_symbol( get_right_expression() );
+      return;
+   }
 
-  set_left_expression( _get_left_expression()->_semantic_transform( rexp_rvals ));
+   set_left_expression( _get_left_expression()->_semantic_transform( rexp_rvals ));
 
-  delete lexp_lvals;
-  delete rexp_rvals;
+   delete lexp_lvals;
+   delete rexp_rvals;
 
-  lexp_lvals = _get_left_expression()->_get_rval_set();
-  rexp_rvals= _get_right_expression()->_get_rval_set();
+   lexp_lvals = _get_left_expression()->_get_rval_set();
+   rexp_rvals= _get_right_expression()->_get_rval_set();
 
-  reconcile_sets( lexp_lvals, rexp_rvals);
-  switch ( lexp_lvals->size() ){
-  case 0: {
-    ostringstream err;
-    err << "Incompatible types in simultaneous statement : " << *_get_left_expression()
-        << " == " << *_get_right_expression();
-    report_error( this, err.str());
-    break;
-  }
-  case 1: {
-    set_right_expression( _get_right_expression()->_rval_to_decl(rexp_rvals->getElement() ) );
-    set_left_expression( _get_left_expression()->_rval_to_decl(lexp_lvals->getElement() ) );
-    break;
-  }
-  default:
-    ostringstream err;
-    err << "Ambiguous assignment - cannot resolve types";
-    report_error(this, err.str());
-    break;
-  }
-  delete lexp_lvals;
-  delete rexp_rvals;
+   reconcile_sets( lexp_lvals, rexp_rvals);
+   switch ( lexp_lvals->size() ){
+      case 0: {
+                 ostringstream err;
+                 err << "Incompatible types in simultaneous statement : " << *_get_left_expression()
+                    << " == " << *_get_right_expression();
+                 report_error( this, err.str());
+                 break;
+              }
+      case 1: {
+                 set_right_expression( _get_right_expression()->_rval_to_decl(*rexp_rvals->begin() ) );
+                 set_left_expression( _get_left_expression()->_rval_to_decl(*lexp_lvals->begin() ) );
+                 break;
+              }
+      default:
+              ostringstream err;
+              err << "Ambiguous assignment - cannot resolve types";
+              report_error(this, err.str());
+              break;
+   }
+   delete lexp_lvals;
+   delete rexp_rvals;
 }
 
 IIRScram *
 IIRScram_SimpleSimultaneousStatement::_get_left_expression() {
-  return dynamic_cast<IIRScram *>(get_left_expression());
+   return dynamic_cast<IIRScram *>(get_left_expression());
 }
 
 IIRScram *
 IIRScram_SimpleSimultaneousStatement::_get_right_expression() {
-  return dynamic_cast<IIRScram *>(get_right_expression());
+   return dynamic_cast<IIRScram *>(get_right_expression());
 }

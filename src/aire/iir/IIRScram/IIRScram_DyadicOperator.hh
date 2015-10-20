@@ -40,6 +40,9 @@ class IIR_ContributionAttribute;
 class IIR_DotAttribute;
 class IIRScram_SubprogramDeclaration;
 
+/*
+ * Binary operators
+ */
 class IIRScram_DyadicOperator : public virtual IIRScram_Operator,
 				public virtual IIRBase_DyadicOperator{
 public:

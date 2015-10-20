@@ -51,8 +51,8 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  void _type_check( savant::set<IIRScram_TypeDefinition> * );
-  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition> *,
+  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
+  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *,
 			     IIRScram_SubprogramDeclaration *subprogram_decl );
     
   IIRScram *_clone();

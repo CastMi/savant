@@ -56,7 +56,7 @@ IIRScram_CaseStatement::_type_check(){
 }
 
 IIRScram *
-IIRScram_CaseStatement::_handle_reconciliation( savant::set<IIRScram_TypeDefinition> *rval_set, 
+IIRScram_CaseStatement::_handle_reconciliation( savant::set<IIRScram_TypeDefinition*> *rval_set, 
                                                 IIRScram *node_in_consideration, char *error_part ){
   IIRScram *retval = NULL;
 
@@ -69,12 +69,12 @@ IIRScram_CaseStatement::_handle_reconciliation( savant::set<IIRScram_TypeDefinit
     break;
   }
   case 1:{
-    IIRScram_TypeDefinition *rval =  rval_set->getElement();
+    IIRScram_TypeDefinition *rval =  *(rval_set->begin());
     retval = node_in_consideration->_rval_to_decl( rval );
     break;
   }
   default:{
-    report_ambiguous_error( node_in_consideration, rval_set->convert_set<IIR_TypeDefinition>() );
+    report_ambiguous_error( node_in_consideration, rval_set->convert_set<IIR_TypeDefinition*>() );
     break;
   }
   }
@@ -82,7 +82,7 @@ IIRScram_CaseStatement::_handle_reconciliation( savant::set<IIRScram_TypeDefinit
 }
 
 IIR_Boolean 
-IIRScram_CaseStatement::_type_check_return_statements(savant::set<IIRScram_TypeDefinition> *context_set, 
+IIRScram_CaseStatement::_type_check_return_statements(savant::set<IIRScram_TypeDefinition*> *context_set, 
                                                       IIRScram_SubprogramDeclaration *subprogram_decl ){
   IIR_Boolean retval = FALSE;
   

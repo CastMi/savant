@@ -27,7 +27,6 @@
 //---------------------------------------------------------------------------
 
 #include "IIRScram_AdditionOperators.hh"
-#include "set.hh"
 #include "IIRScram_TypeDefinition.hh"
 #include "resolution_func.hh"
 #include "error_func.hh"

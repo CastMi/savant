@@ -31,7 +31,7 @@
 #include "IIRScram_CaseStatementAlternativeByExpression.hh"
 #include "IIRScram_Choice.hh"
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_CaseStatementAlternativeByExpression::_get_rval_set( constraint_functor *functor ){
   ASSERT( _get_choice() != NULL );
   return _get_choice()->_get_rval_set(functor);
@@ -46,13 +46,13 @@ IIRScram_CaseStatementAlternativeByExpression::_rval_to_decl( IIRScram_TypeDefin
 }
 
 
-savant::set<IIRScram_Declaration> *
+savant::set<IIRScram_Declaration*> *
 IIRScram_CaseStatementAlternativeByExpression::_symbol_lookup(){
   return _get_choice()->_symbol_lookup();
 }
 
 void 
-IIRScram_CaseStatementAlternativeByExpression::_type_check( savant::set<IIRScram_TypeDefinition> *context_set ){
+IIRScram_CaseStatementAlternativeByExpression::_type_check( savant::set<IIRScram_TypeDefinition*> *context_set ){
   _get_choice()->_type_check( context_set );
 }
 

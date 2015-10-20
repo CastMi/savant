@@ -43,19 +43,16 @@ IIRScram_LTFAttribute::~IIRScram_LTFAttribute() {}
 
 IIRScram_TypeDefinition *
 IIRScram_LTFAttribute::_get_subtype() {
-  savant::set<IIRScram_Declaration> *prefix_decls = _get_prefix()->_symbol_lookup();
+  savant::set<IIRScram_Declaration*> *prefix_decls = _get_prefix()->_symbol_lookup();
   if( prefix_decls == NULL ) {
     report_undefined_symbol( get_prefix() );
     return NULL;
   }
   
-  IIRScram_Declaration *current_decl;
-  current_decl = prefix_decls->getElement();
-  while( current_decl != NULL ) {
-    if( current_decl->_is_quantity() == FALSE ) {
-      prefix_decls->remove( current_decl );
+  for(auto it = prefix_decls->begin(); it != prefix_decls->end(); it++) {
+    if( (*it)->_is_quantity() == FALSE ) {
+      prefix_decls->erase( *it );
     }
-    current_decl = prefix_decls->getNextElement();
   }
   switch( prefix_decls->size() ) {
   case 0: {
@@ -64,11 +61,11 @@ IIRScram_LTFAttribute::_get_subtype() {
     return NULL;
   }
   case 1: {
-    set_prefix( prefix_decls->getElement() );
+    set_prefix( *(prefix_decls->begin()) );
     break;
   }
   default: {
-    report_ambiguous_error( get_prefix(), prefix_decls->convert_set<IIR_Declaration>() );
+    report_ambiguous_error( get_prefix(), prefix_decls->convert_set<IIR_Declaration*>() );
     return NULL;
   }
   }
@@ -78,7 +75,7 @@ IIRScram_LTFAttribute::_get_subtype() {
 void
 IIRScram_LTFAttribute::_resolve_attribute_parameters() {
   // processing for the numerator part of this attribute's suffix ...
-  savant::set<IIRScram_TypeDefinition> *numerator_rvals = _get_num()->_get_rval_set();
+  savant::set<IIRScram_TypeDefinition*> *numerator_rvals = _get_num()->_get_rval_set();
       
   if( numerator_rvals == NULL ) {
     report_undefined_symbol( _get_num() );
@@ -90,7 +87,7 @@ IIRScram_LTFAttribute::_resolve_attribute_parameters() {
     break;
   }
   case 1: {
-    IIRScram_TypeDefinition *my_rval = numerator_rvals->getElement();
+    IIRScram_TypeDefinition *my_rval = *(numerator_rvals->begin());
     
     set_num( _get_num()->_semantic_transform( my_rval ) );
     _get_num()->_type_check( my_rval );
@@ -99,12 +96,12 @@ IIRScram_LTFAttribute::_resolve_attribute_parameters() {
     break;
   }
   default: {
-    report_ambiguous_error( _get_num(), numerator_rvals->convert_set<IIR_TypeDefinition>() );
+    report_ambiguous_error( _get_num(), numerator_rvals->convert_set<IIR_TypeDefinition*>() );
   }
   }
   
   // now process for the denominator part of the attribute's suffix....
-  savant::set<IIRScram_TypeDefinition> *denominator_rvals = _get_den()->_get_rval_set();
+  savant::set<IIRScram_TypeDefinition*> *denominator_rvals = _get_den()->_get_rval_set();
       
   if( denominator_rvals == NULL ) {
     report_undefined_symbol( _get_den() );
@@ -116,7 +113,7 @@ IIRScram_LTFAttribute::_resolve_attribute_parameters() {
     break;
   }
   case 1: {
-    IIRScram_TypeDefinition *my_rval = denominator_rvals->getElement();
+    IIRScram_TypeDefinition *my_rval = *(denominator_rvals->begin());
     
     set_den( _get_den()->_semantic_transform( my_rval ) );
     _get_den()->_type_check( my_rval );
@@ -125,7 +122,7 @@ IIRScram_LTFAttribute::_resolve_attribute_parameters() {
     break;
   }
   default: {
-    report_ambiguous_error( _get_den(), denominator_rvals->convert_set<IIR_TypeDefinition>() );
+    report_ambiguous_error( _get_den(), denominator_rvals->convert_set<IIR_TypeDefinition*>() );
   }
   }
 }

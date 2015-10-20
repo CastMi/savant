@@ -58,7 +58,7 @@ IIRScram_LibraryDeclaration::~IIRScram_LibraryDeclaration() {
 }
 
 void 
-IIRScram_LibraryDeclaration::_add_to_declarative_region( savant::set<IIRScram_Declaration> *set_to_add ){
+IIRScram_LibraryDeclaration::_add_to_declarative_region( savant::set<IIRScram_Declaration*> *set_to_add ){
   IIRScram_Declaration::_add_to_declarative_region( _get_primary_units(), set_to_add );
 }
 

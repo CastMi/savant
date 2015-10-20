@@ -36,20 +36,19 @@
 #include "set.hh"
 
 using std::cerr;
-using savant::set;
 
 class IIRScram_AccessTypeDefinition;
 
 void 
-IIRScram_StringLiteral::_type_check( set<IIRScram_TypeDefinition> * ){}
+IIRScram_StringLiteral::_type_check( savant::set<IIRScram_TypeDefinition*> * ){}
 
 
-set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_StringLiteral::_get_rval_set(constraint_functor *functor){
-  set<IIRScram_TypeDefinition> *retval = 0;
+   savant::set<IIRScram_TypeDefinition*> *retval = 0;
 
   if( cmp( this, "null" ) == 0 ){
-    retval = new set<IIRScram_TypeDefinition>( dynamic_cast<IIRScram_TypeDefinition *>(_get_design_file()->get_standard_package()->get_savant_null_type_definition()) );
+    retval = new savant::set<IIRScram_TypeDefinition*>( dynamic_cast<IIRScram_TypeDefinition *>(_get_design_file()->get_standard_package()->get_savant_null_type_definition()) );
   }
   else{
     retval = _get_rval_set_for_string();

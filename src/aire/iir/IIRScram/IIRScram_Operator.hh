@@ -48,23 +48,23 @@ public:
   virtual IIR_Int32 _get_num_args() = 0;
   virtual IIRScram_AssociationList *_build_argument_list() = 0;
 
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0); 
-  savant::set<IIRScram_TypeDefinition> *_get_user_overloaded_rvals();
-  savant::set<IIRScram_Declaration> *_symbol_lookup();
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0); 
+  savant::set<IIRScram_TypeDefinition*> *_get_user_overloaded_rvals();
+  savant::set<IIRScram_Declaration*> *_symbol_lookup();
 
   /** This is the entrance into the type checking routines for
       operators... */
-  void _type_check( savant::set<IIRScram_TypeDefinition> * );
+  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
 
   /** If this operator is a call to one that's user overloaded, this method
       transforms it into an IIRScram_FunctionCall. */
-  IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition> * );
+  IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition*> * );
 
   /** This method looks for a user overloaded version of an operator and
       returns true if a valid user overloading of the operator is found.
       If not, the type_checking assumes a valid VHDL default definition of
       the operator is being used.  See next method. */
-  IIR_Boolean _type_check_user_declared( savant::set<IIRScram_TypeDefinition> * );    
+  IIR_Boolean _type_check_user_declared( savant::set<IIRScram_TypeDefinition*> * );    
   
   IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
 
@@ -79,7 +79,7 @@ protected:
   virtual void _type_check_operands( ) = 0;
 
 private:
-  savant::set<IIRScram_TypeDefinition> *my_rvals;
+  savant::set<IIRScram_TypeDefinition*> *my_rvals;
   IIR_Boolean has_been_type_checked;
   IIRScram_SubprogramDeclaration *my_decl;
 };

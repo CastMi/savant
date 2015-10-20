@@ -62,7 +62,7 @@ IIRBase_Statement::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_Statement::find_declarations( IIR_Name * ){
   _report_undefined_fn("IIRBase_Statement::_find_declarations( IIR_Name *name )");
 

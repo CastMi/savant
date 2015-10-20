@@ -64,7 +64,7 @@ public:
 
   /** This method is for objects that are instances of records, to find the
       pieces within them... */
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name *);
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *);
 
   IIR_Boolean is_locally_static(){ return false; }
 

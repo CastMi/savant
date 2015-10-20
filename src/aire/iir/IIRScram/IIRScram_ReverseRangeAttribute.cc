@@ -37,9 +37,7 @@
 
 #include "error_func.hh"
 #include "resolution_func.hh"
-#include "set.hh"
 #include "savant.hh"
-
 
 IIRScram_TypeDefinition *
 IIRScram_ReverseRangeAttribute::_get_subtype(){

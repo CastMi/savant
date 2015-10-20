@@ -55,7 +55,7 @@ public:
 
   void _set_suffix( IIRScram *new_suffix ){ IIRBase_RightAttribute::set_suffix( new_suffix ); }
 
-  virtual savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0); 
+  virtual savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0); 
 
 protected:
   void _resolve_suffix_special();    

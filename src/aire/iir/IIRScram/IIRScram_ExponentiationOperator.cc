@@ -28,11 +28,8 @@
 #include "IIRScram_ExponentiationOperator.hh"
 #include "IIRScram_IntegerSubtypeDefinition.hh"
 #include "error_func.hh"
-#include "set.hh"
 #include "StandardPackage.hh"
 #include "resolution_func.hh"
-
-
 
 IIRScram_ExponentiationOperator::~IIRScram_ExponentiationOperator() {}
 

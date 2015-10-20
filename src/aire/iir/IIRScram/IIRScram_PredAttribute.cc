@@ -35,7 +35,7 @@ IIRScram_PredAttribute::_get_subtype(){
   return _get_prefix_subtype();
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_PredAttribute::_get_rval_set(constraint_functor *functor){
   return _get_prefix()->_get_rval_set(functor);
 }

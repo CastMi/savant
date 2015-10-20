@@ -98,8 +98,8 @@ public:
                                                              IIRScram_TypeDeclaration *,
                                                              IIRScram_DesignFile *);
 
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set( constraint_functor *functor = 0 );
-  void _type_check( savant::set<IIRScram_TypeDefinition> * );
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set( constraint_functor *functor = 0 );
+  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
 
   /** Provides an entry into type checking a type definition.  By
      default, this does nothing.  If it's been overridden, then it does
@@ -132,21 +132,21 @@ public:
   virtual IIRScram_TypeDefinition *_get_designated_subtype();
 protected:
 
-  virtual void _build_implicit_operators( savant::set<IIRScram_Declaration> *add_to);
+  virtual void _build_implicit_operators( savant::set<IIRScram_Declaration*> *add_to);
   void _build_implicit_operator( const char *op,
-				 savant::set<IIRScram_Declaration> *add_to,
+				 savant::set<IIRScram_Declaration*> *add_to,
 				 IIRScram_TypeDefinition *return_type,
 				 IIRScram_TypeDefinition *left_type,
 				 IIRScram_TypeDefinition *right_type = NULL );
 
   void _build_implicit_operators( const char *ops[],
-				  savant::set<IIRScram_Declaration> *add_to,
+				  savant::set<IIRScram_Declaration*> *add_to,
 				  IIRScram_TypeDefinition *return_type,
 				  IIRScram_TypeDefinition *left_type,
 				  IIRScram_TypeDefinition *right_type = NULL );
 
-  void _build_logical_operators( savant::set<IIRScram_Declaration> *add_to );
-  void _build_ordering_operators( savant::set<IIRScram_Declaration> *add_to );
+  void _build_logical_operators( savant::set<IIRScram_Declaration*> *add_to );
+  void _build_ordering_operators( savant::set<IIRScram_Declaration*> *add_to );
 
   /* Simple helper function */
   IIRScram_TypeDefinition *_get_this_element_subtype();

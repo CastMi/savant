@@ -26,8 +26,6 @@
 #include "IIR_TextLiteral.hh"
 #include "IIRBase_ComponentDeclaration.hh"
 
-using savant::set;
-
 IIRBase_ComponentDeclaration::IIRBase_ComponentDeclaration() :
   entity(0),
   local_generic_clause(0),
@@ -103,16 +101,16 @@ IIRBase_ComponentDeclaration::get_declaration_type(){
    return COMPONENT;
 }
 
-set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_ComponentDeclaration::find_declarations( IIR_Name *to_find ){
-  set<IIR_Declaration> *retval = new set<IIR_Declaration>;
-  set<IIR_Declaration> *current_set = get_local_generic_clause()->find_declarations( to_find );
+  savant::set<IIR_Declaration*> *retval = new savant::set<IIR_Declaration*>;
+  savant::set<IIR_Declaration*> *current_set = get_local_generic_clause()->find_declarations( to_find );
   if( current_set != NULL ){
-    retval->add( current_set );
+    retval->insert( current_set );
   } 
   current_set = get_local_port_clause()->find_declarations( to_find );
   if( current_set != NULL ){
-    retval->add( current_set );
+    retval->insert( current_set );
   }
   if ( retval->size() == 0 ){
     delete retval;

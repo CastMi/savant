@@ -38,7 +38,6 @@
 #include "IIRScram_PortList.hh"
 #include "IIRScram_SignalDeclaration.hh"
 
-#include "set.hh"
 #include "resolution_func.hh"
 #include "symbol_table.hh"
 

@@ -32,7 +32,9 @@
 #include "savant_config.hh"
 #include "IIR_Literal.hh"
 
-
+/*
+ * 32 bit signed integer number
+ */
 class IIR_IntegerLiteral32 : public virtual IIR_Literal{
 
 public:

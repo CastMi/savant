@@ -24,14 +24,14 @@
 
 #include "IIRScram_ReferenceAttribute.hh"
 #include "IIRScram_Declaration.hh"
+#include "IIRScram_TypeDefinition.hh"
 #include "error_func.hh"
 #include "set.hh"
-
 #include <iostream>
+#include <sstream>
+
 using std::cerr;
 using std::endl;
-
-#include <sstream>
 using std::ostringstream;
 
 IIRScram_ReferenceAttribute::~IIRScram_ReferenceAttribute() {}
@@ -39,18 +39,16 @@ IIRScram_ReferenceAttribute::~IIRScram_ReferenceAttribute() {}
 IIRScram_TypeDefinition *
 IIRScram_ReferenceAttribute::_get_subtype(){
   IIRScram *my_prefix = _get_prefix();
-  savant::set<IIRScram_Declaration> *terminal_decl_set = my_prefix->_symbol_lookup();
+  savant::set<IIRScram_Declaration*> *terminal_decl_set = my_prefix->_symbol_lookup();
   IIRScram_Declaration *term_decl = NULL;
   if (terminal_decl_set == NULL) {
     report_undefined_symbol(my_prefix);
     return NULL;
   }
-  term_decl = terminal_decl_set->getElement();
-  while (term_decl != NULL) {
-    if (term_decl->_is_terminal() == FALSE) {
-      terminal_decl_set->remove(term_decl);
+  for(auto it = terminal_decl_set->begin(); it != terminal_decl_set->end(); it++) {
+    if ((*it)->_is_terminal() == FALSE) {
+      terminal_decl_set->erase(*it);
     }
-    term_decl = terminal_decl_set->getNextElement();
   }
   switch (terminal_decl_set->size()) {
   case 0: {
@@ -61,11 +59,11 @@ IIRScram_ReferenceAttribute::_get_subtype(){
   }
     break;
   case 1: {
-    set_prefix(terminal_decl_set->getElement());
+    set_prefix(*terminal_decl_set->begin());
   }
     break;
   default: {
-    report_ambiguous_error(my_prefix, terminal_decl_set->convert_set<IIR_Declaration>());
+    report_ambiguous_error(my_prefix, terminal_decl_set->convert_set<IIR_Declaration*>());
     return NULL;
   }
   }

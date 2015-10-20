@@ -35,6 +35,9 @@
 
 class  IIR_FloatingPointLiteral32;
 
+/*
+ * Floating point single precision.
+ */
 class IIR_FloatingPointLiteral32 : public virtual IIR_Literal{
 
 public:

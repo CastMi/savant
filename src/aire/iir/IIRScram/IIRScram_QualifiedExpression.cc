@@ -36,7 +36,7 @@
 #include "set.hh"
 
 void 
-IIRScram_QualifiedExpression::_type_check( savant::set<IIRScram_TypeDefinition> * ){
+IIRScram_QualifiedExpression::_type_check( savant::set<IIRScram_TypeDefinition*> * ){
   // The parser originally built this as an IIRScram_UserAttribute...  Then it got
   // transformed into an IIRScram_QualifiedExpression.  When it got trasnformed,
   // an effort was made to make sure that the type and expression were compatible...
@@ -46,9 +46,9 @@ IIRScram_QualifiedExpression::_type_check( savant::set<IIRScram_TypeDefinition> 
 
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_QualifiedExpression::_get_rval_set( constraint_functor * ){
-  return new savant::set<IIRScram_TypeDefinition>( _get_type_mark() );
+  return new savant::set<IIRScram_TypeDefinition*>( _get_type_mark() );
 }
 
 IIRScram * 

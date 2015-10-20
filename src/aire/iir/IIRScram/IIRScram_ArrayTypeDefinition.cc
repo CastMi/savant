@@ -254,23 +254,23 @@ IIRScram_ArrayTypeDefinition::_come_into_scope( symbol_table *sym_tab,
   IIRScram_TypeDefinition::_come_into_scope( sym_tab, td );
 
   if( get_num_indexes() == 1 ){
-    sym_tab->get_in_scope_one_d_array_types()->add( dynamic_cast<IIRScram_ArrayTypeDefinition *>(this) );
+    sym_tab->get_in_scope_one_d_array_types()->insert( dynamic_cast<IIRScram_ArrayTypeDefinition *>(this) );
   }
 
-  sym_tab->get_in_scope_array_types()->add( dynamic_cast<IIRScram_ArrayTypeDefinition *>(this) );
+  sym_tab->get_in_scope_array_types()->insert( dynamic_cast<IIRScram_ArrayTypeDefinition *>(this) );
 }
 
 void 
 IIRScram_ArrayTypeDefinition::_come_out_of_scope( symbol_table *sym_tab ){
   if( get_num_indexes() == 1 ){
-    sym_tab->get_in_scope_one_d_array_types()->remove( dynamic_cast<IIRScram_ArrayTypeDefinition *>(this) );
+    sym_tab->get_in_scope_one_d_array_types()->erase( dynamic_cast<IIRScram_ArrayTypeDefinition *>(this) );
   }
 
-  sym_tab->get_in_scope_array_types()->remove( dynamic_cast<IIRScram_ArrayTypeDefinition *>(this) );
+  sym_tab->get_in_scope_array_types()->erase( dynamic_cast<IIRScram_ArrayTypeDefinition *>(this) );
 }
 
 void 
-IIRScram_ArrayTypeDefinition::_build_implicit_operators( savant::set<IIRScram_Declaration> *add_to ){
+IIRScram_ArrayTypeDefinition::_build_implicit_operators( savant::set<IIRScram_Declaration*> *add_to ){
   const char *shift_operators[] = { "\"sll\"", "\"srl\"", "\"sla\"", "\"sra\"",
 				    "\"rol\"", "\"ror\"", NULL };
 

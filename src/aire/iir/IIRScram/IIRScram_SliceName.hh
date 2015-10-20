@@ -48,15 +48,15 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0 );
-  void _type_check( savant::set<IIRScram_TypeDefinition> * );
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0 );
+  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
 
 
   IIR_Mode _get_mode();
 
   IIR_Boolean _is_readable();
   IIR_Boolean _is_writable();  
-  savant::set<IIRScram_Declaration> *_symbol_lookup(){ return NULL; }
+  savant::set<IIRScram_Declaration*> *_symbol_lookup(){ return NULL; }
   IIRScram_TypeDefinition* _get_name_type();
   
   // These methods can be called when a block configuration has a

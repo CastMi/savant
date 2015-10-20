@@ -41,15 +41,15 @@
 IIRScram_SequentialStatement::~IIRScram_SequentialStatement() {}
 
 IIR_Boolean
-IIRScram_SequentialStatement::_type_check_return_statements( savant::set<IIRScram_TypeDefinition> *, 
+IIRScram_SequentialStatement::_type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *, 
                                                              IIRScram_SubprogramDeclaration * ) {
-  _report_undefined_scram_fn("_type_check_return_statements( savant::set<IIRScram_TypeDefinition> *, IIRScram_SubprogramDeclaration *)");
+  _report_undefined_scram_fn("_type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *, IIRScram_SubprogramDeclaration *)");
 
   return FALSE;
 }
 
 IIR_Boolean 
-IIRScram_SequentialStatement::_type_check_return_statements(savant::set<IIRScram_TypeDefinition> *context_set, IIRScram_SequentialStatementList *list, IIRScram_SubprogramDeclaration *subprogram_decl ){
+IIRScram_SequentialStatement::_type_check_return_statements(savant::set<IIRScram_TypeDefinition*> *context_set, IIRScram_SequentialStatementList *list, IIRScram_SubprogramDeclaration *subprogram_decl ){
 
   IIR_Boolean retval = FALSE;
 

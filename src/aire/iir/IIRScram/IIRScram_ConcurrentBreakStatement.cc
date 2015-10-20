@@ -29,6 +29,7 @@
 #include "IIRScram_DesignatorExplicit.hh"
 #include "IIRScram_DesignatorList.hh"
 #include "IIRScram_Label.hh"
+#include "IIRScram_TypeDefinition.hh"
 
 #include "break_handler.hh"
 #include "error_func.hh"
@@ -85,7 +86,7 @@ IIRScram *
 IIRScram_ConcurrentBreakStatement::_resolve_signal_name(IIRScram *sig_name) {
   IIRScram *retval;
   constraint_functor *functor = new is_signal_functor;
-  savant::set<IIRScram_TypeDefinition> *signal_rvals = sig_name->_get_rval_set( functor );
+  savant::set<IIRScram_TypeDefinition*> *signal_rvals = sig_name->_get_rval_set( functor );
   delete functor;
   
   if( signal_rvals == NULL ){
@@ -99,7 +100,7 @@ IIRScram_ConcurrentBreakStatement::_resolve_signal_name(IIRScram *sig_name) {
     break;
   }
   case 1: {
-    IIRScram_TypeDefinition *sig_type = signal_rvals->getElement();
+    IIRScram_TypeDefinition *sig_type = *(signal_rvals->begin());
     sig_name = sig_name->_semantic_transform( sig_type );
     sig_name->_type_check( sig_type );
     retval = sig_name->_rval_to_decl( sig_type );
@@ -107,7 +108,7 @@ IIRScram_ConcurrentBreakStatement::_resolve_signal_name(IIRScram *sig_name) {
     break;
   }
   default:
-    report_ambiguous_error( sig_name, signal_rvals->convert_set<IIR_TypeDefinition>() );
+    report_ambiguous_error( sig_name, signal_rvals->convert_set<IIR_TypeDefinition*>() );
     break;
   }
   delete signal_rvals;

@@ -45,14 +45,14 @@ IIRScram_ConditionalWaveform::~IIRScram_ConditionalWaveform(){
   delete get_waveform();
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_ConditionalWaveform::_get_rval_set(constraint_functor *functor){
   return dynamic_cast<IIRScram_WaveformElement *>(get_waveform()->first())->_get_rval_set(functor);
 }
 
 
 IIRScram *
-IIRScram_ConditionalWaveform::_semantic_transform( savant::set<IIRScram_TypeDefinition> *my_rvals ){
+IIRScram_ConditionalWaveform::_semantic_transform( savant::set<IIRScram_TypeDefinition*> *my_rvals ){
   IIRScram_WaveformElement *current_waveform = NULL;
   current_waveform = dynamic_cast<IIRScram_WaveformElement *>(get_waveform()->first());
   while( current_waveform != NULL ){
@@ -78,11 +78,11 @@ IIRScram_ConditionalWaveform::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
 }
 
 void 
-IIRScram_ConditionalWaveform::_type_check( savant::set<IIRScram_TypeDefinition> *my_type ){
+IIRScram_ConditionalWaveform::_type_check( savant::set<IIRScram_TypeDefinition*> *my_type ){
   StandardPackage *package = _get_design_file()->get_standard_package();
   IIRScram_TypeDefinition *bool_rval = dynamic_cast<IIRScram_TypeDefinition *>(package->get_boolean_type());
 
-  savant::set<IIRScram_TypeDefinition> temp_set( bool_rval );
+  savant::set<IIRScram_TypeDefinition*> temp_set( bool_rval );
 
   if( get_condition() != NULL ){
     set_condition( _get_condition()->_semantic_transform( &temp_set ));

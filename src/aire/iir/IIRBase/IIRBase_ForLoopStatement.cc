@@ -26,15 +26,13 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "savant.hh"
 #include "set.hh"
 #include "IIRBase_ForLoopStatement.hh"
 #include "IIRBase_TextLiteral.hh"
 #include "IIR_SequentialStatementList.hh"
 #include "IIR_ConstantDeclaration.hh"
-
+#include "IIRBase_TypeDefinition.hh"
 
 IIRBase_ForLoopStatement::IIRBase_ForLoopStatement()  :
   sequence_of_statements(0) {
@@ -85,12 +83,12 @@ IIRBase_ForLoopStatement::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_ForLoopStatement::find_declarations( IIR_Name *to_find ){
   ASSERT( get_iteration_scheme() != NULL );
   IIR_TextLiteral *loop_param = get_iteration_scheme()->get_declarator();
   if( IIRBase_TextLiteral::cmp( loop_param, to_find ) == 0 ){
-    return new savant::set<IIR_Declaration>(get_iteration_scheme());
+    return new savant::set<IIR_Declaration*>(get_iteration_scheme());
   }
   else{
     return NULL;

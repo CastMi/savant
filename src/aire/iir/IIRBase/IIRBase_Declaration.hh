@@ -78,13 +78,13 @@ public:
   
   /** This method looks in the declaration's declarative region for the
       declaration named by "look_for" */
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name * ){
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * ){
     return NULL;
   }
 
   /** This method looks in the declaration's declarative region for the
       declaration named by "look_for". */
-  savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral *){
+  savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral *){
     _report_undefined_fn("find_declarations( IIR_TextLiteral *)");
     return NULL;
   }

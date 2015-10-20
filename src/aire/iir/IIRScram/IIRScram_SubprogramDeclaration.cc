@@ -104,9 +104,9 @@ IIR_Boolean
 IIRScram_SubprogramDeclaration::_type_check_return_statements( IIRScram_TypeDefinition *my_rval ){
   IIR_Boolean retval = FALSE;
   
-  savant::set<IIRScram_TypeDefinition> *context_set = NULL;
+  savant::set<IIRScram_TypeDefinition*> *context_set = NULL;
   if( my_rval != NULL ){
-    context_set = new savant::set<IIRScram_TypeDefinition>( my_rval );
+    context_set = new savant::set<IIRScram_TypeDefinition*>( my_rval );
   }
 
   IIRScram_SequentialStatement *stmt = NULL;

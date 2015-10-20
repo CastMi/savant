@@ -42,7 +42,7 @@ public:
 
   declaration_type get_declaration_type(){ return ELEMENT; }
 
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name *to_find );
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *to_find );
   void publish_vhdl_decl(ostream &);
 protected:
   IIRBase_ElementDeclaration();

@@ -87,27 +87,26 @@ IIRScram_Aggregate::_is_writable( ){
   return retval;
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_Aggregate::_get_rval_set( constraint_functor * ){
   // This implements lines 390 - 395, page 103 of the '93 LRM
-  savant::set<IIRScram_TypeDefinition> *retval = new savant::set<IIRScram_TypeDefinition>;
+  savant::set<IIRScram_TypeDefinition*> *retval = new savant::set<IIRScram_TypeDefinition*>;
 
   // Add all in scope array types.
-  savant::set<IIRScram_ArrayTypeDefinition> *array_types = _get_symbol_table()->get_in_scope_array_types()->convert_set<IIRScram_ArrayTypeDefinition>();
-  IIRScram_TypeDefinition *current = array_types->getElement();
-  while( current != NULL ){
-    ASSERT( current->is_array_type() == TRUE );
-    retval->add( current );
-    current = array_types->getNextElement();
+  savant::set<IIRScram_ArrayTypeDefinition*> *array_types = _get_symbol_table()->get_in_scope_array_types()->convert_set<IIRScram_ArrayTypeDefinition*>();
+  for(auto it = array_types->begin(); it != array_types->end(); it++) {
+    ASSERT( *it != NULL );
+    ASSERT( (*it)->is_array_type() == TRUE );
+    retval->insert( *it );
   }
-  
+
   // Add all in scope record types.
-  savant::set<IIRScram_RecordTypeDefinition> *record_types = _get_symbol_table()->get_in_scope_record_types()->convert_set<IIRScram_RecordTypeDefinition>();
-  current = record_types->getElement();
-  while( current != NULL ){
-    ASSERT( current->is_record_type() == TRUE );
-    retval->add( current );
-    current = record_types->getNextElement();
+  savant::set<IIRScram_RecordTypeDefinition*> *record_types = _get_symbol_table()->get_in_scope_record_types()->convert_set<IIRScram_RecordTypeDefinition*>();
+  
+  for(auto it = record_types->begin(); it != record_types->end(); it++) {
+    ASSERT( *it != NULL );
+    ASSERT( (*it)->is_record_type() == TRUE );
+    retval->insert( *it );
   }
   delete record_types;
 
@@ -115,7 +114,7 @@ IIRScram_Aggregate::_get_rval_set( constraint_functor * ){
 }
 
 void 
-IIRScram_Aggregate::_type_check( savant::set<IIRScram_TypeDefinition> * ){
+IIRScram_Aggregate::_type_check( savant::set<IIRScram_TypeDefinition*> * ){
   // First set of type checks.
   IIR_Boolean           have_seen_named = false;
   IIR_Boolean           have_seen_others = false;
@@ -160,10 +159,10 @@ IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *m
       
       switch( current_formal->get_kind() ){
       case IIR_SIMPLE_NAME:{
-	savant::set<IIRScram_Declaration> *element_decls = NULL;
+	savant::set<IIRScram_Declaration*> *element_decls = NULL;
         
         if ( my_type->find_declarations( dynamic_cast<IIRScram_Name *>(current_formal) ) != NULL ){
-	  element_decls = my_type->find_declarations( dynamic_cast<IIRScram_Name *>(current_formal) )->convert_set<IIRScram_Declaration>();
+	  element_decls = my_type->find_declarations( dynamic_cast<IIRScram_Name *>(current_formal) )->convert_set<IIRScram_Declaration*>();
         }
 
 	if( element_decls == NULL ){
@@ -174,7 +173,7 @@ IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *m
 	}
 	else{
 	  ASSERT( element_decls->size() == 1 );
-	  IIRScram_Declaration *element_decl = element_decls->getElement();
+	  IIRScram_Declaration *element_decl = *(element_decls->begin());
 	  delete element_decls;
 	  
 	  current_association->set_formal( element_decl );

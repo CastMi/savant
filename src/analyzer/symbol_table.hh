@@ -57,7 +57,7 @@ public:
   scope_entry( scope_entry *previous_scope, IIR *scope_owner ){
     belongs_to = scope_owner;
     declarations = new stack<IIR_Declaration>;
-    scopes = new savant::set<scope_entry>;
+    scopes = new savant::set<scope_entry*>;
     open = TRUE;
     previous = previous_scope;
   }
@@ -66,11 +66,23 @@ public:
     ASSERT( open == TRUE );
     declarations->push( to_add );
   }
+ 
+  // TODO
+ // in order to insert in the set "scope" on line 76 It is necessary
+ // to provide a "operator<". I implemented like this but It probably
+ // need a fix in the future.
+ // It may possible that a change in the data structuer that store
+ // needs to be performed.
+ // This comment i here in order to provide an help in case something
+ // wierd happen during the usage of savant
+ bool operator<(const scope_entry &other) const { return true; };
 
+ // Open a new scope, that is, create a new scope, (setting the current
+ // scope as previous scope) and put it in the list of subscopes.
   scope_entry *open_scope( IIR *to_add ){
     scope_entry *retval = new scope_entry( this, to_add );
     ASSERT( open == TRUE );
-    scopes->add( retval );
+    scopes->insert( retval );
 
     return retval;
   }
@@ -79,7 +91,7 @@ public:
     return belongs_to;
   }
 
-  savant::set<scope_entry> *get_scopes(){
+  savant::set<scope_entry*> *get_scopes(){
     return scopes;
   }
 
@@ -113,7 +125,8 @@ public:
 private:
   IIR *belongs_to;
   stack<IIR_Declaration> *declarations;
-  savant::set<scope_entry> *scopes;
+  // A scope is composed by other subscopes
+  savant::set<scope_entry*> *scopes;
   IIR_Boolean open;
   scope_entry *previous;
 };
@@ -149,7 +162,7 @@ public:
   void add_subprogram_declaration( IIR_SubprogramDeclaration *, bool leave_scope_open = false );
   void add_declaration(IIR_Declaration *);
   void add_declaration(IIR_DeclarationList *);
-  void add_declaration( savant::set<IIR_Declaration> *set_ptr);
+  void add_declaration( savant::set<IIR_Declaration*> *set_ptr);
   //@}
 
   /** If this declaration is still in scope, but hidden, call this. */
@@ -176,7 +189,7 @@ public:
   /** These methods make the walking of several types of lists a little
       nice. */
   void make_visible( IIR_DeclarationList *);
-  void make_visible( savant::set<IIR_Declaration> *);
+  void make_visible( savant::set<IIR_Declaration*> *);
   //@}
 
   /** Method to add entry for undefined symbols (to avoid flagging
@@ -199,10 +212,10 @@ public:
   //@{
   /** The following methods return the set of declarations with the name
       passed in.  If non exists, it returns NULL. */
-  savant::set<IIR_Declaration> *find_set( char *to_find ){
+  savant::set<IIR_Declaration*> *find_set( char *to_find ){
     return visible_symbols.find_set( to_find );
   }
-  savant::set<IIR_Declaration> *find_set( IIR_TextLiteral *to_find ){
+  savant::set<IIR_Declaration*> *find_set( IIR_TextLiteral *to_find ){
     return visible_symbols.find_set( to_find );
   }  
   //@}
@@ -221,27 +234,27 @@ public:
   bool in_use_list( IIR_Declaration * );
   //@}
 
-  savant::set<IIR_ArrayTypeDefinition> *get_in_scope_array_types(){
+  savant::set<IIR_ArrayTypeDefinition*> *get_in_scope_array_types(){
     return &in_scope_array_types;
   }
 
-  savant::set<IIR_ArrayTypeDefinition> *get_in_scope_one_d_array_types(){
+  savant::set<IIR_ArrayTypeDefinition*> *get_in_scope_one_d_array_types(){
     return &in_scope_one_d_array_types;
   }
   
-  savant::set<IIR_AccessTypeDefinition> *get_in_scope_access_types(){
+  savant::set<IIR_AccessTypeDefinition*> *get_in_scope_access_types(){
     return &in_scope_access_types;
   }
 
-  savant::set<IIR_RecordTypeDefinition> *get_in_scope_record_types(){
+  savant::set<IIR_RecordTypeDefinition*> *get_in_scope_record_types(){
     return &in_scope_record_types;
   }
 
-  savant::set<IIR_TypeDeclaration> *get_incomplete_types(){
+  savant::set<IIR_TypeDeclaration*> *get_incomplete_types(){
     return &incomplete_types;
   }
 
-  savant::set<IIR_TypeDeclaration> *get_designates_incomplete_type(){
+  savant::set<IIR_TypeDeclaration*> *get_designates_incomplete_type(){
     return &designates_incomplete_type;
   }
 
@@ -268,15 +281,15 @@ private:
 
   /** This is a list of filenames that we've been told we've scanned in use
       clauses. */
-  savant::set<IIR_Declaration> use_clause_entries;
+  savant::set<IIR_Declaration*> use_clause_entries;
 
-  savant::set<IIR_TypeDeclaration> incomplete_types;
-  savant::set<IIR_TypeDeclaration> designates_incomplete_type;
+  savant::set<IIR_TypeDeclaration*> incomplete_types;
+  savant::set<IIR_TypeDeclaration*> designates_incomplete_type;
 
-  savant::set<IIR_AccessTypeDefinition> in_scope_access_types;
-  savant::set<IIR_ArrayTypeDefinition> in_scope_array_types;
-  savant::set<IIR_ArrayTypeDefinition> in_scope_one_d_array_types;
-  savant::set<IIR_RecordTypeDefinition> in_scope_record_types;
+  savant::set<IIR_AccessTypeDefinition*> in_scope_access_types;
+  savant::set<IIR_ArrayTypeDefinition*> in_scope_array_types;
+  savant::set<IIR_ArrayTypeDefinition*> in_scope_one_d_array_types;
+  savant::set<IIR_RecordTypeDefinition*> in_scope_record_types;
   
   stack<IIR> declarative_region_stack;
 

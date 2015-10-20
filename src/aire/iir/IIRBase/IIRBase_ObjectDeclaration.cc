@@ -89,9 +89,9 @@ IIRBase_ObjectDeclaration::set_value(IIR *){
   _report_undefined_fn("set_value(IIR *)");
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_ObjectDeclaration::find_declarations( IIR_Name *to_find){
-  savant::set<IIR_Declaration> *retval = NULL;
+  savant::set<IIR_Declaration*> *retval = NULL;
 
   ASSERT( get_subtype() != NULL );
 

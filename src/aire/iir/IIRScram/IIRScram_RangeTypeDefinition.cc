@@ -94,13 +94,13 @@ IIRScram_RangeTypeDefinition::_determine_discrete_type() {
 
   // This is the type that this is a subtype of.
   IIRScram_TypeDefinition       *subtype_of = NULL;
-  savant::set<IIRScram_TypeDefinition> *left_set = _get_base_type_left()->_get_rval_set();
+  savant::set<IIRScram_TypeDefinition*> *left_set = _get_base_type_left()->_get_rval_set();
   if( left_set == NULL ){
     report_undefined_symbol( _get_base_type_left() );
     return NULL;
   }
   
-  savant::set<IIRScram_TypeDefinition> *right_set = _get_base_type_right()->_get_rval_set();
+  savant::set<IIRScram_TypeDefinition*> *right_set = _get_base_type_right()->_get_rval_set();
   if( right_set == NULL ){
     report_undefined_symbol( _get_base_type_right() );
     return NULL;
@@ -121,8 +121,8 @@ IIRScram_RangeTypeDefinition::_determine_discrete_type() {
   }
 
   case 1:{
-    IIRScram_TypeDefinition *left_type = left_set->getElement();
-    IIRScram_TypeDefinition *right_type = right_set->getElement();
+    IIRScram_TypeDefinition *left_type = *left_set->begin();
+    IIRScram_TypeDefinition *right_type = *right_set->begin();
 
     ASSERT( left_type->is_scalar_type() == TRUE );
     ASSERT( right_type->is_scalar_type() == TRUE );
@@ -134,7 +134,7 @@ IIRScram_RangeTypeDefinition::_determine_discrete_type() {
     else{
       // The types are naturally compatible, and "reconcile_sets" should
       // have handed us the correct type back in the left set.
-      subtype_of = dynamic_cast<IIRScram_ScalarTypeDefinition *>(left_set->getElement());
+      subtype_of = dynamic_cast<IIRScram_ScalarTypeDefinition *>(*left_set->begin());
     }
 
     ASSERT( subtype_of->is_scalar_type() == TRUE );
@@ -146,7 +146,7 @@ IIRScram_RangeTypeDefinition::_determine_discrete_type() {
     err << "The type of a range used in this manner must be "
 	<< "determinable without context.";
     report_error( this, err.str() );
-    report_ambiguous_error( this, left_set->convert_set<IIR_TypeDefinition>() );
+    report_ambiguous_error( this, left_set->convert_set<IIR_TypeDefinition*>() );
     return NULL;
   }
   }

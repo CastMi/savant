@@ -31,6 +31,9 @@
 #include "IIR_CaseStatementAlternative.hh"
 class IIR_ChoiceList;
 
+/*
+ * Element simple name
+ */
 class IIR_CaseStatementAlternativeByChoices : public virtual IIR_CaseStatementAlternative{
 
 public:

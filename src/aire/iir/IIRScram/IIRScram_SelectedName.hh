@@ -53,13 +53,13 @@ public:
   /** Find the first prefix.  It should be a library.  Return it. */
   IIRScram_LibraryDeclaration *_get_library_declaration();
 
-  savant::set<IIRScram_Declaration> *_symbol_lookup();
+  savant::set<IIRScram_Declaration*> *_symbol_lookup();
   
   IIRScram *_get_suffix();
 
   const string convert_to_library_name();
-  void _type_check( savant::set<IIRScram_TypeDefinition> * );
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
+  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
   IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
   IIRScram *_decl_to_decl( IIRScram_Declaration * );
 

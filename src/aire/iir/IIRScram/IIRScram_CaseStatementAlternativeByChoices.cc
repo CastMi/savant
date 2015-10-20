@@ -35,8 +35,6 @@
 #include "error_func.hh"
 #include "set.hh"
 
-#include <Set.h>
-
 IIRScram_CaseStatementAlternativeByChoices::IIRScram_CaseStatementAlternativeByChoices() {
   set_choices(new IIRScram_ChoiceList());
 }
@@ -45,7 +43,7 @@ IIRScram_CaseStatementAlternativeByChoices::~IIRScram_CaseStatementAlternativeBy
 
 void 
 IIRScram_CaseStatementAlternativeByChoices::
-_type_check( savant::set<IIRScram_TypeDefinition> *context_set ){
+_type_check( savant::set<IIRScram_TypeDefinition*> *context_set ){
   IIRScram_Choice *current_choice = NULL;
 
   current_choice = dynamic_cast<IIRScram_Choice *>(get_choices()->first());
@@ -55,13 +53,13 @@ _type_check( savant::set<IIRScram_TypeDefinition> *context_set ){
   }
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_CaseStatementAlternativeByChoices::_get_rval_set( constraint_functor *functor ){
-  savant::set<IIRScram_TypeDefinition> *retval = NULL;
+  savant::set<IIRScram_TypeDefinition*> *retval = NULL;
   IIRScram_Choice *current_choice;
 
   current_choice = dynamic_cast<IIRScram_Choice *>(get_choices()->first());
-  savant::set<IIRScram_TypeDefinition> *choice_rval_set;
+  savant::set<IIRScram_TypeDefinition*> *choice_rval_set;
   while( current_choice != NULL ){
     choice_rval_set = current_choice->_get_rval_set( functor );
     if( choice_rval_set == NULL ){

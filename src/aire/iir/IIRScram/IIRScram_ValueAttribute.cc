@@ -42,47 +42,47 @@ using std::ostringstream;
 
 IIRScram_TypeDefinition *
 IIRScram_ValueAttribute::_get_subtype(){
-  return _get_prefix_subtype();
+   return _get_prefix_subtype();
 }
 
 void 
 IIRScram_ValueAttribute::_resolve_suffix_special(){
-  // Suffix must be an expression of type string
-  StandardPackage       *package = _get_design_file()->get_standard_package();
+   // Suffix must be an expression of type string
+   StandardPackage       *package = _get_design_file()->get_standard_package();
 
-  if( _get_suffix() != NULL && _get_suffix()->is_resolved() == FALSE ){
+   if( _get_suffix() != NULL && _get_suffix()->is_resolved() == FALSE ){
 
-    ASSERT( _get_prefix()->is_resolved() == TRUE );
+      ASSERT( _get_prefix()->is_resolved() == TRUE );
 
-    savant::set<IIRScram_TypeDefinition> *suffix_types = _get_suffix()->_get_rval_set();
-    IIRScram_TypeDefinition *string_rval = 
-      dynamic_cast<IIRScram_ArraySubtypeDefinition *>(package->get_string_type());
+      savant::set<IIRScram_TypeDefinition*> *suffix_types = _get_suffix()->_get_rval_set();
+      IIRScram_TypeDefinition *string_rval = 
+         dynamic_cast<IIRScram_ArraySubtypeDefinition *>(package->get_string_type());
 
-    IIRScram_TypeDefinition *current_type = suffix_types->getElement();
-    while( current_type != NULL ){
-      if( current_type == string_rval ){
-	break;
+      IIRScram_TypeDefinition *current_type = NULL;
+      for(auto it = suffix_types->begin(); it != suffix_types->end(); it++)
+      {
+         if( *it == string_rval ){
+            current_type = *it;
+            break;
+         }
       }
-    
-      current_type = suffix_types->getNextElement();
-    }
 
-    if( current_type != NULL ){
-      _set_suffix( _get_suffix()->_semantic_transform( current_type ) );
-      _get_suffix()->_type_check( current_type );
-      _set_suffix( _get_suffix()->_rval_to_decl( current_type ) );
-    }
-    else{
-      ostringstream err;
-      err << "|" << *_get_suffix() << "| is not a valid suffix for |" << this << "|.";
-      err << " The suffix must be a locally static expression of type string.";
-    
-      report_error( this, err.str() );
-    }
-  }  
+      if( current_type != NULL ){
+         _set_suffix( _get_suffix()->_semantic_transform( current_type ) );
+         _get_suffix()->_type_check( current_type );
+         _set_suffix( _get_suffix()->_rval_to_decl( current_type ) );
+      }
+      else{
+         ostringstream err;
+         err << "|" << *_get_suffix() << "| is not a valid suffix for |" << this << "|.";
+         err << " The suffix must be a locally static expression of type string.";
+
+         report_error( this, err.str() );
+      }
+   }  
 }
 
 visitor_return_type *IIRScram_ValueAttribute::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ValueAttribute(this, arg);
+   ASSERT(visitor != NULL);
+   return visitor->visit_IIR_ValueAttribute(this, arg);
 };

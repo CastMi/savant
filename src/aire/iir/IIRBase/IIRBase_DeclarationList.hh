@@ -51,8 +51,8 @@ public:
 
   IIR *get_nth_element( IIR_Int32 );
 
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name *  );
-  savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * );
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *  );
+  savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral * );
 
   /**
      Makes the declarative region of all of the elements in this list point

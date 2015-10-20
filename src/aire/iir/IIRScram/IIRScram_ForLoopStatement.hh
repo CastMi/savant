@@ -65,7 +65,7 @@ public:
 
 
   void _type_check();
-  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition> *,
+  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *,
 					     IIRScram_SubprogramDeclaration *subprogram_decl );
   IIRScram_List                         *_get_statement_list();
     

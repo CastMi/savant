@@ -68,8 +68,8 @@ IIRScram_ConstantInterfaceDeclaration::_accept_visitor( node_visitor *visitor,
 }
 
 void
-IIRScram_ConstantInterfaceDeclaration::_build_generic_parameter_set(savant::set<IIRScram_Declaration> *to_build) {
-  to_build->add(this);
+IIRScram_ConstantInterfaceDeclaration::_build_generic_parameter_set(savant::set<IIRScram_Declaration*> *to_build) {
+  to_build->insert(this);
 }
 
 IIRScram *

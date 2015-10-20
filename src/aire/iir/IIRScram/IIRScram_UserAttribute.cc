@@ -50,7 +50,7 @@ using std::ostringstream;
 IIRScram_TypeDefinition *
 IIRScram_UserAttribute::_get_subtype(){
   IIRScram_TypeDefinition       *retval = NULL;
-  savant::set<IIRScram_TypeDefinition>  *suffix_rvals;
+  savant::set<IIRScram_TypeDefinition*>  *suffix_rvals;
 
   ASSERT( _get_suffix() != NULL );
 
@@ -70,12 +70,12 @@ IIRScram_UserAttribute::_get_subtype(){
       break;
     }
     case 1 :{
-      retval = suffix_rvals->getElement();
+      retval = *suffix_rvals->begin();
       break;
     }
 
     default:{
-      report_ambiguous_error( _get_suffix(), suffix_rvals->convert_set<IIR_TypeDefinition>() );
+      report_ambiguous_error( _get_suffix(), suffix_rvals->convert_set<IIR_TypeDefinition*>() );
     }
     }
   }
@@ -100,7 +100,7 @@ IIRScram_UserAttribute::_get_subtype(){
       report_undefined_symbol( _get_suffix() );
       return NULL;
     }
-    savant::set<IIRScram_TypeDefinition> *prefix_rvals = _get_prefix()->_get_rval_set();
+    savant::set<IIRScram_TypeDefinition*> *prefix_rvals = _get_prefix()->_get_rval_set();
     if( prefix_rvals != NULL ){
       reconcile_sets( prefix_rvals, suffix_rvals );
       switch( prefix_rvals->size() ){
@@ -114,11 +114,11 @@ IIRScram_UserAttribute::_get_subtype(){
 	break;
       }
       case 1:{
-	retval = prefix_rvals->getElement();
+	retval = *prefix_rvals->begin();
 	break;
       }
       default:{
-	report_ambiguous_error( this, prefix_rvals->convert_set<IIR_TypeDefinition>() );
+	report_ambiguous_error( this, prefix_rvals->convert_set<IIR_TypeDefinition*>() );
 	break;
       }
       }
@@ -135,17 +135,17 @@ IIRScram_UserAttribute::_get_subtype(){
 }
 
 IIRScram *
-IIRScram_UserAttribute::_semantic_transform( savant::set<IIRScram_TypeDefinition> * ){
+IIRScram_UserAttribute::_semantic_transform( savant::set<IIRScram_TypeDefinition*> * ){
   IIRScram              *retval = this;
   if( _is_qualified_expression() == TRUE ){
     // We have to type check the qualified expression right here to build it
     // correctly...
-    savant::set<IIRScram_TypeDefinition> *suffix_rvals = _get_suffix()->_get_rval_set();
+    savant::set<IIRScram_TypeDefinition*> *suffix_rvals = _get_suffix()->_get_rval_set();
     if( suffix_rvals == NULL ){
       report_undefined_symbol( _get_suffix() );
     }
 
-    savant::set<IIRScram_TypeDefinition> *prefix_rvals = _get_prefix()->_get_rval_set();
+    savant::set<IIRScram_TypeDefinition*> *prefix_rvals = _get_prefix()->_get_rval_set();
     if( prefix_rvals == NULL ){
       report_undefined_symbol( _get_suffix() );
     }
@@ -162,7 +162,7 @@ IIRScram_UserAttribute::_semantic_transform( savant::set<IIRScram_TypeDefinition
       break;
     }
     case 1:{
-      IIRScram_TypeDefinition *my_rval = prefix_rvals->getElement();
+      IIRScram_TypeDefinition *my_rval = *prefix_rvals->begin();
       IIRScram_QualifiedExpression *new_expr = new IIRScram_QualifiedExpression();
       copy_location( this, new_expr );
       new_expr->set_type_mark( my_rval );
@@ -172,7 +172,7 @@ IIRScram_UserAttribute::_semantic_transform( savant::set<IIRScram_TypeDefinition
       break;
     }
     default:{
-      report_ambiguous_error( _get_prefix(), prefix_rvals->convert_set<IIR_TypeDefinition>() );
+      report_ambiguous_error( _get_prefix(), prefix_rvals->convert_set<IIR_TypeDefinition*>() );
       break;
     }
     }
@@ -198,7 +198,7 @@ IIRScram_UserAttribute::_is_qualified_expression(){
   }
   if(_get_prefix()->get_kind() == IIR_SIMPLE_NAME || _get_prefix()->get_kind() == IIR_SELECTED_NAME){
     constraint_functor *functor = new is_type_functor;
-    savant::set<IIRScram_Declaration> *prefix_decls = _get_prefix()->_symbol_lookup( functor );
+    savant::set<IIRScram_Declaration*> *prefix_decls = _get_prefix()->_symbol_lookup( functor );
     delete functor;
     if( prefix_decls != NULL ){
       if( prefix_decls->size() == 1 ){
@@ -216,7 +216,7 @@ void
 IIRScram_UserAttribute::_resolve_suffix_special(){  
   if( _get_suffix() != NULL ){
     constraint_functor *functor = new is_attribute_declaration_functor;
-    savant::set<IIRScram_TypeDefinition> *suffix_rvals = _get_suffix()->_get_rval_set(functor);
+    savant::set<IIRScram_TypeDefinition*> *suffix_rvals = _get_suffix()->_get_rval_set(functor);
     delete functor;
     
     if( suffix_rvals == NULL ){
@@ -232,7 +232,7 @@ IIRScram_UserAttribute::_resolve_suffix_special(){
       break;
     }
     case 1:{
-      IIRScram_TypeDefinition *my_rval = suffix_rvals->getElement();
+      IIRScram_TypeDefinition *my_rval = *suffix_rvals->begin();
       
       _set_suffix( _get_suffix()->_semantic_transform( my_rval ) );
       _get_suffix()->_type_check( my_rval );
@@ -241,7 +241,7 @@ IIRScram_UserAttribute::_resolve_suffix_special(){
       break;
     }
     default:{
-      report_ambiguous_error( _get_suffix(), suffix_rvals->convert_set<IIR_TypeDefinition>() );
+      report_ambiguous_error( _get_suffix(), suffix_rvals->convert_set<IIR_TypeDefinition*>() );
     }
     }
     delete suffix_rvals;

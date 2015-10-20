@@ -37,7 +37,6 @@
 #include "library_manager.hh"
 #include "scram_plugin_class_factory.hh"
 #include "symbol_table.hh"
-#include "set.hh"
 #include "error_func.hh"
 
 #include <sstream>

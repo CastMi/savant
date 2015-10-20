@@ -36,9 +36,9 @@
 #include "IIRScram_SubprogramDeclaration.hh"
 #include "set.hh"
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_TypeConversion::_get_rval_set(constraint_functor * ){
-  return new savant::set<IIRScram_TypeDefinition>(_get_subtype());
+  return new savant::set<IIRScram_TypeDefinition*>(_get_subtype());
 }
 
 IIRScram_Declaration *

@@ -36,6 +36,9 @@ class IIR_AttributeSpecificationList;
 class IIR_DeclarationList;
 class IIR_TypeDefinition;
 
+/*
+ * Represents either an entity, achitecture, package or package body
+ */
 class IIRBase_LibraryUnit : public virtual IIRBase_Declaration, public virtual IIR_LibraryUnit{
 
 public:

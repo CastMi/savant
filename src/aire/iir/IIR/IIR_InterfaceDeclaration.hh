@@ -43,13 +43,13 @@ public:
   virtual void set_value(IIR* value) = 0;
   virtual IIR* get_value() = 0;
 
-  // The following enumeration is used to for the parser to give enough context
-  // to do proper type checking on interface declarations.  (For instance, a signal
+  // Used by the parser to give enough context to do proper
+  // type checking on interface declarations. (For instance, a signal
   // PARAMETER can't have initialization, but a signal PORT can.)
   enum _InterfaceListType {
-    PORT_INTERFACE_LIST,
-    GENERIC_INTERFACE_LIST,
-    PARAMETER_INTERFACE_LIST
+    PORT_INTERFACE_LIST, // entity port
+    GENERIC_INTERFACE_LIST, // entity generic
+    PARAMETER_INTERFACE_LIST // functions and procedures
   };
 };
 #endif

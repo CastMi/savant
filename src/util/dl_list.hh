@@ -39,6 +39,7 @@ using std::find;
 using std::equal_to;
 using std::bind2nd;
 
+// TODO this is just a std::list
 template <class type>
 class dl_list {
   
@@ -189,7 +190,7 @@ private:
     if( !my_list.empty() ){
       if( my_iterator != my_list.end() && *my_iterator == to_find ){
 	retval = my_iterator;
-      }
+      } 
       else{
 	retval = find( my_list.begin(), 
 		       my_list.end(), 

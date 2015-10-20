@@ -68,7 +68,7 @@ public:
   IIRScram_UnitList *           _get_units();
   IIRScram_PhysicalUnit *       _get_primary_unit();
 protected: 
-  void _build_implicit_operators( savant::set<IIRScram_Declaration> * );
+  void _build_implicit_operators( savant::set<IIRScram_Declaration*> * );
     
 private:
 };

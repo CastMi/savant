@@ -142,7 +142,7 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_entity(
 void
 IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_component(){
   constraint_functor *functor = new is_component_declaration_functor();
-  savant::set<IIRScram_Declaration> *instantiated_unit_decls =
+  savant::set<IIRScram_Declaration*> *instantiated_unit_decls =
     _get_instantiated_unit()->_symbol_lookup(functor);
   delete functor;
 
@@ -175,12 +175,12 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_compone
       break;
     }
     case 1:{
-      IIRScram_Declaration *instantiated_decl = instantiated_unit_decls->getElement();
+      IIRScram_Declaration *instantiated_decl = *(instantiated_unit_decls->begin());
       set_instantiated_unit( _get_instantiated_unit()->_decl_to_decl( instantiated_decl ) );
       break;
     }
     default:{
-      report_ambiguous_error( _get_instantiated_unit(), instantiated_unit_decls->convert_set<IIR_Declaration>() );
+      report_ambiguous_error( _get_instantiated_unit(), instantiated_unit_decls->convert_set<IIR_Declaration*>() );
       break;
     }
     }

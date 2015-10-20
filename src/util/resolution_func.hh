@@ -78,7 +78,7 @@ class constraint_functor;
     pointer. (and doesn't complain, as more context is probably need to
     figure it out which one it needs.) */
 IIRScram_Declaration *
-resolve_if_one( savant::set<IIRScram_Declaration> *set_to_resolve,
+resolve_if_one( savant::set<IIRScram_Declaration*> *set_to_resolve,
 		IIRScram_Name *name_for_error = NULL );
 
 /** This function takes a set of subprogram declarations, (optionally) a
@@ -87,26 +87,26 @@ resolve_if_one( savant::set<IIRScram_Declaration> *set_to_resolve,
     REMOVES any declarations that are not valid based on return type and
     arguments. */
 void 
-resolve_subprogram_decls(savant::set<IIRScram_Declaration>              *possible_subprogram_decls,
+resolve_subprogram_decls(savant::set<IIRScram_Declaration*>              *possible_subprogram_decls,
 			 IIRScram_AssociationList                       *arguments,
-			 const savant::set<IIRScram_TypeDefinition>     *possible_return_types = NULL);
+			 const savant::set<IIRScram_TypeDefinition*>     *possible_return_types = NULL);
 
 /** This method is as described above.  However, it takes it's list of
     arguments with the rvals "pre-computed"... */
 void 
-resolve_subprogram_decls( savant::set<IIRScram_Declaration>             *possible_subprogram_decls,
+resolve_subprogram_decls( savant::set<IIRScram_Declaration*>             *possible_subprogram_decls,
 			  dl_list<IIRScram_TypeDefinition>              *parameter_rval_list,
-			  savant::set<IIRScram_TypeDefinition>          *possible_return_types );
+			  savant::set<IIRScram_TypeDefinition*>          *possible_return_types );
 
 void 
-resolve_subprogram_decls( savant::set<IIRScram_Declaration>     *possible_subprogram_decls,
+resolve_subprogram_decls( savant::set<IIRScram_Declaration*>     *possible_subprogram_decls,
 			  IIRScram_Signature                    *signature);
 
 
 /** This method takes a set of declarations, and produce the set of r_vals
     for it...  The memory returned needs to be deleted! */
-savant::set<IIRScram_TypeDefinition> *
-decl_set_to_typedef_set( savant::set<IIRScram_Declaration> *decl_set,
+savant::set<IIRScram_TypeDefinition*> *
+decl_set_to_typedef_set( savant::set<IIRScram_Declaration*> *decl_set,
 			 constraint_functor *functor = 0 );
 
 /** This method takes a set of declarations, and a set of type definitions,
@@ -115,17 +115,17 @@ decl_set_to_typedef_set( savant::set<IIRScram_Declaration> *decl_set,
     hand side.  Both sets are modified - they are reduced to only the
     compatible assignments. */
 void 
-reconcile_sets( savant::set<IIRScram_Declaration>       *decls, 
-		savant::set<IIRScram_TypeDefinition>    *rval_set);
+reconcile_sets( savant::set<IIRScram_Declaration*>       *decls, 
+		savant::set<IIRScram_TypeDefinition*>    *rval_set);
 
 void 
-reconcile_sets( savant::set<IIRScram_TypeDefinition>    *lval_set, 
-		savant::set<IIRScram_TypeDefinition>    *rval_set);
+reconcile_sets( savant::set<IIRScram_TypeDefinition*>    *lval_set, 
+		savant::set<IIRScram_TypeDefinition*>    *rval_set);
 
 /** This function takes the set given, and reduces it to the "deepest"
     scoped item that's in it. */
 void 
-reduce_scope( savant::set<IIRScram_Declaration> *declaration_set );
+reduce_scope( savant::set<IIRScram_Declaration*> *declaration_set );
 
 /** This method is used by the parser.  It looks at an aggregate it has
 built, and decides whether it should remain an aggregate, or if it should

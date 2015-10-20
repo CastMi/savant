@@ -41,7 +41,6 @@
 #include "IIRScram_InterfaceList.hh"
 #include "IIRScram_SequentialStatementList.hh"
 #include "IIRScram_SignalDeclaration.hh"
-#include "set.hh"
 #include "symbol_table.hh"
 #include "error_func.hh"
 

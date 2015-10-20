@@ -84,7 +84,7 @@ IIRBase_Label::get_declaration_type(){
   return LABEL;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_Label::find_declarations( IIR_Name *name ){
   ASSERT( get_statement() != NULL );
 

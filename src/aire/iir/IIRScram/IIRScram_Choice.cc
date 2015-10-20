@@ -39,7 +39,7 @@
 #include <sstream>
 using std::ostringstream;
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_Choice::_get_rval_set(constraint_functor *functor){
   ASSERT( _get_value() != NULL );
   return _get_value()->_get_rval_set(functor);
@@ -52,17 +52,17 @@ IIRScram_Choice::_rval_to_decl( IIRScram_TypeDefinition *my_typedef ){
   return (IIRScram *)this;
 }
 
-savant::set<IIRScram_Declaration> *
+savant::set<IIRScram_Declaration*> *
 IIRScram_Choice::_symbol_lookup(){
   return _get_value()->_symbol_lookup();
 }
 
 void 
-IIRScram_Choice::_type_check( savant::set<IIRScram_TypeDefinition> *context_set ){
+IIRScram_Choice::_type_check( savant::set<IIRScram_TypeDefinition*> *context_set ){
   set_value( _get_value()->_semantic_transform( context_set ) );
   _get_value()->_type_check( context_set );
   
-  savant::set<IIRScram_TypeDefinition> *choice_rvals = _get_value()->_get_rval_set();
+  savant::set<IIRScram_TypeDefinition*> *choice_rvals = _get_value()->_get_rval_set();
   
   if( choice_rvals == NULL ){
     report_undefined_symbol( _get_value() );
@@ -76,12 +76,12 @@ IIRScram_Choice::_type_check( savant::set<IIRScram_TypeDefinition> *context_set 
     break;
   }
   case 1:{
-    IIRScram_TypeDefinition *my_type = context_set->getElement();
+    IIRScram_TypeDefinition *my_type = *(context_set->begin());
     set_value( _get_value()->_rval_to_decl( my_type ) );
     break;
   }
   default:
-    report_ambiguous_error( _get_value(), choice_rvals->convert_set<IIR_TypeDefinition>() );
+    report_ambiguous_error( _get_value(), choice_rvals->convert_set<IIR_TypeDefinition*>() );
   }
   delete choice_rvals;
 }

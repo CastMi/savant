@@ -53,7 +53,6 @@
 #include "IIRScram_DesignUnitList.hh"
 #include "library_manager.hh"
 #include "resolution_func.hh"
-#include "set.hh"
 #include "symbol_table.hh"
 #include "language_processing_control.hh"
 

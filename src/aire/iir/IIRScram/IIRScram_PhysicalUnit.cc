@@ -46,9 +46,9 @@ IIRScram_PhysicalUnit::~IIRScram_PhysicalUnit(){
   //Release the list memory
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_PhysicalUnit::_get_rval_set( constraint_functor *functor ){
-  return new savant::set<IIRScram_TypeDefinition>( _get_subtype() );
+  return new savant::set<IIRScram_TypeDefinition*>( _get_subtype() );
 }
 
 visitor_return_type *

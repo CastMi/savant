@@ -39,7 +39,7 @@
 #include "StandardPackage.hh"
 
 void
-IIRScram_WaveformElement::_type_check( savant::set<IIRScram_TypeDefinition> *context_set ) {
+IIRScram_WaveformElement::_type_check( savant::set<IIRScram_TypeDefinition*> *context_set ) {
   StandardPackage               *package = _get_design_file()->get_standard_package();
 
   _get_value()->_type_check( context_set );
@@ -52,13 +52,13 @@ IIRScram_WaveformElement::_type_check( savant::set<IIRScram_TypeDefinition> *con
   }
 }
 
-savant::set<IIRScram_TypeDefinition>*
+savant::set<IIRScram_TypeDefinition*>*
 IIRScram_WaveformElement::_get_rval_set(constraint_functor *functor) {
   return _get_value()->_get_rval_set(functor);
 }
 
 IIRScram *
-IIRScram_WaveformElement::_semantic_transform( savant::set<IIRScram_TypeDefinition> *context_set ){
+IIRScram_WaveformElement::_semantic_transform( savant::set<IIRScram_TypeDefinition*> *context_set ){
   set_value( _get_value()->_semantic_transform( context_set ) );
 
   return dynamic_cast<IIRScram *>(this);

@@ -51,9 +51,9 @@ IIRScram_LastValueAttribute::_get_subtype(){
   delete functor;
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_LastValueAttribute::_get_rval_set(constraint_functor *functor){
-  savant::set<IIRScram_TypeDefinition> *retval;
+  savant::set<IIRScram_TypeDefinition*> *retval;
 
   retval = _get_prefix()->_get_rval_set(functor);
 

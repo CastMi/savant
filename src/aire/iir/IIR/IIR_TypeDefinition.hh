@@ -82,8 +82,8 @@ public:
   
   virtual IIR_TypeDefinition *get_bottom_base_type() = 0;
 
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name * ) = 0;
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * ) = 0;
+  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_Name * ) = 0;
+  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral * ) = 0;
 
   virtual IIR_FunctionDeclaration *get_resolution_function() = 0;
 };

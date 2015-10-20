@@ -62,8 +62,8 @@ public:
   // the symbol_lookup class.  Don't modify the list it points at! 
   // NOTE2:  Since the list is persistent, any calls to methods
   // _INCLUDING_ find_list can and will modify the list pointed too.
-  savant::set<IIR_Declaration> *find_set( IIR_TextLiteral * );
-  savant::set<IIR_Declaration> *find_set( char * );
+  savant::set<IIR_Declaration*> *find_set( IIR_TextLiteral * );
+  savant::set<IIR_Declaration*> *find_set( char * );
   
   symbol_lookup(int table_size = 4093) : ht_size(table_size) {
     ht = new dl_list<declaration_chain>[ht_size];
@@ -87,7 +87,7 @@ private:
   // It can be a set of declarations to hide, as opposed to only a single
   // declaration, because there can be a _set_ of functions hidden by a
   // single constant, for instance.
-  savant::set<IIR_Declaration> *build_hidden_declaration_set( IIR_Declaration *about_to_add );
+  savant::set<IIR_Declaration*> *build_hidden_declaration_set( IIR_Declaration *about_to_add );
 
   // This method returns a hidden symbol entry for the declaration passed
   // in. If this declaration isn't currently hiding any other declarations,
@@ -101,7 +101,7 @@ private:
   // symbol entry for this declaration will be removed, and its hidden set
   // deleted.
   void update_hidden_symbol_entry( IIR_Declaration *, 
-				   savant::set<IIR_Declaration> *, 
+				   savant::set<IIR_Declaration*> *, 
 				   declaration_chain * );
 
   // These methods find the declaration chain for the name passed in.

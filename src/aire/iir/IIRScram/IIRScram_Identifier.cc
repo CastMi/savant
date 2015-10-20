@@ -29,7 +29,6 @@
 #include "IIRScram_Identifier.hh"
 #include "IIRScram_Name.hh"
 #include "resolution_func.hh"
-#include "set.hh"
 #include "symbol_table.hh"
 
 #include "scram_plugin_class_factory.hh"

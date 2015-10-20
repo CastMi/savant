@@ -25,9 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
 #include "set.hh"
 #include "IIR_ArchitectureStatementList.hh"
 #include "IIRBase_DeclarationList.hh"
@@ -40,7 +37,6 @@ IIRBase_ArchitectureDeclaration::IIRBase_ArchitectureDeclaration() :
   architecture_declarative_part(0),
   architecture_statement_part(0) { }
 
-
 IIRBase_ArchitectureDeclaration::~IIRBase_ArchitectureDeclaration(){
 }
 
@@ -49,18 +45,15 @@ IIRBase_ArchitectureDeclaration::associate( IIR_EntityDeclaration *new_entity ){
   new_entity->get_architectures()->append( this );
 }
 
-
 void
 IIRBase_ArchitectureDeclaration::set_entity(IIR_EntityDeclaration *e) {
   entity = e;
 }
 
-
 IIR_EntityDeclaration*
 IIRBase_ArchitectureDeclaration::get_entity() {
   return entity;
 }
-
 
 // List Accessor(s)
 IIR_DeclarationList *
@@ -74,7 +67,6 @@ IIRBase_ArchitectureDeclaration::get_architecture_statement_part() {
   ASSERT(architecture_statement_part != NULL);
   return architecture_statement_part;
 }
-
 
 void
 IIRBase_ArchitectureDeclaration::set_architecture_declarative_part(IIR_DeclarationList *new_architecture_declarative_part) {
@@ -111,19 +103,19 @@ IIRBase_ArchitectureDeclaration::get_declaration_type(){
   return ARCHITECTURE;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_ArchitectureDeclaration::find_declarations( IIR_Name *to_find ){
-  savant::set<IIR_Declaration> *retval = new savant::set<IIR_Declaration>;
-  savant::set<IIR_Declaration> *current_set = get_architecture_declarative_part()->find_declarations( to_find );
+  savant::set<IIR_Declaration*> *retval = new savant::set<IIR_Declaration*>;
+  savant::set<IIR_Declaration*> *current_set = get_architecture_declarative_part()->find_declarations( to_find );
   if( current_set != NULL ){
-    retval->add( current_set );
+    retval->insert( current_set );
     delete current_set;
   }
 
   ASSERT( get_entity() != NULL );
   current_set = get_entity()->find_declarations( to_find );
   if( current_set != NULL ){
-    retval->add( current_set );
+    retval->insert( current_set );
     delete current_set;
   }
   

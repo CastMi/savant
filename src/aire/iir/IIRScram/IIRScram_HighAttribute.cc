@@ -30,24 +30,20 @@
 
 #include "IIRScram_HighAttribute.hh"
 
-
-
 IIRScram_TypeDefinition *
 IIRScram_HighAttribute::_get_subtype(){
   return _get_subtype_high_low_left_right();
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_HighAttribute::_get_rval_set(constraint_functor *functor){
   return _get_rval_set_high_low_left_right( functor );
 }
-
 
 void 
 IIRScram_HighAttribute::_resolve_suffix_special(){
   _resolve_suffix_local_static_int();
 }
-
 
 IIRScram *
 IIRScram_HighAttribute::_clone(){

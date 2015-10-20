@@ -37,181 +37,173 @@
 #include "IIRScram_Operator.hh"
 
 #include "error_func.hh"
+#include "set.hh"
 #include "resolution_func.hh"
 #include "symbol_table.hh"
 
-using savant::set;
-
 IIR_Boolean 
-IIRScram_Operator::_type_check_user_declared( set<IIRScram_TypeDefinition> *context_set ){
-  IIR_Boolean retval = FALSE;
+IIRScram_Operator::_type_check_user_declared( savant::set<IIRScram_TypeDefinition*> *context_set ){
+   IIR_Boolean retval = FALSE;
 
-  set<IIRScram_Declaration> *function_declarations = _symbol_lookup();
-  if( function_declarations == NULL ){
-    return FALSE;
-  }
+   savant::set<IIRScram_Declaration*> *function_declarations = _symbol_lookup();
+   if( function_declarations == NULL ){
+      return FALSE;
+   }
 
-  // Build an argument list for use with the function we have for
-  // resolution.
-  IIRScram_AssociationList *argument_list = _build_argument_list();
-  
-  IIRScram_Declaration *current_declaration = function_declarations->getElement();
-  while( current_declaration != NULL ){
+   // Build an argument list for use with the function we have for
+   // resolution.
+   IIRScram_AssociationList *argument_list = _build_argument_list();
 
-    if( current_declaration->_num_required_args() != argument_list->size() ){
-      function_declarations->remove( current_declaration );
-    }
+   for(auto it = function_declarations->begin(); it != function_declarations->end(); it++) {
+      if( (*it)->_num_required_args() != argument_list->size() ){
+         function_declarations->erase( *it );
+      }
+   }
 
-    current_declaration = function_declarations->getNextElement();
-  }
+   if( function_declarations != NULL ){
+      resolve_subprogram_decls( function_declarations, 
+            argument_list,
+            context_set);
 
-  if( function_declarations != NULL ){
-    resolve_subprogram_decls( function_declarations, 
-                              argument_list,
-			      context_set);
-    
-    // We only need to complain if it's ambiguous.
-    switch( function_declarations->size() ){
-    case 0:{
-      retval = FALSE;
-      break;
-    }
-    case 1:{
-      retval = TRUE;
+      // We only need to complain if it's ambiguous.
+      switch( function_declarations->size() ){
+         case 0:{
+                   retval = FALSE;
+                   break;
+                }
+         case 1:{
+                   retval = TRUE;
 
-      ASSERT( function_declarations->getElement() != NULL );
-      ASSERT( function_declarations->getElement()->get_kind() == IIR_FUNCTION_DECLARATION );
+                   ASSERT( *(function_declarations->begin()) != NULL );
+                   ASSERT( (*function_declarations->begin())->get_kind() == IIR_FUNCTION_DECLARATION );
 
-      IIRScram_FunctionDeclaration *my_decl =
-        dynamic_cast<IIRScram_FunctionDeclaration *>(function_declarations->getElement());
+                   IIRScram_FunctionDeclaration *my_decl =
+                      dynamic_cast<IIRScram_FunctionDeclaration *>(*(function_declarations->begin()));
 
-      set_implementation( my_decl );
-      _type_check_operands( );
+                   set_implementation( my_decl );
+                   _type_check_operands( );
 
-      break;
-    }
-    default:{
-      // This will guarantee that other type check methods aren't applied
-      // to this node.
-      retval = TRUE;
-      report_ambiguous_error( this, function_declarations->convert_set<IIR_Declaration>());
-    }
-    }
-    
-  }
-  delete argument_list;
-  delete function_declarations;
+                   break;
+                }
+         default:{
+                    // This will guarantee that other type check methods aren't applied
+                    // to this node.
+                    retval = TRUE;
+                    report_ambiguous_error( this, function_declarations->convert_set<IIR_Declaration*>());
+                 }
+      }
 
-  return retval;
+   }
+   delete argument_list;
+   delete function_declarations;
+
+   return retval;
 }
 
 void 
-IIRScram_Operator::_type_check( set<IIRScram_TypeDefinition> * ){
-  // At the moment, don't to anything at all.  We did it all in semantic_transform.
+IIRScram_Operator::_type_check( savant::set<IIRScram_TypeDefinition*> * ){
+   // At the moment, don't to anything at all.  We did it all in semantic_transform.
 }
 
 
 IIRScram *
 IIRScram_Operator::_rval_to_decl( IIRScram_TypeDefinition *my_rval ){
-  
-  set_subtype( my_rval );
 
-  delete my_rvals;
-  my_rvals = 0;
+   set_subtype( my_rval );
 
-  ASSERT( is_resolved() == TRUE );
+   delete my_rvals;
+   my_rvals = 0;
 
-  return this;
+   ASSERT( is_resolved() == TRUE );
+
+   return this;
 }
 
 
-set<IIRScram_Declaration> *
+savant::set<IIRScram_Declaration*> *
 IIRScram_Operator::_symbol_lookup(){
-  set<IIRScram_Declaration> *retval = NULL;
-  
-  IIR_Identifier *to_lookup =
-    IIRScram_Identifier::get(_get_function_name(), get_design_file()->get_class_factory());
+   savant::set<IIRScram_Declaration*> *retval = NULL;
 
-  // Don't delete decls1, it belongs to the symbol table.
-  set<IIR_Declaration> *decls1 = _get_symbol_table()->find_set( to_lookup );
-  retval = decls1->convert_set<IIRScram_Declaration>();
-  to_lookup->release();
+   IIR_Identifier *to_lookup =
+      IIRScram_Identifier::get(_get_function_name(), get_design_file()->get_class_factory());
 
-  return retval;
+   // Don't delete decls1, it belongs to the symbol table.
+   savant::set<IIR_Declaration*> *decls1 = _get_symbol_table()->find_set( to_lookup );
+   retval = decls1->convert_set<IIRScram_Declaration*>();
+   to_lookup->release();
+
+   return retval;
 }
 
-set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_Operator::_get_rval_set( constraint_functor * ){
-  set<IIRScram_TypeDefinition> *retval = NULL;
+   savant::set<IIRScram_TypeDefinition*> *retval = NULL;
 
-  // We're caching rval sets here, for performance.
-  if( has_been_type_checked == FALSE ){
-    // First look for the user overloaded operators.
-    retval = _get_user_overloaded_rvals();
-    
-    if( retval != NULL ){
-      my_rvals = new set<IIRScram_TypeDefinition>( *retval );
-    }
-    
-    has_been_type_checked = TRUE;
-  }
-  else{
-    if( my_rvals != 0 ){
-      retval = new set<IIRScram_TypeDefinition>( *my_rvals );
-    }
-    else if ( _get_subtype() != 0 ){
-      // This is a bit of a kludge - something that shouldn't happen.  But
-      // we do delete my_rvals after we set "my_rval", so it potentially
-      // _could_ happen.
-      retval = new set<IIRScram_TypeDefinition>( _get_subtype() );
-    }
-  }
+   // We're caching rval sets here, for performance.
+   if( has_been_type_checked == FALSE ){
+      // First look for the user overloaded operators.
+      retval = _get_user_overloaded_rvals();
 
-  return retval;
+      if( retval != NULL ){
+         my_rvals = new savant::set<IIRScram_TypeDefinition*>( *retval );
+      }
+
+      has_been_type_checked = TRUE;
+   }
+   else{
+      if( my_rvals != 0 ){
+         retval = new savant::set<IIRScram_TypeDefinition*>( *my_rvals );
+      }
+      else if ( _get_subtype() != 0 ){
+         // This is a bit of a kludge - something that shouldn't happen.  But
+         // we do delete my_rvals after we set "my_rval", so it potentially
+         // _could_ happen.
+         retval = new savant::set<IIRScram_TypeDefinition*>( _get_subtype() );
+      }
+   }
+
+   return retval;
 }
 
-set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_Operator::_get_user_overloaded_rvals(){
-  set<IIRScram_TypeDefinition> *retval = NULL;
-  set<IIRScram_Declaration> *my_decls = _symbol_lookup();  
+   savant::set<IIRScram_TypeDefinition*> *retval = NULL;
+   savant::set<IIRScram_Declaration*> *my_decls = _symbol_lookup();  
 
-  if( my_decls == NULL ){
-    return NULL;
-  }
-  else{
-    int num_arguments = _get_num_args();
-    IIRScram_Declaration *current_decl = my_decls->getElement();
-    while( current_decl != NULL ){
-      if( current_decl->_num_required_args() != num_arguments ){
-	my_decls->remove( current_decl );
+   if( my_decls == NULL ){
+      return NULL;
+   }
+   else{
+      int num_arguments = _get_num_args();
+      for(auto it = my_decls->begin(); it != my_decls->end(); it++) {
+         if( (*it)->_num_required_args() != num_arguments ){
+            my_decls->erase( *it );
+         }
+         else{
+            ASSERT( (*it)->get_kind() == IIR_FUNCTION_DECLARATION );
+            IIRScram_FunctionDeclaration *as_function = 
+               dynamic_cast<IIRScram_FunctionDeclaration *>(*it);
+            IIRScram_AssociationList *arg_list = _build_argument_list();
+            IIR_Boolean valid_call = 
+               arg_list->_check_valid_arguments( as_function->_get_interface_declarations(), 
+                     NULL);
+            if( valid_call == FALSE ){
+               my_decls->erase( *it );
+            }
+            arg_list->_destroy_list();
+            delete arg_list;
+         }
       }
-      else{
-	ASSERT( current_decl->get_kind() == IIR_FUNCTION_DECLARATION );
-	IIRScram_FunctionDeclaration *as_function = 
-          dynamic_cast<IIRScram_FunctionDeclaration *>(current_decl);
-	IIRScram_AssociationList *arg_list = _build_argument_list();
-	IIR_Boolean valid_call = 
-	  arg_list->_check_valid_arguments( as_function->_get_interface_declarations(), 
-                                            NULL);
-	if( valid_call == FALSE ){
-	  my_decls->remove( current_decl );
-	}
-	arg_list->_destroy_list();
-	delete arg_list;
-      }
 
-      current_decl = my_decls->getNextElement();
-    }    
+      retval = decl_set_to_typedef_set( my_decls );
+      delete my_decls;
+   }
 
-    retval = decl_set_to_typedef_set( my_decls );
-    delete my_decls;
-  }
-
-  return retval;
+   return retval;
 }
 
 IIRScram *
-IIRScram_Operator::_semantic_transform( set<IIRScram_TypeDefinition> *context_set ){
+IIRScram_Operator::_semantic_transform( savant::set<IIRScram_TypeDefinition*> *context_set ){
   IIRScram *retval = this;
 
   if( _type_check_user_declared( context_set ) == TRUE ){
@@ -236,16 +228,15 @@ IIRScram_Operator::_semantic_transform( set<IIRScram_TypeDefinition> *context_se
 	current =  
           dynamic_cast<IIRScram_AssociationElement *>(function_call->get_parameter_association_list()->successor( current ));
       }
+         retval = function_call;
+      }
+      // else retval = this already.
+   }
 
-      retval = function_call;
-    }
-    // else retval = this already.
-  }
-
-  return retval;
+   return retval;
 }
 
 IIRScram_SubprogramDeclaration *
 IIRScram_Operator::_get_implementation() {
-  return dynamic_cast<IIRScram_SubprogramDeclaration *>(get_implementation());
+   return dynamic_cast<IIRScram_SubprogramDeclaration *>(get_implementation());
 }

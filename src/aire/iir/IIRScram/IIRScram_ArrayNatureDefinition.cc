@@ -30,7 +30,6 @@
 #include "IIRScram_ScalarNatureDefinition.hh"
 #include "IIRScram_TextLiteral.hh"
 
-#include "set.hh"
 #include "symbol_table.hh"
 #include "StandardPackage.hh"
 

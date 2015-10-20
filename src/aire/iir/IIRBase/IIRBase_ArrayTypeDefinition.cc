@@ -28,8 +28,8 @@
 #include "savant.hh"
 #include "IIRBase_ArrayTypeDefinition.hh"
 #include "IIRBase_ScalarTypeDefinition.hh"
+#include "IIR_Declaration.hh"
 #include "IIR_TextLiteral.hh"
-
 #include "set.hh"
 
 IIRBase_ArrayTypeDefinition::IIRBase_ArrayTypeDefinition() :
@@ -119,7 +119,7 @@ IIRBase_ArrayTypeDefinition::is_unconstrained_array_type(){
   }
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_ArrayTypeDefinition::find_declarations( IIR_Name *to_find){
   return get_element_subtype()->find_declarations( to_find );
 }

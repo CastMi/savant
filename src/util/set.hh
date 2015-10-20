@@ -24,141 +24,121 @@
 // Author: Dale E. Martin          dmartin@cliftonlabs.com
 
 //---------------------------------------------------------------------------
+
 #include "savant_config.hh"
-#include <Set.h>
-#include "IIRScram_Declaration.hh"
-#include "IIRScram_TypeDefinition.hh"
+#include <set>
 #include "dl_list.hh"
 #include "constraint_functors.hh"
 
-using clutils::Set;
-
 namespace savant {
 
-  /** This class maintains a distinct set of pointers to the objects it's
-      templatized on.  Functions are provided to add and reome things from
-      the set, to get the number of objects in the set, and walk the members
-      of the set.  NOTE: Since only pointers are kept within the set, care
-      must be taken when "delete"ing members of the of set and so forth. */
-  
-  template <class type>
-  class set : public Set<type> {
-    // @BeginExternalProseDescription
-    // @EndExternalProseDescription
+   /** This class maintains a distinct set of pointers to the objects it's
+     templatized on.  Functions are provided to add and reome things from
+     the set, to get the number of objects in the set, and walk the members
+     of the set.  NOTE: Since only pointers are kept within the set, care
+     must be taken when "delete"ing members of the of set and so forth. */
 
-  public:
-    set( int starting_size = 4 );
-    set( type *, int starting_size = 4 );
-    set( set<type> & );
-    
-    using Set<type>::add;  // unhide the base add methods
-    void add( dl_list<type> * );
-    
-    set<type> &operator=( set<type> &to_copy );
-    
-    // "New" a list, and put the elements of the set into it.
-    dl_list<type> *make_list();
-    
-    void reduce_set( constraint_functor *functor );
+   template <class type>
+      /*
+       * FIXME:
+       * Should we inherith in a protected way?
+       * std library destructors are not virtual
+       * class set : protected std::set<type> {
+       */
+       class set : public std::set<type> {
+         public:
 
-    template <typename new_type> savant::set<new_type> *convert_set();
-  };
+            set( type elem );
+            set();
+            void insert( savant::set<type>* theSet );
+            void insert( type elem );
+            bool contains( type elem );
+            void reduce_set( constraint_functor *functor );
+            void intersect( savant::set<type> * theSet );
+            template <typename new_type> savant::set<new_type> *convert_set();
 
-  template <class type>
-  inline
-  set<type>::set(int starting_size) : Set<type>( starting_size ){}
-  
-  template <class type>
-  inline
-  set<type>::set( type *first_element, int starting_size ) : 
-    Set<type>( first_element, starting_size ){}
-  
-  template <class type>
-  inline
-  set<type>::set( set<type> &to_copy ) : Set<type>( to_copy ){}
-  
-  template <class type>
-  inline
-  set<type> &
-  set<type>::operator=( set<type> &to_copy ){
-    Set<type>::operator=( to_copy );
-    return *this;
-  }
-  
-//   template <class type>
-//   inline
-//   dl_list<type> *
-//   set<type>::make_list(){
-//     dl_list<type> *retval = new dl_list<type>;
-    
-//     int i;
-//     for( i = 0; i < num; i++ ){
-//       retval->append( data_array[i] );
-//     }
-    
-//     return retval;
-//   }
-  
-  template <class type>
-  inline
-  void 
-  set<type>::add( dl_list<type> *list_to_add ){
-    type *current = list_to_add->first();
-    while( current != NULL ){
-      add( current );
-      current = list_to_add->successor( current );
-    }
-  }
-  
-  template <>
-  inline 
-  void 
-  set<IIRScram_Declaration>::reduce_set( constraint_functor *functor ){
-    if (functor != NULL) {
-      IIRScram_Declaration *current = getElement();
-      while( current != NULL ){
-        if( (*functor)(current) == FALSE ){
-        remove( current );
-        }
-        current = getNextElement();
+            /*
+             * FIXME:
+             * if we want to inherit in a protected way, we need at least these methods
+             * void clear() noexcept { return std::set<type>::clear(); };
+             * typename std::set<type>::size_type size() const noexcept { return std::set<type>::size(); };
+             * typename std::set<type>::size_type erase(const type& val) { return std::set<type>::erase(val); };
+             * typename std::set<type>::iterator erase(typename std::set<type>::const_iterator val) { return std::set<type>::erase(val); };
+             * typename std::set<type>::iterator begin() noexcept { return std::set<type>::begin(); };
+             * typename std::set<type>::iterator end() noexcept { return std::set<type>::end(); };
+             * typename std::set<type>::iterator find(const type& val) { return std::set<type>::find(val); };
+             */
+      };
+
+   template <class type>
+      inline 
+      bool 
+      set<type>::contains( type elem ){
+         return std::set<type>::find(elem) != std::set<type>::end();
       }
-    }
-  }
-  
-  template <>
-  inline 
-  void 
-  set<IIRScram_TypeDefinition>::reduce_set( constraint_functor *functor ){
-    if (functor != NULL) {
-      IIRScram_TypeDefinition *current = getElement();
-      while( current != NULL ){
-        if( (*functor)(current) == FALSE ){
-          remove( current );
-        }
-        current = getNextElement();
-      }
-    }
-  }
 
-  template <typename type>
-  template <typename new_type> 
-  inline
-  savant::set<new_type> *
-  savant::set<type>::convert_set() {
-    ASSERT(this != NULL);
-    savant::set<new_type>               *retv = new savant::set<new_type>;
-    type                                *cur_element = this->getElement();
-    new_type                            *new_val = dynamic_cast<new_type *>(cur_element);
-  
-    while(cur_element != NULL) {
-      ASSERT(new_val != NULL);
-      retv->add(new_val);
-      cur_element = this->getNextElement();
-      new_val = dynamic_cast<new_type *>(cur_element);
-    }
-  
-    //  delete this;
-    return retv;
-  } 
+   template <class type>
+      inline 
+      void 
+      set<type>::reduce_set( constraint_functor *functor ){
+         ASSERT( functor != NULL );
+            for( auto it = std::set<type>::begin(); it != std::set<type>::end(); it++ ){
+               if( (*functor)(*it) == FALSE ){
+                  std::set<type>::erase( *it );
+               }
+            }
+      }
+
+   template <typename type>
+      inline
+      void 
+      savant::set<type>::intersect( savant::set<type>* theSet ) {
+         ASSERT ( theSet != NULL );
+         for( auto it = std::set<type>::begin(); it != std::set<type>::end(); it++ ) {
+            if( !theSet->contains(*it) ) {
+               std::set<type>::erase(*it);
+            }
+         }
+      } 
+
+   template <typename type>
+      inline
+      savant::set<type>::set() : std::set<type>() {} 
+
+   template <typename type>
+      inline
+      savant::set<type>::set( type elem ) : std::set<type>() {
+         std::set<type>::insert( elem );
+      } 
+
+   template <typename type>
+      inline
+      void 
+      savant::set<type>::insert( type elem ) {
+         std::set<type>::insert( elem );
+      } 
+
+   template <typename type>
+      inline
+      void 
+      savant::set<type>::insert( savant::set<type>* theSet ) {
+         ASSERT( theSet != NULL );
+         std::set<type>::insert( theSet->begin(), theSet->end() );
+      } 
+
+   template <typename type>
+      template <typename new_type> 
+      inline
+      savant::set<new_type> *
+      savant::set<type>::convert_set() {
+         savant::set<new_type>* retv = new savant::set<new_type>;
+
+         for( auto it = std::set<type>::begin(); it != std::set<type>::end(); it++ ) {
+            new_type new_val = dynamic_cast<new_type>(*it);
+            retv->insert(new_val);
+         }
+
+         return retv;
+      } 
 }
 #endif

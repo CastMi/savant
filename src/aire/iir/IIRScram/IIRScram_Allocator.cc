@@ -38,24 +38,23 @@
 
 IIRScram_Allocator::~IIRScram_Allocator() {}
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_Allocator::_get_rval_set( constraint_functor * ){
-  savant::set<IIRScram_TypeDefinition> *retval = new savant::set<IIRScram_TypeDefinition>();
+  savant::set<IIRScram_TypeDefinition*> *retval = new savant::set<IIRScram_TypeDefinition*>();
   
-  savant::set<IIRScram_AccessTypeDefinition>    *access_types;
-  access_types = _get_symbol_table()->get_in_scope_access_types()->convert_set<IIRScram_AccessTypeDefinition>();
+  savant::set<IIRScram_AccessTypeDefinition*>    *access_types;
+  access_types = _get_symbol_table()->get_in_scope_access_types()->convert_set<IIRScram_AccessTypeDefinition*>();
   
-  IIRScram_TypeDefinition *current = access_types->getElement();
-  while( current != NULL ){
-    retval->add( current );
-    current = access_types->getNextElement();
+  for(auto it = access_types->begin(); it != access_types->end(); it++){
+     ASSERT(*it != NULL);
+     retval->insert( *it );
   }
 
   return retval;
 }
 
 void
-IIRScram_Allocator::_type_check( savant::set<IIRScram_TypeDefinition> * ){
+IIRScram_Allocator::_type_check( savant::set<IIRScram_TypeDefinition*> * ){
   // Don't need to do anything...
 }
 

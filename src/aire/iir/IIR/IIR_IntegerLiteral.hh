@@ -31,6 +31,10 @@
 #include "savant_config.hh"
 #include "IIR_Literal.hh"
 
+/*
+ * Most general representation of n integer literal.
+ * Can represent any integer literal value.
+ */
 class IIR_IntegerLiteral : public virtual IIR_Literal{
   friend class VHDLParser;
 

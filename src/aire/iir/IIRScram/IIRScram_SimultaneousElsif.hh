@@ -45,7 +45,7 @@ public:
   /** Function that calls the Simultaneous Statement's
       _publish_cc_ams_function_body for each of the
       statements in the If part and the else part.*/
-  void _type_check( savant::set<IIRScram_TypeDefinition> *);
+  void _type_check( savant::set<IIRScram_TypeDefinition*> *);
 
   // helper functions
   IIRScram                              *_get_condition();

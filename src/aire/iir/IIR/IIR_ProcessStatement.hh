@@ -48,6 +48,6 @@ public:
   virtual void set_postponed( IIR_Boolean postponed) = 0;
   virtual IIR_Boolean get_postponed() = 0;
 
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name * ) = 0;
+  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_Name * ) = 0;
 };
 #endif

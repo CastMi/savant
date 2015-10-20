@@ -60,7 +60,7 @@ public:
   // This method returns the subtype of the "nth" element.
   IIR_TypeDefinition *get_element_subtype( int );
 
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
 
   ostream &print( ostream & );
   void publish_vhdl_decl(ostream &);

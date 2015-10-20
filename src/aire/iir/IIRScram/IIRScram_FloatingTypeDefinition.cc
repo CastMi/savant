@@ -49,7 +49,7 @@ IIRScram_FloatingTypeDefinition::_clone(){
 }
 
 void 
-IIRScram_FloatingTypeDefinition::_build_implicit_operators( savant::set<IIRScram_Declaration> *add_to ){
+IIRScram_FloatingTypeDefinition::_build_implicit_operators( savant::set<IIRScram_Declaration*> *add_to ){
   const char *multiplying_operators[] = {"\"*\"", "\"/\"", NULL };
   IIRScram_ScalarTypeDefinition::_build_implicit_operators( add_to );
   IIRScram_TypeDefinition::_build_implicit_operators( multiplying_operators,

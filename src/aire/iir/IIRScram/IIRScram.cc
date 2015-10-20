@@ -98,13 +98,13 @@ IIRScram::_is_terminal() {
 
 void 
 IIRScram::_type_check( IIRScram_TypeDefinition *input_decl ){
-  savant::set<IIRScram_TypeDefinition> temp_set;
-  temp_set.add( input_decl );
+  savant::set<IIRScram_TypeDefinition*> temp_set;
+  temp_set.insert( input_decl );
   _type_check( &temp_set );
 }
 
 IIRScram *
-IIRScram::_semantic_transform( savant::set<IIRScram_TypeDefinition> * ){
+IIRScram::_semantic_transform( savant::set<IIRScram_TypeDefinition*> * ){
 #ifdef SEMANTIC_DEBUG
   cout << "Semantic transform called for node " << get_kind_text() <<
     " - returning \"this\". " << endl;
@@ -114,8 +114,8 @@ IIRScram::_semantic_transform( savant::set<IIRScram_TypeDefinition> * ){
 
 IIRScram *
 IIRScram::_semantic_transform( IIRScram_TypeDefinition *input_decl ){
-  savant::set<IIRScram_TypeDefinition> temp_set;
-  temp_set.add( input_decl );
+  savant::set<IIRScram_TypeDefinition*> temp_set;
+  temp_set.insert( input_decl );
   return _semantic_transform( &temp_set );
 }
 
@@ -176,27 +176,27 @@ IIRScram::_get_mode() {
   return IIR_UNKNOWN_MODE;
 }
 
-savant::set<IIRScram_Declaration> *
+savant::set<IIRScram_Declaration*> *
 IIRScram::_symbol_lookup(){
   _report_undefined_scram_fn("_symbol_lookup( )");
   return NULL;
 }
 
-savant::set<IIRScram_Declaration> *
+savant::set<IIRScram_Declaration*> *
 IIRScram::_symbol_lookup( IIRScram_Declaration * ){
   _report_undefined_scram_fn("_symbol_lookup( IIRScram_Declaration * )");
   return NULL;
 }
 
-savant::set<IIRScram_Declaration> *
-IIRScram::_symbol_lookup( savant::set<IIRScram_Declaration> * ){
-  _report_undefined_scram_fn("_symbol_lookup( savant::set<IIRScram_Declaration> * )");
+savant::set<IIRScram_Declaration*> *
+IIRScram::_symbol_lookup( savant::set<IIRScram_Declaration*> * ){
+  _report_undefined_scram_fn("_symbol_lookup( savant::set<IIRScram_Declaration*> * )");
   return NULL;
 }
 
-savant::set<IIRScram_Declaration> *
+savant::set<IIRScram_Declaration*> *
 IIRScram::_symbol_lookup( constraint_functor *functor ){
-  savant::set<IIRScram_Declaration> *retval = _symbol_lookup();
+  savant::set<IIRScram_Declaration*> *retval = _symbol_lookup();
 
   if( retval != NULL ){
     retval->reduce_set( functor );
@@ -212,7 +212,7 @@ IIRScram::_lookup_label( IIR_Boolean complain_on_error ){
   ASSERT( complain_on_error == TRUE ||  complain_on_error == FALSE );
   
   constraint_functor *functor = new is_label_functor;
-  savant::set<IIRScram_Declaration> *decls = _symbol_lookup( functor );
+  savant::set<IIRScram_Declaration*> *decls = _symbol_lookup( functor );
   delete functor;
 
   ASSERT( decls != NULL );
@@ -228,36 +228,36 @@ IIRScram::_lookup_label( IIR_Boolean complain_on_error ){
     break;
   }
   case 1:{
-    IIRScram_Declaration *temp = decls->getElement();
+    IIRScram_Declaration *temp = *(decls->begin());
     ASSERT( temp->is_label() == TRUE );
     retval = dynamic_cast<IIRScram_Label *>(temp);
     break;
   }
   default:{
-    report_ambiguous_error( (IIRScram *)this, decls->convert_set<IIR_Declaration>() );
+    report_ambiguous_error( (IIRScram *)this, decls->convert_set<IIR_Declaration*>() );
   }
   }
 
   return retval;
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram::_get_rval_set(constraint_functor * ){
   _report_undefined_scram_fn("_get_rval_set(),\nconstraint_functor *functor");
   return NULL;
 }
 
-savant::set<IIRScram_TypeDefinition> *
-IIRScram::_get_rval_set( savant::set<IIRScram_TypeDefinition> *,
+savant::set<IIRScram_TypeDefinition*> *
+IIRScram::_get_rval_set( savant::set<IIRScram_TypeDefinition*> *,
 			 constraint_functor * ){
-  _report_undefined_scram_fn("_get_rval_set( savant::set<IIRScram_TypeDefinition> * ),\nconstraint_functor *functor");
+  _report_undefined_scram_fn("_get_rval_set( savant::set<IIRScram_TypeDefinition*> * ),\nconstraint_functor *functor");
   return NULL;
 }
 
-savant::set<IIRScram_TypeDefinition> *
-IIRScram::_get_rval_set( savant::set<IIRScram_Declaration> *, 
+savant::set<IIRScram_TypeDefinition*> *
+IIRScram::_get_rval_set( savant::set<IIRScram_Declaration*> *, 
 			 constraint_functor * ){
-  _report_undefined_scram_fn("_get_rval_set( savant::set<IIRScram_Declaration> * ,\nconstraint_functor *functor )");
+  _report_undefined_scram_fn("_get_rval_set( savant::set<IIRScram_Declaration*> * ,\nconstraint_functor *functor )");
   return NULL;
 }
 
@@ -268,15 +268,15 @@ IIRScram::_find_formal_declaration(){
 }
 
 IIRScram_TypeDefinition *
-IIRScram::_determine_rval_in_set( savant::set<IIRScram_TypeDefinition> *,
+IIRScram::_determine_rval_in_set( savant::set<IIRScram_TypeDefinition*> *,
 				  IIRScram_TypeDefinition * ){
-  _report_undefined_scram_fn("_determine_rval_in_set( savant::set<IIRScram_TypeDefinition> *, IIRScram_TypeDefinition * )");
+  _report_undefined_scram_fn("_determine_rval_in_set( savant::set<IIRScram_TypeDefinition*> *, IIRScram_TypeDefinition * )");
   return NULL;  
 }
 
 IIRScram_Declaration *
-IIRScram::_determine_decl_in_set( savant::set<IIRScram_Declaration> *, IIRScram_TypeDefinition * ){
-  _report_undefined_scram_fn("_determine_decl_in_set( savant::set<IIRScram_Declaration> *, IIRScram_TypeDefinition *)");
+IIRScram::_determine_decl_in_set( savant::set<IIRScram_Declaration*> *, IIRScram_TypeDefinition * ){
+  _report_undefined_scram_fn("_determine_decl_in_set( savant::set<IIRScram_Declaration*> *, IIRScram_TypeDefinition *)");
   return NULL;  
 }
 
@@ -312,8 +312,8 @@ IIRScram::_get_port_type( int ){
 }
 
 void 
-IIRScram::_type_check( savant::set<IIRScram_TypeDefinition> * ){
-  _report_undefined_scram_fn("_type_check( savant::set<IIRScram_TypeDefinition> * )");
+IIRScram::_type_check( savant::set<IIRScram_TypeDefinition*> * ){
+  _report_undefined_scram_fn("_type_check( savant::set<IIRScram_TypeDefinition*> * )");
 }
 
 IIRScram *
@@ -423,7 +423,7 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
   _get_symbol_table()->open_scope( (IIRScram *)this );
 
   constraint_functor *functor = new is_component_declaration_functor();
-  savant::set<IIRScram_Declaration> *component_decls = _get_component_name()->_symbol_lookup( functor );
+  savant::set<IIRScram_Declaration*> *component_decls = _get_component_name()->_symbol_lookup( functor );
   delete functor;
 
   if( component_decls == NULL ){
@@ -441,7 +441,7 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
     return;
   }
   case 1:{
-    my_component = dynamic_cast<IIRScram_ComponentDeclaration *>(component_decls->getElement());
+    my_component = dynamic_cast<IIRScram_ComponentDeclaration *>(*(component_decls->begin()));
     _set_component_name( _get_component_name()->_decl_to_decl( my_component ) );
     if( debug_symbol_table == true ){
       cerr << "Type checking configuration - about to make |" << 
@@ -451,7 +451,7 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
     break;
   }
   default:{
-    report_ambiguous_error( _get_component_name(), component_decls->convert_set<IIR_Declaration>() );
+    report_ambiguous_error( _get_component_name(), component_decls->convert_set<IIR_Declaration*>() );
     break;
   }
   }
@@ -574,15 +574,15 @@ IIR *
 IIRScram::_type_check_file_open_information(){
   IIR *retval = this;
 
-  savant::set<IIRScram_TypeDefinition> *rvals = _get_rval_set();
+  savant::set<IIRScram_TypeDefinition*> *rvals = _get_rval_set();
   if( rvals == NULL ){
     report_undefined_symbol( this );
   }
   else{
-    savant::set<IIRScram_TypeDefinition> file_open_kind;
+    savant::set<IIRScram_TypeDefinition*> file_open_kind;
     ASSERT( get_design_file() != NULL );
     ASSERT( get_design_file()->get_standard_package() != NULL );
-    file_open_kind.add( dynamic_cast<IIRScram_TypeDefinition *>(get_design_file()->get_standard_package()->get_file_open_kind_type() ));
+    file_open_kind.insert( dynamic_cast<IIRScram_TypeDefinition *>(get_design_file()->get_standard_package()->get_file_open_kind_type() ));
     _type_check( &file_open_kind );
     reconcile_sets( &file_open_kind, rvals );
     switch( file_open_kind.size() ){
@@ -596,7 +596,7 @@ IIRScram::_type_check_file_open_information(){
       break;
     }
     case 1:{
-      retval = _rval_to_decl( file_open_kind.getElement() );
+      retval = _rval_to_decl( *(file_open_kind.begin()) );
       break;
     }
     default:{
@@ -685,7 +685,7 @@ IIRScram::_is_branchQ(){
 }
 
 void
-IIRScram::_build_generic_parameter_set( savant::set<IIRScram_Declaration> * ){
+IIRScram::_build_generic_parameter_set( savant::set<IIRScram_Declaration*> * ){
   // do nothing
 }
 

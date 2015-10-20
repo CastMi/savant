@@ -34,6 +34,9 @@
 
 class IIR_SubprogramDeclaration;
 
+/*
+ * Binary operators
+ */
 class IIRBase_DyadicOperator : public virtual IIRBase_Operator,
 			       public virtual IIR_DyadicOperator{
 

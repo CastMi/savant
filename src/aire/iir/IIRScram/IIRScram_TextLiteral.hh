@@ -49,13 +49,13 @@ public:
 
   IIR_Boolean _is_iir_text_literal(){ return TRUE; }
 
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);  
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);  
 
-  savant::set<IIRScram_Declaration> *_symbol_lookup();
-  savant::set<IIRScram_Declaration> *_symbol_lookup(constraint_functor *functor);
+  savant::set<IIRScram_Declaration*> *_symbol_lookup();
+  savant::set<IIRScram_Declaration*> *_symbol_lookup(constraint_functor *functor);
 
   // Implements "get_rval_set" for String and BitString Literals
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set_for_string();
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set_for_string();
   
 
 protected:

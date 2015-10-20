@@ -18,16 +18,18 @@
 // the file "LGPL", distributed with this archive.
 
 #include "IIRScram_AboveAttribute.hh"
+#include "IIRScram_TypeDefinition.hh"
 #include "error_func.hh"
 #include "set.hh"
 #include <iostream>
+
 using std::cerr;
 using std::endl;
 
 void
 IIRScram_AboveAttribute::_resolve_suffix_special() {
   ASSERT( _get_suffix() != NULL );
-  savant::set<IIRScram_TypeDefinition> *suffix_rvals = _get_suffix()->_get_rval_set();
+  savant::set<IIRScram_TypeDefinition*> *suffix_rvals = _get_suffix()->_get_rval_set();
   if ( suffix_rvals == NULL ){
     report_undefined_symbol( _get_suffix() );
   }
@@ -37,14 +39,14 @@ IIRScram_AboveAttribute::_resolve_suffix_special() {
     abort();
   }
   case 1:{
-    IIRScram_TypeDefinition *my_rval = suffix_rvals->getElement();
+    IIRScram_TypeDefinition *my_rval = *(suffix_rvals->begin());
     set_suffix( _get_suffix()->_semantic_transform( my_rval ) );
     _get_suffix()->_type_check( my_rval );
     set_suffix( _get_suffix()->_rval_to_decl( my_rval ) );
     break;
   }
   default:{
-    report_ambiguous_error( get_suffix(), suffix_rvals->convert_set<IIR_TypeDefinition>() );
+    report_ambiguous_error( get_suffix(), suffix_rvals->convert_set<IIR_TypeDefinition*>() );
   }
   }
 }

@@ -35,9 +35,7 @@
 #include "IIRScram_PhysicalSubtypeDefinition.hh"
 #include "IIRScram_SignalDeclaration.hh"
 #include "StandardPackage.hh"
-#include "set.hh"
 #include "symbol_table.hh"
-
 
 IIR_Boolean 
 IIRScram_LastEventAttribute::_is_readable(){

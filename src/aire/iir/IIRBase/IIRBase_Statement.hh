@@ -42,7 +42,7 @@ public:
 
   IIR *convert_tree(plugin_class_factory *factory);
 
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
 
   /** For assertion statements this method is overloaded to return the
       assertion condtion.  For anything else it returns 0. */

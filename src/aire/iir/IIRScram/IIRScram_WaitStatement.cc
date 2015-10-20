@@ -75,8 +75,8 @@ IIRScram_WaitStatement::_type_check() {
     IIRScram_TypeDefinition *boolean_type = 
       dynamic_cast<IIRScram_EnumerationSubtypeDefinition *>(package->get_boolean_type());
 
-    savant::set<IIRScram_TypeDefinition> *boolean_set = new savant::set<IIRScram_TypeDefinition>( boolean_type );
-    savant::set<IIRScram_TypeDefinition> *condition_clause_types = _get_condition_clause()->_get_rval_set();
+    savant::set<IIRScram_TypeDefinition*> *boolean_set = new savant::set<IIRScram_TypeDefinition*>( boolean_type );
+    savant::set<IIRScram_TypeDefinition*> *condition_clause_types = _get_condition_clause()->_get_rval_set();
 
     reconcile_sets( condition_clause_types, boolean_set );
     if( condition_clause_types->size() != 0 ){
@@ -97,8 +97,8 @@ IIRScram_WaitStatement::_type_check() {
   if( _get_timeout_clause() != NULL ){
     IIRScram_TypeDefinition *time_type = 
       dynamic_cast<IIRScram_PhysicalSubtypeDefinition *>(package->get_time_type());
-    savant::set<IIRScram_TypeDefinition> *time_set = new savant::set<IIRScram_TypeDefinition>( time_type );
-    savant::set<IIRScram_TypeDefinition> *timeout_clause_types = _get_timeout_clause()->_get_rval_set();
+    savant::set<IIRScram_TypeDefinition*> *time_set = new savant::set<IIRScram_TypeDefinition*>( time_type );
+    savant::set<IIRScram_TypeDefinition*> *timeout_clause_types = _get_timeout_clause()->_get_rval_set();
     
     reconcile_sets( timeout_clause_types, time_set );
     if( timeout_clause_types->size() != 0 ){
@@ -120,7 +120,7 @@ IIRScram *
 IIRScram_WaitStatement::_resolve_signal_name(IIRScram *sig_name) {
   IIRScram *retval = NULL;
   constraint_functor *functor = new is_signal_functor;
-  savant::set<IIRScram_TypeDefinition> *signal_rvals = sig_name->_get_rval_set(functor);
+  savant::set<IIRScram_TypeDefinition*> *signal_rvals = sig_name->_get_rval_set(functor);
   delete functor;
 
   if( signal_rvals == NULL ){
@@ -136,7 +136,7 @@ IIRScram_WaitStatement::_resolve_signal_name(IIRScram *sig_name) {
     break;
   }
   case 1: {
-    IIRScram_TypeDefinition *sig_type = signal_rvals->getElement();
+    IIRScram_TypeDefinition *sig_type = *signal_rvals->begin();
 
     IIRScram *sig_name_transformed = sig_name->_semantic_transform( sig_type );
     sig_name_transformed->_type_check( sig_type );
@@ -147,7 +147,7 @@ IIRScram_WaitStatement::_resolve_signal_name(IIRScram *sig_name) {
   }
   default:
     ostringstream err;
-    report_ambiguous_error( sig_name, signal_rvals->convert_set<IIR_TypeDefinition>() );
+    report_ambiguous_error( sig_name, signal_rvals->convert_set<IIR_TypeDefinition*>() );
     break;    
   }
 

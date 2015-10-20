@@ -54,17 +54,17 @@ class IIRScram_Attribute : public virtual IIRScram_Name, public virtual IIRBase_
 public:
   IIRScram_Attribute();
   
-  virtual savant::set<IIRScram_Declaration> *_symbol_lookup();
-  virtual savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0); 
+  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup();
+  virtual savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0); 
   virtual IIRScram_TypeDefinition *_get_prefix_subtype(constraint_functor *functor = 0); 
   IIRScram_TypeDefinition *_get_prefix_rval_range_attributes();
 
   /** High, low, left, and right get_attributes() use these. */
-  virtual savant::set<IIRScram_TypeDefinition> *
+  virtual savant::set<IIRScram_TypeDefinition*> *
   _get_rval_set_high_low_left_right(constraint_functor *functor = 0); 
   virtual IIRScram_TypeDefinition *_get_subtype_high_low_left_right();
 
-  virtual void _type_check( savant::set<IIRScram_TypeDefinition> * );
+  virtual void _type_check( savant::set<IIRScram_TypeDefinition*> * );
   void set_subtype(IIR_TypeDefinition *type) {IIRBase::set_subtype(type);}
 
   IIRScram *_decl_to_decl( IIRScram_Declaration * );

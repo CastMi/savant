@@ -100,7 +100,7 @@ IIRScram_PhysicalTypeDefinition::_construct_new_subtype( IIRScram_Name *resoluti
 
 
 void 
-IIRScram_PhysicalTypeDefinition::_build_implicit_operators( savant::set<IIRScram_Declaration> *add_to ){
+IIRScram_PhysicalTypeDefinition::_build_implicit_operators( savant::set<IIRScram_Declaration*> *add_to ){
   IIRScram_ScalarTypeDefinition::_build_implicit_operators( add_to );
   
   StandardPackage *package = _get_design_file()->get_standard_package();

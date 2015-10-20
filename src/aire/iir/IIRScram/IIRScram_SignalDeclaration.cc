@@ -35,7 +35,6 @@
 #include "IIRScram_SignalDeclaration.hh"
 #include "IIRScram_TextLiteral.hh"
 
-#include "set.hh"
 #include "symbol_table.hh"
 #include "error_func.hh"
 #include "savant.hh"

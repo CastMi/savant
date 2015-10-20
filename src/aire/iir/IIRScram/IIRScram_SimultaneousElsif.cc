@@ -44,12 +44,12 @@ IIRScram_SimultaneousElsif::IIRScram_SimultaneousElsif() {
 IIRScram_SimultaneousElsif::~IIRScram_SimultaneousElsif(){}
 
 void
-IIRScram_SimultaneousElsif::_type_check( savant::set<IIRScram_TypeDefinition> * ){ 
+IIRScram_SimultaneousElsif::_type_check( savant::set<IIRScram_TypeDefinition*> * ){ 
   set_condition(IIRScram_Statement::_type_check_and_resolve_boolean_condition(_get_condition()));
   
   if (_get_else_clause() != NULL) {
-    savant::set<IIRScram_TypeDefinition> *bool_rvals = 
-      new savant::set<IIRScram_TypeDefinition>(dynamic_cast<IIRScram_TypeDefinition *>(_get_design_file()->get_standard_package()->get_boolean_type()));
+    savant::set<IIRScram_TypeDefinition*> *bool_rvals = 
+      new savant::set<IIRScram_TypeDefinition*>(dynamic_cast<IIRScram_TypeDefinition *>(_get_design_file()->get_standard_package()->get_boolean_type()));
     _get_else_clause()->_type_check( bool_rvals );
     delete bool_rvals;
   }

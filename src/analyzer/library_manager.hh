@@ -232,7 +232,7 @@ public:
 
   /** Returns a set of all known libraries.  The caller needs to delete
      the set that is returned.  */
-  savant::set<IIR_LibraryDeclaration> *get_libraries();
+  savant::set<IIR_LibraryDeclaration*> *get_libraries();
 
   /** Adds the standard package to the list of libraries managed */
   void init_std_library(StandardPackage *package);
@@ -245,7 +245,7 @@ private:
   symbol_lookup *my_symbol_table;
 
   /** The set of found libraries. */
-  savant::set<IIR_LibraryDeclaration> *libraries;
+  savant::set<IIR_LibraryDeclaration*> *libraries;
 
   /** A handle to the standard package. */
 //   IIR_PackageDeclaration *my_standard_package;

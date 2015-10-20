@@ -54,7 +54,7 @@ public:
   IIR_Boolean has_statement_list() { return TRUE; }
   IIR_Boolean is_above_attribute_found();
 
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
 
   void publish_vhdl(ostream &);
 protected:

@@ -44,7 +44,7 @@ IIRScram_LowAttribute::_get_subtype(){
   return _get_subtype_high_low_left_right();
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_LowAttribute::_get_rval_set(constraint_functor *functor){
   return _get_rval_set_high_low_left_right( functor );
 }

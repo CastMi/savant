@@ -26,16 +26,12 @@
 //---------------------------------------------------------------------------
 
 #include "IIRBase_Name.hh"
-#include "set.hh"
 #include "symbol_table.hh"
 #include <cstdlib>
 #include <iostream>
 #include "IIR_Identifier.hh"
 
 #include "savant.hh"
-
-
-
 
 IIRBase_Name::IIRBase_Name() :
   prefix(0){}

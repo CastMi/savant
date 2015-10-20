@@ -37,10 +37,8 @@
 
 #include "error_func.hh"
 #include "resolution_func.hh"
-#include "set.hh"
 #include "symbol_table.hh"
 #include "savant.hh"
-
 
 IIRScram_SignalAssignmentStatement::IIRScram_SignalAssignmentStatement() {
   set_waveform(new IIRScram_WaveformList());

@@ -56,7 +56,7 @@ public:
 
   declaration_type get_declaration_type();
     
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name *to_find);
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *to_find);
   IIR_Boolean is_architecture_declaration(){ return TRUE; }
   IIR_Boolean is_secondary_unit(){ return TRUE; }
 

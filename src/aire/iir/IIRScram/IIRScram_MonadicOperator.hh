@@ -39,6 +39,9 @@ class IIRScram_DesignatorList;
 class IIRScram_TypeDefinition;
 class IIRScram_SubprogramDeclaration;
 
+/*
+ * Unary operators
+ */
 class IIRScram_MonadicOperator : public virtual IIRScram_Operator,
 				 public virtual IIRBase_MonadicOperator {
 public:
@@ -46,7 +49,7 @@ public:
 
   virtual IIRScram *_rval_to_decl( IIRScram_TypeDefinition *my_rval );
 
-  void _build_generic_parameter_set( savant::set<IIRScram_Declaration> *);
+  void _build_generic_parameter_set( savant::set<IIRScram_Declaration*> *);
   IIRScram *_clone();
 
 

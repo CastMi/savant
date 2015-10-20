@@ -44,7 +44,7 @@
 
 
 IIRScram_EnumerationLiteral::IIRScram_EnumerationLiteral() {
-  set_attributes(new IIRScram_AttributeSpecificationList());
+   set_attributes(new IIRScram_AttributeSpecificationList());
 }
 
 IIRScram_EnumerationLiteral::~IIRScram_EnumerationLiteral(){}
@@ -54,109 +54,106 @@ IIRScram_EnumerationLiteral::~IIRScram_EnumerationLiteral(){}
 // `downto' is represented by IIRScram_EnumerationLiteral::declarator = "false"
 // This method checks this condition and publishes the value of direction
 // correspondingly. -- SK on Tue Mar 4.
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_EnumerationLiteral::_get_rval_set(constraint_functor *functor){
-  savant::set<IIRScram_TypeDefinition> *retval = NULL;
+   savant::set<IIRScram_TypeDefinition*> *retval = NULL;
 
-  if( is_resolved() == true ){
-    ASSERT( _get_subtype() != NULL );
-    retval = new savant::set<IIRScram_TypeDefinition>( _get_subtype() );
-  }
-  else{
-    IIRScram_Declaration *current_decl = NULL;
-    savant::set<IIRScram_Declaration> *my_decls = _symbol_lookup();
-    if( my_decls == NULL ){
-      return NULL;
-    }
+   if( is_resolved() == true ){
+      ASSERT( _get_subtype() != NULL );
+      retval = new savant::set<IIRScram_TypeDefinition*>( _get_subtype() );
+   }
+   else{
+      IIRScram_Declaration *current_decl = NULL;
+      savant::set<IIRScram_Declaration*> *my_decls = _symbol_lookup();
+      if( my_decls == NULL ){
+         return NULL;
+      }
 
-    current_decl = dynamic_cast<IIRScram_Declaration *>(my_decls->getElement());
-    while( current_decl != NULL ){
-      if( functor == 0 || (*functor)(current_decl) == TRUE ){
-	if( retval == NULL ){
-	  retval = new savant::set<IIRScram_TypeDefinition>;
-	}
-      
-	retval->add( current_decl->_get_subtype() );
-      } 
-      current_decl = dynamic_cast<IIRScram_Declaration *>(my_decls->getNextElement());
-    }
+      for(auto it = my_decls->begin(); it != my_decls->end(); it++) {
+         current_decl = dynamic_cast<IIRScram_Declaration *>(*it);
+         if( functor == 0 || (*functor)(current_decl) == TRUE ){
+            if( retval == NULL ){
+               retval = new savant::set<IIRScram_TypeDefinition*>;
+            }
 
-    delete my_decls;
-  }
-  
-  return retval;
+            retval->insert( current_decl->_get_subtype() );
+         } 
+      }
+
+      delete my_decls;
+   }
+
+   return retval;
 }
 
-savant::set<IIRScram_Declaration> *
+savant::set<IIRScram_Declaration*> *
 IIRScram_EnumerationLiteral::_symbol_lookup(){
-  savant::set<IIRScram_Declaration>     *retval;
-  retval = new savant::set<IIRScram_Declaration>(*(_get_symbol_table()->find_set( _get_declarator() )->convert_set<IIRScram_Declaration>()));
-  
-  return retval;
+   savant::set<IIRScram_Declaration*>     *retval;
+   retval = new savant::set<IIRScram_Declaration*>(*(_get_symbol_table()->find_set( _get_declarator() )->convert_set<IIRScram_Declaration*>()));
+
+   return retval;
 }
 
 IIRScram *
 IIRScram_EnumerationLiteral::_rval_to_decl( IIRScram_TypeDefinition *my_rval ){
-  ASSERT( my_rval != NULL );
+   ASSERT( my_rval != NULL );
 
-  IIRScram_Declaration *retval = NULL;
+   IIRScram_Declaration *retval = NULL;
 
-  if( _get_subtype() == NULL ){
-    savant::set<IIRScram_Declaration> *my_decls = _symbol_lookup();
-    ASSERT( my_decls != NULL );
+   if( _get_subtype() == NULL ){
+      savant::set<IIRScram_Declaration*> *my_decls = _symbol_lookup();
+      ASSERT( my_decls != NULL );
 
-    IIRScram_Declaration *current_decl = my_decls->getElement();
-    while( current_decl != NULL ){
-      if( current_decl->_get_subtype()->is_compatible( my_rval ) != NULL ){
-	retval = current_decl;
-	break;
+      for(auto it = my_decls->begin(); it != my_decls->end(); it++) {
+         if( (*it)->_get_subtype()->is_compatible( my_rval ) != NULL ){
+            retval = *it;
+            break;
+         }
       }
-      current_decl = dynamic_cast<IIRScram_Declaration *>(my_decls->getNextElement());
-    }
 
-    ASSERT( retval != NULL );
-  
-    delete my_decls;
-  }
-  else{
-    ASSERT( my_rval->is_compatible( _get_subtype() ) != NULL );
-    retval = this;
-  }
+      ASSERT( retval != NULL );
 
-  return retval;
+      delete my_decls;
+   }
+   else{
+      ASSERT( my_rval->is_compatible( _get_subtype() ) != NULL );
+      retval = this;
+   }
+
+   return retval;
 }
 
 void 
-IIRScram_EnumerationLiteral::_type_check( savant::set<IIRScram_TypeDefinition> * ){
+IIRScram_EnumerationLiteral::_type_check( savant::set<IIRScram_TypeDefinition*> * ){
 }
 
 IIRScram*
 IIRScram_EnumerationLiteral::_clone() {
-  return this;
+   return this;
 }
 
 IIR_Boolean 
 IIRScram_EnumerationLiteral::_is_homograph_of( IIRScram_Declaration *compare_to ){
-  if( get_kind() != compare_to->get_kind() ){
-    return FALSE;
-  }
-  
-  if( _get_subtype()->is_compatible( compare_to->_get_subtype() ) == NULL ){
-    return FALSE;
-  }
+   if( get_kind() != compare_to->get_kind() ){
+      return FALSE;
+   }
 
-  return TRUE;
+   if( _get_subtype()->is_compatible( compare_to->_get_subtype() ) == NULL ){
+      return FALSE;
+   }
+
+   return TRUE;
 }
 
 visitor_return_type *
 IIRScram_EnumerationLiteral::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_EnumerationLiteral(this, arg);
+   ASSERT(visitor != NULL);
+   return visitor->visit_IIR_EnumerationLiteral(this, arg);
 }
 
 IIRScram_AttributeSpecificationList* 
 IIRScram_EnumerationLiteral::_get_attribute_specification_list() { 
-  return dynamic_cast<IIRScram_AttributeSpecificationList *>(get_attributes()); 
+   return dynamic_cast<IIRScram_AttributeSpecificationList *>(get_attributes()); 
 }
 
 // IIRBase Function Wrapper(s)

@@ -52,8 +52,8 @@ public:
 
   virtual IIR *get_nth_element( IIR_Int32 ) = 0;
 
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name *  ) { return NULL; }
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * ) { return NULL; }
+  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_Name *  ) { return NULL; }
+  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral * ) { return NULL; }
 
   /**
      Makes the declarative region of all of the elements in this list point

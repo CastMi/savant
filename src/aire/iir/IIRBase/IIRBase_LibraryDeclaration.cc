@@ -38,9 +38,6 @@
 
 #include <FileManager.h>
 
-
-
-
 IIRBase_LibraryDeclaration::IIRBase_LibraryDeclaration()  :
   primary_units(0),
   path_to_directory( "" ){}
@@ -98,17 +95,17 @@ IIRBase_LibraryDeclaration::get_declaration_type(){
    return LIBRARY;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_LibraryDeclaration::find_declarations( IIR_Name *to_find){
-  savant::set<IIR_Declaration> *retval = new savant::set<IIR_Declaration>;
+  savant::set<IIR_Declaration*> *retval = new savant::set<IIR_Declaration*>;
 
   IIR_EntityDeclaration *entity_decl = NULL;
   IIR_PackageDeclaration *package_decl = NULL; 
   IIR_ConfigurationDeclaration *configuration_decl = NULL;  
   
-  savant::set<IIR_Declaration> *unit_decls = get_primary_units()->find_declarations( to_find );
+  savant::set<IIR_Declaration*> *unit_decls = get_primary_units()->find_declarations( to_find );
   if( unit_decls != NULL ){
-    retval->add( unit_decls );
+    retval->insert( unit_decls );
   }
 
   entity_decl = 
@@ -119,7 +116,7 @@ IIRBase_LibraryDeclaration::find_declarations( IIR_Name *to_find){
                                                                                       get_design_file()->get_class_factory()));
   
   if( entity_decl != NULL ){
-    retval->add( entity_decl );
+    retval->insert( entity_decl );
   }
 
   package_decl = 
@@ -130,7 +127,7 @@ IIRBase_LibraryDeclaration::find_declarations( IIR_Name *to_find){
                                                                                         get_design_file()->get_class_factory()));
 
   if( package_decl != NULL ){
-    retval->add( package_decl );
+    retval->insert( package_decl );
   }
   
   configuration_decl = 
@@ -141,7 +138,7 @@ IIRBase_LibraryDeclaration::find_declarations( IIR_Name *to_find){
                                                                                                     get_design_file()->get_class_factory()));
 
   if( configuration_decl != NULL ){
-    retval->add( configuration_decl );
+    retval->insert( configuration_decl );
   }
 
   if( retval->size() == 0 ){

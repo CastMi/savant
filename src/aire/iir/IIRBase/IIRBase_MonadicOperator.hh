@@ -35,6 +35,9 @@
 
 class IIR_SubprogramDeclaration;
 
+/*
+ * Unary operators
+ */
 class IIRBase_MonadicOperator : public virtual IIRBase_Operator,
 				public virtual IIR_MonadicOperator{
 

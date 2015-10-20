@@ -103,7 +103,7 @@ IIRBase_ProcessStatement::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_ProcessStatement::find_declarations( IIR_Name *name){
   return get_process_declarative_part()->find_declarations( name);
 }

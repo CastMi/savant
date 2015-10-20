@@ -57,7 +57,7 @@ public:
       checked in is that of the declaration - not of the statement itself.)
       To do the actual cheking, the derived class calls into the second
       version of the method defined on the next line. */
-  virtual IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition> *,
+  virtual IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *,
                                                      IIRScram_SubprogramDeclaration * );
       
   /** Not virtual on purpose!  This is to reuse code instead of copying
@@ -65,7 +65,7 @@ public:
       how the derived classes type check their return statements is what
       the name of their list of statements is.  Therefore, we pass the list
       in. */
-  static IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition> *,
+  static IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *,
                                                     IIRScram_SequentialStatementList *,
                                                     IIRScram_SubprogramDeclaration * );
 

@@ -29,6 +29,9 @@
 #include "savant_config.hh"
 #include "IIR_Tuple.hh"
 
+/*
+ * Single choice in a list of at least 2 alternatives.
+ */
 class IIR_Choice : public virtual IIR_Tuple{
 
 public:

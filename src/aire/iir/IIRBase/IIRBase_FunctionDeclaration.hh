@@ -52,7 +52,7 @@ public:
   IIR_Boolean is_operator();
 
   declaration_type get_declaration_type();
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name *){ return NULL;  }
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *){ return NULL;  }
   void publish_vhdl_decl(ostream &);
 protected:
   IIRBase_FunctionDeclaration();

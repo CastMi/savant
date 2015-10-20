@@ -86,7 +86,7 @@ IIRBase_AttributeDeclaration::get_declaration_type(){
   return ATTRIBUTE;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_AttributeDeclaration::find_declarations( IIR_Name *to_find){
   return get_subtype()->find_declarations( to_find );
 }

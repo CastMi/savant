@@ -87,14 +87,14 @@ void
 IIRScram_AliasDeclaration::_type_check(){
   ASSERT( _get_name() != NULL );
   
-  savant::set<IIRScram_TypeDefinition> *name_rvals = _get_name()->_get_rval_set();
+  savant::set<IIRScram_TypeDefinition*> *name_rvals = _get_name()->_get_rval_set();
   if( name_rvals == NULL ){
     report_undefined_symbol( _get_name() );
     return;
   }
 
   if( _get_subtype() != NULL ){
-    savant::set<IIRScram_TypeDefinition> *subtype_rvals = new savant::set<IIRScram_TypeDefinition>( _get_subtype() );
+    savant::set<IIRScram_TypeDefinition*> *subtype_rvals = new savant::set<IIRScram_TypeDefinition*>( _get_subtype() );
 
     reconcile_sets( name_rvals, subtype_rvals );
     delete subtype_rvals;
@@ -118,7 +118,7 @@ IIRScram_AliasDeclaration::_type_check(){
     break;
   }
   case 1:{
-    IIRScram_TypeDefinition *my_type = name_rvals->getElement();
+    IIRScram_TypeDefinition *my_type = *(name_rvals->begin());
 
     if( _get_subtype() == NULL ){
       set_subtype( my_type );
@@ -131,7 +131,7 @@ IIRScram_AliasDeclaration::_type_check(){
     break;
   }
   default:{
-    report_ambiguous_error( _get_name(), name_rvals->convert_set<IIR_TypeDefinition>() );
+    report_ambiguous_error( _get_name(), name_rvals->convert_set<IIR_TypeDefinition*>() );
     break;
   }
   }

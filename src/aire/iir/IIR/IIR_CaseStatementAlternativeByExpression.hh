@@ -34,6 +34,9 @@
 
 class IIR_Choice;
 
+/*
+ * A simple_expression
+ */
 class IIR_CaseStatementAlternativeByExpression : public virtual IIR_CaseStatementAlternative{
 
 public:

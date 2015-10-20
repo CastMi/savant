@@ -55,7 +55,7 @@ void
 IIRScram_AccessTypeDefinition::_come_into_scope( symbol_table *sym_tab, 
 						 IIRScram_TypeDeclaration *type_declaration){
   
-  sym_tab->get_in_scope_access_types()->add( this );
+  sym_tab->get_in_scope_access_types()->insert( this );
 
   if( type_declaration->get_implicit_declarations() == NULL ){
     IIRScram_TypeDefinition::_come_into_scope( sym_tab, type_declaration );
@@ -80,10 +80,10 @@ IIRScram_AccessTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     
     new_procedure_declaration->_add_declaration();
     
-    type_declaration->get_implicit_declarations()->add( new_procedure_declaration );    
+    type_declaration->get_implicit_declarations()->insert( new_procedure_declaration );    
   }
   else{
-    sym_tab->add_declaration( type_declaration->get_implicit_declarations()->convert_set<IIR_Declaration>());   
+    sym_tab->add_declaration( type_declaration->get_implicit_declarations()->convert_set<IIR_Declaration*>());   
   }
 }
 
@@ -115,7 +115,7 @@ IIRScram_AccessTypeDefinition::_clone( IIRScram *copy_into ){
 
 void 
 IIRScram_AccessTypeDefinition::_come_out_of_scope( symbol_table *sym_tab ){
-  sym_tab->get_in_scope_access_types()->remove( (IIRScram_AccessTypeDefinition *)this );
+  sym_tab->get_in_scope_access_types()->erase( (IIRScram_AccessTypeDefinition *)this );
 }
 
 IIRScram_TypeDefinition *

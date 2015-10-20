@@ -48,8 +48,8 @@ public:
   IIR *convert_tree(plugin_class_factory *factory);
   IIR_Boolean is_enumeration_type(){ return true; }
 
-  savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * );
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name *  );
+  savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral * );
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *  );
 
   IIR_Boolean is_character_type();
   IIR_Boolean is_discrete_type(){ return true;  }

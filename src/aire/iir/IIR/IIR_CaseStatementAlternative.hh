@@ -32,6 +32,9 @@
 #include "IIR_Tuple.hh"
 class IIR_SequentialStatementList;
 
+/*
+ * Choice and implication within a case statement.
+ */
 class IIR_CaseStatementAlternative : public virtual IIR_Tuple{
 
 public:

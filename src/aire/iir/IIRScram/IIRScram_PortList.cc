@@ -28,7 +28,6 @@
 
 #include "IIRScram_PortList.hh"
 #include "IIRScram_SignalInterfaceDeclaration.hh"
-#include "set.hh"
 #include "savant.hh"
 
 visitor_return_type *

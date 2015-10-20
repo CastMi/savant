@@ -55,29 +55,29 @@ IIRScram_TextLiteral::_to_lower(){
   set_text( tmp_buf.c_str(), my_len );
 }
 
-savant::set<IIRScram_Declaration> *
+savant::set<IIRScram_Declaration*> *
 IIRScram_TextLiteral::_symbol_lookup(){
-  savant::set<IIRScram_Declaration> *retval;
+  savant::set<IIRScram_Declaration*> *retval;
 
-  retval = new savant::set<IIRScram_Declaration>(*(( _get_symbol_table()->find_set( dynamic_cast<IIRScram_TextLiteral *>(this) ))->convert_set<IIRScram_Declaration>()));
+  retval = new savant::set<IIRScram_Declaration*>(*(( _get_symbol_table()->find_set( dynamic_cast<IIRScram_TextLiteral *>(this) ))->convert_set<IIRScram_Declaration*>()));
 
   return retval;
 }
 
 
-savant::set<IIRScram_Declaration> *
+savant::set<IIRScram_Declaration*> *
 IIRScram_TextLiteral::_symbol_lookup(constraint_functor *functor){
   return IIRScram::_symbol_lookup( functor );
 }
 
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_TextLiteral::_get_rval_set(constraint_functor *functor) {
-  savant::set<IIRScram_TypeDefinition> *retval = NULL;
+  savant::set<IIRScram_TypeDefinition*> *retval = NULL;
 
   // Get the set of declarations that correspond to our name, and then
   // get all of their RVALS.
-  savant::set<IIRScram_Declaration> *decl_set = _symbol_lookup();
+  savant::set<IIRScram_Declaration*> *decl_set = _symbol_lookup();
 
   retval = decl_set_to_typedef_set( decl_set, functor );
   delete decl_set;
@@ -86,9 +86,9 @@ IIRScram_TextLiteral::_get_rval_set(constraint_functor *functor) {
 }
 
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_TextLiteral::_get_rval_set_for_string(){
-  savant::set<IIRScram_TypeDefinition> *retval = NULL;
+  savant::set<IIRScram_TypeDefinition*> *retval = NULL;
 
   int my_length = get_text_length();
   // A string literal can be a constant initializer for an array of
@@ -113,7 +113,7 @@ IIRScram_TextLiteral::_get_rval_set_for_string(){
   
   start = i + 1;
   ASSERT( start < my_length );  
-  retval = _get_symbol_table()->get_in_scope_array_types()->convert_set<IIRScram_TypeDefinition>();
+  retval = _get_symbol_table()->get_in_scope_array_types()->convert_set<IIRScram_TypeDefinition*>();
 
   constraint_functor *functor = new is_character_type_functor();
   retval->reduce_set( functor );

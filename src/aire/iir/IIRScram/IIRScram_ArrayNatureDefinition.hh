@@ -30,7 +30,6 @@
 #include "IIRScram_TypeDefinition.hh"
 #include "IIRScram_TypeDeclaration.hh"
 #include "error_func.hh"
-#include "set.hh"
 #include <stdlib.h>
 
 class IIRScram_NatureDeclaration;

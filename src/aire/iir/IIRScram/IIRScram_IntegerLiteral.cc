@@ -43,10 +43,10 @@ IIRScram_IntegerLiteral::set_subtype( IIR_TypeDefinition *subtype ){
   IIRScram_Literal::set_subtype( my_subtype );
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_IntegerLiteral::_get_rval_set( constraint_functor * ){
-  savant::set<IIRScram_TypeDefinition> *retval = 
-    new savant::set<IIRScram_TypeDefinition>( dynamic_cast<IIRScram_IntegerSubtypeDefinition *>(_get_design_file()->get_standard_package()->get_savant_universal_integer()) );
+  savant::set<IIRScram_TypeDefinition*> *retval = 
+    new savant::set<IIRScram_TypeDefinition*>( dynamic_cast<IIRScram_IntegerSubtypeDefinition *>(_get_design_file()->get_standard_package()->get_savant_universal_integer()) );
   return retval;
 }
 
@@ -79,9 +79,9 @@ IIRScram_IntegerLiteral::get( IIR_Int32 base,
 
   IIRScram_IntegerLiteral *retval = new IIRScram_IntegerLiteral();
   retval->set_base(base);
-  retval->set_mantissa(strdup(mantissa), mantissa_length);
+  retval->set_mantissa(mantissa, mantissa_length);
   if( exponent != NULL ){
-    retval->set_exponent(strdup(exponent), exponent_length);
+    retval->set_exponent(exponent, exponent_length);
   }
   else{
     retval->set_exponent(exponent, exponent_length);

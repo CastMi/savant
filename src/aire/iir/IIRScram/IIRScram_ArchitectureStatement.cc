@@ -36,10 +36,10 @@ void
 IIRScram_ArchitectureStatement::_resolve_guard_signal( symbol_table *sym_tab ){
   // Lookup all signals named "guard"
   IIRScram_SignalDeclaration            *guard_signal = NULL;
-  savant::set<IIRScram_Declaration>     *guard_decls = NULL;
+  savant::set<IIRScram_Declaration*>     *guard_decls = NULL;
   constraint_functor                    *functor = NULL;
 
-  guard_decls = new savant::set<IIRScram_Declaration>(*(sym_tab->find_set( "guard" )->convert_set<IIRScram_Declaration>()));
+  guard_decls = new savant::set<IIRScram_Declaration*>(*(sym_tab->find_set( "guard" )->convert_set<IIRScram_Declaration*>()));
   if( guard_decls == NULL ){
     ostringstream err;
     err << "No signal |guard|, implicit or explicit, has been declared.";
@@ -54,7 +54,7 @@ IIRScram_ArchitectureStatement::_resolve_guard_signal( symbol_table *sym_tab ){
 
   if( guard_decls->size() == 1 ){
     // Get rid of any that aren't boolean typed.
-    guard_signal = dynamic_cast<IIRScram_SignalDeclaration *>(guard_decls->getElement());
+    guard_signal = dynamic_cast<IIRScram_SignalDeclaration *>(*(guard_decls->begin()));
     if( guard_signal->_get_subtype() != 
         dynamic_cast<IIRScram_EnumerationSubtypeDefinition *>(_get_design_file()->get_standard_package()->get_boolean_type())){
       guard_signal = NULL;

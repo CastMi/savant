@@ -47,17 +47,17 @@ public:
 
   const string convert_to_library_name(){ return ""; }
   
-  savant::set<IIRScram_Declaration> *_symbol_lookup( savant::set<IIRScram_Declaration> * );
+  savant::set<IIRScram_Declaration*> *_symbol_lookup( savant::set<IIRScram_Declaration*> * );
 
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set( savant::set<IIRScram_Declaration> *, 
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_Declaration*> *, 
                                                        constraint_functor *functor = 0 );
 
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set( savant::set<IIRScram_TypeDefinition> *, 
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_TypeDefinition*> *, 
                                                        constraint_functor *functor = 0 );
 
 
-  IIRScram_Declaration *_determine_decl_in_set( savant::set<IIRScram_Declaration> *, IIRScram_TypeDefinition * );
-  IIRScram_TypeDefinition *_determine_rval_in_set( savant::set<IIRScram_TypeDefinition> *prefix_types,
+  IIRScram_Declaration *_determine_decl_in_set( savant::set<IIRScram_Declaration*> *, IIRScram_TypeDefinition * );
+  IIRScram_TypeDefinition *_determine_rval_in_set( savant::set<IIRScram_TypeDefinition*> *prefix_types,
                                                    IIRScram_TypeDefinition *return_type );
 
   IIRScram *_rval_to_decl( IIRScram_TypeDefinition *prefix_type, IIRScram_TypeDefinition *suffix_rval );

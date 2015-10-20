@@ -27,6 +27,7 @@
 
 #include "set.hh"
 #include "IIRBase_AccessTypeDefinition.hh"
+#include "IIR_Declaration.hh"
 #include "IIR_TypeDefinition.hh"
 #include "IIR_TextLiteral.hh"
 #include "savant.hh"
@@ -144,7 +145,7 @@ IIRBase_AccessTypeDefinition::set_element_subtype( IIR_TypeDefinition *new_eleme
   type->set_element_subtype( new_element_type );
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_AccessTypeDefinition::find_declarations( IIR_Name *to_find){
   IIR_TypeDefinition *type = get_designated_type();
   if( type == NULL ){

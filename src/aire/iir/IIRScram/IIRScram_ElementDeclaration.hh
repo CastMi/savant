@@ -44,13 +44,13 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set( savant::set<IIRScram_TypeDefinition> *,
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_TypeDefinition*> *,
                                                        constraint_functor *functor = 0 );
 
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set( savant::set<IIRScram_Declaration> *,
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_Declaration*> *,
                                                        constraint_functor *functor = 0 ); 
 
-  IIRScram_TypeDefinition *_determine_rval_in_set( savant::set<IIRScram_TypeDefinition> *, IIRScram_TypeDefinition * );
+  IIRScram_TypeDefinition *_determine_rval_in_set( savant::set<IIRScram_TypeDefinition*> *, IIRScram_TypeDefinition * );
 
   IIRScram *_rval_to_decl( IIRScram_TypeDefinition *prefix_rval, IIRScram_TypeDefinition *suffix_rval );
   IIR_Boolean _is_iir_element_declaration(){ return TRUE; }

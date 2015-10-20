@@ -36,7 +36,7 @@ IIRScram_IntegerTypeDefinition::_get_new_subtype(){
 }
 
 void 
-IIRScram_IntegerTypeDefinition::_build_implicit_operators( savant::set<IIRScram_Declaration> *add_to ){
+IIRScram_IntegerTypeDefinition::_build_implicit_operators( savant::set<IIRScram_Declaration*> *add_to ){
   const char *multiplying_operators[] = {"\"*\"", "\"/\"", "\"mod\"", "\"rem\"", NULL };
   IIRScram_ScalarTypeDefinition::_build_implicit_operators( add_to );
   IIRScram_TypeDefinition::_build_implicit_operators( multiplying_operators,

@@ -41,43 +41,45 @@ using namespace savant;
 class hidden_symbol_entry{
 public:
   hidden_symbol_entry( IIR_Declaration *init_declaration, 
-		       savant::set<IIR_Declaration> *init_hidden ){
+		       savant::set<IIR_Declaration*> *init_hidden ){
     my_declaration = init_declaration;
     hidden_declarations = init_hidden;
   }
 
   ~hidden_symbol_entry(){ delete hidden_declarations; }
 
-  IIR_Declaration *get_declaration(){ return my_declaration; }
-  savant::set<IIR_Declaration> *get_hidden_declarations(){ return hidden_declarations; }
+  IIR_Declaration *get_declaration() const{ return my_declaration; }
+  savant::set<IIR_Declaration*> *get_hidden_declarations() const{ return hidden_declarations; }
 
 private:
   IIR_Declaration *my_declaration;
-  savant::set<IIR_Declaration> *hidden_declarations;
+  savant::set<IIR_Declaration*> *hidden_declarations;
 };
 
 class declaration_chain {
 
-  // This file holds the declaration of a class used in the symbol table
-  // management for the savant project.  This class encapsulates a string
-  // with a list of pointers to declarations of "declarable things" of
-  // VHDL.  For instance, there might be a signal "x" and a variable "x" in
-  // the same entity.  In this case, the declaration_chain would have a
-  // string "x" and a two elements.
-  
-  // In addition, each declartion chain keeps a set of hidden declaration
-  // information.  The data in this set is somewhat redundant in that when
-  // one declaration is hiding another there will be two pointers to a
-  // single declaration in one chain.  However, the most frequent operation
-  // on the symbol lookup is to retrieve the set of declarations in a
-  // chain, so we're going to live with a replicated pointer in order to
-  // keep lookups speedy.
+  /*
+   * This file holds the declaration of a class used in the symbol table
+   * management for the savant project.  This class encapsulates a string
+   * with a list of pointers to declarations of "declarable things" of
+   * VHDL.  For instance, there might be a signal "x" and a variable "x" in
+   * the same entity.  In this case, the declaration_chain would have a
+   * string "x" and a two elements. 
+   * 
+   * In addition, each declartion chain keeps a set of hidden declaration
+   * information.  The data in this set is somewhat redundant in that when
+   * one declaration is hiding another there will be two pointers to a
+   * single declaration in one chain.  However, the most frequent operation
+   * on the symbol lookup is to retrieve the set of declarations in a
+   * chain, so we're going to live with a replicated pointer in order to
+   * keep lookups speedy.
+   */
 
 public:
 
   IIR_TextLiteral *name;
-  savant::set<IIR_Declaration> declarations;
-  savant::set<hidden_symbol_entry> hidden_declaration_info;
+  savant::set<IIR_Declaration*> declarations;
+  savant::set<hidden_symbol_entry*> hidden_declaration_info;
   
   declaration_chain() {
     // this is for safety's sake
@@ -95,11 +97,8 @@ inline ostream &operator<< (ostream &os, declaration_chain &dc) {
 
     os << "name: \"" << dc.name << "\"";
 
-    IIR_Declaration *current_declaration = dc.declarations.getElement();
-
-    while( current_declaration != NULL ) {
-      os << " " << *dynamic_cast<IIRScram_Declaration *>(current_declaration);
-      current_declaration = dc.declarations.getNextElement();
+    for( auto it = dc.declarations.begin(); it != dc.declarations.end(); it++ ) {
+      os << " " << *dynamic_cast<IIRScram_Declaration *>(*(it));
     }
 
     return os;

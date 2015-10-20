@@ -32,6 +32,9 @@
 #include "savant_config.hh"
 #include "IIR_Tuple.hh"
 
+/*
+ * Pair a formal and an (optional) actual.
+ */
 class IIR_AssociationElement : public virtual IIR_Tuple{
 
 public:

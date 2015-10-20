@@ -75,7 +75,7 @@ public:
   IIR_Boolean is_character_type();
   IIR_Boolean is_locally_static();
 
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
 
   ostream &print(ostream &);
 

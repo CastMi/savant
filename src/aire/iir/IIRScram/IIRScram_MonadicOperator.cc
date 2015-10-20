@@ -171,6 +171,6 @@ IIRScram_MonadicOperator::_get_operand() {
 }
 
 void
-IIRScram_MonadicOperator::_build_generic_parameter_set(savant::set<IIRScram_Declaration> *to_build) {
+IIRScram_MonadicOperator::_build_generic_parameter_set(savant::set<IIRScram_Declaration*> *to_build) {
   _get_operand()->_build_generic_parameter_set(to_build);
 }

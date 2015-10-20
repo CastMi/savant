@@ -43,14 +43,14 @@ using std::ostringstream;
 // legal arguments and such...
 void 
 IIRScram_VariableAssignmentStatement::_type_check(){
-  savant::set<IIRScram_TypeDefinition> *target_lvals = _get_target()->_get_rval_set();
+  savant::set<IIRScram_TypeDefinition*> *target_lvals = _get_target()->_get_rval_set();
   if( target_lvals == NULL ){
     report_undefined_symbol( _get_target() );
     return;
   }
   set_expression( _get_expression()->_semantic_transform( target_lvals ));
 
-  savant::set<IIRScram_TypeDefinition> *expression_rvals = _get_expression()->_get_rval_set();
+  savant::set<IIRScram_TypeDefinition*> *expression_rvals = _get_expression()->_get_rval_set();
   if( expression_rvals == NULL ){
     report_undefined_symbol( _get_expression() );
     return;
@@ -83,7 +83,7 @@ IIRScram_VariableAssignmentStatement::_type_check(){
     break;
   }
   case 1:{
-    IIRScram_TypeDefinition *type = target_lvals->getElement(); 
+    IIRScram_TypeDefinition *type = *target_lvals->begin(); 
     set_expression( _get_expression()->_rval_to_decl( type ));
     set_target( _get_target()->_rval_to_decl( type ) );
 

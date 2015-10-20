@@ -37,6 +37,9 @@ class IIRScram_EntityDeclaration;
 class IIRScram_LibraryDeclaration;
 class IIRScram_TypeDefinition;
 
+/*
+ * Represents either an entity, achitecture, package or package body
+ */
 class IIRScram_LibraryUnit : public virtual IIRScram_Declaration,
 			     public virtual IIRBase_LibraryUnit{
 

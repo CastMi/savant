@@ -28,8 +28,6 @@
 
 #include "IIRScram_LogicalOperators.hh"
 #include "error_func.hh"
-#include "set.hh"
 #include "resolution_func.hh"
-
 
 IIRScram_LogicalOperators::~IIRScram_LogicalOperators() {}

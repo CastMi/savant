@@ -29,7 +29,6 @@
 #include "IIRScram_RelationalOperators.hh"
 #include "resolution_func.hh"
 #include "error_func.hh"
-#include "set.hh"
 
 #include "StandardPackage.hh"
 #include "IIRScram_EnumerationTypeDefinition.hh"

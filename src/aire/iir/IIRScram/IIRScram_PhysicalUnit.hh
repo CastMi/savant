@@ -54,7 +54,7 @@ public:
 
   IIRScram_AttributeSpecificationList *_get_attribute_specification_list();
 
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
 
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return FALSE; }

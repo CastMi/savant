@@ -124,7 +124,7 @@ IIRBase_RecordTypeDefinition::is_locally_static(){
   return retval;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_RecordTypeDefinition::find_declarations( IIR_Name *to_find ){
   return get_element_declarations()->find_declarations( to_find );
 }

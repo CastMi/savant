@@ -33,7 +33,9 @@
 #include "savant_config.hh"
 #include "IIR_Literal.hh"
 
-
+/*
+ * Floating point double precision.
+ */
 class IIR_FloatingPointLiteral64 : public virtual IIR_Literal{
 
 public:

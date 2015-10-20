@@ -35,7 +35,6 @@
 #include "IIRScram_LengthAttribute.hh"
 #include "symbol_table.hh"
 #include "resolution_func.hh"
-#include "set.hh"
 #include "StandardPackage.hh"
 
 void

@@ -55,7 +55,7 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   
-  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition> *, 
+  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *, 
 					     IIRScram_SubprogramDeclaration * );
   
   void _type_check();
@@ -71,7 +71,7 @@ protected:
 private:
   // Handle error reporting in a function for both expressions and
   // alternatives.
-  IIRScram *_handle_reconciliation( savant::set<IIRScram_TypeDefinition> *rval_set,
+  IIRScram *_handle_reconciliation( savant::set<IIRScram_TypeDefinition*> *rval_set,
                                     IIRScram *node_in_consideration,
                                     char *error_part );
 };

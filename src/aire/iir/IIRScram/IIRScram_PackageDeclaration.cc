@@ -45,8 +45,6 @@
 #include "IIRScram_SequentialStatementList.hh"
 #include "IIRScram_SubtypeDeclaration.hh"
 
-
-
 #include "resolution_func.hh"
 #include "symbol_table.hh"
 
@@ -61,7 +59,7 @@ IIRScram_PackageDeclaration::~IIRScram_PackageDeclaration() {
 }
 
 void 
-IIRScram_PackageDeclaration::_add_to_declarative_region( savant::set<IIRScram_Declaration> *set_to_add ){
+IIRScram_PackageDeclaration::_add_to_declarative_region( savant::set<IIRScram_Declaration*> *set_to_add ){
   IIRScram_Declaration::_add_to_declarative_region( _get_package_declarative_part(), set_to_add );
 }
 

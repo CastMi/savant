@@ -68,7 +68,7 @@ IIRScram_IfStatement::_type_check(){
 }
 
 IIR_Boolean 
-IIRScram_IfStatement::_type_check_return_statements( savant::set<IIRScram_TypeDefinition> *context_set, IIRScram_SubprogramDeclaration *subprogram_decl ){
+IIRScram_IfStatement::_type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *context_set, IIRScram_SubprogramDeclaration *subprogram_decl ){
   IIR_Boolean retval = false;
 
   IIR_Boolean retval1 = false;

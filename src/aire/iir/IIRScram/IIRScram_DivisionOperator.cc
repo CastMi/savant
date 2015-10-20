@@ -27,7 +27,6 @@
 #include "IIRScram_DivisionOperator.hh"
 #include "IIRScram_IntegerSubtypeDefinition.hh"
 #include "StandardPackage.hh"
-#include "set.hh"
 #include "error_func.hh"
 #include "resolution_func.hh"
 

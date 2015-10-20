@@ -50,7 +50,7 @@ IIRScram_ForLoopStatement::_type_check(){
 }
 
 IIR_Boolean 
-IIRScram_ForLoopStatement::_type_check_return_statements( savant::set<IIRScram_TypeDefinition> *context_set, 
+IIRScram_ForLoopStatement::_type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *context_set, 
 							  IIRScram_SubprogramDeclaration *subprogram_decl ){
   IIR_Boolean retval;
 

@@ -27,7 +27,6 @@
 #include "IIRScram_Name.hh"
 #include "IIRScram_TypeDefinition.hh"
 
-#include "set.hh"
 #include "resolution_func.hh"
 #include "error_func.hh"
 

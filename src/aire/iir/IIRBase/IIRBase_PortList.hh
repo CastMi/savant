@@ -34,6 +34,9 @@
 class IIR_SignalInterfaceDeclaration;
 class IIR_TerminalInterfaceDeclaration;
 
+/*
+ * Zero or more IIR_InterfaceDeclarations
+ */
 class IIRBase_PortList : public virtual IIRBase_InterfaceList, public virtual IIR_PortList{
 
 public:

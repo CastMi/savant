@@ -42,13 +42,13 @@ IIRScram_FloatingPointLiteral::~IIRScram_FloatingPointLiteral() {}
 
 
 void 
-IIRScram_FloatingPointLiteral::_type_check( savant::set<IIRScram_TypeDefinition> * ){
+IIRScram_FloatingPointLiteral::_type_check( savant::set<IIRScram_TypeDefinition*> * ){
   // We could make sure that the set contains a floating point type...
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_FloatingPointLiteral::_get_rval_set(constraint_functor *functor){
-  savant::set<IIRScram_TypeDefinition> *retval = new savant::set<IIRScram_TypeDefinition>( dynamic_cast<IIRScram_FloatingSubtypeDefinition *>(_get_design_file()->get_standard_package()->get_savant_universal_real()) );
+  savant::set<IIRScram_TypeDefinition*> *retval = new savant::set<IIRScram_TypeDefinition*>( dynamic_cast<IIRScram_FloatingSubtypeDefinition *>(_get_design_file()->get_standard_package()->get_savant_universal_real()) );
 
   retval->reduce_set( functor );
 
@@ -70,9 +70,9 @@ IIRScram_FloatingPointLiteral::get(IIR_Int32 base,
 
   IIRScram_FloatingPointLiteral *retval = new IIRScram_FloatingPointLiteral();
   retval->set_base(base);
-  retval->set_mantissa( strdup(mantissa), mantissa_length );
+  retval->set_mantissa( mantissa, mantissa_length );
   if (exponent != NULL) {
-    retval->set_exponent( strdup(exponent), exponent_length );
+    retval->set_exponent( exponent, exponent_length );
   }
   else {
     retval->set_exponent(exponent, exponent_length);

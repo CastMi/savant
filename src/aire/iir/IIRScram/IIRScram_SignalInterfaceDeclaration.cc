@@ -38,7 +38,6 @@
 #include "IIRScram_TypeDefinition.hh"
 #include "IIRScram_Attribute.hh"
 
-#include "set.hh"
 #include "symbol_table.hh"
 #include "error_func.hh"
 #include "savant.hh"

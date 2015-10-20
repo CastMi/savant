@@ -32,7 +32,9 @@
 #include "savant_config.hh"
 #include "IIR_Literal.hh"
 
-
+/*
+ * Floating point literal.
+ */
 class IIR_FloatingPointLiteral : public virtual IIR_Literal{
   friend class VHDLParser;
 

@@ -41,8 +41,8 @@ IIRScram_SimultaneousIfStatement::_type_check(){
   ASSERT( new_condition != NULL );
   ASSERT( new_condition->is_resolved() == TRUE );
   set_condition( new_condition );
-  savant::set<IIRScram_TypeDefinition> *bool_rvals = 
-    new savant::set<IIRScram_TypeDefinition>(dynamic_cast<IIRScram_TypeDefinition *>(_get_design_file()->get_standard_package()->get_boolean_type()));
+  savant::set<IIRScram_TypeDefinition*> *bool_rvals = 
+    new savant::set<IIRScram_TypeDefinition*>(dynamic_cast<IIRScram_TypeDefinition *>(_get_design_file()->get_standard_package()->get_boolean_type()));
   if( _get_elsif() != NULL ){
     _get_elsif()->_type_check( bool_rvals );
   }

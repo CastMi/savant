@@ -27,12 +27,9 @@
 
 #include "IIRScram_MultiplicationOperator.hh"
 #include "IIRScram_TypeDefinition.hh"
-#include "set.hh"
 #include "error_func.hh"
 #include "resolution_func.hh"
 #include "error_func.hh"
-
-
 
 IIRScram*
 IIRScram_MultiplicationOperator::_clone() {

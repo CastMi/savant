@@ -92,7 +92,7 @@ public:
 
   void _come_into_scope( symbol_table *sym_tab, IIRScram_TypeDeclaration * );
   void _come_out_of_scope( symbol_table *sym_tab );
-  void _build_implicit_operators( savant::set<IIRScram_Declaration> * );
+  void _build_implicit_operators( savant::set<IIRScram_Declaration*> * );
   
   virtual void _set_resolution_function( IIRScram_FunctionDeclaration * );
 

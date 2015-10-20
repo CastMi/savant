@@ -87,12 +87,12 @@ IIRScram_TypeDeclaration::_come_into_scope( symbol_table *sym_tab ){
       
       if( type->_is_iir_access_type_definition() == TRUE &&
 	  type->_designates_incomplete_type() == TRUE ){
-	sym_tab->get_designates_incomplete_type()->add( dynamic_cast<IIRScram_TypeDeclaration *>(this) );
+	sym_tab->get_designates_incomplete_type()->insert( dynamic_cast<IIRScram_TypeDeclaration *>(this) );
       }
     }
     
     if( is_incomplete_type_declaration() == TRUE ){
-      sym_tab->get_incomplete_types()->add( dynamic_cast<IIRScram_TypeDeclaration *>(this) );
+      sym_tab->get_incomplete_types()->insert( dynamic_cast<IIRScram_TypeDeclaration *>(this) );
     }
   }
 }
@@ -104,7 +104,7 @@ IIRScram_TypeDeclaration::_come_out_of_scope( symbol_table *sym_tab ){
   }
 
   if( _designates_incomplete_type() == TRUE ){
-    sym_tab->get_designates_incomplete_type()->remove( dynamic_cast<IIRScram_TypeDeclaration *>(this) );    
+    sym_tab->get_designates_incomplete_type()->erase( dynamic_cast<IIRScram_TypeDeclaration *>(this) );    
   }
 }
 

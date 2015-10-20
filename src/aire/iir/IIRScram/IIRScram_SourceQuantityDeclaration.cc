@@ -36,10 +36,10 @@ IIRScram_SourceQuantityDeclaration::IIRScram_SourceQuantityDeclaration() {}
 
 IIRScram_SourceQuantityDeclaration::~IIRScram_SourceQuantityDeclaration() {}
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_SourceQuantityDeclaration::_get_rval_set() {
-  savant::set<IIRScram_TypeDefinition> *retval = new savant::set<IIRScram_TypeDefinition>;
-  retval->add( _get_subtype() );
+  savant::set<IIRScram_TypeDefinition*> *retval = new savant::set<IIRScram_TypeDefinition*>;
+  retval->insert( _get_subtype() );
   return retval;
 }
 

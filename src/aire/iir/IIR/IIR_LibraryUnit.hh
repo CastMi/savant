@@ -34,6 +34,9 @@ class IIR_DeclarationList;
 class IIR_AttributeSpecificationList;
 class IIR_LibraryDeclaration;
 
+/*
+ * Represents either an entity, achitecture, package or package body
+ */
 class IIR_LibraryUnit : public virtual IIR_Declaration{
 public:
   virtual ~IIR_LibraryUnit() {}

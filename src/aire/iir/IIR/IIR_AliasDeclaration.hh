@@ -34,6 +34,9 @@
 
 class IIR_TypeDefinition;
 
+/*
+ * see IEEE 1076-2008, cap 6.6
+ */
 class IIR_AliasDeclaration : public virtual IIR_Declaration{
 
 public:

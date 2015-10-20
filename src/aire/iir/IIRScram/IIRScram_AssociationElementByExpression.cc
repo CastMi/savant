@@ -51,146 +51,142 @@ IIRScram_AssociationElementByExpression::~IIRScram_AssociationElementByExpressio
 
 IIR_Boolean 
 IIRScram_AssociationElementByExpression::_is_readable(){
-  ASSERT( is_resolved() == TRUE );
+   ASSERT( is_resolved() == TRUE );
 
-  return _get_actual()->_is_readable();
+   return _get_actual()->_is_readable();
 }
 
 IIR_Boolean 
 IIRScram_AssociationElementByExpression::_is_writable(){
-  ASSERT( is_resolved() == TRUE );
-  return _get_actual()->_is_writable();
+   ASSERT( is_resolved() == TRUE );
+   return _get_actual()->_is_writable();
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_AssociationElementByExpression::_get_rval_set(constraint_functor *functor){
-  savant::set<IIRScram_TypeDefinition> *retval = NULL;
+   savant::set<IIRScram_TypeDefinition*> *retval = NULL;
 
-  // the actual will be NULL if the VHDL says "open".
-  savant::set<IIRScram_TypeDefinition> *actual_rvals = NULL;
-  if( _get_actual() != NULL ){
-    actual_rvals = _get_actual()->_get_rval_set( functor );
-    if( actual_rvals == NULL ){
-      return NULL;
-    }
-  }
-
-  if( _get_formal() == NULL ){
-    retval = actual_rvals;
-  }
-  else{
-    switch( _get_formal()->get_kind() ){
-    case IIR_INTEGER_LITERAL:
-    case IIR_OTHERS_INITIALIZATION:{
-      // Then we need to return an list of the array types with elements that match
-      // the actuals.
-      
-      // Get the set of array types...
-      savant::set<IIRScram_ArrayTypeDefinition> *array_types = _get_symbol_table()->get_in_scope_array_types()->convert_set<IIRScram_ArrayTypeDefinition>();
-
-      IIRScram_TypeDefinition *current_array_type; 
-      current_array_type = array_types->getElement();
-
-      while( current_array_type != NULL ){
-	IIRScram_TypeDefinition *actual_type = actual_rvals->getElement();
-	
-	bool one_matched = false;
-	while( actual_type != NULL ){
-	  if( actual_type->is_compatible( current_array_type->_get_element_subtype()) != NULL ){
-	    one_matched = true;
-	  }
-	  actual_type = actual_rvals->getNextElement();
-	}
-
-	if( one_matched == true ){
-	  if( retval == NULL ){
-	    retval = new savant::set<IIRScram_TypeDefinition>;
-	  }
-	  retval->add( current_array_type );
-	}
-	
-	current_array_type = array_types->getNextElement();
-      }
-
-      delete actual_rvals;
-
-      break;
-    }
-    default:{
-//       savant::set<IIRScram_TypeDefinition> *formal_rvals = _get_formal()->_get_rval_set();
+   // the actual will be NULL if the VHDL says "open".
+   savant::set<IIRScram_TypeDefinition*> *actual_rvals = NULL;
+   if( _get_actual() != NULL ){
+      actual_rvals = _get_actual()->_get_rval_set( functor );
       if( actual_rvals == NULL ){
-	return NULL;
+         return NULL;
       }
-      else{
-	return actual_rvals;
-      }
-    }
-    }
-  }
+   }
 
-  return retval;
+   if( _get_formal() == NULL ){
+      retval = actual_rvals;
+   }
+   else{
+      switch( _get_formal()->get_kind() ){
+         case IIR_INTEGER_LITERAL:
+         case IIR_OTHERS_INITIALIZATION:
+            {
+               // Then we need to return an list of the array types with elements that match
+               // the actuals.
+
+               // Get the set of array types...
+               savant::set<IIRScram_ArrayTypeDefinition*> *array_types = _get_symbol_table()->get_in_scope_array_types()->convert_set<IIRScram_ArrayTypeDefinition*>();
+
+               for(auto it = array_types->begin(); it != array_types->end(); it++) {
+                  ASSERT( *it != NULL);
+                  bool one_matched = false;
+                  for(auto it_in = actual_rvals->begin(); it_in != actual_rvals->end(); it_in++) {
+                     ASSERT( *it_in != NULL);
+                     if( (*it_in)->is_compatible( (*it)->_get_element_subtype()) != NULL ){
+                        one_matched = true;
+                     }
+                  }
+
+                  if( one_matched == true ){
+                     if( retval == NULL ){
+                        retval = new savant::set<IIRScram_TypeDefinition*>;
+                     }
+                     retval->insert( *it );
+                  }
+               }
+
+               delete actual_rvals;
+
+               break;
+            }
+         default:
+            {
+               //       savant::set<IIRScram_TypeDefinition*> *formal_rvals = _get_formal()->_get_rval_set();
+               if( actual_rvals == NULL ){
+                  return NULL;
+               }
+               else{
+                  return actual_rvals;
+               }
+            }
+      }
+   }
+
+   return retval;
 }
 
 void 
-IIRScram_AssociationElementByExpression::_type_check( savant::set<IIRScram_TypeDefinition> *context_set ){
-  IIRScram *expr = _get_actual();
+IIRScram_AssociationElementByExpression::_type_check( savant::set<IIRScram_TypeDefinition*> *context_set ){
+   IIRScram *expr = _get_actual();
 
-  ASSERT( expr != NULL );
+   ASSERT( expr != NULL );
 
-  expr->_type_check( context_set );
+   expr->_type_check( context_set );
 }
 
 IIRScram *
-IIRScram_AssociationElementByExpression::_semantic_transform( savant::set<IIRScram_TypeDefinition> *context_set ){
-  IIRScram *expr = _get_actual();
+IIRScram_AssociationElementByExpression::_semantic_transform( savant::set<IIRScram_TypeDefinition*> *context_set ){
+   IIRScram *expr = _get_actual();
 
-  ASSERT( expr != NULL );
+   ASSERT( expr != NULL );
 
-  set_actual( expr->_semantic_transform( context_set ) );
+   set_actual( expr->_semantic_transform( context_set ) );
 
-  return this;
+   return this;
 }
 
 IIRScram *
 IIRScram_AssociationElementByExpression::_rval_to_decl( IIRScram_TypeDefinition *my_rval){
 
-  if( is_by_others() == TRUE &&
-      my_rval->is_array_type() == TRUE ){
-    // Actual is an element of the array.
-    IIRScram_TypeDefinition *element_subtype = my_rval->_get_element_subtype();
-    set_actual( _get_actual()->_rval_to_decl( element_subtype) );
-  }
-  else{    
-    set_actual( _get_actual()->_semantic_transform( my_rval ) );
-    _get_actual()->_type_check( my_rval );
-    set_actual( _get_actual()->_rval_to_decl( my_rval ) );
-  }
+   if( is_by_others() == TRUE &&
+         my_rval->is_array_type() == TRUE ){
+      // Actual is an element of the array.
+      IIRScram_TypeDefinition *element_subtype = my_rval->_get_element_subtype();
+      set_actual( _get_actual()->_rval_to_decl( element_subtype) );
+   }
+   else{    
+      set_actual( _get_actual()->_semantic_transform( my_rval ) );
+      _get_actual()->_type_check( my_rval );
+      set_actual( _get_actual()->_rval_to_decl( my_rval ) );
+   }
 
 
-  return (IIRScram *)this;
+   return (IIRScram *)this;
 }
 
 IIRScram *
 IIRScram_AssociationElementByExpression::_clone() {
-  IIRScram *elem;
-  IIRScram_AssociationElementByExpression *assoc;
+   IIRScram *elem;
+   IIRScram_AssociationElementByExpression *assoc;
 
-  assoc = new IIRScram_AssociationElementByExpression();
-  IIRScram::_clone( assoc );
+   assoc = new IIRScram_AssociationElementByExpression();
+   IIRScram::_clone( assoc );
 
-  if (_get_formal() != NULL) {
-    elem = _get_formal()->_clone();
-    assoc->set_formal(elem);
-  }
-  elem = _get_actual()->_clone();
-  assoc->set_actual(elem);
+   if (_get_formal() != NULL) {
+      elem = _get_formal()->_clone();
+      assoc->set_formal(elem);
+   }
+   elem = _get_actual()->_clone();
+   assoc->set_actual(elem);
 
-  return assoc;
+   return assoc;
 }
 
 visitor_return_type *
 IIRScram_AssociationElementByExpression::_accept_visitor( node_visitor *visitor,
-							  visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_AssociationElementByExpression(this, arg);
+      visitor_argument_type *arg ){
+   ASSERT(visitor != NULL);
+   return visitor->visit_IIR_AssociationElementByExpression(this, arg);
 }

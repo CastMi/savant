@@ -32,9 +32,8 @@
 #include "IIRScram_SignalDeclaration.hh"
 
 #include "error_func.hh"
-#include "set.hh"
 #include "resolution_func.hh"
-
+#include "constraint_functors.hh"
 
 IIRScram_TypeDefinition *
 IIRScram_DelayedAttribute::_get_subtype(){

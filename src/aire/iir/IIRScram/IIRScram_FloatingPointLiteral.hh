@@ -51,8 +51,8 @@ public:
 					     IIR_Int32 exponent_length );
 
 
-  void _type_check( savant::set<IIRScram_TypeDefinition> * );
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor=0);
+  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor=0);
 
   IIR_Boolean _is_floating_literal() { return TRUE; }
   IIRScram *_clone() { return this; }

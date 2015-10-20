@@ -55,7 +55,7 @@ IIRScram_ValAttribute::_resolve_suffix_special(){
 
     ASSERT( _get_prefix()->is_resolved() == TRUE );
 
-    savant::set<IIRScram_TypeDefinition> *suffix_types = _get_suffix()->_get_rval_set();
+    savant::set<IIRScram_TypeDefinition*> *suffix_types = _get_suffix()->_get_rval_set();
     if( suffix_types == NULL ){
       report_undefined_symbol( _get_suffix() );
     }
@@ -74,7 +74,7 @@ IIRScram_ValAttribute::_resolve_suffix_special(){
       break;
     }
     case 1:{
-      IIRScram_TypeDefinition *suffix_type = suffix_types->getElement();
+      IIRScram_TypeDefinition *suffix_type = *suffix_types->begin();
 
       _set_suffix( _get_suffix()->_semantic_transform( suffix_type ) );
       _get_suffix()->_type_check( suffix_type );
@@ -83,7 +83,7 @@ IIRScram_ValAttribute::_resolve_suffix_special(){
       break;
     }
     default:{
-      report_ambiguous_error( _get_suffix(), suffix_types->convert_set<IIR_TypeDefinition>() );
+      report_ambiguous_error( _get_suffix(), suffix_types->convert_set<IIR_TypeDefinition*>() );
       break;
     }
     }

@@ -58,7 +58,7 @@ public:
   */
   IIRScram_Declaration *_get_package_declaration();
 
-  void _add_to_declarative_region( savant::set<IIRScram_Declaration> * );
+  void _add_to_declarative_region( savant::set<IIRScram_Declaration*> * );
   void _make_interface_visible(symbol_table *);
 
   void _type_check();

@@ -35,9 +35,9 @@ IIRBase_ElementDeclaration::IIRBase_ElementDeclaration(){}
 
 IIRBase_ElementDeclaration::~IIRBase_ElementDeclaration(){}
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_ElementDeclaration::find_declarations( IIR_Name *to_find ){
-  savant::set<IIR_Declaration> *retval = NULL;
+  savant::set<IIR_Declaration*> *retval = NULL;
 
   ASSERT( get_subtype() != NULL );
 

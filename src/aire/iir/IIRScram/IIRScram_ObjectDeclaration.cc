@@ -43,109 +43,108 @@
 using std::ostringstream;
 
 IIRScram_ObjectDeclaration::IIRScram_ObjectDeclaration() {
-  set_attributes(new IIRScram_AttributeSpecificationList());
+   set_attributes(new IIRScram_AttributeSpecificationList());
 }
 
 IIRScram_ObjectDeclaration::~IIRScram_ObjectDeclaration() {
-  //Release the list memory
-  delete get_attributes();
+   //Release the list memory
+   delete get_attributes();
 }
 
 IIR_Int32 
 IIRScram_ObjectDeclaration::get_num_indexes(){
-  return _get_subtype()->get_num_indexes();
+   return _get_subtype()->get_num_indexes();
 }
 
 IIRScram_TypeDefinition *
 IIRScram_ObjectDeclaration::_get_type_of_element( int index ){
-  IIRScram_TypeDefinition *retval;
-  retval = _get_subtype()->_get_type_of_element(index);
+   IIRScram_TypeDefinition *retval;
+   retval = _get_subtype()->_get_type_of_element(index);
 
-  return retval;
+   return retval;
 }
 
 void 
 IIRScram_ObjectDeclaration::_type_check(){
-  if( get_value() != NULL ){
-    savant::set<IIRScram_TypeDefinition> *initializer_types = 
-      dynamic_cast<IIRScram *>(get_value())->_get_rval_set();
-    if( initializer_types == NULL ){
-      report_undefined_symbol( get_value() );
-      return;
-    }
-
-    IIR_Boolean exact_match = FALSE;
-    IIRScram_TypeDefinition *current_type = initializer_types->getElement();
-    while( current_type != NULL ){
-      if( current_type == _get_subtype() ){
-	exact_match = TRUE;
-	break;
+   if( get_value() != NULL ){
+      savant::set<IIRScram_TypeDefinition*> *initializer_types = 
+         dynamic_cast<IIRScram *>(get_value())->_get_rval_set();
+      if( initializer_types == NULL ){
+         report_undefined_symbol( get_value() );
+         return;
       }
-      current_type = initializer_types->getNextElement();
-    }
-    
-    IIR_Boolean one_matched = FALSE;
-    if( exact_match == FALSE ){
-      current_type = initializer_types->getElement();
-      while( current_type != NULL ){
-	if( current_type->is_compatible( _get_subtype() ) != NULL ){
-	  one_matched = TRUE;
-	  break;
-	}
-	current_type = initializer_types->getNextElement();
+
+      IIR_Boolean exact_match = FALSE;
+      IIRScram_TypeDefinition *current_type = NULL;
+      for(auto it = initializer_types->begin(); it != initializer_types->end(); it++) {
+         if( *it == _get_subtype() ){
+            current_type = *it;
+            exact_match = TRUE;
+            break;
+         }
       }
-    }
 
-    if( exact_match == TRUE ){
-      set_value( _get_value()->_semantic_transform( current_type ) );
-      _get_value()->_type_check( current_type );
-      set_value( _get_value()->_rval_to_decl( current_type ) );      
-    }
-    else if( one_matched == TRUE ){
-      set_value( _get_value()->_semantic_transform( _get_subtype() ) );
-      _get_value()->_type_check( _get_subtype() );
-      set_value( _get_value()->_rval_to_decl( _get_subtype() ) );
-    }
-    else{
-      ostringstream err;
-      err << "Initializer |" << *_get_value() << "| is incompatible with type |"
-          << *_get_subtype()->_get_declarator() << "|.";
-      report_error( this, err.str() );
-    }
+      IIR_Boolean one_matched = FALSE;
+      if( exact_match == FALSE ){
+         for(auto it = initializer_types->begin(); it != initializer_types->end(); it++) {
+            if( (*it)->is_compatible( _get_subtype() ) != NULL ){
+               current_type = *it;
+               one_matched = TRUE;
+               break;
+            }
+         }
+      }
 
-    delete initializer_types;
-  }
-  // There's no initializer.
-  if( (is_interface() == FALSE && (is_variable() == TRUE || is_signal() == TRUE))
-      || is_element() == TRUE ){
-    if( _get_subtype()->is_access_type() == FALSE && 
-	_get_subtype()->is_unconstrained_array_type() == TRUE ){
-      ostringstream err;
-      err << "A signal or variable object with an array type must be constrained.";
-      report_error( this, err.str() ); 
-    }
-  }
-  
+      if( exact_match == TRUE ){
+         set_value( _get_value()->_semantic_transform( current_type ) );
+         _get_value()->_type_check( current_type );
+         set_value( _get_value()->_rval_to_decl( current_type ) );      
+      }
+      else if( one_matched == TRUE ){
+         set_value( _get_value()->_semantic_transform( _get_subtype() ) );
+         _get_value()->_type_check( _get_subtype() );
+         set_value( _get_value()->_rval_to_decl( _get_subtype() ) );
+      }
+      else{
+         ostringstream err;
+         err << "Initializer |" << *_get_value() << "| is incompatible with type |"
+            << *_get_subtype()->_get_declarator() << "|.";
+         report_error( this, err.str() );
+      }
+
+      delete initializer_types;
+   }
+   // There's no initializer.
+   if( (is_interface() == FALSE && (is_variable() == TRUE || is_signal() == TRUE))
+         || is_element() == TRUE ){
+      if( _get_subtype()->is_access_type() == FALSE && 
+            _get_subtype()->is_unconstrained_array_type() == TRUE ){
+         ostringstream err;
+         err << "A signal or variable object with an array type must be constrained.";
+         report_error( this, err.str() ); 
+      }
+   }
+
 }
 
 const IIR_Char*
 IIRScram_ObjectDeclaration::_get_mangling_prefix(){
-  return "";
+   return "";
 }
 
 void
 IIRScram_ObjectDeclaration::_clone( IIRScram *clone ) {
-  ASSERT( clone->_is_iir_object_declaration() == TRUE );
-  IIRScram_ObjectDeclaration *as_object = dynamic_cast<IIRScram_ObjectDeclaration *>(clone);
+   ASSERT( clone->_is_iir_object_declaration() == TRUE );
+   IIRScram_ObjectDeclaration *as_object = dynamic_cast<IIRScram_ObjectDeclaration *>(clone);
 
-  IIRScram_Declaration::_clone(clone);
+   IIRScram_Declaration::_clone(clone);
 
-  as_object->set_attributes(get_attributes());
-  as_object->set_subtype(_get_subtype());
+   as_object->set_attributes(get_attributes());
+   as_object->set_subtype(_get_subtype());
 }
 
 
 IIRScram_AttributeSpecificationList *
 IIRScram_ObjectDeclaration::_get_attribute_specification_list() { 
-  return dynamic_cast<IIRScram_AttributeSpecificationList *>(get_attributes()); 
+   return dynamic_cast<IIRScram_AttributeSpecificationList *>(get_attributes()); 
 }

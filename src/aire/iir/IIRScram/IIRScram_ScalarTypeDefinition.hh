@@ -74,7 +74,7 @@ public:
   IIRScram                      *_get_direction();
 protected:
   virtual ~IIRScram_ScalarTypeDefinition() = 0;
-  void _build_implicit_operators( savant::set<IIRScram_Declaration> * );    
+  void _build_implicit_operators( savant::set<IIRScram_Declaration*> * );    
 private:
 };
 #endif

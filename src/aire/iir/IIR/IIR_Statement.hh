@@ -45,7 +45,7 @@ public:
   virtual void set_label( IIR_Label *label) = 0;
   virtual IIR_Label *get_label() const = 0;
 
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name * ) = 0;
+  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_Name * ) = 0;
 
   /** For assertion statements this method is overloaded to return the
       assertion condtion.  For anything else it returns 0. */

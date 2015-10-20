@@ -29,9 +29,10 @@
 
 #include "savant.hh"
 #include <string>
-using std::string;
+#include <cstdint>
 #include <iostream>
 using std::ostream;
+using std::string;
 
 /*
  * This file defines all the primitive types used inside AIRE,
@@ -40,6 +41,8 @@ using std::ostream;
 
 #ifndef TRUE
 #define TRUE true
+#endif
+#ifndef FALSE
 #define FALSE false
 #endif
 

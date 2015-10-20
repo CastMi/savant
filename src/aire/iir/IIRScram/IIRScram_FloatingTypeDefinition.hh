@@ -61,7 +61,7 @@ public:
                                                                   IIRScram_DesignFile           *design_file);
 
 protected:
-  void _build_implicit_operators( savant::set<IIRScram_Declaration> * );
+  void _build_implicit_operators( savant::set<IIRScram_Declaration*> * );
     
 private:
   

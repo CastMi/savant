@@ -46,7 +46,7 @@ public:
   IIRScram_CaseStatementAlternative();
   virtual ~IIRScram_CaseStatementAlternative();
 
-  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition> *,
+  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *,
 					     IIRScram_SubprogramDeclaration * );
 
   IIR_Boolean _is_iir_case_statement_alternative() {return TRUE;};

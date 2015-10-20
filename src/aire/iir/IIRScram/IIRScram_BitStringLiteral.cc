@@ -29,20 +29,21 @@
 //---------------------------------------------------------------------------
 
 #include "IIRScram_BitStringLiteral.hh"
+#include "IIRScram_TypeDefinition.hh"
 #include "set.hh"
 
 IIRScram_BitStringLiteral::~IIRScram_BitStringLiteral() {}  
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_BitStringLiteral::_get_rval_set(constraint_functor *functor ){
-  savant::set<IIRScram_TypeDefinition> *retval = _get_rval_set_for_string();
+  savant::set<IIRScram_TypeDefinition*> *retval = _get_rval_set_for_string();
   retval->reduce_set( functor );
   return retval;
 }
 
 
 void
-IIRScram_BitStringLiteral::_type_check( savant::set<IIRScram_TypeDefinition> * ){}
+IIRScram_BitStringLiteral::_type_check( savant::set<IIRScram_TypeDefinition*> * ){}
 
 
 IIRScram *

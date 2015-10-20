@@ -118,13 +118,13 @@ IIRScram_RecordTypeDefinition::_make_interface_visible( symbol_table *sym_tab ){
 void
 IIRScram_RecordTypeDefinition::_come_into_scope( symbol_table *sym_tab,
                                                IIRScram_TypeDeclaration *td){
-  sym_tab->get_in_scope_record_types()->add( dynamic_cast<IIRScram_RecordTypeDefinition *>(this ) );
+  sym_tab->get_in_scope_record_types()->insert( dynamic_cast<IIRScram_RecordTypeDefinition *>(this ) );
   IIRScram_TypeDefinition::_come_into_scope( sym_tab, td );
 }
 
 void
 IIRScram_RecordTypeDefinition::_come_out_of_scope( symbol_table *sym_tab ){
-  sym_tab->get_in_scope_record_types()->remove( dynamic_cast<IIRScram_RecordTypeDefinition *>(this ) );
+  sym_tab->get_in_scope_record_types()->erase( dynamic_cast<IIRScram_RecordTypeDefinition *>(this ) );
 }
 
 visitor_return_type *

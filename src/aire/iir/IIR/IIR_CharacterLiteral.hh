@@ -32,6 +32,9 @@
 #include "savant_config.hh"
 #include "IIR_TextLiteral.hh"
 
+/*
+ * Character literals.
+ */
 class IIR_CharacterLiteral : public virtual IIR_TextLiteral{
 public:
   virtual ~IIR_CharacterLiteral() {}

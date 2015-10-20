@@ -111,18 +111,18 @@ void
 report_undefined_symbol( IIR_Declaration *, IIR_Name * );
 
 void 
-report_undefined_symbol( savant::set<IIR_TypeDefinition> *, IIR * );
+report_undefined_symbol( savant::set<IIR_TypeDefinition*> *, IIR * );
 
 void 
-report_ambiguous_error( IIR *error_info, savant::set<IIR_Declaration> *error_set );
+report_ambiguous_error( IIR *error_info, savant::set<IIR_Declaration*> *error_set );
 
 void 
-report_ambiguous_error( IIR *error_info, savant::set<IIR_TypeDefinition> *error_set );
+report_ambiguous_error( IIR *error_info, savant::set<IIR_TypeDefinition*> *error_set );
 
 void 
 report_ambiguous_error( IIR_Declaration *prefix,
 			IIR_Name *suffix,
-			savant::set<IIR_Declaration> *error_set );
+			savant::set<IIR_Declaration*> *error_set );
 
 void
 report_undefined_function(char *func_name);

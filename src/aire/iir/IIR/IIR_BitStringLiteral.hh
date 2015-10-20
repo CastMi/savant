@@ -30,6 +30,9 @@
 #include "savant_config.hh"
 #include "IIR_TextLiteral.hh"
 
+/*
+ * Array of zero or more literals having either valoe 0 or 1
+ */
 class IIR_BitStringLiteral : public virtual IIR_TextLiteral{
 
 public:

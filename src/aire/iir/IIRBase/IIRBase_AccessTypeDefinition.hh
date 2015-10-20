@@ -65,7 +65,7 @@ public:
   IIR_TypeDefinition *get_element_subtype();
   void set_element_subtype( IIR_TypeDefinition * );
 
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name *);
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *);
 
   void publish_vhdl_decl(ostream &);
   void publish_vhdl_subtype_decl(ostream &);

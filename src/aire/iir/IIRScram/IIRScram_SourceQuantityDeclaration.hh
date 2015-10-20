@@ -47,7 +47,7 @@ public:
 
   /** These methods calculate a node's rval_set.Either will return a  set with a 
   bunch of type definitions, or will return NULL if it doesn't have a valid rval. */
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set();
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set();
 
   /** This method tells us if a declaration is a an IIR_SourceQuantityDeclaration. */
   IIR_Boolean _is_sourceQ() {

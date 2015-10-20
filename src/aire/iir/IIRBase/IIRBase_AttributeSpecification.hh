@@ -55,7 +55,7 @@ public:
 
   IIR *convert_tree(plugin_class_factory *factory);
 
-  /** This holds the the declaration of the attribute that is being
+  /** This holds the declaration of the attribute that is being
       specified... */
   void set_declaration( IIR_Declaration *);
   IIR_Declaration *get_declaration();

@@ -42,7 +42,7 @@ IIRScram_LeftAttribute::_resolve_suffix_special(){
   _resolve_suffix_local_static_int();
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_LeftAttribute::_get_rval_set(constraint_functor *functor){
   return _get_rval_set_high_low_left_right( functor );
 }

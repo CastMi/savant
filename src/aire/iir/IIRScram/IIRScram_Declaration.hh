@@ -85,7 +85,7 @@ public:
     return (IIRScram_Declaration *)this;
   }
 
-  void _type_check( savant::set<IIRScram_TypeDefinition> * ){}
+  void _type_check( savant::set<IIRScram_TypeDefinition*> * ){}
 
   /** This method checks to see if the type of argument "arg_num" matches
       that passed in and returns a boolean. */
@@ -94,12 +94,12 @@ public:
   /** This seems unnecessary, but it gets called when a symbol has already
       been resolved and something else in the same statement is getting
       resolved.. */
-  savant::set<IIRScram_Declaration> *_symbol_lookup();
-  savant::set<IIRScram_Declaration> *_symbol_lookup( savant::set<IIRScram_Declaration> * );
+  savant::set<IIRScram_Declaration*> *_symbol_lookup();
+  savant::set<IIRScram_Declaration*> *_symbol_lookup( savant::set<IIRScram_Declaration*> * );
 
   virtual void _get_headers(savant::set<IIRScram>&);
 
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor=0);
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor=0);
   IIRScram *_decl_to_decl( IIRScram_Declaration * );
 
   virtual IIRScram_TypeDefinition *_get_type_of_param( int );
@@ -120,8 +120,8 @@ public:
 
   /** This method will add the set to this declaration's declarative
       region. */
-  virtual void _add_to_declarative_region( savant::set<IIRScram_Declaration> * );
-  void _add_to_declarative_region( IIRScram_DeclarationList *, savant::set<IIRScram_Declaration> * );
+  virtual void _add_to_declarative_region( savant::set<IIRScram_Declaration*> * );
+  void _add_to_declarative_region( IIRScram_DeclarationList *, savant::set<IIRScram_Declaration*> * );
 
   /** The following function returns true if the declaration is in the
       process statement's declarative part. */

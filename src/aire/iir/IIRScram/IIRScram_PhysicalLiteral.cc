@@ -44,8 +44,8 @@ using std::ostringstream;
 using std::cerr;
 
 void 
-IIRScram_PhysicalLiteral::_type_check( savant::set<IIRScram_TypeDefinition> *rval_set ){
-  savant::set<IIRScram_Declaration> unit_decls( _get_unit_name() );
+IIRScram_PhysicalLiteral::_type_check( savant::set<IIRScram_TypeDefinition*> *rval_set ){
+  savant::set<IIRScram_Declaration*> unit_decls( _get_unit_name() );
   reconcile_sets( &unit_decls, rval_set );
   switch( unit_decls.size() ){
   case 0:{
@@ -57,10 +57,10 @@ IIRScram_PhysicalLiteral::_type_check( savant::set<IIRScram_TypeDefinition> *rva
 
   case 1:{
     // Good they're actually compatible...
-    ASSERT( unit_decls.getElement() != NULL );
-    ASSERT( unit_decls.getElement()->get_kind() == IIR_PHYSICAL_UNIT );
+    ASSERT( *(unit_decls.begin()) != NULL );
+    ASSERT( (*unit_decls.begin())->get_kind() == IIR_PHYSICAL_UNIT );
 
-    set_unit_name( dynamic_cast<IIRScram_PhysicalUnit*>((unit_decls.getElement())) );
+    set_unit_name( dynamic_cast<IIRScram_PhysicalUnit*>((*unit_decls.begin())) );
     break;
   }
 
@@ -72,14 +72,14 @@ IIRScram_PhysicalLiteral::_type_check( savant::set<IIRScram_TypeDefinition> *rva
   }
 }
 
-savant::set<IIRScram_TypeDefinition> *
+savant::set<IIRScram_TypeDefinition*> *
 IIRScram_PhysicalLiteral::_get_rval_set( constraint_functor * ){
-  savant::set<IIRScram_TypeDefinition> *retval;
+  savant::set<IIRScram_TypeDefinition*> *retval;
   IIRScram_PhysicalUnit *my_unit = _get_unit_name();
   ASSERT( my_unit != NULL );
   ASSERT( my_unit->_is_iir_declaration() == TRUE );
 
-  retval = new savant::set<IIRScram_TypeDefinition>( my_unit->_get_physical_type() );
+  retval = new savant::set<IIRScram_TypeDefinition*>( my_unit->_get_physical_type() );
 
   return retval;
 }

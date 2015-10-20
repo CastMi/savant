@@ -87,8 +87,8 @@ public:
 
   virtual IIR_Boolean contains_body() = 0;
 
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name * ) = 0;
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral *) = 0;
+  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_Name * ) = 0;
+  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral *) = 0;
 
   /** Since we can now have implicit declarations due to attributes, we
       need to be able to tell if THIS declaration is the result of an

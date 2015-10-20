@@ -57,7 +57,7 @@ public:
 
   declaration_type get_declaration_type();
 
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name *);
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *);
   void publish_vhdl(ostream &);
 protected:
   

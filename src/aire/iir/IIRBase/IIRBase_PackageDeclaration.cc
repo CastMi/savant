@@ -82,7 +82,7 @@ IIRBase_PackageDeclaration::get_declaration_type(){
   return PACKAGE_DT;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_PackageDeclaration::find_declarations( IIR_Name *to_find ){
   return get_package_declarative_part()->find_declarations( to_find );
 }

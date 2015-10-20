@@ -21,6 +21,7 @@
 // Authors: Harish Venkataramani venkath@ececs.uc.edu
 
 #include "IIRScram_DotAttribute.hh"
+#include "IIRScram_Declaration.hh"
 #include "error_func.hh"
 #include "set.hh"
 
@@ -31,7 +32,7 @@ using std::endl;
 IIRScram_TypeDefinition *
 IIRScram_DotAttribute::_get_subtype() {
   IIRScram *my_prefix = _get_prefix();
-  savant::set<IIRScram_Declaration> *quantity_decl_set = NULL;
+  savant::set<IIRScram_Declaration*> *quantity_decl_set = NULL;
   quantity_decl_set = my_prefix->_symbol_lookup();
   IIRScram_Declaration *quan_decl = NULL;
   
@@ -40,12 +41,10 @@ IIRScram_DotAttribute::_get_subtype() {
     return NULL;
   }
   
-  quan_decl = quantity_decl_set->getElement();
-  while (quan_decl != NULL) {
-    if (quan_decl->_is_quantity() == FALSE) {
-      quantity_decl_set->remove(quan_decl);
+  for(auto it = quantity_decl_set->begin(); it != quantity_decl_set->end(); it++) {
+    if((*it)->_is_quantity() == FALSE) {
+      quantity_decl_set->erase(*it);
     }
-    quan_decl = quantity_decl_set->getNextElement();
   }
   switch(quantity_decl_set->size()) {
   case 0: {
@@ -55,11 +54,11 @@ IIRScram_DotAttribute::_get_subtype() {
   }
     break;
   case 1: {
-    set_prefix(quantity_decl_set->getElement());
+    set_prefix(*(quantity_decl_set->begin()));
   }
     break;
   default: {
-    report_ambiguous_error(my_prefix, quantity_decl_set->convert_set<IIR_Declaration>());
+    report_ambiguous_error(my_prefix, quantity_decl_set->convert_set<IIR_Declaration*>());
     return NULL;
   }
   }

@@ -222,12 +222,12 @@ IIRBase_TypeDefinition::get_base_type_right(){
   return  NULL;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_TypeDefinition::find_declarations( IIR_Name * ) {
   return NULL;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_TypeDefinition::find_declarations( IIR_TextLiteral * ) {
   _report_undefined_fn("IIRBase_TypeDefinition::find_declarations( IIR_TextLiteral * )");  
   return NULL;

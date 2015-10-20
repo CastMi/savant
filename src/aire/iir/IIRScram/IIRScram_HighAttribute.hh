@@ -46,7 +46,7 @@ public:
 
  
   IIRScram_TypeDefinition *_get_subtype();
-  savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
+  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
   IIRScram_Declaration *_get_implicit_declaration( const string &implicit_decl, 
                                                    IIRScram_TypeDefinition *decl_type );
 

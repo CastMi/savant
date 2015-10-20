@@ -44,7 +44,7 @@ IIRScram_CaseStatementAlternative::~IIRScram_CaseStatementAlternative() {
 }
 
 IIR_Boolean 
-IIRScram_CaseStatementAlternative::_type_check_return_statements( savant::set<IIRScram_TypeDefinition> *context_set, 
+IIRScram_CaseStatementAlternative::_type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *context_set, 
 			       IIRScram_SubprogramDeclaration *subprogram_decl ){
   IIR_Boolean retval = FALSE;
 

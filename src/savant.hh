@@ -40,10 +40,8 @@ extern bool gen_cc_ref;
 /*
  * Asserts
  */
-#ifndef ASSERT
 #include <cassert>
 // #define ASSERT(x) assert( x || parse_error == true )
 #define ASSERT(x) assert( x )
-#endif
 
 #endif

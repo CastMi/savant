@@ -79,13 +79,13 @@ IIRBase_EnumerationTypeDefinition::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_EnumerationTypeDefinition::find_declarations( IIR_TextLiteral *to_find ){
   // This is a little ugly, but we need to get the type's enum list, and not the subtype
   return dynamic_cast<IIR_EnumerationLiteralList *>((IIRBase_EnumerationTypeDefinition::get_enumeration_literals()))->find_declarations( to_find );
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_EnumerationTypeDefinition::find_declarations( IIR_Name *to_find ){
   // This is a little ugly, but we need to get the type's enum list, and not the subtype
   return dynamic_cast<IIR_EnumerationLiteralList *>((IIRBase_EnumerationTypeDefinition::get_enumeration_literals()))->find_declarations( to_find );

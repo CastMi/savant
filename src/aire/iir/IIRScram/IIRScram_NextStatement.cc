@@ -33,9 +33,7 @@
 #include "resolution_func.hh"
 #include "IIRScram_Label.hh"
 #include "IIRScram_List.hh"
-#include "set.hh"
 #include "savant.hh"
-
 
 void
 IIRScram_NextStatement::_type_check() {

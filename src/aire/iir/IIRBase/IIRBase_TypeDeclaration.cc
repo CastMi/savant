@@ -109,25 +109,25 @@ IIRBase_TypeDeclaration::get_declaration_type() {
   return IIR_Declaration::TYPE;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_TypeDeclaration::find_declarations( IIR_Name *to_find ){
   ASSERT( get_type() != NULL );
   return get_type()->find_declarations( to_find );
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_TypeDeclaration::find_declarations( IIR_TextLiteral *to_find ){
   ASSERT( get_type() != NULL );
   return get_type()->find_declarations( to_find );
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_TypeDeclaration::get_implicit_declarations() {
   return implicit_declarations;
 }
 
 void 
-IIRBase_TypeDeclaration::set_implicit_declarations( savant::set<IIR_Declaration> *new_implicit_declarations) {
+IIRBase_TypeDeclaration::set_implicit_declarations( savant::set<IIR_Declaration*> *new_implicit_declarations) {
   implicit_declarations = new_implicit_declarations;
 }
 

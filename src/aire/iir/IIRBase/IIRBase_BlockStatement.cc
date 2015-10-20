@@ -190,26 +190,26 @@ IIRBase_BlockStatement::get_implicit_guard_signal(  ){
   return implicit_guard_signal;
 }
 
-savant::set<IIR_Declaration> *
+savant::set<IIR_Declaration*> *
 IIRBase_BlockStatement::find_declarations( IIR_Name *to_find){
-  savant::set<IIR_Declaration> *retval = new savant::set<IIR_Declaration>;
+  savant::set<IIR_Declaration*> *retval = new savant::set<IIR_Declaration*>;
   
-  savant::set<IIR_Declaration> *current_set = get_port_clause()->find_declarations(to_find );
+  savant::set<IIR_Declaration*> *current_set = get_port_clause()->find_declarations(to_find );
   
   if( current_set != NULL ){
-    retval->add( current_set );
+    retval->insert( current_set );
     delete current_set;
   }
 
   current_set = get_generic_clause()->find_declarations(to_find );
   if( current_set != NULL ){
-    retval->add( current_set );
+    retval->insert( current_set );
     delete current_set;
   }
 
   current_set = get_block_declarative_part()->find_declarations(to_find );
   if( current_set != NULL ){
-    retval->add( current_set );
+    retval->insert( current_set );
     delete current_set;
   }
 

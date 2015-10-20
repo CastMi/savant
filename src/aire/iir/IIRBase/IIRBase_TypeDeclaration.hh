@@ -58,13 +58,13 @@ public:
 
   declaration_type get_declaration_type();
 
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
-  savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * );
+  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
+  savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral * );
 
   // This varies depending on the definition.  For Scalar types the get/set operators
   // for AccessTypeDeclaration it builds the deallocate functions, etc.
-  savant::set<IIR_Declaration> *get_implicit_declarations();
-  void set_implicit_declarations( savant::set<IIR_Declaration> *);
+  savant::set<IIR_Declaration*> *get_implicit_declarations();
+  void set_implicit_declarations( savant::set<IIR_Declaration*> *);
   void publish_vhdl_decl(ostream &);
   void publish_vhdl_range(ostream &);
 protected:
@@ -76,7 +76,7 @@ private:
   IIR_AttributeSpecificationList *attributes;  
   IIR_TypeDefinition* type;
 
-  savant::set<IIR_Declaration>  *implicit_declarations;
+  savant::set<IIR_Declaration*> *implicit_declarations;
 };
 
 #endif
