@@ -38,7 +38,7 @@
 #include "IIRScram_Name.hh"
 #include "IIRScram_PackageDeclaration.hh"
 
-#include <clutils/FileManager.h>
+#include <FileManager.h>
 
 #include "error_func.hh"
 #include "resolution_func.hh"

@@ -47,7 +47,7 @@
 #include "language_processing_control.hh"
 #include <cctype>
 #include <fstream>
-#include <clutils/ArgumentParser.h>
+#include <ArgumentParser.h>
 #include "StandardPackage.hh"
 
 #include "IIRScram_DesignFile.hh"
@@ -56,8 +56,8 @@
 
 // Library/Plugin stuff
 #include <ltdl.h>
-#include "clutils/PluginManager.h"
-#include "clutils/PluginBase.h"
+#include <PluginManager.h>
+#include <PluginBase.h>
 #include "plugin_interface.hh"
 
 // temporary elaboration info stuff
@@ -95,7 +95,7 @@ language_processing_control *lang_proc = NULL;
 
 // If the command line switch to capture comments is turned on, this flag
 // will be set to true; otherwise it will be set to false. 
-bool *capture_comments = false;
+bool capture_comments = false;
 
 void 
 help_func(){

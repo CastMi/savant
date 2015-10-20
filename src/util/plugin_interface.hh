@@ -26,7 +26,7 @@
 // --------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include <clutils/PluginBase.h>
+#include <PluginBase.h>
 #include "IIR.hh"
 
 class IIRBase_DesignFile;

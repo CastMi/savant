@@ -54,7 +54,7 @@
 #include "set.hh"
 #include "symbol_table.hh"
 #include "StandardPackage.hh"
-#include <clutils/StringUtilities.h>
+#include <StringUtilities.h>
 #include <cstring>
 #include <sstream>
 

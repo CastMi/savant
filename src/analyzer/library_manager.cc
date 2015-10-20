@@ -24,7 +24,7 @@
 
 #include "savant_config.hh"
 #include "savant.hh"
-#include <clutils/FileManager.h>
+#include <FileManager.h>
 #include "library_manager.hh"
 #include "scram.hh"
 #include "set.hh"

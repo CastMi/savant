@@ -35,7 +35,7 @@
 #include "error_func.hh"
 #include "set.hh"
 
-#include <clutils/Set.h>
+#include <Set.h>
 
 IIRScram_CaseStatementAlternativeByChoices::IIRScram_CaseStatementAlternativeByChoices() {
   set_choices(new IIRScram_ChoiceList());

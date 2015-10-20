@@ -3,7 +3,7 @@
 
 
 #include "savant_config.hh"
-#include <clutils/PluginBase.h>
+#include <PluginBase.h>
 
 class savant_module_base : public PluginBase {
 public:

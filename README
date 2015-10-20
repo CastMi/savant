@@ -22,3 +22,11 @@ success or failures on other platforms, or if you have any comments at all we'd 
 interested in hearing them.
 
 Currently, we have not ported this system to any version of Windows. 
+
+To install:
+
+autoreconf -i && mkdir obj && cd obj && ../configure --with-clutils=/usr/local && make
+
+--with-clutils=/usr/local depends on where you installed clutils.
+Savant will look into "/lib" for libraries and into "/include/clutils-0.0" for headers.
+In the example, Savant will look into "/usr/local/lib" for libraries and into "/usr/local/include/clutils-0.0" for headers.

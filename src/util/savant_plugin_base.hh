@@ -27,7 +27,7 @@
 
 
 #include "savant_config.hh"
-#include <clutils/PluginBase.h>
+#include <PluginBase.h>
 
 class savant_plugin_base : public PluginBase {
 public:

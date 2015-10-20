@@ -25,7 +25,7 @@
 
 //---------------------------------------------------------------------------
 #include "savant_config.hh"
-#include <clutils/Set.h>
+#include <Set.h>
 #include "IIRScram_Declaration.hh"
 #include "IIRScram_TypeDefinition.hh"
 #include "dl_list.hh"
