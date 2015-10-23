@@ -25,13 +25,11 @@
 
 //---------------------------------------------------------------------------
 #include "savant_config.hh"
-#include <Set.h>
+#include <set>
 #include "IIRScram_Declaration.hh"
 #include "IIRScram_TypeDefinition.hh"
 #include "dl_list.hh"
 #include "constraint_functors.hh"
-
-using clutils::Set;
 
 namespace savant {
 
@@ -42,49 +40,19 @@ namespace savant {
       must be taken when "delete"ing members of the of set and so forth. */
   
   template <class type>
-  class set : public Set<type> {
+  class set : public std::set<type> {
     // @BeginExternalProseDescription
     // @EndExternalProseDescription
 
   public:
-    set( int starting_size = 4 );
-    set( type *, int starting_size = 4 );
-    set( set<type> & );
-    
-    using Set<type>::add;  // unhide the base add methods
-    void add( dl_list<type> * );
-    
-    set<type> &operator=( set<type> &to_copy );
-    
     // "New" a list, and put the elements of the set into it.
-    dl_list<type> *make_list();
+    //dl_list<type> *make_list();
     
     void reduce_set( constraint_functor *functor );
 
     template <typename new_type> savant::set<new_type> *convert_set();
   };
 
-  template <class type>
-  inline
-  set<type>::set(int starting_size) : Set<type>( starting_size ){}
-  
-  template <class type>
-  inline
-  set<type>::set( type *first_element, int starting_size ) : 
-    Set<type>( first_element, starting_size ){}
-  
-  template <class type>
-  inline
-  set<type>::set( set<type> &to_copy ) : Set<type>( to_copy ){}
-  
-  template <class type>
-  inline
-  set<type> &
-  set<type>::operator=( set<type> &to_copy ){
-    Set<type>::operator=( to_copy );
-    return *this;
-  }
-  
 //   template <class type>
 //   inline
 //   dl_list<type> *
@@ -100,42 +68,14 @@ namespace savant {
 //   }
   
   template <class type>
-  inline
-  void 
-  set<type>::add( dl_list<type> *list_to_add ){
-    type *current = list_to_add->first();
-    while( current != NULL ){
-      add( current );
-      current = list_to_add->successor( current );
-    }
-  }
-  
-  template <>
   inline 
   void 
-  set<IIRScram_Declaration>::reduce_set( constraint_functor *functor ){
+  set<type>::reduce_set( constraint_functor *functor ){
     if (functor != NULL) {
-      IIRScram_Declaration *current = getElement();
-      while( current != NULL ){
-        if( (*functor)(current) == FALSE ){
-        remove( current );
+      for( typename std::set<type>::iterator it = this->begin(); it != this->end(); it++){
+        if( (*functor)(*it) == FALSE ){
+        remove( *it );
         }
-        current = getNextElement();
-      }
-    }
-  }
-  
-  template <>
-  inline 
-  void 
-  set<IIRScram_TypeDefinition>::reduce_set( constraint_functor *functor ){
-    if (functor != NULL) {
-      IIRScram_TypeDefinition *current = getElement();
-      while( current != NULL ){
-        if( (*functor)(current) == FALSE ){
-          remove( current );
-        }
-        current = getNextElement();
       }
     }
   }
