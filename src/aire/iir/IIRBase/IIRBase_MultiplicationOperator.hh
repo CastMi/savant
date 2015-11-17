@@ -54,4 +54,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_MultiplicationOperator> IIRBase_MultiplicationOperatorRef;
+
 #endif

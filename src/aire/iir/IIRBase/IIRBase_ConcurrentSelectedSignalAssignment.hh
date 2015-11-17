@@ -90,4 +90,7 @@ private:
   IIR_SignalDeclaration *my_guard_signal;
 
 };
+
+typedef refcount<IIRBase_ConcurrentSelectedSignalAssignment> IIRBase_ConcurrentSelectedSignalAssignmentRef;
+
 #endif

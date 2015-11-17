@@ -59,4 +59,7 @@ protected:
   void _resolve_suffix_special();
 private:
 };
+
+typedef refcount<IIRScram_HighAttribute> IIRScram_HighAttributeRef;
+
 #endif

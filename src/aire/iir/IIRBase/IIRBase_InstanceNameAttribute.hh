@@ -54,4 +54,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_InstanceNameAttribute> IIRBase_InstanceNameAttributeRef;
+
 #endif

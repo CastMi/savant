@@ -74,4 +74,7 @@ protected:
 private:
   IIRScram_List                         *_full_statement_list;
 };
+
+typedef refcount<IIRScram_IfStatement> IIRScram_IfStatementRef;
+
 #endif

@@ -40,4 +40,7 @@ public:
   virtual void set_suffix( IIR * ) = 0;
   virtual IIR *get_suffix( ) = 0;
 };
+
+typedef refcount<IIR_LowAttribute> IIR_LowAttributeRef;
+
 #endif

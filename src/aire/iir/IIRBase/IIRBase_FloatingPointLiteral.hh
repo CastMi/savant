@@ -67,4 +67,7 @@ private:
   IIR_Char *exponent;
   IIR_Int32 exponent_length;
 };
+
+typedef refcount<IIRBase_FloatingPointLiteral> IIRBase_FloatingPointLiteralRef;
+
 #endif

@@ -36,4 +36,7 @@ class IIR_DivisionOperator : public virtual IIR_DyadicOperator{
 public:
   virtual ~IIR_DivisionOperator() {}    
 };
+
+typedef refcount<IIR_DivisionOperator> IIR_DivisionOperatorRef;
+
 #endif

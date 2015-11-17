@@ -67,9 +67,7 @@ public:
   */
   virtual IIR_LibraryDeclaration *get_work_library() = 0;
 };
+
+typedef refcount<IIR_DesignFile> IIR_DesignFileRef;
+
 #endif
-
-
-
-
-

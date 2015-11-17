@@ -49,4 +49,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_SRLOperator> IIRBase_SRLOperatorRef;
+
 #endif

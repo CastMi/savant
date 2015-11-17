@@ -50,4 +50,7 @@ public:
   virtual IIR *get_value() = 0;
   virtual void set_value(IIR *) = 0;
 };
+
+typedef refcount<IIR_ObjectDeclaration> IIR_ObjectDeclarationRef;
+
 #endif

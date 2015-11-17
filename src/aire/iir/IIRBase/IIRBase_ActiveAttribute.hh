@@ -52,4 +52,7 @@ protected:
 private:
   
 };
+
+typedef refcount<IIRBase_ActiveAttribute> IIRBase_ActiveAttributeRef;
+
 #endif

@@ -55,4 +55,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_AssociationElement> IIRScram_AssociationElementRef;
+
 #endif

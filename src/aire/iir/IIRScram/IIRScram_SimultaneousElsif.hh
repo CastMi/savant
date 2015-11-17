@@ -56,5 +56,8 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRScram_SimultaneousElsif> IIRScram_SimultaneousElsifRef;
+
 #endif
 

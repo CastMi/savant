@@ -58,4 +58,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_WaveformList> IIRScram_WaveformListRef;
+
 #endif

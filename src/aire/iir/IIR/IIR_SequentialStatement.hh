@@ -39,4 +39,6 @@ protected:
   virtual IIR_Boolean has_statement_list() = 0;
 };
 
+typedef refcount<IIR_SequentialStatement> IIR_SequentialStatementRef;
+
 #endif

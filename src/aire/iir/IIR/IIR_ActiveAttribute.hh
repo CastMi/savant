@@ -37,4 +37,7 @@ class IIR_ActiveAttribute : public virtual IIR_Attribute{
 public:
   virtual ~IIR_ActiveAttribute() {}
 };
+
+typedef refcount<IIR_ActiveAttribute> IIR_ActiveAttributeRef;
+
 #endif

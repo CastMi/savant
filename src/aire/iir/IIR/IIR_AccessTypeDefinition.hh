@@ -42,4 +42,7 @@ public:
 
   virtual IIR_TypeDefinition *get_designated_type() = 0;
 };
+
+typedef refcount<IIR_AccessTypeDefinition> IIR_AccessTypeDefinitionRef;
+
 #endif

@@ -47,4 +47,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_ConfigurationDeclaration> IIRScram_ConfigurationDeclarationRef;
+
 #endif

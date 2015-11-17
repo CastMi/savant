@@ -48,4 +48,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_Identifier> IIRScram_IdentifierRef;
+
 #endif

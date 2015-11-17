@@ -84,4 +84,7 @@ private:
   IIR_SignalDeclaration                 *implicit_guard_signal;
 
 };
+
+typedef refcount<IIRBase_BlockStatement> IIRBase_BlockStatementRef;
+
 #endif

@@ -113,4 +113,7 @@ private:
 
   IIR_Kind my_instantiation_type;
 };
+
+typedef refcount<IIRScram_ComponentInstantiationStatement> IIRScram_ComponentInstantiationStatementRef;
+
 #endif

@@ -43,4 +43,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRScram_BreakList> IIRScram_BreakListRef;
+
 #endif

@@ -44,4 +44,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_EntityNameList> IIRBase_EntityNameListRef;
+
 #endif

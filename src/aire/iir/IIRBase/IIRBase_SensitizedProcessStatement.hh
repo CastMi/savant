@@ -55,4 +55,6 @@ private:
   IIR_DesignatorList *sensitivity_list;
 };
 
+typedef refcount<IIRBase_SensitizedProcessStatement> IIRBase_SensitizedProcessStatementRef;
+
 #endif

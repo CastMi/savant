@@ -58,4 +58,7 @@ public:
 
   virtual void set_declaration( IIR_Declaration *corresponding_decl ) = 0;
 };
+
+typedef refcount<IIR_ArrayTypeDefinition> IIR_ArrayTypeDefinitionRef;
+
 #endif

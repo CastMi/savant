@@ -53,4 +53,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_LastEventAttribute> IIRBase_LastEventAttributeRef;
+
 #endif

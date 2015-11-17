@@ -59,4 +59,7 @@ private:
   IIR_SequentialStatement *enclosing_loop;
   IIR *condition;
 };
+
+typedef refcount<IIRBase_ExitStatement> IIRBase_ExitStatementRef;
+
 #endif

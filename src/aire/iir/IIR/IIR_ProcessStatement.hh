@@ -50,4 +50,7 @@ public:
 
   virtual savant::set<IIR_Declaration*> *find_declarations( IIR_Name * ) = 0;
 };
+
+typedef refcount<IIR_ProcessStatement> IIR_ProcessStatementRef;
+
 #endif

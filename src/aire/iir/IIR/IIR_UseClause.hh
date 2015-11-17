@@ -42,4 +42,7 @@ public:
   virtual void set_selected_name(IIR_Name*) = 0;
   virtual IIR_Name* get_selected_name() = 0;
 };
+
+typedef refcount<IIR_UseClause> IIR_UseClauseRef;
+
 #endif

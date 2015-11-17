@@ -57,4 +57,6 @@ protected:
 private:
 };
 
+typedef refcount<IIRScram_NatureDeclaration> IIRScram_NatureDeclarationRef;
+
 #endif

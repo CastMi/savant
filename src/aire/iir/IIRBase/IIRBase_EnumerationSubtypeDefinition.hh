@@ -69,4 +69,7 @@ private:
 
   IIR_FunctionDeclaration *my_resolution_function;
 };
+
+typedef refcount<IIRBase_EnumerationSubtypeDefinition> IIRBase_EnumerationSubtypeDefinitionRef;
+
 #endif

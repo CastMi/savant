@@ -80,5 +80,8 @@ private:
   IIR* tolerance_aspect;
   
 };
+
+typedef refcount<IIRBase_SimpleSimultaneousStatement> IIRBase_SimpleSimultaneousStatementRef;
+
 #endif
 

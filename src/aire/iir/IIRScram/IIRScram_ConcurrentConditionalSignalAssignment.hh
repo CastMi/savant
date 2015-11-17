@@ -65,5 +65,7 @@ public:
 protected:    
 private:
 };
-#endif
 
+typedef refcount<IIRScram_ConcurrentConditionalSignalAssignment> IIRScram_ConcurrentConditionalSignalAssignmentRef;
+
+#endif

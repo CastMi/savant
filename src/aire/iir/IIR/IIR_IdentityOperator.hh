@@ -36,4 +36,7 @@ class IIR_IdentityOperator : public virtual IIR_MonadicOperator{
 public:
   virtual ~IIR_IdentityOperator() {}    
 };
+
+typedef refcount<IIR_IdentityOperator> IIR_IdentityOperatorRef;
+
 #endif

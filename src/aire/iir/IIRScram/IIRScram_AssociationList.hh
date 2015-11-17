@@ -113,4 +113,7 @@ private:
   IIRScram_Name *_get_formal_designator_from_indexed_name( IIRScram_IndexedName * );
   IIRScram *_get_actual_designator_from_indexed_name( IIRScram_IndexedName * );
 };
+
+typedef refcount<IIRScram_AssociationList> IIRScram_AssociationListRef;
+
 #endif

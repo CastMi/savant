@@ -36,4 +36,7 @@ class IIR_ElementDeclaration : public virtual IIR_ObjectDeclaration{
 public:
   virtual ~IIR_ElementDeclaration() {}    
 };
+
+typedef refcount<IIR_ElementDeclaration> IIR_ElementDeclarationRef;
+
 #endif

@@ -60,4 +60,7 @@ private:
   IIR *actual;
 
 };
+
+typedef refcount<IIRBase_AssociationElementByExpression> IIRBase_AssociationElementByExpressionRef;
+
 #endif

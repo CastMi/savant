@@ -36,4 +36,7 @@ class IIR_FloatingTypeDefinition : public virtual IIR_ScalarTypeDefinition{
 public:
   virtual ~IIR_FloatingTypeDefinition() {}    
 };
+
+typedef refcount<IIR_FloatingTypeDefinition> IIR_FloatingTypeDefinitionRef;
+
 #endif

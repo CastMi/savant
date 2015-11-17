@@ -54,6 +54,9 @@ protected:
 private:
   IIRScram_SignalInterfaceDeclaration *_my_clone;
 };
+
+typedef refcount<IIRScram_SignalInterfaceDeclaration> IIRScram_SignalInterfaceDeclarationRef;
+
 #endif
 
 

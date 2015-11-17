@@ -42,4 +42,7 @@ public:
   virtual void set_resolution_function(IIR_FunctionDeclaration *) = 0;
   virtual IIR_FunctionDeclaration *get_resolution_function() = 0;
 };
+
+typedef refcount<IIR_ArraySubtypeDefinition> IIR_ArraySubtypeDefinitionRef;
+
 #endif

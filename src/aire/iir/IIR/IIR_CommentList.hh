@@ -42,4 +42,7 @@ public:
 protected:  
 private:
 };
+
+typedef refcount<IIR_CommentList> IIR_CommentListRef;
+
 #endif

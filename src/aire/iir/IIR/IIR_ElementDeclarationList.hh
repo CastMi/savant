@@ -42,4 +42,7 @@ public:
   virtual IIR *first() = 0;
   virtual IIR *get_nth_element( int ) = 0;
 };
+
+typedef refcount<IIR_ElementDeclarationList> IIR_ElementDeclarationListRef;
+
 #endif

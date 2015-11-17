@@ -69,4 +69,7 @@ private:
   IIR *my_instantiated_unit;
   IIR *my_configuration;
 };
+
+typedef refcount<IIRBase_ComponentInstantiationStatement> IIRBase_ComponentInstantiationStatementRef;
+
 #endif

@@ -67,4 +67,7 @@ private:
   IIR_TypeDefinition* type_mark;
 
 };
+
+typedef refcount<IIRBase_QualifiedExpression> IIRBase_QualifiedExpressionRef;
+
 #endif

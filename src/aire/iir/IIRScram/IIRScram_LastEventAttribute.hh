@@ -56,13 +56,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_LastEventAttribute> IIRScram_LastEventAttributeRef;
+
 #endif
-
-
-
-
-
-
-
-
-

@@ -68,4 +68,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_PhysicalUnit> IIRScram_PhysicalUnitRef;
+
 #endif

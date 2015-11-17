@@ -59,4 +59,7 @@ public:
   virtual IIR_LibraryUnit *get_entity_aspect() = 0;
   virtual void set_entity_aspect(IIR_LibraryUnit    *entity_aspect) = 0;
 };
+
+typedef refcount<IIR_ConfigurationSpecification> IIR_ConfigurationSpecificationRef;
+
 #endif

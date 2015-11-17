@@ -48,4 +48,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_NullStatement> IIRBase_NullStatementRef;
+
 #endif

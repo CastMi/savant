@@ -62,4 +62,7 @@ private:
   IIR *suffix;
 
 };
+
+typedef refcount<IIRBase_ReverseRangeAttribute> IIRBase_ReverseRangeAttributeRef;
+
 #endif

@@ -36,4 +36,7 @@ class IIR_ReportStatement : public virtual IIR_SequentialStatement{
 public:
   virtual ~IIR_ReportStatement() {}
 };
+
+typedef refcount<IIR_ReportStatement> IIR_ReportStatementRef;
+
 #endif

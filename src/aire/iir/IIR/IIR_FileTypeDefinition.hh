@@ -41,4 +41,7 @@ public:
   virtual void set_type_mark( IIR_TypeDefinition* type_mark) = 0;
   virtual IIR_TypeDefinition* get_type_mark() = 0;
 };
+
+typedef refcount<IIR_FileTypeDefinition> IIR_FileTypeDefinitionRef;
+
 #endif

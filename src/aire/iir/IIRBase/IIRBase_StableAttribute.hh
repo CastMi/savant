@@ -60,4 +60,6 @@ private:
   IIR*    suffix;
 };
 
+typedef refcount<IIRBase_StableAttribute> IIRBase_StableAttributeRef;
+
 #endif

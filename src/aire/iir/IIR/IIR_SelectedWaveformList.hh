@@ -43,4 +43,7 @@ public:
   virtual IIR_SelectedWaveform *successor( IIR_SelectedWaveform* node ) = 0;
 };
 
+typedef refcount<IIR_SelectedWaveformList> IIR_SelectedWaveformListRef;
+
+
 #endif

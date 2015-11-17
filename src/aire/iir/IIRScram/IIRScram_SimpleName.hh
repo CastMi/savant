@@ -79,4 +79,7 @@ private:
   // either a function call, or the declaration passed in.
   IIRScram *_convert_to_function_call( IIRScram_Declaration * );
 };
+
+typedef refcount<IIRScram_SimpleName> IIRScram_SimpleNameRef;
+
 #endif

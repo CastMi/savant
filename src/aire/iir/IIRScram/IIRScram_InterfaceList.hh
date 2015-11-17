@@ -51,4 +51,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_InterfaceList> IIRScram_InterfaceListRef;
+
 #endif

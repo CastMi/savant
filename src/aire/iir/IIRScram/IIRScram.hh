@@ -487,5 +487,7 @@ private:
   /** Get the singleton instance of the include manager. */
   static include_manager *get_include_manager();
 };
- 
+
+typedef refcount<IIRScram> IIRScramRef;
+
 #endif

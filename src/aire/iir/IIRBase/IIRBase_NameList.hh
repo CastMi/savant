@@ -46,4 +46,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_NameList> IIRBase_NameListRef;
+
 #endif

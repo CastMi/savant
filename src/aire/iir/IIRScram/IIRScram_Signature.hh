@@ -56,4 +56,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRScram_Signature> IIRScram_SignatureRef;
+
 #endif

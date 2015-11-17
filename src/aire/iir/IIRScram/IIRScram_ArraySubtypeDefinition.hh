@@ -67,4 +67,7 @@ public:
     set_resolution_function( dynamic_cast<IIR_FunctionDeclaration *>(new_decl) ); 
   }
 };
+
+typedef refcount<IIRScram_ArraySubtypeDefinition> IIRScram_ArraySubtypeDefinitionRef;
+
 #endif

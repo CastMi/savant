@@ -40,4 +40,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_MultiplicationOperators> IIRScram_MultiplicationOperatorsRef;
+
 #endif

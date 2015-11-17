@@ -62,4 +62,7 @@ protected:
 private:
   IIR *formal;
 };
+
+typedef refcount<IIRBase_AssociationElement> IIRBase_AssociationElementRef;
+
 #endif

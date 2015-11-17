@@ -36,4 +36,7 @@ class IIR_AdditionOperator : public virtual IIR_DyadicOperator{
 public:
   virtual ~IIR_AdditionOperator() {}
 };
+
+typedef refcount<IIR_AdditionOperator> IIR_AdditionOperatorRef;
+
 #endif

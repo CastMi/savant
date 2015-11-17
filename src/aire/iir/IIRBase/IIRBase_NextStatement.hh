@@ -63,4 +63,7 @@ private:
   IIR_SequentialStatement* loop;
 
 };
+
+typedef refcount<IIRBase_NextStatement> IIRBase_NextStatementRef;
+
 #endif

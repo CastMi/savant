@@ -70,4 +70,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_WhileLoopStatement> IIRScram_WhileLoopStatementRef;
+
 #endif

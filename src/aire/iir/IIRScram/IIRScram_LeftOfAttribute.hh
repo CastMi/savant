@@ -58,4 +58,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_LeftOfAttribute> IIRScram_LeftOfAttributeRef;
+
 #endif

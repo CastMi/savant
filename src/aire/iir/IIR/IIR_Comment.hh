@@ -48,4 +48,7 @@ protected:
 
 private:
 };
+
+typedef refcount<IIR_Comment> IIR_CommentRef;
+
 #endif

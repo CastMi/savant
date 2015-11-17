@@ -49,4 +49,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_ConstantInterfaceDeclaration> IIRBase_ConstantInterfaceDeclarationRef;
+
 #endif

@@ -62,4 +62,6 @@ protected:
 private:
 };
 
+typedef refcount<IIRScram_AssociationElementByExpression> IIRScram_AssociationElementByExpressionRef;
+
 #endif

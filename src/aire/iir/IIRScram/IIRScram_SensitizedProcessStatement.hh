@@ -51,4 +51,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_SensitizedProcessStatement> IIRScram_SensitizedProcessStatementRef;
+
 #endif

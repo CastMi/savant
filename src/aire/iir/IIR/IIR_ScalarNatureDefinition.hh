@@ -58,5 +58,7 @@ public:
   /** Returns the reference terminal of the nature */
   virtual IIR_TerminalDeclaration *get_reference_terminal() = 0;
 };
- 
+
+typedef refcount<IIR_ScalarNatureDefinition> IIR_ScalarNatureDefinitionRef;
+
 #endif

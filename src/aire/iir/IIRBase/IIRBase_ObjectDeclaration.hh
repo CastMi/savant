@@ -81,4 +81,7 @@ private:
   // List Variable(s)
   IIR_AttributeSpecificationList *attributes;
 };
+
+typedef refcount<IIRBase_ObjectDeclaration> IIRBase_ObjectDeclarationRef;
+
 #endif

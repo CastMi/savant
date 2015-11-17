@@ -44,4 +44,6 @@ public:
   virtual IIR* get_right() = 0;
 };
 
+typedef refcount<IIR_ScalarTypeDefinition> IIR_ScalarTypeDefinitionRef;
+
 #endif

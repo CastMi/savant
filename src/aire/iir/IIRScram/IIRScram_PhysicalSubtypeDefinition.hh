@@ -63,4 +63,6 @@ protected:
 private:
 };
 
+typedef refcount<IIRScram_PhysicalSubtypeDefinition> IIRScram_PhysicalSubtypeDefinitionRef;
+
 #endif

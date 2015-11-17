@@ -46,4 +46,7 @@ protected:
   IIR *enclosingRegion;
 private:
 };
+
+typedef refcount<IIRBase_ArchitectureStatement> IIRBase_ArchitectureStatementRef;
+
 #endif

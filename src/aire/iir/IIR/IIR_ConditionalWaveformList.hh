@@ -45,4 +45,7 @@ public:
   virtual IIR_ConditionalWaveform* successor(IIR_ConditionalWaveform* node) = 0;
 
 };
+
+typedef refcount<IIR_ConditionalWaveformList> IIR_ConditionalWaveformListRef;
+
 #endif

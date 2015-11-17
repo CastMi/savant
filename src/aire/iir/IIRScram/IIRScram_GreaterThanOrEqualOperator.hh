@@ -40,4 +40,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_GreaterThanOrEqualOperator> IIRScram_GreaterThanOrEqualOperatorRef;
+
 #endif

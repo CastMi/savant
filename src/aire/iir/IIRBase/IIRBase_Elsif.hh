@@ -64,4 +64,7 @@ private:
   IIR* condition;  
   IIR_Elsif* else_clause;
 };
+
+typedef refcount<IIRBase_Elsif> IIRBase_ElsifRef;
+
 #endif

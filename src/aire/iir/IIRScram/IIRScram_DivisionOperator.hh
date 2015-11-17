@@ -44,4 +44,7 @@ protected:
 
 private:
 };
+
+typedef refcount<IIRScram_DivisionOperator> IIRScram_DivisionOperatorRef;
+
 #endif

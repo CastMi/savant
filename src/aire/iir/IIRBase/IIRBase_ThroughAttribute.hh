@@ -55,4 +55,7 @@ protected:
   
 private:
 };
+
+typedef refcount<IIRBase_ThroughAttribute> IIRBase_ThroughAttributeRef;
+
 #endif

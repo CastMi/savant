@@ -36,4 +36,7 @@ class IIR_NandOperator : public virtual IIR_DyadicOperator{
 public:
   virtual ~IIR_NandOperator() {}    
 };
+
+typedef refcount<IIR_NandOperator> IIR_NandOperatorRef;
+
 #endif

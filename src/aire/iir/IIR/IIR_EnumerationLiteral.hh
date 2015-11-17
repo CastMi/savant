@@ -45,4 +45,7 @@ public:
 
   virtual IIR_Boolean is_character_literal() = 0;
 };
+
+typedef refcount<IIR_EnumerationLiteral> IIR_EnumerationLiteralRef;
+
 #endif

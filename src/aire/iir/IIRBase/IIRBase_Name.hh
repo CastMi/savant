@@ -83,4 +83,7 @@ private:
   IIR *prefix;
 
 };
+
+typedef refcount<IIRBase_Name> IIRBase_NameRef;
+
 #endif

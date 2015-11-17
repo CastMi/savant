@@ -84,6 +84,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_EnumerationTypeDefinition> IIRScram_EnumerationTypeDefinitionRef;
+
 #endif
-
-

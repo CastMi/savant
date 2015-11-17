@@ -36,4 +36,6 @@ public:
   virtual ~IIR_XnorOperator() {}    
 };
 
+typedef refcount<IIR_XnorOperator> IIR_XnorOperatorRef;
+
 #endif

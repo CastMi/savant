@@ -47,4 +47,7 @@ public:
   virtual void set_statement( IIR_Statement* statement ) = 0;
   virtual IIR_Statement *get_statement() = 0;
 };
+
+typedef refcount<IIR_Label> IIR_LabelRef;
+
 #endif

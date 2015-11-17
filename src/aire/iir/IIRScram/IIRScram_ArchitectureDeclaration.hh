@@ -79,4 +79,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRScram_ArchitectureDeclaration> IIRScram_ArchitectureDeclarationRef;
+
 #endif

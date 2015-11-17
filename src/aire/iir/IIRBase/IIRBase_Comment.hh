@@ -58,4 +58,7 @@ private:
   void _check_bounds( IIR_Int32 );
 
 };
+
+typedef refcount<IIRBase_Comment> IIRBase_CommentRef;
+
 #endif

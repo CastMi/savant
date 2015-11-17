@@ -88,4 +88,7 @@ protected:
 private:
   
 };
+
+typedef refcount<IIRScram_DyadicOperator> IIRScram_DyadicOperatorRef;
+
 #endif

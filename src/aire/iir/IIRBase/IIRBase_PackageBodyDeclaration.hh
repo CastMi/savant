@@ -59,4 +59,7 @@ private:
   IIR_DeclarationList *package_declarative_part;
 
 };
+
+typedef refcount<IIRBase_PackageBodyDeclaration> IIRBase_PackageBodyDeclarationRef;
+
 #endif

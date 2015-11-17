@@ -46,5 +46,7 @@ public:
 protected:
 private:
 };
-#endif
 
+typedef refcount<IIR_LTFAttribute> IIR_LTFAttributeRef;
+
+#endif

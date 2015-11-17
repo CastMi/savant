@@ -68,4 +68,7 @@ protected:
   virtual IIR_CaseStatementAlternativeList *build_alternative_list(IIR_Boolean) = 0;
 
 };
+
+typedef refcount<IIR_ConcurrentSelectedSignalAssignment> IIR_ConcurrentSelectedSignalAssignmentRef;
+
 #endif

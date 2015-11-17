@@ -85,4 +85,6 @@ private:
   IIR_TerminalDeclaration* reference_terminal;
 };
 
+typedef refcount<IIRBase_NatureDeclaration> IIRBase_NatureDeclarationRef;
+
 #endif

@@ -82,4 +82,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_SequentialStatement> IIRScram_SequentialStatementRef;
+
 #endif

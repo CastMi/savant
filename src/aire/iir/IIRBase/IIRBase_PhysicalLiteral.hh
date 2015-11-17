@@ -65,5 +65,8 @@ protected:
 private:
   IIR *abstract_literal;
   IIR_PhysicalUnit *unit_name;
-};    
+};
+
+typedef refcount<IIRBase_PhysicalLiteral> IIRBase_PhysicalLiteralRef;
+
 #endif

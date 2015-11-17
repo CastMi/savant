@@ -47,4 +47,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_ExponentiationOperator> IIRScram_ExponentiationOperatorRef;
+
 #endif

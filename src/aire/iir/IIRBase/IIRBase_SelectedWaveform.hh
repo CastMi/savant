@@ -63,4 +63,7 @@ private:
 
   IIR *my_choice;
 };
+
+typedef refcount<IIRBase_SelectedWaveform> IIRBase_SelectedWaveformRef;
+
 #endif

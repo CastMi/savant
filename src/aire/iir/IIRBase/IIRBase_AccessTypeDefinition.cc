@@ -30,6 +30,7 @@
 #include "IIR_Declaration.hh"
 #include "IIR_TypeDefinition.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIRScram_Declaration.hh"
 #include "savant.hh"
 #include <iostream>
 

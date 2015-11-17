@@ -59,5 +59,7 @@ public:
 protected:
 private:
 };
-#endif
 
+typedef refcount<IIR_ZTFAttribute> IIR_ZTFAttributeRef;
+
+#endif

@@ -79,4 +79,7 @@ protected:
 private:
   IIR_Boolean has_been_type_checked;
 };
+
+typedef refcount<IIRScram_FunctionCall> IIRScram_FunctionCallRef;
+
 #endif

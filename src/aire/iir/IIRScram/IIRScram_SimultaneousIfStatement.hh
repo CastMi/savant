@@ -55,4 +55,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRScram_SimultaneousIfStatement> IIRScram_SimultaneousIfStatementRef;
+
 #endif

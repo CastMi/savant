@@ -59,4 +59,7 @@ protected:
 private:
   IIR *my_suffix;
 };
+
+typedef refcount<IIRBase_PosAttribute> IIRBase_PosAttributeRef;
+
 #endif

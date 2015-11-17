@@ -98,4 +98,6 @@ public:
 
 private:  
 };
+
+typedef refcount<IIRScram_ArrayTypeDefinition> IIRScram_ArrayTypeDefinitionRef;
 #endif

@@ -43,4 +43,6 @@ public:
   virtual IIR_AttributeSpecificationList *get_attributes() = 0;
 };
 
+typedef refcount<IIR_SubtypeDeclaration> IIR_SubtypeDeclarationRef;
+
 #endif

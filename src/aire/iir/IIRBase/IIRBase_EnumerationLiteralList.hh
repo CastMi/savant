@@ -54,4 +54,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_EnumerationLiteralList> IIRBase_EnumerationLiteralListRef;
+
 #endif

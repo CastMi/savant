@@ -34,4 +34,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIR_ReferenceAttribute> IIR_ReferenceAttributeRef;
+
 #endif

@@ -46,4 +46,6 @@ public:
   virtual IIR_NatureDefinition* get_nature() = 0;
 };
 
+typedef refcount<IIR_TerminalDeclaration> IIR_TerminalDeclarationRef;
+
 #endif

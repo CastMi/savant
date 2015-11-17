@@ -66,4 +66,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_PortList> IIRBase_PortListRef;
+
 #endif

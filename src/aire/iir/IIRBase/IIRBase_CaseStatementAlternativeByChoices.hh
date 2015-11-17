@@ -56,4 +56,7 @@ private:
   IIR_ChoiceList *choices;
 
 };
+
+typedef refcount<IIRBase_CaseStatementAlternativeByChoices> IIRBase_CaseStatementAlternativeByChoicesRef;
+
 #endif

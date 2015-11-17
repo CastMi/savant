@@ -43,4 +43,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIR_AboveAttribute> IIR_AboveAttributeRef;
+
 #endif

@@ -62,4 +62,7 @@ private:
   IIR_FunctionDeclaration *my_resolution_function;
 
 };
+
+typedef refcount<IIRBase_PhysicalSubtypeDefinition> IIRBase_PhysicalSubtypeDefinitionRef;
+
 #endif

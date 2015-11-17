@@ -43,4 +43,7 @@ public:
   virtual IIR *successor(IIR_Designator *) = 0;
   virtual void append( IIR_Designator * ) = 0;
 };
+
+typedef refcount<IIR_DesignatorList> IIR_DesignatorListRef;
+
 #endif

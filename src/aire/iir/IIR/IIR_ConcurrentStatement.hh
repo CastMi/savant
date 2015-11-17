@@ -36,4 +36,7 @@ class IIR_ConcurrentStatement : public virtual IIR_ArchitectureStatement{
 public:
   virtual ~IIR_ConcurrentStatement() {}    
 };
+
+typedef refcount<IIR_ConcurrentStatement> IIR_ConcurrentStatementRef;
+
 #endif

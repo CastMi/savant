@@ -59,4 +59,7 @@ protected:
 private:
   IIR_Int32 val;
 };
+
+typedef refcount<IIRBase_IntegerLiteral32> IIRBase_IntegerLiteral32Ref;
+
 #endif

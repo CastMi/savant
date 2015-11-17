@@ -49,4 +49,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_ROROperator> IIRBase_ROROperatorRef;
+
 #endif

@@ -75,4 +75,7 @@ private:
 
   IIR_EntityDeclaration* entity;
 };
+
+typedef refcount<IIRBase_ArchitectureDeclaration> IIRBase_ArchitectureDeclarationRef;
+
 #endif

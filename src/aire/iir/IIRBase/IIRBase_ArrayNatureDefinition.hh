@@ -89,4 +89,7 @@ private:
   IIR_Boolean                   my_is_element;
   
 };
+
+typedef refcount<IIRBase_ArrayNatureDefinition> IIRBase_ArrayNatureDefinitionRef;
+
 #endif

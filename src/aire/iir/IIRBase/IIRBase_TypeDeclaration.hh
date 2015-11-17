@@ -79,4 +79,6 @@ private:
   savant::set<IIR_Declaration*> *implicit_declarations;
 };
 
+typedef refcount<IIRBase_TypeDeclaration> IIRBase_TypeDeclarationRef;
+
 #endif

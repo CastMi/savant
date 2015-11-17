@@ -48,4 +48,7 @@ public:
   virtual void set_else_clause(IIR_Elsif*) = 0;
   virtual IIR_Elsif* get_else_clause() = 0;
 };
+
+typedef refcount<IIR_Elsif> IIR_ElsifRef;
+
 #endif

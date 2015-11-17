@@ -68,4 +68,7 @@ private:
   IIR_ConstantDeclaration* iterator;
 
 };
+
+typedef refcount<IIRBase_ForLoopStatement> IIRBase_ForLoopStatementRef;
+
 #endif

@@ -52,4 +52,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIR_SimultaneousElsif> IIR_SimultaneousElsifRef;
+
 #endif

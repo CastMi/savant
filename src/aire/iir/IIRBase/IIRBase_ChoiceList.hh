@@ -50,4 +50,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_ChoiceList> IIRBase_ChoiceListRef;
+
 #endif

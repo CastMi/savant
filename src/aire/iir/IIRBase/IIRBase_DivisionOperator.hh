@@ -49,4 +49,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_DivisionOperator> IIRBase_DivisionOperatorRef;
+
 #endif

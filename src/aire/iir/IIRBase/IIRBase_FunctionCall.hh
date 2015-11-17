@@ -69,4 +69,7 @@ private:
   IIR_SubprogramDeclaration* implementation;
 
 };
+
+typedef refcount<IIRBase_FunctionCall> IIRBase_FunctionCallRef;
+
 #endif

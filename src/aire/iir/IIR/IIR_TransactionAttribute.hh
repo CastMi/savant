@@ -37,4 +37,6 @@ public:
   virtual ~IIR_TransactionAttribute() {}    
 };
 
+typedef refcount<IIR_TransactionAttribute> IIR_TransactionAttributeRef;
+
 #endif

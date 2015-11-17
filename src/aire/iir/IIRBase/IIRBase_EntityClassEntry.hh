@@ -56,4 +56,7 @@ private:
   IIR_Kind my_entity_kind;
   IIR_Boolean my_is_boxed;
 };
+
+typedef refcount<IIRBase_EntityClassEntry> IIRBase_EntityClassEntryRef;
+
 #endif

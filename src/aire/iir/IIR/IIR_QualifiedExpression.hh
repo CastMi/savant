@@ -1,4 +1,3 @@
-
 #ifndef IIR_QUALIFIED_EXPRESSION_HH
 #define IIR_QUALIFIED_EXPRESSION_HH
 
@@ -44,4 +43,7 @@ public:
   virtual void set_expression(IIR* expression) = 0;
   virtual IIR* get_expression() = 0;
 };
+
+typedef refcount<IIR_QualifiedExpression> IIR_QualifiedExpressionRef;
+
 #endif

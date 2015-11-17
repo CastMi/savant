@@ -90,4 +90,7 @@ private:
   IIR              *my_component_name;
   IIR_LibraryUnit  *my_entity_aspect;
 };
+
+typedef refcount<IIRBase_ConfigurationSpecification> IIRBase_ConfigurationSpecificationRef;
+
 #endif

@@ -53,4 +53,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_NatureDefinition> IIRBase_NatureDefinitionRef;
+
 #endif

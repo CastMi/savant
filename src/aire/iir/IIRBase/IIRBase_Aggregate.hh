@@ -63,4 +63,7 @@ private:
   // List Variable(s)
   IIR_AssociationList *element_association_list;
 };
+
+typedef refcount<IIRBase_Aggregate> IIRBase_AggregateRef;
+
 #endif

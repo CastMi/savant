@@ -36,4 +36,7 @@ class IIR_DrivingAttribute : public virtual IIR_Attribute{
 public:
   virtual ~IIR_DrivingAttribute() {}    
 };
+
+typedef refcount<IIR_DrivingAttribute> IIR_DrivingAttributeRef;
+
 #endif

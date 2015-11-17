@@ -36,8 +36,9 @@ public:
   virtual ~IIR_AcrossAttribute() {};
 
 protected:
-
 private:
-
 };
+
+typedef refcount<IIR_AcrossAttribute> IIR_AcrossAttributeRef;
+
 #endif

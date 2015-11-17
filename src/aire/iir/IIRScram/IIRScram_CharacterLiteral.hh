@@ -52,4 +52,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_CharacterLiteral> IIRScram_CharacterLiteralRef;
+
 #endif

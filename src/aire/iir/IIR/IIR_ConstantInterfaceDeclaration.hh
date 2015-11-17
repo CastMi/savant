@@ -36,4 +36,7 @@ class IIR_ConstantInterfaceDeclaration : public virtual IIR_InterfaceDeclaration
 public:
   virtual ~IIR_ConstantInterfaceDeclaration() {}    
 };
+
+typedef refcount<IIR_ConstantInterfaceDeclaration> IIR_ConstantInterfaceDeclarationRef;
+
 #endif

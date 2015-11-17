@@ -64,4 +64,6 @@ private:
   IIR_AttributeSpecificationList *attributes;  
 };
 
+typedef refcount<IIRBase_SubtypeDeclaration> IIRBase_SubtypeDeclarationRef;
+
 #endif

@@ -54,4 +54,6 @@ protected:
 private:
 };
 
+typedef refcount<IIRScram_QualifiedExpression> IIRScram_QualifiedExpressionRef;
+
 #endif

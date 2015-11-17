@@ -48,4 +48,7 @@ public:
 private:
   
 };
+
+typedef refcount<IIR_BreakList> IIR_BreakListRef;
+
 #endif

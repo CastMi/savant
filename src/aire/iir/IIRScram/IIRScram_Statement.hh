@@ -128,4 +128,7 @@ protected:
   
 private:
 };
+
+typedef refcount<IIRScram_Statement> IIRScram_StatementRef;
+
 #endif

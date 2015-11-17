@@ -40,4 +40,7 @@ class IIR_CaseStatementAlternativeByOthers : public virtual IIR_CaseStatementAlt
 public:
   virtual ~IIR_CaseStatementAlternativeByOthers() {}
 };
+
+typedef refcount<IIR_CaseStatementAlternativeByOthers> IIR_CaseStatementAlternativeByOthersRef;
+
 #endif

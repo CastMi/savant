@@ -63,6 +63,9 @@ private:
   IIR_Boolean _is_qualified_expression();
   IIR_Boolean _survived_transformation;
 };
+
+typedef refcount<IIRScram_UserAttribute> IIRScram_UserAttributeRef;
+
 #endif
 
 

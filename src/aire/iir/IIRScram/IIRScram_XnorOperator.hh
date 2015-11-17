@@ -44,4 +44,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_XnorOperator> IIRScram_XnorOperatorRef;
+
 #endif

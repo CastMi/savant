@@ -45,4 +45,7 @@ public:
   virtual IIR *predecessor( IIR_DesignFile * ) = 0;
   virtual IIR *first( ) = 0;
 };
+
+typedef refcount<IIR_DesignFileList> IIR_DesignFileListRef;
+
 #endif

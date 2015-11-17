@@ -50,4 +50,7 @@ public:
   virtual void set_right_operand( IIR *right_operand ) = 0;
   virtual IIR *get_right_operand() = 0;
 };
+
+typedef refcount<IIR_DyadicOperator> IIR_DyadicOperatorRef;
+
 #endif

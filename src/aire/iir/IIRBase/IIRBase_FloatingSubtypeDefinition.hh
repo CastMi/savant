@@ -61,4 +61,7 @@ protected:
 private:
   IIR_FunctionDeclaration *my_resolution_function;
 };
+
+typedef refcount<IIRBase_FloatingSubtypeDefinition> IIRBase_FloatingSubtypeDefinitionRef;
+
 #endif

@@ -42,4 +42,7 @@ public:
   virtual void  set_boxed( IIR_Boolean is_boxed ) = 0;
   virtual IIR_Boolean get_boxed() = 0;
 };
+
+typedef refcount<IIR_EntityClassEntry> IIR_EntityClassEntryRef;
+
 #endif

@@ -74,4 +74,6 @@ private:
   IIR_PhysicalUnit *unit_name;
 };
 
+typedef refcount<IIRBase_PhysicalUnit> IIRBase_PhysicalUnitRef;
+
 #endif

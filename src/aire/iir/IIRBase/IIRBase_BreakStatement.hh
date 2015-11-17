@@ -70,4 +70,7 @@ private:
   IIR* condition;
 
 };
+
+typedef refcount<IIRBase_BreakStatement> IIRBase_BreakStatementRef;
+
 #endif

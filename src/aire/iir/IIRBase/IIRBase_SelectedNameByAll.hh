@@ -50,4 +50,6 @@ private:
   
 };
 
+typedef refcount<IIRBase_SelectedNameByAll> IIRBase_SelectedNameByAllRef;
+
 #endif

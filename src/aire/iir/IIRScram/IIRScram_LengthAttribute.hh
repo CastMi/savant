@@ -56,4 +56,7 @@ protected:
   void _resolve_suffix_special();
 private:
 };
+
+typedef refcount<IIRScram_LengthAttribute> IIRScram_LengthAttributeRef;
+
 #endif

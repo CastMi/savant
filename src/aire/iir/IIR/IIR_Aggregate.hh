@@ -40,4 +40,7 @@ public:
   // List accessor(s)
   virtual IIR_AssociationList *get_element_association_list() = 0;
 };
+
+typedef refcount<IIR_Aggregate> IIR_AggregateRef;
+
 #endif

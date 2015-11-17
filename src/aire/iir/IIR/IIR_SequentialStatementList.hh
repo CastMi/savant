@@ -41,4 +41,7 @@ public:
   virtual IIR_SequentialStatement* first() = 0;
   virtual IIR_SequentialStatement* successor(IIR_SequentialStatement*) = 0;
 };
+
+typedef refcount<IIR_SequentialStatementList> IIR_SequentialStatementListRef;
+
 #endif

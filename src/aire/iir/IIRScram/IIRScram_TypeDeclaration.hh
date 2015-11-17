@@ -87,4 +87,7 @@ protected:
 private:
   IIRScram_TypeDefinition *                     _fully_defined_type;
 };
+
+typedef refcount<IIRScram_TypeDeclaration> IIRScram_TypeDeclarationRef;
+
 #endif

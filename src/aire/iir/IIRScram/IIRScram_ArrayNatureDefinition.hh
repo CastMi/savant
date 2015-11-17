@@ -84,4 +84,7 @@ private:
                                                                     IIRScram_NatureDefinition *,
                                                                     IIRScram_NatureDeclaration *);
 };
+
+typedef refcount<IIRScram_ArrayNatureDefinition> IIRScram_ArrayNatureDefinitionRef;
+
 #endif

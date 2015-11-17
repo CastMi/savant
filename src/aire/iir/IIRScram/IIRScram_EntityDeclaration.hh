@@ -59,6 +59,9 @@ public:
    
 private:
 };
+
+typedef refcount<IIRScram_EntityDeclaration> IIRScram_EntityDeclarationRef;
+
 #endif
 
 

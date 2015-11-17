@@ -44,4 +44,7 @@ public:
   virtual void set_condition( IIR* condition) = 0;
   virtual IIR* get_condition() = 0;
 };
+
+typedef refcount<IIR_NextStatement> IIR_NextStatementRef;
+
 #endif

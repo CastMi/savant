@@ -53,4 +53,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_ConditionalWaveformList> IIRBase_ConditionalWaveformListRef;
+
 #endif

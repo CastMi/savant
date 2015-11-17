@@ -65,4 +65,7 @@ private:
   IIR* procedure_name; 
 
 };
+
+typedef refcount<IIRBase_ProcedureCallStatement> IIRBase_ProcedureCallStatementRef;
+
 #endif

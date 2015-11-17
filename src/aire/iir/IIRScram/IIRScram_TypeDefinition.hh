@@ -155,4 +155,7 @@ private:
 
   IIRScram_Attribute *my_attribute;
 };
+
+typedef refcount<IIRScram_TypeDefinition> IIRScram_TypeDefinitionRef;
+
 #endif

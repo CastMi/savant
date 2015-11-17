@@ -32,4 +32,7 @@ class IIR_ThroughAttribute : public virtual IIR_Attribute {
 public:
   virtual ~IIR_ThroughAttribute() {};
 };
+
+typedef refcount<IIR_ThroughAttribute> IIR_ThroughAttributeRef;
+
 #endif

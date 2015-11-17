@@ -76,9 +76,7 @@ private:
 
   IIR_Identifier                *my_file_name;
 };
+
+typedef refcount<IIRBase_DesignFile> IIRBase_DesignFileRef;
+
 #endif
-
-
-
-
-

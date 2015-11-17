@@ -922,8 +922,8 @@ IIRScram *
 IIRScram_IndexedName::_semantic_transform( savant::set<IIRScram_TypeDefinition*> *context_set ){
 
   IIRScram *retval = NULL;
-  
-  ASSERT( _get_suffix() != NULL );   
+
+  ASSERT( _get_suffix() != NULL );
   // OK, here's the story...  We have an indexed_name, something in
   // the form of foo(x, y, z)...  Or foo( x(2), y(1,2), z(x(1))) for
   // that matter.  We need to decide whether "foo" is a function or
@@ -933,7 +933,7 @@ IIRScram_IndexedName::_semantic_transform( savant::set<IIRScram_TypeDefinition*>
   // into the right type of "thing" - for instance, if it's a function
   // call, we need to transform the indexed name into an
   // IIRScram_FunctionCall, and make the transformations on the paramters.
-  
+
   int context_size = context_set->size();
   IIRScram *orig_prefix = _get_prefix();
   IIRScram *orig_suffix = _get_suffix();

@@ -1,4 +1,3 @@
-
 #ifndef IIR_RETURN_STATEMENT_HH
 #define IIR_RETURN_STATEMENT_HH
 
@@ -43,4 +42,7 @@ public:
   virtual void set_return_expression( IIR *return_expression ) = 0;
   virtual IIR* get_return_expression() = 0;
 };
+
+typedef refcount<IIR_ReturnStatement> IIR_ReturnStatementRef;
+
 #endif

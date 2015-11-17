@@ -43,4 +43,6 @@ public:
   virtual IIR_CaseStatementAlternative* successor(IIR_CaseStatementAlternative*) = 0;
 };
 
+typedef refcount<IIR_CaseStatementAlternativeList> IIR_CaseStatementAlternativeListRef;
+
 #endif

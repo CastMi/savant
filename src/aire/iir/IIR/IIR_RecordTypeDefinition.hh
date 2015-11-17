@@ -45,4 +45,7 @@ public:
   virtual IIR_FunctionDeclaration *get_resolution_function() = 0;
   virtual void set_resolution_function(   IIR_FunctionDeclaration * ) = 0;
 };
+
+typedef refcount<IIR_RecordTypeDefinition> IIR_RecordTypeDefinitionRef;
+
 #endif

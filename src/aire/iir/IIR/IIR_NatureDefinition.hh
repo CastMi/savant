@@ -37,4 +37,6 @@ public:
   virtual IIR_TypeDefinition *get_final_subtype() = 0;
 };
 
+typedef refcount<IIR_NatureDefinition> IIR_NatureDefinitionRef;
+
 #endif

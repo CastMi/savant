@@ -37,4 +37,6 @@ public:
   virtual ~IIR_SLAOperator() {}    
 };
 
+typedef refcount<IIR_SLAOperator> IIR_SLAOperatorRef;
+
 #endif

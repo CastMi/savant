@@ -65,4 +65,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_ConcurrentGenerateForStatement> IIRScram_ConcurrentGenerateForStatementRef;
+
 #endif

@@ -69,4 +69,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_WaveformElement> IIRScram_WaveformElementRef;
+
 #endif

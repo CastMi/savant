@@ -37,4 +37,7 @@ class IIR_PathNameAttribute : public virtual IIR_Attribute{
 public:
   virtual ~IIR_PathNameAttribute() {}    
 };
+
+typedef refcount<IIR_PathNameAttribute> IIR_PathNameAttributeRef;
+
 #endif

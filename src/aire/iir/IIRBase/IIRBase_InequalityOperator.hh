@@ -51,4 +51,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_InequalityOperator> IIRBase_InequalityOperatorRef;
+
 #endif

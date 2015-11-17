@@ -64,4 +64,6 @@ private:
   IIR* suffix;
 };
 
+typedef refcount<IIRBase_UserAttribute> IIRBase_UserAttributeRef;
+
 #endif

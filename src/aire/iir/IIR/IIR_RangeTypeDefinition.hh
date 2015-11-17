@@ -36,4 +36,7 @@ class IIR_RangeTypeDefinition : public virtual IIR_ScalarTypeDefinition{
 public:
   virtual ~IIR_RangeTypeDefinition() {}
 };
+
+typedef refcount<IIR_RangeTypeDefinition> IIR_RangeTypeDefinitionRef;
+
 #endif

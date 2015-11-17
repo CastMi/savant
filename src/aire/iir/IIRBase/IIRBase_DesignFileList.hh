@@ -51,4 +51,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_DesignFileList> IIRBase_DesignFileListRef;
+
 #endif

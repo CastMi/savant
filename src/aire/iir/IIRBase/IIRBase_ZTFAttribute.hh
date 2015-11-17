@@ -87,4 +87,7 @@ private:
   IIR* initial_delay;
 
 };
+
+typedef refcount<IIRBase_ZTFAttribute> IIRBase_ZTFAttributeRef;
+
 #endif

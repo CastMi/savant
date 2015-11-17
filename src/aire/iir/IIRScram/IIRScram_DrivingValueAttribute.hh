@@ -46,4 +46,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_DrivingValueAttribute> IIRScram_DrivingValueAttributeRef;
+
 #endif

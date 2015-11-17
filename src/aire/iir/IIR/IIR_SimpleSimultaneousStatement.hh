@@ -56,9 +56,7 @@ public:
   /** Returns a pointer to the tolerance aspect of the simultaneous equation */
   virtual IIR* get_tolerance_aspect() = 0;  
 };
+
+typedef refcount<IIR_SimpleSimultaneousStatement> IIR_SimpleSimultaneousStatementRef;
+
 #endif
-
-
-
-
-

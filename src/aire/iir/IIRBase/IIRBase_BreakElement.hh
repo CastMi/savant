@@ -69,4 +69,7 @@ private:
   IIR_Name* selector_quantity_name;
   IIR* value;  
 };
+
+typedef refcount<IIRBase_BreakElement> IIRBase_BreakElementRef;
+
 #endif

@@ -65,4 +65,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_Label> IIRScram_LabelRef;
+
 #endif

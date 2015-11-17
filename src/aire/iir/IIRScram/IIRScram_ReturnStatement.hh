@@ -51,4 +51,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_ReturnStatement> IIRScram_ReturnStatementRef;
+
 #endif

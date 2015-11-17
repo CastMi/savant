@@ -42,4 +42,7 @@ public:
   virtual IIR_AttributeSpecification *successor( IIR_AttributeSpecification * ) = 0;
   virtual IIR_AttributeSpecification *first() = 0;
 };
+
+typedef refcount<IIR_AttributeSpecificationList> IIR_AttributeSpecificationListRef;
+
 #endif

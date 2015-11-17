@@ -67,4 +67,7 @@ private:
   IIRScram_ScalarTypeDefinition *_my_rval;
 
 };
+
+typedef refcount<IIRScram_ReverseRangeAttribute> IIRScram_ReverseRangeAttributeRef;
+
 #endif

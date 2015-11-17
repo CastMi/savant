@@ -36,4 +36,6 @@ public:
   virtual ~IIR_SRAOperator() {}    
 };
 
+typedef refcount<IIR_SRAOperator> IIR_SRAOperatorRef;
+
 #endif

@@ -48,4 +48,6 @@ public:
   virtual IIR* get_value() = 0;
 };
 
+typedef refcount<IIR_FreeQuantityDeclaration> IIR_FreeQuantityDeclarationRef;
+
 #endif

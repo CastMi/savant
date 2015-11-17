@@ -64,4 +64,7 @@ private:
   // This is different from the spec-- bus is as discussed with J. Willis.
   IIR_PhysicalUnit *primary_unit;
 };
+
+typedef refcount<IIRBase_PhysicalTypeDefinition> IIRBase_PhysicalTypeDefinitionRef;
+
 #endif

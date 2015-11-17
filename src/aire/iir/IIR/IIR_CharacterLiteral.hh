@@ -41,4 +41,7 @@ public:
     
   virtual void release() = 0;
 };
+
+typedef refcount<IIR_CharacterLiteral> IIR_CharacterLiteralRef;
+
 #endif

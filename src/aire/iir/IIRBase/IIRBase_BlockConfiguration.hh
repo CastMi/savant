@@ -65,4 +65,7 @@ private:
   IIR_ConfigurationItemList  *configuration_item_list;
   IIR *block_specification;
 };
+
+typedef refcount<IIRBase_BlockConfiguration> IIRBase_BlockConfigurationRef;
+
 #endif

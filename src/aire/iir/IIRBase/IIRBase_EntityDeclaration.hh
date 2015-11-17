@@ -79,4 +79,7 @@ private:
   IIR_DesignUnitList            *architectures;
 
 };
+
+typedef refcount<IIRBase_EntityDeclaration> IIRBase_EntityDeclarationRef;
+
 #endif

@@ -75,4 +75,7 @@ public:
 private:
   string my_text;
 };
+
+typedef refcount<IIRBase_String> IIRBase_StringRef;
+
 #endif

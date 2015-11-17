@@ -1,4 +1,3 @@
-
 #ifndef IIR_CONFIGURATION_ITEM_LIST_HH
 #define IIR_CONFIGURATION_ITEM_LIST_HH
 
@@ -36,4 +35,7 @@ class IIR_ConfigurationItemList : public virtual IIR_List{
 public:
   virtual ~IIR_ConfigurationItemList() {}   
 };
+
+typedef refcount<IIR_ConfigurationItemList> IIR_ConfigurationItemListRef;
+
 #endif

@@ -45,4 +45,7 @@ public:
   virtual void set_choice(IIR_Choice* c) = 0;
   virtual IIR_Choice* get_choice() = 0;
 };
+
+typedef refcount<IIR_CaseStatementAlternativeByExpression> IIR_CaseStatementAlternativeByExpressionRef;
+
 #endif

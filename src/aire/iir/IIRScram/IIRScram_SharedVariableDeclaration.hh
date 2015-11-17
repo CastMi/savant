@@ -49,4 +49,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_SharedVariableDeclaration> IIRScram_SharedVariableDeclarationRef;
+
 #endif

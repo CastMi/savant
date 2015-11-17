@@ -50,4 +50,6 @@ private:
 
 };
 
+typedef refcount<IIRScram_ScalarNatureDefinition> IIRScram_ScalarNatureDefinitionRef;
+
 #endif

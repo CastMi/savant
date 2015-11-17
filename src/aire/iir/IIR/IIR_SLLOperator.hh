@@ -36,4 +36,6 @@ public:
   virtual ~IIR_SLLOperator() {}    
 };
 
+typedef refcount<IIR_SLLOperator> IIR_SLLOperatorRef;
+
 #endif

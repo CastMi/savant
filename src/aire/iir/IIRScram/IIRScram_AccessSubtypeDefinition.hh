@@ -60,4 +60,7 @@ public:
 protected:     
 private:
 };
+
+typedef refcount<IIRScram_AccessSubtypeDefinition> IIRScram_AccessSubtypeDefinitionRef;
+
 #endif

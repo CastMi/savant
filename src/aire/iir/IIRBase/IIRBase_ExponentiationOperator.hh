@@ -49,4 +49,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_ExponentiationOperator> IIRBase_ExponentiationOperatorRef;
+
 #endif

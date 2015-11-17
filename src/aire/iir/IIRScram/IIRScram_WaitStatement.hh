@@ -57,4 +57,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_WaitStatement> IIRScram_WaitStatementRef;
+
 #endif

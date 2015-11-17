@@ -61,4 +61,7 @@ private:
   IIR *my_suffix;
 
 };
+
+typedef refcount<IIRBase_LeftOfAttribute> IIRBase_LeftOfAttributeRef;
+
 #endif

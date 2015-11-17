@@ -48,4 +48,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_InstanceNameAttribute> IIRScram_InstanceNameAttributeRef;
+
 #endif

@@ -36,4 +36,6 @@ public:
   virtual ~IIR_SimpleNameAttribute() {}    
 };
 
+typedef refcount<IIR_SimpleNameAttribute> IIR_SimpleNameAttributeRef;
+
 #endif

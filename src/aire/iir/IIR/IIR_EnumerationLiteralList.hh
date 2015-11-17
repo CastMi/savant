@@ -43,4 +43,7 @@ public:
   virtual IIR *successor( IIR_EnumerationLiteral * ) = 0;
   virtual IIR *predecessor( IIR_EnumerationLiteral * ) = 0;
 };
+
+typedef refcount<IIR_EnumerationLiteralList> IIR_EnumerationLiteralListRef;
+
 #endif

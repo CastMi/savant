@@ -50,4 +50,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_ArchitectureStatementList> IIRBase_ArchitectureStatementListRef;
+
 #endif

@@ -37,4 +37,7 @@ class IIR_LastEventAttribute : public virtual IIR_Attribute{
 public:
   virtual ~IIR_LastEventAttribute() {}
 };
+
+typedef refcount<IIR_LastEventAttribute> IIR_LastEventAttributeRef;
+
 #endif

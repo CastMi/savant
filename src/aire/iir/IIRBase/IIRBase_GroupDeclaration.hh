@@ -70,4 +70,7 @@ private:
   IIR_Name*  group_template_name;  
 
 };
+
+typedef refcount<IIRBase_GroupDeclaration> IIRBase_GroupDeclarationRef;
+
 #endif

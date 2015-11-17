@@ -68,4 +68,7 @@ private:
   IIR_AttributeSpecificationList        *attributes;
 
 };
+
+typedef refcount<IIRBase_ComponentDeclaration> IIRBase_ComponentDeclarationRef;
+
 #endif

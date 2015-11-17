@@ -37,4 +37,6 @@ public:
 private:
 };
 
+typedef refcount<IIRScram_ProcedureReturnTypeDefinition> IIRScram_ProcedureReturnTypeDefinitionRef;
+
 #endif

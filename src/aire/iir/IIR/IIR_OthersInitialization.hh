@@ -40,4 +40,7 @@ public:
   virtual void set_expression( IIR* expression) = 0;
   virtual IIR* get_expression() = 0;
 };
+
+typedef refcount<IIR_OthersInitialization> IIR_OthersInitializationRef;
+
 #endif

@@ -63,4 +63,7 @@ public:
   virtual void set_attributes(IIR_AttributeSpecificationList *new_attributes) = 0;
   //@}
 };
+
+typedef refcount<IIR_LibraryUnit> IIR_LibraryUnitRef;
+
 #endif

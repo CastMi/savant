@@ -52,4 +52,7 @@ public:
   virtual IIR *get_configuration() = 0;
   virtual void set_configuration( IIR *new_config ) = 0;
 };
+
+typedef refcount<IIR_ComponentInstantiationStatement> IIR_ComponentInstantiationStatementRef;
+
 #endif

@@ -32,4 +32,7 @@ class IIR_TerminalInterfaceDeclaration : public virtual IIR_InterfaceDeclaration
 public:
   virtual ~IIR_TerminalInterfaceDeclaration() {};
 };
+
+typedef refcount<IIR_TerminalInterfaceDeclaration> IIR_TerminalInterfaceDeclarationRef;
+
 #endif

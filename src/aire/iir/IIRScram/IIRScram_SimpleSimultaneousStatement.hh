@@ -51,4 +51,7 @@ protected:
 private:
   IIR_Label * _mangled_stmt_label;
 };
+
+typedef refcount<IIRScram_SimpleSimultaneousStatement> IIRScram_SimpleSimultaneousStatementRef;
+
 #endif

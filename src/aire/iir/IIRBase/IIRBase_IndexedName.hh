@@ -75,4 +75,7 @@ private:
   IIR* suffix;  
 
 };
+
+typedef refcount<IIRBase_IndexedName> IIRBase_IndexedNameRef;
+
 #endif

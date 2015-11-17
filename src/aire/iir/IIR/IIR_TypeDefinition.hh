@@ -88,4 +88,6 @@ public:
   virtual IIR_FunctionDeclaration *get_resolution_function() = 0;
 };
 
+typedef refcount<IIR_TypeDefinition> IIR_TypeDefinitionRef;
+
 #endif

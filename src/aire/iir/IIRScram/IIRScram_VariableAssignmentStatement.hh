@@ -48,4 +48,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_VariableAssignmentStatement> IIRScram_VariableAssignmentStatementRef;
+
 #endif

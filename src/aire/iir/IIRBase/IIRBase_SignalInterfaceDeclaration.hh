@@ -57,4 +57,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_SignalInterfaceDeclaration> IIRBase_SignalInterfaceDeclarationRef;
+
 #endif

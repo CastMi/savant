@@ -77,4 +77,7 @@ private:
   void _type_check_expression_and_choices();
   void _type_check_target_and_waveforms();
 };
+
+typedef refcount<IIRScram_ConcurrentSelectedSignalAssignment> IIRScram_ConcurrentSelectedSignalAssignmentRef;
+
 #endif

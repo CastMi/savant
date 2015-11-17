@@ -39,4 +39,6 @@ protected:
 private:
 };
 
+typedef refcount<IIRScram_QuantityDeclaration> IIRScram_QuantityDeclarationRef;
+
 #endif

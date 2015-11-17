@@ -76,8 +76,9 @@ protected:
   virtual ~IIRScram_List() = 0;
     
 private:
-  
 
 };
+
+typedef refcount<IIRScram_List> IIRScram_ListRef;
 
 #endif

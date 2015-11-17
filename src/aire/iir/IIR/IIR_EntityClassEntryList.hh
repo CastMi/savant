@@ -1,4 +1,3 @@
-
 #ifndef IIR_ENTITY_CLASS_ENTRY_LIST_HH
 #define IIR_ENTITY_CLASS_ENTRY_LIST_HH
 
@@ -36,4 +35,7 @@ class IIR_EntityClassEntryList : public virtual IIR_List{
 public:
   virtual ~IIR_EntityClassEntryList() {}    
 };
+
+typedef refcount<IIR_EntityClassEntryList> IIR_EntityClassEntryListRef;
+
 #endif

@@ -50,4 +50,7 @@ public:
 protected:
   virtual ~IIR_IncompleteTypeDefinition(){}
 };
+
+typedef refcount<IIR_IncompleteTypeDefinition> IIR_IncompleteTypeDefinitionRef;
+
 #endif

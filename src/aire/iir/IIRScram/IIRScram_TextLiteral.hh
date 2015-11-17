@@ -63,4 +63,6 @@ protected:
 private:
 };
 
+typedef refcount<IIRScram_TextLiteral> IIRScram_TextLiteralRef;
+
 #endif

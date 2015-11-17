@@ -44,4 +44,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_StringLiteral> IIRBase_StringLiteralRef;
+
 #endif

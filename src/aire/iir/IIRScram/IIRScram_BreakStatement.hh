@@ -50,4 +50,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRScram_BreakStatement> IIRScram_BreakStatementRef;
+
 #endif

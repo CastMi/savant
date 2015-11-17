@@ -67,4 +67,7 @@ private:
   IIR_Boolean postponed;
 
 };
+
+typedef refcount<IIRBase_ProcessStatement> IIRBase_ProcessStatementRef;
+
 #endif

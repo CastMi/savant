@@ -55,4 +55,6 @@ private:
 
 };
 
+typedef refcount<IIRScram_ConfigurationItemList> IIRScram_ConfigurationItemListRef;
+
 #endif

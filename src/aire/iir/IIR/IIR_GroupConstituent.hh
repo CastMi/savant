@@ -40,4 +40,7 @@ public:
   virtual void set_name( IIR* name) = 0;
   virtual IIR* get_name() = 0;
 };
+
+typedef refcount<IIR_GroupConstituent> IIR_GroupConstituentRef;
+
 #endif

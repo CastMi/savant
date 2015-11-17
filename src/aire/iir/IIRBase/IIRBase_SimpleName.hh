@@ -51,4 +51,6 @@ private:
   
 };
 
+typedef refcount<IIRBase_SimpleName> IIRBase_SimpleNameRef;
+
 #endif

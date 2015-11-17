@@ -56,4 +56,7 @@ public:
 
   virtual IIR_Int32 get_position( IIR_ConstantInterfaceDeclaration* element ) = 0;
 };
+
+typedef refcount<IIR_GenericList> IIR_GenericListRef;
+
 #endif

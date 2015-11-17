@@ -69,4 +69,7 @@ private:
 			       IIRScram_List *,
 			       IIRScram *configuration );    
 };
+
+typedef refcount<IIRScram_DesignatorList> IIRScram_DesignatorListRef;
+
 #endif

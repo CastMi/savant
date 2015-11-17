@@ -53,4 +53,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_ElementDeclarationList> IIRBase_ElementDeclarationListRef;
+
 #endif

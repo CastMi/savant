@@ -85,4 +85,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_ObjectDeclaration> IIRScram_ObjectDeclarationRef;
+
 #endif

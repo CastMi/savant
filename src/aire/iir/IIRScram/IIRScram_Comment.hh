@@ -52,4 +52,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_Comment> IIRScram_CommentRef;
+
 #endif

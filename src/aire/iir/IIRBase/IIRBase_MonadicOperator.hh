@@ -67,4 +67,7 @@ private:
   IIR_SubprogramDeclaration* implementation;
 
 };
+
+typedef refcount<IIRBase_MonadicOperator> IIRBase_MonadicOperatorRef;
+
 #endif

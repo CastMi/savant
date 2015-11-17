@@ -39,4 +39,7 @@ public:
     
   virtual void release() = 0;
 };
+
+typedef refcount<IIR_Identifier> IIR_IdentifierRef;
+
 #endif

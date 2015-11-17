@@ -55,4 +55,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_ProcedureDeclaration> IIRBase_ProcedureDeclarationRef;
+
 #endif

@@ -68,4 +68,7 @@ public:
 private:
   constraint_functor            *_my_functor;
 };
+
+typedef refcount<IIRScram_AttributeSpecification> IIRScram_AttributeSpecificationRef;
+
 #endif

@@ -39,4 +39,7 @@ public:
 protected:    
 private: 
 };
+
+typedef refcount<IIRScram_ArraySubnatureDefinition> IIRScram_ArraySubnatureDefinitionRef;
+
 #endif

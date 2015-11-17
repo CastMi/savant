@@ -69,5 +69,7 @@ private:
   IIR* numerator;
   IIR* denominator;
 };
-#endif
 
+typedef refcount<IIRBase_LTFAttribute> IIRBase_LTFAttributeRef;
+
+#endif

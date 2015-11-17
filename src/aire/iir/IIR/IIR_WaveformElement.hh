@@ -46,4 +46,6 @@ public:
   virtual IIR_WaveformElement* get_next() = 0;
 };
 
+typedef refcount<IIR_WaveformElement> IIR_WaveformElementRef;
+
 #endif

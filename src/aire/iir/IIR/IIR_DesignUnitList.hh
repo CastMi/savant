@@ -36,4 +36,7 @@ class IIR_DesignUnitList : public virtual IIR_List{
 public:
   virtual ~IIR_DesignUnitList() {}     
 };
+
+typedef refcount<IIR_DesignUnitList> IIR_DesignUnitListRef;
+
 #endif

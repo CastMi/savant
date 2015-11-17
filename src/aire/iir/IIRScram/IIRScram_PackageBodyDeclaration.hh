@@ -54,4 +54,7 @@ protected:
 
 private:
 };
+
+typedef refcount<IIRScram_PackageBodyDeclaration> IIRScram_PackageBodyDeclarationRef;
+
 #endif

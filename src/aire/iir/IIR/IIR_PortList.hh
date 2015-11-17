@@ -53,4 +53,7 @@ public:
   virtual IIR *last() = 0;
   virtual IIR_Int32 get_position( IIR_InterfaceDeclaration * ) = 0;
 };
+
+typedef refcount<IIR_PortList> IIR_PortListRef;
+
 #endif

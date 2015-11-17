@@ -53,4 +53,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_BitStringLiteral> IIRScram_BitStringLiteralRef;
+
 #endif

@@ -54,4 +54,7 @@ public:
   virtual void                          set_entity_statement_part(IIR_ArchitectureStatementList *new_entity_statement_part) = 0;
   virtual void                          set_architectures(IIR_DesignUnitList *new_architectures) = 0;
 };
+
+typedef refcount<IIR_EntityDeclaration> IIR_EntityDeclarationRef;
+
 #endif

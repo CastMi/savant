@@ -52,4 +52,6 @@ public:
   virtual void set_implicit_declarations( savant::set<IIR_Declaration*> *) = 0;
 };
 
+typedef refcount<IIR_TypeDeclaration> IIR_TypeDeclarationRef;
+
 #endif

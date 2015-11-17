@@ -59,4 +59,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_ComponentDeclaration> IIRScram_ComponentDeclarationRef;
+
 #endif

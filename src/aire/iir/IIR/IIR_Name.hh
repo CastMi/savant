@@ -47,4 +47,7 @@ public:
   virtual IIR *get_suffix() = 0;
   //@}
 };
+
+typedef refcount<IIR_Name> IIR_NameRef;
+
 #endif

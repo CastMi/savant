@@ -52,4 +52,7 @@ protected:
 private:
   IIR* my_value;
 };
+
+typedef refcount<IIRBase_Choice> IIRBase_ChoiceRef;
+
 #endif

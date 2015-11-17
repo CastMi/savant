@@ -36,4 +36,7 @@ class IIR_IntegerTypeDefinition : public virtual IIR_ScalarTypeDefinition{
 public:
   virtual ~IIR_IntegerTypeDefinition() {}    
 };
+
+typedef refcount<IIR_IntegerTypeDefinition> IIR_IntegerTypeDefinitionRef;
+
 #endif

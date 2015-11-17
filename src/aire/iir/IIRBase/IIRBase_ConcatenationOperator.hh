@@ -46,4 +46,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_ConcatenationOperator> IIRBase_ConcatenationOperatorRef;
+
 #endif

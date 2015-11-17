@@ -48,4 +48,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_DesignatorByOthers> IIRBase_DesignatorByOthersRef;
+
 #endif

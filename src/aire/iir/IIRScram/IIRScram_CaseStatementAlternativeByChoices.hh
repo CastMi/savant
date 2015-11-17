@@ -57,4 +57,6 @@ private:
 
 };
 
+typedef refcount<IIRScram_CaseStatementAlternativeByChoices> IIRScram_CaseStatementAlternativeByChoicesRef;
+
 #endif

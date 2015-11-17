@@ -47,4 +47,7 @@ public:
   virtual void set_operand( IIR* operand) = 0;
   virtual IIR* get_operand() = 0;
 };
+
+typedef refcount<IIR_MonadicOperator> IIR_MonadicOperatorRef;
+
 #endif

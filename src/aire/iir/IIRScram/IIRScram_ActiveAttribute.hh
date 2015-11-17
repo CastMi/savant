@@ -59,4 +59,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_ActiveAttribute> IIRScram_ActiveAttributeRef;
+
 #endif

@@ -49,4 +49,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_SLLOperator> IIRBase_SLLOperatorRef;
+
 #endif

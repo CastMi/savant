@@ -49,4 +49,7 @@ public:
   virtual void set_group_template(IIR_Name* group_template_name) = 0;
   virtual IIR_Name* get_group_template_name() = 0;
 };
+
+typedef refcount<IIR_GroupDeclaration> IIR_GroupDeclarationRef;
+
 #endif

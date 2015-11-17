@@ -66,4 +66,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_MonadicOperator> IIRScram_MonadicOperatorRef;
+
 #endif

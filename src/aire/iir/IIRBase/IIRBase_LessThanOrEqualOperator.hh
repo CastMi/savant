@@ -51,4 +51,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_LessThanOrEqualOperator> IIRBase_LessThanOrEqualOperatorRef;
+
 #endif

@@ -50,4 +50,6 @@ public:
   virtual IIR_PhysicalUnit* get_unit_name() = 0;
 };
 
+typedef refcount<IIR_PhysicalUnit> IIR_PhysicalUnitRef;
+
 #endif

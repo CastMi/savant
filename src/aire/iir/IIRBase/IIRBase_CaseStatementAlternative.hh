@@ -53,4 +53,7 @@ private:
   IIR_SequentialStatementList *sequence_of_statements;
 
 };
+
+typedef refcount<IIRBase_CaseStatementAlternative> IIRBase_CaseStatementAlternativeRef;
+
 #endif

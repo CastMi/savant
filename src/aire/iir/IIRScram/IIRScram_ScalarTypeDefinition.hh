@@ -77,4 +77,7 @@ protected:
   void _build_implicit_operators( savant::set<IIRScram_Declaration*> * );    
 private:
 };
+
+typedef refcount<IIRScram_ScalarTypeDefinition> IIRScram_ScalarTypeDefinitionRef;
+
 #endif

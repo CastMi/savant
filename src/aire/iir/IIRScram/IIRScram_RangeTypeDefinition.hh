@@ -73,4 +73,7 @@ private:
 							      IIRScram_TypeDefinition *right_type);
   
 };
+
+typedef refcount<IIRScram_RangeTypeDefinition> IIRScram_RangeTypeDefinitionRef;
+
 #endif

@@ -50,4 +50,7 @@ protected:
 
 private:
 };
+
+typedef refcount<IIRScram_BaseAttribute> IIRScram_BaseAttributeRef;
+
 #endif

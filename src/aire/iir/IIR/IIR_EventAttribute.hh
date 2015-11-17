@@ -36,4 +36,7 @@ class IIR_EventAttribute : public virtual IIR_Attribute{
 public:
   virtual ~IIR_EventAttribute() {}    
 };
+
+typedef refcount<IIR_EventAttribute> IIR_EventAttributeRef;
+
 #endif

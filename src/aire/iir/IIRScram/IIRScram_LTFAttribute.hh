@@ -61,4 +61,7 @@ protected:
 private:
   
 };
+
+typedef refcount<IIRScram_LTFAttribute> IIRScram_LTFAttributeRef;
+
 #endif

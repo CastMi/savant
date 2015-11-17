@@ -69,4 +69,6 @@ private:
   IIR* reject_time_expression;
 };
 
+typedef refcount<IIRBase_SignalAssignmentStatement> IIRBase_SignalAssignmentStatementRef;
+
 #endif

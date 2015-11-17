@@ -41,4 +41,6 @@ protected:
 
 };
 
+typedef refcount<IIRBase_QuantityDeclaration> IIRBase_QuantityDeclarationRef;
+
 #endif

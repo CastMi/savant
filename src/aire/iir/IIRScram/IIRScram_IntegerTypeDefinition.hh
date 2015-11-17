@@ -64,4 +64,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_IntegerTypeDefinition> IIRScram_IntegerTypeDefinitionRef;
+
 #endif

@@ -48,4 +48,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_PathNameAttribute> IIRScram_PathNameAttributeRef;
+
 #endif

@@ -209,7 +209,7 @@ IIRScram_Operator::_semantic_transform( savant::set<IIRScram_TypeDefinition*> *c
   if( _type_check_user_declared( context_set ) == TRUE ){
     ASSERT( _get_implementation() != NULL );
     ASSERT( _get_implementation()->is_resolved() == TRUE );
-    
+
     // Only transform this to a function call if the user _explicitly_
     // declared this operator.
     if( _get_implementation()->is_implicit_declaration() == FALSE ){
@@ -217,15 +217,15 @@ IIRScram_Operator::_semantic_transform( savant::set<IIRScram_TypeDefinition*> *c
       copy_location( this, function_call );
       function_call->set_implementation( get_implementation() );
       function_call->set_parameter_association_list( _build_argument_list() );
-      function_call->_get_parameter_association_list()->_resolve_and_order( _get_implementation()->_get_interface_declarations(), 
+      function_call->_get_parameter_association_list()->_resolve_and_order( _get_implementation()->_get_interface_declarations(),
 									    NULL,
 									    this );
-      
-      IIRScram_AssociationElement *current =  
+
+      IIRScram_AssociationElement *current =
         dynamic_cast<IIRScram_AssociationElement *>(function_call->get_parameter_association_list()->first());
       while( current != NULL ){
 	ASSERT( current->is_resolved() == TRUE );
-	current =  
+	current =
           dynamic_cast<IIRScram_AssociationElement *>(function_call->get_parameter_association_list()->successor( current ));
       }
          retval = function_call;

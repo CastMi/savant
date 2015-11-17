@@ -74,4 +74,7 @@ private:
   IIR* condition;
 
 };
+
+typedef refcount<IIRBase_ConcurrentBreakStatement> IIRBase_ConcurrentBreakStatementRef;
+
 #endif

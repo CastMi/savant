@@ -73,4 +73,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_WaveformElement> IIRBase_WaveformElementRef;
+
 #endif

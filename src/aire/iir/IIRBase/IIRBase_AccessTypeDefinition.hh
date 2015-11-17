@@ -77,4 +77,7 @@ protected:
 private:
   IIR_TypeDefinition *access_for_type;
 };
+
+typedef refcount<IIRBase_AccessTypeDefinition> IIRBase_AccessTypeDefinitionRef;
+
 #endif

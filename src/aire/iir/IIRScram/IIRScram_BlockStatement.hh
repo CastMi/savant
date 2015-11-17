@@ -74,4 +74,6 @@ private:
   IIRScram_SignalDeclaration *my_implicit_guard_signal;
 };
 
+typedef refcount<IIRScram_BlockStatement> IIRScram_BlockStatementRef;
+
 #endif

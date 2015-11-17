@@ -36,4 +36,7 @@ class IIR_AssociationElementOpen : public virtual IIR_AssociationElement{
 public:
   virtual ~IIR_AssociationElementOpen() {}
 };
+
+typedef refcount<IIR_AssociationElementOpen> IIR_AssociationElementOpenRef;
+
 #endif

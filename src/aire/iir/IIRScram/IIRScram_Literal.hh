@@ -53,4 +53,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_Literal> IIRScram_LiteralRef;
+
 #endif

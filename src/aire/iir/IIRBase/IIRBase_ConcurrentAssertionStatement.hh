@@ -63,4 +63,7 @@ private:
   IIR *report_expression;
   IIR *severity_expression;
 };
+
+typedef refcount<IIRBase_ConcurrentAssertionStatement> IIRBase_ConcurrentAssertionStatementRef;
+
 #endif

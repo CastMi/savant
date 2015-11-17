@@ -49,4 +49,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_CommentList> IIRBase_CommentListRef;
+
 #endif

@@ -71,4 +71,7 @@ public:
   virtual void set_block_configuration( IIR_BlockConfiguration *block_configuration ) = 0;
   virtual IIR_BlockConfiguration *get_block_configuration() = 0;
 };
+
+typedef refcount<IIR_ComponentConfiguration> IIR_ComponentConfigurationRef;
+
 #endif

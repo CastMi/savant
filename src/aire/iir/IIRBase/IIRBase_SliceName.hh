@@ -66,4 +66,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_SliceName> IIRBase_SliceNameRef;
+
 #endif

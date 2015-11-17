@@ -37,4 +37,7 @@ class IIR_Designator : public virtual IIR_Tuple{
 public:
   virtual ~IIR_Designator() {}    
 };
+
+typedef refcount<IIR_Designator> IIR_DesignatorRef;
+
 #endif

@@ -48,4 +48,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_FileInterfaceDeclaration> IIRBase_FileInterfaceDeclarationRef;
+
 #endif

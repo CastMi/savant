@@ -61,4 +61,7 @@ public:
   */
   virtual void set_declarative_region( IIR * ) = 0;
 };
+
+typedef refcount<IIR_DeclarationList> IIR_DeclarationListRef;
+
 #endif

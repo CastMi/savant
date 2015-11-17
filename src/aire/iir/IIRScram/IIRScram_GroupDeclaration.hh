@@ -51,6 +51,9 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_GroupDeclaration> IIRScram_GroupDeclarationRef;
+
 #endif
 
 

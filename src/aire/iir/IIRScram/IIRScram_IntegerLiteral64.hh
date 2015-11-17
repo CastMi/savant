@@ -45,4 +45,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_IntegerLiteral64> IIRScram_IntegerLiteral64Ref;
+
 #endif

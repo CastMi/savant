@@ -36,4 +36,7 @@ class IIR_NegationOperator : public virtual IIR_MonadicOperator{
 public:
   virtual ~IIR_NegationOperator() {}    
 };
+
+typedef refcount<IIR_NegationOperator> IIR_NegationOperatorRef;
+
 #endif

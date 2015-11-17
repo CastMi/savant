@@ -47,4 +47,7 @@ public:
   virtual void set_if_condition( IIR *condition ) = 0;
   virtual IIR *get_if_condition() = 0;
 };
+
+typedef refcount<IIR_ConcurrentGenerateIfStatement> IIR_ConcurrentGenerateIfStatementRef;
+
 #endif

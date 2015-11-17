@@ -38,4 +38,7 @@ public:
   IIRScram_ConcurrentStatement();
   virtual ~IIRScram_ConcurrentStatement();
 };
+
+typedef refcount<IIRScram_ConcurrentStatement> IIRScram_ConcurrentStatementRef;
+
 #endif

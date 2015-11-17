@@ -55,4 +55,6 @@ private:
   
 };
 
+typedef refcount<IIRBase_TransactionAttribute> IIRBase_TransactionAttributeRef;
+
 #endif

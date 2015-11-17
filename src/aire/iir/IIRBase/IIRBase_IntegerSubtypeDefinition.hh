@@ -60,4 +60,7 @@ protected:
 private:
   IIR_FunctionDeclaration *my_resolution_function;
 };
+
+typedef refcount<IIRBase_IntegerSubtypeDefinition> IIRBase_IntegerSubtypeDefinitionRef;
+
 #endif

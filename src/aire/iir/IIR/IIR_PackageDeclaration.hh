@@ -46,4 +46,7 @@ public:
   virtual IIR_PackageBodyDeclaration *get_package_body() = 0;
   virtual void set_package_body( IIR_PackageBodyDeclaration * ) = 0;
 };
+
+typedef refcount<IIR_PackageDeclaration> IIR_PackageDeclarationRef;
+
 #endif

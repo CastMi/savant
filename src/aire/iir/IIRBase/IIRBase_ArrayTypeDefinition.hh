@@ -94,4 +94,7 @@ private:
   IIR_TypeDefinition *my_element_subtype;
   IIR_Boolean my_is_element;
 };
+
+typedef refcount<IIRBase_ArrayTypeDefinition> IIRBase_ArrayTypeDefinitionRef;
+
 #endif

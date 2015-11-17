@@ -44,5 +44,8 @@ public:
   virtual void set_unit_name( IIR_PhysicalUnit *unit ) = 0;
   virtual IIR_PhysicalUnit *get_unit_name() = 0;
   virtual IIR_Boolean is_locally_static() = 0;
-};    
+};
+
+typedef refcount<IIR_PhysicalLiteral> IIR_PhysicalLiteralRef;
+
 #endif

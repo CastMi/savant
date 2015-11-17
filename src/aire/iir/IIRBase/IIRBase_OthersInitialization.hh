@@ -57,4 +57,7 @@ private:
   IIR* expression;
 
 };
+
+typedef refcount<IIRBase_OthersInitialization> IIRBase_OthersInitializationRef;
+
 #endif

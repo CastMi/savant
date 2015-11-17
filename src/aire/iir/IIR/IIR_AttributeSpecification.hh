@@ -55,4 +55,7 @@ public:
   virtual IIR_Declaration *get_declaration() = 0;
 
 };
+
+typedef refcount<IIR_AttributeSpecification> IIR_AttributeSpecificationRef;
+
 #endif

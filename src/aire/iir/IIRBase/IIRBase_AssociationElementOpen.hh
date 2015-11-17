@@ -44,4 +44,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_AssociationElementOpen> IIRBase_AssociationElementOpenRef;
+
 #endif

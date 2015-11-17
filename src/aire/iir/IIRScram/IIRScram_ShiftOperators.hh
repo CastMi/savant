@@ -40,4 +40,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_ShiftOperators> IIRScram_ShiftOperatorsRef;
+
 #endif

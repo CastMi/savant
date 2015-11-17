@@ -47,4 +47,7 @@ public:
   virtual IIR_TextLiteral *build_attribute_name() = 0;
   virtual IIR_TextLiteral *get_attribute_name() = 0;
 };
+
+typedef refcount<IIR_Attribute> IIR_AttributeRef;
+
 #endif

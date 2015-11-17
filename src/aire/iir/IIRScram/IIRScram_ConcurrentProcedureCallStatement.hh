@@ -54,4 +54,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_ConcurrentProcedureCallStatement> IIRScram_ConcurrentProcedureCallStatementRef;
+
 #endif

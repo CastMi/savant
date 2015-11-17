@@ -68,4 +68,6 @@ private:
   IIR* timeout_clause;
 };
 
+typedef refcount<IIRBase_WaitStatement> IIRBase_WaitStatementRef;
+
 #endif

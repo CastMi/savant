@@ -42,4 +42,7 @@ public:
   virtual IIR *successor(IIR_PhysicalUnit*) = 0;
   virtual IIR *predecessor(IIR_PhysicalUnit*) = 0;
 };
+
+typedef refcount<IIR_UnitList> IIR_UnitListRef;
+
 #endif

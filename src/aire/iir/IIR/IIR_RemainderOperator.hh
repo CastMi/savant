@@ -35,4 +35,7 @@ class IIR_RemainderOperator : public virtual IIR_DyadicOperator{
 public:
   virtual ~IIR_RemainderOperator() {}    
 };
+
+typedef refcount<IIR_RemainderOperator> IIR_RemainderOperatorRef;
+
 #endif

@@ -36,4 +36,7 @@ class IIR_NotOperator : public virtual IIR_MonadicOperator{
 public:
   virtual ~IIR_NotOperator() {}    
 };
+
+typedef refcount<IIR_NotOperator> IIR_NotOperatorRef;
+
 #endif

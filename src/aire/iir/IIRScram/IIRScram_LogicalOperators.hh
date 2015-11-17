@@ -39,4 +39,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_LogicalOperators> IIRScram_LogicalOperatorsRef;
+
 #endif

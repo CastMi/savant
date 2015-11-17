@@ -55,4 +55,7 @@ protected:
    
 private:
 };
+
+typedef refcount<IIRScram_ReportStatement> IIRScram_ReportStatementRef;
+
 #endif

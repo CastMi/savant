@@ -36,4 +36,6 @@ public:
   virtual ~IIR_Tuple() {}    
 };
 
+typedef refcount<IIR_Tuple> IIR_TupleRef;
+
 #endif

@@ -46,4 +46,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_AbsoluteOperator> IIRBase_AbsoluteOperatorRef;
+
 #endif

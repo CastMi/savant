@@ -45,4 +45,6 @@ private:
 
 };
 
+typedef refcount<IIRScram_SelectedWaveformList> IIRScram_SelectedWaveformListRef;
+
 #endif

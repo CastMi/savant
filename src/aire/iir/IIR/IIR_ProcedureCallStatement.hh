@@ -45,4 +45,7 @@ public:
   virtual void set_procedure_name( IIR* procedure_name) = 0;
   virtual IIR* get_procedure_name() = 0;
 };
+
+typedef refcount<IIR_ProcedureCallStatement> IIR_ProcedureCallStatementRef;
+
 #endif

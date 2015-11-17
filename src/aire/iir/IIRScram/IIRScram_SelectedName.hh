@@ -91,4 +91,6 @@ protected:
 private:
 };
 
+typedef refcount<IIRScram_SelectedName> IIRScram_SelectedNameRef;
+
 #endif

@@ -69,4 +69,7 @@ protected:
 private:
   IIRScram_SignalDeclaration *_my_clone;
 };
+
+typedef refcount<IIRScram_SignalDeclaration> IIRScram_SignalDeclarationRef;
+
 #endif

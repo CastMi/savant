@@ -63,4 +63,6 @@ private:
   void _resolve_specification_inside_block_configuration(  IIRScram_List *, IIRScram_BlockConfiguration * );
 };
 
+typedef refcount<IIRScram_BlockConfiguration> IIRScram_BlockConfigurationRef;
+
 #endif

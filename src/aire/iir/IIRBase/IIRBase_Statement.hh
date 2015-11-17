@@ -96,4 +96,6 @@ private:
   IIR_Label *my_label;
 };
 
+typedef refcount<IIRBase_Statement> IIRBase_StatementRef;
+
 #endif

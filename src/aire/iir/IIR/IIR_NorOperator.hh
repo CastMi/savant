@@ -36,4 +36,7 @@ class IIR_NorOperator : public virtual IIR_DyadicOperator{
 public:
   virtual ~IIR_NorOperator() {}    
 };
+
+typedef refcount<IIR_NorOperator> IIR_NorOperatorRef;
+
 #endif

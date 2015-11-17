@@ -67,4 +67,6 @@ private:
   IIR *while_condition;
 };
 
+typedef refcount<IIRBase_WhileLoopStatement> IIRBase_WhileLoopStatementRef;
+
 #endif

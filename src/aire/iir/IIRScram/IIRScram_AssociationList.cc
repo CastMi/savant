@@ -642,7 +642,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
       current = dynamic_cast<IIRScram_AssociationElement *>(successor( current ));
     }
   }
-  
+
   // OK, now we need to make sure that every required formal has an local
   // associated with it.  We already know that all locals supplied match
   // their parameters, or we wouldn't have made it down here.

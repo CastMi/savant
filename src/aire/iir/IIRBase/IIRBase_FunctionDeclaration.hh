@@ -61,4 +61,7 @@ protected:
 private:
   IIR_Pure purity;
 };
+
+typedef refcount<IIRBase_FunctionDeclaration> IIRBase_FunctionDeclarationRef;
+
 #endif

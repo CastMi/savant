@@ -32,9 +32,9 @@
 #include "IIR_Declaration.hh"
 #include "IIR_Name.hh"
 #include "IIR_SelectedName.hh"
+#include "IIR_TypeDeclaration.hh"
 #include "IIRBase_TextLiteral.hh"
 #include "IIRBase_Declaration.hh"
-#include "IIR_TypeDeclaration.hh"
 
 IIRBase_DeclarationList::IIRBase_DeclarationList(){}
 IIRBase_DeclarationList::~IIRBase_DeclarationList(){}

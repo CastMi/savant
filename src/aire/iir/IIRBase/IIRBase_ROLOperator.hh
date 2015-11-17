@@ -49,4 +49,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_ROLOperator> IIRBase_ROLOperatorRef;
+
 #endif

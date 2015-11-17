@@ -62,4 +62,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_SignalAssignmentStatement> IIRScram_SignalAssignmentStatementRef;
+
 #endif

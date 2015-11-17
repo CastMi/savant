@@ -46,4 +46,7 @@ public:
 
   virtual IIR_FunctionDeclaration       *get_resolution_function() = 0;
 };
+
+typedef refcount<IIR_EnumerationTypeDefinition> IIR_EnumerationTypeDefinitionRef;
+
 #endif

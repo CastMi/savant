@@ -58,4 +58,7 @@ private:
   IIR* file_open_expression;
   IIR* file_logical_name;
 };
+
+typedef refcount<IIRBase_FileDeclaration> IIRBase_FileDeclarationRef;
+
 #endif

@@ -54,4 +54,7 @@ public:
   virtual IIR_Char* get_exponent() = 0;
   virtual IIR_Int32 get_exponent_length() = 0;
 };
+
+typedef refcount<IIR_IntegerLiteral> IIR_IntegerLiteralRef;
+
 #endif

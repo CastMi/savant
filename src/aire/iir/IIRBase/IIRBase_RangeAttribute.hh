@@ -63,4 +63,7 @@ private:
   IIR* suffix;
 
 };
+
+typedef refcount<IIRBase_RangeAttribute> IIRBase_RangeAttributeRef;
+
 #endif

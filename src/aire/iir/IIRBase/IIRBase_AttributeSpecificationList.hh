@@ -54,4 +54,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_AttributeSpecificationList> IIRBase_AttributeSpecificationListRef;
+
 #endif

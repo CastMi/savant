@@ -49,4 +49,7 @@ public:
   virtual void set_generate_parameter_specification(IIR_ConstantDeclaration *parameter) = 0;
   virtual IIR_ConstantDeclaration *get_generate_parameter_specification() = 0;
 };
+
+typedef refcount<IIR_ConcurrentGenerateForStatement> IIR_ConcurrentGenerateForStatementRef;
+
 #endif

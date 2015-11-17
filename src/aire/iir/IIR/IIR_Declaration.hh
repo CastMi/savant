@@ -101,4 +101,7 @@ public:
   */
   virtual bool is_work_library() = 0;
 };
+
+typedef refcount<IIR_Declaration> IIR_DeclarationRef;
+
 #endif

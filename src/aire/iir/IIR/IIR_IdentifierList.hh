@@ -42,4 +42,7 @@ public:
   virtual IIR_Identifier *successor( IIR_Identifier * ) = 0;
   virtual void append( IIR_Identifier * ) = 0;
 };
+
+typedef refcount<IIR_IdentifierList> IIR_IdentifierListRef;
+
 #endif

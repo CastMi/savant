@@ -77,4 +77,7 @@ private:
   IIR* suffix;
 
 };
+
+typedef refcount<IIRBase_AboveAttribute> IIRBase_AboveAttributeRef;
+
 #endif

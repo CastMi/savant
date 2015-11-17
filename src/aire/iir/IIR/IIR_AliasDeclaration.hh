@@ -46,4 +46,6 @@ public:
   virtual IIR *get_name() = 0;
 };
 
+typedef refcount<IIR_AliasDeclaration> IIR_AliasDeclarationRef;
+
 #endif

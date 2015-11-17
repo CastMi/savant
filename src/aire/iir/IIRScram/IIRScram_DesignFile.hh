@@ -73,4 +73,7 @@ public:
 protected:   
 private:
 };
+
+typedef refcount<IIRScram_DesignFile> IIRScram_DesignFileRef;
+
 #endif

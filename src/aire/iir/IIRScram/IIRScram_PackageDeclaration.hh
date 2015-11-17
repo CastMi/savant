@@ -69,4 +69,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_PackageDeclaration> IIRScram_PackageDeclarationRef;
+
 #endif

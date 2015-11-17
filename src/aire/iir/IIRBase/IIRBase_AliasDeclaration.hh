@@ -74,4 +74,6 @@ private:
   IIR *name;
 };
 
+typedef refcount<IIRBase_AliasDeclaration> IIRBase_AliasDeclarationRef;
+
 #endif

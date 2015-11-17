@@ -44,4 +44,6 @@ public:
   virtual IIR                           *get_while_condition() = 0;
 };
 
+typedef refcount<IIR_WhileLoopStatement> IIR_WhileLoopStatementRef;
+
 #endif

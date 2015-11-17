@@ -50,4 +50,7 @@ public:
 protected:
 public:
 };
+
+typedef refcount<IIR_ConcurrentBreakStatement> IIR_ConcurrentBreakStatementRef;
+
 #endif

@@ -59,4 +59,6 @@ private:
   savant::set<IIRScram_TypeDefinition*> *_build_element_subtype_set( savant::set<IIRScram_TypeDefinition*> *context_set );
 };
 
+typedef refcount<IIRScram_OthersInitialization> IIRScram_OthersInitializationRef;
+
 #endif

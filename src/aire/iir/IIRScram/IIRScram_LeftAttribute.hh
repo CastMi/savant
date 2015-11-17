@@ -62,4 +62,7 @@ protected:
   void _resolve_suffix_special();    
 private:
 };
+
+typedef refcount<IIRScram_LeftAttribute> IIRScram_LeftAttributeRef;
+
 #endif

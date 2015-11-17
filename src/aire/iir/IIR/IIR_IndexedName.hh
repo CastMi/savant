@@ -48,4 +48,7 @@ protected:
   virtual IIR_Int32 get_num_indexes() = 0;
 
 };
+
+typedef refcount<IIR_IndexedName> IIR_IndexedNameRef;
+
 #endif

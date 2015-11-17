@@ -34,4 +34,7 @@ class IIR_Literal : public virtual IIR{
 public:
   virtual ~IIR_Literal() {}    
 };
+
+typedef refcount<IIR_Literal> IIR_LiteralRef;
+
 #endif

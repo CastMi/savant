@@ -62,4 +62,7 @@ private:
   IIR *my_suffix;  
 
 };
+
+typedef refcount<IIRBase_ImageAttribute> IIRBase_ImageAttributeRef;
+
 #endif

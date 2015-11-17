@@ -37,4 +37,6 @@ public:
   virtual ~IIR_SelectedNameByAll() {}    
 };
 
+typedef refcount<IIR_SelectedNameByAll> IIR_SelectedNameByAllRef;
+
 #endif

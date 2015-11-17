@@ -70,4 +70,7 @@ private:
   
   IIR_Statement *my_statement;
 };
+
+typedef refcount<IIRBase_Label> IIRBase_LabelRef;
+
 #endif

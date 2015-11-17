@@ -88,4 +88,6 @@ private:
   IIR_Boolean                           my_contains_body;
 };
 
+typedef refcount<IIRBase_SubprogramDeclaration> IIRBase_SubprogramDeclarationRef;
+
 #endif

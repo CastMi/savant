@@ -56,4 +56,7 @@ protected:
   void _resolve_suffix_special();    
 private:
 };
+
+typedef refcount<IIRScram_ValAttribute> IIRScram_ValAttributeRef;
+
 #endif

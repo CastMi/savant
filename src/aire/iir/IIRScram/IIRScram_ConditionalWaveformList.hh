@@ -45,4 +45,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_ConditionalWaveformList> IIRScram_ConditionalWaveformListRef;
+
 #endif

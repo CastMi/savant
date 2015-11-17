@@ -49,4 +49,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_NextStatement> IIRScram_NextStatementRef;
+
 #endif

@@ -42,4 +42,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_InequalityOperator> IIRScram_InequalityOperatorRef;
+
 #endif

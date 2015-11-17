@@ -54,4 +54,7 @@ protected:
 private:
   
 };
+
+typedef refcount<IIRBase_PathNameAttribute> IIRBase_PathNameAttributeRef;
+
 #endif

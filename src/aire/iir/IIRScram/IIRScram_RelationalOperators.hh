@@ -40,4 +40,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_RelationalOperators> IIRScram_RelationalOperatorsRef;
+
 #endif

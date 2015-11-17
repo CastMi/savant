@@ -35,4 +35,7 @@ class IIR_FileInterfaceDeclaration : public virtual IIR_InterfaceDeclaration{
 public:
   virtual ~IIR_FileInterfaceDeclaration() {}    
 };
+
+typedef refcount<IIR_FileInterfaceDeclaration> IIR_FileInterfaceDeclarationRef;
+
 #endif

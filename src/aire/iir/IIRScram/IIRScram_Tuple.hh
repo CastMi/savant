@@ -43,4 +43,6 @@ protected:
 private:
 };
 
+typedef refcount<IIRScram_Tuple> IIRScram_TupleRef;
+
 #endif

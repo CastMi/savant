@@ -38,4 +38,7 @@ public:
   IIR_List(){}
   virtual ~IIR_List() {}
 };
+
+typedef refcount<IIR_List> IIR_ListRef;
+
 #endif

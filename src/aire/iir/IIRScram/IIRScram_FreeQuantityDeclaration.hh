@@ -54,4 +54,6 @@ private:
 
 };
 
+typedef refcount<IIRScram_FreeQuantityDeclaration> IIRScram_FreeQuantityDeclarationRef;
+
 #endif

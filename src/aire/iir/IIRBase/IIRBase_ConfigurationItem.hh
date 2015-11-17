@@ -44,4 +44,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_ConfigurationItem> IIRBase_ConfigurationItemRef;
+
 #endif

@@ -47,4 +47,7 @@ public:
   virtual void set_iteration_scheme( IIR_ConstantDeclaration* iterator) = 0;
   virtual IIR_ConstantDeclaration* get_iteration_scheme() = 0;
 };
+
+typedef refcount<IIR_ForLoopStatement> IIR_ForLoopStatementRef;
+
 #endif

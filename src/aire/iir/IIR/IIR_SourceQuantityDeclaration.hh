@@ -1,4 +1,3 @@
-
 #ifndef IIR_SOURCE_QUANTITY_DECLARATION_HH
 #define IIR_SOURCE_QUANTITY_DECLARATION_HH
 
@@ -54,4 +53,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIR_SourceQuantityDeclaration> IIR_SourceQuantityDeclarationRef;
+
 #endif

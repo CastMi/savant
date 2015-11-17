@@ -41,4 +41,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_ConcurrentStatement> IIRBase_ConcurrentStatementRef;
+
 #endif

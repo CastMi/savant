@@ -80,4 +80,7 @@ private:
   IIR_Char *exponent;
   IIR_Int32 exponent_length;
 };
+
+typedef refcount<IIRBase_IntegerLiteral> IIRBase_IntegerLiteralRef;
+
 #endif

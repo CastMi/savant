@@ -44,4 +44,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_ArchitectureStatementList> IIRScram_ArchitectureStatementListRef;
+
 #endif

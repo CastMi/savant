@@ -50,4 +50,7 @@ public:
   virtual void set_entity(IIR_EntityDeclaration *) = 0;
   virtual IIR_EntityDeclaration* get_entity() = 0;
 };
+
+typedef refcount<IIR_ArchitectureDeclaration> IIR_ArchitectureDeclarationRef;
+
 #endif

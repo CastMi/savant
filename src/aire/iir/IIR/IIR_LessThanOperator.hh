@@ -36,4 +36,7 @@ class IIR_LessThanOperator : public virtual IIR_DyadicOperator {
 public:
   virtual ~IIR_LessThanOperator() {}    
 };
+
+typedef refcount<IIR_LessThanOperator> IIR_LessThanOperatorRef;
+
 #endif

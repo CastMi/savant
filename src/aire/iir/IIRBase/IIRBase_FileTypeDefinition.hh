@@ -55,4 +55,7 @@ private:
   IIR_TypeDefinition* type_mark;
 
 };
+
+typedef refcount<IIRBase_FileTypeDefinition> IIRBase_FileTypeDefinitionRef;
+
 #endif

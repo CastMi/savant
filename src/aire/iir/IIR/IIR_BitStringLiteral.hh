@@ -40,4 +40,7 @@ public:
 
   virtual void release() = 0;
 };
+
+typedef refcount<IIR_BitStringLiteral> IIR_BitStringLiteralRef;
+
 #endif

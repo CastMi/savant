@@ -67,4 +67,7 @@ private:
   IIR_TextLiteral *my_attribute_name;
 
 };
+
+typedef refcount<IIRBase_Attribute> IIRBase_AttributeRef;
+
 #endif

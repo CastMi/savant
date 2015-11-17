@@ -51,4 +51,7 @@ protected:
 private:
   
 };
+
+typedef refcount<IIRScram_DotAttribute> IIRScram_DotAttributeRef;
+
 #endif

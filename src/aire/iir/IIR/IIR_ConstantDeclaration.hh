@@ -1,4 +1,3 @@
-
 #ifndef IIR_CONSTANT_DECLARATION_HH
 #define IIR_CONSTANT_DECLARATION_HH
 
@@ -39,4 +38,7 @@ public:
   virtual void set_value(IIR *value) = 0;
   virtual IIR *get_value() = 0;
 };
+
+typedef refcount<IIR_ConstantDeclaration> IIR_ConstantDeclarationRef;
+
 #endif

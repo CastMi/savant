@@ -48,4 +48,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_AbsoluteOperator> IIRScram_AbsoluteOperatorRef;
+
 #endif

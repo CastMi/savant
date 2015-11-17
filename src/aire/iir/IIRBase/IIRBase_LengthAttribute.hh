@@ -61,4 +61,7 @@ protected:
 private:  
   IIR* suffix;
 };
+
+typedef refcount<IIRBase_LengthAttribute> IIRBase_LengthAttributeRef;
+
 #endif

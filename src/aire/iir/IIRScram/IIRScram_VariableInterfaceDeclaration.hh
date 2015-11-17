@@ -47,4 +47,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_VariableInterfaceDeclaration> IIRScram_VariableInterfaceDeclarationRef;
+
 #endif

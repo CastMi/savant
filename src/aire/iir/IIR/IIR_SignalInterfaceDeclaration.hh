@@ -40,4 +40,6 @@ public:
   virtual IIR_SignalKind get_signal_kind() = 0;
 };
 
+typedef refcount<IIR_SignalInterfaceDeclaration> IIR_SignalInterfaceDeclarationRef;
+
 #endif

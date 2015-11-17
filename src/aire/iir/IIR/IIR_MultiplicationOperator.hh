@@ -39,4 +39,7 @@ class IIR_MultiplicationOperator : public virtual IIR_DyadicOperator {
 public:
   virtual ~IIR_MultiplicationOperator() {}    
 };
+
+typedef refcount<IIR_MultiplicationOperator> IIR_MultiplicationOperatorRef;
+
 #endif

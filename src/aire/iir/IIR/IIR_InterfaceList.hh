@@ -49,4 +49,7 @@ public:
   virtual void prepend( IIR_InterfaceDeclaration * ) = 0;
   virtual void insert_after( IIR_InterfaceDeclaration *, IIR_InterfaceDeclaration * ) = 0;
 };
+
+typedef refcount<IIR_InterfaceList> IIR_InterfaceListRef;
+
 #endif

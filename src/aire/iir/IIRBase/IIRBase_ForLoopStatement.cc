@@ -28,11 +28,11 @@
 
 #include "savant.hh"
 #include "set.hh"
-#include "IIRBase_ForLoopStatement.hh"
-#include "IIRBase_TextLiteral.hh"
 #include "IIR_SequentialStatementList.hh"
 #include "IIR_ConstantDeclaration.hh"
-#include "IIRBase_TypeDefinition.hh"
+#include "IIR_TypeDefinition.hh"
+#include "IIRBase_ForLoopStatement.hh"
+#include "IIRBase_TextLiteral.hh"
 
 IIRBase_ForLoopStatement::IIRBase_ForLoopStatement()  :
   sequence_of_statements(0) {

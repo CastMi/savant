@@ -74,4 +74,7 @@ private:
   IIR_ElementDeclarationList *element_declarations;
   IIR_FunctionDeclaration *my_resolution_function;
 };
+
+typedef refcount<IIRBase_RecordTypeDefinition> IIRBase_RecordTypeDefinitionRef;
+
 #endif

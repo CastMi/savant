@@ -47,4 +47,7 @@ public:
   virtual void set_block_specification( IIR *block_specification ) = 0;
   virtual IIR* get_block_specification() = 0;
 };
+
+typedef refcount<IIR_BlockConfiguration> IIR_BlockConfigurationRef;
+
 #endif

@@ -41,4 +41,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_SelectedNameByAll> IIRScram_SelectedNameByAllRef;
+
 #endif

@@ -49,4 +49,7 @@ protected:
   void _resolve_suffix_special();
 private:
 };
+
+typedef refcount<IIRScram_ValueAttribute> IIRScram_ValueAttributeRef;
+
 #endif

@@ -46,7 +46,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_CommentList> IIRScram_CommentListRef;
+
 #endif
-
-
-

@@ -113,4 +113,7 @@ private:
   IIR_Attribute         *attribute_name;
 
 };
+
+typedef refcount<IIRBase_Declaration> IIRBase_DeclarationRef;
+
 #endif

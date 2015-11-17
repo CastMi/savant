@@ -67,4 +67,7 @@ private:
 
 
 };
+
+typedef refcount<IIRScram_EventAttribute> IIRScram_EventAttributeRef;
+
 #endif

@@ -52,4 +52,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_VariableInterfaceDeclaration> IIRBase_VariableInterfaceDeclarationRef;
+
 #endif

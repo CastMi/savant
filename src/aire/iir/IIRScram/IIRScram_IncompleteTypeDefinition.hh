@@ -45,4 +45,7 @@ public:
   IIRScram_IncompleteTypeDefinition() {}
   virtual ~IIRScram_IncompleteTypeDefinition() {}
 };
+
+typedef refcount<IIRScram_IncompleteTypeDefinition> IIRScram_IncompleteTypeDefinitionRef;
+
 #endif

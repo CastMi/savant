@@ -63,4 +63,6 @@ protected:
 private:  
 };
 
+typedef refcount<IIRScram_DisconnectSpecification> IIRScram_DisconnectSpecificationRef;
+
 #endif

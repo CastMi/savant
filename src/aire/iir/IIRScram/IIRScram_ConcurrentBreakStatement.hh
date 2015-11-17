@@ -59,4 +59,7 @@ protected:
 private:
   
 };
+
+typedef refcount<IIRScram_ConcurrentBreakStatement> IIRScram_ConcurrentBreakStatementRef;
+
 #endif

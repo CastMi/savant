@@ -65,4 +65,7 @@ private:
   IIR_Identifier *logical_name;
   IIR_LibraryDeclaration *library_declaration;
 };
+
+typedef refcount<IIRBase_LibraryClause> IIRBase_LibraryClauseRef;
+
 #endif

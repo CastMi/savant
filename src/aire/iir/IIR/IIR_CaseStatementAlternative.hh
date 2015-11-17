@@ -43,4 +43,7 @@ public:
   // List accessor(s)
   virtual IIR_SequentialStatementList *get_sequence_of_statements() = 0;
 };
+
+typedef refcount<IIR_CaseStatementAlternative> IIR_CaseStatementAlternativeRef;
+
 #endif

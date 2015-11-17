@@ -33,4 +33,7 @@ public:
   IIR_ArraySubnatureDefinition() {};
   ~IIR_ArraySubnatureDefinition() {};
 };
+
+typedef refcount<IIR_ArraySubnatureDefinition> IIR_ArraySubnatureDefinitionRef;
+
 #endif

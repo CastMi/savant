@@ -41,4 +41,7 @@ public:
   virtual IIR_Choice* first() = 0;
   virtual IIR_Choice* successor(IIR_Choice*) = 0;
 };
+
+typedef refcount<IIR_ChoiceList> IIR_ChoiceListRef;
+
 #endif

@@ -59,4 +59,7 @@ public:
   virtual IIR_SignalDeclaration *get_guard_signal() = 0;
 
 };
+
+typedef refcount<IIR_ConcurrentConditionalSignalAssignment> IIR_ConcurrentConditionalSignalAssignmentRef;
+
 #endif

@@ -55,4 +55,7 @@ protected:
 private:
   IIR *suffix;
 };
+
+typedef refcount<IIRBase_DelayedAttribute> IIRBase_DelayedAttributeRef;
+
 #endif

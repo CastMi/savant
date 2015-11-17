@@ -58,4 +58,7 @@ protected:
 private:
   IIR_FP64 val;
 };
+
+typedef refcount<IIRBase_FloatingPointLiteral64> IIRBase_FloatingPointLiteral64Ref;
+
 #endif

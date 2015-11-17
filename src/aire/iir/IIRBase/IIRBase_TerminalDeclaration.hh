@@ -61,4 +61,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_TerminalDeclaration> IIRBase_TerminalDeclarationRef;
+
 #endif

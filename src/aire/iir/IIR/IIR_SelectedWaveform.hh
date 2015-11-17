@@ -45,4 +45,7 @@ public:
   virtual IIR *get_choice() = 0;
   virtual void set_choice( IIR * ) = 0;
 };
+
+typedef refcount<IIR_SelectedWaveform> IIR_SelectedWaveformRef;
+
 #endif

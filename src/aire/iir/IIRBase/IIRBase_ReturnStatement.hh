@@ -65,4 +65,7 @@ private:
   IIR* return_expression;
 
 };
+
+typedef refcount<IIRBase_ReturnStatement> IIRBase_ReturnStatementRef;
+
 #endif

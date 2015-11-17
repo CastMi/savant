@@ -36,4 +36,6 @@ public:
   virtual ~IIR_SubtractionOperator() {}    
 };
 
+typedef refcount<IIR_SubtractionOperator> IIR_SubtractionOperatorRef;
+
 #endif

@@ -75,4 +75,7 @@ private:
   IIR* phase_expression;
   IIR* noise_expression;
 };
+
+typedef refcount<IIRBase_SourceQuantityDeclaration> IIRBase_SourceQuantityDeclarationRef;
+
 #endif

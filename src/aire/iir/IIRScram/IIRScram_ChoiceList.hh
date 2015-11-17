@@ -45,4 +45,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_ChoiceList> IIRScram_ChoiceListRef;
+
 #endif

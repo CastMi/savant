@@ -56,4 +56,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_SequentialStatementList> IIRScram_SequentialStatementListRef;
+
 #endif

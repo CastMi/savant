@@ -58,4 +58,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_AssociationList> IIRBase_AssociationListRef;
+
 #endif

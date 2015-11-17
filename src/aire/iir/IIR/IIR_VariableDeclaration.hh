@@ -40,4 +40,6 @@ public:
   virtual IIR* get_value() = 0;
 };
 
+typedef refcount<IIR_VariableDeclaration> IIR_VariableDeclarationRef;
+
 #endif

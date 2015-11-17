@@ -44,4 +44,7 @@ public:
 
   virtual IIR_Boolean is_locally_static() = 0;
 };
+
+typedef refcount<IIR_AssociationList> IIR_AssociationListRef;
+
 #endif

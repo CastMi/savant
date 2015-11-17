@@ -44,4 +44,16 @@ extern bool gen_cc_ref;
 // #define ASSERT(x) assert( x || parse_error == true )
 #define ASSERT(x) assert( x )
 
+/*
+ * Smart pointers
+ */
+#include <boost/shared_ptr.hpp>
+#define refcount boost::shared_ptr
+
+/*
+ * Macro used to forward declare a Refcount type
+ */
+#define REF_FORWARD_DECL(obj) class obj; typedef refcount<obj> obj##Ref
+#define CONSTREF_FORWARD_DECL(obj) class obj; typedef refcount<const obj> obj##ConstRef
+
 #endif

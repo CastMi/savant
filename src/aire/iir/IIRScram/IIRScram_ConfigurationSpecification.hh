@@ -69,4 +69,7 @@ public:
   IIRScram_AssociationList * _get_generic_map_aspect();
   IIRScram_AssociationList * _get_port_map_aspect();
 };
+
+typedef refcount<IIRScram_ConfigurationSpecification> IIRScram_ConfigurationSpecificationRef;
+
 #endif

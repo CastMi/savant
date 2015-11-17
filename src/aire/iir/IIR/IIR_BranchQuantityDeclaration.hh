@@ -80,4 +80,7 @@ public:
   virtual void set_through_aspect_tolerance(IIR* through_aspect_tolerance) = 0;
   virtual IIR* get_through_aspect_tolerance() = 0;
 };
+
+typedef refcount<IIR_BranchQuantityDeclaration> IIR_BranchQuantityDeclarationRef;
+
 #endif

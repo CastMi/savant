@@ -37,4 +37,7 @@ class IIR_AssertionStatement : public virtual IIR_SequentialStatement{
 public:
   virtual ~IIR_AssertionStatement() {}
 };
+
+typedef refcount<IIR_AssertionStatement> IIR_AssertionStatementRef;
+
 #endif

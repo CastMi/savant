@@ -37,4 +37,7 @@ public:
   virtual ~IIR_LessThanOrEqualOperator() {}
     
 };
+
+typedef refcount<IIR_LessThanOrEqualOperator> IIR_LessThanOrEqualOperatorRef;
+
 #endif

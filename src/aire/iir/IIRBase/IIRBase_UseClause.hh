@@ -55,4 +55,6 @@ protected:
 private:
   IIR_Name* selected_name;
 };
+typedef refcount<IIRBase_UseClause> IIRBase_UseClauseRef;
+
 #endif

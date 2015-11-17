@@ -62,4 +62,7 @@ protected:
 private:
   IIRScram_VariableDeclaration *_my_clone;
 };
+
+typedef refcount<IIRScram_VariableDeclaration> IIRScram_VariableDeclarationRef;
+
 #endif

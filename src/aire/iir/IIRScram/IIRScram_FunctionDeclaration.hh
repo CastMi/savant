@@ -71,5 +71,8 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_FunctionDeclaration> IIRScram_FunctionDeclarationRef;
+
 #endif
 

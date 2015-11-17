@@ -42,4 +42,7 @@ public:
   virtual void set_file_logical_name(IIR* file_logical_name) = 0;
   virtual IIR* get_file_logical_name() = 0;
 };
+
+typedef refcount<IIR_FileDeclaration> IIR_FileDeclarationRef;
+
 #endif

@@ -66,5 +66,7 @@ private:
 
   IIR_ArchitectureStatementList *then_sequence_of_statements;
 };
-#endif
 
+typedef refcount<IIRBase_SimultaneousElsif> IIRBase_SimultaneousElsifRef;
+
+#endif

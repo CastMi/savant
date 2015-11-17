@@ -43,4 +43,7 @@ public:
   virtual void set_expression( IIR *expression) = 0;
   virtual IIR* get_expression() = 0;
 };
+
+typedef refcount<IIR_CaseStatement> IIR_CaseStatementRef;
+
 #endif

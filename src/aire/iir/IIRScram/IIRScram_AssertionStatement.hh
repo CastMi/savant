@@ -55,4 +55,7 @@ public:
 protected:      
 private:
 };
+
+typedef refcount<IIRScram_AssertionStatement> IIRScram_AssertionStatementRef;
+
 #endif

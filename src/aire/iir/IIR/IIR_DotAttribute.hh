@@ -40,4 +40,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIR_DotAttribute> IIR_DotAttributeRef;
+
 #endif

@@ -63,4 +63,7 @@ private:
 
   IIR_ConstantDeclaration *parameter;
 };
+
+typedef refcount<IIRBase_ConcurrentGenerateForStatement> IIRBase_ConcurrentGenerateForStatementRef;
+
 #endif

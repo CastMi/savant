@@ -69,4 +69,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_DesignatorByAll> IIRScram_DesignatorByAllRef;
+
 #endif

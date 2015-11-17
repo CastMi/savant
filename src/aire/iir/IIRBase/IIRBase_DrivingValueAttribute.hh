@@ -49,4 +49,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_DrivingValueAttribute> IIRBase_DrivingValueAttributeRef;
+
 #endif

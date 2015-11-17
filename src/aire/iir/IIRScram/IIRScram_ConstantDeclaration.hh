@@ -57,6 +57,9 @@ protected:
 
 private:
 };
+
+typedef refcount<IIRScram_ConstantDeclaration> IIRScram_ConstantDeclarationRef;
+
 #endif
 
 

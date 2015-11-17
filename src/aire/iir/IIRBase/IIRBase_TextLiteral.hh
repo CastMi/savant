@@ -71,4 +71,6 @@ private:
   static hash_table<IIRBase_String> &get_string_table();
 };
 
+typedef refcount<IIRBase_TextLiteral> IIRBase_TextLiteralRef;
+
 #endif

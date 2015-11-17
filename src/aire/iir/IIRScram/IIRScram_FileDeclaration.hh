@@ -55,5 +55,8 @@ protected:
 private:
   IIRScram_FileDeclaration *_my_clone;
 };
+
+typedef refcount<IIRScram_FileDeclaration> IIRScram_FileDeclarationRef;
+
 #endif
 

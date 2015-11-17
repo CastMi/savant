@@ -45,4 +45,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_ElementDeclarationList> IIRScram_ElementDeclarationListRef;
+
 #endif

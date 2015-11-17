@@ -1,4 +1,3 @@
-
 #ifndef IIR_LENGTH_ATTRIBUTE_HH
 #define IIR_LENGTH_ATTRIBUTE_HH
 
@@ -40,4 +39,7 @@ public:
   virtual void set_suffix( IIR* suffix) = 0;
   virtual IIR* get_suffix() = 0;
 };
+
+typedef refcount<IIR_LengthAttribute> IIR_LengthAttributeRef;
+
 #endif

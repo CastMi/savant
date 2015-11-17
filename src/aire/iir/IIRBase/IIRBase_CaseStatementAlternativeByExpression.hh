@@ -57,4 +57,7 @@ protected:
 private:
     IIR_Choice* choice;
 };
+
+typedef refcount<IIRBase_CaseStatementAlternativeByExpression> IIRBase_CaseStatementAlternativeByExpressionRef;
+
 #endif

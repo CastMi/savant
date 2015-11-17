@@ -60,4 +60,7 @@ private:
   IIR* severity_expression;
 
 };
+
+typedef refcount<IIRBase_ReportStatement> IIRBase_ReportStatementRef;
+
 #endif

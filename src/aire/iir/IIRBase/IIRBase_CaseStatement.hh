@@ -63,4 +63,7 @@ private:
 
   IIR *my_expression;
 };
+
+typedef refcount<IIRBase_CaseStatement> IIRBase_CaseStatementRef;
+
 #endif

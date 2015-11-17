@@ -49,4 +49,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_SLAOperator> IIRBase_SLAOperatorRef;
+
 #endif

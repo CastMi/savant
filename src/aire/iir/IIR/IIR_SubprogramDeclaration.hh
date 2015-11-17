@@ -62,4 +62,6 @@ public:
   virtual void set_contains_body( IIR_Boolean ) = 0;
 };
 
+typedef refcount<IIR_SubprogramDeclaration> IIR_SubprogramDeclarationRef;
+
 #endif

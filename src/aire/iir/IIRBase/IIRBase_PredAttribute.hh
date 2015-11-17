@@ -56,4 +56,7 @@ protected:
 private:  
   IIR *my_suffix;
 };
+
+typedef refcount<IIRBase_PredAttribute> IIRBase_PredAttributeRef;
+
 #endif

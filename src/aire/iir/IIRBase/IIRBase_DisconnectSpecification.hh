@@ -68,4 +68,7 @@ private:
   IIR_TypeDefinition *my_type_mark;
   IIR *my_time_expression;
 };
+
+typedef refcount<IIRBase_DisconnectSpecification> IIRBase_DisconnectSpecificationRef;
+
 #endif

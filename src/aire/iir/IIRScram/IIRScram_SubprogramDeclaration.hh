@@ -105,5 +105,8 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_SubprogramDeclaration> IIRScram_SubprogramDeclarationRef;
+
 #endif
 

@@ -39,4 +39,7 @@ public:
   virtual void set_postponed( IIR_Boolean predicate ) = 0;
   virtual IIR_Boolean get_postponed() = 0;
 };
+
+typedef refcount<IIR_ConcurrentAssertionStatement> IIR_ConcurrentAssertionStatementRef;
+
 #endif

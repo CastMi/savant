@@ -83,4 +83,7 @@ protected:
 private:
   IIRScram_AliasDeclaration *_my_clone;
 };
+
+typedef refcount<IIRScram_AliasDeclaration> IIRScram_AliasDeclarationRef;
+
 #endif

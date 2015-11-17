@@ -46,4 +46,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_FloatingTypeDefinition> IIRBase_FloatingTypeDefinitionRef;
+
 #endif

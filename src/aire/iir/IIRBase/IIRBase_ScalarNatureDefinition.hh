@@ -79,5 +79,7 @@ private:
   IIR *through_tolerance;
 
 };
- 
+
+typedef refcount<IIRBase_ScalarNatureDefinition> IIRBase_ScalarNatureDefinitionRef;
+
 #endif

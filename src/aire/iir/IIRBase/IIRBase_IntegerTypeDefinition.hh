@@ -49,4 +49,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_IntegerTypeDefinition> IIRBase_IntegerTypeDefinitionRef;
+
 #endif

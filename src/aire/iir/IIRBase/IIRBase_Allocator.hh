@@ -61,4 +61,7 @@ private:
   IIR_TypeDefinition *type_mark;
   IIR *value;
 };
+
+typedef refcount<IIRBase_Allocator> IIRBase_AllocatorRef;
+
 #endif

@@ -360,4 +360,6 @@ private:
   IIR_TypeDefinition *subtype;
 };
 
+typedef refcount<IIRBase> IIRBaseRef;
+
 #endif

@@ -43,4 +43,7 @@ public:
   virtual void set_return_type( IIR_TypeDefinition* return_type) = 0;
   virtual IIR_TypeDefinition* get_return_type() = 0;
 };
+
+typedef refcount<IIR_FunctionDeclaration> IIR_FunctionDeclarationRef;
+
 #endif

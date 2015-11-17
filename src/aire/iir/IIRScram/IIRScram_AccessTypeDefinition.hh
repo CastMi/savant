@@ -85,5 +85,7 @@ protected:
     
 private:
 };
-#endif
 
+typedef refcount<IIRScram_AccessTypeDefinition> IIRScram_AccessTypeDefinitionRef;
+
+#endif

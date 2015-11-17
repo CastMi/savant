@@ -73,4 +73,7 @@ private:
   IIR_SimultaneousElsif* elsif_clause;
 
 };
+
+typedef refcount<IIRBase_SimultaneousIfStatement> IIRBase_SimultaneousIfStatementRef;
+
 #endif

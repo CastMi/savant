@@ -57,4 +57,6 @@ private:
   IIR *my_suffix;
 };
 
+typedef refcount<IIRBase_SuccAttribute> IIRBase_SuccAttributeRef;
+
 #endif

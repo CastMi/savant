@@ -36,4 +36,7 @@ class IIR_ConfigurationItem : public virtual IIR_Tuple{
 public:
   virtual ~IIR_ConfigurationItem() {}    
 };
+
+typedef refcount<IIR_ConfigurationItem> IIR_ConfigurationItemRef;
+
 #endif

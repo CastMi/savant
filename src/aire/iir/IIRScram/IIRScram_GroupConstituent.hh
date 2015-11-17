@@ -40,4 +40,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_GroupConstituent> IIRScram_GroupConstituentRef;
+
 #endif

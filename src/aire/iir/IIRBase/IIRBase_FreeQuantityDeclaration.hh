@@ -63,4 +63,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_FreeQuantityDeclaration> IIRBase_FreeQuantityDeclarationRef;
+
 #endif

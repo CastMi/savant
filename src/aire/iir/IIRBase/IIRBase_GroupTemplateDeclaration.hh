@@ -57,4 +57,7 @@ private:
   IIR_EntityClassEntryList *entity_class_entry_list;
 
 };
+
+typedef refcount<IIRBase_GroupTemplateDeclaration> IIRBase_GroupTemplateDeclarationRef;
+
 #endif

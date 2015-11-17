@@ -119,4 +119,6 @@ private:
   IIR_TypeDefinition            *my_type_mark;
 };
 
+typedef refcount<IIRBase_TypeDefinition> IIRBase_TypeDefinitionRef;
+
 #endif

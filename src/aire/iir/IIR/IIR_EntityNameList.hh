@@ -36,4 +36,7 @@ class IIR_EntityNameList : public virtual IIR_List{
 public:
   virtual ~IIR_EntityNameList() {}    
 };
+
+typedef refcount<IIR_EntityNameList> IIR_EntityNameListRef;
+
 #endif

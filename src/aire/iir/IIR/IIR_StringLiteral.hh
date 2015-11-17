@@ -38,4 +38,6 @@ public:
   virtual void release() = 0;
 };
 
+typedef refcount<IIR_StringLiteral> IIR_StringLiteralRef;
+
 #endif

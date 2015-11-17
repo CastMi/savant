@@ -51,4 +51,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_CaseStatementAlternativeByOthers> IIRBase_CaseStatementAlternativeByOthersRef;
+
 #endif

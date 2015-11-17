@@ -40,4 +40,7 @@ public:
   virtual IIR* successor(IIR_ArchitectureStatement*) = 0;
   virtual void append_element(IIR_ArchitectureStatement*) = 0;
 };
+
+typedef refcount<IIR_ArchitectureStatementList> IIR_ArchitectureStatementListRef;
+
 #endif

@@ -62,4 +62,6 @@ private:
 
 };
 
+typedef refcount<IIRScram_ConditionalWaveform> IIRScram_ConditionalWaveformRef;
+
 #endif

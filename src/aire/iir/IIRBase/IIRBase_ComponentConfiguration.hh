@@ -104,4 +104,7 @@ private:
   IIR_LibraryUnit *my_entity_aspect;
   IIR_BlockConfiguration *my_block_configuration;
 };
+
+typedef refcount<IIRBase_ComponentConfiguration> IIRBase_ComponentConfigurationRef;
+
 #endif

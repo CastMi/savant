@@ -62,4 +62,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRScram_FloatingPointLiteral> IIRScram_FloatingPointLiteralRef;
+
 #endif

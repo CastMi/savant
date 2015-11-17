@@ -44,4 +44,7 @@ public:
 
 private:
 };
+
+typedef refcount<IIRScram_AndOperator> IIRScram_AndOperatorRef;
+
 #endif

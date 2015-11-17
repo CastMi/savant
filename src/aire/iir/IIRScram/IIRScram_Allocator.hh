@@ -57,4 +57,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRScram_Allocator> IIRScram_AllocatorRef;
+
 #endif

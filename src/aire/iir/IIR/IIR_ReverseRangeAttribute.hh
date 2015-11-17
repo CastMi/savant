@@ -1,4 +1,3 @@
-
 #ifndef IIR_REVERSE_RANGE_ATTRIBUTE_HH
 #define IIR_REVERSE_RANGE_ATTRIBUTE_HH
 
@@ -39,4 +38,7 @@ public:
   virtual void set_suffix( IIR* suffix) = 0;
   virtual IIR* get_suffix() = 0;
 };
+
+typedef refcount<IIR_ReverseRangeAttribute> IIR_ReverseRangeAttributeRef;
+
 #endif

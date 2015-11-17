@@ -77,4 +77,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_AttributeDeclaration> IIRBase_AttributeDeclarationRef;
+
 #endif

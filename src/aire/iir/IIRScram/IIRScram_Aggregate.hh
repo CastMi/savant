@@ -66,4 +66,6 @@ private:
   void _rval_to_decl_process_named_part( IIRScram_TypeDefinition *, IIRScram_AssociationElement * );
 };
 
+typedef refcount<IIRScram_Aggregate> IIRScram_AggregateRef;
+
 #endif

@@ -52,4 +52,7 @@ public:
     PARAMETER_INTERFACE_LIST // functions and procedures
   };
 };
+
+typedef refcount<IIR_InterfaceDeclaration> IIR_InterfaceDeclarationRef;
+
 #endif

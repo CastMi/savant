@@ -66,4 +66,7 @@ private:
   IIR_BlockConfiguration *block_configuration;
   IIR_EntityDeclaration *entity;
 };
+
+typedef refcount<IIRBase_ConfigurationDeclaration> IIRBase_ConfigurationDeclarationRef;
+
 #endif

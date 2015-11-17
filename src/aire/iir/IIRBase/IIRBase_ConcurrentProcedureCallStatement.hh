@@ -65,4 +65,7 @@ private:
   IIR_Boolean                   postponed;
   IIR                           *procedure_name;
 };
+
+typedef refcount<IIRBase_ConcurrentProcedureCallStatement> IIRBase_ConcurrentProcedureCallStatementRef;
+
 #endif

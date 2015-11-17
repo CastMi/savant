@@ -58,4 +58,7 @@ protected:
 private:
   
 };
+
+typedef refcount<IIRBase_BreakList> IIRBase_BreakListRef;
+
 #endif

@@ -57,4 +57,6 @@ protected:
 private:
 };
 
+typedef refcount<IIRBase_XnorOperator> IIRBase_XnorOperatorRef;
+
 #endif

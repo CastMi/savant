@@ -40,4 +40,7 @@ public:
   virtual void set_value(IIR*) = 0;
   virtual IIR* get_value() = 0;
 };
+
+typedef refcount<IIR_Choice> IIR_ChoiceRef;
+
 #endif

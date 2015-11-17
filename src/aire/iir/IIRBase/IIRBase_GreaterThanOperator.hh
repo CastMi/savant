@@ -49,4 +49,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_GreaterThanOperator> IIRBase_GreaterThanOperatorRef;
+
 #endif

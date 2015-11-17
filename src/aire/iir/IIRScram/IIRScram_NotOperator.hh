@@ -45,4 +45,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_NotOperator> IIRScram_NotOperatorRef;
+
 #endif

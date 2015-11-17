@@ -39,4 +39,7 @@ public:
   virtual void set_suffix(        IIR*        suffix) = 0;
   virtual IIR *get_suffix() = 0;
 };
+
+typedef refcount<IIR_AscendingAttribute> IIR_AscendingAttributeRef;
+
 #endif

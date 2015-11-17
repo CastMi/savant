@@ -59,4 +59,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_LastValueAttribute> IIRScram_LastValueAttributeRef;
+
 #endif

@@ -54,4 +54,7 @@ protected:
 
 private:
 };
+
+typedef refcount<IIRScram_AscendingAttribute> IIRScram_AscendingAttributeRef;
+
 #endif

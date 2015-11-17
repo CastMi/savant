@@ -62,4 +62,7 @@ private:
 
   IIR *condition;
 };
+
+typedef refcount<IIRBase_ConditionalWaveform> IIRBase_ConditionalWaveformRef;
+
 #endif

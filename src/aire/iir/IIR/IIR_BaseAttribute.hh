@@ -37,4 +37,7 @@ public:
   virtual ~IIR_BaseAttribute() {}
     
 };
+
+typedef refcount<IIR_BaseAttribute> IIR_BaseAttributeRef;
+
 #endif

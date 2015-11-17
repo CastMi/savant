@@ -65,4 +65,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_VariableAssignmentStatement> IIRBase_VariableAssignmentStatementRef;
+
 #endif

@@ -36,4 +36,7 @@ class IIR_ProcedureDeclaration : public virtual IIR_SubprogramDeclaration{
 public:
   virtual ~IIR_ProcedureDeclaration() {}    
 };
+
+typedef refcount<IIR_ProcedureDeclaration> IIR_ProcedureDeclarationRef;
+
 #endif

@@ -41,4 +41,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_SRAOperator> IIRScram_SRAOperatorRef;
+
 #endif

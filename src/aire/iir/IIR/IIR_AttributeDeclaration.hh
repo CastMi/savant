@@ -48,4 +48,7 @@ public:
   virtual IIR_Attribute *get_attribute() = 0;
   virtual void set_attribute( IIR_Attribute * ) = 0;
 };
+
+typedef refcount<IIR_AttributeDeclaration> IIR_AttributeDeclarationRef;
+
 #endif

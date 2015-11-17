@@ -41,4 +41,7 @@ public:
   virtual IIR_EntityClassEntryList      *get_entity_class_entry_list() = 0;
   virtual void                          set_entity_class_entry_list(IIR_EntityClassEntryList *) = 0;
 };
+
+typedef refcount<IIR_GroupTemplateDeclaration> IIR_GroupTemplateDeclarationRef;
+
 #endif

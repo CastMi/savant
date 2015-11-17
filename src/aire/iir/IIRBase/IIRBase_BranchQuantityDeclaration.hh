@@ -101,4 +101,7 @@ private:
   IIR* through_aspect_tolerance;
 
 };
+
+typedef refcount<IIRBase_BranchQuantityDeclaration> IIRBase_BranchQuantityDeclarationRef;
+
 #endif

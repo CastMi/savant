@@ -50,4 +50,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_RemainderOperator> IIRBase_RemainderOperatorRef;
+
 #endif

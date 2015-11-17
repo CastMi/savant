@@ -28,9 +28,9 @@
 #include "savant.hh"
 #include "IIR_ArchitectureStatementList.hh"
 #include "IIR_ConstantDeclaration.hh"
-#include "IIRBase_TypeDefinition.hh"
-#include "IIRBase_DeclarationList.hh"
 #include "IIR_Label.hh"
+#include "IIRBase_DeclarationList.hh"
+#include "IIRBase_TypeDefinition.hh"
 #include "IIRBase_ConcurrentGenerateForStatement.hh"
 
 IIRBase_ConcurrentGenerateForStatement::IIRBase_ConcurrentGenerateForStatement() :

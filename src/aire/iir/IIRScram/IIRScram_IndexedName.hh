@@ -128,4 +128,7 @@ private:
   savant::set<IIRScram_TypeDefinition*> *_my_rval_set;
   IIR_Boolean _have_rval_set;
 };
+
+typedef refcount<IIRScram_IndexedName> IIRScram_IndexedNameRef;
+
 #endif

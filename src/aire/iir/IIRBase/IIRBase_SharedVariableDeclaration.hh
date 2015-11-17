@@ -59,4 +59,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_SharedVariableDeclaration> IIRBase_SharedVariableDeclarationRef;
+
 #endif

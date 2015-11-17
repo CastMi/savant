@@ -75,4 +75,7 @@ private:
   IIR_AttributeSpecificationList       *attributes;
 
 };
+
+typedef refcount<IIRBase_LibraryUnit> IIRBase_LibraryUnitRef;
+
 #endif

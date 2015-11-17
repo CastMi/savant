@@ -79,6 +79,9 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_RecordTypeDefinition> IIRScram_RecordTypeDefinitionRef;
+
 #endif
 
 

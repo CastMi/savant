@@ -72,4 +72,6 @@ private:
   IIR_Identifier *my_designated_type_name;
 };
 
+typedef refcount<IIRBase_IncompleteTypeDefinition> IIRBase_IncompleteTypeDefinitionRef;
+
 #endif

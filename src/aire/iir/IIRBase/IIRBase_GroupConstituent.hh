@@ -53,4 +53,7 @@ private:
   IIR* name;  
 
 };
+
+typedef refcount<IIRBase_GroupConstituent> IIRBase_GroupConstituentRef;
+
 #endif

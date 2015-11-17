@@ -59,4 +59,7 @@ private:
   IIR_Mode mode;
 
 };
+
+typedef refcount<IIRBase_InterfaceDeclaration> IIRBase_InterfaceDeclarationRef;
+
 #endif

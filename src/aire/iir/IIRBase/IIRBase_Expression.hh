@@ -47,4 +47,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_Expression> IIRBase_ExpressionRef;
+
 #endif

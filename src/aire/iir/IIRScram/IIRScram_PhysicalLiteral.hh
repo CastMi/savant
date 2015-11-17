@@ -54,4 +54,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_PhysicalLiteral> IIRScram_PhysicalLiteralRef;
+
 #endif

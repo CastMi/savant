@@ -37,4 +37,7 @@ class IIR_Expression : public virtual IIR{
 public:
   virtual ~IIR_Expression() {}
 };
+
+typedef refcount<IIR_Expression> IIR_ExpressionRef;
+
 #endif

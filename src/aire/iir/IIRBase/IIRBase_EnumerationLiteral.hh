@@ -72,4 +72,7 @@ private:
 
   IIR *my_position;
 };
+
+typedef refcount<IIRBase_EnumerationLiteral> IIRBase_EnumerationLiteralRef;
+
 #endif

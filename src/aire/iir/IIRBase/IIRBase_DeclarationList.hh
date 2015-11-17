@@ -69,4 +69,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_DeclarationList> IIRBase_DeclarationListRef;
+
 #endif

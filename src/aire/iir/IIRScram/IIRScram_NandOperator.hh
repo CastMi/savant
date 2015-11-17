@@ -43,4 +43,7 @@ public:
 private:
 
 };
+
+typedef refcount<IIRScram_NandOperator> IIRScram_NandOperatorRef;
+
 #endif

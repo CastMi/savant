@@ -75,4 +75,7 @@ private:
                                     IIRScram *node_in_consideration,
                                     char *error_part );
 };
+
+typedef refcount<IIRScram_CaseStatement> IIRScram_CaseStatementRef;
+
 #endif

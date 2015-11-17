@@ -36,4 +36,7 @@ class IIR_ModulusOperator : public virtual IIR_DyadicOperator {
 public:
   virtual ~IIR_ModulusOperator() {}    
 };
+
+typedef refcount<IIR_ModulusOperator> IIR_ModulusOperatorRef;
+
 #endif

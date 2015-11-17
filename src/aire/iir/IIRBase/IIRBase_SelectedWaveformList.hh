@@ -54,4 +54,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_SelectedWaveformList> IIRBase_SelectedWaveformListRef;
+
 #endif

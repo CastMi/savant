@@ -47,4 +47,6 @@ public:
 private:
 };
 
+typedef refcount<IIRBase_ProcedureReturnTypeDefinition> IIRBase_ProcedureReturnTypeDefinitionRef;
+
 #endif

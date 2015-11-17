@@ -74,4 +74,7 @@ private:
   IIR_Elsif                     *elsif_clause;
 
 };
+
+typedef refcount<IIRBase_IfStatement> IIRBase_IfStatementRef;
+
 #endif

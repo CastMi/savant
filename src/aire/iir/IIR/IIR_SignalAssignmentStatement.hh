@@ -49,4 +49,6 @@ public:
   virtual IIR* get_reject_time_expression() = 0;
 };
 
+typedef refcount<IIR_SignalAssignmentStatement> IIR_SignalAssignmentStatementRef;
+
 #endif

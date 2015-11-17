@@ -44,4 +44,6 @@ public:
   virtual IIR* get_expression() = 0;
 };
 
+typedef refcount<IIR_TypeConversion> IIR_TypeConversionRef;
+
 #endif

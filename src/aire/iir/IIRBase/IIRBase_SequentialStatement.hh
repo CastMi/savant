@@ -48,4 +48,6 @@ protected:
 private:
 };
 
+typedef refcount<IIRBase_SequentialStatement> IIRBase_SequentialStatementRef;
+
 #endif

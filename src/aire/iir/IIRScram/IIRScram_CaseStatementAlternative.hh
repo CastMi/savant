@@ -62,4 +62,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRScram_CaseStatementAlternative> IIRScram_CaseStatementAlternativeRef;
+
 #endif

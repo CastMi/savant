@@ -58,4 +58,7 @@ protected:
   void _resolve_suffix_special();
 private:
 };
+
+typedef refcount<IIRScram_QuietAttribute> IIRScram_QuietAttributeRef;
+
 #endif

@@ -54,4 +54,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_SubtractionOperator> IIRBase_SubtractionOperatorRef;
+
 #endif

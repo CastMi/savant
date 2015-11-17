@@ -318,6 +318,7 @@ public:
 
 };
 
+typedef refcount<IIR> IIRRef;
 
 inline 
 ostream &

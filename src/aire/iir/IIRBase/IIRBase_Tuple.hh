@@ -48,4 +48,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_Tuple> IIRBase_TupleRef;
+
 #endif

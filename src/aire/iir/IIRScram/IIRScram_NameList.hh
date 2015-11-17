@@ -38,4 +38,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_NameList> IIRScram_NameListRef;
+
 #endif

@@ -49,4 +49,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_EqualityOperator> IIRBase_EqualityOperatorRef;
+
 #endif

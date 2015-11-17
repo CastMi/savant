@@ -53,5 +53,7 @@ protected:
 
 private:
 };
-#endif
 
+typedef refcount<IIRBase_DotAttribute> IIRBase_DotAttributeRef;
+
+#endif

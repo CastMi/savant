@@ -36,4 +36,7 @@ class IIR_NullStatement : public virtual IIR_SequentialStatement{
 public:
   virtual ~IIR_NullStatement() {}    
 };
+
+typedef refcount<IIR_NullStatement> IIR_NullStatementRef;
+
 #endif

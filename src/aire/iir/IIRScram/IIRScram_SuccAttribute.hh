@@ -57,4 +57,7 @@ protected:
   void _resolve_suffix_special();
 private:
 };
+
+typedef refcount<IIRScram_SuccAttribute> IIRScram_SuccAttributeRef;
+
 #endif

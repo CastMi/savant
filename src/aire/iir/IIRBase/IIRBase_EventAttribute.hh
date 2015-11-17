@@ -54,4 +54,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_EventAttribute> IIRBase_EventAttributeRef;
+
 #endif

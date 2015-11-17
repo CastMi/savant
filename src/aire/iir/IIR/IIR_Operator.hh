@@ -42,4 +42,6 @@ public:
   virtual const string &get_operator_string() const = 0;
 };
 
+typedef refcount<IIR_Operator> IIR_OperatorRef;
+
 #endif

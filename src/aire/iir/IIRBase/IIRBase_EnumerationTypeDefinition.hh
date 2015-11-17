@@ -65,4 +65,7 @@ private:
   IIR_EnumerationLiteralList *enumeration_literals;
 
 };
+
+typedef refcount<IIRBase_EnumerationTypeDefinition> IIRBase_EnumerationTypeDefinitionRef;
+
 #endif

@@ -76,4 +76,6 @@ private:
 
 };
 
+typedef refcount<IIRBase_ScalarTypeDefinition> IIRBase_ScalarTypeDefinitionRef;
+
 #endif

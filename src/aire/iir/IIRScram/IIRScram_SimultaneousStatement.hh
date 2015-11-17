@@ -37,4 +37,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_SimultaneousStatement> IIRScram_SimultaneousStatementRef;
+
 #endif

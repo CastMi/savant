@@ -66,4 +66,7 @@ private:
   IIR *name;
   IIR_Signature *signature;
 };
+
+typedef refcount<IIRBase_DesignatorExplicit> IIRBase_DesignatorExplicitRef;
+
 #endif

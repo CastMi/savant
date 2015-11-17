@@ -37,4 +37,7 @@ class IIR_AssociationElementByExpression : public virtual IIR_AssociationElement
 public:
   virtual ~IIR_AssociationElementByExpression() {}
 };
+
+typedef refcount<IIR_AssociationElementByExpression> IIR_AssociationElementByExpressionRef;
+
 #endif

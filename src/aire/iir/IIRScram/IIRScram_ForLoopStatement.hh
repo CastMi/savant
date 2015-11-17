@@ -84,4 +84,7 @@ private:
   void _publish_cc_initialize_iterator( published_file & );
   void _publish_cc_while_loop_begin( published_file & );
 };
+
+typedef refcount<IIRScram_ForLoopStatement> IIRScram_ForLoopStatementRef;
+
 #endif

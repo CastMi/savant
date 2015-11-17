@@ -36,4 +36,7 @@ class IIR_InequalityOperator : public virtual IIR_DyadicOperator {
 public:
   virtual ~IIR_InequalityOperator() {}
 };
+
+typedef refcount<IIR_InequalityOperator> IIR_InequalityOperatorRef;
+
 #endif

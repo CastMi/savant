@@ -40,4 +40,6 @@ public:
   virtual IIR *get_suffix() = 0;
 };
 
+typedef refcount<IIR_ValAttribute> IIR_ValAttributeRef;
+
 #endif

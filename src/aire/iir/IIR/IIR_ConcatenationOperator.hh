@@ -36,4 +36,7 @@ class IIR_ConcatenationOperator : public virtual IIR_DyadicOperator{
 public:
   virtual ~IIR_ConcatenationOperator() {}   
 };
+
+typedef refcount<IIR_ConcatenationOperator> IIR_ConcatenationOperatorRef;
+
 #endif

@@ -42,4 +42,7 @@ public:
   virtual IIR_DeclarationList *get_package_declarative_part() = 0;
   virtual void                 set_package_declarative_part(IIR_DeclarationList *) = 0;
 };
+
+typedef refcount<IIR_PackageBodyDeclaration> IIR_PackageBodyDeclarationRef;
+
 #endif

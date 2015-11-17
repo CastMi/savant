@@ -50,4 +50,6 @@ private:
   IIR_FP32 val;
 };
 
+typedef refcount<IIRBase_FloatingPointLiteral32> IIRBase_FloatingPointLiteral32Ref;
+
 #endif

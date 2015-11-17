@@ -56,4 +56,7 @@ public:
 
 protected:
 };
+
+typedef refcount<IIR_BreakElement> IIR_BreakElementRef;
+
 #endif

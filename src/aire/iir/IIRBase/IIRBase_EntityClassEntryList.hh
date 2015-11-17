@@ -45,4 +45,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_EntityClassEntryList> IIRBase_EntityClassEntryListRef;
+
 #endif

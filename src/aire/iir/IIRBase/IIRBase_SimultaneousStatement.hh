@@ -39,4 +39,7 @@ protected:
   IIR* enclosingRegion;
 private:
 };
+
+typedef refcount<IIRBase_SimultaneousStatement> IIRBase_SimultaneousStatementRef;
+
 #endif

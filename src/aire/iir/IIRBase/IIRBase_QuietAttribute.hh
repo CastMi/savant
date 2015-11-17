@@ -62,4 +62,7 @@ private:
   IIR* suffix;
 
 };
+
+typedef refcount<IIRBase_QuietAttribute> IIRBase_QuietAttributeRef;
+
 #endif

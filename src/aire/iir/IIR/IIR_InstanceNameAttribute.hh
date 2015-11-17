@@ -37,4 +37,7 @@ class IIR_InstanceNameAttribute : public virtual IIR_Attribute{
 public:
   virtual ~IIR_InstanceNameAttribute() {}    
 };
+
+typedef refcount<IIR_InstanceNameAttribute> IIR_InstanceNameAttributeRef;
+
 #endif

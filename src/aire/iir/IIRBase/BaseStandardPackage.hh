@@ -15,4 +15,6 @@ protected:
   virtual ~BaseStandardPackage(){}
 };
 
+typedef refcount<BaseStandardPackage> BaseStandardPackageRef;
+
 #endif

@@ -55,4 +55,7 @@ public:
   //@}
 
 };
+
+typedef refcount<IIR_LibraryClause> IIR_LibraryClauseRef;
+
 #endif

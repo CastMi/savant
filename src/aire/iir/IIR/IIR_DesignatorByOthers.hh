@@ -37,4 +37,7 @@ class IIR_DesignatorByOthers : public virtual IIR_Designator{
 public:
   virtual ~IIR_DesignatorByOthers() {}   
 };
+
+typedef refcount<IIR_DesignatorByOthers> IIR_DesignatorByOthersRef;
+
 #endif

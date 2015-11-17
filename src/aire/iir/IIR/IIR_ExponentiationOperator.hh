@@ -36,4 +36,7 @@ class IIR_ExponentiationOperator : public virtual IIR_DyadicOperator{
 public:
   virtual ~IIR_ExponentiationOperator() {}    
 };
+
+typedef refcount<IIR_ExponentiationOperator> IIR_ExponentiationOperatorRef;
+
 #endif

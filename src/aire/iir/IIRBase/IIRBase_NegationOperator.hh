@@ -49,4 +49,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_NegationOperator> IIRBase_NegationOperatorRef;
+
 #endif

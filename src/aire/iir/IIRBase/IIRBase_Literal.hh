@@ -52,4 +52,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_Literal> IIRBase_LiteralRef;
+
 #endif

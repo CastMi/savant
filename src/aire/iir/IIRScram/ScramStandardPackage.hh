@@ -227,4 +227,6 @@ private:
   scram                         *fake_parser;
 };
 
+typedef refcount<ScramStandardPackage> ScramStandardPackageRef;
+
 #endif

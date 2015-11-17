@@ -61,5 +61,8 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRScram_ZTFAttribute> IIRScram_ZTFAttributeRef;
+
 #endif
 

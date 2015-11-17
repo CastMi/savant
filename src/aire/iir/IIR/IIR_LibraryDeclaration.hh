@@ -42,7 +42,8 @@ public:
 
   virtual void set_path_to_directory( const string &new_path ) = 0;
   virtual const string &get_path_to_directory() = 0;
-
-
 };
+
+typedef refcount<IIR_LibraryDeclaration> IIR_LibraryDeclarationRef;
+
 #endif

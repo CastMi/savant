@@ -75,4 +75,7 @@ private:
   IIR *left_operand;
   IIR *right_operand;
 };
+
+typedef refcount<IIRBase_DyadicOperator> IIRBase_DyadicOperatorRef;
+
 #endif

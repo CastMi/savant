@@ -72,4 +72,7 @@ private:
   // is representing...
   string path_to_directory;
 };
+
+typedef refcount<IIRBase_LibraryDeclaration> IIRBase_LibraryDeclarationRef;
+
 #endif

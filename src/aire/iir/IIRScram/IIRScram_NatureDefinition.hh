@@ -45,4 +45,7 @@ public:
   IIRScram_TypeDefinition *_get_final_subtype();
 protected:
 };
+
+typedef refcount<IIRScram_NatureDefinition> IIRScram_NatureDefinitionRef;
+
 #endif

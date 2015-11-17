@@ -58,4 +58,7 @@ protected:
   void _resolve_suffix_special();
 private:
 };
+
+typedef refcount<IIRScram_RangeAttribute> IIRScram_RangeAttributeRef;
+
 #endif

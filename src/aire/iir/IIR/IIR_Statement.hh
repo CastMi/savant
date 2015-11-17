@@ -75,4 +75,6 @@ public:
   virtual void set_target( IIR * ) = 0;
 };
 
+typedef refcount<IIR_Statement> IIR_StatementRef;
+
 #endif

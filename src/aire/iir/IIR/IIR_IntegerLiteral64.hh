@@ -46,4 +46,7 @@ public:
   virtual IIR_Int64 value() = 0;
   virtual void set_value(IIR_Int64) = 0;
 };
+
+typedef refcount<IIR_IntegerLiteral64> IIR_IntegerLiteral64Ref;
+
 #endif

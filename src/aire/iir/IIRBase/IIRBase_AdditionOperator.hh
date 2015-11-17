@@ -47,4 +47,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRBase_AdditionOperator> IIRBase_AdditionOperatorRef;
+
 #endif

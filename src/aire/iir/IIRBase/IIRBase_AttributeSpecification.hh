@@ -76,4 +76,7 @@ private:
   IIR_Identifier *entity_class;
   IIR_Declaration *attribute_declaration;
 };
+
+typedef refcount<IIRBase_AttributeSpecification> IIRBase_AttributeSpecificationRef;
+
 #endif

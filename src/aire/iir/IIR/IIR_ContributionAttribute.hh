@@ -40,5 +40,7 @@ protected:
 private:
 
 };
-#endif
 
+typedef refcount<IIR_ContributionAttribute> IIR_ContributionAttributeRef;
+
+#endif

@@ -55,4 +55,7 @@ private:
   IIR_Int32 _stmt_node_index;
 
 };
+
+typedef refcount<IIRScram_TypeConversion> IIRScram_TypeConversionRef;
+
 #endif

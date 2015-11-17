@@ -60,4 +60,7 @@ private:
   IIR* suffix;
 
 };
+
+typedef refcount<IIRBase_LeftAttribute> IIRBase_LeftAttributeRef;
+
 #endif

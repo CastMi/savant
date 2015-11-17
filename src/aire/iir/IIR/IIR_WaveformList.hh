@@ -40,4 +40,7 @@ public:
   virtual IIR_WaveformElement *first() = 0;
   virtual IIR_WaveformElement *successor(IIR_WaveformElement *) = 0;
 };
+
+typedef refcount<IIR_WaveformList> IIR_WaveformListRef;
+
 #endif

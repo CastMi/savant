@@ -60,4 +60,7 @@ private:
   IIR_ArchitectureStatementList *concurrent_statement_part;
   IIR *condition;
 };
+
+typedef refcount<IIRBase_ConcurrentGenerateIfStatement> IIRBase_ConcurrentGenerateIfStatementRef;
+
 #endif

@@ -43,4 +43,7 @@ public:
 
 private:
 };
+
+typedef refcount<IIRScram_NorOperator> IIRScram_NorOperatorRef;
+
 #endif

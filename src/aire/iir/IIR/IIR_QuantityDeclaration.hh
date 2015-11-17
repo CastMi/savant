@@ -34,4 +34,6 @@ public:
   virtual ~IIR_QuantityDeclaration() {};
 };
 
+typedef refcount<IIR_QuantityDeclaration> IIR_QuantityDeclarationRef;
+
 #endif

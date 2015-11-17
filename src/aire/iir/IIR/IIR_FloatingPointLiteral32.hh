@@ -49,4 +49,6 @@ public:
   virtual void set_value(IIR_FP32) = 0;
 };
 
+typedef refcount<IIR_FloatingPointLiteral32> IIR_FloatingPointLiteral32Ref;
+
 #endif

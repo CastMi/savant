@@ -49,4 +49,7 @@ public:
 protected:
 public:
 };
+
+typedef refcount<IIR_BreakStatement> IIR_BreakStatementRef;
+
 #endif

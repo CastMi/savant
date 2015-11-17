@@ -44,4 +44,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_DesignUnitList> IIRBase_DesignUnitListRef;
+
 #endif

@@ -51,4 +51,7 @@ private:
   // Removes types that aren't dimensional arrays from the set passed in.
   void _remove_non_one_d_array_types( savant::set<IIRScram_TypeDefinition> *remove_from );
 };
+
+typedef refcount<IIRScram_ConcatenationOperator> IIRScram_ConcatenationOperatorRef;
+
 #endif

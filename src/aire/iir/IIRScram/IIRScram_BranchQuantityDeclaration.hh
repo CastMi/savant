@@ -58,6 +58,9 @@ protected:
 
 private:
 };
+
+typedef refcount<IIRScram_BranchQuantityDeclaration> IIRScram_BranchQuantityDeclarationRef;
+
 #endif
 
 

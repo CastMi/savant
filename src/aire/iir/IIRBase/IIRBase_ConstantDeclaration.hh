@@ -59,4 +59,7 @@ protected:
 private:
   IIR *value;
 };
+
+typedef refcount<IIRBase_ConstantDeclaration> IIRBase_ConstantDeclarationRef;
+
 #endif

@@ -36,4 +36,6 @@ public:
   virtual ~IIR_XorOperator() {}    
 };
 
+typedef refcount<IIR_XorOperator> IIR_XorOperatorRef;
+
 #endif

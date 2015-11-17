@@ -71,4 +71,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_EnumerationLiteral> IIRScram_EnumerationLiteralRef;
+
 #endif

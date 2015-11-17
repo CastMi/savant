@@ -46,4 +46,7 @@ public:
   virtual void set_implementation( IIR_SubprogramDeclaration* implementation ) = 0;
   virtual IIR_SubprogramDeclaration* get_implementation() = 0;
 };
+
+typedef refcount<IIR_FunctionCall> IIR_FunctionCallRef;
+
 #endif

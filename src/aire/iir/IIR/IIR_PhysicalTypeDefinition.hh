@@ -49,4 +49,7 @@ public:
   virtual IIR_PhysicalUnit *get_primary_unit() = 0;
 
 };
+
+typedef refcount<IIR_PhysicalTypeDefinition> IIR_PhysicalTypeDefinitionRef;
+
 #endif

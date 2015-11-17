@@ -36,4 +36,7 @@ class IIR_AbsoluteOperator : public virtual IIR_MonadicOperator{
 public:
   virtual ~IIR_AbsoluteOperator() {}
 };
+
+typedef refcount<IIR_AbsoluteOperator> IIR_AbsoluteOperatorRef;
+
 #endif

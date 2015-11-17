@@ -63,4 +63,6 @@ private:
   IIR *expression;
 };
 
+typedef refcount<IIRBase_TypeConversion> IIRBase_TypeConversionRef;
+
 #endif

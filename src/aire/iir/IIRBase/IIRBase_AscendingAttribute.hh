@@ -58,4 +58,7 @@ protected:
 private:
   IIR *suffix;
 };
+
+typedef refcount<IIRBase_AscendingAttribute> IIRBase_AscendingAttributeRef;
+
 #endif

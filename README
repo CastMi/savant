@@ -5,4 +5,6 @@ Goals of this branch:
 - update old data structures
 - introduction of smart pointers
 - remove useless dependencies
+- tests
+- code cleanup
 - others not listed in order to improve maintainability

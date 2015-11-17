@@ -50,4 +50,7 @@ public:
   virtual void set_time_expression( IIR* time_expression) = 0;
   virtual IIR *get_time_expression() = 0;
 };
+
+typedef refcount<IIR_DisconnectSpecification> IIR_DisconnectSpecificationRef;
+
 #endif

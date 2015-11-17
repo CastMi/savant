@@ -44,4 +44,7 @@ public:
   virtual IIR *last() = 0;
   virtual IIR *successor( IIR_LibraryUnit * ) = 0;
 };
+
+typedef refcount<IIR_LibraryUnitList> IIR_LibraryUnitListRef;
+
 #endif

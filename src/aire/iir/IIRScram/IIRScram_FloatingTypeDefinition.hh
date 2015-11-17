@@ -68,4 +68,6 @@ private:
 
 };
 
+typedef refcount<IIRScram_FloatingTypeDefinition> IIRScram_FloatingTypeDefinitionRef;
+
 #endif

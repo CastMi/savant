@@ -121,4 +121,6 @@ private:
   virtual IIR_Boolean _need_to_process_prefix_prefix(){ return FALSE; }
 };
 
+typedef refcount<IIRScram_Attribute> IIRScram_AttributeRef;
+
 #endif

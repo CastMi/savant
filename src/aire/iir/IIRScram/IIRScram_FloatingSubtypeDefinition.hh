@@ -62,5 +62,7 @@ protected:
 private:
 };
 
+typedef refcount<IIRScram_FloatingSubtypeDefinition> IIRScram_FloatingSubtypeDefinitionRef;
+
 #endif
 

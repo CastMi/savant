@@ -43,4 +43,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_LibraryUnitList> IIRScram_LibraryUnitListRef;
+
 #endif

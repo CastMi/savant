@@ -60,4 +60,7 @@ protected:
     
 private:
 };
+
+typedef refcount<IIRBase_InterfaceList> IIRBase_InterfaceListRef;
+
 #endif

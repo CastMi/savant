@@ -47,4 +47,6 @@ public:
   virtual IIR* get_timeout_clause() = 0;
 };
 
+typedef refcount<IIR_WaitStatement> IIR_WaitStatementRef;
+
 #endif

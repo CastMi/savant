@@ -44,4 +44,7 @@ public:
   virtual void                                  set_local_port_clause(IIR_PortList *) = 0;
   virtual void                                  set_attributes(IIR_AttributeSpecificationList *) = 0;
 };
+
+typedef refcount<IIR_ComponentDeclaration> IIR_ComponentDeclarationRef;
+
 #endif

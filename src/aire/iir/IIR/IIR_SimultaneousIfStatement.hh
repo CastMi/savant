@@ -50,4 +50,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIR_SimultaneousIfStatement> IIR_SimultaneousIfStatementRef;
+
 #endif

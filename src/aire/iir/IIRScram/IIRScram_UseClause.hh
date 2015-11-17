@@ -56,6 +56,9 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_UseClause> IIRScram_UseClauseRef;
+
 #endif
 
 

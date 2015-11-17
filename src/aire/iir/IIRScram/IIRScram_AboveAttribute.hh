@@ -47,4 +47,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRScram_AboveAttribute> IIRScram_AboveAttributeRef;
+
 #endif

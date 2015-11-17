@@ -44,4 +44,6 @@ protected:
   virtual void set_guard_signal( IIR_SignalDeclaration * ) = 0;
 };
 
+typedef refcount<IIR_ArchitectureStatement> IIR_ArchitectureStatementRef;
+
 #endif

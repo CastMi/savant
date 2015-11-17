@@ -45,4 +45,7 @@ protected:
 
 private:
 };
+
+typedef refcount<IIRBase_TerminalInterfaceDeclaration> IIRBase_TerminalInterfaceDeclarationRef;
+
 #endif

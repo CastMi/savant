@@ -61,5 +61,8 @@ protected:
 private:
   IIR_Int32 _stmt_node_index;
 };
+
+typedef refcount<IIRScram_ConstantInterfaceDeclaration> IIRScram_ConstantInterfaceDeclarationRef;
+
 #endif
 

@@ -58,4 +58,6 @@ public:
   virtual void set_reference_terminal(IIR_TerminalDeclaration *) = 0;
 };
 
+typedef refcount<IIR_NatureDeclaration> IIR_NatureDeclarationRef;
+
 #endif

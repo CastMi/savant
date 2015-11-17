@@ -63,4 +63,7 @@ public:
   virtual IIR_SignalDeclaration         *get_implicit_guard_signal( ) = 0;
   virtual void                          set_implicit_guard_signal( IIR_SignalDeclaration * ) = 0;
 };
+
+typedef refcount<IIR_BlockStatement> IIR_BlockStatementRef;
+
 #endif

@@ -58,4 +58,6 @@ private:
 
 };
 
+typedef refcount<IIRScram_CaseStatementAlternativeByExpression> IIRScram_CaseStatementAlternativeByExpressionRef;
+
 #endif

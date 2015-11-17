@@ -45,4 +45,6 @@ protected:
 private:
 };
 
+typedef refcount<IIRScram_EntityClassEntry> IIRScram_EntityClassEntryRef;
+
 #endif

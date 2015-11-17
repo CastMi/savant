@@ -62,4 +62,7 @@ private:
   IIR* report_expression;
   IIR* expression;
 };
+
+typedef refcount<IIRBase_AssertionStatement> IIRBase_AssertionStatementRef;
+
 #endif

@@ -36,4 +36,6 @@ public:
   virtual ~IIR_VariableInterfaceDeclaration() {}    
 };
 
+typedef refcount<IIR_VariableInterfaceDeclaration> IIR_VariableInterfaceDeclarationRef;
+
 #endif

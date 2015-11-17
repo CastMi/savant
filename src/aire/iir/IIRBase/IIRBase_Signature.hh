@@ -59,4 +59,6 @@ private:
   IIR_TypeDefinition* return_type;
 };
 
+typedef refcount<IIRBase_Signature> IIRBase_SignatureRef;
+
 #endif

@@ -46,4 +46,7 @@ public:
   virtual IIR_FP64 value() = 0;
   virtual void set_value(IIR_FP64) = 0;
 };
+
+typedef refcount<IIR_FloatingPointLiteral64> IIR_FloatingPointLiteral64Ref;
+
 #endif

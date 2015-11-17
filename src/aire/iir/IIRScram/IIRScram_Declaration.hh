@@ -158,4 +158,7 @@ protected:
 private:
 
 };
+
+typedef refcount<IIRScram_Declaration> IIRScram_DeclarationRef;
+
 #endif

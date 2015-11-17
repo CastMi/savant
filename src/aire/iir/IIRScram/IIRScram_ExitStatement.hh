@@ -64,4 +64,7 @@ public:
 protected:    
 private:
 };
+
+typedef refcount<IIRScram_ExitStatement> IIRScram_ExitStatementRef;
+
 #endif

@@ -45,4 +45,7 @@ public:
   virtual void set_signature( IIR_Signature *signature ) = 0;
   virtual IIR_Signature *get_signature( ) = 0;
 };
+
+typedef refcount<IIR_DesignatorExplicit> IIR_DesignatorExplicitRef;
+
 #endif

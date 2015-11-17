@@ -50,4 +50,6 @@ public:
   virtual const string convert_to_library_name() = 0;
 };
 
+typedef refcount<IIR_TextLiteral> IIR_TextLiteralRef;
+
 #endif

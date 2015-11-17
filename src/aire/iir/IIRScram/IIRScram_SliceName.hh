@@ -80,5 +80,7 @@ private:
 
 };
 
+typedef refcount<IIRScram_SliceName> IIRScram_SliceNameRef;
+
 #endif
 

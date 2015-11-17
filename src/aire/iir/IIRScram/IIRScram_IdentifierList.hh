@@ -39,4 +39,7 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_IdentifierList> IIRScram_IdentifierListRef;
+
 #endif

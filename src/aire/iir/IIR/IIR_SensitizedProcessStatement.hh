@@ -42,4 +42,6 @@ public:
   virtual void                  set_sensitivity_list(IIR_DesignatorList *) = 0;
 };
 
+typedef refcount<IIR_SensitizedProcessStatement> IIR_SensitizedProcessStatementRef;
+
 #endif

@@ -49,4 +49,7 @@ protected:
 private:
   IIRScram_TypeDefinition *_get_type_mark();
 };
+
+typedef refcount<IIRScram_FileTypeDefinition> IIRScram_FileTypeDefinitionRef;
+
 #endif

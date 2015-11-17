@@ -73,5 +73,8 @@ public:
 protected:
 private:
 };
+
+typedef refcount<IIRScram_SubtypeDeclaration> IIRScram_SubtypeDeclarationRef;
+
 #endif
 

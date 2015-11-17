@@ -53,4 +53,7 @@ public:
   virtual void set_elsif(IIR_Elsif*) = 0;
   virtual IIR_Elsif* get_elsif() = 0;
 };
+
+typedef refcount<IIR_IfStatement> IIR_IfStatementRef;
+
 #endif

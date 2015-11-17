@@ -58,4 +58,7 @@ protected:
 
 private:
 };
+
+typedef refcount<IIRScram_ArchitectureStatement> IIRScram_ArchitectureStatementRef;
+
 #endif

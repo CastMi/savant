@@ -56,4 +56,7 @@ public:
       i.e. one of subnature_indication type */
   virtual void set_is_element(IIR_Boolean) = 0;
 };
+
+typedef refcount<IIR_ArrayNatureDefinition> IIR_ArrayNatureDefinitionRef;
+
 #endif
