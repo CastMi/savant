@@ -29,21 +29,20 @@ include $(top_srcdir)/Makefile.am.common
 
 SUBDIRS = aire analyzer util
 
-AM_CPPFLAGS += -I$(PCCTSROOT)
-
 noinst_LTLIBRARIES = libpccts.la
 
-BUILT_SOURCES = \
-	ATokenBuffer.cpp		\
-	AParser.cpp			
+libpccts_la_SOURCES = \
+	ATokenBuffer.cpp \
+	AParser.cpp
 
-library_includedir=$(includedir)/savant
-library_include_HEADERS=  \
+# Location for the library installation
+# With this first command I specify the folder that the "library_include"
+# should use for the installation.
+library_includedir = $(includedir)/savant
+# Now, I specify the headers to install.
+library_include_HEADERS =  \
 	savant.hh \
 	savant_config.hh 
-
-libpccts_la_SOURCES = \
-	$(BUILT_SOURCES)
 
 ATokenBuffer.cpp: analyzer/vhdl.gg
 	cp $(PCCTSROOT)/ATokenBuffer.cpp $(top_builddir)/src

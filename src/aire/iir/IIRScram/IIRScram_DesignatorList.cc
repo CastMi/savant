@@ -172,7 +172,6 @@ IIRScram_DesignatorList::_type_check_as_instantiation_list( IIRScram *instantiat
     }
   }
 
-#ifdef DEVELOPER_ASSERTIONS
   current_designator = dynamic_cast<IIRScram_Designator *>(first());
   while( current_designator != NULL ){
     if ( current_designator->get_kind() == IIR_DESIGNATOR_EXPLICIT ) {
@@ -185,7 +184,6 @@ IIRScram_DesignatorList::_type_check_as_instantiation_list( IIRScram *instantiat
     }
     current_designator = dynamic_cast<IIRScram_Designator *>(successor( current_designator ));
   }
-#endif
 }
 
 

@@ -1,4 +1,3 @@
-
 #ifndef IIR_BASIC_DATA_TYPES_HH
 #define IIR_BASIC_DATA_TYPES_HH
 
@@ -28,30 +27,28 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
-#include "IRKind.hh"
+#include "savant.hh"
 #include <string>
 using std::string;
 #include <iostream>
 using std::ostream;
 
-typedef bool      IIR_Boolean;
+/*
+ * This file defines all the primitive types used inside AIRE,
+ * some enums and few methods related to them
+ */
+
 #ifndef TRUE
 #define TRUE true
 #define FALSE false
 #endif
 
-#if SIZEOF_LONG == 8
-#define INT_64 long
-#else
-#define INT_64 long long
-#endif
-
-typedef char       IIR_Char;
-typedef int        IIR_Int32;
-typedef INT_64     IIR_Int64;
-typedef float      IIR_FP32;
-typedef double     IIR_FP64;
+typedef bool      IIR_Boolean;
+typedef char      IIR_Char;
+typedef int32_t   IIR_Int32;
+typedef int64_t   IIR_Int64;
+typedef float     IIR_FP32;
+typedef double    IIR_FP64;
 
 enum IIR_SignalKind {
   IIR_NO_SIGNAL_KIND,
@@ -113,16 +110,4 @@ enum IIR_DelayMechanism {
   IIR_TRANSPORT_DELAY
 };
 
-class IIR;
-typedef IIR* IIR_pointer;
-
 #endif
-
-
-
-
-
-
-
-
-

@@ -956,11 +956,9 @@ IIRScram_IndexedName::_semantic_transform( savant::set<IIRScram_TypeDefinition> 
   // call, we need to transform the indexed name into an
   // IIRScram_FunctionCall, and make the transformations on the paramters.
   
-#ifdef DEVELOPER_ASSERTIONS
   int context_size = context_set->size();
   IIRScram *orig_prefix = _get_prefix();
   IIRScram *orig_suffix = _get_suffix();
-#endif
 
   // We're going to initially assume it's a function call.  If not,
   // we'll get back a NULL return value and try some other uses.

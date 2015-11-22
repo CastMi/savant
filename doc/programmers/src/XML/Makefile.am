@@ -22,7 +22,7 @@
 
 lib_LTLIBRARIES = libxmlplugin.la
 
-libxmlplugin_la_LD_FLAGS= \
+libxmlplugin_la_LD_FLAGS = \
 	-module \
 	-avoid-version \
 	-no-undefined

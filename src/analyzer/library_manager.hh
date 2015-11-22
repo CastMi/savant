@@ -27,13 +27,14 @@
 #include "savant_config.hh"
 #include "savant.hh"
 #include "IRBasicDataTypes.hh"
+#include "IRKind.hh"
 #include <string>
 #include <vector>
 #include <fstream>
 
-
 class symbol_table;
 class symbol_lookup;
+class IIR;
 class IIR_ArchitectureDeclaration;
 class IIR_ConfigurationDeclaration;
 class IIR_Declaration;

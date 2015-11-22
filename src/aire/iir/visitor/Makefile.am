@@ -37,8 +37,12 @@ libiirVisitor_a_SOURCES = \
 	visitor_return_type.cc\
 	visitor_return_type.hh
 
-library_includedir=$(includedir)/savant
-library_include_HEADERS=  \
+# Location for the library installation
+# With this first command I specify the folder that the "library_include"
+# should use for the installation.
+library_includedir = $(includedir)/savant
+# Now, I specify the headers to install.
+library_include_HEADERS =  \
 	node_visitor.hh\
 	visitor_argument_type.hh\
 	visitor_return_type.hh

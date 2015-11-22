@@ -27,7 +27,7 @@
 
 include $(top_srcdir)/Makefile.am.common
 
-IEEE_INPUT_DIR=$(top_srcdir)/lib/vhdl/ieee
+IEEE_INPUT_DIR = $(top_srcdir)/lib/vhdl/ieee
 IEEE_OUTPUT_DIR = $(top_builddir)/lib/vhdl/ieee/ieee._savant_lib
 
 install-data-local: ieee._savant_lib
@@ -89,12 +89,10 @@ IEEE_VHDL_FILES = \
 	$(IEEE_INPUT_DIR)/math_real.vhd \
 	$(IEEE_INPUT_DIR)/math_complex.vhd
 
-SCRAMFLAGS= --design-library-name ieee
-
 all-local: $(IEEE_OUTPUT_DIR)
 
 clean-local:
 	rm -rf $(IEEE_OUTPUT_DIR)
 
-$(IEEE_OUTPUT_DIR): $(top_builddir)/bin/scram $(IEEE_FILES)
-	SAVANTROOT=$(top_srcdir) $(top_builddir)/bin/scram $(SCRAMFLAGS) $(IEEE_VHDL_FILES)
+$(IEEE_OUTPUT_DIR): $(top_builddir)/bin/scram
+	SAVANTROOT=$(top_srcdir) $(top_builddir)/bin/scram --design-library-name ieee $(IEEE_VHDL_FILES)

@@ -85,14 +85,12 @@ IIRScram_BlockStatement::_type_check(){
     _get_implicit_guard_signal()->IIRBase_SignalDeclaration::set_value( _get_guard_expression() );
   }
   
-#ifdef DEVELOPER_ASSERTIONS
   if( _get_guard_expression() == NULL ){
     ASSERT( _get_implicit_guard_signal() == NULL );
   }
   else{
     ASSERT( _get_implicit_guard_signal() != NULL );
   }
-#endif
 
   // We need to type check the port map and generic map if they have stuff in them.
   _get_generic_map_aspect()->_resolve_and_order( _get_generic_clause(), NULL, this);

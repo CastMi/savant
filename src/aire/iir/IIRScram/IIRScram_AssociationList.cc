@@ -629,7 +629,6 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
     current_association = dynamic_cast<IIRScram_AssociationElement *>(successor( current_association ));
   }
 
-#ifdef DEVELOPER_ASSERTIONS
   if( resolve == TRUE ){
     ASSERT( is_resolved() == TRUE );
     IIRScram_AssociationElement *current = dynamic_cast<IIRScram_AssociationElement *>(first());
@@ -645,7 +644,6 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
       current = dynamic_cast<IIRScram_AssociationElement *>(successor( current ));
     }
   }
-#endif
   
   // OK, now we need to make sure that every required formal has an local
   // associated with it.  We already know that all locals supplied match

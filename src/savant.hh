@@ -27,6 +27,7 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
+
 #ifndef NULL
 #define NULL    0
 #endif
@@ -34,19 +35,16 @@
 extern bool parse_error;
 extern bool gen_cc_ref;
 
-#ifndef ASSERT
-#ifdef DEVELOPER_ASSERTIONS
 #include <cstdio>
 #include <cstdlib>
-#include <cassert>
-#define ASSERT(x) assert( x || parse_error == true )
-#else
-#define ASSERT(x)
-#endif
-#endif
 
-class IIR_IntegerTypeDefinition;
-class IIR_FloatingTypeDefinition;
-class IIR_FileTypeDefinition;
+/*
+ * Asserts
+ */
+#ifndef ASSERT
+#include <cassert>
+// #define ASSERT(x) assert( x || parse_error == true )
+#define ASSERT(x) assert( x )
+#endif
 
 #endif

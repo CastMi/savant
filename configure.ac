@@ -21,12 +21,14 @@
 
 AC_INIT([savant],[2.0-pre040909])
 AC_CONFIG_SRCDIR([src/analyzer/scram.cc])
-AM_INIT_AUTOMAKE([foreign subdir-objects])
-m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+AM_INIT_AUTOMAKE([foreign subdir-objects -Wall])
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 AC_PREREQ(2.57)
+AC_CONFIG_MACRO_DIR([m4])
+LT_INIT
 
 AC_CONFIG_HEADERS( [src/savant_config.hh:src/savant_config.hh.in] )
-AC_LANG(C++)
+AC_LANG([C++])
 AC_SUBST(SAVANT_VERSION,[2.0-pre040909])
 
 # Checks for programs.
@@ -35,10 +37,15 @@ AC_PROG_CXXCPP
 AM_PROG_LEX
 AC_PROG_INSTALL
 AC_PROG_LIBTOOL
-CL_PROG_PCCTS
-CL_LIB_CLUTILS
 
 AC_CANONICAL_HOST
+
+m4_include([m4/ax_cxx_compile_stdcxx_11.m4])
+AX_CXX_COMPILE_STDCXX_11([noext], [mandatory])
+
+m4_include([m4/check_clutils_and_antlr.m4])
+CL_PROG_PCCTS
+CL_LIB_CLUTILS
 
 # cxx on Alpha requires __USE_STD_IOSTREAM to be defined.
 case "$host" in
@@ -99,10 +106,6 @@ AC_CONFIG_FILES([Makefile \
 	bin/Makefile \
 	testsuite/Makefile ])
 AC_OUTPUT
-
-echo "You have now configured the savant system for building with\
- flex, antlr, and a C++ compiler. Issuing the command \"make\" should\
- build the \"scram\" parser in the \"savant/bin\" directory."
 
 #target os for dejagnu
 target_abbrev=unix

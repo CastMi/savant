@@ -110,12 +110,6 @@ help_func(){
 #define IOS_BIN ios::binary
 #endif
 
-#ifdef DEVELOPER_ASSERTIONS
-#define _CC_OUT _cc_out
-#else
-#define _CC_OUT IIRScram::_cc_out
-#endif	  
-
 int 
 main (int argc, char *argv[]) {
   // here are defaults for global argument variables

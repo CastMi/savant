@@ -27,7 +27,7 @@
 
 include $(top_srcdir)/Makefile.am.common
 
-SUBDIRS=vhdl
+SUBDIRS = vhdl
 
 all-local: ieee._savant_lib
 

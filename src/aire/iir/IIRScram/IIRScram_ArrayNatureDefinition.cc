@@ -107,9 +107,7 @@ IIRScram_ArrayNatureDefinition::_construct_constrained( IIRScram_ScalarTypeDefin
 
 IIRScram_TypeDefinition *
 IIRScram_ArrayNatureDefinition::_index_constrain_array( IIRScram_ScalarTypeDefinition *constraint ){
-#ifdef DEVELOPER_ASSERTIONS
   IIRScram_TypeDefinition *original_index_subtype = _get_resolved_index_subtype();
-#endif
 
   IIRScram_ArraySubnatureDefinition *retval = NULL;
   IIRScram_TypeDefinition *current_index_type = _get_resolved_index_subtype();

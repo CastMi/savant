@@ -76,9 +76,7 @@ IIRScram_ArrayTypeDefinition::_build_proper_index( IIRScram_RangeTypeDefinition 
 
 IIRScram_TypeDefinition *
 IIRScram_ArrayTypeDefinition::_index_constrain_array( IIRScram_ScalarTypeDefinition *constraint ){
-#ifdef DEVELOPER_ASSERTIONS
   IIRScram_TypeDefinition *original_index_subtype = _get_resolved_index_subtype();
-#endif
 
   IIRScram_ArraySubtypeDefinition *retval = NULL;
 

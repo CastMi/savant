@@ -25,11 +25,18 @@
 
 #---------------------------------------------------------------------------
 
-include $(top_srcdir)/Makefile.am.common
+SUBDIRS = iir
 
-SUBDIRS=iir
+lib_LTLIBRARIES = libaire.la
 
-lib_LTLIBRARIES=libaire.la
+libaire_la_CPPFLAGS = \
+   -I$(top_srcdir)/src \
+   -I$(top_srcdir)/src/analyzer \
+   -I$(top_srcdir)/src/aire/iir/IIR \
+   -I$(top_srcdir)/src/util  \
+   -I$(top_srcdir)/src/aire/iir/IIRScram \
+   -I$(top_srcdir)/src/aire/iir/IIRBase \
+   -I$(top_srcdir)/src/aire/iir/visitor
 
 libaire_la_SOURCES = \
 	iir/IIR/constraint_functors.hh \
@@ -198,8 +205,8 @@ libaire_la_SOURCES = \
 	iir/IIR/IIR_Name.hh \
 	iir/IIR/IIR_NameList.hh \
 	iir/IIR/IIR_NandOperator.hh \
-        iir/IIR/IIR_NatureDeclaration.hh \
-        iir/IIR/IIR_NatureDefinition.hh \
+   iir/IIR/IIR_NatureDeclaration.hh \
+   iir/IIR/IIR_NatureDefinition.hh \
 	iir/IIR/IIR_NegationOperator.hh \
 	iir/IIR/IIR_NextStatement.hh \
 	iir/IIR/IIR_NorOperator.hh \
@@ -241,7 +248,7 @@ libaire_la_SOURCES = \
 	iir/IIR/IIR_SLLOperator.hh \
 	iir/IIR/IIR_SRAOperator.hh \
 	iir/IIR/IIR_SRLOperator.hh \
-        iir/IIR/IIR_ScalarNatureDefinition.hh \
+   iir/IIR/IIR_ScalarNatureDefinition.hh \
 	iir/IIR/IIR_ScalarTypeDefinition.hh \
 	iir/IIR/IIR_SelectedName.hh \
 	iir/IIR/IIR_SelectedNameByAll.hh \
@@ -270,8 +277,8 @@ libaire_la_SOURCES = \
 	iir/IIR/IIR_SubtractionOperator.hh \
 	iir/IIR/IIR_SubtypeDeclaration.hh \
 	iir/IIR/IIR_SuccAttribute.hh \
-        iir/IIR/IIR_TerminalDeclaration.hh \
-        iir/IIR/IIR_TerminalInterfaceDeclaration.hh \
+   iir/IIR/IIR_TerminalDeclaration.hh \
+   iir/IIR/IIR_TerminalInterfaceDeclaration.hh \
 	iir/IIR/IIR_TextLiteral.hh \
 	iir/IIR/IIR_ThroughAttribute.hh \
 	iir/IIR/IIR_TransactionAttribute.hh \
@@ -328,7 +335,7 @@ libaire_la_SOURCES = \
 	iir/IIRBase/IIRBase_ArrayNatureDefinition.cc \
 	iir/IIRBase/IIRBase_ArrayNatureDefinition.hh \
 	iir/IIRBase/IIRBase_ArraySubnatureDefinition.cc \
-        iir/IIRBase/IIRBase_ArraySubnatureDefinition.hh \
+   iir/IIRBase/IIRBase_ArraySubnatureDefinition.hh \
 	iir/IIRBase/IIRBase_ArraySubtypeDefinition.cc \
 	iir/IIRBase/IIRBase_ArraySubtypeDefinition.hh \
 	iir/IIRBase/IIRBase_ArrayTypeDefinition.cc \
@@ -363,7 +370,7 @@ libaire_la_SOURCES = \
 	iir/IIRBase/IIRBase_BlockStatement.cc \
 	iir/IIRBase/IIRBase_BlockStatement.hh \
 	iir/IIRBase/IIRBase_BranchQuantityDeclaration.cc \
-        iir/IIRBase/IIRBase_BranchQuantityDeclaration.hh \
+   iir/IIRBase/IIRBase_BranchQuantityDeclaration.hh \
 	iir/IIRBase/IIRBase_BreakElement.cc \
 	iir/IIRBase/IIRBase_BreakElement.hh \
 	iir/IIRBase/IIRBase_BreakList.cc \
@@ -616,9 +623,9 @@ libaire_la_SOURCES = \
 	iir/IIRBase/IIRBase_NandOperator.cc \
 	iir/IIRBase/IIRBase_NandOperator.hh \
 	iir/IIRBase/IIRBase_NatureDeclaration.cc \
-        iir/IIRBase/IIRBase_NatureDeclaration.hh \
+   iir/IIRBase/IIRBase_NatureDeclaration.hh \
 	iir/IIRBase/IIRBase_NatureDefinition.cc \
-        iir/IIRBase/IIRBase_NatureDefinition.hh \
+   iir/IIRBase/IIRBase_NatureDefinition.hh \
 	iir/IIRBase/IIRBase_NegationOperator.cc \
 	iir/IIRBase/IIRBase_NegationOperator.hh \
 	iir/IIRBase/IIRBase_NextStatement.cc \
@@ -703,7 +710,7 @@ libaire_la_SOURCES = \
 	iir/IIRBase/IIRBase_SRLOperator.cc \
 	iir/IIRBase/IIRBase_SRLOperator.hh \
 	iir/IIRBase/IIRBase_ScalarNatureDefinition.cc \
-        iir/IIRBase/IIRBase_ScalarNatureDefinition.hh \
+   iir/IIRBase/IIRBase_ScalarNatureDefinition.hh \
 	iir/IIRBase/IIRBase_ScalarTypeDefinition.cc \
 	iir/IIRBase/IIRBase_ScalarTypeDefinition.hh \
 	iir/IIRBase/IIRBase_SelectedName.cc \
@@ -745,7 +752,7 @@ libaire_la_SOURCES = \
 	iir/IIRBase/IIRBase_SliceName.cc \
 	iir/IIRBase/IIRBase_SliceName.hh \
 	iir/IIRBase/IIRBase_SourceQuantityDeclaration.cc \
-        iir/IIRBase/IIRBase_SourceQuantityDeclaration.hh \
+   iir/IIRBase/IIRBase_SourceQuantityDeclaration.hh \
 	iir/IIRBase/IIRBase_StableAttribute.cc \
 	iir/IIRBase/IIRBase_StableAttribute.hh \
 	iir/IIRBase/IIRBase_Statement.cc \
@@ -844,7 +851,7 @@ libaire_la_SOURCES = \
 	iir/IIRScram/IIRScram_ArrayNatureDefinition.cc \
 	iir/IIRScram/IIRScram_ArrayNatureDefinition.hh \
 	iir/IIRScram/IIRScram_ArraySubnatureDefinition.cc \
-        iir/IIRScram/IIRScram_ArraySubnatureDefinition.hh \
+   iir/IIRScram/IIRScram_ArraySubnatureDefinition.hh \
 	iir/IIRScram/IIRScram_ArraySubtypeDefinition.cc \
 	iir/IIRScram/IIRScram_ArraySubtypeDefinition.hh \
 	iir/IIRScram/IIRScram_ArrayTypeDefinition.cc \
@@ -878,7 +885,7 @@ libaire_la_SOURCES = \
 	iir/IIRScram/IIRScram_BlockStatement.cc \
 	iir/IIRScram/IIRScram_BlockStatement.hh \
 	iir/IIRScram/IIRScram_BranchQuantityDeclaration.cc \
-        iir/IIRScram/IIRScram_BranchQuantityDeclaration.hh \
+   iir/IIRScram/IIRScram_BranchQuantityDeclaration.hh \
 	iir/IIRScram/IIRScram_BreakElement.cc \
 	iir/IIRScram/IIRScram_BreakElement.hh \
 	iir/IIRScram/IIRScram_BreakList.cc \
@@ -1135,9 +1142,9 @@ libaire_la_SOURCES = \
 	iir/IIRScram/IIRScram_NandOperator.cc \
 	iir/IIRScram/IIRScram_NandOperator.hh \
 	iir/IIRScram/IIRScram_NatureDeclaration.cc \
-        iir/IIRScram/IIRScram_NatureDeclaration.hh \
-        iir/IIRScram/IIRScram_NatureDefinition.cc \
-        iir/IIRScram/IIRScram_NatureDefinition.hh \
+   iir/IIRScram/IIRScram_NatureDeclaration.hh \
+   iir/IIRScram/IIRScram_NatureDefinition.cc \
+   iir/IIRScram/IIRScram_NatureDefinition.hh \
 	iir/IIRScram/IIRScram_NegationOperator.cc \
 	iir/IIRScram/IIRScram_NegationOperator.hh \
 	iir/IIRScram/IIRScram_NextStatement.cc \
@@ -1223,7 +1230,7 @@ libaire_la_SOURCES = \
 	iir/IIRScram/IIRScram_SRLOperator.cc \
 	iir/IIRScram/IIRScram_SRLOperator.hh \
 	iir/IIRScram/IIRScram_ScalarNatureDefinition.cc \
-        iir/IIRScram/IIRScram_ScalarNatureDefinition.hh \
+   iir/IIRScram/IIRScram_ScalarNatureDefinition.hh \
 	iir/IIRScram/IIRScram_ScalarTypeDefinition.cc \
 	iir/IIRScram/IIRScram_ScalarTypeDefinition.hh \
 	iir/IIRScram/IIRScram_SelectedName.cc \
@@ -1267,7 +1274,7 @@ libaire_la_SOURCES = \
 	iir/IIRScram/IIRScram_SliceName.cc \
 	iir/IIRScram/IIRScram_SliceName.hh \
 	iir/IIRScram/IIRScram_SourceQuantityDeclaration.cc \
-        iir/IIRScram/IIRScram_SourceQuantityDeclaration.hh \
+   iir/IIRScram/IIRScram_SourceQuantityDeclaration.hh \
 	iir/IIRScram/IIRScram_StableAttribute.cc \
 	iir/IIRScram/IIRScram_StableAttribute.hh \
 	iir/IIRScram/IIRScram_Statement.cc \
@@ -1335,8 +1342,12 @@ libaire_la_SOURCES = \
 	iir/IIRScram/ScramStandardPackage.hh \
 	iir/IIRScram/ScramStandardPackage.cc
 
-library_includedir=$(includedir)/savant
-library_include_HEADERS=  \
+# Location for the library installation
+# With this first command I specify the folder that the "library_include"
+# should use for the installation.
+library_includedir = $(includedir)/savant
+# Now, I specify the headers to install.
+library_include_HEADERS = \
 	iir/IIR/constraint_functors.hh \
 	iir/IIR/IIR.hh \
 	iir/IIR/IIR_AboveAttribute.hh \
@@ -1571,7 +1582,7 @@ library_include_HEADERS=  \
 	iir/IIR/IIR_SubtypeDeclaration.hh \
 	iir/IIR/IIR_SuccAttribute.hh \
 	iir/IIR/IIR_TerminalDeclaration.hh \
-        iir/IIR/IIR_TerminalInterfaceDeclaration.hh \
+   iir/IIR/IIR_TerminalInterfaceDeclaration.hh \
 	iir/IIR/IIR_TextLiteral.hh \
 	iir/IIR/IIR_ThroughAttribute.hh \
 	iir/IIR/IIR_TransactionAttribute.hh \

@@ -229,7 +229,6 @@ IIRScram_Operator::_semantic_transform( set<IIRScram_TypeDefinition> *context_se
 									    NULL,
 									    this );
       
-#ifdef DEVELOPER_ASSERTIONS
       IIRScram_AssociationElement *current =  
         dynamic_cast<IIRScram_AssociationElement *>(function_call->get_parameter_association_list()->first());
       while( current != NULL ){
@@ -237,7 +236,6 @@ IIRScram_Operator::_semantic_transform( set<IIRScram_TypeDefinition> *context_se
 	current =  
           dynamic_cast<IIRScram_AssociationElement *>(function_call->get_parameter_association_list()->successor( current ));
       }
-#endif
 
       retval = function_call;
     }

@@ -27,10 +27,17 @@
 
 include $(top_srcdir)/Makefile.am.common
 
-AM_CPPFLAGS += -I$(PCCTSROOT) \
-	-I$(top_builddir)/src/analyzer # for VHDLTokenTypes.hh
-
 lib_LTLIBRARIES = libsavantutils.la
+
+libsavantutils_la_CPPFLAGS = \
+	-I$(top_builddir)/src/analyzer \
+	-I$(top_srcdir)/src/aire/iir/IIR \
+	-I$(top_srcdir)/src \
+	-I$(top_srcdir)/src/aire/iir/IIRScram \
+	-I$(top_srcdir)/src/aire/iir/IIRBase \
+	-I$(top_srcdir)/src/aire \
+	-I$(top_srcdir)/src/aire/iir/visitor \
+	-I$(top_srcdir)/src/analyzer
 
 libsavantutils_la_SOURCES = \
 	ConePartitioner.cc \
@@ -62,8 +69,12 @@ libsavantutils_la_SOURCES = \
 	PluginStandardPackage.hh \
 	PluginStandardPackage.cc
 
-library_includedir=$(includedir)/savant
-library_include_HEADERS=  \
+# Location for the library installation
+# With this first command I specify the folder that the "library_include"
+# should use for the installation.
+library_includedir = $(includedir)/savant
+# Now, I specify the headers to install.
+library_include_HEADERS =  \
 	ProcessCombiner.hh \
 	break_handler.hh \
 	container.hh \

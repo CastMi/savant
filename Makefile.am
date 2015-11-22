@@ -21,29 +21,32 @@
 
 include $(top_srcdir)/Makefile.am.common
 
+ACLOCAL_AMFLAGS = -I m4
+
 # This order has us build scram before attempting to process the IEEE libraries
-SUBDIRS= src bin lib testsuite
-IEEE_DIST_DIR=lib/vhdl/ieee
+SUBDIRS = src bin lib test
+IEEE_DIST_DIR = lib/vhdl/ieee
+
 EXTRA_DIST = \
-	Makefile.am.common\
-	doc/BUGS\
-	doc/README\
-	doc/TODO\
-	doc/libraryManager/libraryManager.tex\
-	doc/programmers/fir-seqStatement.ps.gz\
-	doc/programmers/programmers.ps.gz\
-	doc/programmers/actual-if.ps.gz\
-	doc/programmers/iir-extensible.ps.gz\
-	doc/programmers/programmers.tex\
-	doc/programmers/broken-derivation.ps.gz\
-	doc/programmers/iir-seqStatement.ps.gz\
-	doc/programmers/savant-if.ps.gz\
-	doc/programmers/extended-declaration.ps.gz\
-	doc/programmers/node-implementation.ps.gz\
-	doc/programmers/uc-projects.ps.gz\
-	doc/programmers/fir-extensible.ps.gz\
-	doc/programmers/programmers.pdf.gz\
-	doc/scram.1\
+	Makefile.am.common \
+	doc/BUGS \
+	doc/README \
+	doc/TODO \
+	doc/libraryManager/libraryManager.tex \
+	doc/programmers/fir-seqStatement.ps.gz \
+	doc/programmers/programmers.ps.gz \
+	doc/programmers/actual-if.ps.gz \
+	doc/programmers/iir-extensible.ps.gz \
+	doc/programmers/programmers.tex \
+	doc/programmers/broken-derivation.ps.gz \
+	doc/programmers/iir-seqStatement.ps.gz \
+	doc/programmers/savant-if.ps.gz \
+	doc/programmers/extended-declaration.ps.gz \
+	doc/programmers/node-implementation.ps.gz \
+	doc/programmers/uc-projects.ps.gz \
+	doc/programmers/fir-extensible.ps.gz \
+	doc/programmers/programmers.pdf.gz \
+	doc/scram.1 \
 	$(IEEE_DIST_DIR)/std_logic_1164.vhd \
 	$(IEEE_DIST_DIR)/timing_p.vhd \
 	$(IEEE_DIST_DIR)/timing_b.vhd \

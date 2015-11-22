@@ -25,6 +25,7 @@
 #include <iostream>
 #include <string>
 #include "IRBasicDataTypes.hh"
+#include "IRKind.hh"
 #include "savant.hh"
 
 using std::string;

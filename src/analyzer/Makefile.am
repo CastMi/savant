@@ -26,23 +26,31 @@
 
 include $(top_srcdir)/Makefile.am.common
 
-AM_CPPFLAGS += -I$(PCCTSROOT)
-
-noinst_LTLIBRARIES = libscram.la
 SRC_OUTPUT_DIR = $(top_builddir)/src/analyzer
 SRC_INPUT_DIR = $(top_srcdir)/src/analyzer
 VHDL_GG = $(SRC_INPUT_DIR)/vhdl.gg
 
-man_MANS=$(top_srcdir)/doc/scram.1
+man_MANS = $(top_srcdir)/doc/scram.1
 
-BUILT_SOURCES=				\
+BUILT_SOURCES = \
 	vhdl.cpp			\
 	VHDLLexer.cc			\
 	VHDLParser.cpp			\
 	VHDLParser.h			\
-	VHDLTokenTypes.hh		
+	VHDLTokenTypes.hh
 
-libscram_la_SOURCES=			\
+noinst_LTLIBRARIES = libscram.la
+
+libscram_la_CPPFLAGS = \
+   -I$(top_srcdir)/src/aire/iir/IIRScram \
+   -I$(top_srcdir)/src/aire/iir/IIRBase \
+   -I$(top_srcdir)/src \
+   -I$(top_srcdir)/src/util \
+   -I$(top_srcdir)/src/aire/iir/IIR \
+   -I$(top_srcdir)/src/aire \
+   -I$(top_srcdir)/src/aire/iir/visitor
+
+libscram_la_SOURCES = \
 	VHDLLexer.hh			\
 	VHDLLexerBits.cc		\
 	VHDLToken.hh			\
@@ -62,18 +70,22 @@ libscram_la_SOURCES=			\
 	language_processing_control.hh	\
 	$(BUILT_SOURCES)
 
-library_includedir=$(includedir)/savant
-library_include_HEADERS=		\
+# Location for the library installation
+# With this first command I specify the folder that the "library_include"
+# should use for the installation.
+library_includedir = $(includedir)/savant
+# Now, I specify the headers to install.
+library_include_HEADERS =		\
 	StandardPackage.hh		\
 	library_manager.hh		\
 	scram.hh			\
 	language_processing_control.hh
 
 
-DO_ANTLR= $(ANTLR) -gx -k 2 -CC -ft VHDLTokenTypes.hh \
+DO_ANTLR = $(ANTLR) -gx -k 2 -CC -ft VHDLTokenTypes.hh \
 	 $(VHDL_GG) -o $(SRC_OUTPUT_DIR)
 
-DO_LEX=	$(LEX) -+ -i -Cfe -o$(SRC_OUTPUT_DIR)/$@ $(SRC_INPUT_DIR)/VHDLLexer.flex
+DO_LEX =	$(LEX) -+ -i -Cfe -o$(SRC_OUTPUT_DIR)/$@ $(SRC_INPUT_DIR)/VHDLLexer.flex
 
 VHDLTokenTypes.hh: $(VHDL_GG)
 	$(DO_ANTLR)

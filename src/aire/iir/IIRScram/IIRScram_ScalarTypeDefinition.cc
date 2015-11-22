@@ -251,12 +251,10 @@ IIRScram_ScalarTypeDefinition::_construct_new_subtype( IIRScram_Name *resolution
       // Modified by SK -- End
       scalar_subtype->set_right( new_constraint->_get_right() );
     }
-#ifdef DEVELOPER_ASSERTIONS
     else{
       ASSERT( new_constraint->_get_direction() == NULL );
       ASSERT( new_constraint->_get_right() == NULL );
     }
-#endif
   }
   else{
     // No new constraint 

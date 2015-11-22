@@ -41,18 +41,14 @@ IIRBase_DesignatorList::~IIRBase_DesignatorList() {}
 IIR *
 IIRBase_DesignatorList::first(){
   IIR *retval = IIRBase_List::first();
-#ifdef DEVELOPER_ASSERTIONS
-#endif
   return retval;
 }
 
 
 IIR *
 IIRBase_DesignatorList::successor(IIR_Designator *to_succeed){
-#ifdef DEVELOPER_ASSERTIONS  
   IIR *test = to_succeed;
   ASSERT( test );
-#endif
 
   IIR *retval;
   retval = IIRBase_List::successor(to_succeed);
@@ -62,10 +58,8 @@ IIRBase_DesignatorList::successor(IIR_Designator *to_succeed){
 
 void 
 IIRBase_DesignatorList::append( IIR_Designator *to_append ){
-#ifdef DEVELOPER_ASSERTIONS  
   IIR *test = to_append;
   ASSERT( test );
-#endif
 
   IIRBase_List::append( to_append );
 }

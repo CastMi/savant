@@ -190,7 +190,6 @@ IIRScram_Declaration::_add_to_declarative_region( IIRScram_DeclarationList *regi
   ASSERT( set_to_add != NULL );
   
   IIRScram_Declaration *current_decl = NULL;
-#ifdef DEVELOPER_ASSERTIONS
   IIRScram_Declaration *decl_in_region = dynamic_cast<IIRScram_Declaration *>(region->first());
   while( decl_in_region != NULL ){
     current_decl = set_to_add->getElement();
@@ -200,7 +199,6 @@ IIRScram_Declaration::_add_to_declarative_region( IIRScram_DeclarationList *regi
     }
     decl_in_region = dynamic_cast<IIRScram_Declaration *>(region->successor( decl_in_region ));
   }
-#endif
 
   current_decl = set_to_add->getElement();
   while( current_decl != NULL ){
