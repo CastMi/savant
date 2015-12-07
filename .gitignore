@@ -1,0 +1,52 @@
+# Savant config file
+savant_config.hh.in
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+obj/
+
+# Autotools
+ar-lib
+# Automake
+Makefile.in
+Makefile
+m4/
+# Autoconf
+autom4te.cache
+aclocal.m4
+compile
+configure
+depcomp
+install-sh
+missing
+.deps/
+*.cache/
+config.*
+stamp-h1
+
+# Libtool
+libtool
+ltmain.*
