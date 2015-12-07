@@ -30,16 +30,15 @@ class  IIR_FloatingPointLiteral32;
 class IIRBase_FloatingPointLiteral32 : public virtual IIRBase_Literal, public virtual IIR_FloatingPointLiteral32{
 
 public:
-  IIR_Kind get_kind() const { return IIR_FLOATING_POINT_LITERAL32; }
-  const IIR_Char *get_kind_text() const { return "IIR_FloatingPointLiteral32"; }
+  IIR_Kind get_kind() const override { return IIR_FLOATING_POINT_LITERAL32; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_FloatingPointLiteral32"); }
 
-  static IIR_FloatingPointLiteral32* get_value(IIR_FP32);
-  void release();
+  static IIR_FloatingPointLiteral32Ref get_value(IIR_FP32);
 
   IIR_FP32 value();
   void set_value(IIR_FP32);
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:

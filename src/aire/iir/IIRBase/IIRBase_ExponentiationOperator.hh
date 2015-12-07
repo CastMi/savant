@@ -36,8 +36,8 @@ class IIRBase_ExponentiationOperator : public virtual IIRBase_DyadicOperator,
 				       public virtual IIR_ExponentiationOperator{
 
 public:
-  IIR_Kind get_kind() const {return IIR_EXPONENTIATION_OPERATOR;}
-  const IIR_Char *get_kind_text() const {return "IIR_ExponentiationOperator";}
+  IIR_Kind get_kind() const override { return IIR_EXPONENTIATION_OPERATOR; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ExponentiationOperator"); }
   const string &get_operator_string() const;
 
   Precedence  get_precedence();

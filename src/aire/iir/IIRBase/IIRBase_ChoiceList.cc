@@ -29,29 +29,26 @@
 IIRBase_ChoiceList::IIRBase_ChoiceList() {}
 IIRBase_ChoiceList::~IIRBase_ChoiceList() {}
 
-
-IIR_Choice* 
+IIR_ChoiceRef
 IIRBase_ChoiceList::first() {
-  return dynamic_cast<IIR_Choice*>(IIRBase_List::first());
+  return my_dynamic_pointer_cast<IIR_Choice>(IIRBase_List::first());
 }
 
-
-IIR_Choice*
-IIRBase_ChoiceList::successor(IIR_Choice* node) {
-  return dynamic_cast<IIR_Choice*>(IIRBase_List::successor((IIR*)node));
+IIR_ChoiceRef
+IIRBase_ChoiceList::successor(IIR_ChoiceRef node) {
+  return my_dynamic_pointer_cast<IIR_Choice>(IIRBase_List::successor(node));
 }
-
 
 void 
 IIRBase_ChoiceList::publish_vhdl(ostream &vhdl_out) {
   register int numberOfChoices = 1;
-  IIRBase_Choice *choice = dynamic_cast<IIRBase_Choice *>(first());
+  IIRBase_ChoiceRef choice = my_dynamic_pointer_cast<IIRBase_Choice>(first());
   choice->publish_vhdl(vhdl_out);
-  choice = dynamic_cast<IIRBase_Choice *>(successor(choice));
+  choice = my_dynamic_pointer_cast<IIRBase_Choice>(successor(choice));
   while(numberOfChoices < size()){
     vhdl_out << " | ";
     choice->publish_vhdl(vhdl_out);
     numberOfChoices++;
-    choice = dynamic_cast<IIRBase_Choice *>(successor(choice));
+    choice = my_dynamic_pointer_cast<IIRBase_Choice>(successor(choice));
   }
 }

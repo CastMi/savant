@@ -34,32 +34,29 @@
 #include "IIR_AssociationElementByExpression.hh"
 #include "plugin_class_factory.hh"
 
-IIRBase_IndexedName::IIRBase_IndexedName() {
-  set_suffix(NULL);
-}
-
+IIRBase_IndexedName::IIRBase_IndexedName() {}
 IIRBase_IndexedName::~IIRBase_IndexedName() {}
 
 void
-IIRBase_IndexedName::set_suffix( IIR* suffix) {
+IIRBase_IndexedName::set_suffix( IIRRef suffix) {
   this->suffix = suffix;
 }
 
-IIR*
+IIRRef
 IIRBase_IndexedName::get_suffix() {
   return suffix;
 }
 
-IIR *
+IIRRef
 IIRBase_IndexedName::get_declarative_region(){
-  ASSERT( get_prefix_declaration() != 0 );
+  ASSERT( get_prefix_declaration() != nullptr );
   return get_prefix_declaration()->get_declarative_region();
 }
 
-IIR *
-IIRBase_IndexedName::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_IndexedName::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_IndexedName *new_node = dynamic_cast<IIRBase_IndexedName *>(IIRBase_Name::convert_tree(factory));
+  IIRBase_IndexedNameRef new_node = my_dynamic_pointer_cast<IIRBase_IndexedName>(IIRBase_Name::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
@@ -90,11 +87,11 @@ IIRBase_IndexedName::is_interface() {
   return get_prefix()->is_interface();
 }
 
-IIR *
+IIRRef
 IIRBase_IndexedName::get_index( int index_num ){
   if( get_suffix()->get_kind() == IIR_ASSOCIATION_LIST ){
-    IIR_AssociationList *as_list = dynamic_cast<IIR_AssociationList *>(get_suffix());
-    return dynamic_cast<IIR *>(as_list->get_nth_element( index_num - 1 ));
+    IIR_AssociationListRef as_list = my_dynamic_pointer_cast<IIR_AssociationList>(get_suffix());
+    return my_dynamic_pointer_cast<IIR>(as_list->get_nth_element( index_num - 1 ));
   }
   else{
     ASSERT( index_num == 1 );
@@ -103,16 +100,16 @@ IIRBase_IndexedName::get_index( int index_num ){
 }
 
 void 
-IIRBase_IndexedName::set_index( int index_num, IIR *new_index ){
+IIRBase_IndexedName::set_index( int index_num, IIRRef new_index ){
   ASSERT( get_suffix()->get_kind() == IIR_ASSOCIATION_LIST );
   
-  IIR_AssociationList *as_list = dynamic_cast<IIR_AssociationList *>(get_suffix());
-  IIR_AssociationElement *current_index = dynamic_cast<IIR_AssociationElement *>(as_list->get_nth_element( index_num - 1 ));
+  IIR_AssociationListRef as_list = my_dynamic_pointer_cast<IIR_AssociationList>(get_suffix());
+  IIR_AssociationElementRef current_index = my_dynamic_pointer_cast<IIR_AssociationElement>(as_list->get_nth_element( index_num - 1 ));
   
-  IIR_AssociationElement *new_association = dynamic_cast<IIR_AssociationElement *>(new_index);
+  IIR_AssociationElementRef new_association = my_dynamic_pointer_cast<IIR_AssociationElement>(new_index);
   if( new_index == NULL ){
-    IIR_AssociationElementByExpression *by_expr = get_design_file()->get_class_factory()->new_IIR_AssociationElementByExpression();
-    copy_location( this, by_expr );
+    IIR_AssociationElementByExpressionRef by_expr = get_design_file()->get_class_factory()->new_IIR_AssociationElementByExpression();
+    copy_location( by_expr.get() );
     by_expr->set_actual( new_index );
     new_association = by_expr;
   }
@@ -123,7 +120,7 @@ IIRBase_IndexedName::set_index( int index_num, IIR *new_index ){
 IIR_Int32 
 IIRBase_IndexedName::get_num_indexes(){
   if( get_suffix()->get_kind() == IIR_ASSOCIATION_LIST ){
-    IIR_AssociationList *as_list = dynamic_cast<IIR_AssociationList *>(get_suffix());
+    IIR_AssociationListRef as_list = my_dynamic_pointer_cast<IIR_AssociationList>(get_suffix());
     return as_list->num_elements();
   }
   else{
@@ -147,7 +144,7 @@ IIRBase_IndexedName::print( ostream &os ){
   return os;
 }
 
-IIR_Declaration*
+IIR_DeclarationRef
 IIRBase_IndexedName::get_prefix_declaration() {
   return get_prefix()->get_prefix_declaration();
 }

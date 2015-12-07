@@ -32,49 +32,40 @@
 #include "IIR_Statement.hh"
 #include "IIR_TextLiteral.hh"
 
-IIRBase_Label::IIRBase_Label()  :
-  attributes(0),
-  my_statement(0){}
-
-IIRBase_Label::~IIRBase_Label(){
-  delete attributes;
-  attributes = 0;
-}
+IIRBase_Label::IIRBase_Label() {}
+IIRBase_Label::~IIRBase_Label() {}
 
 void
-IIRBase_Label::set_statement(IIR_Statement *statement) {
+IIRBase_Label::set_statement(IIR_StatementRef statement) {
   my_statement = statement;
 }
 
-IIR_Statement *
+IIR_StatementRef
 IIRBase_Label::get_statement() {
   return my_statement;
 }
 
-
 // List Accessor(s)
-IIR_AttributeSpecificationList *
+IIR_AttributeSpecificationListRef
 IIRBase_Label::get_attributes() {
-  ASSERT(attributes != NULL);
+  ASSERT(attributes != nullptr);
   return attributes;
 }
 
-
 void
-IIRBase_Label::set_attributes(IIR_AttributeSpecificationList *new_attributes) {
-  ASSERT(new_attributes != NULL);
-  delete attributes;
+IIRBase_Label::set_attributes(IIR_AttributeSpecificationListRef new_attributes) {
+  ASSERT(new_attributes != nullptr);
   attributes = new_attributes;
 }
 
-IIR *
-IIRBase_Label::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_Label::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_Label *new_node = dynamic_cast<IIRBase_Label *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_LabelRef new_node = my_dynamic_pointer_cast<IIRBase_Label>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
-  new_node->my_statement = dynamic_cast<IIR_Statement *>(convert_node(my_statement, factory));
+  new_node->attributes = my_dynamic_pointer_cast<IIR_AttributeSpecificationList>(convert_node(attributes, factory));
+  new_node->my_statement = my_dynamic_pointer_cast<IIR_Statement>(convert_node(my_statement, factory));
 
   return new_node;
 }
@@ -84,9 +75,9 @@ IIRBase_Label::get_declaration_type(){
   return LABEL;
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_Label::find_declarations( IIR_Name *name ){
-  ASSERT( get_statement() != NULL );
+savant::set<IIR_DeclarationRef>
+IIRBase_Label::find_declarations( IIR_NameRef name ){
+  ASSERT( get_statement() != nullptr );
 
   return get_statement()->find_declarations( name );
 }

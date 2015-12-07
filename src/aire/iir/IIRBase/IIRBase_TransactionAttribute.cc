@@ -31,15 +31,15 @@ IIRBase_TransactionAttribute::IIRBase_TransactionAttribute(){}
 
 IIRBase_TransactionAttribute::~IIRBase_TransactionAttribute(){}
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_TransactionAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_bit_type();
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_TransactionAttribute::build_attribute_name() {
-  const char *name = "transaction";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("transaction");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 

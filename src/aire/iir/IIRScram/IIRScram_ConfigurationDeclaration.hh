@@ -24,8 +24,8 @@
 #include "IIRScram_LibraryUnit.hh"
 #include "IIRBase_ConfigurationDeclaration.hh"
 
+REF_FORWARD_DECL(IIRScram_BlockConfiguration);
 class IIRScram_ArchitectureDeclaration;
-class IIRScram_BlockConfiguration;
 
 class IIRScram_ConfigurationDeclaration : public virtual IIRScram_LibraryUnit, public virtual IIRBase_ConfigurationDeclaration{
 public:
@@ -41,9 +41,9 @@ public:
   void _type_check();
 
   // Wrappers for IIRBase functions
-  IIRScram_DeclarationList      *_get_configuration_declarative_part();
-  IIRScram_BlockConfiguration   *_get_block_configuration();
-  IIRScram_EntityDeclaration    *_get_entity();
+  IIRScram_DeclarationListRef      _get_configuration_declarative_part();
+  IIRScram_BlockConfigurationRef   _get_block_configuration();
+  IIRScram_EntityDeclarationRef    _get_entity();
 protected:    
 private:
 };

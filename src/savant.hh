@@ -48,7 +48,12 @@ extern bool gen_cc_ref;
  * Smart pointers
  */
 #include <boost/shared_ptr.hpp>
-#define refcount boost::shared_ptr
+#include <boost/weak_ptr.hpp>
+#include <boost/make_shared.hpp>
+#define refcount std::shared_ptr
+#define Wrefcount boost::weak_ptr
+#define my_dynamic_pointer_cast std::dynamic_pointer_cast
+#define my_make_shared boost::make_shared
 
 /*
  * Macro used to forward declare a Refcount type

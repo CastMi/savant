@@ -35,188 +35,141 @@
 #include "IIR_SignalDeclaration.hh"
 #include "IIRBase_BlockStatement.hh"
 
-IIRBase_BlockStatement::IIRBase_BlockStatement() :
-  generic_clause(0),
-  generic_map_aspect(0),
-  port_clause(0),
-  port_map_aspect(0),
-  block_declarative_part(0),
-  block_statement_part(0),
-  guard_expression(0),
-  implicit_guard_signal(0){}
-
-IIRBase_BlockStatement::~IIRBase_BlockStatement(){
-  delete generic_clause;
-  generic_clause = 0;
-  delete generic_map_aspect;
-  generic_map_aspect = 0;
-  delete port_clause;
-  port_clause = 0;
-  delete port_map_aspect;
-  port_map_aspect = 0;
-  delete block_declarative_part;
-  block_declarative_part = 0;
-  delete block_statement_part;
-  block_statement_part = 0;
-  delete guard_expression;
-  guard_expression = 0;
-  delete implicit_guard_signal;
-  implicit_guard_signal = 0;
-}
+IIRBase_BlockStatement::IIRBase_BlockStatement() {}
+IIRBase_BlockStatement::~IIRBase_BlockStatement() {}
 
 void 
-IIRBase_BlockStatement::set_guard_expression( IIR *new_guard_expression ){
-  delete guard_expression;
+IIRBase_BlockStatement::set_guard_expression( IIRRef new_guard_expression ){
   guard_expression = new_guard_expression;
 }
 
-IIR *
+IIRRef
 IIRBase_BlockStatement::get_guard_expression(){
   return guard_expression;
 }
 
 // List Accessor(s)
-IIR_GenericList *
+IIR_GenericListRef
 IIRBase_BlockStatement::get_generic_clause() {
-  ASSERT(generic_clause != NULL);
+  ASSERT(generic_clause != nullptr);
   return generic_clause;
 }
 
-IIR_AssociationList *
+IIR_AssociationListRef
 IIRBase_BlockStatement::get_generic_map_aspect() {
-  ASSERT(generic_map_aspect != NULL);
+  ASSERT(generic_map_aspect != nullptr);
   return generic_map_aspect;
 }
 
-IIR_PortList *
+IIR_PortListRef
 IIRBase_BlockStatement::get_port_clause() {
-  ASSERT(port_clause != NULL);
+  ASSERT(port_clause != nullptr);
   return port_clause;
 }
 
-IIR_AssociationList *
+IIR_AssociationListRef
 IIRBase_BlockStatement::get_port_map_aspect() {
-  ASSERT(port_map_aspect != NULL);
+  ASSERT(port_map_aspect != nullptr);
   return port_map_aspect;
 }
 
-IIR_DeclarationList *
+IIR_DeclarationListRef
 IIRBase_BlockStatement::get_block_declarative_part() {
-  ASSERT(block_declarative_part != NULL);
+  ASSERT(block_declarative_part != nullptr);
   return block_declarative_part;
 }
 
-IIR_ArchitectureStatementList *
+IIR_ArchitectureStatementListRef
 IIRBase_BlockStatement::get_block_statement_part() {
-  ASSERT(block_statement_part != NULL);
+  ASSERT(block_statement_part != nullptr);
   return block_statement_part;
 }
 
 void
-IIRBase_BlockStatement::set_generic_clause(IIR_GenericList *new_generic_clause) {
-  ASSERT(new_generic_clause != NULL);
-  delete generic_clause;
+IIRBase_BlockStatement::set_generic_clause(IIR_GenericListRef new_generic_clause) {
+  ASSERT(new_generic_clause != nullptr);
   generic_clause = new_generic_clause;
 }
 
 void
-IIRBase_BlockStatement::set_generic_map_aspect(IIR_AssociationList *new_generic_map_aspect) {
-  ASSERT(new_generic_map_aspect != NULL);
-  delete generic_map_aspect;
+IIRBase_BlockStatement::set_generic_map_aspect(IIR_AssociationListRef new_generic_map_aspect) {
+  ASSERT(new_generic_map_aspect != nullptr);
   generic_map_aspect = new_generic_map_aspect;
 }
 
 void
-IIRBase_BlockStatement::set_port_clause(IIR_PortList *new_port_clause) {
-  ASSERT(new_port_clause != NULL);
-  delete port_clause;
+IIRBase_BlockStatement::set_port_clause(IIR_PortListRef new_port_clause) {
+  ASSERT(new_port_clause != nullptr);
   port_clause = new_port_clause;
 }
 
 void
-IIRBase_BlockStatement::set_port_map_aspect(IIR_AssociationList *new_port_map_aspect) {
-  ASSERT(new_port_map_aspect != NULL);
-  delete port_map_aspect;
+IIRBase_BlockStatement::set_port_map_aspect(IIR_AssociationListRef new_port_map_aspect) {
+  ASSERT(new_port_map_aspect != nullptr);
   port_map_aspect = new_port_map_aspect;
 }
 
 void
-IIRBase_BlockStatement::set_block_declarative_part(IIR_DeclarationList *new_block_declarative_part) {
-  ASSERT(new_block_declarative_part != NULL);
-  delete block_declarative_part;
+IIRBase_BlockStatement::set_block_declarative_part(IIR_DeclarationListRef new_block_declarative_part) {
+  ASSERT(new_block_declarative_part != nullptr);
   block_declarative_part = new_block_declarative_part;
 }
 
 void
-IIRBase_BlockStatement::set_block_statement_part(IIR_ArchitectureStatementList *new_block_statement_part) {
-  ASSERT(new_block_statement_part != NULL);
-  delete block_statement_part;
+IIRBase_BlockStatement::set_block_statement_part(IIR_ArchitectureStatementListRef new_block_statement_part) {
+  ASSERT(new_block_statement_part != nullptr);
   block_statement_part = new_block_statement_part;
 }
 
-IIR *
-IIRBase_BlockStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_BlockStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_BlockStatement *new_node = dynamic_cast<IIRBase_BlockStatement *>(IIRBase_ConcurrentStatement::convert_tree(factory));
+  IIRBase_BlockStatementRef new_node = my_dynamic_pointer_cast<IIRBase_BlockStatement>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
   new_node->generic_clause =
-    dynamic_cast<IIR_GenericList *>(convert_node(generic_clause, factory));
+    my_dynamic_pointer_cast<IIR_GenericList>(convert_node(generic_clause, factory));
   new_node->generic_map_aspect =
-    dynamic_cast<IIR_AssociationList *>(convert_node(generic_map_aspect, factory));
+    my_dynamic_pointer_cast<IIR_AssociationList>(convert_node(generic_map_aspect, factory));
   new_node->port_clause =
-    dynamic_cast<IIR_PortList *>(convert_node(port_clause, factory));
+    my_dynamic_pointer_cast<IIR_PortList>(convert_node(port_clause, factory));
   new_node->port_map_aspect =
-    dynamic_cast<IIR_AssociationList *>(convert_node(port_map_aspect, factory));
+    my_dynamic_pointer_cast<IIR_AssociationList>(convert_node(port_map_aspect, factory));
   new_node->block_declarative_part =
-    dynamic_cast<IIR_DeclarationList *>(convert_node(block_declarative_part, factory));
+    my_dynamic_pointer_cast<IIR_DeclarationList>(convert_node(block_declarative_part, factory));
   new_node->block_statement_part =
-    dynamic_cast<IIR_ArchitectureStatementList *>(convert_node(block_statement_part, factory));
+    my_dynamic_pointer_cast<IIR_ArchitectureStatementList>(convert_node(block_statement_part, factory));
   new_node->guard_expression =
     convert_node(guard_expression, factory);
   new_node->implicit_guard_signal =
-    dynamic_cast<IIR_SignalDeclaration *>(convert_node(implicit_guard_signal, factory));
+    my_dynamic_pointer_cast<IIR_SignalDeclaration>(convert_node(implicit_guard_signal, factory));
 
   return new_node;
 }
 
 void 
-IIRBase_BlockStatement::set_implicit_guard_signal(IIR_SignalDeclaration *new_implicit_guard_signal ){
+IIRBase_BlockStatement::set_implicit_guard_signal(IIR_SignalDeclarationRef new_implicit_guard_signal ){
   implicit_guard_signal = new_implicit_guard_signal;
 }
 
-IIR_SignalDeclaration *
+IIR_SignalDeclarationRef
 IIRBase_BlockStatement::get_implicit_guard_signal(  ){
   return implicit_guard_signal;
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_BlockStatement::find_declarations( IIR_Name *to_find){
-  savant::set<IIR_Declaration*> *retval = new savant::set<IIR_Declaration*>;
+savant::set<IIR_DeclarationRef>
+IIRBase_BlockStatement::find_declarations( IIR_NameRef to_find){
+  savant::set<IIR_DeclarationRef> retval;
   
-  savant::set<IIR_Declaration*> *current_set = get_port_clause()->find_declarations(to_find );
+  savant::set<IIR_DeclarationRef> current_set = get_port_clause()->find_declarations(to_find );
   
-  if( current_set != NULL ){
-    retval->insert( current_set );
-    delete current_set;
-  }
+  retval.insert( current_set );
 
   current_set = get_generic_clause()->find_declarations(to_find );
-  if( current_set != NULL ){
-    retval->insert( current_set );
-    delete current_set;
-  }
+  retval.insert( current_set );
 
   current_set = get_block_declarative_part()->find_declarations(to_find );
-  if( current_set != NULL ){
-    retval->insert( current_set );
-    delete current_set;
-  }
-
-  if( retval->size() == 0 ){
-    delete retval;
-    retval = NULL;
-  }
+  retval.insert( current_set );
 
   return retval;
 }
@@ -258,7 +211,7 @@ IIRBase_BlockStatement::publish_vhdl(ostream &vhdl_out) {
     }
   }
 
-  dynamic_cast<IIRBase_DeclarationList *>
+  my_dynamic_pointer_cast<IIRBase_DeclarationList>
     (get_block_declarative_part())->publish_vhdl_decl(vhdl_out);
 
   vhdl_out << " begin\n";

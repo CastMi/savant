@@ -33,24 +33,24 @@
 IIRBase_AliasDeclaration::IIRBase_AliasDeclaration() :
   name(0){}
 
-IIRBase_AliasDeclaration::~IIRBase_AliasDeclaration(){
-  delete name;
+IIRBase_AliasDeclaration::~IIRBase_AliasDeclaration() {
 }
 
 void 
-IIRBase_AliasDeclaration::set_name( IIR *n) {
+IIRBase_AliasDeclaration::set_name( IIRRef n) {
+  name.reset();
   name = n;
 }
 
-IIR*
+IIRRef
 IIRBase_AliasDeclaration::get_name() {
   return name;
 }
 
-IIR *
-IIRBase_AliasDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_AliasDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_AliasDeclaration *new_node = dynamic_cast<IIRBase_AliasDeclaration *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_AliasDeclarationRef new_node = dynamic_pointer_cast<IIRBase_AliasDeclaration>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
   new_node->name = convert_node(name, factory);

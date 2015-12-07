@@ -37,29 +37,25 @@ IIRBase_BreakStatement::IIRBase_BreakStatement(){
 IIRBase_BreakStatement::~IIRBase_BreakStatement(){}
 
 void
-IIRBase_BreakStatement::set_condition(IIR* condition){
+IIRBase_BreakStatement::set_condition(IIRRef condition){
   this->condition = condition;
 }
 
-IIR*
+IIRRef
 IIRBase_BreakStatement::get_condition(){
   return condition;
 }
 
 // List Accessor(s)
-IIR_BreakList *
+IIR_BreakListRef
 IIRBase_BreakStatement::get_break_list() {
   ASSERT (break_list != NULL);
   return break_list;
 }
 
 void
-IIRBase_BreakStatement::set_break_list(IIR_BreakList * new_break_list) {
-  ASSERT (new_break_list != NULL);
-
-  if (break_list != NULL)
-    delete break_list;
-
+IIRBase_BreakStatement::set_break_list(IIR_BreakListRef new_break_list) {
+  ASSERT (new_break_list != nullptr);
   break_list = new_break_list;
 }
 
@@ -73,13 +69,13 @@ IIRBase_BreakStatement::is_above_attribute_found() {
 }
 
 
-IIR *
-IIRBase_BreakStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_BreakStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_BreakStatement *new_node = dynamic_cast<IIRBase_BreakStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_BreakStatementRef new_node = my_dynamic_pointer_cast<IIRBase_BreakStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->break_list = dynamic_cast<IIR_BreakList *>(convert_node(break_list, factory));
+  new_node->break_list = my_dynamic_pointer_cast<IIR_BreakList>(convert_node(break_list, factory));
   new_node->condition = convert_node(condition, factory);
 
   return new_node;

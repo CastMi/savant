@@ -22,27 +22,25 @@
 #include "IIRBase_Identifier.hh"
 #include "IIRBase_SuccAttribute.hh"
 #include "savant.hh"
+#include <cstring>
 
-IIRBase_SuccAttribute::IIRBase_SuccAttribute() {
-  my_suffix = NULL;
-}
-
+IIRBase_SuccAttribute::IIRBase_SuccAttribute() {}
 IIRBase_SuccAttribute::~IIRBase_SuccAttribute() {}
 
 void
-IIRBase_SuccAttribute::set_suffix( IIR *suffix) {
+IIRBase_SuccAttribute::set_suffix( IIRRef suffix) {
   my_suffix = suffix;
 }
 
-IIR *
+IIRRef
 IIRBase_SuccAttribute::get_suffix() {
   return my_suffix;
 }
 
-IIR *
-IIRBase_SuccAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SuccAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SuccAttribute *new_node = dynamic_cast<IIRBase_SuccAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_SuccAttributeRef new_node = dynamic_pointer_cast<IIRBase_SuccAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->my_suffix = convert_node(my_suffix, factory);
@@ -50,10 +48,10 @@ IIRBase_SuccAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_SuccAttribute::build_attribute_name() {
-  const char *name = "SUCC";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("SUCC");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 

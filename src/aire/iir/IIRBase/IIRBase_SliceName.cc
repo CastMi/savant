@@ -29,27 +29,24 @@
 #include "IIRBase_SliceName.hh"
 #include "savant.hh"
 
-IIRBase_SliceName::IIRBase_SliceName() {
-  set_suffix(NULL);
-}
-
+IIRBase_SliceName::IIRBase_SliceName() {}
 IIRBase_SliceName::~IIRBase_SliceName() {}
 
 void
-IIRBase_SliceName::set_suffix( IIR *new_suffix ){
+IIRBase_SliceName::set_suffix( IIRRef new_suffix ){
   suffix = new_suffix;
 }
 
-IIR*
+IIRRef
 IIRBase_SliceName::get_suffix() {
   return suffix;
 }
 
 
-IIR *
-IIRBase_SliceName::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SliceName::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SliceName *new_node = dynamic_cast<IIRBase_SliceName *>(IIRBase_Name::convert_tree(factory));
+  IIRBase_SliceNameRef new_node = my_dynamic_pointer_cast<IIRBase_SliceName>(IIRBase_Name::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
@@ -84,7 +81,7 @@ IIRBase_SliceName::print( ostream &os ){
 
 // We handle slice names as aliases.  An implicit alias of the prefix with
 // the corresponding range is created and used as the slice.
-IIR_Declaration*
+IIR_DeclarationRef
 IIRBase_SliceName::get_prefix_declaration() {
   return get_prefix()->get_prefix_declaration();
 }
@@ -98,6 +95,6 @@ IIRBase_SliceName::publish_vhdl(ostream &vhdl_out) {
 
   get_prefix()->publish_vhdl(vhdl_out);
   vhdl_out << " ( ";
-  dynamic_cast<IIRBase *>(get_suffix())->publish_vhdl_range(vhdl_out);
+  my_dynamic_pointer_cast<IIRBase>(get_suffix())->publish_vhdl_range(vhdl_out);
   vhdl_out << " ) ";
 }

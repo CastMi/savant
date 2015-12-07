@@ -29,26 +29,23 @@
 #include "IIRBase_GroupConstituent.hh"
 #include "savant.hh"
 
-IIRBase_GroupConstituent::IIRBase_GroupConstituent() {
-  set_name(NULL);
-}
-
+IIRBase_GroupConstituent::IIRBase_GroupConstituent() {}
 IIRBase_GroupConstituent::~IIRBase_GroupConstituent() {}
 
 void
-IIRBase_GroupConstituent::set_name( IIR* name) {
+IIRBase_GroupConstituent::set_name( IIRRef name) {
   this->name = name;
 }
 
-IIR*
+IIRRef
 IIRBase_GroupConstituent::get_name() {
   return name;
 }
 
-IIR *
-IIRBase_GroupConstituent::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_GroupConstituent::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_GroupConstituent *new_node = dynamic_cast<IIRBase_GroupConstituent *>(IIRBase_Tuple::convert_tree(factory));
+  IIRBase_GroupConstituentRef new_node = my_dynamic_pointer_cast<IIRBase_GroupConstituent>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
   new_node->name = convert_node(name, factory);
@@ -58,5 +55,5 @@ IIRBase_GroupConstituent::convert_tree(plugin_class_factory *factory) {
 
 void 
 IIRBase_GroupConstituent::publish_vhdl(ostream &vhdl_out) {
-  dynamic_cast<IIRBase *>(get_name())->publish_vhdl(vhdl_out);
+   my_dynamic_pointer_cast<IIRBase>(get_name())->publish_vhdl(vhdl_out);
 }

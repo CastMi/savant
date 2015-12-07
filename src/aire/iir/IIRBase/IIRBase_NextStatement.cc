@@ -30,33 +30,27 @@
 #include "IIRBase_NextStatement.hh"
 #include "IIR_Label.hh"
 
-IIRBase_NextStatement::IIRBase_NextStatement() :
-  condition(0),
-  loop(0){}
+IIRBase_NextStatement::IIRBase_NextStatement() {}
 
-IIRBase_NextStatement::~IIRBase_NextStatement() {
-  delete condition;
-  condition = 0;
-  // Not loop
-}
+IIRBase_NextStatement::~IIRBase_NextStatement() {}
 
 
 void
-IIRBase_NextStatement::set_enclosing_loop( IIR_SequentialStatement* loop) {
+IIRBase_NextStatement::set_enclosing_loop( IIR_SequentialStatementRef loop) {
   this->loop = loop;
 }
 
-IIR_SequentialStatement*
+IIR_SequentialStatementRef
 IIRBase_NextStatement::get_enclosing_loop() {
   return loop;
 }
 
 void
-IIRBase_NextStatement::set_condition( IIR* condition) {
+IIRBase_NextStatement::set_condition( IIRRef condition) {
   this->condition = condition;
 }
 
-IIR*
+IIRRef
 IIRBase_NextStatement::get_condition() {
   return condition;
 }
@@ -70,14 +64,14 @@ IIRBase_NextStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
-IIRBase_NextStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_NextStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_NextStatement *new_node = dynamic_cast<IIRBase_NextStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_NextStatementRef new_node = my_dynamic_pointer_cast<IIRBase_NextStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
   new_node->condition = convert_node(condition, factory);
-  new_node->loop = dynamic_cast<IIR_SequentialStatement *>(convert_node(loop, factory));
+  new_node->loop = my_dynamic_pointer_cast<IIR_SequentialStatement>(convert_node(loop, factory));
 
   return new_node;
 }

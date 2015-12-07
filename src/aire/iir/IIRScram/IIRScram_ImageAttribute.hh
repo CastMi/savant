@@ -45,9 +45,9 @@ public:
 
 
   IIR_Boolean has_suffix(){ return TRUE; }
-  void _set_suffix( IIRScram *new_suffix ){ IIRBase_ImageAttribute::set_suffix( new_suffix ); }
+  void _set_suffix( IIRScramRef new_suffix ){ IIRBase_ImageAttribute::set_suffix( new_suffix ); }
 
-  IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &, IIRScram_TypeDefinitionRef );
 
 protected:
   void _resolve_suffix_special();

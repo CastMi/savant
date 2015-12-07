@@ -58,27 +58,27 @@ public:
 
   /** If this is an array variable, get the type definition of the object
       stored in the "nth" index... */
-  IIRScram_TypeDefinition *_get_type_of_element( int index );
+  IIRScram_TypeDefinitionRef _get_type_of_element( int index );
 
   /** Type check initializers and such... */
   virtual void _type_check();
 
   /** The only object declaration that doesn't have a value is a file type
       declaration... */
-  virtual IIRScram *_get_value() { return NULL; }
-  IIRScram_AttributeSpecificationList *_get_attribute_specification_list();
+  virtual IIRScramRef _get_value() { return NULL; }
+  IIRScram_AttributeSpecificationListRef _get_attribute_specification_list();
   /**  Doesn't need to do anything at all. */
   void _publish_cc_include( published_file & ){}
 
   const IIR_Char* _get_mangling_prefix();
   
-  void _clone( IIRScram * );
+  void _clone( IIRScramRef );
 
 
-  IIRScram_Declaration* _get_package_declaration() { return NULL; }
+  IIRScram_DeclarationRef _get_package_declaration() { return IIRScram_DeclarationRef(); }
 
   // Wrappers for IIRBase functions
-  IIRScram_AttributeSpecificationList * _get_attributes();
+  IIRScram_AttributeSpecificationListRef _get_attributes();
 
 protected:
   virtual ~IIRScram_ObjectDeclaration();

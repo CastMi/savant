@@ -46,11 +46,11 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
-  savant::set<IIRScram_Declaration*> *_symbol_lookup();
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
-  IIRScram *_clone();
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0);
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup();
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef );
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
+  IIRScramRef _clone();
 
   IIR_Boolean _is_enumeration_literal() { return TRUE; }
   IIR_Boolean _is_iir_enumeration_literal(){ return TRUE; }
@@ -58,7 +58,7 @@ public:
   IIR_Boolean _is_overloadable(){ return TRUE; }
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return FALSE; }
-  IIR_Boolean _is_homograph_of( IIRScram_Declaration * );
+  IIR_Boolean _is_homograph_of( IIRScram_DeclarationRef );
 
   // an empty function to prevent incorrect error message.
   void _add_declarations_in_initializations() {};
@@ -66,7 +66,7 @@ public:
   IIRScram_AttributeSpecificationList*  _get_attribute_specification_list();
 
   // Wrappers for IIRBase functions
-  IIRScram_AttributeSpecificationList * _get_attributes();
+  IIRScram_AttributeSpecificationListRef  _get_attributes();
 
 protected:
 private:

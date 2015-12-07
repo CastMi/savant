@@ -32,19 +32,16 @@
 #include "IIR_Declaration.hh"
 #include "IIR_TextLiteral.hh"
 
-IIRBase_FileTypeDefinition::IIRBase_FileTypeDefinition() :
-  type_mark(0){}
+IIRBase_FileTypeDefinition::IIRBase_FileTypeDefinition() {}
 
-IIRBase_FileTypeDefinition::~IIRBase_FileTypeDefinition(){
-  // Not type_mark
-}
+IIRBase_FileTypeDefinition::~IIRBase_FileTypeDefinition() {}
 
 void
-IIRBase_FileTypeDefinition::set_type_mark( IIR_TypeDefinition* type_mark) {
+IIRBase_FileTypeDefinition::set_type_mark( IIR_TypeDefinitionRef type_mark) {
   this->type_mark = type_mark;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_FileTypeDefinition::get_type_mark() {
   return type_mark;
 }
@@ -54,13 +51,13 @@ IIRBase_FileTypeDefinition::is_locally_static(){
   return TRUE;
 }
 
-IIR *
-IIRBase_FileTypeDefinition::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_FileTypeDefinition::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_FileTypeDefinition *new_node = dynamic_cast<IIRBase_FileTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));
+  IIRBase_FileTypeDefinitionRef new_node = my_dynamic_pointer_cast<IIRBase_FileTypeDefinition>(IIRBase_TypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->type_mark = dynamic_cast<IIR_TypeDefinition *>(convert_node(type_mark, factory));
+  new_node->type_mark = my_dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(type_mark, factory));
     
   return new_node;
 }

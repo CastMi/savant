@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant.hh"
 #include <string>
 #include <cstdint>
 #include <iostream>
@@ -49,6 +48,7 @@ using std::string;
 typedef bool      IIR_Boolean;
 typedef char      IIR_Char;
 typedef refcount<IIR_Char> IIR_CharRef;
+typedef refcount<const IIR_Char> IIR_CharConstRef;
 typedef int32_t   IIR_Int32;
 typedef int64_t   IIR_Int64;
 typedef float     IIR_FP32;

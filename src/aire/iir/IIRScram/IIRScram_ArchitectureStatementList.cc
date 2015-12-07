@@ -30,14 +30,14 @@
 
 using std::cerr;
 
-IIRScram_Label *
-IIRScram_ArchitectureStatementList::_find_instantiate_label( IIRScram_SimpleName *to_find ){
-  IIRScram_Label *retval = NULL;
-  IIRScram_ArchitectureStatement *node;
+IIRScram_LabelRef
+IIRScram_ArchitectureStatementList::_find_instantiate_label( IIRScram_SimpleNameRef to_find ){
+  IIRScram_LabelRef retval;
+  IIRScram_ArchitectureStatementRef node;
 
-  for (node = dynamic_cast<IIRScram_ArchitectureStatement *>(first()); 
-       node != NULL; 
-       node = dynamic_cast<IIRScram_ArchitectureStatement *>(successor(node))) {
+  for (node = my_dynamic_pointer_cast<IIRScram_ArchitectureStatement>(first()); 
+       node != NULL;
+       node = my_dynamic_pointer_cast<IIRScram_ArchitectureStatement>(successor(node))) {
     retval = node->_find_instantiate_label( to_find );
     if( retval != NULL ){
       break;
@@ -49,11 +49,11 @@ IIRScram_ArchitectureStatementList::_find_instantiate_label( IIRScram_SimpleName
 
 void 
 IIRScram_ArchitectureStatementList::_type_check_instantiate_statements(){
-  IIRScram_ArchitectureStatement *node;
+  IIRScram_ArchitectureStatementRef node;
 
-  for (node = dynamic_cast<IIRScram_ArchitectureStatement *>(first()); 
+  for (node = my_dynamic_pointer_cast<IIRScram_ArchitectureStatement>(first()); 
        node != NULL; 
-       node = dynamic_cast<IIRScram_ArchitectureStatement *>(successor(node))) {
+       node = my_dynamic_pointer_cast<IIRScram_ArchitectureStatement>(successor(node))) {
     node->_type_check_instantiate_statements();
   }
 }

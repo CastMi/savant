@@ -37,8 +37,8 @@ class IIR_OthersInitialization : public virtual IIR_Expression{
 public:
   virtual ~IIR_OthersInitialization() {}
     
-  virtual void set_expression( IIR* expression) = 0;
-  virtual IIR* get_expression() = 0;
+  virtual void set_expression( IIRRef expression) = 0;
+  virtual IIRRef get_expression() = 0;
 };
 
 typedef refcount<IIR_OthersInitialization> IIR_OthersInitializationRef;

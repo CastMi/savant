@@ -39,17 +39,17 @@ class IIRBase_ReturnStatement : public virtual IIRBase_SequentialStatement, publ
 
 public:
 
-  IIR_Kind get_kind() const {return IIR_RETURN_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_ReturnStatement";}
+  IIR_Kind get_kind() const override { return IIR_RETURN_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ReturnStatement"); }
 
-  void set_enclosing_subprogram( IIR_SubprogramDeclaration*
+  void set_enclosing_subprogram( IIR_SubprogramDeclarationRef
 				 enclosing_subprogram);
-  IIR_SubprogramDeclaration* get_enclosing_subprogram();
+  IIR_SubprogramDeclarationRef get_enclosing_subprogram();
 
-  void set_return_expression( IIR* return_expression);
-  IIR* get_return_expression();
+  void set_return_expression( IIRRef return_expression);
+  IIRRef get_return_expression();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
 
@@ -61,8 +61,8 @@ protected:
     
 private:
   
-  IIR_SubprogramDeclaration* enclosing_subprogram;
-  IIR* return_expression;
+  IIR_SubprogramDeclarationRef enclosing_subprogram;
+  IIRRef return_expression;
 
 };
 

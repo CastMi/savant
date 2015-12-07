@@ -44,12 +44,12 @@ class IIRBase_MonadicOperator : public virtual IIRBase_Operator,
 public:
   IIR_Boolean is_locally_static();
 
-  void set_implementation( IIR_SubprogramDeclaration* implementation);
-  IIR_SubprogramDeclaration* get_implementation();
-  void set_operand( IIR* operand);
-  IIR* get_operand();
+  void set_implementation( IIR_SubprogramDeclarationRef implementation);
+  IIR_SubprogramDeclarationRef get_implementation();
+  void set_operand( IIRRef operand);
+  IIRRef get_operand();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_operator() { return TRUE; }
@@ -63,8 +63,8 @@ protected:
     
 private:
   
-  IIR* operand;
-  IIR_SubprogramDeclaration* implementation;
+  IIRRef operand;
+  IIR_SubprogramDeclarationRef implementation;
 
 };
 

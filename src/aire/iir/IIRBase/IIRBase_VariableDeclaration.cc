@@ -28,26 +28,23 @@
 
 #include "IIRBase_VariableDeclaration.hh"
 
-IIRBase_VariableDeclaration::IIRBase_VariableDeclaration() : value(0) {}
-
-IIRBase_VariableDeclaration::~IIRBase_VariableDeclaration() {
-  delete get_value();
-}
+IIRBase_VariableDeclaration::IIRBase_VariableDeclaration() {}
+IIRBase_VariableDeclaration::~IIRBase_VariableDeclaration() {}
 
 void
-IIRBase_VariableDeclaration::set_value( IIR *new_value ){
+IIRBase_VariableDeclaration::set_value( IIRRef new_value ){
   value = new_value;
 }
 
-IIR *
+IIRRef
 IIRBase_VariableDeclaration::get_value() {
   return value;
 }
 
-IIR *
-IIRBase_VariableDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_VariableDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_VariableDeclaration *new_node = dynamic_cast<IIRBase_VariableDeclaration *>(IIRBase_ObjectDeclaration::convert_tree(factory));
+  IIRBase_VariableDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_VariableDeclaration>(IIRBase_ObjectDeclaration::convert_tree(factory));
 
   // Process the variables
   new_node->value = convert_node(value, factory);

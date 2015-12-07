@@ -43,23 +43,23 @@ class IIRBase_ComponentConfiguration : public virtual IIRBase_ConfigurationItem,
 
 public:
   // List Accessor(s)
-  IIR_DesignatorList    *get_instantiation_list();
-  IIR_AssociationList   *get_generic_map_aspect();
-  IIR_AssociationList   *get_port_map_aspect();
-  void                  set_instantiation_list(IIR_DesignatorList *new_instantiation_list);
-  void                  set_generic_map_aspect(IIR_AssociationList *new_generic_map_aspect);
-  void                  set_port_map_aspect(IIR_AssociationList *new_port_map_aspect);
+  IIR_DesignatorListRef  get_instantiation_list();
+  IIR_AssociationListRef get_generic_map_aspect();
+  IIR_AssociationListRef get_port_map_aspect();
+  void                   set_instantiation_list(IIR_DesignatorListRef new_instantiation_list);
+  void                   set_generic_map_aspect(IIR_AssociationListRef new_generic_map_aspect);
+  void                   set_port_map_aspect(IIR_AssociationListRef new_port_map_aspect);
 
-  IIR_Kind get_kind() const {return IIR_COMPONENT_CONFIGURATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_ComponentConfiguration";}
+  IIR_Kind get_kind() const override { return IIR_COMPONENT_CONFIGURATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ComponentConfiguration"); }
 
   /**
      Gets the component name that was specified for this configuration.
      Prior to type check, this node will contain a descendant of IIR_Name.
      After type checking, it will contain an IIR_ComponentDeclaration.
   */
-  IIR *get_component_name();
-  void set_component_name( IIR *component_name );
+  IIRRef get_component_name();
+  void set_component_name( IIRRef component_name );
   
   /**
      Gets the entity aspect associated with the component specified.  This
@@ -69,13 +69,13 @@ public:
      If there was no binding indication specified explicitly, then the
      default rules specified in section 5.2.2 of the '93 LRM.
   */
-  IIR_LibraryUnit *get_entity_aspect();
-  void set_entity_aspect( IIR_LibraryUnit *entity_aspect );
+  IIR_LibraryUnitRef get_entity_aspect();
+  void set_entity_aspect( IIR_LibraryUnitRef entity_aspect );
 
-  void set_block_configuration( IIR_BlockConfiguration *block_configuration );
-  IIR_BlockConfiguration *get_block_configuration();
+  void set_block_configuration( IIR_BlockConfigurationRef block_configuration );
+  IIR_BlockConfigurationRef get_block_configuration();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
   void publish_vhdl(ostream &);
@@ -88,21 +88,21 @@ private:
   /**
      Holds the list of component designators specified in the component configuration.
   */
-  IIR_DesignatorList      *instantiation_list;
+  IIR_DesignatorListRef  instantiation_list;
 
   /**
      Holds the generic map specified for the component configuration.
   */
-  IIR_AssociationList     *generic_map_aspect;
+  IIR_AssociationListRef generic_map_aspect;
 
   /**
      Holds the port map specified for the component configuration.
   */
-  IIR_AssociationList     *port_map_aspect;
+  IIR_AssociationListRef port_map_aspect;
 
-  IIR *my_component_name;
-  IIR_LibraryUnit *my_entity_aspect;
-  IIR_BlockConfiguration *my_block_configuration;
+  IIRRef my_component_name;
+  IIR_LibraryUnitRef my_entity_aspect;
+  IIR_BlockConfigurationRef my_block_configuration;
 };
 
 typedef refcount<IIRBase_ComponentConfiguration> IIRBase_ComponentConfigurationRef;

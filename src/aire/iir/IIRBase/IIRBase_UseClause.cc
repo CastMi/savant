@@ -26,7 +26,6 @@
 
 //---------------------------------------------------------------------------
 
-
 #include "IIRBase_UseClause.hh"
 #include "IIRBase_LibraryDeclaration.hh"
 #include "IIRBase_TextLiteral.hh"
@@ -34,33 +33,28 @@
 #include "IIR_DesignFile.hh"
 #include "savant.hh"
 
-IIRBase_UseClause::IIRBase_UseClause() :
-  selected_name(0){}
-
-IIRBase_UseClause::~IIRBase_UseClause(){
-  delete selected_name;
-  selected_name = 0;
-}
+IIRBase_UseClause::IIRBase_UseClause() {}
+IIRBase_UseClause::~IIRBase_UseClause() {}
 
 
 void
-IIRBase_UseClause::set_selected_name(IIR_Name* name) {
+IIRBase_UseClause::set_selected_name(IIR_NameRef name) {
   selected_name = name;
 }
 
 
-IIR_Name*
+IIR_NameRef
 IIRBase_UseClause::get_selected_name() {
   return selected_name;
 }
 
-IIR *
-IIRBase_UseClause::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_UseClause::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_UseClause *new_node = dynamic_cast<IIRBase_UseClause *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_UseClauseRef new_node = my_dynamic_pointer_cast<IIRBase_UseClause>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->selected_name = dynamic_cast<IIR_Name *>(convert_node(selected_name, factory));
+  new_node->selected_name = my_dynamic_pointer_cast<IIR_Name>(convert_node(selected_name, factory));
 
   return new_node;
 }
@@ -70,7 +64,7 @@ IIRBase_UseClause::publish_vhdl(ostream &vhdl_out) {
   ASSERT(get_selected_name() != NULL);
   ASSERT(get_selected_name()->is_resolved());
 
-  IIR_LibraryDeclaration *library = dynamic_cast<IIRBase_Name *>
+  IIR_LibraryDeclarationRef library = my_dynamic_pointer_cast<IIRBase_Name>
     (get_selected_name())->get_library_declaration();
   if( library != NULL ){
     if( library == get_design_file()->get_work_library() && 

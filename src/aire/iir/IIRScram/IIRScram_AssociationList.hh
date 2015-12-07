@@ -32,14 +32,14 @@
 #include "IIRScram_List.hh"
 #include "IIRBase_AssociationList.hh"
 
+REF_FORWARD_DECL(IIRScram_InterfaceList);
+REF_FORWARD_DECL(IIRScram_ComponentInstantiationStatement);
+REF_FORWARD_DECL(IIRScram_IndexedName);
 class IIRScram_AssociationElement;
-class IIRScram_ComponentInstantiationStatement;
 class IIRScram_Declaration;
 class IIRScram_DeclarationList;
 class IIRScram_DesignatorList;
-class IIRScram_IndexedName;
 class IIRScram_InterfaceDeclaration;
-class IIRScram_InterfaceList;
 class IIRScram_Name;
 
 class IIRScram_AssociationList : public virtual IIRScram_List, public virtual IIRBase_AssociationList{
@@ -50,34 +50,34 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  void append( IIRScram_AssociationElement * );
-  void prepend( IIRScram_AssociationElement * );
+  void append( IIRScram_AssociationElementRef );
+  void prepend( IIRScram_AssociationElementRef );
 
-  IIR *get_nth_element( int );
-  void _replace( IIRScram_AssociationElement *to_replace, IIRScram_AssociationElement *replace_with );
+  IIRRef get_nth_element( int );
+  void _replace( IIRScram_AssociationElementRef to_replace, IIRScram_AssociationElementRef replace_with );
 
-  void _resolve_and_order( IIRScram_InterfaceList *formal_list,
-			   IIRScram_InterfaceList *local_list,
-			   IIRScram               *line_info );
+  void _resolve_and_order( IIRScram_InterfaceListRef formal_list,
+			   IIRScram_InterfaceListRef local_list,
+			   IIRScramRef               line_info );
   
-  IIR_Boolean _check_valid_arguments( IIRScram_InterfaceList    *formal_list,
-				      IIRScram_InterfaceList    *local_list);
+  IIR_Boolean _check_valid_arguments( IIRScram_InterfaceListRef    formal_list,
+				      IIRScram_InterfaceListRef  local_list);
 
   /** This method takes an interface list, and fills in all of the default
       values for associations that weren't specified.  It will generate
       error messages when errors occur. */
-  void _fill_in_defaults( IIRScram *line_info, IIRScram_InterfaceList *formal_list );
+  void _fill_in_defaults( IIRScramRef line_info, IIRScram_InterfaceListRef formal_list );
 
   /**
      Used by
      IIRScram_ComponentInstantiationStatement#_build_default_entity_aspect
      to build the default maps, as per the rules on pg 80 of the '93 LRM.
   */
-  void _build_default_map( IIRScram_ComponentInstantiationStatement *err_info,
-			   IIRScram_InterfaceList *formal_list,
-			   IIRScram_InterfaceList *actual_list );
+  void _build_default_map( IIRScram_ComponentInstantiationStatementRef err_info,
+			   IIRScram_InterfaceListRef formal_list,
+			   IIRScram_InterfaceListRef actual_list );
   
-  IIRScram *_clone();
+  IIRScramRef _clone();
   
   virtual ~IIRScram_AssociationList();
     
@@ -86,32 +86,32 @@ private:
       interface list passed in, OR, for resolving a mathing list.  If this
       method is called with an incorrect interface list and the boolean argument
       is TRUE, it should abort. */
-  IIR_Boolean _check_or_resolve( IIRScram_InterfaceList         *formal_list,
-				 IIRScram_InterfaceList         *local_list,
-				 IIR_Boolean                    resolve = TRUE );  
+  IIR_Boolean _check_or_resolve( IIRScram_InterfaceListRef formal_list,
+				 IIRScram_InterfaceListRef                     local_list,
+				 IIR_Boolean                                   resolve = TRUE );  
   
   /** This method checks the positional part of an argument list.  It only
       blows up on errors if the second parameter is TRUE.  It returns -1 if
       an argument didn't match. */
-  IIR_Int32 _process_positional_part( IIRScram_InterfaceList *, IIR_Boolean resolve = TRUE );
+  IIR_Int32 _process_positional_part( IIRScram_InterfaceListRef , IIR_Boolean resolve = TRUE );
 
-  IIRScram_InterfaceDeclaration *_find_declaration_in_formal( IIRScram_AssociationElement * );
-  IIRScram_Declaration *_find_declaration( IIRScram_Name *to_find, IIRScram_DeclarationList *list );
-  IIRScram *_find_formal_designator( IIRScram *formal_part );
-  IIRScram_Declaration *_find_formal_declaration( IIRScram *formal_designator,
-                                                  IIRScram_InterfaceList *formal_list  );
-  IIRScram *_find_actual_designator( IIRScram *actual_part );
+  IIRScram_InterfaceDeclarationRef _find_declaration_in_formal( IIRScram_AssociationElementRef  );
+  IIRScram_DeclarationRef _find_declaration( IIRScram_NameRef to_find, IIRScram_DeclarationListRef list );
+  IIRScramRef _find_formal_designator( IIRScramRef formal_part );
+  IIRScram_DeclarationRef _find_formal_declaration( IIRScramRef formal_designator,
+                                                  IIRScram_InterfaceListRef formal_list  );
+  IIRScramRef _find_actual_designator( IIRScramRef actual_part );
 
-  bool _find_formal_types( IIRScram_AssociationElement *current_association,		  
-			   IIRScram *actual_part, 
-			   IIRScram *actual_designator,
-			   IIRScram *formal_part,
-			   IIRScram *formal_designator,
-			   IIRScram_Declaration *formal_declaration,
-			   savant::set<IIRScram_TypeDefinition*> *add_types_to_me );
+  bool _find_formal_types( IIRScram_AssociationElementRef current_association,		  
+			   IIRScramRef actual_part, 
+			   IIRScramRef actual_designator,
+			   IIRScramRef formal_part,
+			   IIRScramRef formal_designator,
+			   IIRScram_DeclarationRef formal_declaration,
+			   savant::set<IIRScram_TypeDefinitionRef> add_types_to_me );
 
-  IIRScram_Name *_get_formal_designator_from_indexed_name( IIRScram_IndexedName * );
-  IIRScram *_get_actual_designator_from_indexed_name( IIRScram_IndexedName * );
+  IIRScram_NameRef _get_formal_designator_from_indexed_name( IIRScram_IndexedNameRef  );
+  IIRScramRef _get_actual_designator_from_indexed_name( IIRScram_IndexedNameRef  );
 };
 
 typedef refcount<IIRScram_AssociationList> IIRScram_AssociationListRef;

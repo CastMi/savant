@@ -51,7 +51,7 @@ public:
   /** This method looks through the list, finds the configuration
       specifications, and does the appropriate type checking on them.  The
       statement list passed in is so that labels can be found if needed. */
-  void _type_check_configuration_specifications( IIRScram_List *statement_list );
+  void _type_check_configuration_specifications( IIRScram_ListRef statement_list );
 
   /** This method looks through the list, finds the disconnection
       specifications, and does the appropriate type checking on them. */
@@ -60,7 +60,7 @@ public:
   /** This method looks through the list, finds the attribute
       specifications, and does the appropriate type checking on them.  The
       statement list passed in is so that labels can be found if needed. */
-  void _type_check_attribute_specifications( IIRScram_List *statement_list );
+  void _type_check_attribute_specifications( IIRScram_ListRef statement_list );
 
   /** This method assumes this list is a list of context items (use clauses
       and library clauses) and makes the appropriate stuff visible in the
@@ -69,9 +69,9 @@ public:
 
   /** This method applies the method passed in to each element, and builds
       a newly allocated list of the members that returned true. */
-  IIRScram_DeclarationList *_build_constrained_list( IIR_Boolean (IIRScram::*constraint_function)() );
+  IIRScram_DeclarationListRef _build_constrained_list( IIR_Boolean (IIRScram::*constraint_function)() );
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
 protected:
 private:

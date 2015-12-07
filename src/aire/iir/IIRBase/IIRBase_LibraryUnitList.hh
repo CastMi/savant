@@ -34,16 +34,16 @@
 #include "IIRBase_DeclarationList.hh"
 class IIR_LibraryUnit;
 
-class IIRBase_LibraryUnitList : public virtual IIRBase_DeclarationList, public virtual IIR_LibraryUnitList{
+class IIRBase_LibraryUnitList : public virtual IIRBase_DeclarationList, public virtual IIR_LibraryUnitList {
 
 public:
-  IIR_Kind get_kind() const { return IIR_LIBRARY_UNIT_LIST; }
-  const IIR_Char *get_kind_text() const { return "IIR_LibraryUnitList"; }
-  void append( IIR_LibraryUnit * );
+  IIR_Kind get_kind() const override { return IIR_LIBRARY_UNIT_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_LibraryUnitList"); }
+  void append( IIR_LibraryUnitRef );
   
-  IIR *first();
-  IIR *last();
-  IIR *successor( IIR_LibraryUnit * );
+  IIRRef first();
+  IIRRef last();
+  IIRRef successor( IIR_LibraryUnitRef );
 
   void publish_vhdl(ostream &);
   void publish_vhdl_in_design_library();

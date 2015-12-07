@@ -41,6 +41,8 @@ class IIRScram_TypeDefinition;
 class IIRScram_ActiveAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_ActiveAttribute{
 public:
   IIRScram_ActiveAttribute() {}
+  //FIXME: this should be protected
+  virtual ~IIRScram_ActiveAttribute();
 
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
@@ -48,14 +50,13 @@ public:
 
   IIR_Boolean _is_readable();
 
-  IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &, IIRScram_TypeDefinitionRef  );
   
   virtual IIR_Boolean _is_active_attribute() { return TRUE; }
   IIR_Boolean _is_signal_attribute(){ return TRUE; }
-  virtual IIRScram* _clone();
+  virtual IIRScramRef _clone();
 
 protected:
-  virtual ~IIRScram_ActiveAttribute();
     
 private:
 };

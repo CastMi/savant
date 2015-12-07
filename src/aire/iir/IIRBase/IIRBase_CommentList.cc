@@ -28,29 +28,29 @@
 IIRBase_CommentList::IIRBase_CommentList() {}
 IIRBase_CommentList::~IIRBase_CommentList() {}
 
-IIR *
+IIRRef
 IIRBase_CommentList::first( ){
-  IIR *retval = IIR_List::first( );
-  if( retval != NULL ){
+  IIRRef retval = IIR_List::first( );
+  if( retval != nullptr ){
     ASSERT( retval->get_kind() == IIR_COMMENT );
   }
   return retval;
 }
 
-IIR *
-IIRBase_CommentList::successor( IIR_Comment *to_succeed ){
-  if( to_succeed != NULL ){
+IIRRef
+IIRBase_CommentList::successor( IIR_CommentRef to_succeed ){
+  if( to_succeed != nullptr ){
     ASSERT( to_succeed->get_kind() == IIR_COMMENT );
   }
-  IIR *retval = IIR_List::successor( (IIR *)to_succeed );
-  if( retval != NULL ){
+  IIRRef retval = IIR_List::successor( to_succeed );
+  if( retval != nullptr ){
     ASSERT( retval->get_kind() == IIR_COMMENT ); 
   }
   return retval;
 }
 
 void
-IIRBase_CommentList::append_element(IIR_Comment* to_append) {
+IIRBase_CommentList::append_element(IIR_CommentRef to_append) {
   ASSERT( to_append->get_kind() == IIR_COMMENT );
   IIR_List::append( to_append );
 }
@@ -58,10 +58,10 @@ IIRBase_CommentList::append_element(IIR_Comment* to_append) {
 
 void 
 IIRBase_CommentList::publish_vhdl(ostream &vhdl_out) {
-  IIRBase_Comment *comment = dynamic_cast<IIRBase_Comment *>(first());
-  while( comment != NULL ){
+  IIRBase_CommentRef comment = my_dynamic_pointer_cast<IIRBase_Comment>(first());
+  while( comment != nullptr ){
     comment->publish_vhdl(vhdl_out);
     vhdl_out << "\n";
-    comment = dynamic_cast<IIRBase_Comment *>(successor(comment));
+    comment = my_dynamic_pointer_cast<IIRBase_Comment>(successor(comment));
   }
 }

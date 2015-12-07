@@ -25,54 +25,45 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "savant.hh"
 #include "IIRBase_ConditionalWaveform.hh"
 #include "IIR_WaveformList.hh"
 
-IIRBase_ConditionalWaveform::IIRBase_ConditionalWaveform() :
-  waveform(0) {
-  set_condition(NULL);
-}
+IIRBase_ConditionalWaveform::IIRBase_ConditionalWaveform() {}
 
-IIRBase_ConditionalWaveform::~IIRBase_ConditionalWaveform(){
-}
+IIRBase_ConditionalWaveform::~IIRBase_ConditionalWaveform() {}
 
 void 
-IIRBase_ConditionalWaveform::set_condition( IIR *condition ){
+IIRBase_ConditionalWaveform::set_condition( IIRRef condition ){
   this->condition = condition;
 }
 
-IIR *
+IIRRef
 IIRBase_ConditionalWaveform::get_condition(){
   return condition;
 }
 
 // List Accessor(s)
-IIR_WaveformList *
+IIR_WaveformListRef
 IIRBase_ConditionalWaveform::get_waveform() {
-  ASSERT(waveform != NULL);
+  ASSERT(waveform != nullptr);
   return waveform;
 }
 
 
 void
-IIRBase_ConditionalWaveform::set_waveform(IIR_WaveformList *new_waveform) {
-  ASSERT(new_waveform != NULL);
-  delete waveform;
+IIRBase_ConditionalWaveform::set_waveform(IIR_WaveformListRef new_waveform) {
+  ASSERT(new_waveform != nullptr);
   waveform = new_waveform;
 }
 
-IIR *
-IIRBase_ConditionalWaveform::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ConditionalWaveform::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ConditionalWaveform *new_node = dynamic_cast<IIRBase_ConditionalWaveform *>(IIRBase_Tuple::convert_tree(factory));
+  IIRBase_ConditionalWaveformRef new_node = my_dynamic_pointer_cast<IIRBase_ConditionalWaveform>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->waveform = dynamic_cast<IIR_WaveformList *>(waveform->convert_tree(factory));
+  new_node->waveform = my_dynamic_pointer_cast<IIR_WaveformList>(waveform->convert_tree(factory));
   new_node->condition = convert_node(condition, factory);
 
   return new_node;

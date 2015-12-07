@@ -50,17 +50,17 @@ public:
 
   void _make_interface_visible( symbol_table * );
 
-  IIRScram_Statement* _get_statement();
-  IIRScram_List *_get_statement_list();
+  IIRScram_StatementRef _get_statement();
+  IIRScram_ListRef _get_statement_list();
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
   IIR_Boolean is_label(){ return TRUE; }
 
-  IIRScram_AttributeSpecificationList* _get_attribute_specification_list();
+  IIRScram_AttributeSpecificationListRef _get_attribute_specification_list();
 
   // Wrappers for IIRBase functions
-  IIRScram_AttributeSpecificationList * _get_attributes();
+  IIRScram_AttributeSpecificationListRef _get_attributes();
 
 protected:    
 private:

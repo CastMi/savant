@@ -42,19 +42,19 @@ class IIRBase_DyadicOperator : public virtual IIRBase_Operator,
 
 public:
 
-  IIR_Kind get_kind() const { return IIR_DYADIC_OPERATOR;  }
-  const IIR_Char *get_kind_text() const { return "IIR_DyadicOperator"; }
+  IIR_Kind get_kind() const override { return IIR_DYADIC_OPERATOR;  }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_DyadicOperator"); }
 
-  void set_implementation( IIR_SubprogramDeclaration *implementation );
-  IIR_SubprogramDeclaration *get_implementation();
+  void set_implementation( IIR_SubprogramDeclarationRef implementation );
+  IIR_SubprogramDeclarationRef get_implementation();
   
-  void set_left_operand( IIR *left_operand );
-  IIR *get_left_operand();
+  void set_left_operand( IIRRef left_operand );
+  IIRRef get_left_operand();
   
-  void set_right_operand( IIR *right_operand );
-  IIR *get_right_operand();
+  void set_right_operand( IIRRef right_operand );
+  IIRRef get_right_operand();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_locally_static();
@@ -71,9 +71,9 @@ protected:
   virtual ~IIRBase_DyadicOperator() = 0;
   
 private:
-  IIR_SubprogramDeclaration *implementation;
-  IIR *left_operand;
-  IIR *right_operand;
+  IIR_SubprogramDeclarationRef implementation;
+  IIRRef left_operand;
+  IIRRef right_operand;
 };
 
 typedef refcount<IIRBase_DyadicOperator> IIRBase_DyadicOperatorRef;

@@ -37,7 +37,7 @@ IIRBase_AssociationElementByExpression::~IIRBase_AssociationElementByExpression(
 
 
 void
-IIRBase_AssociationElementByExpression::set_actual(IIR *a) {
+IIRBase_AssociationElementByExpression::set_actual(IIRRef a) {
   actual = a;
 }
 
@@ -51,15 +51,15 @@ IIRBase_AssociationElementByExpression::set_actual(IIR *a) {
 //     "var" by _publish_cc_subprogram_arguments( _cc_out ).
 // Assumption: get_actual() returns one of IIR_Declaration (any), IIR_Literal
 // or IIR_IndexedName 
-IIR*
+IIRRef
 IIRBase_AssociationElementByExpression::get_actual() {
   return actual;
 }
 
-IIR *
-IIRBase_AssociationElementByExpression::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_AssociationElementByExpression::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_AssociationElementByExpression *new_node = dynamic_cast<IIRBase_AssociationElementByExpression *>(IIRBase_AssociationElement::convert_tree(factory));
+  IIRBase_AssociationElementByExpressionRef new_node = my_dynamic_pointer_cast<IIRBase_AssociationElementByExpression>(IIRBase_AssociationElement::convert_tree(factory));
 
   // Process the variables
   new_node->actual = convert_node(actual, factory);
@@ -142,7 +142,7 @@ void
 IIRBase_AssociationElementByExpression::publish_vhdl(ostream &vhdl_out) {
   if (get_formal() != NULL) {
     if( get_formal()->get_kind() == IIR_INTEGER_SUBTYPE_DEFINITION ){
-      dynamic_cast<IIRBase *>(get_formal())->publish_vhdl_range(vhdl_out);
+      dynamic_cast<IIRBase*>(get_formal().get())->publish_vhdl_range(vhdl_out);
     }
     else {
       get_formal()->publish_vhdl(vhdl_out);

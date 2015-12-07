@@ -29,12 +29,12 @@
 #include "savant.hh"
 
 
-IIRScram*
+IIRScramRef
 IIRScram_AdditionOperator::_clone() {
   //  IIRScram_AdditionOperator *clone = new IIRScram_AdditionOperator();
   //  IIRScram_DyadicOperator::_clone(clone);
   //  return clone;
-  return NULL;
+  return IIRScramRef();
 }
 
 visitor_return_type *

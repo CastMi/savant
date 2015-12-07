@@ -38,23 +38,23 @@ class IIR_GenericList : public virtual IIR_InterfaceList{
 public:
   virtual ~IIR_GenericList() {}
     
-  virtual void prepend( IIR_ConstantInterfaceDeclaration* element) = 0;
+  virtual void prepend( IIR_ConstantInterfaceDeclarationRef element) = 0;
 
-  virtual void append( IIR_ConstantInterfaceDeclaration* element) = 0;
+  virtual void append( IIR_ConstantInterfaceDeclarationRef element) = 0;
 
-  virtual IIR_Boolean insert_after( IIR_ConstantInterfaceDeclaration *existing_element,
-				    IIR_ConstantInterfaceDeclaration* new_element) = 0;
+  virtual IIR_Boolean insert_after( IIR_ConstantInterfaceDeclarationRef existing_element,
+				    IIR_ConstantInterfaceDeclarationRef new_element) = 0;
 
-  virtual IIR_Boolean insert_before_element( IIR_ConstantInterfaceDeclaration *existing_element, 
-				     IIR_ConstantInterfaceDeclaration* new_element) = 0;
+  virtual IIR_Boolean insert_before_element( IIR_ConstantInterfaceDeclarationRef existing_element, 
+				     IIR_ConstantInterfaceDeclarationRef new_element) = 0;
 
-  virtual IIR *successor( IIR_ConstantInterfaceDeclaration* existing_element) = 0;
-  virtual IIR *predecessor( IIR_ConstantInterfaceDeclaration* element ) = 0;
-  virtual IIR *first( ) = 0;
-  virtual IIR *get_nth_element( IIR_Int32 ) = 0;
-  virtual IIR *last() = 0;
+  virtual IIRRef successor( IIR_ConstantInterfaceDeclarationRef existing_element) = 0;
+  virtual IIRRef predecessor( IIR_ConstantInterfaceDeclarationRef element ) = 0;
+  virtual IIRRef first( ) = 0;
+  virtual IIRRef get_nth_element( IIR_Int32 ) = 0;
+  virtual IIRRef last() = 0;
 
-  virtual IIR_Int32 get_position( IIR_ConstantInterfaceDeclaration* element ) = 0;
+  virtual IIR_Int32 get_position( IIR_ConstantInterfaceDeclarationRef element ) = 0;
 };
 
 typedef refcount<IIR_GenericList> IIR_GenericListRef;

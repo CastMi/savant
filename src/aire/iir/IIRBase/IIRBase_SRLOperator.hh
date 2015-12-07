@@ -35,8 +35,8 @@
 class IIRBase_SRLOperator : public virtual IIRBase_DyadicOperator, public virtual IIR_SRLOperator{
 public:
 
-  IIR_Kind get_kind() const {return IIR_SRL_OPERATOR;}
-  const IIR_Char *get_kind_text() const {return "IIR_SRLOperator";}
+  IIR_Kind get_kind() const override { return IIR_SRL_OPERATOR; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SRLOperator"); }
   const string &get_operator_string() const;
 
   Precedence  get_precedence();

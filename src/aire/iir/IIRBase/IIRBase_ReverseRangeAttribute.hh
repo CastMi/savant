@@ -37,18 +37,18 @@ class IIRBase_ReverseRangeAttribute : public virtual IIRBase_Attribute,
 				      public virtual IIR_ReverseRangeAttribute{
 public:
 
-  IIR_Kind get_kind() const {return IIR_REVERSE_RANGE_ATTRIBUTE;}
-  const IIR_Char *get_kind_text() const {return "IIR_ReverseRangeAttribute";}
+  IIR_Kind get_kind() const override { return IIR_REVERSE_RANGE_ATTRIBUTE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ReverseRangeAttribute"); }
 
-  void set_suffix( IIR* suffix);
-  IIR* get_suffix();
+  void set_suffix( IIRRef suffix);
+  IIRRef get_suffix();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_range_attribute(){ return true; }
   IIR_Boolean has_suffix(){ return TRUE; }
 
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
 
   void publish_vhdl(ostream &);
   void publish_vhdl_range(ostream &);
@@ -59,7 +59,7 @@ protected:
     
 private:
   
-  IIR *suffix;
+  IIRRef suffix;
 
 };
 

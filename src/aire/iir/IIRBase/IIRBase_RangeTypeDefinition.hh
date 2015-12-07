@@ -36,8 +36,8 @@ class IIRBase_RangeTypeDefinition : public virtual IIRBase_ScalarTypeDefinition,
 
 public:
 
-  IIR_Kind get_kind() const {return IIR_RANGE_TYPE_DEFINITION;}
-  const IIR_Char *get_kind_text() const {return "IIR_RangeTypeDefinition";}
+  IIR_Kind get_kind() const override { return IIR_RANGE_TYPE_DEFINITION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_RangeTypeDefinition"); }
 
   // XXX - this is a kludge.  This shouldn't need to be here.  Essentially
   // a range type is a type that we don't know if it is discrete or not...

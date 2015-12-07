@@ -42,7 +42,7 @@ public:
 
 
   // Helper Functions
-  IIRScram *_get_value();
+  IIRScramRef _get_value();
 
   virtual IIR_Boolean _is_readable(){ return TRUE; }
   virtual IIR_Boolean _is_writable(){ return TRUE; }

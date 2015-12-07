@@ -25,14 +25,14 @@
 #include "savant_config.hh"
 #include "IIR_Expression.hh"
 
-class IIR_SubprogramDeclaration;
+REF_FORWARD_DECL(IIR_SubprogramDeclaration);
 
 class IIR_Operator : public virtual IIR_Expression {
 public:
   virtual ~IIR_Operator() {};
 
-  virtual void set_implementation( IIR_SubprogramDeclaration * decl)  = 0;
-  virtual IIR_SubprogramDeclaration *get_implementation() = 0;
+  virtual void set_implementation( IIR_SubprogramDeclarationRef decl)  = 0;
+  virtual IIR_SubprogramDeclarationRef get_implementation() = 0;
 
   /**
      Returns the string representation of the name of this operator.  For

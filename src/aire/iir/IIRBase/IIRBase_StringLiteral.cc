@@ -23,15 +23,10 @@
 IIRBase_StringLiteral::IIRBase_StringLiteral() {}
 IIRBase_StringLiteral::~IIRBase_StringLiteral() {}
 
-void 
-IIRBase_StringLiteral::release() {
-  delete this;
-}
-
-IIR_StringLiteral *
-IIRBase_StringLiteral::get( const IIR_Char *new_text, IIR_Int32 new_length, plugin_class_factory *factory){
-  IIRBase_StringLiteral *retval = dynamic_cast<IIRBase_StringLiteral *>(factory->new_IIR_StringLiteral());
-  retval->set_text( new_text, new_length );
+IIR_StringLiteralRef
+IIRBase_StringLiteral::get( std::string new_text, plugin_class_factoryRef factory){
+  IIRBase_StringLiteralRef retval = my_dynamic_pointer_cast<IIRBase_StringLiteral>(factory->new_IIR_StringLiteral());
+  retval->set_text( new_text );
 
   return retval;
 }

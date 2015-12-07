@@ -38,8 +38,8 @@ class IIR_ChoiceList : public virtual IIR_List{
 public:
   virtual ~IIR_ChoiceList() {}
 
-  virtual IIR_Choice* first() = 0;
-  virtual IIR_Choice* successor(IIR_Choice*) = 0;
+  virtual IIR_ChoiceRef first() = 0;
+  virtual IIR_ChoiceRef successor(IIR_ChoiceRef) = 0;
 };
 
 typedef refcount<IIR_ChoiceList> IIR_ChoiceListRef;

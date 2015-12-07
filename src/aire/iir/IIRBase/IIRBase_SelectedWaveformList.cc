@@ -32,19 +32,19 @@
 IIRBase_SelectedWaveformList::IIRBase_SelectedWaveformList() {}
 IIRBase_SelectedWaveformList::~IIRBase_SelectedWaveformList() {}
 
-IIR_SelectedWaveform*
+IIR_SelectedWaveformRef
 IIRBase_SelectedWaveformList::first() {
-  return dynamic_cast<IIR_SelectedWaveform*>(IIR_List::first());
+  return my_dynamic_pointer_cast<IIR_SelectedWaveform>(IIR_List::first());
 }
 
 
-IIR_SelectedWaveform*
+IIR_SelectedWaveformRef
 IIRBase_SelectedWaveformList::last() {
-  return dynamic_cast<IIR_SelectedWaveform*>(IIR_List::last());
+  return my_dynamic_pointer_cast<IIR_SelectedWaveform>(IIR_List::last());
 }
 
 
-IIR_SelectedWaveform*
-IIRBase_SelectedWaveformList::successor(IIR_SelectedWaveform* node) {
-  return dynamic_cast<IIR_SelectedWaveform*>(IIR_List::successor((IIR*)node));
+IIR_SelectedWaveformRef
+IIRBase_SelectedWaveformList::successor(IIR_SelectedWaveformRef node) {
+  return my_dynamic_pointer_cast<IIR_SelectedWaveform>(IIR_List::successor(node));
 }

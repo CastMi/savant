@@ -38,11 +38,11 @@ class IIR_AssociationElement;
 class IIRBase_AssociationList : public virtual IIRBase_List,
 				public virtual IIR_AssociationList{
 public:
-  IIR_Kind get_kind() const {return IIR_ASSOCIATION_LIST;}
-  const IIR_Char *get_kind_text() const {return "IIR_AssociationList";}
+  IIR_Kind get_kind() const override { return IIR_ASSOCIATION_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_AssociationList"); }
 
-  IIR_AssociationElement *first();
-  IIR_AssociationElement *successor(IIR_AssociationElement*);
+  IIR_AssociationElementRef first();
+  IIR_AssociationElementRef successor(IIR_AssociationElementRef);
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_above_attribute_found();

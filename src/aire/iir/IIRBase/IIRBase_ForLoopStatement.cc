@@ -34,30 +34,22 @@
 #include "IIRBase_ForLoopStatement.hh"
 #include "IIRBase_TextLiteral.hh"
 
-IIRBase_ForLoopStatement::IIRBase_ForLoopStatement()  :
-  sequence_of_statements(0) {
-  set_iteration_scheme(NULL);
-}
-
-
-IIRBase_ForLoopStatement::~IIRBase_ForLoopStatement() {
-  if(iterator != NULL)
-    delete iterator;
-}
+IIRBase_ForLoopStatement::IIRBase_ForLoopStatement() {}
+IIRBase_ForLoopStatement::~IIRBase_ForLoopStatement() {}
 
 void
-IIRBase_ForLoopStatement::set_iteration_scheme( IIR_ConstantDeclaration *new_iterator ){
+IIRBase_ForLoopStatement::set_iteration_scheme( IIR_ConstantDeclarationRef new_iterator ){
   iterator = new_iterator;
 }
 
-IIR_ConstantDeclaration*
+IIR_ConstantDeclarationRef
 IIRBase_ForLoopStatement::get_iteration_scheme() {
   return iterator;
 }
 
 
 // List Accessor(s)
-IIR_SequentialStatementList *
+IIR_SequentialStatementListRef
 IIRBase_ForLoopStatement::get_sequence_of_statements() {
   ASSERT(sequence_of_statements != NULL);
   return sequence_of_statements;
@@ -65,33 +57,32 @@ IIRBase_ForLoopStatement::get_sequence_of_statements() {
 
 
 void
-IIRBase_ForLoopStatement::set_sequence_of_statements(IIR_SequentialStatementList *new_sequence_of_statements) {
+IIRBase_ForLoopStatement::set_sequence_of_statements(IIR_SequentialStatementListRef new_sequence_of_statements) {
   ASSERT(new_sequence_of_statements != NULL);
-  delete sequence_of_statements;
   sequence_of_statements = new_sequence_of_statements;
 }
 
-IIR *
-IIRBase_ForLoopStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ForLoopStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ForLoopStatement *new_node = dynamic_cast<IIRBase_ForLoopStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_ForLoopStatementRef new_node = my_dynamic_pointer_cast<IIRBase_ForLoopStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->sequence_of_statements = dynamic_cast<IIR_SequentialStatementList *>(convert_node(sequence_of_statements, factory));
-  new_node->iterator = dynamic_cast<IIR_ConstantDeclaration *>(convert_node(iterator, factory));
+  new_node->sequence_of_statements = my_dynamic_pointer_cast<IIR_SequentialStatementList>(convert_node(sequence_of_statements, factory));
+  new_node->iterator = my_dynamic_pointer_cast<IIR_ConstantDeclaration>(convert_node(iterator, factory));
 
   return new_node;
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_ForLoopStatement::find_declarations( IIR_Name *to_find ){
-  ASSERT( get_iteration_scheme() != NULL );
-  IIR_TextLiteral *loop_param = get_iteration_scheme()->get_declarator();
+savant::set<IIR_DeclarationRef>
+IIRBase_ForLoopStatement::find_declarations( IIR_NameRef to_find ){
+  ASSERT( get_iteration_scheme() != nullptr );
+  IIR_TextLiteralRef loop_param = get_iteration_scheme()->get_declarator();
   if( IIRBase_TextLiteral::cmp( loop_param, to_find ) == 0 ){
-    return new savant::set<IIR_Declaration*>(get_iteration_scheme());
+    return savant::set<IIR_DeclarationRef>(get_iteration_scheme());
   }
   else{
-    return NULL;
+    return savant::set<IIR_DeclarationRef>();
   }
 }
 

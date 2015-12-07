@@ -52,14 +52,14 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  IIR_Boolean _attach_attribute( IIRScram_AttributeSpecification * );
+  IIR_Boolean _attach_attribute( IIRScram_AttributeSpecificationRef  );
 
-  IIRScram_AttributeSpecificationList* _get_attribute_specification_list();
+  IIRScram_AttributeSpecificationListRef _get_attribute_specification_list();
 
   virtual void _type_check();
 
   IIR_Boolean _designates_incomplete_type();
-  IIR_Boolean _can_be_in_same_region( IIRScram_Declaration * );
+  IIR_Boolean _can_be_in_same_region( IIRScram_DeclarationRef  );
 
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return FALSE; }
@@ -68,24 +68,24 @@ public:
   // The following methods apply to incomplete type declarations.  After
   // the parser has found the definition of an incomplete type, these methods
   // can be called on the incomplete type to get the full definition.
-  IIRScram_TypeDefinition *_get_fully_defined_type(){
+  IIRScram_TypeDefinitionRef _get_fully_defined_type(){
     return _fully_defined_type;
   }
 
-  void _set_fully_defined_type( IIRScram_TypeDefinition *my_real_type ){
+  void _set_fully_defined_type( IIRScram_TypeDefinitionRef my_real_type ){
     _fully_defined_type = my_real_type;
   }
 
   void _come_into_scope( symbol_table *sym_tab );
   void _come_out_of_scope( symbol_table *sym_tab );
 
-  virtual IIRScram *_clone();
+  virtual IIRScramRef _clone();
 
 
-  IIRScram_TypeDefinition *_get_type_definition();
+  IIRScram_TypeDefinitionRef _get_type_definition();
 protected:    
 private:
-  IIRScram_TypeDefinition *                     _fully_defined_type;
+  IIRScram_TypeDefinitionRef                      _fully_defined_type;
 };
 
 typedef refcount<IIRScram_TypeDeclaration> IIRScram_TypeDeclarationRef;

@@ -41,42 +41,41 @@ IIRBase_AccessTypeDefinition::IIRBase_AccessTypeDefinition(){
 }
 
 IIRBase_AccessTypeDefinition::~IIRBase_AccessTypeDefinition(){
-  delete get_designated_type();
 }
 
-IIR_AccessTypeDefinition *
-IIRBase_AccessTypeDefinition::get( IIR_TypeDefinition * ){
+IIR_AccessTypeDefinitionRef
+IIRBase_AccessTypeDefinition::get( IIR_TypeDefinitionRef ){
   cerr << "IIRBase_AccessTypeDefinition::get not yet implemented!\n";
   abort();
-  return NULL;
+  return IIR_AccessTypeDefinitionRef();
 }
 
 void 
-IIRBase_AccessTypeDefinition::set_designated_type( IIR_TypeDefinition *designated_type){
+IIRBase_AccessTypeDefinition::set_designated_type( IIR_TypeDefinitionRef designated_type){
   access_for_type = designated_type;
 }
 
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_AccessTypeDefinition::get_designated_type(){
   return access_for_type;
 }
 
-IIR *
-IIRBase_AccessTypeDefinition::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_AccessTypeDefinition::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_AccessTypeDefinition *new_node = dynamic_cast<IIRBase_AccessTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));
+  IIRBase_AccessTypeDefinitionRef new_node = my_dynamic_pointer_cast<IIRBase_AccessTypeDefinition>(IIRBase_TypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->access_for_type = dynamic_cast<IIR_TypeDefinition *>(convert_node(access_for_type, factory));
+  new_node->access_for_type = my_dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(access_for_type, factory));
 
   return new_node;
 }
 
 IIR_Boolean
 IIRBase_AccessTypeDefinition::is_scalar_type() {
-  IIR_TypeDefinition *type = get_designated_type();
-  if((type != NULL) && (type != this)) {
+  IIR_TypeDefinitionRef type = get_designated_type();
+  if((type != NULL) && (type.get() != this)) {
     return type->is_scalar_type();
   }
   else{
@@ -86,8 +85,8 @@ IIRBase_AccessTypeDefinition::is_scalar_type() {
 
 IIR_Boolean
 IIRBase_AccessTypeDefinition::is_array_type() {
-  IIR_TypeDefinition *type = get_designated_type();
-  if((type != NULL) && (type != this)) {
+  IIR_TypeDefinitionRef type = get_designated_type();
+  if((type != NULL) && (type.get() != this)) {
     return type->is_array_type();
   }
   else{
@@ -97,8 +96,8 @@ IIRBase_AccessTypeDefinition::is_array_type() {
 
 IIR_Boolean
 IIRBase_AccessTypeDefinition::is_unconstrained_array_type() {
-  IIR_TypeDefinition *type = get_designated_type();
-  if((type != NULL) && (type != this)) {
+  IIR_TypeDefinitionRef type = get_designated_type();
+  if((type != NULL) && (type.get() != this)) {
     return type->is_unconstrained_array_type();
   }
   else{
@@ -108,8 +107,8 @@ IIRBase_AccessTypeDefinition::is_unconstrained_array_type() {
 
 IIR_Boolean
 IIRBase_AccessTypeDefinition::is_record_type() {
-  IIR_TypeDefinition *type = get_designated_type();
-  if((type != NULL) && (type != this)) {
+  IIR_TypeDefinitionRef type = get_designated_type();
+  if((type != NULL) && (type.get() != this)) {
     return type->is_record_type();
   }
   else{
@@ -122,11 +121,11 @@ IIRBase_AccessTypeDefinition::is_element(){
   return get_designated_type()->is_element();
 }
 
-IIR_ScalarTypeDefinition *
+IIR_ScalarTypeDefinitionRef
 IIRBase_AccessTypeDefinition::get_resolved_index_subtype(){
-  IIR_ScalarTypeDefinition *retval = NULL;
+  IIR_ScalarTypeDefinitionRef retval;
 
-  IIR_TypeDefinition *type = get_designated_type();
+  IIR_TypeDefinitionRef type = get_designated_type();
   if( type != NULL ){
     retval = type->get_resolved_index_subtype();
   }
@@ -134,23 +133,23 @@ IIRBase_AccessTypeDefinition::get_resolved_index_subtype(){
   return retval;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_AccessTypeDefinition::get_element_subtype(){
   return get_designated_type()->get_element_subtype();
 }
 
 void 
-IIRBase_AccessTypeDefinition::set_element_subtype( IIR_TypeDefinition *new_element_type ){
-  IIR_TypeDefinition *type = get_designated_type();
+IIRBase_AccessTypeDefinition::set_element_subtype( IIR_TypeDefinitionRef new_element_type ){
+  IIR_TypeDefinitionRef type = get_designated_type();
   ASSERT( type != NULL );
   type->set_element_subtype( new_element_type );
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_AccessTypeDefinition::find_declarations( IIR_Name *to_find){
-  IIR_TypeDefinition *type = get_designated_type();
+savant::set<IIR_DeclarationRef>
+IIRBase_AccessTypeDefinition::find_declarations( IIR_NameRef to_find){
+  IIR_TypeDefinitionRef type = get_designated_type();
   if( type == NULL ){
-    return NULL;
+    return savant::set<IIR_DeclarationRef>();
   }
   else{
     return type->find_declarations( to_find );
@@ -160,7 +159,7 @@ IIRBase_AccessTypeDefinition::find_declarations( IIR_Name *to_find){
 void 
 IIRBase_AccessTypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out << "access ";
-  IIRBase_TypeDefinition *type = dynamic_cast<IIRBase_TypeDefinition *>(get_designated_type());
+  IIRBase_TypeDefinitionRef type = dynamic_pointer_cast<IIRBase_TypeDefinition>(get_designated_type());
   ASSERT(type == NULL);
 
   if ( type->is_anonymous() == FALSE ){

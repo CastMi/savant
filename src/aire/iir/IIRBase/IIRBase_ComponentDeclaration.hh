@@ -34,27 +34,27 @@ class IIRBase_ComponentDeclaration : public virtual IIRBase_Declaration, public 
 
 public:
   // List Accessor(s)
-  IIR_GenericList                       *get_local_generic_clause();
-  IIR_PortList                          *get_local_port_clause();
-  IIR_AttributeSpecificationList        *get_attributes();
-  void                                  set_local_generic_clause(IIR_GenericList *new_local_generic_clause);
-  void                                  set_local_port_clause(IIR_PortList *new_local_port_clause);
-  void                                  set_attributes(IIR_AttributeSpecificationList *new_attributes);
+  IIR_GenericListRef                    get_local_generic_clause();
+  IIR_PortListRef                       get_local_port_clause();
+  IIR_AttributeSpecificationListRef     get_attributes();
+  void                                  set_local_generic_clause(IIR_GenericListRef new_local_generic_clause);
+  void                                  set_local_port_clause(IIR_PortListRef new_local_port_clause);
+  void                                  set_attributes(IIR_AttributeSpecificationListRef new_attributes);
 
-  IIR_Kind get_kind() const { return IIR_COMPONENT_DECLARATION; }
-  const IIR_Char *get_kind_text() const { return "IIR_ComponentDeclaration"; }
+  IIR_Kind get_kind() const override { return IIR_COMPONENT_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ComponentDeclaration"); }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   declaration_type get_declaration_type();
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef  );
 
   IIR_Boolean is_component_declaration(){ return TRUE; }
   void publish_vhdl_decl(ostream &);
 
-  void set_entity( IIR_EntityDeclaration *entity );
-  IIR_EntityDeclaration *get_entity();
+  void set_entity( IIR_EntityDeclarationRef entity );
+  IIR_EntityDeclarationRef get_entity();
 
 protected:
   IIRBase_ComponentDeclaration();
@@ -62,10 +62,10 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_EntityDeclaration			*entity;
-  IIR_GenericList                       *local_generic_clause;
-  IIR_PortList                          *local_port_clause;
-  IIR_AttributeSpecificationList        *attributes;
+  IIR_EntityDeclarationRef          entity;
+  IIR_GenericListRef                local_generic_clause;
+  IIR_PortListRef                   local_port_clause;
+  IIR_AttributeSpecificationListRef attributes;
 
 };
 

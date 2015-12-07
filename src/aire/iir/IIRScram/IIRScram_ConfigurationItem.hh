@@ -43,7 +43,7 @@ public:
 
   IIR_Boolean _is_iir_configuration_item() { return TRUE; }
 
-  virtual void _type_check_configuration_item( IIRScram_List *statement_list, IIRScram *enclosing_region );
+  virtual void _type_check_configuration_item( IIRScram_ListRef statement_list, IIRScramRef enclosing_region );
 
 protected:
 private:

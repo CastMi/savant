@@ -34,9 +34,10 @@
 #include "IIRScram_ScalarTypeDefinition.hh"
 #include "IIRBase_EnumerationTypeDefinition.hh"
 
-class IIRScram_EnumerationLiteralList;
-class IIRScram_EnumerationSubtypeDefinition;
-class IIRScram_EnumerationTypeDefinition;
+REF_FORWARD_DECL(IIRScram_EnumerationTypeDefinition);
+REF_FORWARD_DECL(IIRScram_EnumerationSubtypeDefinition);
+REF_FORWARD_DECL(IIRScram_EnumerationLiteralList);
+REF_FORWARD_DECL(IIRScram_EnumerationLiteral);
 class IIRScram_FunctionDeclaration;
 class IIRScram_Name;
 class IIRScram_TextLiteral;
@@ -53,17 +54,17 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  virtual IIRScram_TypeDefinition *_get_new_subtype();
+  virtual IIRScram_TypeDefinitionRef _get_new_subtype();
 
-  virtual IIRScram *_clone();
-  virtual void _clone( IIRScram * );
+  virtual IIRScramRef _clone();
+  virtual void _clone( IIRScramRef );
 
   IIR_Boolean _is_iir_enumeration_type_definition(){ return TRUE; }
 
-  void _come_into_scope( symbol_table *, IIRScram_TypeDeclaration * );
+  void _come_into_scope( symbol_table *, IIRScram_TypeDeclarationRef  );
   void _come_out_of_scope( symbol_table * );
 
-  void _set_resolution_function( IIRScram_FunctionDeclaration * );
+  void _set_resolution_function( IIRScram_FunctionDeclarationRef  );
 
   /**
      Using this definition of the literal list, construct a new type.
@@ -73,13 +74,13 @@ public:
      @param locator_info The file and line info from this node will be copied into newly
      allocated IIRs - the base type, and the subtype.
   */
-  static IIRScram_EnumerationSubtypeDefinition *
-    _construct_new_type( IIRScram_EnumerationLiteralList *literals,
-			 IIRScram_TypeDeclaration *type_decl,
-			 IIRScram_DesignFile *design_file );
+  static IIRScram_EnumerationSubtypeDefinitionRef 
+    _construct_new_type( IIRScram_EnumerationLiteralListRef literals,
+			 IIRScram_TypeDeclarationRef type_decl,
+			 IIRScram_DesignFileRef design_file );
 
   // Wrappers for IIRBase functions
-  IIRScram_EnumerationLiteralList *     _get_enumeration_literals();
+  IIRScram_EnumerationLiteralListRef     _get_enumeration_literals();
 
 protected:
 private:

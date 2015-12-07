@@ -38,23 +38,23 @@
 
 IIRScram_Allocator::~IIRScram_Allocator() {}
 
-savant::set<IIRScram_TypeDefinition*> *
+savant::set<IIRScram_TypeDefinitionRef>
 IIRScram_Allocator::_get_rval_set( constraint_functor * ){
-  savant::set<IIRScram_TypeDefinition*> *retval = new savant::set<IIRScram_TypeDefinition*>();
+  savant::set<IIRScram_TypeDefinitionRef> retval;
   
-  savant::set<IIRScram_AccessTypeDefinition*>    *access_types;
-  access_types = _get_symbol_table()->get_in_scope_access_types()->convert_set<IIRScram_AccessTypeDefinition*>();
+  savant::set<IIRScram_AccessTypeDefinitionRef>    access_types;
+  access_types = _get_symbol_table()->get_in_scope_access_types().convert_set<IIRScram_AccessTypeDefinition>();
   
-  for(auto it = access_types->begin(); it != access_types->end(); it++){
+  for(auto it = access_types.begin(); it != access_types.end(); it++){
      ASSERT(*it != NULL);
-     retval->insert( *it );
+     retval.insert( *it );
   }
 
   return retval;
 }
 
 void
-IIRScram_Allocator::_type_check( savant::set<IIRScram_TypeDefinition*> * ){
+IIRScram_Allocator::_type_check( savant::set<IIRScram_TypeDefinitionRef> ){
   // Don't need to do anything...
 }
 
@@ -65,12 +65,12 @@ IIRScram_Allocator::_accept_visitor( node_visitor *visitor,
   return visitor->visit_IIR_Allocator(this, arg);
 }
 
-IIRScram *
+IIRScramRef
 IIRScram_Allocator::_get_value() {
-  return dynamic_cast<IIRScram *>(IIRBase_Allocator::get_value());
+  return my_dynamic_pointer_cast<IIRScram>(IIRBase_Allocator::get_value());
 }
 
-IIRScram_TypeDefinition *
+IIRScram_TypeDefinitionRef
 IIRScram_Allocator::_get_type_mark() {
-  return dynamic_cast<IIRScram_TypeDefinition *>(get_type_mark());
+  return my_dynamic_pointer_cast<IIRScram_TypeDefinition>(get_type_mark());
 }

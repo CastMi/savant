@@ -38,13 +38,13 @@ class IIRBase_PackageBodyDeclaration : public virtual IIRBase_LibraryUnit, publi
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList *get_package_declarative_part();
-  void                set_package_declarative_part(IIR_DeclarationList *new_package_declarative_part);
+  IIR_DeclarationListRef get_package_declarative_part();
+  void                set_package_declarative_part(IIR_DeclarationListRef new_package_declarative_part);
 
-  IIR_Kind get_kind() const {return IIR_PACKAGE_BODY_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_PackageBodyDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_PACKAGE_BODY_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_PackageBodyDeclaration"); }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
   
   declaration_type get_declaration_type();
   IIR_Boolean is_secondary_unit(){ return TRUE; }
@@ -56,7 +56,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList *package_declarative_part;
+  IIR_DeclarationListRef package_declarative_part;
 
 };
 

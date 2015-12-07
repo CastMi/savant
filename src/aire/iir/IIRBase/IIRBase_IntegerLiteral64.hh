@@ -37,16 +37,16 @@
 class IIRBase_IntegerLiteral64 : public virtual IIRBase_Literal, public virtual IIR_IntegerLiteral64{
 
 public:
-  IIR_Kind get_kind() const { return IIR_INTEGER_LITERAL64; }
-  const IIR_Char *get_kind_text() const { return "IIR_IntegerLiteral64"; }
+  IIR_Kind get_kind() const override { return IIR_INTEGER_LITERAL64; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_IntegerLiteral64"); }
 
-  static IIR_IntegerLiteral64* get(IIR_Int64);
+  static IIR_IntegerLiteral64Ref get(IIR_Int64);
   void release();
 
   IIR_Int64 value();
   void set_value(IIR_Int64);
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:

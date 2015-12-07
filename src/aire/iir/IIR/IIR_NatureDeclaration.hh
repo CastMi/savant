@@ -33,29 +33,28 @@
 #include "IRBasicDataTypes.hh"
 #include "IIR_NatureDefinition.hh"
 
+REF_FORWARD_DECL(IIR_AttributeSpecificationList);
+REF_FORWARD_DECL(IIR_TerminalDeclaration);
 class IIR_NatureDefinition;
-class IIR_AttributeSpecificationList;
-class IIR_AttributeSpecificationList;
-class IIR_TerminalDeclaration;
 
 class IIR_NatureDeclaration : public virtual IIR_Declaration {
 public:
   virtual ~IIR_NatureDeclaration() {}
 
   // List accessor(s)
-  virtual IIR_AttributeSpecificationList  *get_attributes() = 0;
+  virtual IIR_AttributeSpecificationListRef get_attributes() = 0;
 
   /** Set the Nature of the terminal */
-  virtual void set_nature(IIR_NatureDefinition* nature) = 0;
+  virtual void set_nature(IIR_NatureDefinitionRef nature) = 0;
 
   /** Get nature of the terminal */
-  virtual IIR_NatureDefinition *get_nature() = 0;
+  virtual IIR_NatureDefinitionRef get_nature() = 0;
 
   /** Returns the reference terminal */
-  virtual IIR_TerminalDeclaration* get_reference_terminal() = 0;
+  virtual IIR_TerminalDeclarationRef get_reference_terminal() = 0;
 
   /** Set the reference terminal */
-  virtual void set_reference_terminal(IIR_TerminalDeclaration *) = 0;
+  virtual void set_reference_terminal(IIR_TerminalDeclarationRef ) = 0;
 };
 
 typedef refcount<IIR_NatureDeclaration> IIR_NatureDeclarationRef;

@@ -22,27 +22,25 @@
 #include "IIRBase_Identifier.hh"
 #include "IIRBase_RangeAttribute.hh"
 #include "savant.hh"
+#include <cstring>
 
-IIRBase_RangeAttribute::IIRBase_RangeAttribute() {
-  set_suffix(NULL);
-}
-
+IIRBase_RangeAttribute::IIRBase_RangeAttribute() {}
 IIRBase_RangeAttribute::~IIRBase_RangeAttribute() {}
 
 void 
-IIRBase_RangeAttribute::set_suffix( IIR* suffix) {
+IIRBase_RangeAttribute::set_suffix( IIRRef suffix) {
   this->suffix = suffix;
 }
 
-IIR* 
+IIRRef
 IIRBase_RangeAttribute::get_suffix() {
   return suffix;
 }
 
-IIR *
-IIRBase_RangeAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_RangeAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_RangeAttribute *new_node = dynamic_cast<IIRBase_RangeAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_RangeAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_RangeAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
@@ -50,10 +48,10 @@ IIRBase_RangeAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_RangeAttribute::build_attribute_name() {
-  const char *name = "range";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("range");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 
@@ -62,7 +60,7 @@ IIRBase_RangeAttribute::publish_vhdl(ostream &vhdl_out) {
   get_prefix()->publish_vhdl(vhdl_out);
   vhdl_out << "'RANGE ";
   if (get_suffix() != NULL) {
-    vhdl_out << "(";
+    vhdl_out << "("; 
     get_suffix()->publish_vhdl(vhdl_out);
     vhdl_out << ")";
   }

@@ -44,7 +44,7 @@ public:
     
   /** Returns the type of the quantity. The implicit quantity is of the
       same type as the quantity Q.*/
-  IIRScram_TypeDefinition *_get_subtype();
+  IIRScram_TypeDefinitionRef _get_subtype();
   
 protected:
   

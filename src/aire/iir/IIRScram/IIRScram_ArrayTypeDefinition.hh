@@ -25,7 +25,8 @@
 #include "IIRBase_ArrayTypeDefinition.hh"
 #include "set.hh"
 
-class IIRScram_ArraySubtypeDefinition;
+REF_FORWARD_DECL(IIRScram_ArrayTypeDefinition);
+REF_FORWARD_DECL(IIRScram_ArraySubtypeDefinition);
 class IIRScram_FunctionDeclaration;
 class IIRScram_Name;
 class IIRScram_ScalarTypeDefinition;
@@ -48,53 +49,53 @@ public:
   IIR_Boolean _is_iir_array_type_definition() { return TRUE; }
   IIR_Int32 get_num_indexes();
 
-  IIRScram_TypeDefinition *_get_element_subtype();
+  IIRBase_TypeDefinitionRef _get_element_subtype();
 
   /** Due to the complexities of the IIR, sometimes
       _get_element_subtype() doesn't actually return the element
       subtype.  This is the case for multidimensional arrays, for
       instance.  _get_final_subtype() _will_ return the _real_ element
       subtype. */
-  virtual IIRScram_TypeDefinition *_get_final_subtype();
+  virtual IIRScram_TypeDefinitionRef _get_final_subtype();
 
-  virtual IIRScram_ScalarTypeDefinition *_get_index_subtype();
+  virtual IIRScram_ScalarTypeDefinitionRef _get_index_subtype();
 
   /** This method takes the range passed in, applies the semantic rules
       given in LRM ('93) section 3.2.1.1, and returns the proper type. */
-  static IIRScram_ScalarTypeDefinition *_build_proper_index( IIRScram_RangeTypeDefinition *);
+  static IIRScram_ScalarTypeDefinitionRef _build_proper_index( IIRScram_RangeTypeDefinitionRef );
 
-  IIRScram_TypeDefinition *_index_constrain_array( IIRScram_ScalarTypeDefinition *);
+  IIRScram_TypeDefinitionRef _index_constrain_array( IIRScram_ScalarTypeDefinitionRef );
 
-  IIRScram_TypeDefinition *_get_new_subtype();
+  IIRScram_TypeDefinitionRef _get_new_subtype();
 
-  IIRScram_TypeDefinition *
-  _construct_new_subtype( IIRScram_Name                 *resolution_function,
-			  IIRScram_ScalarTypeDefinition *new_constraint);  
+  IIRScram_TypeDefinitionRef 
+  _construct_new_subtype( IIRScram_NameRef  resolution_function,
+			  IIRScram_ScalarTypeDefinitionRef new_constraint);  
 
-  static IIRScram_ArrayTypeDefinition *_construct_array_type( IIRScram_ScalarTypeDefinition     *index_subtype,
-                                                              IIRScram_TypeDefinition           *element_subtype,
-                                                              IIRScram_TypeDeclaration          *declaration);
+  static IIRScram_ArrayTypeDefinitionRef _construct_array_type( IIRScram_ScalarTypeDefinitionRef index_subtype,
+                                                              IIRScram_TypeDefinitionRef         element_subtype,
+                                                              IIRScram_TypeDeclarationRef        declaration);
 
-  IIRScram *_clone();
-  virtual void _clone( IIRScram *my_clone );
+  IIRScramRef _clone();
+  virtual void _clone( IIRScramRef my_clone );
 
   virtual void _type_check();
 
-  static IIRScram_ArraySubtypeDefinition *_construct_constrained(IIRScram_ScalarTypeDefinition  *index_subtype,
-                                                                 IIRScram_TypeDefinition        *element_subtype,
-                                                                 IIRScram_TypeDeclaration       *declaration);
+  static IIRScram_ArraySubtypeDefinitionRef _construct_constrained(IIRScram_ScalarTypeDefinitionRef index_subtype,
+                                                                 IIRScram_TypeDefinitionRef         element_subtype,
+                                                                 IIRScram_TypeDeclarationRef        declaration);
 
-  static IIRScram_ArraySubtypeDefinition *_construct_unconstrained(IIRScram_ScalarTypeDefinition        *index_subtype,
-                                                                   IIRScram_TypeDefinition              *element_subtype,
-                                                                   IIRScram_TypeDeclaration             *declaration);
+  static IIRScram_ArraySubtypeDefinitionRef _construct_unconstrained(IIRScram_ScalarTypeDefinitionRef index_subtype,
+                                                                   IIRScram_TypeDefinitionRef         element_subtype,
+                                                                   IIRScram_TypeDeclarationRef        declaration);
 
   virtual void set_is_element(IIR_Boolean new_element) { IIRBase_ArrayTypeDefinition::set_is_element(new_element); }
 
-  void _come_into_scope( symbol_table *sym_tab, IIRScram_TypeDeclaration * );
+  void _come_into_scope( symbol_table *sym_tab, IIRScram_TypeDeclarationRef  );
   void _come_out_of_scope( symbol_table *sym_tab );
-  void _build_implicit_operators( savant::set<IIRScram_Declaration*> * );
+  void _build_implicit_operators( savant::set<IIRScram_DeclarationRef> );
   
-  virtual void _set_resolution_function( IIRScram_FunctionDeclaration * );
+  virtual void _set_resolution_function( IIRScram_FunctionDeclarationRef  );
 
 private:  
 };

@@ -33,13 +33,13 @@ IIRBase_EntityClassEntryList::~IIRBase_EntityClassEntryList() {}
 
 void 
 IIRBase_EntityClassEntryList::publish_vhdl(ostream &vhdl_out) {
-  IIRBase_EntityClassEntry* entity_class = NULL;
-  for(entity_class = dynamic_cast<IIRBase_EntityClassEntry*>(first());
-      entity_class != NULL;
+  IIRBase_EntityClassEntryRef entity_class;
+  for(entity_class = my_dynamic_pointer_cast<IIRBase_EntityClassEntry>(first());
+      entity_class != nullptr;
     ) {
     entity_class->publish_vhdl(vhdl_out);
-    entity_class = dynamic_cast<IIRBase_EntityClassEntry*>(successor(entity_class));
-    if(entity_class != NULL) {
+    entity_class = my_dynamic_pointer_cast<IIRBase_EntityClassEntry>(successor(entity_class));
+    if(entity_class != nullptr) {
       vhdl_out << ", ";
     }
   }

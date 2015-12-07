@@ -49,18 +49,18 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  void _type_check_configuration_item( IIRScram_List *, IIRScram * );
+  void _type_check_configuration_item( IIRScram_ListRef , IIRScramRef  );
 
-  IIRScram                              *_get_block_specification();
-  IIRScram_DeclarationList              *_get_use_clause_list();
-  IIRScram_ConfigurationItemList        *_get_configuration_item_list();
+  IIRScramRef                         _get_block_specification();
+  IIRScram_DeclarationListRef         _get_use_clause_list();
+  IIRScram_ConfigurationItemListRef   _get_configuration_item_list();
 
 protected:
 private:
-  void _type_check_block_specification( IIRScram_List *, IIRScram * );
-  void _resolve_specification_inside_configuration_declaration( IIRScram_ConfigurationDeclaration * );
-  void _resolve_specification_inside_component_configuration( IIRScram_ComponentConfiguration * );
-  void _resolve_specification_inside_block_configuration(  IIRScram_List *, IIRScram_BlockConfiguration * );
+  void _type_check_block_specification( IIRScram_ListRef , IIRScramRef  );
+  void _resolve_specification_inside_configuration_declaration( IIRScram_ConfigurationDeclarationRef  );
+  void _resolve_specification_inside_component_configuration( IIRScram_ComponentConfigurationRef  );
+  void _resolve_specification_inside_block_configuration(  IIRScram_ListRef , IIRScram_BlockConfigurationRef  );
 };
 
 typedef refcount<IIRScram_BlockConfiguration> IIRScram_BlockConfigurationRef;

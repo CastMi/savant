@@ -30,12 +30,9 @@
 
 IIRBase_ConcurrentAssertionStatement::IIRBase_ConcurrentAssertionStatement(){
   set_postponed( FALSE );
-  set_assertion_condition( NULL );
-  set_report_expression( NULL );
-  set_severity_expression( NULL );
 }
 
-IIRBase_ConcurrentAssertionStatement::~IIRBase_ConcurrentAssertionStatement(){}
+IIRBase_ConcurrentAssertionStatement::~IIRBase_ConcurrentAssertionStatement() {}
 
 void 
 IIRBase_ConcurrentAssertionStatement::set_postponed( IIR_Boolean predicate ){
@@ -48,39 +45,39 @@ IIRBase_ConcurrentAssertionStatement::get_postponed(){
 }
 
 void 
-IIRBase_ConcurrentAssertionStatement::set_assertion_condition( IIR *condition){
+IIRBase_ConcurrentAssertionStatement::set_assertion_condition( IIRRef condition){
   assertion_condition = condition;
 }
 
-IIR *
+IIRRef
 IIRBase_ConcurrentAssertionStatement::get_assertion_condition(){
   return assertion_condition;
 }
 
 void 
-IIRBase_ConcurrentAssertionStatement::set_report_expression( IIR *expression ){
+IIRBase_ConcurrentAssertionStatement::set_report_expression( IIRRef expression ){
   report_expression = expression;
 }
 
-IIR *
+IIRRef
 IIRBase_ConcurrentAssertionStatement::get_report_expression(){
   return report_expression;
 }
 
 void 
-IIRBase_ConcurrentAssertionStatement::set_severity_expression(  IIR *expression ){
+IIRBase_ConcurrentAssertionStatement::set_severity_expression(  IIRRef expression ){
   severity_expression = expression;
 }
 
-IIR *
+IIRRef
 IIRBase_ConcurrentAssertionStatement::get_severity_expression(){
   return severity_expression;
 }
 
-IIR *
-IIRBase_ConcurrentAssertionStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ConcurrentAssertionStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ConcurrentAssertionStatement *new_node = dynamic_cast<IIRBase_ConcurrentAssertionStatement *>(IIRBase_ConcurrentStatement::convert_tree(factory));
+  IIRBase_ConcurrentAssertionStatementRef new_node = my_dynamic_pointer_cast<IIRBase_ConcurrentAssertionStatement>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
   new_node->predicate = predicate;

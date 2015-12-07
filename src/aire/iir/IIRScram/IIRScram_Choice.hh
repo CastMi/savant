@@ -42,14 +42,14 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor=0); 
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
-  savant::set<IIRScram_Declaration*> *_symbol_lookup();
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor=0); 
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef  );
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup();
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
 
-  IIRScram *_get_value();
+  IIRScramRef _get_value();
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
 protected:
 private:

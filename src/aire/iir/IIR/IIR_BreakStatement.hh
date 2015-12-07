@@ -37,14 +37,14 @@ class IIR_BreakStatement : public virtual IIR_SequentialStatement {
 
 public:
   // List Accessor(s)
-  virtual IIR_BreakList *get_break_list() = 0;
-  virtual void set_break_list(IIR_BreakList  *) = 0;
+  virtual IIR_BreakListRef get_break_list() = 0;
+  virtual void set_break_list(IIR_BreakListRef ) = 0;
 
   /** For the execution of a Break Statement, the condition, if present, is
       first evaluated. A break is indicated if the value of the condition
       is TRUE or if there is no condition. [ LRM $ 8.14 - 565 ]. */
-  virtual void set_condition(IIR* condition) = 0;
-  virtual IIR* get_condition() = 0;
+  virtual void set_condition(IIRRef condition) = 0;
+  virtual IIRRef get_condition() = 0;
   
 protected:
 public:

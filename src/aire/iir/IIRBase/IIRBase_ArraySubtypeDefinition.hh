@@ -37,17 +37,17 @@ class IIR_FunctionDeclaration;
 class IIRBase_ArraySubtypeDefinition : public virtual IIRBase_ArrayTypeDefinition, public virtual IIR_ArraySubtypeDefinition{
 
 public:
-  IIR_Kind get_kind() const { return IIR_ARRAY_SUBTYPE_DEFINITION; }
-  const IIR_Char *get_kind_text() const { return "IIR_ArraySubtypeDefinition"; }
+  IIR_Kind get_kind() const override { return IIR_ARRAY_SUBTYPE_DEFINITION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ArraySubtypeDefinition"); }
 
-  void set_resolution_function(IIR_FunctionDeclaration *);
-  IIR_FunctionDeclaration *get_resolution_function();
+  void set_resolution_function(IIR_FunctionDeclarationRef );
+  IIR_FunctionDeclarationRef get_resolution_function();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_subtype();
 
-  IIR_ScalarTypeDefinition *get_resolved_index_subtype();
+  IIR_ScalarTypeDefinitionRef get_resolved_index_subtype();
 
   ostream& print(ostream& os);
   void publish_vhdl( ostream & );
@@ -59,7 +59,7 @@ protected:
   virtual ~IIRBase_ArraySubtypeDefinition() = 0;
     
 private:
-  IIR_FunctionDeclaration *resolution_function;
+  IIR_FunctionDeclarationRef resolution_function;
 };
 
 typedef refcount<IIRBase_ArraySubtypeDefinition> IIRBase_ArraySubtypeDefinitionRef;

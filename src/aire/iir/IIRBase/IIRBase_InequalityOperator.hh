@@ -37,8 +37,8 @@ class IIRBase_InequalityOperator : public virtual IIRBase_DyadicOperator,
 
 public:
 
-  IIR_Kind get_kind() const {return IIR_INEQUALITY_OPERATOR;}
-  const IIR_Char *get_kind_text() const {return "IIR_InequalityOperator";}
+  IIR_Kind get_kind() const override { return IIR_INEQUALITY_OPERATOR; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_InequalityOperator"); }
   const string &get_operator_string() const;
 
   Precedence  get_precedence();

@@ -35,12 +35,12 @@
 class IIRBase_CommentList : public virtual IIRBase_List, public virtual IIR_CommentList{
 
 public:
-  IIR_Kind get_kind() const {return IIR_COMMENT_LIST;}
-  const IIR_Char *get_kind_text() const {return "IIR_CommentList";}
+  IIR_Kind get_kind() const override { return IIR_COMMENT_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_CommentList"); }
 
-  IIR* first();
-  IIR* successor(IIR_Comment*);
-  void append_element(IIR_Comment*);
+  IIRRef first();
+  IIRRef successor(IIR_CommentRef);
+  void append_element(IIR_CommentRef);
 
   void publish_vhdl(ostream &);
 protected:

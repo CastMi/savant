@@ -36,13 +36,13 @@
 class IIRBase_ElementDeclaration : public virtual IIRBase_ObjectDeclaration, public virtual IIR_ElementDeclaration{
 
 public:
-  IIR_Kind get_kind() const {return IIR_ELEMENT_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_ElementDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_ELEMENT_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ElementDeclaration"); }
   IIR_Boolean is_element(){ return TRUE; }
 
   declaration_type get_declaration_type(){ return ELEMENT; }
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *to_find );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef to_find );
   void publish_vhdl_decl(ostream &);
 protected:
   IIRBase_ElementDeclaration();

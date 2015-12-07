@@ -24,25 +24,26 @@
 #include "IIR_TypeDefinition.hh"
 #include "IIR_EnumerationSubtypeDefinition.hh"
 #include "StandardPackage.hh"
+#include <cstring>
 
 IIRBase_ActiveAttribute::IIRBase_ActiveAttribute() { }
 IIRBase_ActiveAttribute::~IIRBase_ActiveAttribute(){ }
 
 // The active attribute is a boolean function valued attribute...
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_ActiveAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_boolean_type();
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_ActiveAttribute::build_attribute_name() {
-  const char *name = "active";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );
+   std::string name("active");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory() );
 }
 
 void 
 IIRBase_ActiveAttribute::publish_vhdl(ostream &vhdl_out) {
   ASSERT(get_prefix() != NULL);
-  dynamic_cast<IIRBase *>(get_prefix())->publish_vhdl(vhdl_out);
+  dynamic_pointer_cast<IIRBase>(get_prefix())->publish_vhdl(vhdl_out);
   vhdl_out << "'ACTIVE ";
 }

@@ -38,26 +38,26 @@ class IIRBase_ConcurrentBreakStatement : public virtual IIR_ConcurrentBreakState
   
 public:
   // List Accessor(s)
-  IIR_BreakList *get_concurrent_break_list();
-  IIR_DesignatorList *get_sensitivity_list();
-  void set_concurrent_break_list(IIR_BreakList *);
-  void set_sensitivity_list(IIR_DesignatorList *);
+  IIR_BreakListRef      get_concurrent_break_list();
+  IIR_DesignatorListRef get_sensitivity_list();
+  void set_concurrent_break_list( IIR_BreakListRef );
+  void set_sensitivity_list( IIR_DesignatorListRef );
 
   /** Returns the IIR_Kind of this node. */
-  IIR_Kind get_kind() const {
+  IIR_Kind get_kind() const override {
     return IIR_CONCURRENT_BREAK_STATEMENT;
   }
   
-  const IIR_Char *get_kind_text() const {
-    return "IIRBase_ConcurrentBreakStatement";
+  IIR_CharConstRef get_kind_text() const override {
+    return IIR_CharConstRef("IIRBase_ConcurrentBreakStatement");
   }
   
   /** The condition in the concurrent break statement would be the
       condition in the equivalent break statement in the process. */
-  void set_condition(IIR* condition);
-  IIR* get_condition();
+  void set_condition(IIRRef condition);
+  IIRRef get_condition();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
   
   void publish_vhdl(ostream &);
 protected:
@@ -68,10 +68,10 @@ private:
   // List Variable(s)
   /** The break list of a concurrent break statement would be the break
       list in the equivalent break statement in the process. */
-  IIR_BreakList *concurrent_break_list;
-  IIR_DesignatorList *sensitivity_list;
+  IIR_BreakListRef      concurrent_break_list;
+  IIR_DesignatorListRef sensitivity_list;
 
-  IIR* condition;
+  IIRRef condition;
 
 };
 

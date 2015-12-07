@@ -30,27 +30,24 @@
 #include "IIRBase_ConstantDeclaration.hh"
 #include "IIRBase_TypeDefinition.hh"
 
-IIRBase_ConstantDeclaration::IIRBase_ConstantDeclaration() :
-  value(0){}
+IIRBase_ConstantDeclaration::IIRBase_ConstantDeclaration() {}
 
-IIRBase_ConstantDeclaration::~IIRBase_ConstantDeclaration(){
-  delete value;
-}
+IIRBase_ConstantDeclaration::~IIRBase_ConstantDeclaration() {}
 
 void 
-IIRBase_ConstantDeclaration::set_value( IIR *new_value ){
+IIRBase_ConstantDeclaration::set_value( IIRRef new_value ){
   value = new_value;
 }
 
-IIR *
+IIRRef
 IIRBase_ConstantDeclaration::get_value(){
   return value;
 }
 
-IIR *
-IIRBase_ConstantDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ConstantDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ConstantDeclaration *new_node = dynamic_cast<IIRBase_ConstantDeclaration *>(IIRBase_ObjectDeclaration::convert_tree(factory));
+  IIRBase_ConstantDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_ConstantDeclaration>(IIRBase_ObjectDeclaration::convert_tree(factory));
 
   // Process the variables
   new_node->value = convert_node(value, factory);
@@ -89,5 +86,5 @@ IIRBase_ConstantDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
 
 void 
 IIRBase_ConstantDeclaration::publish_vhdl_range( ostream &vhdl_out ) {
-  dynamic_cast<IIRBase_TypeDefinition *>(get_subtype())->publish_vhdl_range( vhdl_out );
+   my_dynamic_pointer_cast<IIRBase_TypeDefinition>(get_subtype())->publish_vhdl_range( vhdl_out );
 }

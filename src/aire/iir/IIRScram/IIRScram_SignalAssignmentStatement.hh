@@ -48,16 +48,16 @@ public:
 
   IIR_Boolean _is_sequential_signal_assignment(){ return TRUE; }
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
   void _type_check();
 
-  IIRScram *_get_target();
+  IIRScramRef _get_target();
   IIR_DelayMechanism _get_delay_mechanism();
-  IIRScram *_get_reject_time_expression();
+  IIRScramRef _get_reject_time_expression();
 
   // Wrappers for IIRBase functions
-  IIRScram_WaveformList *       _get_waveform();
+  IIRScram_WaveformListRef        _get_waveform();
 
 protected:    
 private:

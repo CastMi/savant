@@ -32,22 +32,22 @@
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
 
+REF_FORWARD_DECL(IIR_DesignatorList);
+REF_FORWARD_DECL(IIR_AttributeSpecificationList);
 class IIR_Name;
-class IIR_DesignatorList;
-class IIR_AttributeSpecificationList;
 
 class IIR_GroupDeclaration : public virtual IIR_Declaration{
 public:
   virtual ~IIR_GroupDeclaration() {}    
 
   // List accessor(s)
-  virtual IIR_DesignatorList                    *get_group_constituent_list() = 0;
-  virtual IIR_AttributeSpecificationList        *get_attributes() = 0;
-  virtual void                                  set_group_constituent_list(IIR_DesignatorList *) = 0;
-  virtual void                                  set_attributes(IIR_AttributeSpecificationList *) = 0;
+  virtual IIR_DesignatorListRef                 get_group_constituent_list() = 0;
+  virtual IIR_AttributeSpecificationListRef     get_attributes() = 0;
+  virtual void                                  set_group_constituent_list(IIR_DesignatorListRef ) = 0;
+  virtual void                                  set_attributes(IIR_AttributeSpecificationListRef ) = 0;
 
-  virtual void set_group_template(IIR_Name* group_template_name) = 0;
-  virtual IIR_Name* get_group_template_name() = 0;
+  virtual void set_group_template(IIR_NameRef group_template_name) = 0;
+  virtual IIR_NameRef get_group_template_name() = 0;
 };
 
 typedef refcount<IIR_GroupDeclaration> IIR_GroupDeclarationRef;

@@ -30,30 +30,23 @@
 #include "IIR_CaseStatementAlternativeList.hh"
 #include "IIR_Label.hh"
 
-IIRBase_CaseStatement::IIRBase_CaseStatement() :
-  case_statement_alternatives(0),
-  my_expression(0){}
+IIRBase_CaseStatement::IIRBase_CaseStatement() {}
 
-IIRBase_CaseStatement::~IIRBase_CaseStatement(){
-  delete case_statement_alternatives;
-  case_statement_alternatives = 0;
-  delete my_expression;
-  my_expression = 0;
-}
+IIRBase_CaseStatement::~IIRBase_CaseStatement() {}
 
 void 
-IIRBase_CaseStatement::set_expression( IIR *expression){
+IIRBase_CaseStatement::set_expression( IIRRef expression){
   my_expression = expression;
 }
 
-IIR *
+IIRRef
 IIRBase_CaseStatement::get_expression(){
   return my_expression;
 }
 
 
 // List Accessor(s)
-IIR_CaseStatementAlternativeList *
+IIR_CaseStatementAlternativeListRef
 IIRBase_CaseStatement::get_case_statement_alternatives() {
   ASSERT(case_statement_alternatives != NULL);
   return case_statement_alternatives;
@@ -61,19 +54,18 @@ IIRBase_CaseStatement::get_case_statement_alternatives() {
 
 
 void
-IIRBase_CaseStatement::set_case_statement_alternatives(IIR_CaseStatementAlternativeList *new_case_statement_alternatives) {
-  ASSERT(new_case_statement_alternatives != NULL);
-  delete case_statement_alternatives;
+IIRBase_CaseStatement::set_case_statement_alternatives(IIR_CaseStatementAlternativeListRef new_case_statement_alternatives) {
+  ASSERT(new_case_statement_alternatives != nullptr);
   case_statement_alternatives = new_case_statement_alternatives;
 }
 
-IIR *
-IIRBase_CaseStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_CaseStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_CaseStatement *new_node = dynamic_cast<IIRBase_CaseStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_CaseStatementRef new_node = my_dynamic_pointer_cast<IIRBase_CaseStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->case_statement_alternatives = dynamic_cast<IIR_CaseStatementAlternativeList *>(convert_node(case_statement_alternatives, factory));
+  new_node->case_statement_alternatives = my_dynamic_pointer_cast<IIR_CaseStatementAlternativeList>(convert_node(case_statement_alternatives, factory));
   new_node->my_expression = convert_node(my_expression, factory);
 
   return new_node;

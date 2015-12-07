@@ -42,13 +42,13 @@ class IIRBase_AliasDeclaration : public virtual IIRBase_Declaration,
 				 public virtual IIR_AliasDeclaration{
 
 public:
-  IIR_Kind get_kind() const {return IIR_ALIAS_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_AliasDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_ALIAS_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_AliasDeclaration"); }
 
-  void set_name(IIR*);
-  IIR *get_name();
+  void set_name(IIRRef);
+  IIRRef get_name();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_signal();
   IIR_Boolean is_locally_static();
@@ -64,14 +64,13 @@ public:
   IIR_Boolean is_scalar_type();
  
   declaration_type get_declaration_type();
-  IIR_Declaration *get_prefix_declaration() { return this; }
   void publish_vhdl_decl(ostream &);
 protected:
   IIRBase_AliasDeclaration();
   virtual ~IIRBase_AliasDeclaration() = 0;
     
 private:
-  IIR *name;
+  IIRRef name;
 };
 
 typedef refcount<IIRBase_AliasDeclaration> IIRBase_AliasDeclarationRef;

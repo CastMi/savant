@@ -30,17 +30,17 @@
 #include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
 
-class IIR_SubprogramDeclaration;
+REF_FORWARD_DECL(IIR_SubprogramDeclaration);
 
 class IIR_ReturnStatement : public virtual IIR_SequentialStatement{
 public:
   virtual ~IIR_ReturnStatement() {}
     
-  virtual void set_enclosing_subprogram( IIR_SubprogramDeclaration *enclosing_subprogram) = 0;
-  virtual IIR_SubprogramDeclaration* get_enclosing_subprogram() = 0;
+  virtual void set_enclosing_subprogram( IIR_SubprogramDeclarationRef enclosing_subprogram) = 0;
+  virtual IIR_SubprogramDeclarationRef get_enclosing_subprogram() = 0;
 
-  virtual void set_return_expression( IIR *return_expression ) = 0;
-  virtual IIR* get_return_expression() = 0;
+  virtual void set_return_expression( IIRRef return_expression ) = 0;
+  virtual IIRRef get_return_expression() = 0;
 };
 
 typedef refcount<IIR_ReturnStatement> IIR_ReturnStatementRef;

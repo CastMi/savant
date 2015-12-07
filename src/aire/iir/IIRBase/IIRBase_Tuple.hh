@@ -35,8 +35,8 @@
 class IIRBase_Tuple : public virtual IIRBase, public virtual IIR_Tuple{
 public:
 
-  IIR_Kind get_kind() const {return IIR_TUPLE;}
-  const IIR_Char *get_kind_text() const {return "IIR_Tuple";}
+  IIR_Kind get_kind() const override { return IIR_TUPLE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_Tuple"); }
 
 protected:
   

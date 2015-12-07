@@ -32,8 +32,9 @@
 #include "IIRBase_LibraryUnit.hh"
 #include "IIRScram_Declaration.hh"
 
+REF_FORWARD_DECL(IIRScram_DeclarationList);
+REF_FORWARD_DECL(IIRScram_EntityDeclaration);
 class IIRScram_Declaration;
-class IIRScram_EntityDeclaration;
 class IIRScram_LibraryDeclaration;
 class IIRScram_TypeDefinition;
 
@@ -46,17 +47,17 @@ class IIRScram_LibraryUnit : public virtual IIRScram_Declaration,
 public:
   IIRScram_LibraryUnit();
 
-  virtual IIRScram_EntityDeclaration* _get_entity();
+  virtual IIRScram_EntityDeclarationRef _get_entity();
 
   IIR_Boolean _is_iir_library_unit(){ return TRUE; }
-  IIR_Boolean _is_homograph_of( IIRScram_Declaration * );
+  IIR_Boolean _is_homograph_of( IIRScram_DeclarationRef );
 
-  virtual void _clone( IIRScram * );
+  virtual void _clone( IIRScramRef  );
 
-  IIRScram_AttributeSpecificationList* _get_attribute_specification_list();
+  IIRScram_AttributeSpecificationListRef _get_attribute_specification_list();
 
   // Wrappers for IIRBase functions
-  IIRScram_DeclarationList *            _get_context_items();
+  IIRScram_DeclarationListRef             _get_context_items();
 
 protected:
   virtual ~IIRScram_LibraryUnit();

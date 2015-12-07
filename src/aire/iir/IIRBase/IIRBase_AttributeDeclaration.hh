@@ -38,8 +38,8 @@ class IIRBase_AttributeDeclaration : public virtual IIRBase_Declaration,
 				     public virtual IIR_AttributeDeclaration{
 
 public:
-  IIR_Kind get_kind() const {return IIR_ATTRIBUTE_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_AttributeDeclaration";}
+  IIR_Kind get_kind() const override {return IIR_ATTRIBUTE_DECLARATION;}
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_AttributeDeclaration"); }
 
   /** An attribute declaration can refer to more than one instance of an
    attribute.  These methods refer to the FIRST instance of an attribute
@@ -47,22 +47,21 @@ public:
    user defined get_attributes() are a different matter) These methods are so
    the parser gan easily determine things like if this is a signal
    valued attribute and so forth. */
-  IIR_Attribute *get_attribute();
-  void set_attribute(  IIR_Attribute *);
+  IIR_AttributeRef get_attribute();
+  void set_attribute(  IIR_AttributeRef );
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_signal();
 
-  IIR_TypeDefinition *get_subtype();
+  IIR_TypeDefinitionRef get_subtype();
 
   declaration_type get_declaration_type();
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef  );
 
   IIR_Boolean is_attribute_declaration(){ return TRUE; }
 
-  IIR_Declaration* get_prefix_declaration() { return this; }
   void publish_vhdl(ostream &);
   void publish_vhdl_decl(ostream &);
 protected:
@@ -73,7 +72,7 @@ protected:
   // attribute" this declaration might refer to several instances of the
   // attribute - we just have a single pointer so we can easily get info
   // about the type.
-  IIR_Attribute *one_attribute;
+  IIR_AttributeRef one_attribute;
 private:
 
 };

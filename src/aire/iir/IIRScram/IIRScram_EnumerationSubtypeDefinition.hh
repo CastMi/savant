@@ -42,25 +42,25 @@ public:
   IIRScram_EnumerationSubtypeDefinition();
   ~IIRScram_EnumerationSubtypeDefinition();
 
-  static IIRScram_EnumerationSubtypeDefinition *  get( IIRScram_EnumerationTypeDefinition *base_type,
-                                                       IIRScram_EnumerationLiteral *left_limit,
-                                                       IIRScram_EnumerationLiteral *right_limit);
+  static IIRScram_EnumerationSubtypeDefinitionRef   get( IIRScram_EnumerationTypeDefinitionRef base_type,
+                                                       IIRScram_EnumerationLiteralRef left_limit,
+                                                       IIRScram_EnumerationLiteralRef right_limit);
 
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  void set_resolution_function( IIRScram_FunctionDeclaration *);
-  void _set_resolution_function( IIRScram_FunctionDeclaration *);
-  IIRScram_FunctionDeclaration* _get_resolution_function();
+  void set_resolution_function( IIRScram_FunctionDeclarationRef );
+  void _set_resolution_function( IIRScram_FunctionDeclarationRef );
+  IIRScram_FunctionDeclarationRef _get_resolution_function();
 
   virtual void _type_check( );
 
-  virtual IIRScram *_clone( );
-  virtual void _clone( IIRScram * );
+  virtual IIRScramRef _clone( );
+  virtual void _clone( IIRScramRef );
 
   // Wrappers for IIRBase functions
-  IIRScram_EnumerationLiteralList *     _get_enumeration_literals();
+  IIRScram_EnumerationLiteralListRef      _get_enumeration_literals();
 protected:
 private:
 };

@@ -70,34 +70,26 @@
 
 using std::ends;
 
-IIRScram_ArchitectureDeclaration::IIRScram_ArchitectureDeclaration(){
-  set_architecture_declarative_part(new IIRScram_DeclarationList());
-  set_architecture_statement_part(new IIRScram_ArchitectureStatementList());
-}
-
-IIRScram_ArchitectureDeclaration::~IIRScram_ArchitectureDeclaration() {
-  //Release the list memory
-  delete get_architecture_declarative_part();
-  delete get_architecture_statement_part();
-}
+IIRScram_ArchitectureDeclaration::IIRScram_ArchitectureDeclaration() {}
+IIRScram_ArchitectureDeclaration::~IIRScram_ArchitectureDeclaration() {}
 
 void 
 IIRScram_ArchitectureDeclaration::_type_check( ){
-  _get_architecture_declarative_part()->_type_check_configuration_specifications( dynamic_cast<IIRScram_List *>(get_architecture_statement_part()) );
+  _get_architecture_declarative_part()->_type_check_configuration_specifications( my_dynamic_pointer_cast<IIRScram_List>(get_architecture_statement_part()) );
   _get_architecture_declarative_part()->_type_check_disconnection_specifications(  );
-  _get_architecture_declarative_part()->_type_check_attribute_specifications( dynamic_cast<IIRScram_List *>(get_architecture_statement_part()) );
+  _get_architecture_declarative_part()->_type_check_attribute_specifications( my_dynamic_pointer_cast<IIRScram_List>(get_architecture_statement_part()) );
   _get_architecture_statement_part()->_type_check_instantiate_statements();
 }
 
-IIRScram_GenericList *
+IIRScram_GenericListRef
 IIRScram_ArchitectureDeclaration::_get_generic_list(){
   ASSERT( _get_entity() != NULL );
   return _get_entity()->_get_generic_list();
 }
 
-IIRScram_DeclarationList*
+IIRScram_DeclarationListRef
 IIRScram_ArchitectureDeclaration::_get_declaration_list() {
-  return dynamic_cast<IIRScram_DeclarationList *>(get_architecture_declarative_part());
+  return my_dynamic_pointer_cast<IIRScram_DeclarationList>(get_architecture_declarative_part());
 }
 
 void 
@@ -107,14 +99,14 @@ IIRScram_ArchitectureDeclaration::_make_interface_visible( symbol_table *sym_tab
   //     get_entity()->_make_interface_visible( sym_tab );
   //   }
   sym_tab->make_visible( _get_architecture_declarative_part() );
-  IIRScram_ArchitectureStatement *current_statement = 
-    dynamic_cast<IIRScram_ArchitectureStatement *>(get_architecture_statement_part()->first());
+  IIRScram_ArchitectureStatementRef current_statement = 
+    my_dynamic_pointer_cast<IIRScram_ArchitectureStatement>(get_architecture_statement_part()->first());
 
   while( current_statement != NULL ){
     if( current_statement->_get_label() != NULL ){
       sym_tab->make_visible( current_statement->_get_label() );
     }
-    current_statement = dynamic_cast<IIRScram_ConcurrentStatement *>(get_architecture_statement_part()->successor( current_statement ));
+    current_statement = my_dynamic_pointer_cast<IIRScram_ConcurrentStatement>(get_architecture_statement_part()->successor( current_statement ));
   }
 }
 
@@ -325,27 +317,27 @@ IIRScram_ArchitectureDeclaration::_accept_visitor( node_visitor *visitor,
   return visitor->visit_IIR_ArchitectureDeclaration(this, arg);
 }
 
-IIRScram_DeclarationList *
+IIRScram_DeclarationListRef
 IIRScram_ArchitectureDeclaration::_get_architecture_declarative_part() {
-  return dynamic_cast<IIRScram_DeclarationList *>(get_architecture_declarative_part());
+  return my_dynamic_pointer_cast<IIRScram_DeclarationList>(get_architecture_declarative_part());
 }
 
-IIRScram_ArchitectureStatementList *
+IIRScram_ArchitectureStatementListRef
 IIRScram_ArchitectureDeclaration::_get_architecture_statement_part() {
-  return dynamic_cast<IIRScram_ArchitectureStatementList *>(get_architecture_statement_part());
+  return my_dynamic_pointer_cast<IIRScram_ArchitectureStatementList>(get_architecture_statement_part());
 }
 
-IIRScram_List *
+IIRScram_ListRef
 IIRScram_ArchitectureDeclaration::_get_statement_list(){
-  return dynamic_cast<IIRScram_List *>(get_architecture_statement_part());
+  return my_dynamic_pointer_cast<IIRScram_List>(get_architecture_statement_part());
 }
 
-IIRScram_EntityDeclaration*
+IIRScram_EntityDeclarationRef
 IIRScram_ArchitectureDeclaration::_get_entity() {
-  return dynamic_cast<IIRScram_EntityDeclaration *>(get_entity());
+  return my_dynamic_pointer_cast<IIRScram_EntityDeclaration>(get_entity());
 }
 
-IIRScram_PortList *
+IIRScram_PortListRef
 IIRScram_ArchitectureDeclaration::_get_port_list(){
   ASSERT( _get_entity() != NULL );
   return _get_entity()->_get_port_list();

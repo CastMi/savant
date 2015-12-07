@@ -33,103 +33,81 @@
 #include "IIR_TextLiteral.hh"
 #include "IIRBase_EntityDeclaration.hh"
 
-IIRBase_EntityDeclaration::IIRBase_EntityDeclaration() :
-  generic_clause(0),
-  port_clause(0),
-  entity_declarative_part(0),
-  entity_statement_part(0),
-  architectures(0){}
-
-IIRBase_EntityDeclaration::~IIRBase_EntityDeclaration(){
-  delete generic_clause;
-  generic_clause = 0;
-  delete port_clause;
-  port_clause = 0;
-  delete entity_declarative_part;
-  entity_declarative_part = 0;
-  delete entity_statement_part;
-  entity_statement_part = 0;
-  delete architectures;
-  architectures = 0;
-}
+IIRBase_EntityDeclaration::IIRBase_EntityDeclaration() {}
+IIRBase_EntityDeclaration::~IIRBase_EntityDeclaration() {}
 
 // List Accessor(s)
-IIR_GenericList *
+IIR_GenericListRef
 IIRBase_EntityDeclaration::get_generic_clause() {
-  ASSERT(generic_clause != NULL);
+  ASSERT(generic_clause != nullptr);
   return generic_clause;
 }
 
-IIR_PortList *
+IIR_PortListRef
 IIRBase_EntityDeclaration::get_port_clause() {
-  ASSERT(port_clause != NULL);
+  ASSERT(port_clause != nullptr);
   return port_clause;
 }
 
-IIR_DeclarationList *
+IIR_DeclarationListRef
 IIRBase_EntityDeclaration::get_entity_declarative_part() {
-  ASSERT(entity_declarative_part != NULL);
+  ASSERT(entity_declarative_part != nullptr);
   return entity_declarative_part;
 }
 
-IIR_ArchitectureStatementList *
+IIR_ArchitectureStatementListRef
 IIRBase_EntityDeclaration::get_entity_statement_part() {
-  ASSERT(entity_statement_part != NULL);
+  ASSERT(entity_statement_part != nullptr);
   return entity_statement_part;
 }
 
-IIR_DesignUnitList *
+IIR_DesignUnitListRef
 IIRBase_EntityDeclaration::get_architectures() {
-  ASSERT(architectures != NULL);
+  ASSERT(architectures != nullptr);
   return architectures;
 }
 
 void
-IIRBase_EntityDeclaration::set_generic_clause(IIR_GenericList *new_generic_clause) {
-  ASSERT(new_generic_clause != NULL);
-  delete generic_clause;
+IIRBase_EntityDeclaration::set_generic_clause(IIR_GenericListRef new_generic_clause) {
+  ASSERT(new_generic_clause != nullptr);
   generic_clause = new_generic_clause;
 }
 
 void
-IIRBase_EntityDeclaration::set_port_clause(IIR_PortList *new_port_clause) {
-  ASSERT(new_port_clause != NULL);
-  delete port_clause;
+IIRBase_EntityDeclaration::set_port_clause(IIR_PortListRef new_port_clause) {
+  ASSERT(new_port_clause != nullptr);
   port_clause = new_port_clause;
 }
 
 void
-IIRBase_EntityDeclaration::set_entity_declarative_part(IIR_DeclarationList *new_entity_declarative_part) {
-  ASSERT(new_entity_declarative_part != NULL);
-  delete entity_declarative_part;
+IIRBase_EntityDeclaration::set_entity_declarative_part(IIR_DeclarationListRef new_entity_declarative_part) {
+  ASSERT(new_entity_declarative_part != nullptr);
   entity_declarative_part = new_entity_declarative_part;
 }
 
 void
-IIRBase_EntityDeclaration::set_entity_statement_part(IIR_ArchitectureStatementList *new_entity_statement_part) {
-  ASSERT(new_entity_statement_part != NULL);
-  delete entity_statement_part;
+IIRBase_EntityDeclaration::set_entity_statement_part(IIR_ArchitectureStatementListRef new_entity_statement_part) {
+  ASSERT(new_entity_statement_part != nullptr);
   entity_statement_part = new_entity_statement_part;
 }
 
 void
-IIRBase_EntityDeclaration::set_architectures(IIR_DesignUnitList *new_architectures) {
-  ASSERT(new_architectures != NULL);
-  delete architectures;
+IIRBase_EntityDeclaration::set_architectures(IIR_DesignUnitListRef new_architectures) {
+  ASSERT(new_architectures != nullptr);
   architectures = new_architectures;
 }
 
-IIR *
-IIRBase_EntityDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_EntityDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_EntityDeclaration *new_node = dynamic_cast<IIRBase_EntityDeclaration *>(IIRBase_LibraryUnit::convert_tree(factory));
+  IIRBase_EntityDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_EntityDeclaration>(IIRBase_LibraryUnit::convert_tree(factory));
 
   // Process the variables
-  new_node->generic_clause = dynamic_cast<IIR_GenericList *>(convert_node(generic_clause, factory));
-  new_node->port_clause = dynamic_cast<IIR_PortList *>(convert_node(port_clause, factory));
-  new_node->entity_declarative_part = dynamic_cast<IIR_DeclarationList *>(convert_node(entity_declarative_part, factory));
-  new_node->entity_statement_part = dynamic_cast<IIR_ArchitectureStatementList *>(convert_node(entity_statement_part, factory));
-  new_node->architectures = dynamic_cast<IIR_DesignUnitList *>(convert_node(architectures, factory));
+  new_node->generic_clause = my_dynamic_pointer_cast<IIR_GenericList>(convert_node(generic_clause, factory));
+  new_node->port_clause = my_dynamic_pointer_cast<IIR_PortList>(convert_node(port_clause, factory));
+  new_node->entity_declarative_part = my_dynamic_pointer_cast<IIR_DeclarationList>(convert_node(entity_declarative_part, factory));
+  new_node->entity_statement_part = my_dynamic_pointer_cast<IIR_ArchitectureStatementList>(convert_node(entity_statement_part, factory));
+  new_node->architectures = my_dynamic_pointer_cast<IIR_DesignUnitList>(convert_node(architectures, factory));
 
   return new_node;
 }
@@ -139,31 +117,19 @@ IIRBase_EntityDeclaration::get_declaration_type() {
   return ENTITY;
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_EntityDeclaration::find_declarations( IIR_Name *to_find ) {
-  savant::set<IIR_Declaration*> *retval = new savant::set<IIR_Declaration*>;
+savant::set<IIR_DeclarationRef>
+IIRBase_EntityDeclaration::find_declarations( IIR_NameRef to_find ) {
+  savant::set<IIR_DeclarationRef> retval;
 
-  savant::set<IIR_Declaration*> *current_set = get_port_clause()->find_declarations( to_find );
-  if( current_set != NULL ){
-    retval->insert( current_set );
-    delete current_set;
-  }
+  savant::set<IIR_DeclarationRef> current_set = get_port_clause()->find_declarations( to_find );
+  retval.insert( current_set );
 
   current_set = get_generic_clause()->find_declarations( to_find );
-  if( current_set != NULL ){
-    retval->insert( current_set );
-    delete current_set;
-  }
+  retval.insert( current_set );
 
   current_set = get_entity_declarative_part()->find_declarations( to_find );
-  if( current_set != NULL ){
-    retval->insert( current_set );
-    delete current_set;
-  }
-  if( retval->size() == 0 ){
-    delete retval;
-    retval = NULL;
-  }
+  retval.insert( current_set );
+
   return retval;
 }
 
@@ -186,7 +152,7 @@ IIRBase_EntityDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
     vhdl_out << ");\n";
   }
 
-  dynamic_cast<IIRBase_DeclarationList *>
+  my_dynamic_pointer_cast<IIRBase_DeclarationList>
     (get_entity_declarative_part())->publish_vhdl_decl(vhdl_out);
 
   if( get_entity_statement_part()->size() != 0) {

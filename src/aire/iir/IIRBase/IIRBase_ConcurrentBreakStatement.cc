@@ -28,72 +28,54 @@
 #include "IIR_DesignatorList.hh"
 #include "IIR_Label.hh"
 
-IIRBase_ConcurrentBreakStatement::IIRBase_ConcurrentBreakStatement() :
-  concurrent_break_list(0),
-  sensitivity_list(0),
-  condition(0){}
+IIRBase_ConcurrentBreakStatement::IIRBase_ConcurrentBreakStatement() {}
 
-IIRBase_ConcurrentBreakStatement::~IIRBase_ConcurrentBreakStatement(){
-  delete concurrent_break_list;
-  concurrent_break_list = 0;
-  delete sensitivity_list;
-  sensitivity_list = 0;
-  delete condition;
-  condition = 0;
-}
+IIRBase_ConcurrentBreakStatement::~IIRBase_ConcurrentBreakStatement() {}
 
 void
-IIRBase_ConcurrentBreakStatement::set_condition(IIR* condition){
+IIRBase_ConcurrentBreakStatement::set_condition(IIRRef condition){
   this->condition = condition;
 }
 
-IIR*
+IIRRef
 IIRBase_ConcurrentBreakStatement::get_condition(){
   return condition;
 }
 
 // List Accessor(s)
-IIR_BreakList *
+IIR_BreakListRef
 IIRBase_ConcurrentBreakStatement::get_concurrent_break_list() {
-  ASSERT (concurrent_break_list != NULL);
+  ASSERT (concurrent_break_list != nullptr);
   return concurrent_break_list;
 }
 
 void
-IIRBase_ConcurrentBreakStatement::set_concurrent_break_list(IIR_BreakList * new_concurrent_break_list) {
-  ASSERT (new_concurrent_break_list != NULL);
-
-  if (concurrent_break_list != NULL)
-    delete concurrent_break_list;
-
+IIRBase_ConcurrentBreakStatement::set_concurrent_break_list(IIR_BreakListRef new_concurrent_break_list) {
+  ASSERT (new_concurrent_break_list != nullptr);
   concurrent_break_list = new_concurrent_break_list;
 }
 
-IIR_DesignatorList *
+IIR_DesignatorListRef
 IIRBase_ConcurrentBreakStatement::get_sensitivity_list() {
-  ASSERT (sensitivity_list != NULL);
+  ASSERT (sensitivity_list != nullptr);
   return sensitivity_list;
 }
 
 void
-IIRBase_ConcurrentBreakStatement::set_sensitivity_list(IIR_DesignatorList * new_sensitivity_list) {
-  ASSERT (new_sensitivity_list != NULL);
-
-  if (sensitivity_list != NULL)
-    delete sensitivity_list;
-
+IIRBase_ConcurrentBreakStatement::set_sensitivity_list(IIR_DesignatorListRef new_sensitivity_list) {
+  ASSERT (new_sensitivity_list != nullptr);
   sensitivity_list = new_sensitivity_list;
 }
 
 
-IIR *
-IIRBase_ConcurrentBreakStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ConcurrentBreakStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ConcurrentBreakStatement *new_node = dynamic_cast<IIRBase_ConcurrentBreakStatement *>(IIRBase_ConcurrentBreakStatement::convert_tree(factory));
+  IIRBase_ConcurrentBreakStatementRef new_node = my_dynamic_pointer_cast<IIRBase_ConcurrentBreakStatement>(IIRBase_ConcurrentBreakStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->concurrent_break_list = dynamic_cast<IIR_BreakList *>(convert_node(concurrent_break_list,factory));
-  new_node->sensitivity_list = dynamic_cast<IIR_DesignatorList *>(convert_node(sensitivity_list,factory));
+  new_node->concurrent_break_list = my_dynamic_pointer_cast<IIR_BreakList>(convert_node(concurrent_break_list,factory));
+  new_node->sensitivity_list = my_dynamic_pointer_cast<IIR_DesignatorList>(convert_node(sensitivity_list,factory));
   new_node->condition = convert_node(condition, factory);
 
   return new_node;

@@ -31,8 +31,9 @@
 
 #include "savant_config.hh"
 #include "IIR_ConcurrentStatement.hh"
-class IIR_DeclarationList;
-class IIR_SequentialStatementList;
+
+REF_FORWARD_DECL(IIR_DeclarationList);
+REF_FORWARD_DECL(IIR_SequentialStatementList);
 
 class IIR_ProcessStatement : public virtual IIR_ConcurrentStatement{
 
@@ -40,15 +41,15 @@ public:
   virtual ~IIR_ProcessStatement() {}    
 
   // List accessor(s)
-  virtual IIR_DeclarationList           *get_process_declarative_part() = 0;
-  virtual IIR_SequentialStatementList   *get_process_statement_part() = 0;
-  virtual void                          set_process_declarative_part(IIR_DeclarationList *) = 0;
-  virtual void                          set_process_statement_part(IIR_SequentialStatementList *) = 0;
+  virtual IIR_DeclarationListRef         get_process_declarative_part() = 0;
+  virtual IIR_SequentialStatementListRef get_process_statement_part() = 0;
+  virtual void                           set_process_declarative_part(IIR_DeclarationListRef ) = 0;
+  virtual void                           set_process_statement_part(IIR_SequentialStatementListRef ) = 0;
 
   virtual void set_postponed( IIR_Boolean postponed) = 0;
   virtual IIR_Boolean get_postponed() = 0;
 
-  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_Name * ) = 0;
+  virtual savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef ) = 0;
 };
 
 typedef refcount<IIR_ProcessStatement> IIR_ProcessStatementRef;

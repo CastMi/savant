@@ -34,6 +34,8 @@
 #include "IIRScram.hh"
 #include "IIRBase_Name.hh"
 #include "savant.hh"
+#include "set.hh"
+#include "IIRScram_TypeDefinition.hh"
 
 class IIRScram_Declaration;
 class IIRScram_DesignatorList;
@@ -46,11 +48,11 @@ class IIRScram_TypeDefinition;
 class IIRScram_Name : public virtual IIRScram, public virtual IIRBase_Name{
 
 public:
-  static IIRScram **lookup( IIRScram_Identifier *identifier,
+  static IIRScram **lookup( IIRScram_IdentifierRef identifier,
                             IIR_Int32      &number_of_matches,
                             IIRScram            *&first_match);
 
-  static IIRScram **lookup( IIRScram_Name    *name,
+  static IIRScram **lookup( IIRScram_NameRef name,
                             IIR_Int32   &number_of_matches,
                             IIRScram         *&first_match);
 
@@ -61,34 +63,34 @@ public:
 
   virtual IIR_Boolean _is_by_all(){ return FALSE; }
 
-  virtual void set_subtype( IIR_TypeDefinition * );
+  virtual void set_subtype( IIR_TypeDefinitionRef  );
 
-  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup();
-  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup( IIRScram_Declaration * );
-  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup( savant::set<IIRScram_Declaration*> * );
-  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup( constraint_functor *functor );
+  virtual savant::set<IIRScram_DeclarationRef> _symbol_lookup();
+  virtual savant::set<IIRScram_DeclarationRef> _symbol_lookup( IIRScram_DeclarationRef );
+  virtual savant::set<IIRScram_DeclarationRef> _symbol_lookup( savant::set<IIRScram_DeclarationRef> );
+  virtual savant::set<IIRScram_DeclarationRef> _symbol_lookup( constraint_functor *functor );
 
-  IIRScram_TextLiteral *_get_string();
+  IIRScram_TextLiteralRef _get_string();
 
-  savant::set<IIRScram_TypeDefinition*> *
+  savant::set<IIRScram_TypeDefinitionRef>
   _get_rval_set(constraint_functor *functor = 0){ 
     return IIRScram::_get_rval_set( functor );
   }
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_TypeDefinition*> *search_in,
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set( savant::set<IIRScram_TypeDefinitionRef> search_in,
                                                        constraint_functor *functor = 0 );
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_Declaration*> *search_in,
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set( savant::set<IIRScram_DeclarationRef> search_in,
                                                        constraint_functor *functor = 0 );
 
-  IIRScram *_get_prefix();
+  IIRScramRef _get_prefix();
 
-  virtual IIRScram *_get_suffix() { return NULL; }
+  virtual IIRScramRef _get_suffix() { return NULL; }
 
-  virtual void _set_suffix(IIRScram *suffix);
+  virtual void _set_suffix(IIRScramRef suffix);
 
-  void _clone( IIRScram * );
+  void _clone( IIRScramRef );
 
-  virtual void _build_lib( IIRScram_LibraryUnit * );
+  virtual void _build_lib( IIRScram_LibraryUnitRef );
 
 protected:    
 private:

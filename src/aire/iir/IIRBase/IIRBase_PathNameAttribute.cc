@@ -24,20 +24,20 @@
 #include "IIR_DesignFile.hh"
 #include "IIR_TypeDefinition.hh"
 #include "StandardPackage.hh"
+#include <cstring>
 
 IIRBase_PathNameAttribute::IIRBase_PathNameAttribute() {}
-
 IIRBase_PathNameAttribute::~IIRBase_PathNameAttribute() {}
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_PathNameAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_string_type();
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_PathNameAttribute::build_attribute_name() {
-  const char *name = "pathname";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("pathname");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 

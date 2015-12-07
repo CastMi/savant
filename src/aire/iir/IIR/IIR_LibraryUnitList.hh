@@ -39,10 +39,10 @@ class IIR_LibraryUnitList : public virtual IIR_DeclarationList{
 public:
   virtual ~IIR_LibraryUnitList() {}
 
-  virtual void append( IIR_LibraryUnit * ) = 0;  
-  virtual IIR *first() = 0;
-  virtual IIR *last() = 0;
-  virtual IIR *successor( IIR_LibraryUnit * ) = 0;
+  virtual void append( IIR_LibraryUnitRef ) = 0;  
+  virtual IIRRef first() = 0;
+  virtual IIRRef last() = 0;
+  virtual IIRRef successor( IIR_LibraryUnitRef ) = 0;
 };
 
 typedef refcount<IIR_LibraryUnitList> IIR_LibraryUnitListRef;

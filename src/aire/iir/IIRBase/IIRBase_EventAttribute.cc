@@ -28,27 +28,28 @@
 #include "IIR_VariableDeclaration.hh"
 #include "StandardPackage.hh"
 #include "plugin_class_factory.hh"
+#include <cstring>
 
 IIRBase_EventAttribute::IIRBase_EventAttribute(){}
 
 IIRBase_EventAttribute::~IIRBase_EventAttribute(){}
 
 // The Event attribute is a boolean function valued attribute...
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_EventAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_boolean_type();
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_EventAttribute::build_attribute_name() {
-  const char *name = "event";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );
+   std::string name("event");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory() );
 }
 
-IIR_VariableDeclaration *
+IIR_VariableDeclarationRef
 IIRBase_EventAttribute::build_implicit_variable( const string &declarator,
-                                                 IIR_TypeDefinition * ){
-  IIR_VariableDeclaration *variable = get_design_file()->get_class_factory()->new_IIR_VariableDeclaration();
+                                                 IIR_TypeDefinitionRef ){
+  IIR_VariableDeclarationRef variable = get_design_file()->get_class_factory()->new_IIR_VariableDeclaration();
   variable->set_declarator( IIRBase_Identifier::get( declarator, get_design_file()->get_class_factory()) );
   variable->set_subtype( get_design_file()->get_standard_package()->get_time_type() );
 

@@ -22,37 +22,35 @@
 #include "IIRBase_DesignFile.hh"
 #include "IIRBase_Identifier.hh"
 #include "savant.hh"
+#include <cstring>
 
-IIRBase_DelayedAttribute::IIRBase_DelayedAttribute(){
-  suffix = NULL;
-}
-
-IIRBase_DelayedAttribute::~IIRBase_DelayedAttribute(){}
+IIRBase_DelayedAttribute::IIRBase_DelayedAttribute() {}
+IIRBase_DelayedAttribute::~IIRBase_DelayedAttribute() {}
 
 void 
-IIRBase_DelayedAttribute::set_suffix( IIR *suffix ){
+IIRBase_DelayedAttribute::set_suffix( IIRRef suffix ){
   this->suffix = suffix;
 }
 
-IIR *
+IIRRef
 IIRBase_DelayedAttribute::get_suffix(){
   return suffix;
 }
 
-IIR *
-IIRBase_DelayedAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_DelayedAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_DelayedAttribute *new_node = dynamic_cast<IIRBase_DelayedAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_DelayedAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_DelayedAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_DelayedAttribute::build_attribute_name() {
-  const char *name = "delayed";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );
+   std::string name("delayed");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory() );
 }
 
 void 

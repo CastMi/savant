@@ -37,8 +37,8 @@ class IIR_RightOfAttribute : public virtual IIR_Attribute{
 public:
   virtual ~IIR_RightOfAttribute() {}
     
-  virtual void set_suffix( IIR *suffix ) = 0;
-  virtual IIR *get_suffix() = 0;
+  virtual void set_suffix( IIRRef suffix ) = 0;
+  virtual IIRRef get_suffix() = 0;
 };
 
 typedef refcount<IIR_RightOfAttribute> IIR_RightOfAttributeRef;

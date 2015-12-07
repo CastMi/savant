@@ -39,10 +39,10 @@ public:
   void set_mode(IIR_Mode mode);
   IIR_Mode get_mode();
 
-  void set_value(IIR* value);
-  IIR* get_value();
+  void set_value(IIRRef value);
+  IIRRef get_value();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
   IIR_Boolean is_interface() { return TRUE; };
   IIR_Boolean is_object() { return TRUE;}
 
@@ -55,7 +55,7 @@ protected:
     
 private:
 
-  IIR* value;
+  IIRRef value;
   IIR_Mode mode;
 
 };

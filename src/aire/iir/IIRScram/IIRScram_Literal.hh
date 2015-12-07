@@ -48,7 +48,7 @@ public:
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return FALSE; }
   
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef );
 
 protected:
 private:

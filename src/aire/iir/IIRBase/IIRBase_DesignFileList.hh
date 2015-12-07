@@ -36,14 +36,14 @@ class IIR_DesignFile;
 class IIRBase_DesignFileList : public virtual IIRBase_List, public virtual IIR_DesignFileList{
 
 public:
-  IIR_Kind get_kind() const {return IIR_DESIGN_FILE_LIST;}
-  const IIR_Char *get_kind_text() const {return "IIR_DesignFileList";}
+  IIR_Kind get_kind() const override { return IIR_DESIGN_FILE_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_DesignFileList"); }
 
-  void prepend( IIR_DesignFile *);
-  void append( IIR_DesignFile * );
-  IIR *successor( IIR_DesignFile * );
-  IIR *predecessor( IIR_DesignFile * );
-  IIR *first( );
+  void prepend( IIR_DesignFileRef );
+  void append( IIR_DesignFileRef );
+  IIRRef successor( IIR_DesignFileRef );
+  IIRRef predecessor( IIR_DesignFileRef );
+  IIRRef first( );
 
 protected:
   IIRBase_DesignFileList();

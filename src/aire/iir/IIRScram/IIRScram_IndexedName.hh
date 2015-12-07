@@ -54,19 +54,19 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  IIRScram_Declaration* _get_package_declaration();
+  IIRScram_DeclarationRef _get_package_declaration();
   
   /** This has to return a set because we can't always precisely determine
       the type without context... */
-  savant::set<IIRScram_TypeDefinition*> *_return_type_given_prefix_declaration( IIRScram_Declaration *prefix_decl );
+  savant::set<IIRScram_TypeDefinitionRef> _return_type_given_prefix_declaration( IIRScram_DeclarationRef prefix_decl );
 
-  savant::set<IIRScram_Declaration*> *_symbol_lookup();
-  savant::set<IIRScram_Declaration*> *_symbol_lookup( savant::set<IIRScram_Declaration*> *);
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_Declaration*> *, 
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup();
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup( savant::set<IIRScram_DeclarationRef> );
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0);
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set( savant::set<IIRScram_DeclarationRef> , 
                                                        constraint_functor *functor = 0);
 
-  IIRScram_TypeDefinition *_get_name_type();
+  IIRScram_TypeDefinitionRef _get_name_type();
 
   IIR_Boolean _is_readable();
   IIR_Boolean _is_writable();
@@ -75,57 +75,57 @@ public:
       array access (returns TRUE) or a slice? */
   IIR_Boolean _is_array_access();
 
-  IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition*> *context_set );
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
-  IIRScram *_rval_to_decl( IIRScram_Declaration *, IIRScram_TypeDefinition * );
-  IIRScram_Declaration *_determine_decl_in_set( savant::set<IIRScram_Declaration*> *, IIRScram_TypeDefinition * );
+  IIRScramRef _semantic_transform( savant::set<IIRScram_TypeDefinitionRef> context_set );
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef );
+  IIRScramRef _rval_to_decl( IIRScram_DeclarationRef , IIRScram_TypeDefinitionRef  );
+  IIRScram_DeclarationRef _determine_decl_in_set( savant::set<IIRScram_DeclarationRef> , IIRScram_TypeDefinitionRef  );
 
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
 
   // Override the IIR_Name default
-  void set_subtype(IIR_TypeDefinition *type) { IIRBase::set_subtype(type); }
+  void set_subtype(IIR_TypeDefinitionRef type) { IIRBase::set_subtype(type); }
 
-  IIRScram *_get_suffix();
-  IIRScram *_get_prefix();
-  IIRScram *_clone();
+  IIRScramRef _get_suffix();
+  IIRScramRef _get_prefix();
+  IIRScramRef _clone();
 
   // This is for type checking.  Assume this indexed name is a
   // function call, and create an IIRScram_FunctionCall if it really is.
   // Return NULL if it's not.
-  IIRScram *_process_as_function_call( savant::set<IIRScram_TypeDefinition*> *context_set );
+  IIRScramRef _process_as_function_call( savant::set<IIRScram_TypeDefinitionRef> context_set );
 
   // Same as above, but for a type conversion...
-  IIRScram *_process_as_type_conversion( savant::set<IIRScram_TypeDefinition*> * );
+  IIRScramRef _process_as_type_conversion( savant::set<IIRScram_TypeDefinitionRef> );
 
   // (See IIRScram.hh for description)
-  IIRScram_Declaration *_find_formal_declaration();
+  IIRScram_DeclarationRef _find_formal_declaration();
 
-  IIRScram_GenericList *_get_generic_list();
-  IIRScram_PortList *_get_port_list();
+  IIRScram_GenericListRef _get_generic_list();
+  IIRScram_PortListRef _get_port_list();
 
   IIR_Mode _get_mode();
 
-  void _set_my_rval( IIRScram_TypeDefinition *new_rval );
+  void _set_my_rval( IIRScram_TypeDefinitionRef new_rval );
 
-  IIRScram *_get_index(int index_num);
+  IIRScramRef _get_index(int index_num);
 
 protected:    
 private:
   // Same as above, but for an array...
-  IIRScram *_process_as_array( savant::set<IIRScram_TypeDefinition*> * );
+  IIRScramRef _process_as_array( savant::set<IIRScram_TypeDefinitionRefRef> );
   // Same as above, but for a slice...
-  IIRScram *_process_as_slice( savant::set<IIRScram_TypeDefinition*> * );
+  IIRScramRef _process_as_slice( savant::set<IIRScram_TypeDefinitionRef> );
 
-  savant::set<IIRScram_TypeDefinition*> *_my_type_given_array_prefix_type( IIRScram_TypeDefinition * );
+  savant::set<IIRScram_TypeDefinitionRef> _my_type_given_array_prefix_type( IIRScram_TypeDefinitionRef  );
 
-  IIRScram_SliceName *_build_slice( IIRScram_TypeDefinition * );
+  IIRScram_SliceNameRef _build_slice( IIRScram_TypeDefinitionRef  );
 
-  savant::set<IIRScram_TypeDefinition*> *_get_array_prefixes();
+  savant::set<IIRScram_TypeDefinitionRef> _get_array_prefixes();
 
   // This flag tells us when calculating rvals whether we need to consider
   // that this node might represent a function call.
   IIR_Boolean _been_transformed;
-  savant::set<IIRScram_TypeDefinition*> *_my_rval_set;
+  savant::set<IIRScram_TypeDefinitionRef> _my_rval_set;
   IIR_Boolean _have_rval_set;
 };
 

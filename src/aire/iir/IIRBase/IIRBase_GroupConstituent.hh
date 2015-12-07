@@ -36,13 +36,13 @@
 class IIRBase_GroupConstituent : public virtual IIRBase_Tuple, public virtual IIR_GroupConstituent{
 
 public:
-  IIR_Kind get_kind() const {return IIR_GROUP_CONSTITUENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_GroupConstituent";}
+  IIR_Kind get_kind() const override { return IIR_GROUP_CONSTITUENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_GroupConstituent"); }
 
-  void set_name( IIR* name);
-  IIR* get_name();
+  void set_name( IIRRef name );
+  IIRRef get_name();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -50,7 +50,7 @@ protected:
   virtual ~IIRBase_GroupConstituent() = 0;
     
 private:
-  IIR* name;  
+  IIRRef name;  
 
 };
 

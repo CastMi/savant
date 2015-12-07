@@ -35,8 +35,8 @@
 class IIRBase_SimpleName : public virtual IIRBase_Name, public virtual IIR_SimpleName{
 public:
 
-  IIR_Kind get_kind() const {return IIR_SIMPLE_NAME;}
-  const IIR_Char *get_kind_text() const {return "IIR_SimpleName";}
+  IIR_Kind get_kind() const override { return IIR_SIMPLE_NAME; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SimpleName"); }
 
   IIR_Boolean is_component_declaration() { return TRUE; }
 

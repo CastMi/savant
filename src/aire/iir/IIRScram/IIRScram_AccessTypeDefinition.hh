@@ -34,19 +34,21 @@
 #include "IIRScram_TypeDefinition.hh"
 #include "IIRBase_AccessTypeDefinition.hh"
 
+REF_FORWARD_DECL(IIRScram_AccessTypeDefinition);
+REF_FORWARD_DECL(IIRScram_AccessSubtypeDefinition);
 class IIRScram_Name;
 class IIRScram_FunctionDeclaration;
-class IIRScram_AccessTypeDefinition;
 class IIRScram_ScalarTypeDefinition;
 class IIRScram_TypeDeclaration;
-class IIRScram_AccessSubtypeDefinition;
 
 class IIRScram_AccessTypeDefinition : public virtual IIRScram_TypeDefinition, public virtual IIRBase_AccessTypeDefinition{
 
 public:
   IIRScram_AccessTypeDefinition();
+  //FIXME: the destructor should be protected
+  virtual ~IIRScram_AccessTypeDefinition();
 
-  static IIRScram_AccessTypeDefinition *get( IIRScram_TypeDefinition *designated_type );
+  static IIRScram_AccessTypeDefinitionRef get( IIRScram_TypeDefinitionRef designated_type );
 
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
@@ -55,33 +57,32 @@ public:
   IIR_Boolean _is_iir_access_type_definition() { return TRUE; }
   IIR_Boolean _designates_incomplete_type();
 
-  IIRScram_TypeDefinition *_get_element_subtype();
+  IIRBase_TypeDefinitionRef _get_element_subtype();
 
   IIR_Int32 get_num_indexes();
   
-  virtual void _set_resolution_function( IIRScram_FunctionDeclaration * );
+  virtual void _set_resolution_function( IIRScram_FunctionDeclarationRef  );
 
-  IIRScram_TypeDefinition *_index_constrain_array( IIRScram_ScalarTypeDefinition *);
+  IIRScram_TypeDefinitionRef _index_constrain_array( IIRScram_ScalarTypeDefinitionRef );
   
   void set_is_element( IIR_Boolean );  
   
-  virtual IIRScram *_clone();
-  virtual void _clone( IIRScram * );
+  virtual IIRScramRef _clone();
+  virtual void _clone( IIRScramRef );
 
-  void _come_into_scope( symbol_table *sym_tab, IIRScram_TypeDeclaration *);
+  void _come_into_scope( symbol_table *sym_tab, IIRScram_TypeDeclarationRef );
   void _come_out_of_scope( symbol_table *sym_tab );
 
-  static IIRScram_AccessSubtypeDefinition *_construct_new_type( IIRScram_TypeDefinition         *designated_type,
-                                                                IIRScram_TypeDeclaration        *type_decl,
-                                                                IIRScram_DesignFile             *design_file);
+  static IIRScram_AccessSubtypeDefinitionRef _construct_new_type( IIRScram_TypeDefinitionRef designated_type,
+                                                                IIRScram_TypeDeclarationRef  type_decl,
+                                                                IIRScram_DesignFileRef       design_file);
 
   // Helper Functions
-  IIRScram_TypeDefinition* _get_designated_type();
+  IIRScram_TypeDefinitionRef _get_designated_type();
 protected:
-  virtual ~IIRScram_AccessTypeDefinition();
   
-  IIRScram_TypeDefinition *_construct_new_subtype( IIRScram_Name                        *resolution_function, 
-                                                   IIRScram_ScalarTypeDefinition        *new_constraint);
+  IIRScram_TypeDefinitionRef _construct_new_subtype( IIRScram_NameRef                     resolution_function, 
+                                                   IIRScram_ScalarTypeDefinitionRef     new_constraint);
     
 private:
 };

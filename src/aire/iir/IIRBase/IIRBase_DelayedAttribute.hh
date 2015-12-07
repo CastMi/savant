@@ -35,15 +35,15 @@
 class IIRBase_DelayedAttribute : public virtual IIRBase_Attribute, public virtual IIR_DelayedAttribute{
 
 public:
-  IIR_Kind get_kind() const {return IIR_DELAYED_ATTRIBUTE;}
-  const IIR_Char *get_kind_text() const {return "IIR_DelayedAttribute";}
+  IIR_Kind get_kind() const override { return IIR_DELAYED_ATTRIBUTE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_DelayedAttribute"); }
 
-  void set_suffix( IIR *suffix );
-  IIR *get_suffix();
+  void set_suffix( IIRRef suffix );
+  IIRRef get_suffix();
 
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_signal(){ return TRUE; }
   IIR_Boolean has_suffix(){ return TRUE; }
@@ -53,7 +53,7 @@ protected:
   virtual ~IIRBase_DelayedAttribute() = 0;
     
 private:
-  IIR *suffix;
+  IIRRef suffix;
 };
 
 typedef refcount<IIRBase_DelayedAttribute> IIRBase_DelayedAttributeRef;

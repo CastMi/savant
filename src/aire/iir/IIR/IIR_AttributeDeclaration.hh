@@ -45,8 +45,8 @@ public:
    user defined get_attributes() are a different matter) These methods are so
    the parser gan easily determine things like if this is a signal
    valued attribute and so forth. */
-  virtual IIR_Attribute *get_attribute() = 0;
-  virtual void set_attribute( IIR_Attribute * ) = 0;
+  virtual IIR_AttributeRef get_attribute() = 0;
+  virtual void set_attribute( IIR_AttributeRef  ) = 0;
 };
 
 typedef refcount<IIR_AttributeDeclaration> IIR_AttributeDeclarationRef;

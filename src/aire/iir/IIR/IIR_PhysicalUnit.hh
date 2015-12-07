@@ -33,21 +33,21 @@
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
 
-class IIR_PhysicalUnit;
-class IIR_AttributeSpecificationList;
+REF_FORWARD_DECL(IIR_AttributeSpecificationList);
+REF_FORWARD_DECL(IIR_PhysicalUnit);
 
 class IIR_PhysicalUnit : public virtual IIR_Declaration{
 public:
   virtual ~IIR_PhysicalUnit() {}    
 
   // List accessor(s)
-  virtual IIR_AttributeSpecificationList        *get_attributes() = 0;
-  virtual void                                  set_attributes(IIR_AttributeSpecificationList *) = 0;
+  virtual IIR_AttributeSpecificationListRef get_attributes() = 0;
+  virtual void                              set_attributes( IIR_AttributeSpecificationListRef ) = 0;
 
-  virtual void set_multiplier(IIR*) = 0;
-  virtual IIR *get_multiplier() = 0;
-  virtual void set_unit_name(IIR_PhysicalUnit*) = 0;
-  virtual IIR_PhysicalUnit* get_unit_name() = 0;
+  virtual void set_multiplier( IIRRef ) = 0;
+  virtual IIRRef get_multiplier() = 0;
+  virtual void set_unit_name( IIR_PhysicalUnitRef ) = 0;
+  virtual IIR_PhysicalUnitRef get_unit_name() = 0;
 };
 
 typedef refcount<IIR_PhysicalUnit> IIR_PhysicalUnitRef;

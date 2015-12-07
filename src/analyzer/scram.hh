@@ -67,7 +67,7 @@ public:
 
   /** This method returns the IIR_LibraryDeclaration that was used for this
       execution of the parser for the VHDL library "work". */
-  IIR_LibraryDeclaration *get_work_library() const;
+  IIR_LibraryDeclarationRef get_work_library() const;
 
   /** Return the symbol_table associated with this parser. */
   symbol_table                  *get_symbol_table() const { return my_symbol_table; }
@@ -76,21 +76,21 @@ public:
   StandardPackage               *get_standard_package() const { return my_std_package; }
 
   /** Return the class factory associated with this parser */
-  plugin_class_factory       *get_class_factory() const { return my_class_factory; }
+  plugin_class_factoryRef get_class_factory() const { return my_class_factory; }
 
   /** Does this parser need to write out VHDL libraries? */
   void set_need_to_write_libraries(bool value){
     need_to_write_libraries=value;
   }
 
-  scram                         *convert_node(plugin_class_factory *);
+  scramRef                         convert_node( plugin_class_factoryRef );
 
 private:
   symbol_table                  *my_symbol_table;
   bool                          need_to_write_libraries;
   IIR_LibraryDeclaration        *my_work_library;
   StandardPackage               *my_std_package;
-  plugin_class_factory          *my_class_factory;
+  plugin_class_factoryRef       my_class_factory;
   IIR_DesignFileList            *my_design_files;
 
   scram                         *transmuted_node;

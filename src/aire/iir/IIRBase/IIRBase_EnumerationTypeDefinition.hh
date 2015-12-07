@@ -38,18 +38,18 @@ class IIRBase_EnumerationTypeDefinition : public virtual IIRBase_ScalarTypeDefin
 
 public:
   // List Accessor(s)
-  IIR_EnumerationLiteralList *get_enumeration_literals();
-  void set_enumeration_literals(IIR_EnumerationLiteralList *new_enumeration_literals);
+  IIR_EnumerationLiteralListRef get_enumeration_literals();
+  void set_enumeration_literals(IIR_EnumerationLiteralListRef new_enumeration_literals);
 
-  IIR_Kind get_kind() const { return IIR_ENUMERATION_TYPE_DEFINITION; }
-  const IIR_Char *get_kind_text() const { return "IIR_EnumerationTypeDefinition"; }
-  IIR_FunctionDeclaration* get_resolution_function() { return NULL; }
+  IIR_Kind get_kind() const override { return IIR_ENUMERATION_TYPE_DEFINITION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_EnumerationTypeDefinition"); }
+  IIR_FunctionDeclarationRef get_resolution_function() { return NULL; }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
   IIR_Boolean is_enumeration_type(){ return true; }
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral * );
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *  );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_TextLiteralRef  );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef   );
 
   IIR_Boolean is_character_type();
   IIR_Boolean is_discrete_type(){ return true;  }
@@ -62,7 +62,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_EnumerationLiteralList *enumeration_literals;
+  IIR_EnumerationLiteralListRef enumeration_literals;
 
 };
 

@@ -47,21 +47,21 @@ public:
 
   const string convert_to_library_name(){ return ""; }
   
-  savant::set<IIRScram_Declaration*> *_symbol_lookup( savant::set<IIRScram_Declaration*> * );
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup( savant::set<IIRScram_DeclarationRef> );
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_Declaration*> *, 
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set( savant::set<IIRScram_DeclarationRef>, 
                                                        constraint_functor *functor = 0 );
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_TypeDefinition*> *, 
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set( savant::set<IIRScram_TypeDefinitionRef>, 
                                                        constraint_functor *functor = 0 );
 
 
-  IIRScram_Declaration *_determine_decl_in_set( savant::set<IIRScram_Declaration*> *, IIRScram_TypeDefinition * );
-  IIRScram_TypeDefinition *_determine_rval_in_set( savant::set<IIRScram_TypeDefinition*> *prefix_types,
-                                                   IIRScram_TypeDefinition *return_type );
+  IIRScram_DeclarationRef _determine_decl_in_set( savant::set<IIRScram_DeclarationRef>, IIRScram_TypeDefinitionRef );
+  IIRScram_TypeDefinitionRef _determine_rval_in_set( savant::set<IIRScram_TypeDefinitionRef> prefix_types,
+                                                   IIRScram_TypeDefinitionRef return_type );
 
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition *prefix_type, IIRScram_TypeDefinition *suffix_rval );
-  IIRScram *_rval_to_decl( IIRScram_Declaration *prefix_decl, IIRScram_TypeDefinition *suffix_rval );
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef prefix_type, IIRScram_TypeDefinitionRef suffix_rval );
+  IIRScramRef _rval_to_decl( IIRScram_DeclarationRef prefix_decl, IIRScram_TypeDefinitionRef suffix_rval );
   IIR_Boolean _is_writable(){ return TRUE; };
   IIR_Boolean _is_readable(){ return TRUE; };
   IIR_Boolean _is_by_all(){ return TRUE; }

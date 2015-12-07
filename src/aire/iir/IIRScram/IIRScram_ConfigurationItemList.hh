@@ -43,11 +43,11 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  void _type_check_configuration_item( IIRScram_List *statement_list, IIRScram *enclosing_region );
+  void _type_check_configuration_item( IIRScram_ListRef statement_list, IIRScramRef enclosing_region );
 
-  IIRScram_ConfigurationItem *first();
-  IIRScram_ConfigurationItem *successor( IIRScram_ConfigurationItem * );
-  void append( IIRScram_ConfigurationItem * );
+  IIRScram_ConfigurationItemRef first();
+  IIRScram_ConfigurationItemRef successor( IIRScram_ConfigurationItemRef  );
+  void append( IIRScram_ConfigurationItemRef  );
 
 protected:
 private:

@@ -32,12 +32,12 @@ class IIRScram_ArchitectureStatement : public virtual IIRScram_Statement, public
 public:
   IIRScram_ArchitectureStatement();
   virtual ~IIRScram_ArchitectureStatement();
-  virtual IIRScram* _get_instantiated_unit() {
+  virtual IIRRef _get_instantiated_unit() {
     _report_undefined_scram_fn("_get_instantiated_unit()");
-    return NULL;
+    return IIRRef();
   };
 
-  virtual IIRScram_AssociationList *_get_generic_map_aspect() {
+  virtual IIRScram_AssociationListRef _get_generic_map_aspect() {
     _report_undefined_scram_fn("_get_generic_map_aspect()");
     return NULL;
   }
@@ -51,7 +51,7 @@ public:
   // This method should be overloaded by statements that contain concurrent
   // statement lists.  Currently it's overloaded for concurrent generate for
   // and concurrent generate if statements only.
-  IIRScram_ArchitectureStatementList *_get_architecture_statment_list(){ return NULL; }
+  IIRScram_ArchitectureStatementListRef _get_architecture_statment_list(){ return NULL; }
   
 protected:  
   virtual void _resolve_guard_signal( symbol_table * );

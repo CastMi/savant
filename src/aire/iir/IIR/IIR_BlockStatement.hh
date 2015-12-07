@@ -31,11 +31,11 @@
 #include "savant_config.hh"
 #include "IIR_ConcurrentStatement.hh"
 
+REF_FORWARD_DECL(IIR_GenericList);
+REF_FORWARD_DECL(IIR_PortList);
+REF_FORWARD_DECL(IIR_AssociationList);
 class IIR_ArchitectureStatementList;
-class IIR_AssociationList;
 class IIR_DeclarationList;
-class IIR_GenericList;
-class IIR_PortList;
 class IIR_SignalDeclaration;
 
 class IIR_BlockStatement : public virtual IIR_ConcurrentStatement{
@@ -44,24 +44,24 @@ public:
   virtual ~IIR_BlockStatement() {}
 
   // List accessor(s)
-  virtual IIR_GenericList                       *get_generic_clause() = 0;
-  virtual IIR_AssociationList                   *get_generic_map_aspect() = 0;
-  virtual IIR_PortList                          *get_port_clause() = 0;
-  virtual IIR_AssociationList                   *get_port_map_aspect() = 0;
-  virtual IIR_DeclarationList                   *get_block_declarative_part() = 0;
-  virtual IIR_ArchitectureStatementList         *get_block_statement_part() = 0;
-  virtual void                                  set_generic_clause(IIR_GenericList *) = 0;
-  virtual void                                  set_generic_map_aspect(IIR_AssociationList *) = 0;
-  virtual void                                  set_port_clause(IIR_PortList *) = 0;
-  virtual void                                  set_port_map_aspect(IIR_AssociationList *) = 0;
-  virtual void                                  set_block_declarative_part(IIR_DeclarationList *) = 0;
-  virtual void                                  set_block_statement_part(IIR_ArchitectureStatementList *) = 0;
+  virtual IIR_GenericListRef get_generic_clause() = 0;
+  virtual IIR_AssociationListRef get_generic_map_aspect() = 0;
+  virtual IIR_PortListRef get_port_clause() = 0;
+  virtual IIR_AssociationListRef get_port_map_aspect() = 0;
+  virtual IIR_DeclarationListRef get_block_declarative_part() = 0;
+  virtual IIR_ArchitectureStatementListRef get_block_statement_part() = 0;
+  virtual void                                  set_generic_clause(IIR_GenericListRef ) = 0;
+  virtual void                                  set_generic_map_aspect(IIR_AssociationListRef ) = 0;
+  virtual void                                  set_port_clause(IIR_PortListRef ) = 0;
+  virtual void                                  set_port_map_aspect(IIR_AssociationListRef ) = 0;
+  virtual void                                  set_block_declarative_part(IIR_DeclarationListRef ) = 0;
+  virtual void                                  set_block_statement_part(IIR_ArchitectureStatementListRef ) = 0;
 
-  virtual void set_guard_expression( IIR *guard_expression ) = 0;
-  virtual IIR *get_guard_expression() = 0;
+  virtual void set_guard_expression( IIRRef guard_expression ) = 0;
+  virtual IIRRef get_guard_expression() = 0;
 
-  virtual IIR_SignalDeclaration         *get_implicit_guard_signal( ) = 0;
-  virtual void                          set_implicit_guard_signal( IIR_SignalDeclaration * ) = 0;
+  virtual IIR_SignalDeclarationRef get_implicit_guard_signal( ) = 0;
+  virtual void                          set_implicit_guard_signal( IIR_SignalDeclarationRef  ) = 0;
 };
 
 typedef refcount<IIR_BlockStatement> IIR_BlockStatementRef;

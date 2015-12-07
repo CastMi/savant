@@ -41,9 +41,9 @@ public:
       for a nature definition. */
 
   // Helper Functions
-  IIRScram_TypeDefinition               *_get_through();
-  IIRScram_TypeDefinition               *_get_across();
-  IIRScram_TerminalDeclaration          *_get_reference_terminal();
+  IIRScram_TypeDefinitionRef       _get_through();
+  IIRScram_TypeDefinitionRef       _get_across();
+  IIRScram_TerminalDeclarationRef  _get_reference_terminal();
 
 protected:
 private:

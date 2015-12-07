@@ -42,22 +42,22 @@ class IIRBase_Label : public virtual IIRBase_Declaration,
 
 public:
   // List Accessor(s)
-  IIR_AttributeSpecificationList *get_attributes();
-  void                           set_attributes(IIR_AttributeSpecificationList *new_attributes);
+  IIR_AttributeSpecificationListRef get_attributes();
+  void                           set_attributes(IIR_AttributeSpecificationListRef new_attributes);
 
-  IIR_Kind get_kind() const { return IIR_LABEL; }
-  const IIR_Char *get_kind_text() const { return "IIR_Label"; }
+  IIR_Kind get_kind() const override { return IIR_LABEL; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_Label"); }
 
-  void set_statement( IIR_Statement* statement );
-  IIR_Statement *get_statement();
+  void set_statement( IIR_StatementRef statement );
+  IIR_StatementRef get_statement();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
-  IIR_TypeDefinition *get_subtype(){ return NULL; }
+  IIR_TypeDefinitionRef get_subtype(){ return NULL; }
 
   declaration_type get_declaration_type();
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *);
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef );
   void publish_vhdl(ostream &);
 protected:
   
@@ -66,9 +66,9 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_AttributeSpecificationList *attributes;
+  IIR_AttributeSpecificationListRef attributes;
   
-  IIR_Statement *my_statement;
+  IIR_StatementRef my_statement;
 };
 
 typedef refcount<IIRBase_Label> IIRBase_LabelRef;

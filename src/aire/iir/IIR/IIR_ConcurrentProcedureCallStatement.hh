@@ -30,8 +30,9 @@
 
 #include "savant_config.hh"
 #include "IIR_ConcurrentStatement.hh"
-class IIR_AssociationList;
-class IIR_ArchitectureStatementList;
+
+REF_FORWARD_DECL(IIR_AssociationList);
+REF_FORWARD_DECL(IIR_ArchitectureStatementList);
 
 class IIR_ConcurrentProcedureCallStatement : public virtual IIR_ConcurrentStatement{
 
@@ -39,16 +40,16 @@ public:
   virtual ~IIR_ConcurrentProcedureCallStatement() {}
     
   // List accessor(s)
-  virtual IIR_AssociationList           *get_actual_parameter_part() = 0;
-  virtual IIR_ArchitectureStatementList *get_process_statement_part() = 0;
-  virtual void                          set_actual_parameter_part(IIR_AssociationList *) = 0;
-  virtual void                          set_process_statement_part(IIR_ArchitectureStatementList *) = 0;
+  virtual IIR_AssociationListRef get_actual_parameter_part() = 0;
+  virtual IIR_ArchitectureStatementListRef get_process_statement_part() = 0;
+  virtual void                          set_actual_parameter_part(IIR_AssociationListRef ) = 0;
+  virtual void                          set_process_statement_part(IIR_ArchitectureStatementListRef ) = 0;
 
   virtual void set_postponed( IIR_Boolean postponed ) = 0;
   virtual IIR_Boolean get_postponed() = 0;
 
-  virtual void set_procedure_name( IIR *procedure_name ) = 0;
-  virtual IIR *get_procedure_name() = 0;
+  virtual void set_procedure_name( IIRRef procedure_name ) = 0;
+  virtual IIRRef get_procedure_name() = 0;
 };
 
 typedef refcount<IIR_ConcurrentProcedureCallStatement> IIR_ConcurrentProcedureCallStatementRef;

@@ -31,25 +31,22 @@
 IIRBase_InterfaceList::IIRBase_InterfaceList() {}
 IIRBase_InterfaceList::~IIRBase_InterfaceList() {}
 
-
-IIR* 
+IIRRef
 IIRBase_InterfaceList::first() {
-  IIR *element = IIRBase_DeclarationList::first();
+  IIRRef element = IIRBase_DeclarationList::first();
 
   return element;
 }
 
-
-IIR*
-IIRBase_InterfaceList::successor(IIR_InterfaceDeclaration* node) {
-  IIR *element = IIRBase_DeclarationList::successor( node );
+IIRRef
+IIRBase_InterfaceList::successor(IIR_InterfaceDeclarationRef node) {
+  IIRRef element = IIRBase_DeclarationList::successor( node );
   return element;
 }
 
-
-IIR *
+IIRRef
 IIRBase_InterfaceList::get_nth_element( IIR_Int32 position ){
-  IIR *element = IIRBase_DeclarationList::get_nth_element( position );
+  IIRRef element = IIRBase_DeclarationList::get_nth_element( position );
 
   ASSERT( element != NULL );
 
@@ -58,72 +55,72 @@ IIRBase_InterfaceList::get_nth_element( IIR_Int32 position ){
 
 
 void
-IIRBase_InterfaceList::prepend( IIR_InterfaceDeclaration *element ) {
-  IIR *test = element;
-  ASSERT( test != NULL ); 
+IIRBase_InterfaceList::prepend( IIR_InterfaceDeclarationRef element ) {
+  IIRRef test = element;
+  ASSERT( test != nullptr ); 
 
   IIRBase_DeclarationList::prepend( element );
 }
 
 
 void
-IIRBase_InterfaceList::append( IIR_InterfaceDeclaration *element ) {
-  IIR *test = element;
-  ASSERT( test != NULL );
+IIRBase_InterfaceList::append( IIR_InterfaceDeclarationRef element ) {
+  IIRRef test = element;
+  ASSERT( test != nullptr );
   
   IIRBase_DeclarationList::append( element );
 }
 
 
 void 
-IIRBase_InterfaceList::insert_after( IIR_InterfaceDeclaration* existing_element,
-				     IIR_InterfaceDeclaration* new_element) {
-  IIR *new_element_test = new_element;
-  ASSERT( new_element_test != NULL );
-  IIR *existing_element_test = existing_element_test;
-  ASSERT( existing_element_test != NULL );
+IIRBase_InterfaceList::insert_after( IIR_InterfaceDeclarationRef existing_element,
+				     IIR_InterfaceDeclarationRef new_element) {
+  IIRRef new_element_test = new_element;
+  ASSERT( new_element_test != nullptr );
+  IIRRef existing_element_test = existing_element_test;
+  ASSERT( existing_element_test != nullptr );
   
   IIRBase_DeclarationList::insert_after( existing_element, new_element );
 }
 
-IIR*
-IIRBase_InterfaceList::predecessor( IIR_InterfaceDeclaration *element ){
-  IIR *test = element;
-  ASSERT( test != NULL );
+IIRRef
+IIRBase_InterfaceList::predecessor( IIR_InterfaceDeclarationRef element ){
+  IIRRef test = element;
+  ASSERT( test != nullptr );
   
-  IIR *retval = dynamic_cast<IIR_Declaration *>(IIRBase_DeclarationList::predecessor( element ));
+  IIRRef retval = my_dynamic_pointer_cast<IIR_Declaration>(IIRBase_DeclarationList::predecessor( element ));
 
   test = retval;
-  ASSERT( test != NULL );
+  ASSERT( test != nullptr );
   
   return retval;
 }
 
-IIR*
+IIRRef
 IIRBase_InterfaceList::last() {
-  IIR *retval = last( );
-  ASSERT( retval != NULL );
+  IIRRef retval = last( );
+  ASSERT( retval != nullptr );
 
   return retval;
 }
 
 
 IIR_Int32
-IIRBase_InterfaceList::get_position( IIR_InterfaceDeclaration *element ) {
-  IIR *test = element;
-  ASSERT( test != NULL );
+IIRBase_InterfaceList::get_position( IIR_InterfaceDeclarationRef element ) {
+  IIRRef test = element;
+  ASSERT( test != nullptr );
 
   return IIRBase_DeclarationList::get_position( element );
 }
 
 void 
 IIRBase_InterfaceList::publish_vhdl(ostream &vhdl_out) {
-  IIRBase_InterfaceDeclaration* interface_element = NULL;
+  IIRBase_InterfaceDeclarationRef interface_element;
 
-  interface_element = dynamic_cast<IIRBase_InterfaceDeclaration *>(first());
+  interface_element = my_dynamic_pointer_cast<IIRBase_InterfaceDeclaration>(first());
   while (interface_element != NULL) {
     interface_element->publish_vhdl(vhdl_out);
-    interface_element = dynamic_cast<IIRBase_InterfaceDeclaration *>(successor(interface_element));
+    interface_element = my_dynamic_pointer_cast<IIRBase_InterfaceDeclaration>(successor(interface_element));
     if (interface_element != NULL) {
       vhdl_out << "; ";
     }
@@ -132,13 +129,13 @@ IIRBase_InterfaceList::publish_vhdl(ostream &vhdl_out) {
 
 void 
 IIRBase_InterfaceList::publish_vhdl_decl(ostream &vhdl_out) {
-  IIRBase_InterfaceDeclaration* interface_element = NULL;
+  IIRBase_InterfaceDeclarationRef interface_element;
 
-  interface_element = dynamic_cast<IIRBase_InterfaceDeclaration *>(first());
-  while (interface_element != NULL) {
+  interface_element = my_dynamic_pointer_cast<IIRBase_InterfaceDeclaration>(first());
+  while (interface_element != nullptr) {
     interface_element->publish_vhdl_decl(vhdl_out);
-    interface_element = dynamic_cast<IIRBase_InterfaceDeclaration *>(successor(interface_element));
-    if (interface_element != NULL) {
+    interface_element = my_dynamic_pointer_cast<IIRBase_InterfaceDeclaration>(successor(interface_element));
+    if (interface_element != nullptr) {
       vhdl_out << "; ";
     }
   }

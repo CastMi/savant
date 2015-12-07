@@ -54,29 +54,29 @@ class IIRScram_Attribute : public virtual IIRScram_Name, public virtual IIRBase_
 public:
   IIRScram_Attribute();
   
-  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup();
-  virtual savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0); 
-  virtual IIRScram_TypeDefinition *_get_prefix_subtype(constraint_functor *functor = 0); 
-  IIRScram_TypeDefinition *_get_prefix_rval_range_attributes();
+  virtual savant::set<IIRScram_DeclarationRef> _symbol_lookup();
+  virtual savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0); 
+  virtual IIRScram_TypeDefinitionRef _get_prefix_subtype(constraint_functor *functor = 0); 
+  IIRScram_TypeDefinitionRef _get_prefix_rval_range_attributes();
 
   /** High, low, left, and right get_attributes() use these. */
-  virtual savant::set<IIRScram_TypeDefinition*> *
+  virtual savant::set<IIRScram_TypeDefinitionRef> 
   _get_rval_set_high_low_left_right(constraint_functor *functor = 0); 
-  virtual IIRScram_TypeDefinition *_get_subtype_high_low_left_right();
+  virtual IIRScram_TypeDefinitionRef _get_subtype_high_low_left_right();
 
-  virtual void _type_check( savant::set<IIRScram_TypeDefinition*> * );
-  void set_subtype(IIR_TypeDefinition *type) {IIRBase::set_subtype(type);}
+  virtual void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
+  void set_subtype(IIR_TypeDefinitionRef type) {IIRBase::set_subtype(type);}
 
-  IIRScram *_decl_to_decl( IIRScram_Declaration * );
+  IIRScramRef _decl_to_decl( IIRScram_DeclarationRef  );
 
-  virtual void _set_suffix( IIRScram * );
-  virtual IIRScram *_get_suffix( );
+  virtual void _set_suffix( IIRScramRef  );
+  virtual IIRScramRef _get_suffix( );
 
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef  );
   /** This method takes a 'range or 'reverse_range attribute, and builds an
       IIRScram_RangeTypeDefinition in the form of prefix'left to
       prefix'right.  */
-  virtual IIRScram_RangeTypeDefinition *_build_range_type();
+  virtual IIRScram_RangeTypeDefinitionRef _build_range_type();
 
   virtual IIR_Boolean _is_iir_attribute(){ return TRUE; }
   virtual IIR_Boolean _is_attribute(){ return TRUE; }
@@ -96,16 +96,16 @@ public:
   virtual IIR_Boolean _is_delayed_attribute() { return FALSE; }
 
   /** If you hit this, an attribute has an unimplemented clone(). */
-  virtual IIRScram *_clone();
-  virtual void _clone( IIRScram * );
+  virtual IIRScramRef _clone();
+  virtual void _clone( IIRScramRef  );
 
-  IIRScram_TextLiteral *_get_attribute_name();
-  IIRScram_TextLiteral *_build_attribute_name();
+  IIRScram_TextLiteralRef _get_attribute_name();
+  IIRScram_TextLiteralRef _build_attribute_name();
 
   /** This method does the subtype calculation for IIRScram_Range and
       IIRScram_ReverseRange attributes.  In the case of some error, NULL is
       returned. */
-  IIRScram_ScalarTypeDefinition *_get_subtype_range_attribute();
+  IIRScram_ScalarTypeDefinitionRef _get_subtype_range_attribute();
 
 protected:
 

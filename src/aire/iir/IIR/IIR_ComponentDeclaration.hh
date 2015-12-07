@@ -34,15 +34,15 @@ class IIR_ComponentDeclaration : public virtual IIR_Declaration{
 public:
   virtual ~IIR_ComponentDeclaration() {}
     
-  virtual IIR_EntityDeclaration			*get_entity() = 0;
-  virtual void					set_entity( IIR_EntityDeclaration *entity ) = 0;
+  virtual IIR_EntityDeclarationRef get_entity() = 0;
+  virtual void					set_entity( IIR_EntityDeclarationRef entity ) = 0;
   // List accessor(s)
-  virtual IIR_GenericList                       *get_local_generic_clause() = 0;
-  virtual IIR_PortList                          *get_local_port_clause() = 0;
-  virtual IIR_AttributeSpecificationList        *get_attributes() = 0;
-  virtual void                                  set_local_generic_clause(IIR_GenericList *) = 0;
-  virtual void                                  set_local_port_clause(IIR_PortList *) = 0;
-  virtual void                                  set_attributes(IIR_AttributeSpecificationList *) = 0;
+  virtual IIR_GenericListRef get_local_generic_clause() = 0;
+  virtual IIR_PortListRef get_local_port_clause() = 0;
+  virtual IIR_AttributeSpecificationListRef get_attributes() = 0;
+  virtual void                                  set_local_generic_clause(IIR_GenericListRef ) = 0;
+  virtual void                                  set_local_port_clause(IIR_PortListRef ) = 0;
+  virtual void                                  set_attributes(IIR_AttributeSpecificationListRef ) = 0;
 };
 
 typedef refcount<IIR_ComponentDeclaration> IIR_ComponentDeclarationRef;

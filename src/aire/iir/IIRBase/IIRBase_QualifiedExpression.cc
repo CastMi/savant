@@ -26,53 +26,43 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "savant.hh"
 #include "IIRBase_QualifiedExpression.hh"
 #include "IIR_TypeDefinition.hh"
 
-IIRBase_QualifiedExpression::IIRBase_QualifiedExpression() {
-  set_type_mark(NULL);
-  set_expression(NULL);
-}
-
-IIRBase_QualifiedExpression::~IIRBase_QualifiedExpression() {
-  delete dynamic_cast <IIR *>(get_expression());
-}
+IIRBase_QualifiedExpression::IIRBase_QualifiedExpression() {}
+IIRBase_QualifiedExpression::~IIRBase_QualifiedExpression() {}
 
 void 
-IIRBase_QualifiedExpression::set_type_mark( IIR_TypeDefinition* type_mark) {
+IIRBase_QualifiedExpression::set_type_mark( IIR_TypeDefinitionRef type_mark) {
   this->type_mark = type_mark;
   set_subtype(type_mark);
 }
 
-IIR_TypeDefinition*
+IIR_TypeDefinitionRef
  IIRBase_QualifiedExpression::get_type_mark() {
    return type_mark;
 }
 
 void 
-IIRBase_QualifiedExpression::set_expression(IIR* expression) {
+IIRBase_QualifiedExpression::set_expression(IIRRef expression) {
   this->expression = expression;
 }
 
-IIR* 
+IIRRef
 IIRBase_QualifiedExpression::get_expression() {
   return expression;
 }
 
 
-IIR *
-IIRBase_QualifiedExpression::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_QualifiedExpression::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_QualifiedExpression *new_node = dynamic_cast<IIRBase_QualifiedExpression *>(IIRBase_Expression::convert_tree(factory));
+  IIRBase_QualifiedExpressionRef new_node = my_dynamic_pointer_cast<IIRBase_QualifiedExpression>(IIRBase_Expression::convert_tree(factory));
 
   // Process the variables
   new_node->expression = convert_node(expression, factory);
-  new_node->type_mark = dynamic_cast<IIR_TypeDefinition *>(convert_node(type_mark, factory));
+  new_node->type_mark = my_dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(type_mark, factory));
 
   return new_node;
 }
@@ -87,7 +77,7 @@ IIRBase_QualifiedExpression::is_resolved(){
   }
 }
 
-IIR_TypeDefinition*
+IIR_TypeDefinitionRef
 IIRBase_QualifiedExpression::get_subtype(){
   return get_type_mark();
 }

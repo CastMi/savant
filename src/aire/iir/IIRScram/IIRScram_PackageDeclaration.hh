@@ -56,15 +56,15 @@ public:
      package.something) this method will be called, so we're stubbing it out
      as an empty call.
   */
-  IIRScram_Declaration *_get_package_declaration();
+  IIRScram_DeclarationRef _get_package_declaration();
 
-  void _add_to_declarative_region( savant::set<IIRScram_Declaration*> * );
+  void _add_to_declarative_region( savant::set<IIRScram_DeclarationRef> );
   void _make_interface_visible(symbol_table *);
 
   void _type_check();
 
   // Wrappers for IIRBase functions
-  IIRScram_DeclarationList         *_get_package_declarative_part();
+  IIRScram_DeclarationListRef         _get_package_declarative_part();
 
 protected:
 private:

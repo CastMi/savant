@@ -50,11 +50,11 @@ public:
 
   IIR_Boolean _is_readable();
 
-  IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &, IIRScram_TypeDefinitionRef  );
   
   IIR_Boolean _is_event_attribute() { return TRUE; }
 
-  virtual IIRScram *_clone();
+  virtual IIRScramRef _clone();
 
 protected:
 private:
@@ -62,8 +62,8 @@ private:
   void _publish_cc_state_object_init_event( published_file &_cc_out );  
   void _publish_cc_state_object_init_attr_var( published_file &_cc_out,
 					       IIRScram::SignalAttribute type );
-  IIR_VariableDeclaration *_build_implicit_variable( const string &declarator,
-						     IIR_TypeDefinition *subtype );
+  IIR_VariableDeclarationRef _build_implicit_variable( const string &declarator,
+						     IIR_TypeDefinitionRef subtype );
 
 
 };

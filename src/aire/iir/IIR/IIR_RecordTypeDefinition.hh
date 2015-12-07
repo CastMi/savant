@@ -31,19 +31,20 @@
 
 #include "savant_config.hh"
 #include "IIR_TypeDefinition.hh"
+
+REF_FORWARD_DECL(IIR_ElementDeclarationList);
 class IIR_FunctionDeclaration;
-class IIR_ElementDeclarationList;
 
 class IIR_RecordTypeDefinition : public virtual IIR_TypeDefinition{
 public:
   virtual ~IIR_RecordTypeDefinition() {}    
 
   // List accessor(s)
-  virtual IIR_ElementDeclarationList    *get_element_declarations() = 0;
-  virtual void                          set_element_declarations(IIR_ElementDeclarationList *) = 0;
+  virtual IIR_ElementDeclarationListRef get_element_declarations() = 0;
+  virtual void                          set_element_declarations(IIR_ElementDeclarationListRef ) = 0;
 
-  virtual IIR_FunctionDeclaration *get_resolution_function() = 0;
-  virtual void set_resolution_function(   IIR_FunctionDeclaration * ) = 0;
+  virtual IIR_FunctionDeclarationRef get_resolution_function() = 0;
+  virtual void set_resolution_function(   IIR_FunctionDeclarationRef ) = 0;
 };
 
 typedef refcount<IIR_RecordTypeDefinition> IIR_RecordTypeDefinitionRef;

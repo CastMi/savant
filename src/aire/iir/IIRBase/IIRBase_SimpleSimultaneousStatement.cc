@@ -29,36 +29,26 @@
 #include "IIR_Label.hh"
 
 IIRBase_SimpleSimultaneousStatement::IIRBase_SimpleSimultaneousStatement() :
-  left_expression(0),
-  right_expression(0),
-  purity(IIR_PURE_FUNCTION),
-  tolerance_aspect(0){}
+  purity(IIR_PURE_FUNCTION) {}
 
-IIRBase_SimpleSimultaneousStatement::~IIRBase_SimpleSimultaneousStatement(){
-  delete left_expression;
-  left_expression = 0;
-  delete right_expression;
-  right_expression = 0;
-  delete tolerance_aspect;
-  tolerance_aspect = 0;
-}
+IIRBase_SimpleSimultaneousStatement::~IIRBase_SimpleSimultaneousStatement() {}
 
 void
-IIRBase_SimpleSimultaneousStatement::set_left_expression(IIR* my_left_expression){
+IIRBase_SimpleSimultaneousStatement::set_left_expression(IIRRef my_left_expression){
   left_expression = my_left_expression;
 }
 
 void
-IIRBase_SimpleSimultaneousStatement::set_right_expression(IIR* my_right_expression){
+IIRBase_SimpleSimultaneousStatement::set_right_expression(IIRRef my_right_expression){
   right_expression = my_right_expression;
 }
 
-IIR*
+IIRRef
 IIRBase_SimpleSimultaneousStatement::get_left_expression(){
   return left_expression;
 }
 
-IIR*
+IIRRef
 IIRBase_SimpleSimultaneousStatement::get_right_expression(){
   return right_expression;
 }
@@ -74,19 +64,19 @@ IIRBase_SimpleSimultaneousStatement::get_pure() {
 }
 
 void 
-IIRBase_SimpleSimultaneousStatement::set_tolerance_aspect(IIR* my_tolerance) {
+IIRBase_SimpleSimultaneousStatement::set_tolerance_aspect(IIRRef my_tolerance) {
   tolerance_aspect = my_tolerance;
 }
 
-IIR*
+IIRRef
 IIRBase_SimpleSimultaneousStatement::get_tolerance_aspect() {
   return tolerance_aspect;
 }
 
-IIR *
-IIRBase_SimpleSimultaneousStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SimpleSimultaneousStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SimpleSimultaneousStatement *new_node = dynamic_cast<IIRBase_SimpleSimultaneousStatement *>(IIRBase_SimultaneousStatement::convert_tree(factory));
+  IIRBase_SimpleSimultaneousStatementRef new_node = my_dynamic_pointer_cast<IIRBase_SimpleSimultaneousStatement>(IIRBase_SimultaneousStatement::convert_tree(factory));
 
   // Process the variables
   new_node->purity = purity;

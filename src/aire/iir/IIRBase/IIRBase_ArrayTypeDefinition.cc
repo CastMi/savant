@@ -40,11 +40,11 @@ IIRBase_ArrayTypeDefinition::IIRBase_ArrayTypeDefinition() :
 IIRBase_ArrayTypeDefinition::~IIRBase_ArrayTypeDefinition(){}
 
 void 
-IIRBase_ArrayTypeDefinition::set_index_subtype( IIR_ScalarTypeDefinition *index_subtype ){
+IIRBase_ArrayTypeDefinition::set_index_subtype( IIR_ScalarTypeDefinitionRef index_subtype ){
   my_index_subtype = index_subtype;
 }
 
-IIR_ScalarTypeDefinition *
+IIR_ScalarTypeDefinitionRef
 IIRBase_ArrayTypeDefinition::get_index_subtype(){
   return my_index_subtype;
 }
@@ -54,29 +54,29 @@ IIR_Int32
 IIRBase_ArrayTypeDefinition::get_num_indexes(){
   IIR_Int32 num_indexes = 1;
 
-  IIRBase_TypeDefinition *current_subtype = _get_element_subtype();
+  IIRBase_TypeDefinition* current_subtype = _get_element_subtype().get();
   ASSERT(current_subtype != NULL);
   while( current_subtype->is_array_type() == TRUE
          && current_subtype->is_element() == FALSE ){
     num_indexes++;
-    current_subtype = current_subtype->_get_element_subtype();
+    current_subtype = current_subtype->_get_element_subtype().get();
     ASSERT(current_subtype != NULL);
   }
 
   return num_indexes;
 }
 //DRH - Provide intermediate call for get_num_indexes
-IIRBase_TypeDefinition *
+IIRBase_TypeDefinitionRef
 IIRBase_ArrayTypeDefinition::_get_element_subtype(){
-  return dynamic_cast<IIRBase_TypeDefinition *>(get_element_subtype());
+  return my_dynamic_pointer_cast<IIRBase_TypeDefinition>(get_element_subtype());
 }
 
 void 
-IIRBase_ArrayTypeDefinition::set_element_subtype( IIR_TypeDefinition *element_subtype ){
+IIRBase_ArrayTypeDefinition::set_element_subtype( IIR_TypeDefinitionRef element_subtype ){
   my_element_subtype = element_subtype;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_ArrayTypeDefinition::get_element_subtype(){
   return my_element_subtype;
 }
@@ -91,14 +91,14 @@ IIRBase_ArrayTypeDefinition::set_is_element( IIR_Boolean new_is_element ){
   my_is_element = new_is_element;
 }
 
-IIR *
-IIRBase_ArrayTypeDefinition::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ArrayTypeDefinition::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ArrayTypeDefinition *new_node = dynamic_cast<IIRBase_ArrayTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));
+  IIRBase_ArrayTypeDefinitionRef new_node = my_dynamic_pointer_cast<IIRBase_ArrayTypeDefinition>(IIRBase_TypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->my_index_subtype = dynamic_cast<IIR_ScalarTypeDefinition *>(convert_node(my_index_subtype, factory));
-  new_node->my_element_subtype = dynamic_cast<IIR_TypeDefinition *>(convert_node(my_element_subtype, factory));  
+  new_node->my_index_subtype = my_dynamic_pointer_cast<IIR_ScalarTypeDefinition>(convert_node(my_index_subtype, factory));
+  new_node->my_element_subtype = my_dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(my_element_subtype, factory));  
   new_node->my_is_element = my_is_element;
 
   return new_node;
@@ -106,7 +106,7 @@ IIRBase_ArrayTypeDefinition::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_ArrayTypeDefinition::is_unconstrained_array_type(){
-  IIR_ScalarTypeDefinition *index = get_resolved_index_subtype();
+  IIR_ScalarTypeDefinition *index = get_resolved_index_subtype().get();
   ASSERT(index != 0);
   if( index->get_left() == 0 ){
     ASSERT( index->get_right() == 0 );
@@ -119,8 +119,8 @@ IIRBase_ArrayTypeDefinition::is_unconstrained_array_type(){
   }
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_ArrayTypeDefinition::find_declarations( IIR_Name *to_find){
+savant::set<IIR_DeclarationRef>
+IIRBase_ArrayTypeDefinition::find_declarations( IIR_NameRef to_find){
   return get_element_subtype()->find_declarations( to_find );
 }
 
@@ -158,13 +158,13 @@ IIRBase_ArrayTypeDefinition::is_locally_static(){
   if( retval ){
     retval = get_index_subtype()->is_locally_static();
 
-    IIR_TypeDefinition *current_index = get_element_subtype();
-    while( current_index && 
+    IIR_TypeDefinitionRef current_index = get_element_subtype();
+    while( current_index.get() && 
 	   current_index->is_array_type() &&
 	   !current_index->is_element() ){
       retval = retval && current_index->is_locally_static();
       current_index =
-	dynamic_cast<IIR_ArrayTypeDefinition *>(current_index)->get_element_subtype();
+	my_dynamic_pointer_cast<IIR_ArrayTypeDefinition>(current_index)->get_element_subtype();
     }
   }
 
@@ -175,7 +175,7 @@ ostream&
 IIRBase_ArrayTypeDefinition::print(ostream &os) {
   os << "array ( " << *get_resolved_index_subtype(); 
   
-  IIR_TypeDefinition *element_type = get_element_subtype();
+  IIR_TypeDefinitionRef element_type = get_element_subtype();
   
   while( element_type->is_array_type() && element_type->is_anonymous() ){
     os << ", " << *(element_type->get_resolved_index_subtype());
@@ -188,7 +188,7 @@ IIRBase_ArrayTypeDefinition::print(ostream &os) {
 }
 
 void
-IIRBase_ArrayTypeDefinition::set_declaration( IIR_Declaration *corresponding_decl ){
+IIRBase_ArrayTypeDefinition::set_declaration( IIR_DeclarationRef corresponding_decl ){
   IIRBase_TypeDefinition::set_declaration( corresponding_decl );
   if( get_resolved_index_subtype() &&
       get_resolved_index_subtype()->get_declaration() == 0 ){
@@ -200,10 +200,10 @@ IIRBase_ArrayTypeDefinition::set_declaration( IIR_Declaration *corresponding_dec
   }
 }
 
-IIR_TypeDefinition*
+IIR_TypeDefinitionRef
 IIRBase_ArrayTypeDefinition::get_final_subtype() {
 
-  IIR_TypeDefinition* node = get_element_subtype();
+  IIR_TypeDefinitionRef node = get_element_subtype();
   while ( node && 
           ((node->get_kind() == IIR_ARRAY_TYPE_DEFINITION ||
             node->get_kind() == IIR_ARRAY_SUBTYPE_DEFINITION) &&
@@ -240,10 +240,10 @@ IIRBase_ArrayTypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
   
   node = this;
   while ((node->is_array_type() == TRUE) && (max_index > 0)) {
-    dynamic_cast<IIRBase_ScalarTypeDefinition *>
+    my_dynamic_pointer_cast<IIRBase_ScalarTypeDefinition>
       (node->get_resolved_index_subtype())->publish_vhdl_index(vhdl_out);
     max_index--;
-    node = dynamic_cast<IIRBase_TypeDefinition *>(node->get_element_subtype());
+    node = dynamic_cast<IIRBase_TypeDefinition *>(node->get_element_subtype().get());
     if (max_index > 0) {
       vhdl_out << ", ";
       ASSERT ( node != 0 );

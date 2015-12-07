@@ -39,16 +39,16 @@ class IIRBase_IntegerLiteral32 : public virtual IIRBase_Literal, public virtual 
 
 public:
 
-  IIR_Kind get_kind() const { return IIR_INTEGER_LITERAL32; }
-  const IIR_Char *get_kind_text() const { return "IIR_IntegerLiteral32"; }
+  IIR_Kind get_kind() const override { return IIR_INTEGER_LITERAL32; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_IntegerLiteral32"); }
 
-  static IIR_IntegerLiteral32* get(IIR_Int32);
+  static IIR_IntegerLiteral32Ref get(IIR_Int32);
   void release();
 
   IIR_Int32 value();
   void set_value(IIR_Int32);
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   ostream &print(ostream &os);
   void publish_vhdl(ostream &);

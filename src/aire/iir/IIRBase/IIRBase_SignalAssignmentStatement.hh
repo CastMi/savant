@@ -38,20 +38,20 @@ class IIRBase_SignalAssignmentStatement : public virtual IIRBase_SequentialState
 
 public:
   // List Accessor(s)
-  IIR_WaveformList      *get_waveform();
-  void                  set_waveform(IIR_WaveformList *new_waveform);
+  IIR_WaveformListRef   get_waveform();
+  void                  set_waveform(IIR_WaveformListRef new_waveform);
 
-  IIR_Kind get_kind() const {return IIR_SIGNAL_ASSIGNMENT_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_SignalAssignmentStatement";}
+  IIR_Kind get_kind() const override { return IIR_SIGNAL_ASSIGNMENT_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SignalAssignmentStatement"); }
 
-  void set_target(IIR* target);
-  IIR* get_target();
+  void set_target(IIRRef target);
+  IIRRef get_target();
   void set_delay_mechanism( IIR_DelayMechanism delay_mechanism);
   IIR_DelayMechanism get_delay_mechanism();
-  void set_reject_time_expression( IIR* reject_time_expression);
-  IIR* get_reject_time_expression();
+  void set_reject_time_expression( IIRRef reject_time_expression );
+  IIRRef get_reject_time_expression();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean                   is_resolved();
   IIR_Boolean                   is_above_attribute_found();
@@ -63,10 +63,10 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_WaveformList *waveform;  
-  IIR* target;
+  IIR_WaveformListRef waveform;  
+  IIRRef target;
   IIR_DelayMechanism delay_mechanism;
-  IIR* reject_time_expression;
+  IIRRef reject_time_expression;
 };
 
 typedef refcount<IIRBase_SignalAssignmentStatement> IIRBase_SignalAssignmentStatementRef;

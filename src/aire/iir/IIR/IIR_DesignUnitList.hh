@@ -31,7 +31,7 @@
 #include "savant_config.hh"
 #include "IIR_List.hh"
 
-class IIR_DesignUnitList : public virtual IIR_List{
+class IIR_DesignUnitList : public virtual IIR_List {
 
 public:
   virtual ~IIR_DesignUnitList() {}     

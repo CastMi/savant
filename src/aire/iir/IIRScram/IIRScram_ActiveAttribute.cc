@@ -36,13 +36,12 @@ IIRScram_ActiveAttribute::~IIRScram_ActiveAttribute() {}
 
 IIR_Boolean 
 IIRScram_ActiveAttribute::_is_readable(){
-  return dynamic_cast<IIRScram *>(get_prefix())->_is_readable();
+  return my_dynamic_pointer_cast<IIRScram>(get_prefix())->_is_readable();
 }
 
-
-IIRScram*
+IIRScramRef
 IIRScram_ActiveAttribute::_clone() {
-  IIRScram_ActiveAttribute *my_clone = new IIRScram_ActiveAttribute;
+  IIRScramRef my_clone(new IIRScram_ActiveAttribute());
   IIRScram_Attribute::_clone(my_clone);
   return my_clone;
 }

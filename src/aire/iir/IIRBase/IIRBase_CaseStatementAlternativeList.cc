@@ -25,14 +25,14 @@ IIRBase_CaseStatementAlternativeList::IIRBase_CaseStatementAlternativeList() {}
 IIRBase_CaseStatementAlternativeList::~IIRBase_CaseStatementAlternativeList() {}
 
 
-IIR_CaseStatementAlternative* 
+IIR_CaseStatementAlternativeRef 
 IIRBase_CaseStatementAlternativeList::first() {
-  return dynamic_cast<IIR_CaseStatementAlternative*>(IIRBase_List::first());
+  return my_dynamic_pointer_cast<IIR_CaseStatementAlternative>(IIRBase_List::first());
 }
 
 
-IIR_CaseStatementAlternative*
-IIRBase_CaseStatementAlternativeList::successor(IIR_CaseStatementAlternative* node) {
-  return dynamic_cast<IIR_CaseStatementAlternative*>(IIRBase_List::successor((IIR*)node));
+IIR_CaseStatementAlternativeRef
+IIRBase_CaseStatementAlternativeList::successor(IIR_CaseStatementAlternativeRef node) {
+  return my_dynamic_pointer_cast<IIR_CaseStatementAlternative>(IIRBase_List::successor(node));
 }
 

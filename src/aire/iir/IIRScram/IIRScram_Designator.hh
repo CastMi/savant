@@ -42,7 +42,7 @@ public:
 
   IIR_Boolean _is_designator(){ return TRUE; }
 
-  virtual IIRScram* _get_name();
+  virtual IIRScramRef _get_name();
 
 protected:
 private:

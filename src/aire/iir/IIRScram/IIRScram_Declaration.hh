@@ -27,15 +27,17 @@
 #include "IRBasicDataTypes.hh"
 #include "savant.hh"
 
-class IIRScram_Attribute;
+REF_FORWARD_DECL(IIRScram_Declaration);
+REF_FORWARD_DECL(IIRScram_NatureDefinition);
+REF_FORWARD_DECL(IIRScram_PortList);
+REF_FORWARD_DECL(IIRScram_GenericList);
+REF_FORWARD_DECL(IIRScram_DesignatorList);
+REF_FORWARD_DECL(IIRScram_Attribute);
 class IIRScram_AttributeSpecification;
 class IIRScram_AttributeSpecificationList;
 class IIRScram_DeclarationList;
-class IIRScram_DesignatorList;
-class IIRScram_GenericList;
 class IIRScram_Identifier;
 class IIRScram_List;
-class IIRScram_PortList;
 class IIRScram_Name;
 class IIRScram_TypeDefinition;
 
@@ -54,7 +56,7 @@ public:
 
   /** This method returns TRUE if this declaration is a homograph of the one
       passed in, and FALSE otherwise. */
-  virtual IIR_Boolean _is_homograph_of( IIRScram_Declaration * );
+  virtual IIR_Boolean _is_homograph_of( IIRScram_DeclarationRef  );
   
   /** There are special circumstances that two declarations that _are_
       homographs can be in the same region.  For instance, a subprogram
@@ -62,15 +64,15 @@ public:
       and it's complete type.  These are mainly due to implentation issues
       and AIRE specific quirks.  The following method tells us if these two
       homographs can be in the same region or not. */
-  virtual IIR_Boolean _can_be_in_same_region( IIRScram_Declaration * ){ return FALSE; }
+  virtual IIR_Boolean _can_be_in_same_region( IIRScram_DeclarationRef  ){ return FALSE; }
 
   virtual IIR_Boolean _is_physical_type();
 
   virtual IIR_Boolean _designates_incomplete_type(){ return FALSE; }
 
-  virtual IIRScram_PortList *_get_port_list(){ return NULL; }
-  virtual IIRScram_GenericList *_get_generic_list(){ return NULL; }
-  virtual IIRScram_DesignatorList *_get_instantiation_list();
+  virtual IIRScram_PortListRef _get_port_list(){ return NULL; }
+  virtual IIRScram_GenericListRef _get_generic_list(){ return NULL; }
+  virtual IIRScram_DesignatorListRef _get_instantiation_list();
 
   //ams additions
   /** This function tells if a quantity is an across-quantity */
@@ -81,28 +83,29 @@ public:
       "entity", a variable declaration "variable", and so forth. */
   virtual const char *_get_type_string() const { return "(unknown)"; }
   
-  IIRScram_Declaration *_find_formal_declaration(){
-    return (IIRScram_Declaration *)this;
+  IIRScram_DeclarationRef _find_formal_declaration(){
+     //FIXME: this is an error
+    return IIRScram_DeclarationRef();
   }
 
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * ){}
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> ){}
 
   /** This method checks to see if the type of argument "arg_num" matches
       that passed in and returns a boolean. */
-  virtual bool _check_param( IIRScram_TypeDefinition *decl, int arg_num );
+  virtual bool _check_param( IIRScram_TypeDefinitionRef decl, int arg_num );
 
   /** This seems unnecessary, but it gets called when a symbol has already
       been resolved and something else in the same statement is getting
       resolved.. */
-  savant::set<IIRScram_Declaration*> *_symbol_lookup();
-  savant::set<IIRScram_Declaration*> *_symbol_lookup( savant::set<IIRScram_Declaration*> * );
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup();
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup( savant::set<IIRScram_DeclarationRef>  );
 
   virtual void _get_headers(savant::set<IIRScram>&);
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor=0);
-  IIRScram *_decl_to_decl( IIRScram_Declaration * );
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor=0);
+  IIRScramRef _decl_to_decl( IIRScram_DeclarationRef  );
 
-  virtual IIRScram_TypeDefinition *_get_type_of_param( int );
+  virtual IIRScram_TypeDefinitionRef _get_type_of_param( int );
 
   /** This returns the dimension of an array type.  It returns "0" if the
       declaration isn't for an array object.. */
@@ -112,16 +115,16 @@ public:
       declaration.  "0" is returned for non-subprograms. */
   virtual IIR_Int32 _num_required_args();
 
-  virtual IIRScram_TypeDefinition *_get_name_type();
-  virtual IIRScram_NatureDefinition *_get_nature(){ return NULL; }
+  virtual IIRScram_TypeDefinitionRef _get_name_type();
+  virtual IIRScram_NatureDefinitionRef _get_nature(){ return IIRScram_NatureDefinitionRef(); }
   
-  IIRScram *_clone();
-  virtual void _clone( IIRScram * );
+  IIRScramRef _clone();
+  virtual void _clone( IIRScramRef );
 
   /** This method will add the set to this declaration's declarative
       region. */
-  virtual void _add_to_declarative_region( savant::set<IIRScram_Declaration*> * );
-  void _add_to_declarative_region( IIRScram_DeclarationList *, savant::set<IIRScram_Declaration*> * );
+  virtual void _add_to_declarative_region( savant::set<IIRScram_DeclarationRef> );
+  void _add_to_declarative_region( IIRScram_DeclarationListRef , savant::set<IIRScram_DeclarationRef> );
 
   /** The following function returns true if the declaration is in the
       process statement's declarative part. */
@@ -143,7 +146,7 @@ public:
   /** Since we can now have implicit declarations due to attributes, we
       need to be able to tell if THIS declaration is the result of an
       attribute. */
-  IIRScram_Attribute *_get_attribute_name();
+  IIRScram_AttributeRef _get_attribute_name();
   
   virtual IIR_Boolean _is_terminal() { return FALSE; }
   virtual IIR_Boolean _is_quantity() { return FALSE; }
@@ -151,8 +154,8 @@ public:
   virtual IIR_Boolean   _is_branchQ()  { return FALSE; }
 
   // Helper functions
-  IIRScram              *_get_value();
-  IIRScram              *_get_declarative_region();
+  IIRScramRef  _get_value();
+  IIRScramRef  _get_declarative_region();
   
 protected:
 private:

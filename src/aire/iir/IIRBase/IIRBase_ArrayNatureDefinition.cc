@@ -34,12 +34,12 @@ IIRBase_ArrayNatureDefinition::IIRBase_ArrayNatureDefinition() :
 
 IIRBase_ArrayNatureDefinition::~IIRBase_ArrayNatureDefinition() {}
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_ArrayNatureDefinition::get_element_subtype(){
   return element_subtype;
 }
 
-IIR_ScalarTypeDefinition *
+IIR_ScalarTypeDefinitionRef
 IIRBase_ArrayNatureDefinition::get_index_subtype(){
   return index_subtype;
 }
@@ -50,12 +50,14 @@ IIRBase_ArrayNatureDefinition::is_element(){
 }
  
 void
-IIRBase_ArrayNatureDefinition::set_element_subtype( IIR_TypeDefinition *new_element_type ){
-  element_subtype = dynamic_cast<IIR_NatureDefinition *>(new_element_type);
+IIRBase_ArrayNatureDefinition::set_element_subtype( IIR_TypeDefinitionRef new_element_type ){
+  element_subtype.reset();
+  element_subtype = dynamic_pointer_cast<IIR_NatureDefinition>(new_element_type);
 }
  
 void
-IIRBase_ArrayNatureDefinition::set_index_subtype( IIR_ScalarTypeDefinition *new_index_type ){
+IIRBase_ArrayNatureDefinition::set_index_subtype( IIR_ScalarTypeDefinitionRef new_index_type ){
+  index_subtype.reset();
   index_subtype = new_index_type;
 }
 
@@ -64,14 +66,14 @@ IIRBase_ArrayNatureDefinition::set_is_element( IIR_Boolean is_element ){
   my_is_element = is_element;
 }
 
-IIR *
-IIRBase_ArrayNatureDefinition::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ArrayNatureDefinition::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ArrayNatureDefinition *new_node = dynamic_cast<IIRBase_ArrayNatureDefinition *>(IIRBase_NatureDefinition::convert_tree(factory));
+  IIRBase_ArrayNatureDefinitionRef new_node = dynamic_pointer_cast<IIRBase_ArrayNatureDefinition>(IIRBase_NatureDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->index_subtype = dynamic_cast<IIR_ScalarTypeDefinition *>(convert_node(index_subtype, factory));
-  new_node->element_subtype = dynamic_cast<IIR_NatureDefinition *>(convert_node(element_subtype, factory));
+  new_node->index_subtype = dynamic_pointer_cast<IIR_ScalarTypeDefinition>(convert_node(index_subtype, factory));
+  new_node->element_subtype = dynamic_pointer_cast<IIR_NatureDefinition>(convert_node(element_subtype, factory));
   new_node->my_is_element = my_is_element;
 
   return new_node;
@@ -79,7 +81,7 @@ IIRBase_ArrayNatureDefinition::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_ArrayNatureDefinition::is_unconstrained_array_type(){
-  IIR_ScalarTypeDefinition *index = get_index_subtype();
+  IIR_ScalarTypeDefinitionRef index = get_index_subtype();
   ASSERT(index != NULL);
   if( index->get_left() == NULL ){
     ASSERT( index->get_right() == NULL );
@@ -91,15 +93,15 @@ IIRBase_ArrayNatureDefinition::is_unconstrained_array_type(){
   }
 }
 
-IIR_TypeDefinition*
+IIR_TypeDefinitionRef
 IIRBase_ArrayNatureDefinition::get_final_subtype() {
 
-  IIR_TypeDefinition* node = get_element_subtype();
+  IIR_TypeDefinitionRef node = get_element_subtype();
   while ( node && 
           ((node->get_kind() == IIR_ARRAY_NATURE_DEFINITION ||
             node->get_kind() == IIR_ARRAY_SUBNATURE_DEFINITION) &&
            node->is_element() == false )){
-    node =  node->get_element_subtype();
+    node = node->get_element_subtype();
   }
   return node;
 }
@@ -117,10 +119,10 @@ IIRBase_ArrayNatureDefinition::publish_vhdl_decl(ostream &vhdl_out) {
 
   node = this;
   while ((node->is_array_type() == TRUE) && (max_index > 0)) {
-    dynamic_cast<IIRBase_ScalarTypeDefinition *>
+    dynamic_pointer_cast<IIRBase_ScalarTypeDefinition>
       (node->get_resolved_index_subtype())->publish_vhdl_index(vhdl_out);
     max_index--;
-    node = dynamic_cast<IIRBase_TypeDefinition *>(node->get_element_subtype());
+    node = dynamic_pointer_cast<IIRBase_TypeDefinition>(node->get_element_subtype()).get();
     if (max_index > 0) {
       vhdl_out << ", ";
       ASSERT ( node != NULL );

@@ -38,33 +38,33 @@ IIRBase_Name::IIRBase_Name() :
 
 IIRBase_Name::~IIRBase_Name(){}
 
-IIR *
+IIRRef
 IIRBase_Name::get_prefix(){
   return prefix;
 }
 
 void 
-IIRBase_Name::set_prefix( IIR *new_prefix ){
+IIRBase_Name::set_prefix( IIRRef new_prefix ){
   prefix = new_prefix;
 }
 
 void
-IIRBase_Name::set_suffix( IIR * ){
+IIRBase_Name::set_suffix( IIRRef ){
   cerr << "IIRBase_Name::set_suffix called - node type is " << get_kind_text() 
        << " - aborting!" << endl;
   abort();
 }
 
-IIR *
+IIRRef
 IIRBase_Name::get_suffix(){
-  return 0;
+  return IIRRef();
 }
 
 
-IIR *
-IIRBase_Name::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_Name::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_Name *new_node = dynamic_cast<IIRBase_Name *>(IIRBase::convert_tree(factory));
+  IIRBase_NameRef new_node = my_dynamic_pointer_cast<IIRBase_Name>(IIRBase::convert_tree(factory));
 
   // Process the variables
   new_node->prefix = convert_node(prefix, factory);
@@ -78,7 +78,7 @@ IIRBase_Name::is_signal(){
 }
 
 void 
-IIRBase_Name::set_subtype( IIR_TypeDefinition * ){
+IIRBase_Name::set_subtype( IIR_TypeDefinitionRef ){
   ASSERT(0);
 }
 
@@ -92,7 +92,7 @@ IIRBase_Name::get_signal_kind(){
   return get_prefix()->get_signal_kind();
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_Name::get_prefix_string(){
   return get_prefix()->get_prefix_string();
 }
@@ -120,7 +120,7 @@ IIRBase_Name::print( ostream &os ){
 }
 
 IIR **
-IIRBase_Name::lookup(IIR_Identifier *identifier,
+IIRBase_Name::lookup(IIR_IdentifierRef identifier,
 		     IIR_Int32      &number_of_matches,
 		     IIR            *&first_match){
   ASSERT(0);
@@ -128,7 +128,7 @@ IIRBase_Name::lookup(IIR_Identifier *identifier,
 }
 
 IIR **
-IIRBase_Name::lookup(IIR_Name    *name,
+IIRBase_Name::lookup(IIR_NameRef    name,
 		     IIR_Int32   &number_of_matches,
 		     IIR         *&first_match){
   IIR** return_array = NULL;

@@ -27,8 +27,8 @@
 #include "savant_config.hh"
 #include "IIR_SimultaneousStatement.hh"
 
-class IIR_SimultaneousElsif;
-class IIR_ArchitectureStatementList;
+REF_FORWARD_DECL(IIR_ArchitectureStatementList);
+REF_FORWARD_DECL(IIR_SimultaneousElsif);
 
 class IIR_SimultaneousIfStatement : public virtual IIR_SimultaneousStatement {
 
@@ -36,19 +36,16 @@ public:
   IIR_SimultaneousIfStatement() {};
   virtual ~IIR_SimultaneousIfStatement() {}
 
-  virtual IIR_ArchitectureStatementList *get_then_statement_list() = 0;
-  virtual IIR_ArchitectureStatementList *get_else_statement_list() = 0;
-  virtual void                          set_then_statement_list(IIR_ArchitectureStatementList *) = 0;
-  virtual void                          set_else_statement_list(IIR_ArchitectureStatementList *) = 0;
+  virtual IIR_ArchitectureStatementListRef get_then_statement_list() = 0;
+  virtual IIR_ArchitectureStatementListRef get_else_statement_list() = 0;
+  virtual void                          set_then_statement_list( IIR_ArchitectureStatementListRef ) = 0;
+  virtual void                          set_else_statement_list( IIR_ArchitectureStatementListRef ) = 0;
 
-  virtual void set_elsif(IIR_SimultaneousElsif* elsif_clause) = 0;
-  virtual IIR_SimultaneousElsif* get_elsif() = 0;
+  virtual void set_elsif(IIR_SimultaneousElsifRef elsif_clause) = 0;
+  virtual IIR_SimultaneousElsifRef get_elsif() = 0;
 
-  virtual void set_condition(IIR *) = 0;
-  virtual IIR* get_condition() = 0;
-
-protected:
-private:
+  virtual void set_condition(IIRRef ) = 0;
+  virtual IIRRef get_condition() = 0;
 };
 
 typedef refcount<IIR_SimultaneousIfStatement> IIR_SimultaneousIfStatementRef;

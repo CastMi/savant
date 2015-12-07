@@ -26,41 +26,39 @@
 #include "IIR_TypeDefinition.hh"
 #include "savant.hh"
 #include "StandardPackage.hh"
+#include <cstring>
 
-IIRBase_LengthAttribute::IIRBase_LengthAttribute() {
-  set_suffix(NULL);
-}
-
+IIRBase_LengthAttribute::IIRBase_LengthAttribute() {}
 IIRBase_LengthAttribute::~IIRBase_LengthAttribute() {}
 
 void 
-IIRBase_LengthAttribute::set_suffix( IIR* suffix) {
+IIRBase_LengthAttribute::set_suffix( IIRRef suffix) {
   this->suffix = suffix;
 }
 
-IIR* IIRBase_LengthAttribute::get_suffix() {
+IIRRef IIRBase_LengthAttribute::get_suffix() {
   return suffix;
 }
 
-IIR *
-IIRBase_LengthAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_LengthAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_LengthAttribute *new_node = dynamic_cast<IIRBase_LengthAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_LengthAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_LengthAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
   return new_node;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_LengthAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_savant_universal_integer();
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_LengthAttribute::build_attribute_name() {
-  const char *name = "length";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("length");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 

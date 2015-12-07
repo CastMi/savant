@@ -40,8 +40,8 @@ class IIR_PhysicalSubtypeDefinition : public virtual IIR_PhysicalTypeDefinition{
 public:
   virtual ~IIR_PhysicalSubtypeDefinition() {}
 
-  virtual void set_resolution_function( IIR_FunctionDeclaration * ) = 0;
-  virtual IIR_FunctionDeclaration *get_resolution_function() = 0;
+  virtual void set_resolution_function( IIR_FunctionDeclarationRef ) = 0;
+  virtual IIR_FunctionDeclarationRef get_resolution_function() = 0;
 };
 
 typedef refcount<IIR_PhysicalSubtypeDefinition> IIR_PhysicalSubtypeDefinitionRef;

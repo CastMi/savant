@@ -32,17 +32,17 @@
 #include "savant_config.hh"
 #include "IIR_Expression.hh"
 
-class IIR_PhysicalUnit;
+REF_FORWARD_DECL(IIR_PhysicalUnit);
 
 class IIR_PhysicalLiteral : public virtual IIR_Expression{
 
 public:
   virtual ~IIR_PhysicalLiteral() {}
     
-  virtual void set_abstract_literal( IIR *abstract_literal ) = 0;
-  virtual IIR *get_abstract_literal() = 0;
-  virtual void set_unit_name( IIR_PhysicalUnit *unit ) = 0;
-  virtual IIR_PhysicalUnit *get_unit_name() = 0;
+  virtual void set_abstract_literal( IIRRef abstract_literal ) = 0;
+  virtual IIRRef get_abstract_literal() = 0;
+  virtual void set_unit_name( IIR_PhysicalUnitRef unit ) = 0;
+  virtual IIR_PhysicalUnitRef get_unit_name() = 0;
   virtual IIR_Boolean is_locally_static() = 0;
 };
 

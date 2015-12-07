@@ -28,16 +28,17 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
+#include "savant.hh"
 #include "IIR_Declaration.hh"
-class IIR_DeclarationList;
-class IIR_AttributeSpecificationList;
-class IIR_LibraryDeclaration;
+
+REF_FORWARD_DECL(IIR_DeclarationList);
+REF_FORWARD_DECL(IIR_AttributeSpecificationList);
+REF_FORWARD_DECL(IIR_LibraryDeclaration);
 
 /*
  * Represents either an entity, achitecture, package or package body
  */
-class IIR_LibraryUnit : public virtual IIR_Declaration{
+class IIR_LibraryUnit : public virtual IIR_Declaration {
 public:
   virtual ~IIR_LibraryUnit() {}
 
@@ -45,7 +46,7 @@ public:
      Return the IIR_LibraryDeclaration that this IIR_LibraryUnit belongs
      to.
   */
-  virtual IIR_LibraryDeclaration *get_library() = 0;
+  virtual IIR_LibraryDeclarationRef get_library() = 0;
 
   /**
      Is this a primary unit?
@@ -57,10 +58,10 @@ public:
   virtual IIR_Boolean is_secondary_unit() = 0;
 
   //@{ List accessor(s)
-  virtual IIR_DeclarationList *get_context_items() = 0;
-  virtual void set_context_items(IIR_DeclarationList *new_context_items) = 0;
-  virtual IIR_AttributeSpecificationList *get_attributes() = 0;
-  virtual void set_attributes(IIR_AttributeSpecificationList *new_attributes) = 0;
+  virtual IIR_DeclarationListRef get_context_items() = 0;
+  virtual void set_context_items(IIR_DeclarationListRef new_context_items) = 0;
+  virtual IIR_AttributeSpecificationListRef get_attributes() = 0;
+  virtual void set_attributes(IIR_AttributeSpecificationListRef new_attributes) = 0;
   //@}
 };
 

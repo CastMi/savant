@@ -40,15 +40,15 @@ class IIRBase_LibraryDeclaration : public virtual IIRBase_Declaration, public vi
 
 public:
   // List Accessor(s)
-  IIR_LibraryUnitList *get_primary_units();
-  void                set_primary_units(IIR_LibraryUnitList *new_primary_units);
+  IIR_LibraryUnitListRef get_primary_units();
+  void                   set_primary_units(IIR_LibraryUnitListRef new_primary_units);
 
-  IIR_Kind get_kind() const {return IIR_LIBRARY_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_LibraryDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_LIBRARY_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_LibraryDeclaration"); }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
-  IIR_TypeDefinition *get_subtype( ){ return NULL; }
+  IIR_TypeDefinitionRef get_subtype( ){ return NULL; }
 
   void set_path_to_directory( const string &new_path );
   const string &get_path_to_directory();
@@ -57,7 +57,7 @@ public:
 
   declaration_type get_declaration_type();
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef  );
   void publish_vhdl_decl( ostream & );
 protected:
   IIRBase_LibraryDeclaration();
@@ -65,7 +65,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_LibraryUnitList *primary_units;
+  IIR_LibraryUnitListRef primary_units;
 
   // This is a path (either relative or absolute, depending on how the
   // library manager was able to find it) to the directory that this declaration

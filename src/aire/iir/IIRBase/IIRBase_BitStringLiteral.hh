@@ -37,10 +37,10 @@ class IIRBase_BitStringLiteral : public virtual IIRBase_TextLiteral,
 				 public virtual IIR_BitStringLiteral{
 
 public:
-  IIR_Kind get_kind() const {return IIR_BIT_STRING_LITERAL;}
-  const IIR_Char *get_kind_text() const {return "IIR_BitStringLiteral";}
+  IIR_Kind get_kind() const override { return IIR_BIT_STRING_LITERAL; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_BitStringLiteral"); }
 
-  static IIR_BitStringLiteral *get( IIR_Char *value,
+  static IIR_BitStringLiteralRef get( IIR_CharRef value,
 				    IIR_Int32 length);
   
   void release();

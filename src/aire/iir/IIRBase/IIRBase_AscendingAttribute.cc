@@ -23,41 +23,41 @@
 #include "IIR_DesignFile.hh"
 #include "IIR_EnumerationSubtypeDefinition.hh"
 #include "IIR_TypeDefinition.hh"
-
 #include "StandardPackage.hh"
+#include <cstring>
 
 IIRBase_AscendingAttribute::IIRBase_AscendingAttribute(){}
 IIRBase_AscendingAttribute::~IIRBase_AscendingAttribute(){}
 
 void 
-IIRBase_AscendingAttribute::set_suffix( IIR *suffix ){
+IIRBase_AscendingAttribute::set_suffix( IIRRef suffix ){
   this->suffix = suffix;
 }
 
-IIR *
+IIRRef
 IIRBase_AscendingAttribute::get_suffix(){
   return suffix;
 }
 
-IIR *
-IIRBase_AscendingAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_AscendingAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_AscendingAttribute *new_node = dynamic_cast<IIRBase_AscendingAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_AscendingAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_AscendingAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
   return new_node;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_AscendingAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_boolean_type();
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_AscendingAttribute::build_attribute_name() {
-  const char *name = "ascending";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );
+   std::string name("ascending");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory() );
 }
 
 void 

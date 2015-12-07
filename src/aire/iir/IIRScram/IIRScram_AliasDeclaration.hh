@@ -34,11 +34,10 @@
 #include "savant_config.hh"
 #include "IIRScram_Declaration.hh"
 #include "IIRBase_AliasDeclaration.hh"
-
+REF_FORWARD_DECL(IIRScram_AliasDeclaration);
 class IIRScram_TypeDefinition;
 class IIRScram_List;
 class IIRScram_DesignatorList;
-class IIRScram_AliasDeclaration;
 class IIRScram_AttributeSpecificationList;
 
 /*
@@ -47,7 +46,9 @@ class IIRScram_AttributeSpecificationList;
 class IIRScram_AliasDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_AliasDeclaration{
 
 public:
-  IIRScram_AliasDeclaration() { _my_clone = NULL; }
+  IIRScram_AliasDeclaration() {}
+  //FIXME: this should be protected
+  virtual ~IIRScram_AliasDeclaration();
 
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
@@ -55,7 +56,7 @@ public:
   // See IIRScram_Declaration for internal documentation for these methods.
   IIR_Boolean is_object();
 
-  IIRScram_TypeDefinition *_get_type_of_element( int );
+  IIRScram_TypeDefinitionRef _get_type_of_element( int );
   IIR_Int32 get_num_indexes();
   void _type_check();
 
@@ -64,24 +65,23 @@ public:
 
   const IIR_Char* _get_mangling_prefix();
 
-  IIRScram_AttributeSpecificationList* _get_attribute_specification_list(); 
+  IIRScram_AttributeSpecificationListRef _get_attribute_specification_list(); 
 
   /** For some reason, sometimes the code generate wants a fresh clone
      generated.  */
   void _clear_clone(){ _my_clone = 0; }
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
   void _come_into_scope( symbol_table * );
   void _come_out_of_scope( symbol_table * );
 
-  IIRScram *_get_name();
+  IIRScramRef _get_name();
 
 protected:
-  virtual ~IIRScram_AliasDeclaration();
     
 private:
-  IIRScram_AliasDeclaration *_my_clone;
+  IIRScram_AliasDeclarationRef _my_clone;
 };
 
 typedef refcount<IIRScram_AliasDeclaration> IIRScram_AliasDeclarationRef;

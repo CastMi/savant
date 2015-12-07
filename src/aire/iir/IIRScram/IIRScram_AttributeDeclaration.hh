@@ -51,10 +51,10 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  IIRScram_TypeDefinition *_get_type_of_element( int );
+  IIRScram_TypeDefinitionRef _get_type_of_element( int );
 
   // Wrapper Functions
-  IIRScram_Attribute *_get_attribute();
+  IIRScram_AttributeRef _get_attribute();
 protected:    
 private:
 };

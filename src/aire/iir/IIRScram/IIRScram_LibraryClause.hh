@@ -50,7 +50,7 @@ public:
 
   void _type_check();
 
-  IIRScram_Identifier *_get_logical_name();
+  IIRScram_IdentifierRef _get_logical_name();
 
 protected:    
 private:

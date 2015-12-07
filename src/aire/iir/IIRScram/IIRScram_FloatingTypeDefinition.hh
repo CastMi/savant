@@ -49,19 +49,19 @@ public:
   IIR_Boolean _is_numeric_type() { return true; }
   IIR_Boolean _is_floating_type() { return true; }
 
-  IIRScram_TypeDefinition *_get_new_subtype();
-  IIRScram *_clone();
+  IIRScram_TypeDefinitionRef _get_new_subtype();
+  IIRScramRef _clone();
 
   IIR_Boolean _is_iir_floating_type_definition(){ return TRUE; }
   
-  void _set_resolution_function( IIRScram_FunctionDeclaration * );
+  void _set_resolution_function( IIRScram_FunctionDeclarationRef  );
 
-  static IIRScram_FloatingSubtypeDefinition *_construct_new_type( IIRScram_RangeTypeDefinition  *init_info,
-                                                                  IIRScram_TypeDeclaration      *type_decl,
-                                                                  IIRScram_DesignFile           *design_file);
+  static IIRScram_FloatingSubtypeDefinitionRef _construct_new_type( IIRScram_RangeTypeDefinitionRef init_info,
+                                                                  IIRScram_TypeDeclarationRef       type_decl,
+                                                                  IIRScram_DesignFileRef            design_file);
 
 protected:
-  void _build_implicit_operators( savant::set<IIRScram_Declaration*> * );
+  void _build_implicit_operators( savant::set<IIRScram_DeclarationRef> );
     
 private:
   

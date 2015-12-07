@@ -37,36 +37,36 @@ class IIR;
 class IIRBase_SimpleSimultaneousStatement : public virtual IIRBase_SimultaneousStatement, public virtual IIR_SimpleSimultaneousStatement {
 
 public:
-  IIR_Kind get_kind() const {
+  IIR_Kind get_kind() const override {
     return IIR_SIMPLE_SIMULTANEOUS_STATEMENT;
   }
   
-  const IIR_Char *get_kind_text() const {
-    return "IIR_SimpleSimultaneousStatement";
+  IIR_CharConstRef get_kind_text() const override {
+    return IIR_CharConstRef("IIR_SimpleSimultaneousStatement");
   }
 
   /** Used to set the left expression of a simultaneous equation */
-  void set_left_expression(IIR* left_expression);
+  void set_left_expression(IIRRef left_expression);
   
   /** Used to get the pointer to the left expression of a simultaneous equation */
-  IIR* get_left_expression();
+  IIRRef get_left_expression();
   
   /** Used to set the right expression of a simultaneous equation */
-  void set_right_expression(IIR* right_expression);
+  void set_right_expression(IIRRef right_expression);
   
   /** Used to get the pointer to the right expression of a simultaneous equation */
-  IIR* get_right_expression();
+  IIRRef get_right_expression();
   
   void set_pure(IIR_Pure purity);
   IIR_Pure get_pure();
 
   /** Sets the tolerance aspect of the simultaneous equation */  
-  void set_tolerance_aspect(IIR* tolerance);
+  void set_tolerance_aspect(IIRRef tolerance);
   
   /** Returns a pointer to the tolerance aspect of the simultaneous equation */
-  IIR* get_tolerance_aspect();
+  IIRRef get_tolerance_aspect();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
   
   void publish_vhdl(ostream &);
 protected:
@@ -74,10 +74,10 @@ protected:
   virtual  ~IIRBase_SimpleSimultaneousStatement() = 0;
   
 private:
-  IIR* left_expression;
-  IIR* right_expression;
+  IIRRef left_expression;
+  IIRRef right_expression;
   IIR_Pure purity;
-  IIR* tolerance_aspect;
+  IIRRef tolerance_aspect;
   
 };
 

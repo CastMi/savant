@@ -29,32 +29,27 @@
 #include "IIRBase_PhysicalLiteral.hh"
 #include "IIR_PhysicalUnit.hh"
 #include "IIR_TextLiteral.hh"
-
 #include "savant.hh"
 
-IIRBase_PhysicalLiteral::IIRBase_PhysicalLiteral() {
-  set_abstract_literal(NULL);
-  set_unit_name(NULL);
-}
-
+IIRBase_PhysicalLiteral::IIRBase_PhysicalLiteral() {}
 IIRBase_PhysicalLiteral::~IIRBase_PhysicalLiteral() {}
 
 void 
-IIRBase_PhysicalLiteral::set_abstract_literal( IIR* abstract_literal) {
+IIRBase_PhysicalLiteral::set_abstract_literal( IIRRef abstract_literal) {
 	this->abstract_literal = abstract_literal;
 }
 
-IIR* 
+IIRRef
 IIRBase_PhysicalLiteral::get_abstract_literal() {
   return abstract_literal;
 }
 
-void 
-IIRBase_PhysicalLiteral::set_unit_name( IIR_PhysicalUnit* unit) {
+void
+IIRBase_PhysicalLiteral::set_unit_name( IIR_PhysicalUnitRef unit) {
   this->unit_name = unit;
 }
 
-IIR_PhysicalUnit *
+IIR_PhysicalUnitRef
 IIRBase_PhysicalLiteral::get_unit_name() {
   return unit_name;
 }
@@ -64,14 +59,14 @@ IIRBase_PhysicalLiteral::is_locally_static(){
   return TRUE;
 }
 
-IIR *
-IIRBase_PhysicalLiteral::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_PhysicalLiteral::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_PhysicalLiteral *new_node = dynamic_cast<IIRBase_PhysicalLiteral *>(IIRBase_Expression::convert_tree(factory));
+  IIRBase_PhysicalLiteralRef new_node = my_dynamic_pointer_cast<IIRBase_PhysicalLiteral>(IIRBase_Expression::convert_tree(factory));
 
   // Process the variables
   new_node->abstract_literal = convert_node(abstract_literal, factory);
-  new_node->unit_name = dynamic_cast<IIR_PhysicalUnit *>(convert_node(unit_name, factory));
+  new_node->unit_name = my_dynamic_pointer_cast<IIR_PhysicalUnit>(convert_node(unit_name, factory));
 
   return new_node;
 }
@@ -86,15 +81,15 @@ IIRBase_PhysicalLiteral::is_resolved(){
   }
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_PhysicalLiteral::get_subtype(){
-  ASSERT( get_unit_name() != NULL );
+  ASSERT( get_unit_name() != nullptr );
   return get_unit_name()->get_subtype();
 }
 
 ostream & 
 IIRBase_PhysicalLiteral::print( ostream &os ) {
-  if(get_abstract_literal() != NULL) {
+  if(get_abstract_literal() != nullptr) {
     os << *get_abstract_literal();
   }
   os << " ";

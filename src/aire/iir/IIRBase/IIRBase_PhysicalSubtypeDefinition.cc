@@ -33,29 +33,27 @@
 #include <cstdlib>//for abort
 #include "error_func.hh"
 
-IIRBase_PhysicalSubtypeDefinition::IIRBase_PhysicalSubtypeDefinition() :
-  my_resolution_function(0){}
-
+IIRBase_PhysicalSubtypeDefinition::IIRBase_PhysicalSubtypeDefinition() {}
 IIRBase_PhysicalSubtypeDefinition::~IIRBase_PhysicalSubtypeDefinition() {}
 
 void 
-IIRBase_PhysicalSubtypeDefinition::set_resolution_function( IIR_FunctionDeclaration *resolution_function ){
+IIRBase_PhysicalSubtypeDefinition::set_resolution_function( IIR_FunctionDeclarationRef resolution_function ){
   my_resolution_function = resolution_function;
 }
 
 
-IIR_FunctionDeclaration *
+IIR_FunctionDeclarationRef
 IIRBase_PhysicalSubtypeDefinition::get_resolution_function(){
   return my_resolution_function;
 }
 
-IIR *
-IIRBase_PhysicalSubtypeDefinition::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_PhysicalSubtypeDefinition::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_PhysicalSubtypeDefinition *new_node = dynamic_cast<IIRBase_PhysicalSubtypeDefinition *>(IIRBase_PhysicalTypeDefinition::convert_tree(factory));
+  IIRBase_PhysicalSubtypeDefinitionRef new_node = my_dynamic_pointer_cast<IIRBase_PhysicalSubtypeDefinition>(IIRBase_PhysicalTypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->my_resolution_function = dynamic_cast<IIR_FunctionDeclaration *>(convert_node(my_resolution_function, factory));
+  new_node->my_resolution_function = my_dynamic_pointer_cast<IIR_FunctionDeclaration>(convert_node(my_resolution_function, factory));
 
   return new_node;
 }

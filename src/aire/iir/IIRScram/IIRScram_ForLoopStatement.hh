@@ -65,19 +65,19 @@ public:
 
 
   void _type_check();
-  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *,
-					     IIRScram_SubprogramDeclaration *subprogram_decl );
-  IIRScram_List                         *_get_statement_list();
+  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinitionRef> ,
+					     IIRScram_SubprogramDeclarationRef subprogram_decl );
+  IIRScram_ListRef                         _get_statement_list();
     
   // Wrappers for IIRBase functions
-  IIRScram_SequentialStatementList      *_get_sequence_of_statements();
-  IIRScram_ConstantDeclaration          *_get_iteration_scheme();
+  IIRScram_SequentialStatementListRef  _get_sequence_of_statements();
+  IIRScram_ConstantDeclarationRef      _get_iteration_scheme();
 
   /**
      The parser calls this to ask us to build our iterator.
   */
-  void _build_iteration_scheme( IIR_TextLiteral *declarator,
-				IIR_ScalarTypeDefinition *subtype );
+  void _build_iteration_scheme( IIR_TextLiteralRef declarator,
+				IIR_ScalarTypeDefinitionRef subtype );
  
 protected:   
 private:

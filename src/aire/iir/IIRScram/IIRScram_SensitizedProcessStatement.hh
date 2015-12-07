@@ -43,10 +43,10 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   void _type_check();
-  IIRScram *_resolve_signal_name( IIRScram * );
+  IIRScramRef _resolve_signal_name( IIRScramRef  );
 
   // Wrappers for IIRBase functions
-  IIRScram_DesignatorList *     _get_sensitivity_list();
+  IIRScram_DesignatorListRef      _get_sensitivity_list();
 
 protected:
 private:

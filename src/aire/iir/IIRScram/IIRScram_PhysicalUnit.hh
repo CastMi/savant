@@ -52,9 +52,9 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  IIRScram_AttributeSpecificationList *_get_attribute_specification_list();
+  IIRScram_AttributeSpecificationListRef _get_attribute_specification_list();
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0);
 
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return FALSE; }
@@ -62,9 +62,9 @@ public:
   IIRScram* _clone() { return this; }
 
   // Wrappers for IIRBase functions
-  IIRScram_AttributeSpecificationList   *_get_attributes();
-  IIRScram *                            _get_multiplier();
-  IIRScram_PhysicalTypeDefinition       *_get_physical_type();
+  IIRScram_AttributeSpecificationListRef _get_attributes();
+  IIRScramRef                            _get_multiplier();
+  IIRScram_PhysicalTypeDefinitionRef     _get_physical_type();
 protected:    
 private:
 };

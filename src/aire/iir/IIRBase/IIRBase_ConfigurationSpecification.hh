@@ -41,28 +41,28 @@ class IIRBase_ConfigurationSpecification : public virtual IIRBase_Declaration, p
 
 public:
   // List Accessor(s)
-  IIR_DesignatorList    *get_instantiation_list();
-  IIR_AssociationList   *get_generic_map_aspect();
-  IIR_AssociationList   *get_port_map_aspect();
-  void                  set_instantiation_list(IIR_DesignatorList *new_instantiation_list);
-  void                  set_generic_map_aspect(IIR_AssociationList *new_generic_map_aspect);
-  void                  set_port_map_aspect(IIR_AssociationList *new_port_map_aspect);
+  IIR_DesignatorListRef  get_instantiation_list();
+  IIR_AssociationListRef get_generic_map_aspect();
+  IIR_AssociationListRef get_port_map_aspect();
+  void                   set_instantiation_list(IIR_DesignatorListRef new_instantiation_list);
+  void                   set_generic_map_aspect(IIR_AssociationListRef new_generic_map_aspect);
+  void                   set_port_map_aspect(IIR_AssociationListRef new_port_map_aspect);
 
-  IIR_Kind get_kind() const {return IIR_CONFIGURATION_SPECIFICATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_ConfigurationSpecification";}
+  IIR_Kind get_kind() const override { return IIR_CONFIGURATION_SPECIFICATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ConfigurationSpecification"); }
   
-  void set_component_name(IIR *component_name);
-  IIR *get_component_name();
+  void set_component_name(IIRRef component_name);
+  IIRRef get_component_name();
 
   /**
      Gets the entity aspect associated with the component specified.  This
      maps to the binding indication as specified by the LRM.  Will return
      NULL for "open" binding.
   */
-  IIR_LibraryUnit *get_entity_aspect();
-  void set_entity_aspect(IIR_LibraryUnit    *entity_aspect);
+  IIR_LibraryUnitRef get_entity_aspect();
+  void set_entity_aspect(IIR_LibraryUnitRef entity_aspect);
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
   void publish_vhdl_decl(ostream &);
@@ -75,20 +75,20 @@ private:
   /**
      Holds the list of component designators specified in the component configuration.
   */
-  IIR_DesignatorList  *instantiation_list;
+  IIR_DesignatorListRef instantiation_list;
 
   /**
      Holds the generic map specified for the component configuration.
   */
-  IIR_AssociationList    *generic_map_aspect;
+  IIR_AssociationListRef generic_map_aspect;
 
   /**
      Holds the port map specified for the component configuration.
   */
-  IIR_AssociationList    *port_map_aspect;
+  IIR_AssociationListRef port_map_aspect;
 
-  IIR              *my_component_name;
-  IIR_LibraryUnit  *my_entity_aspect;
+  IIRRef             my_component_name;
+  IIR_LibraryUnitRef my_entity_aspect;
 };
 
 typedef refcount<IIRBase_ConfigurationSpecification> IIRBase_ConfigurationSpecificationRef;

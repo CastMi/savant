@@ -28,8 +28,8 @@
 #include "savant_config.hh"
 #include "IIR_SimultaneousStatement.hh"
 
-class IIR_BreakList;
-class IIR_DesignatorList;
+REF_FORWARD_DECL(IIR_BreakList);
+REF_FORWARD_DECL(IIR_DesignatorList);
 
 /** The extension base for Concurrent Break Statement. This represents a
     process containing a break statement. */
@@ -37,15 +37,15 @@ class IIR_ConcurrentBreakStatement : public virtual IIR_SimultaneousStatement{
   
 public:
   // List Accessor(s)
-  virtual IIR_BreakList *get_concurrent_break_list() = 0;
-  virtual IIR_DesignatorList *get_sensitivity_list() = 0;
-  virtual void set_concurrent_break_list(IIR_BreakList  *) = 0;
-  virtual void set_sensitivity_list(IIR_DesignatorList  *) = 0;
+  virtual IIR_BreakListRef get_concurrent_break_list() = 0;
+  virtual IIR_DesignatorListRef get_sensitivity_list() = 0;
+  virtual void set_concurrent_break_list(IIR_BreakListRef ) = 0;
+  virtual void set_sensitivity_list(IIR_DesignatorListRef ) = 0;
 
   /** The condition in the concurrent break statement would be the
       condition in the equivalent break statement in the process. */
-  virtual void set_condition(IIR* condition) = 0;
-  virtual IIR* get_condition() = 0;
+  virtual void set_condition(IIRRef condition) = 0;
+  virtual IIRRef get_condition() = 0;
   
 protected:
 public:

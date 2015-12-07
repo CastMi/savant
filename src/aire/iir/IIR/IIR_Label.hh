@@ -32,8 +32,8 @@
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
 
-class IIR_Statement;
-class IIR_AttributeSpecificationList;
+REF_FORWARD_DECL(IIR_Statement);
+REF_FORWARD_DECL(IIR_AttributeSpecificationList);
 
 class IIR_Label : public virtual IIR_Declaration{
 
@@ -41,11 +41,11 @@ public:
   virtual ~IIR_Label() {}
     
   // List accessor(s)
-  virtual IIR_AttributeSpecificationList        *get_attributes() = 0;
-  virtual void                                  set_attributes(IIR_AttributeSpecificationList *) = 0;
+  virtual IIR_AttributeSpecificationListRef  get_attributes() = 0;
+  virtual void                               set_attributes(IIR_AttributeSpecificationListRef ) = 0;
 
-  virtual void set_statement( IIR_Statement* statement ) = 0;
-  virtual IIR_Statement *get_statement() = 0;
+  virtual void set_statement( IIR_StatementRef statement ) = 0;
+  virtual IIR_StatementRef get_statement() = 0;
 };
 
 typedef refcount<IIR_Label> IIR_LabelRef;

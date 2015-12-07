@@ -44,8 +44,8 @@ public:
 
   void _type_check();
 
-  IIRScram_SequentialStatement * _get_enclosing_loop();
-  IIRScram * _get_condition();
+  IIRScram_SequentialStatementRef  _get_enclosing_loop();
+  IIRScramRef  _get_condition();
 protected:
 private:
 };

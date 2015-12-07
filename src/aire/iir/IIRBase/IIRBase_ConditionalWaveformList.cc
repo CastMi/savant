@@ -32,31 +32,31 @@
 IIRBase_ConditionalWaveformList::IIRBase_ConditionalWaveformList() {}
 IIRBase_ConditionalWaveformList::~IIRBase_ConditionalWaveformList() {}
 
-IIR_ConditionalWaveform*
+IIR_ConditionalWaveformRef
 IIRBase_ConditionalWaveformList::first() {
-  return dynamic_cast<IIR_ConditionalWaveform*>(IIRBase_List::first());
+  return my_dynamic_pointer_cast<IIR_ConditionalWaveform>(IIRBase_List::first());
 }
 
 
-IIR_ConditionalWaveform*
+IIR_ConditionalWaveformRef
 IIRBase_ConditionalWaveformList::last() {
-  return dynamic_cast<IIR_ConditionalWaveform*>(IIRBase_List::last());
+  return my_dynamic_pointer_cast<IIR_ConditionalWaveform>(IIRBase_List::last());
 }
 
 
-IIR_ConditionalWaveform*
-IIRBase_ConditionalWaveformList::successor(IIR_ConditionalWaveform* node) {
-  return dynamic_cast<IIR_ConditionalWaveform*>(IIRBase_List::successor((IIR*)node));
+IIR_ConditionalWaveformRef
+IIRBase_ConditionalWaveformList::successor(IIR_ConditionalWaveformRef node) {
+  return my_dynamic_pointer_cast<IIR_ConditionalWaveform>(IIRBase_List::successor(node));
 }
 
 void 
 IIRBase_ConditionalWaveformList::publish_vhdl(ostream &vhdl_out) {
-  IIRBase_ConditionalWaveform* waveform_condition = NULL;
-  for(waveform_condition = dynamic_cast<IIRBase_ConditionalWaveform *>(first()); 
-      waveform_condition != NULL; ) {
+  IIRBase_ConditionalWaveformRef waveform_condition;
+  for(waveform_condition = my_dynamic_pointer_cast<IIRBase_ConditionalWaveform>(first()); 
+      waveform_condition != nullptr; ) {
     waveform_condition->publish_vhdl(vhdl_out);
-    waveform_condition = dynamic_cast<IIRBase_ConditionalWaveform *>(successor(waveform_condition));
-    if( waveform_condition != NULL) {
+    waveform_condition = my_dynamic_pointer_cast<IIRBase_ConditionalWaveform>(successor(waveform_condition));
+    if( waveform_condition != nullptr) {
       vhdl_out << " else\n";
     }
   }

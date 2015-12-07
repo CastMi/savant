@@ -50,16 +50,16 @@ IIRScram_AssertionStatement::_type_check(){
   }
 }
 
-IIRScram*
+IIRScramRef
 IIRScram_AssertionStatement::_clone() {
-  IIRScram_AssertionStatement *clone = new IIRScram_AssertionStatement();
+  IIRScram_AssertionStatementRef clone(new IIRScram_AssertionStatement());
   IIRScram_SequentialStatement::_clone( clone );
 
   clone->set_assertion_condition( _get_assertion_condition()->_clone() );
   clone->set_report_expression( _get_report_expression()->_clone() );
   clone->set_severity_expression( _get_severity_expression()->_clone() );
 
-  return clone;
+  return my_dynamic_pointer_cast<IIRScram>( clone );
 }
 
 visitor_return_type *
@@ -68,17 +68,17 @@ IIRScram_AssertionStatement::_accept_visitor(node_visitor *visitor, visitor_argu
   return visitor->visit_IIR_AssertionStatement(this, arg);
 };
 
-IIRScram *
+IIRScramRef
 IIRScram_AssertionStatement::_get_assertion_condition(){ 
-  return dynamic_cast<IIRScram *>(get_assertion_condition()); 
+  return my_dynamic_pointer_cast<IIRScram>(get_assertion_condition()); 
 }
   
-IIRScram *
+IIRScramRef
 IIRScram_AssertionStatement::_get_report_expression(){ 
-  return dynamic_cast<IIRScram *>(get_report_expression()); 
+  return my_dynamic_pointer_cast<IIRScram>(get_report_expression()); 
 }
   
-IIRScram *
+IIRScramRef
 IIRScram_AssertionStatement::_get_severity_expression(){ 
-  return dynamic_cast<IIRScram *>(get_severity_expression()); 
+  return my_dynamic_pointer_cast<IIRScram>(get_severity_expression()); 
 }

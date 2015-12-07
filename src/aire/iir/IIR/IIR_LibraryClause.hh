@@ -32,8 +32,8 @@
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
 
+REF_FORWARD_DECL(IIR_LibraryDeclaration);
 class IIR_Identifier;
-class IIR_LibraryDeclaration;
 
 class IIR_LibraryClause : public virtual IIR_Declaration{
 
@@ -42,16 +42,16 @@ public:
     
   //@{
   /** Deal with the text of the logical name. */
-  virtual void set_logical_name(IIR_Identifier* logical_name) = 0;
-  virtual IIR_Identifier* get_logical_name() = 0;
+  virtual void set_logical_name(IIR_IdentifierRef logical_name) = 0;
+  virtual IIR_IdentifierRef get_logical_name() = 0;
   //@}
 
   //@{
   /** Post-resolution, get a handle to the actual library node.  Note that
       you will probably have to utlize the library_manager class to do much
       of interest with it. */
-  virtual void set_library_declaration( IIR_LibraryDeclaration *new_library_declaration ) = 0;
-  virtual IIR_LibraryDeclaration *get_library_declaration() = 0;
+  virtual void set_library_declaration( IIR_LibraryDeclarationRef new_library_declaration ) = 0;
+  virtual IIR_LibraryDeclarationRef get_library_declaration() = 0;
   //@}
 
 };

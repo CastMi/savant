@@ -33,27 +33,20 @@
 IIRBase_FloatingPointLiteral32::IIRBase_FloatingPointLiteral32() {}
 IIRBase_FloatingPointLiteral32::~IIRBase_FloatingPointLiteral32() {}
 
-void
-IIRBase_FloatingPointLiteral32::release() {
-  delete this;
-}
-
-
 IIR_FP32
 IIRBase_FloatingPointLiteral32::value() {
   return val;
 }
-
 
 void
 IIRBase_FloatingPointLiteral32::set_value(IIR_FP32 v) {
   val = v;
 }
 
-IIR *
-IIRBase_FloatingPointLiteral32::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_FloatingPointLiteral32::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_FloatingPointLiteral32 *new_node = dynamic_cast<IIRBase_FloatingPointLiteral32 *>(IIRBase_Literal::convert_tree(factory));
+  IIRBase_FloatingPointLiteral32Ref new_node = my_dynamic_pointer_cast<IIRBase_FloatingPointLiteral32>(IIRBase_Literal::convert_tree(factory));
 
   // Process the variables
   new_node->val = val;

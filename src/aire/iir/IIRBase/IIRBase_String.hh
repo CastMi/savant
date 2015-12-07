@@ -56,10 +56,6 @@ public:
     return my_text.length();
   }
 
-  IIR_Char &operator[]( int offset ){
-    return my_text[ offset ];
-  }
-
   const string convert_to_string(){
     string retval = "";
     int my_length = get_text_length();

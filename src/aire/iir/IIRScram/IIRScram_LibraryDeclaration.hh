@@ -54,10 +54,10 @@ public:
   IIR_Boolean _is_iir_library_declaration(){ return TRUE; }
 
 
-  void _add_to_declarative_region( savant::set<IIRScram_Declaration*> * );
+  void _add_to_declarative_region( savant::set<IIRScram_DeclarationRef> );
 
   // Wrappers for IIRBase functions
-  IIRScram_LibraryUnitList *    _get_primary_units();
+  IIRScram_LibraryUnitListRef     _get_primary_units();
 protected:
 private:
 };

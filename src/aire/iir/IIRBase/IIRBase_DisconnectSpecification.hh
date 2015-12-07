@@ -41,19 +41,19 @@ class IIRBase_DisconnectSpecification : public virtual IIRBase_Declaration, publ
 
 public:
   // List Accessor(s)
-  IIR_DesignatorList *get_guarded_signal_list();
-  void               set_guarded_signal_list(IIR_DesignatorList *new_guarded_signal_list);
+  IIR_DesignatorListRef get_guarded_signal_list();
+  void                  set_guarded_signal_list(IIR_DesignatorListRef new_guarded_signal_list);
 
-  IIR_Kind get_kind() const {return IIR_DISCONNECT_SPECIFICATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_DisconnectSpecification";}
+  IIR_Kind get_kind() const override { return IIR_DISCONNECT_SPECIFICATION; }
+  IIR_CharConstRef get_kind_text() const override {return IIR_CharConstRef("IIR_DisconnectSpecification"); }
 
-  void set_type_mark( IIR_TypeDefinition *type_definition );
-  IIR_TypeDefinition *get_type_mark();
+  void set_type_mark( IIR_TypeDefinitionRef type_definition );
+  IIR_TypeDefinitionRef get_type_mark();
 
-  void set_time_expression( IIR* time_expression);
-  IIR *get_time_expression();
+  void set_time_expression( IIRRef time_expression);
+  IIRRef get_time_expression();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
   void publish_vhdl_decl(ostream &);
@@ -63,10 +63,10 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DesignatorList *guarded_signal_list;
+  IIR_DesignatorListRef guarded_signal_list;
 
-  IIR_TypeDefinition *my_type_mark;
-  IIR *my_time_expression;
+  IIR_TypeDefinitionRef my_type_mark;
+  IIRRef                my_time_expression;
 };
 
 typedef refcount<IIRBase_DisconnectSpecification> IIRBase_DisconnectSpecificationRef;

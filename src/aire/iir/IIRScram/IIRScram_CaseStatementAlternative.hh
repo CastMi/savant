@@ -30,15 +30,16 @@
 //          Krishnan Subramani
 
 //---------------------------------------------------------------------------
+//
 #include "savant_config.hh"
 #include "IIRScram_Tuple.hh"
 #include "IIRBase_CaseStatementAlternative.hh"
 #include "dl_list.hh"
 
+REF_FORWARD_DECL(IIRScram_SequentialStatementList);
+REF_FORWARD_DECL(IIRScram_SubprogramDeclaration);
 class IIRScram_WaitStatement;
 class IIRScram_TypeDefinition;
-class IIRScram_SubprogramDeclaration;
-class IIRScram_SequentialStatementList;
 
 class IIRScram_CaseStatementAlternative : public virtual IIRScram_Tuple, public virtual IIRBase_CaseStatementAlternative{
 
@@ -46,15 +47,15 @@ public:
   IIRScram_CaseStatementAlternative();
   virtual ~IIRScram_CaseStatementAlternative();
 
-  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *,
-					     IIRScram_SubprogramDeclaration * );
+  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinitionRef>,
+					     IIRScram_SubprogramDeclarationRef  );
 
   IIR_Boolean _is_iir_case_statement_alternative() {return TRUE;};
 
-  IIRScram_SequentialStatementList *_get_sequence_of_statements();
+  IIRScram_SequentialStatementListRef _get_sequence_of_statements();
 
-  virtual void _clone( IIRScram * );
-  IIRScram *_clone();
+  virtual void _clone( IIRScramRef  );
+  IIRScramRef _clone();
 
 protected:
     

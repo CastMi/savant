@@ -38,17 +38,18 @@ IIRScram_ArraySubtypeDefinition::~IIRScram_ArraySubtypeDefinition() {}
 void 
 IIRScram_ArraySubtypeDefinition::_type_check(){
   if( _get_resolution_function() != NULL ){
-    _get_resolution_function()->_type_check_resolution_function( this );
+    // FIXME: this is an error
+    _get_resolution_function()->_type_check_resolution_function( IIRScram_ArraySubtypeDefinitionRef() );
   }
   IIRScram_ArrayTypeDefinition::_type_check();
 }
 
-IIRScram *
+IIRScramRef
 IIRScram_ArraySubtypeDefinition::_clone(){
-  IIRScram_ArraySubtypeDefinition *my_clone = new IIRScram_ArraySubtypeDefinition();
+  IIRScramRef my_clone(new IIRScram_ArraySubtypeDefinition());
   IIRScram::_clone( my_clone );
 
-  my_clone->set_resolution_function( get_resolution_function() );
+  my_dynamic_pointer_cast<IIRScram_ArraySubtypeDefinition>(my_clone)->set_resolution_function( get_resolution_function() );
 
   IIRScram_ArrayTypeDefinition::_clone( my_clone );
 
@@ -63,15 +64,15 @@ IIRScram_ArraySubtypeDefinition::is_locally_static(){
     retval = FALSE;
   }
   else{
-    IIRScram_ScalarTypeDefinition *current_index = _get_index_subtype();
+    IIRScram_ScalarTypeDefinitionRef current_index = _get_index_subtype();
     if( current_index->is_locally_static() == FALSE ){
       retval = FALSE;
     }
-    IIRScram_TypeDefinition *current_element_type = _get_element_subtype();
+    IIRBase_TypeDefinitionRef current_element_type = _get_element_subtype();
     ASSERT( current_element_type != NULL );
-    while( current_element_type->_is_iir_array_type_definition() == TRUE && 
+    while( my_dynamic_pointer_cast<IIRScram_TypeDefinition>(current_element_type)->_is_iir_array_type_definition() == TRUE && 
 	   current_element_type->is_element() == FALSE ){
-      IIRScram_ArrayTypeDefinition *as_array_type = dynamic_cast<IIRScram_ArrayTypeDefinition *>(current_element_type);
+      IIRScram_ArrayTypeDefinitionRef as_array_type = my_dynamic_pointer_cast<IIRScram_ArrayTypeDefinition>(current_element_type);
       ASSERT( as_array_type->get_index_subtype() != NULL );
       if( as_array_type->_get_index_subtype()->is_locally_static() == FALSE ){
 	retval = FALSE;
@@ -93,11 +94,11 @@ IIRScram_ArraySubtypeDefinition::_accept_visitor( node_visitor *visitor,
   return visitor->visit_IIR_ArraySubtypeDefinition(this, arg);
 }
 
-IIRScram_ArraySubtypeDefinition *
-IIRScram_ArraySubtypeDefinition::get(IIRScram_ArrayTypeDefinition *bt,
-                                     IIRScram_ScalarTypeDefinition *is,
-                                     IIRScram_FunctionDeclaration *res_func) {
-  IIRScram_ArraySubtypeDefinition *retval = new IIRScram_ArraySubtypeDefinition();
+IIRScram_ArraySubtypeDefinitionRef
+IIRScram_ArraySubtypeDefinition::get(IIRScram_ArrayTypeDefinitionRef bt,
+                                     IIRScram_ScalarTypeDefinitionRef is,
+                                     IIRScram_FunctionDeclarationRef res_func) {
+  IIRScram_ArraySubtypeDefinitionRef retval(new IIRScram_ArraySubtypeDefinition());
   retval->set_base_type(bt);
   retval->set_index_subtype(is);
   retval->set_resolution_function(res_func);

@@ -37,38 +37,38 @@ class IIR_Label;
 class IIRBase_Statement : public virtual IIRBase, public virtual IIR_Statement{
 public:
 
-  void set_label( IIR_Label *label);
-  IIR_Label *get_label() const;
+  void set_label( IIR_LabelRef label);
+  IIR_LabelRef get_label() const;
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef );
 
   /** For assertion statements this method is overloaded to return the
       assertion condtion.  For anything else it returns 0. */
-  IIR *get_assertion_condition(){ return 0; }
+  IIRRef get_assertion_condition(){ return 0; }
   
   /** For report and assertion statements this method is overloaded to
       return the report expression.  For anything else it returns 0. */
-  IIR *get_report_expression(){ return 0; }
+  IIRRef get_report_expression(){ return 0; }
   /** For report and assertion statements this method is overloaded to
       return the report expression. For anything else it returns 0. */
-  IIR *get_severity_expression(){ return 0; }
+  IIRRef get_severity_expression(){ return 0; }
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
-  void set_assertion_condition( IIR * );
+  void set_assertion_condition( IIRRef );
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
-  void set_report_expression( IIR * );
+  void set_report_expression( IIRRef );
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
-  void set_severity_expression( IIR * );
+  void set_severity_expression( IIRRef );
 
-  virtual void set_reject_time_expression( IIR * );
-  virtual void set_target( IIR * );
+  virtual void set_reject_time_expression( IIRRef );
+  virtual void set_target( IIRRef );
 
   ostream &print( ostream & );
 
@@ -83,9 +83,9 @@ public:
       associated with this class.  The caller must not modify or delete the
       pointer returned by a call to this method virtual
   */
-  IIR_TextLiteral* get_declarator();
+  IIR_TextLiteralRef get_declarator();
   void publish_vhdl_stmt_label(ostream &);
-  void publish_vhdl_delay_mechanism( ostream &, IIR_DelayMechanism, IIR * );
+  void publish_vhdl_delay_mechanism( ostream &, IIR_DelayMechanism, IIRRef );
 
 protected:
   IIRBase_Statement();
@@ -93,7 +93,7 @@ protected:
     
 private:
   
-  IIR_Label *my_label;
+  IIR_LabelRef my_label;
 };
 
 typedef refcount<IIRBase_Statement> IIRBase_StatementRef;

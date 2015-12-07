@@ -32,15 +32,15 @@
 #include "savant_config.hh"
 #include "IIR_List.hh"
 
-class IIR_AssociationElement;
+REF_FORWARD_DECL(IIR_AssociationElement);
 
 class IIR_AssociationList : public virtual IIR_List{
 
 public:
   virtual ~IIR_AssociationList() {}
 
-  virtual IIR_AssociationElement *first() = 0;
-  virtual IIR_AssociationElement *successor(IIR_AssociationElement*) = 0;
+  virtual IIR_AssociationElementRef first() = 0;
+  virtual IIR_AssociationElementRef successor(IIR_AssociationElementRef) = 0;
 
   virtual IIR_Boolean is_locally_static() = 0;
 };

@@ -31,41 +31,39 @@
 #include "savant_config.hh"
 #include "IIR.hh"
 
-// These are all instantiated, so they really need to be here.
+REF_FORWARD_DECL(IIR_CommentList);
+REF_FORWARD_DECL(IIR_LibraryUnitList);
+REF_FORWARD_DECL(StandardPackage);
+REF_FORWARD_DECL(scram);
+REF_FORWARD_DECL(IIR_LibraryDeclaration);
+REF_FORWARD_DECL(IIR_Identifier);
 
-class IIR_Identifier;
-class IIR_CommentList;
-class IIR_LibraryUnitList;
-class IIR_LibraryDeclaration;
-class StandardPackage;
-class scram;
-
-class IIR_DesignFile : public virtual IIR{
+class IIR_DesignFile : public virtual IIR {
 
 public:
   virtual ~IIR_DesignFile() {}
     
   // List accessor(s)
-  virtual IIR_CommentList        *get_comments() = 0;
-  virtual IIR_LibraryUnitList    *get_library_units() = 0;
-  virtual void                   set_comments(IIR_CommentList *) = 0;
-  virtual void                   set_library_units(IIR_LibraryUnitList *) = 0;
+  virtual IIR_CommentListRef get_comments() = 0;
+  virtual IIR_LibraryUnitListRef get_library_units() = 0;
+  virtual void                   set_comments(IIR_CommentListRef ) = 0;
+  virtual void                   set_library_units(IIR_LibraryUnitListRef ) = 0;
 
-  virtual IIR_Identifier         *get_name() = 0;
-  virtual void                   set_name( IIR_Identifier * ) = 0;
+  virtual IIR_IdentifierRef get_name() = 0;
+  virtual void                   set_name( IIR_IdentifierRef  ) = 0;
 
-  virtual StandardPackage        *get_standard_package() = 0;
-  virtual void                   set_standard_package(StandardPackage *) = 0;
+  virtual StandardPackageRef get_standard_package() = 0;
+  virtual void                   set_standard_package(StandardPackageRef ) = 0;
 
-  virtual plugin_class_factory   *get_class_factory() = 0;
-  virtual void                   set_class_factory(plugin_class_factory *) = 0;
+  virtual plugin_class_factoryRef get_class_factory() = 0;
+  virtual void                   set_class_factory(plugin_class_factoryRef ) = 0;
 
-  virtual void                   set_parser( scram *new_parser ) = 0;
+  virtual void                   set_parser( scramRef new_parser ) = 0;
 
   /**
      Get the library declaration what was "work" when this file was analyzed.
   */
-  virtual IIR_LibraryDeclaration *get_work_library() = 0;
+  virtual IIR_LibraryDeclarationRef get_work_library() = 0;
 };
 
 typedef refcount<IIR_DesignFile> IIR_DesignFileRef;

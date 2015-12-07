@@ -43,8 +43,8 @@ class IIRScram_Expression : public virtual IIRScram, public virtual IIRBase_Expr
 public:
   IIRScram_Expression() {};
   
-  virtual IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
-  void _clone( IIRScram * );
+  virtual IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef  );
+  void _clone( IIRScramRef  );
 
   IIR_Boolean _is_iir_expression(){ return TRUE; }
 

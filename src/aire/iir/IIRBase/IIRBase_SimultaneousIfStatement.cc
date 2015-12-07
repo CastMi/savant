@@ -31,79 +31,66 @@
 #include "IIR_Label.hh"
 #include "IIR_SimultaneousElsif.hh"
 
-IIRBase_SimultaneousIfStatement::IIRBase_SimultaneousIfStatement() : 
-  then_statement_list(0),
-  else_statement_list(0)
-{
-  set_condition(NULL);
-  set_elsif(NULL);
-}
-
+IIRBase_SimultaneousIfStatement::IIRBase_SimultaneousIfStatement() {}
 IIRBase_SimultaneousIfStatement::~IIRBase_SimultaneousIfStatement(){}
 
 void
-IIRBase_SimultaneousIfStatement::set_condition( IIR *new_condition ){
+IIRBase_SimultaneousIfStatement::set_condition( IIRRef new_condition ){
   condition = new_condition;
 }
 
-IIR*
+IIRRef
 IIRBase_SimultaneousIfStatement::get_condition(){
   return condition;
 }
 
 void
-IIRBase_SimultaneousIfStatement::set_elsif( IIR_SimultaneousElsif *new_elsif_clause ){
+IIRBase_SimultaneousIfStatement::set_elsif( IIR_SimultaneousElsifRef new_elsif_clause ){
   elsif_clause = new_elsif_clause;
 }
 
-IIR_SimultaneousElsif*
+IIR_SimultaneousElsifRef
 IIRBase_SimultaneousIfStatement::get_elsif(){
   return elsif_clause;
 }
 
 // List Accessors
-IIR_ArchitectureStatementList *
+IIR_ArchitectureStatementListRef
 IIRBase_SimultaneousIfStatement::get_then_statement_list() {
   ASSERT(then_statement_list != NULL);
   return then_statement_list;
 }
 
-IIR_ArchitectureStatementList *
+IIR_ArchitectureStatementListRef
 IIRBase_SimultaneousIfStatement::get_else_statement_list() {
   ASSERT(else_statement_list != NULL);
   return else_statement_list;
 }
 
 void                          
-IIRBase_SimultaneousIfStatement::set_then_statement_list(IIR_ArchitectureStatementList *new_list) {
+IIRBase_SimultaneousIfStatement::set_then_statement_list(IIR_ArchitectureStatementListRef new_list) {
   ASSERT(new_list != NULL);
-
-  if (then_statement_list != NULL)
-    delete then_statement_list;
 
   then_statement_list = new_list;
 }
 
 void                          
-IIRBase_SimultaneousIfStatement::set_else_statement_list(IIR_ArchitectureStatementList *new_list) {
+IIRBase_SimultaneousIfStatement::set_else_statement_list(IIR_ArchitectureStatementListRef new_list) {
   ASSERT(new_list != NULL);
-
-  if (else_statement_list != NULL)
-    delete else_statement_list;
 
   else_statement_list = new_list;
 }
 
-IIR *
-IIRBase_SimultaneousIfStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SimultaneousIfStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SimultaneousIfStatement *new_node = dynamic_cast<IIRBase_SimultaneousIfStatement *>(IIRBase_SimultaneousStatement::convert_tree(factory));
+  IIRBase_SimultaneousIfStatementRef new_node = my_dynamic_pointer_cast<IIRBase_SimultaneousIfStatement>(IIRBase_SimultaneousStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->then_statement_list = dynamic_cast<IIR_ArchitectureStatementList *>(convert_node(then_statement_list, factory));
-  new_node->else_statement_list = dynamic_cast<IIR_ArchitectureStatementList *>(convert_node(else_statement_list, factory));
+  new_node->then_statement_list = my_dynamic_pointer_cast<IIR_ArchitectureStatementList>(convert_node(then_statement_list, factory));
+  new_node->else_statement_list = my_dynamic_pointer_cast<IIR_ArchitectureStatementList>(convert_node(else_statement_list, factory));
   new_node->condition = convert_node(condition, factory);
-  new_node->elsif_clause = dynamic_cast<IIR_SimultaneousElsif *>(convert_node(elsif_clause, factory));
+  new_node->elsif_clause = my_dynamic_pointer_cast<IIR_SimultaneousElsif>(convert_node(elsif_clause, factory));
 
   return new_node;
 }

@@ -35,19 +35,19 @@
 class IIRBase_ThroughAttribute : public virtual IIRBase_Attribute, public virtual IIR_ThroughAttribute {
 
 public:
-  IIR_Kind get_kind() const {
+  IIR_Kind get_kind() const override {
     return IIR_THROUGH_ATTRIBUTE;
   }
 
-  const IIR_Char *get_kind_text() const {
-    return "IIR_ThroughAttribute";
+  IIR_CharConstRef get_kind_text() const override {
+    return IIR_CharConstRef("IIR_ThroughAttribute");
   }
   
   IIR_Boolean is_signal() { return TRUE; }
  
  /** This returns an IIR_TextLiteral when a through attribute is
      instantiated. */
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
   void publish_vhdl(ostream &);
 protected:
   IIRBase_ThroughAttribute();

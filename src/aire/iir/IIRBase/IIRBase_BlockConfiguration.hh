@@ -40,18 +40,18 @@ class IIRBase_BlockConfiguration : public virtual IIRBase_ConfigurationItem,
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList        *get_use_clause_list();
-  IIR_ConfigurationItemList  *get_configuration_item_list();
-  void                       set_use_clause_list(IIR_DeclarationList *new_use_clause_list);
-  void                       set_configuration_item_list(IIR_ConfigurationItemList *new_configuration_item_list);
+  IIR_DeclarationListRef       get_use_clause_list();
+  IIR_ConfigurationItemListRef get_configuration_item_list();
+  void                         set_use_clause_list(IIR_DeclarationListRef new_use_clause_list);
+  void                         set_configuration_item_list(IIR_ConfigurationItemListRef new_configuration_item_list);
 
-  IIR_Kind get_kind() const {return IIR_BLOCK_CONFIGURATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_BlockConfiguration";}
+  IIR_Kind get_kind() const override { return IIR_BLOCK_CONFIGURATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_BlockConfiguration"); }
 
-  void set_block_specification( IIR *block_specification );
-  IIR* get_block_specification();
+  void set_block_specification( IIRRef block_specification );
+  IIRRef get_block_specification();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   ostream &print( ostream &os );
   void publish_vhdl(ostream &);
@@ -61,9 +61,9 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList        *use_clause_list;
-  IIR_ConfigurationItemList  *configuration_item_list;
-  IIR *block_specification;
+  IIR_DeclarationListRef       use_clause_list;
+  IIR_ConfigurationItemListRef configuration_item_list;
+  IIRRef block_specification;
 };
 
 typedef refcount<IIRBase_BlockConfiguration> IIRBase_BlockConfigurationRef;

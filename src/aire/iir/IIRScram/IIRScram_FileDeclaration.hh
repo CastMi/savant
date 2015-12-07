@@ -30,6 +30,7 @@
 #include "IIRScram_ObjectDeclaration.hh"
 #include "IIRBase_FileDeclaration.hh"
 
+REF_FORWARD_DECL(IIRScram_FileDeclaration);
 class IIRScram_List;
 
 class IIRScram_FileDeclaration : public virtual IIRScram_ObjectDeclaration, public virtual IIRBase_FileDeclaration{
@@ -42,18 +43,18 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
   /** For some reason, sometimes the code generate wants a fresh clone
      generated.  */
   void _clear_clone(){ _my_clone = 0; }
 
-  IIRScram * _get_file_logical_name();
-  IIRScram *_get_file_open_expression();
+  IIRScramRef  _get_file_logical_name();
+  IIRScramRef _get_file_open_expression();
 
 protected:
 private:
-  IIRScram_FileDeclaration *_my_clone;
+  IIRScram_FileDeclarationRef _my_clone;
 };
 
 typedef refcount<IIRScram_FileDeclaration> IIRScram_FileDeclarationRef;

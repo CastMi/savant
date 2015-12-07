@@ -45,9 +45,9 @@ public:
   void _type_check();
   
   // Helper functions
-  IIRScram_Name *_get_quantity_name();
-  IIRScram_Name *_get_selector_quantity_name();
-  IIRScram      *_get_expression();
+  IIRScram_NameRef _get_quantity_name();
+  IIRScram_NameRef _get_selector_quantity_name();
+  IIRScramRef      _get_expression();
 protected:
 private:
   

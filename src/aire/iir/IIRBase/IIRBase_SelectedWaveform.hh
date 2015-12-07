@@ -39,16 +39,16 @@ class IIR_WaveformList;
 class IIRBase_SelectedWaveform : public virtual IIRBase_Tuple, public virtual IIR_SelectedWaveform{
 public:
   // List Accessor(s)
-  IIR_WaveformList      *get_waveform();
-  void                  set_waveform(IIR_WaveformList *new_waveform);
+  IIR_WaveformListRef   get_waveform();
+  void                  set_waveform(IIR_WaveformListRef new_waveform);
 
-  IIR_Kind get_kind() const { return IIR_SELECTED_WAVEFORM; }
-  const IIR_Char *get_kind_text() const { return "IIR_SelectedWaveform"; }
+  IIR_Kind get_kind() const override { return IIR_SELECTED_WAVEFORM; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SelectedWaveform"); }
 
-  IIR *get_choice();
-  void set_choice( IIR * );
+  IIRRef get_choice();
+  void set_choice( IIRRef );
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean                   is_resolved();
 
@@ -59,9 +59,9 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_WaveformList *waveform;
+  IIR_WaveformListRef waveform;
 
-  IIR *my_choice;
+  IIRRef my_choice;
 };
 
 typedef refcount<IIRBase_SelectedWaveform> IIRBase_SelectedWaveformRef;

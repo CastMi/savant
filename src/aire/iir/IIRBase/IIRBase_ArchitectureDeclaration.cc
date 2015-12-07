@@ -41,59 +41,57 @@ IIRBase_ArchitectureDeclaration::~IIRBase_ArchitectureDeclaration(){
 }
 
 void 
-IIRBase_ArchitectureDeclaration::associate( IIR_EntityDeclaration *new_entity ){
-  new_entity->get_architectures()->append( this );
+IIRBase_ArchitectureDeclaration::associate( IIR_EntityDeclarationRef new_entity ){
+  // FIXME: this is an error.
+  new_entity->get_architectures()->append( IIRRef(this) );
 }
 
 void
-IIRBase_ArchitectureDeclaration::set_entity(IIR_EntityDeclaration *e) {
+IIRBase_ArchitectureDeclaration::set_entity(IIR_EntityDeclarationRef e) {
+  entity.reset();
   entity = e;
 }
 
-IIR_EntityDeclaration*
+IIR_EntityDeclarationRef
 IIRBase_ArchitectureDeclaration::get_entity() {
   return entity;
 }
 
 // List Accessor(s)
-IIR_DeclarationList *
+IIR_DeclarationListRef
 IIRBase_ArchitectureDeclaration::get_architecture_declarative_part() {
-  ASSERT(architecture_declarative_part != NULL);
+  ASSERT(architecture_declarative_part.get() != NULL);
   return architecture_declarative_part;
 }
 
-IIR_ArchitectureStatementList *
+IIR_ArchitectureStatementListRef
 IIRBase_ArchitectureDeclaration::get_architecture_statement_part() {
-  ASSERT(architecture_statement_part != NULL);
+  ASSERT(architecture_statement_part.get() != NULL);
   return architecture_statement_part;
 }
 
 void
-IIRBase_ArchitectureDeclaration::set_architecture_declarative_part(IIR_DeclarationList *new_architecture_declarative_part) {
-  ASSERT(new_architecture_declarative_part != NULL);
-
-  if (architecture_declarative_part != NULL)
-    delete architecture_declarative_part;
-
+IIRBase_ArchitectureDeclaration::set_architecture_declarative_part(IIR_DeclarationListRef new_architecture_declarative_part) {
+  ASSERT(new_architecture_declarative_part.get() != NULL);
   architecture_declarative_part = new_architecture_declarative_part;
 }
 
 void
-IIRBase_ArchitectureDeclaration::set_architecture_statement_part(IIR_ArchitectureStatementList *new_architecture_statement_part) {
-  ASSERT(new_architecture_statement_part != NULL);
-  delete architecture_statement_part;
+IIRBase_ArchitectureDeclaration::set_architecture_statement_part(IIR_ArchitectureStatementListRef new_architecture_statement_part) {
+  ASSERT(new_architecture_statement_part.get() != NULL);
+  architecture_statement_part.reset();
   architecture_statement_part = new_architecture_statement_part;
 }
 
-IIR *
-IIRBase_ArchitectureDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ArchitectureDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ArchitectureDeclaration *new_node = dynamic_cast<IIRBase_ArchitectureDeclaration *>(IIRBase_LibraryUnit::convert_tree(factory));
+  IIRBase_ArchitectureDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_ArchitectureDeclaration>(IIRBase_LibraryUnit::convert_tree(factory));
 
   // Process the variables
-  new_node->architecture_declarative_part = dynamic_cast<IIR_DeclarationList *>(convert_node(architecture_declarative_part, factory));
-  new_node->architecture_statement_part = dynamic_cast<IIR_ArchitectureStatementList *>(convert_node(architecture_statement_part, factory));
-  new_node->entity = dynamic_cast<IIR_EntityDeclaration *>(convert_node(entity, factory));
+  new_node->architecture_declarative_part = my_dynamic_pointer_cast<IIR_DeclarationList>(convert_node(architecture_declarative_part, factory));
+  new_node->architecture_statement_part = my_dynamic_pointer_cast<IIR_ArchitectureStatementList>(convert_node(architecture_statement_part, factory));
+  new_node->entity = my_dynamic_pointer_cast<IIR_EntityDeclaration>(convert_node(entity, factory));
 
   return new_node;
 }
@@ -103,26 +101,15 @@ IIRBase_ArchitectureDeclaration::get_declaration_type(){
   return ARCHITECTURE;
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_ArchitectureDeclaration::find_declarations( IIR_Name *to_find ){
-  savant::set<IIR_Declaration*> *retval = new savant::set<IIR_Declaration*>;
-  savant::set<IIR_Declaration*> *current_set = get_architecture_declarative_part()->find_declarations( to_find );
-  if( current_set != NULL ){
-    retval->insert( current_set );
-    delete current_set;
-  }
+savant::set<IIR_DeclarationRef>
+IIRBase_ArchitectureDeclaration::find_declarations( IIR_NameRef to_find ){
+  savant::set<IIR_DeclarationRef> retval;
+  savant::set<IIR_DeclarationRef> current_set = get_architecture_declarative_part()->find_declarations( to_find );
+  retval.insert( current_set );
 
   ASSERT( get_entity() != NULL );
   current_set = get_entity()->find_declarations( to_find );
-  if( current_set != NULL ){
-    retval->insert( current_set );
-    delete current_set;
-  }
-  
-  if( retval->size() == 0 ){
-    delete retval;
-    retval = NULL;
-  }
+  retval.insert( current_set );
 
   return retval;
 }
@@ -136,7 +123,7 @@ IIRBase_ArchitectureDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out  << " of ";
   get_entity()->publish_vhdl(vhdl_out);
   vhdl_out << " is\n";
-  dynamic_cast<IIRBase_DeclarationList *>(get_architecture_declarative_part())->publish_vhdl_decl(vhdl_out);
+  my_dynamic_pointer_cast<IIRBase_DeclarationList>(get_architecture_declarative_part())->publish_vhdl_decl(vhdl_out);
   vhdl_out << "\nbegin\n";
   get_architecture_statement_part()->publish_vhdl(vhdl_out);
   vhdl_out << "end architecture ";

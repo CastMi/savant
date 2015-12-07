@@ -38,7 +38,7 @@ IIRBase_Attribute::IIRBase_Attribute() {
 IIRBase_Attribute::~IIRBase_Attribute(){}
 
 void
-IIRBase_Attribute::set_suffix(IIR *) {
+IIRBase_Attribute::set_suffix(IIRRef) {
   ostringstream err;
   err << "Internal error - IIRBase_Attribute::set_suffix called."
       << "The instantiated node"
@@ -101,10 +101,9 @@ ostream &
 IIRBase_Attribute::print( ostream &os ){
   get_prefix()->print( os );
   os << "'";
-  IIR_TextLiteral *attribute_name = build_attribute_name();
-  if( attribute_name != 0 ){
-    os << *attribute_name;
-    delete attribute_name;
+  IIR_TextLiteralRef attribute_name = build_attribute_name();
+  if( attribute_name.get() != 0 ){
+    os << *attribute_name.get();
   }
 
   if( get_suffix() != 0 ){
@@ -114,29 +113,29 @@ IIRBase_Attribute::print( ostream &os ){
   return os;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_Attribute::build_attribute_name(){
   _report_undefined_fn("build_attribute_name()");
   return NULL;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_Attribute::get_attribute_name(){
-  if( my_attribute_name == NULL ){
+  if( my_attribute_name == nullptr ){
     my_attribute_name = build_attribute_name();
-    copy_location( this, my_attribute_name );
+    copy_location( my_attribute_name.get() );
   }
   
   return my_attribute_name;
 }
 
-IIR *
-IIRBase_Attribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_Attribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_Attribute *new_node = dynamic_cast<IIRBase_Attribute *>(IIRBase_Name::convert_tree(factory));
+  IIRBase_AttributeRef new_node = my_dynamic_pointer_cast<IIRBase_Attribute>(IIRBase_Name::convert_tree(factory));
 
   // Process the variables
-  new_node->my_attribute_name = dynamic_cast<IIR_TextLiteral *>(convert_node(my_attribute_name, factory));
+  new_node->my_attribute_name = my_dynamic_pointer_cast<IIR_TextLiteral>(convert_node(my_attribute_name, factory));
 
   return new_node;
 }

@@ -22,10 +22,6 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "IIR_Name.hh"
 #include "IIRBase_BreakElement.hh"
 #include "savant.hh"
@@ -39,42 +35,42 @@ IIRBase_BreakElement::IIRBase_BreakElement() {
 IIRBase_BreakElement::~IIRBase_BreakElement() {}
 
 void
-IIRBase_BreakElement::set_quantity_name(IIR_Name* quantity_name) {
+IIRBase_BreakElement::set_quantity_name(IIR_NameRef quantity_name) {
   this->quantity_name = quantity_name;
 }
 
-IIR_Name*
+IIR_NameRef
 IIRBase_BreakElement::get_quantity_name() {
   return quantity_name;
 }
 void
-IIRBase_BreakElement::set_expression(IIR* value) {
+IIRBase_BreakElement::set_expression(IIRRef value) {
   this->value = value;
 }
 
-IIR*
+IIRRef
 IIRBase_BreakElement::get_expression() {
   return value;
 }
  
 void
-IIRBase_BreakElement::set_selector_quantity_name(IIR_Name* selector_quantity_name) {
+IIRBase_BreakElement::set_selector_quantity_name(IIR_NameRef selector_quantity_name) {
   this->selector_quantity_name = selector_quantity_name;
 }
   
-IIR_Name*
+IIR_NameRef
 IIRBase_BreakElement::get_selector_quantity_name() {
   return selector_quantity_name;
 }
 
-IIR *
-IIRBase_BreakElement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_BreakElement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_BreakElement *new_node = dynamic_cast<IIRBase_BreakElement *>(IIRBase_Tuple::convert_tree(factory));
+  IIRBase_BreakElementRef new_node = my_dynamic_pointer_cast<IIRBase_BreakElement>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->quantity_name = dynamic_cast<IIR_Name *>(convert_node(quantity_name, factory));
-  new_node->selector_quantity_name = dynamic_cast<IIR_Name *>(convert_node(selector_quantity_name, factory));
+  new_node->quantity_name = my_dynamic_pointer_cast<IIR_Name>(convert_node(quantity_name, factory));
+  new_node->selector_quantity_name = my_dynamic_pointer_cast<IIR_Name>(convert_node(selector_quantity_name, factory));
   new_node->value = convert_node(value, factory);
 
   return new_node;

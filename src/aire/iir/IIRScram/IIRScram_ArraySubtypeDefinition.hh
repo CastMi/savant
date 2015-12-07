@@ -51,20 +51,20 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  static IIRScram_ArraySubtypeDefinition *get( IIRScram_ArrayTypeDefinition *bt,
-                                               IIRScram_ScalarTypeDefinition *is,
-                                               IIRScram_FunctionDeclaration *res_func );
+  static IIRScram_ArraySubtypeDefinitionRef get( IIRScram_ArrayTypeDefinitionRef bt,
+                                               IIRScram_ScalarTypeDefinitionRef is,
+                                               IIRScram_FunctionDeclarationRef res_func );
 
 
   virtual void _type_check();
-  virtual IIRScram *_clone();
+  virtual IIRScramRef _clone();
 
-  IIRScram_FunctionDeclaration* _get_resolution_function(){ return dynamic_cast<IIRScram_FunctionDeclaration *>(get_resolution_function()); }
+  IIRScram_FunctionDeclarationRef _get_resolution_function(){ return my_dynamic_pointer_cast<IIRScram_FunctionDeclaration>(get_resolution_function()); }
 
   IIR_Boolean is_locally_static();
 
-  virtual void _set_resolution_function( IIRScram_FunctionDeclaration *new_decl ){
-    set_resolution_function( dynamic_cast<IIR_FunctionDeclaration *>(new_decl) ); 
+  virtual void _set_resolution_function( IIRScram_FunctionDeclarationRef new_decl ){
+    set_resolution_function( my_dynamic_pointer_cast<IIR_FunctionDeclaration>(new_decl) ); 
   }
 };
 

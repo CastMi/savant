@@ -26,81 +26,60 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "savant.hh"
 #include "IIRBase_IfStatement.hh"
 #include "IIR_Elsif.hh"
 #include "IIR_SequentialStatementList.hh"
 
-IIRBase_IfStatement::IIRBase_IfStatement()  :
-  then_sequence(0),
-  else_sequence(0) {
-  set_condition(NULL);
-  set_elsif(NULL);
-}
-
-
-IIRBase_IfStatement::~IIRBase_IfStatement() {
-  if (condition != 0) { 
-    delete condition; 
-  }
-
-  if (elsif_clause != 0) { 
-    delete elsif_clause;
-  }
-}
+IIRBase_IfStatement::IIRBase_IfStatement() {}
+IIRBase_IfStatement::~IIRBase_IfStatement() {}
 
 
 void
-IIRBase_IfStatement::set_condition(IIR* condition) {
+IIRBase_IfStatement::set_condition(IIRRef condition) {
   this->condition = condition;
 }
 
 
-IIR*
+IIRRef
 IIRBase_IfStatement::get_condition() {
   return condition;
 }
 
 
 void
-IIRBase_IfStatement::set_elsif(IIR_Elsif* elsif_clause) {
+IIRBase_IfStatement::set_elsif(IIR_ElsifRef elsif_clause) {
   this->elsif_clause = elsif_clause;
 }
 
 
-IIR_Elsif*
+IIR_ElsifRef
 IIRBase_IfStatement::get_elsif() {
   return elsif_clause;
 }
 
 // List Accessor(s)
-IIR_SequentialStatementList *
+IIR_SequentialStatementListRef
 IIRBase_IfStatement::get_then_sequence() {
   ASSERT(then_sequence != NULL);
   return then_sequence;
 }
 
-IIR_SequentialStatementList *
+IIR_SequentialStatementListRef
 IIRBase_IfStatement::get_else_sequence() {
   ASSERT(else_sequence != NULL);
   return else_sequence;
 }
 
 void
-IIRBase_IfStatement::set_then_sequence(IIR_SequentialStatementList *new_then_sequence) {
+IIRBase_IfStatement::set_then_sequence(IIR_SequentialStatementListRef new_then_sequence) {
   ASSERT(new_then_sequence != NULL);
-  delete then_sequence;
   then_sequence = new_then_sequence;
 }
 
 void
-IIRBase_IfStatement::set_else_sequence(IIR_SequentialStatementList *new_else_sequence) {
+IIRBase_IfStatement::set_else_sequence(IIR_SequentialStatementListRef new_else_sequence) {
   ASSERT(new_else_sequence != NULL);
-  delete else_sequence;
   else_sequence = new_else_sequence;
 }
 
@@ -124,16 +103,16 @@ IIRBase_IfStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
-IIRBase_IfStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_IfStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_IfStatement *new_node = dynamic_cast<IIRBase_IfStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_IfStatementRef new_node = my_dynamic_pointer_cast<IIRBase_IfStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->then_sequence = dynamic_cast<IIR_SequentialStatementList *>(convert_node(then_sequence, factory));
-  new_node->else_sequence = dynamic_cast<IIR_SequentialStatementList *>(convert_node(else_sequence, factory));
+  new_node->then_sequence = my_dynamic_pointer_cast<IIR_SequentialStatementList>(convert_node(then_sequence, factory));
+  new_node->else_sequence = my_dynamic_pointer_cast<IIR_SequentialStatementList>(convert_node(else_sequence, factory));
   new_node->condition = convert_node(condition, factory);
-  new_node->elsif_clause = dynamic_cast<IIR_Elsif *>(convert_node(elsif_clause, factory));
+  new_node->elsif_clause = my_dynamic_pointer_cast<IIR_Elsif>(convert_node(elsif_clause, factory));
 
   return new_node;
 }

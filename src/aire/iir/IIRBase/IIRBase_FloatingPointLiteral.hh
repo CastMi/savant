@@ -30,26 +30,25 @@ class IIRBase_FloatingPointLiteral : public virtual IIRBase_Literal, public virt
   friend class VHDLParser;
 
 public:
-  IIR_Kind get_kind() const { return IIR_FLOATING_POINT_LITERAL; }
-  const IIR_Char *get_kind_text() const { return "IIR_FloatingPointLiteral"; }
+  IIR_Kind get_kind() const override { return IIR_FLOATING_POINT_LITERAL; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_FloatingPointLiteral"); }
 
-  static IIR_FloatingPointLiteral* get(IIR_Int32, IIR_Char*,  IIR_Int32,
-				       IIR_Char*, IIR_Int32);
-  void release();
+  static IIR_FloatingPointLiteralRef get(IIR_Int32, IIR_CharRef,  IIR_Int32,
+				       IIR_CharRef, IIR_Int32);
 
   const string print_value(IIR_Int32);
 
   void set_base(IIR_Int32);
   IIR_Int32 get_base();
-  void set_mantissa(IIR_Char*, IIR_Int32);
-  IIR_Char* get_mantissa();
+  void set_mantissa(IIR_CharRef, IIR_Int32);
+  IIR_CharRef get_mantissa();
   IIR_Int32 get_mantissa_length();
-  void set_exponent(IIR_Char*, IIR_Int32);
-  IIR_Char* get_exponent();
+  void set_exponent(IIR_CharRef, IIR_Int32);
+  IIR_CharRef get_exponent();
   IIR_Int32 get_exponent_length();
   IIR_FP64 get_floating_point_value();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   ostream &print( ostream & );
   void publish_vhdl(ostream &);
@@ -62,9 +61,9 @@ protected:
     
 private:
   IIR_Int32 base;
-  IIR_Char *mantissa;
+  IIR_CharRef mantissa;
   IIR_Int32 mantissa_length;
-  IIR_Char *exponent;
+  IIR_CharRef exponent;
   IIR_Int32 exponent_length;
 };
 

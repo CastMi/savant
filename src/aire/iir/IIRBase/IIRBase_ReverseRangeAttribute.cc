@@ -22,27 +22,25 @@
 #include "IIRBase_Identifier.hh"
 #include "IIRBase_ReverseRangeAttribute.hh"
 #include "savant.hh"
+#include <cstring>
 
-IIRBase_ReverseRangeAttribute::IIRBase_ReverseRangeAttribute() {
-  set_suffix(NULL);
-}
-
+IIRBase_ReverseRangeAttribute::IIRBase_ReverseRangeAttribute() {}
 IIRBase_ReverseRangeAttribute::~IIRBase_ReverseRangeAttribute() {}
 
 void 
-IIRBase_ReverseRangeAttribute::set_suffix( IIR* suffix) {
+IIRBase_ReverseRangeAttribute::set_suffix( IIRRef suffix) {
   this->suffix = suffix;
 }
 
-IIR* 
+IIRRef
 IIRBase_ReverseRangeAttribute::get_suffix() {
   return suffix;
 }
 
-IIR *
-IIRBase_ReverseRangeAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ReverseRangeAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ReverseRangeAttribute *new_node = dynamic_cast<IIRBase_ReverseRangeAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_ReverseRangeAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_ReverseRangeAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
@@ -50,10 +48,10 @@ IIRBase_ReverseRangeAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_ReverseRangeAttribute::build_attribute_name() {
-  const char *name = "reverserange";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("reverserange");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 

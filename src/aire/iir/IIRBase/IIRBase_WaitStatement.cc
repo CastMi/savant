@@ -26,52 +26,42 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "IIRBase_WaitStatement.hh"
 #include "IIR_DesignatorList.hh"
 
-IIRBase_WaitStatement::IIRBase_WaitStatement() :
-  sensitivity_list(0),
-  condition_clause(0),
-  timeout_clause(0) {}
-
-IIRBase_WaitStatement::~IIRBase_WaitStatement(){
-  delete get_condition_clause();
-  delete get_timeout_clause();
-}
+IIRBase_WaitStatement::IIRBase_WaitStatement() {}
+IIRBase_WaitStatement::~IIRBase_WaitStatement() {}
 
 void 
-IIRBase_WaitStatement::set_condition_clause( IIR *new_condition_clause) {
+IIRBase_WaitStatement::set_condition_clause( IIRRef new_condition_clause) {
   condition_clause = new_condition_clause;
 }
 
-IIR *
+IIRRef
 IIRBase_WaitStatement::get_condition_clause(){
   return condition_clause;
 }
 
 void 
-IIRBase_WaitStatement::set_timeout_clause( IIR *new_timeout_clause) {
+IIRBase_WaitStatement::set_timeout_clause( IIRRef new_timeout_clause) {
   timeout_clause = new_timeout_clause;
 }
 
-IIR*
+IIRRef
 IIRBase_WaitStatement:: get_timeout_clause() {
   return timeout_clause;
 }
 
 // List Accessor(s)
-IIR_DesignatorList *
+IIR_DesignatorListRef
 IIRBase_WaitStatement::get_sensitivity_list() {
   ASSERT(sensitivity_list != NULL);
   return sensitivity_list;
 }
 
 void
-IIRBase_WaitStatement::set_sensitivity_list(IIR_DesignatorList *new_sensitivity_list) {
+IIRBase_WaitStatement::set_sensitivity_list(IIR_DesignatorListRef new_sensitivity_list) {
   ASSERT(new_sensitivity_list != NULL);
-  delete sensitivity_list;
   sensitivity_list = new_sensitivity_list;
 }
 
@@ -88,13 +78,13 @@ IIRBase_WaitStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
-IIRBase_WaitStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_WaitStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_WaitStatement *new_node = dynamic_cast<IIRBase_WaitStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_WaitStatementRef new_node = my_dynamic_pointer_cast<IIRBase_WaitStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->sensitivity_list = dynamic_cast<IIR_DesignatorList *>(convert_node(sensitivity_list, factory));
+  new_node->sensitivity_list = my_dynamic_pointer_cast<IIR_DesignatorList>(convert_node(sensitivity_list, factory));
   new_node->condition_clause = convert_node(condition_clause, factory);
   new_node->timeout_clause = convert_node(timeout_clause, factory);
 

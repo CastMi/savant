@@ -27,65 +27,52 @@
 #include "IIR_SimultaneousElsif.hh"
 #include "IIRBase_SimultaneousElsif.hh"
 
-IIRBase_SimultaneousElsif::IIRBase_SimultaneousElsif() :
-  then_sequence_of_statements(0)
-{
-  set_condition(NULL);
-  set_else_clause(NULL);
-}
-
-IIRBase_SimultaneousElsif::~IIRBase_SimultaneousElsif() {
-   delete condition;
-   delete else_clause;
-}
+IIRBase_SimultaneousElsif::IIRBase_SimultaneousElsif() {}
+IIRBase_SimultaneousElsif::~IIRBase_SimultaneousElsif() {}
 
 void
-IIRBase_SimultaneousElsif::set_condition( IIR *new_condition ){
+IIRBase_SimultaneousElsif::set_condition( IIRRef new_condition ){
   condition = new_condition;
 }
 
-IIR*
+IIRRef
 IIRBase_SimultaneousElsif::get_condition() {
   return condition;
 }
 
 void
-IIRBase_SimultaneousElsif::set_else_clause( IIR_SimultaneousElsif *new_else_clause ){
+IIRBase_SimultaneousElsif::set_else_clause( IIR_SimultaneousElsifRef new_else_clause ){
   else_clause = new_else_clause;
 }
 
-IIR_SimultaneousElsif*
+IIR_SimultaneousElsifRef
 IIRBase_SimultaneousElsif::get_else_clause() {
   return else_clause;
 }
 
 // List Accessor
-IIR_ArchitectureStatementList *
+IIR_ArchitectureStatementListRef 
 IIRBase_SimultaneousElsif::get_then_sequence_of_statements() {
   ASSERT(then_sequence_of_statements != NULL);
   return then_sequence_of_statements;
 }
 
 void                          
-IIRBase_SimultaneousElsif::set_then_sequence_of_statements(IIR_ArchitectureStatementList *new_list) {
+IIRBase_SimultaneousElsif::set_then_sequence_of_statements(IIR_ArchitectureStatementListRef new_list) {
   ASSERT(new_list != NULL);
-
-  if (then_sequence_of_statements != NULL)
-    delete then_sequence_of_statements;
-
   then_sequence_of_statements = new_list;
 }
 
-IIR *
-IIRBase_SimultaneousElsif::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SimultaneousElsif::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SimultaneousElsif *new_node = dynamic_cast<IIRBase_SimultaneousElsif *>(IIRBase_Tuple::convert_tree(factory));
+  IIRBase_SimultaneousElsifRef new_node = my_dynamic_pointer_cast<IIRBase_SimultaneousElsif>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
   new_node->condition = convert_node(condition, factory);
-  new_node->else_clause = dynamic_cast<IIR_SimultaneousElsif *>(convert_node(else_clause, factory));
+  new_node->else_clause = my_dynamic_pointer_cast<IIR_SimultaneousElsif>(convert_node(else_clause, factory));
 
-  new_node->then_sequence_of_statements = dynamic_cast<IIR_ArchitectureStatementList *>(then_sequence_of_statements->convert_tree(factory));
+  new_node->then_sequence_of_statements = my_dynamic_pointer_cast<IIR_ArchitectureStatementList>(then_sequence_of_statements->convert_tree(factory));
 
   return new_node;
 }

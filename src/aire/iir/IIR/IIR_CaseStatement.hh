@@ -30,7 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
-class IIR_CaseStatementAlternativeList;
+REF_FORWARD_DECL(IIR_CaseStatementAlternativeList);
 
 class IIR_CaseStatement : public virtual IIR_SequentialStatement{
 
@@ -38,10 +38,10 @@ public:
   virtual ~IIR_CaseStatement() {}
     
   // List accessor(s)
-  virtual IIR_CaseStatementAlternativeList  *get_case_statement_alternatives() = 0;
+  virtual IIR_CaseStatementAlternativeListRef get_case_statement_alternatives() = 0;
 
-  virtual void set_expression( IIR *expression) = 0;
-  virtual IIR* get_expression() = 0;
+  virtual void set_expression( IIRRef expression) = 0;
+  virtual IIRRef get_expression() = 0;
 };
 
 typedef refcount<IIR_CaseStatement> IIR_CaseStatementRef;

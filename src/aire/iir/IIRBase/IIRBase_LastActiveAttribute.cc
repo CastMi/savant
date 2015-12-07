@@ -24,25 +24,25 @@
 #include "IIR_PhysicalSubtypeDefinition.hh"
 #include "IIR_TypeDefinition.hh"
 #include "StandardPackage.hh"
+#include <cstring>
 
 IIRBase_LastActiveAttribute::IIRBase_LastActiveAttribute() {}
-
 IIRBase_LastActiveAttribute::~IIRBase_LastActiveAttribute() {}
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_LastActiveAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_time_type();
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_LastActiveAttribute::build_attribute_name() {
-  const char *name = "last_active";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("last_active");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 
 IIRBase_LastActiveAttribute::publish_vhdl(ostream &vhdl_out) {
-  ASSERT( get_prefix() != NULL );
+  ASSERT( get_prefix() != nullptr );
   ASSERT(get_prefix()->is_resolved() == TRUE );
   ASSERT(get_prefix()->is_signal() == TRUE );
   get_prefix()->publish_vhdl(vhdl_out);

@@ -39,8 +39,8 @@ class IIR_UseClause : public virtual IIR_Declaration{
 public:
   virtual ~IIR_UseClause() {}
     
-  virtual void set_selected_name(IIR_Name*) = 0;
-  virtual IIR_Name* get_selected_name() = 0;
+  virtual void set_selected_name( IIR_NameRef ) = 0;
+  virtual IIR_NameRef get_selected_name() = 0;
 };
 
 typedef refcount<IIR_UseClause> IIR_UseClauseRef;

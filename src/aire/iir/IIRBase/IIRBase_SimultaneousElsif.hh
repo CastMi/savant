@@ -32,28 +32,28 @@ class IIRBase_SimultaneousElsif : public virtual IIRBase_Tuple, public virtual I
 
 public:
   // List Accessor
-  IIR_ArchitectureStatementList *get_then_sequence_of_statements();
-  void                          set_then_sequence_of_statements(IIR_ArchitectureStatementList *);
+  IIR_ArchitectureStatementListRef get_then_sequence_of_statements();
+  void                          set_then_sequence_of_statements(IIR_ArchitectureStatementListRef );
 
   /** Returns the IIR_Kind of this node. */
-  IIR_Kind get_kind(){
+  IIR_Kind get_kind() const override {
     return IIR_SIMULTANEOUS_ELSIF;
   }
   
-  const IIR_Char *get_kind_text() const { return "IIR_SimultaneousElsif"; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SimultaneousElsif"); }
 
   /** The condition specified here is evaluated and if it is TRUE, the
       corresponding simultaneous statement part is evaluated. */
-  void set_condition(IIR* condition);
-  IIR* get_condition();
+  void set_condition(IIRRef condition);
+  IIRRef get_condition();
 
   /** The condition specified after if and elsif (if any) are evaluated in
       succession until one evaluates to TRUE or all conditions are
       evaluated and yield FALSE. LRM [ 15.2 - 75 ] */
-  void set_else_clause(IIR_SimultaneousElsif* else_clause);
-  IIR_SimultaneousElsif* get_else_clause();
+  void set_else_clause(IIR_SimultaneousElsifRef else_clause);
+  IIR_SimultaneousElsifRef get_else_clause();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
   
   void publish_vhdl(ostream &);
 protected:
@@ -61,10 +61,10 @@ protected:
   virtual ~IIRBase_SimultaneousElsif() = 0;
 
 private:
-  IIR* condition;
-  IIR_SimultaneousElsif* else_clause;
+  IIRRef condition;
+  IIR_SimultaneousElsifRef else_clause;
 
-  IIR_ArchitectureStatementList *then_sequence_of_statements;
+  IIR_ArchitectureStatementListRef then_sequence_of_statements;
 };
 
 typedef refcount<IIRBase_SimultaneousElsif> IIRBase_SimultaneousElsifRef;

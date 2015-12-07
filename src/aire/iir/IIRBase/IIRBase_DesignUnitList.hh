@@ -35,8 +35,8 @@
 class IIRBase_DesignUnitList : public virtual IIRBase_List, public virtual IIR_DesignUnitList{
 
 public:
-  IIR_Kind get_kind() const {return IIR_DESIGN_UNIT_LIST;}
-  const IIR_Char *get_kind_text() const {return "IIR_DesignUnitList";}
+  IIR_Kind get_kind() const override { return IIR_DESIGN_UNIT_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_DesignUnitList"); }
 
 protected:
   IIRBase_DesignUnitList();

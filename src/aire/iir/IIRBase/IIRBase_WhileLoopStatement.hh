@@ -37,20 +37,20 @@ class IIRBase_WhileLoopStatement : public virtual IIRBase_SequentialStatement, p
 
 public:
   // List Accessor(s)
-  IIR_SequentialStatementList *get_sequence_of_statements();
-  void                        set_sequence_of_statements(IIR_SequentialStatementList *new_sequence_of_statements);
+  IIR_SequentialStatementListRef get_sequence_of_statements();
+  void                        set_sequence_of_statements(IIR_SequentialStatementListRef new_sequence_of_statements);
 
-  IIR_Kind get_kind() const {
+  IIR_Kind get_kind() const override {
     return IIR_WHILE_LOOP_STATEMENT;
   }
-  const IIR_Char *get_kind_text() const {
-    return "IIR_WhileLoopStatement";
+  IIR_CharConstRef get_kind_text() const override {
+    return IIR_CharConstRef("IIR_WhileLoopStatement");
   }
 
-  void set_while_condition( IIR *while_condition);
-  IIR *get_while_condition();
+  void set_while_condition( IIRRef while_condition );
+  IIRRef get_while_condition();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree( plugin_class_factoryRef factory );
 
   IIR_Boolean has_statement_list() { return TRUE; }
   IIR_Boolean is_above_attribute_found();
@@ -62,9 +62,9 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_SequentialStatementList *sequence_of_statements;
+  IIR_SequentialStatementListRef sequence_of_statements;
   
-  IIR *while_condition;
+  IIRRef while_condition;
 };
 
 typedef refcount<IIRBase_WhileLoopStatement> IIRBase_WhileLoopStatementRef;

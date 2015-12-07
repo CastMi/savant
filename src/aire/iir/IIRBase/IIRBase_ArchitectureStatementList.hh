@@ -37,12 +37,12 @@ class IIR_ArchitectureStatement;
 class IIRBase_ArchitectureStatementList : public virtual IIRBase_List, public virtual IIR_ArchitectureStatementList {
 
 public:
-  IIR_Kind get_kind() const { return IIR_ARCHITECTURE_STATEMENT_LIST; }
-  const IIR_Char *get_kind_text() const { return "IIR_ArchitectureStatementList"; }
+  IIR_Kind get_kind() const override { return IIR_ARCHITECTURE_STATEMENT_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ArchitectureStatementList"); }
 
-  IIR* first();
-  IIR* successor(IIR_ArchitectureStatement*);
-  void append_element(IIR_ArchitectureStatement*);
+  IIRRef first();
+  IIRRef successor(IIR_ArchitectureStatementRef);
+  void append_element(IIR_ArchitectureStatementRef);
 
 protected:
   IIRBase_ArchitectureStatementList();

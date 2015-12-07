@@ -30,46 +30,46 @@
 #include "savant_config.hh"
 #include "IIRBase_Operator.hh"
 #include "IIRScram_Expression.hh"
+#include "set.hh"
 
+REF_FORWARD_DECL(IIRScram_SubprogramDeclaration);
+REF_FORWARD_DECL(IIRScram_TypeDefinition);
 class IIRScram_AssociationList;
 class IIRScram_DesignatorList;
-class IIRScram_SubprogramDeclaration;
-class IIRScram_TypeDefinition;
 
 class IIRScram_Operator : public virtual IIRScram_Expression,
 			  public virtual IIRBase_Operator {
 public:
   IIRScram_Operator(){ 
-    my_rvals = NULL;
     has_been_type_checked = FALSE;
   }
   virtual ~IIRScram_Operator() {};
     
   virtual IIR_Int32 _get_num_args() = 0;
-  virtual IIRScram_AssociationList *_build_argument_list() = 0;
+  virtual IIRScram_AssociationListRef _build_argument_list() = 0;
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0); 
-  savant::set<IIRScram_TypeDefinition*> *_get_user_overloaded_rvals();
-  savant::set<IIRScram_Declaration*> *_symbol_lookup();
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0); 
+  savant::set<IIRScram_TypeDefinitionRef> _get_user_overloaded_rvals();
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup();
 
   /** This is the entrance into the type checking routines for
       operators... */
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
 
   /** If this operator is a call to one that's user overloaded, this method
       transforms it into an IIRScram_FunctionCall. */
-  IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition*> * );
+  IIRScramRef _semantic_transform( savant::set<IIRScram_TypeDefinitionRef> );
 
   /** This method looks for a user overloaded version of an operator and
       returns true if a valid user overloading of the operator is found.
       If not, the type_checking assumes a valid VHDL default definition of
       the operator is being used.  See next method. */
-  IIR_Boolean _type_check_user_declared( savant::set<IIRScram_TypeDefinition*> * );    
+  IIR_Boolean _type_check_user_declared( savant::set<IIRScram_TypeDefinitionRef> );    
   
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef  );
 
   // Helper Functions
-  IIRScram_SubprogramDeclaration *_get_implementation();
+  IIRScram_SubprogramDeclarationRef _get_implementation();
 
 protected:
   virtual const string _get_function_name() const = 0;  
@@ -79,9 +79,9 @@ protected:
   virtual void _type_check_operands( ) = 0;
 
 private:
-  savant::set<IIRScram_TypeDefinition*> *my_rvals;
+  savant::set<IIRScram_TypeDefinitionRef> my_rvals;
   IIR_Boolean has_been_type_checked;
-  IIRScram_SubprogramDeclaration *my_decl;
+  IIRScram_SubprogramDeclarationRef my_decl;
 };
 
 typedef refcount<IIRScram_Operator> IIRScram_OperatorRef;

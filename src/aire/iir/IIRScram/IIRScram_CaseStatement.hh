@@ -55,24 +55,24 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   
-  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *, 
-					     IIRScram_SubprogramDeclaration * );
+  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinitionRef>, 
+					     IIRScram_SubprogramDeclarationRef );
   
   void _type_check();
 
-  IIRScram                              *_get_expression();
-  IIRScram                              *_get_case_statement_expression();
-  IIRScram_CaseStatementAlternativeList *_get_case_statement_alternatives();
+  IIRScramRef                              _get_expression();
+  IIRScramRef                              _get_case_statement_expression();
+  IIRScram_CaseStatementAlternativeListRef _get_case_statement_alternatives();
 
-  void _set_case_statement_expression( IIRScram * );
-  IIRScram *_clone();
+  void _set_case_statement_expression( IIRScramRef  );
+  IIRScramRef _clone();
 
 protected:    
 private:
   // Handle error reporting in a function for both expressions and
   // alternatives.
-  IIRScram *_handle_reconciliation( savant::set<IIRScram_TypeDefinition*> *rval_set,
-                                    IIRScram *node_in_consideration,
+  IIRScramRef _handle_reconciliation( savant::set<IIRScram_TypeDefinitionRef> rval_set,
+                                    IIRScramRef node_in_consideration,
                                     char *error_part );
 };
 

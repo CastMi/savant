@@ -40,20 +40,20 @@ class IIRBase_PhysicalLiteral : public virtual IIRBase_Expression,
 
 public:
 
-  IIR_Kind get_kind() const {return IIR_PHYSICAL_LITERAL;}
-  const IIR_Char *get_kind_text() const {return "IIR_PhysicalLiteral";}
+  IIR_Kind get_kind() const override { return IIR_PHYSICAL_LITERAL; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_PhysicalLiteral"); }
 
-  void set_abstract_literal( IIR *abstract_literal );
-  IIR *get_abstract_literal();
-  void set_unit_name( IIR_PhysicalUnit *unit );
-  IIR_PhysicalUnit *get_unit_name();
+  void set_abstract_literal( IIRRef abstract_literal );
+  IIRRef get_abstract_literal();
+  void set_unit_name( IIR_PhysicalUnitRef unit );
+  IIR_PhysicalUnitRef get_unit_name();
   IIR_Boolean is_locally_static();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
   
   IIR_Boolean is_resolved( );
 
-  IIR_TypeDefinition *get_subtype();
+  IIR_TypeDefinitionRef get_subtype();
 
   ostream &print( ostream & );
   void publish_vhdl(ostream &);
@@ -63,8 +63,8 @@ protected:
   virtual ~IIRBase_PhysicalLiteral() = 0;
     
 private:
-  IIR *abstract_literal;
-  IIR_PhysicalUnit *unit_name;
+  IIRRef abstract_literal;
+  IIR_PhysicalUnitRef unit_name;
 };
 
 typedef refcount<IIRBase_PhysicalLiteral> IIRBase_PhysicalLiteralRef;

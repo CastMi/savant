@@ -37,8 +37,8 @@ class IIR_HighAttribute : public virtual IIR_Attribute{
 public:
   virtual ~IIR_HighAttribute() {}
     
-  virtual void set_suffix( IIR * ) = 0;
-  virtual IIR *get_suffix( ) = 0;
+  virtual void set_suffix( IIRRef  ) = 0;
+  virtual IIRRef get_suffix( ) = 0;
 };
 
 typedef refcount<IIR_HighAttribute> IIR_HighAttributeRef;

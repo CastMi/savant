@@ -38,18 +38,18 @@ class IIRBase_ConcurrentGenerateForStatement : public virtual IIRBase_Concurrent
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList           *get_block_declarative_part();
-  IIR_ArchitectureStatementList *get_concurrent_statement_part();
-  void                          set_block_declarative_part(IIR_DeclarationList *new_block_declarative_part);
-  void                          set_concurrent_statement_part(IIR_ArchitectureStatementList *new_concurrent_statement_part);
+  IIR_DeclarationListRef           get_block_declarative_part();
+  IIR_ArchitectureStatementListRef get_concurrent_statement_part();
+  void                             set_block_declarative_part(IIR_DeclarationListRef new_block_declarative_part);
+  void                             set_concurrent_statement_part(IIR_ArchitectureStatementListRef new_concurrent_statement_part);
 
-  IIR_Kind get_kind() const {return IIR_CONCURRENT_GENERATE_FOR_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_ConcurrentGenerateForStatement";}
+  IIR_Kind get_kind() const override { return IIR_CONCURRENT_GENERATE_FOR_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ConcurrentGenerateForStatement"); }
 
-  void set_generate_parameter_specification(IIR_ConstantDeclaration *parameter); 
-  IIR_ConstantDeclaration *get_generate_parameter_specification();
+  void set_generate_parameter_specification(IIR_ConstantDeclarationRef parameter); 
+  IIR_ConstantDeclarationRef get_generate_parameter_specification();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -58,10 +58,10 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList           *block_declarative_part;
-  IIR_ArchitectureStatementList *concurrent_statement_part;
+  IIR_DeclarationListRef           block_declarative_part;
+  IIR_ArchitectureStatementListRef concurrent_statement_part;
 
-  IIR_ConstantDeclaration *parameter;
+  IIR_ConstantDeclarationRef parameter;
 };
 
 typedef refcount<IIRBase_ConcurrentGenerateForStatement> IIRBase_ConcurrentGenerateForStatementRef;

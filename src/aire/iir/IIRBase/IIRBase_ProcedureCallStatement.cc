@@ -32,38 +32,30 @@
 #include "IIRBase_AssociationList.hh"
 #include "IIR_InterfaceList.hh"
 
-IIRBase_ProcedureCallStatement::IIRBase_ProcedureCallStatement()  :
-  actual_parameter_part(0),
-  procedure_name( 0 ){}
-
-IIRBase_ProcedureCallStatement::~IIRBase_ProcedureCallStatement() {
-  delete actual_parameter_part;
-  actual_parameter_part = 0;
-  // Not procedure name
-}
+IIRBase_ProcedureCallStatement::IIRBase_ProcedureCallStatement() {}
+IIRBase_ProcedureCallStatement::~IIRBase_ProcedureCallStatement() {}
 
 void 
-IIRBase_ProcedureCallStatement::set_procedure_name( IIR* procedure_name) {
+IIRBase_ProcedureCallStatement::set_procedure_name( IIRRef procedure_name) {
   this->procedure_name = procedure_name;
 }
 
-IIR* 
+IIRRef
 IIRBase_ProcedureCallStatement::get_procedure_name() {
   return procedure_name;
 }
 
 // List Accessor(s)
-IIR_AssociationList *
+IIR_AssociationListRef
 IIRBase_ProcedureCallStatement::get_actual_parameter_part() {
-  ASSERT(actual_parameter_part != NULL);
+  ASSERT( actual_parameter_part != nullptr );
   return actual_parameter_part;
 }
 
 
 void
-IIRBase_ProcedureCallStatement::set_actual_parameter_part(IIR_AssociationList *new_actual_parameter_part) {
-  ASSERT(new_actual_parameter_part != NULL);
-  delete actual_parameter_part;
+IIRBase_ProcedureCallStatement::set_actual_parameter_part(IIR_AssociationListRef new_actual_parameter_part) {
+  ASSERT( new_actual_parameter_part != nullptr );
   actual_parameter_part = new_actual_parameter_part;
 }
 
@@ -74,13 +66,13 @@ IIRBase_ProcedureCallStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
-IIRBase_ProcedureCallStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ProcedureCallStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ProcedureCallStatement *new_node = dynamic_cast<IIRBase_ProcedureCallStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_ProcedureCallStatementRef new_node = my_dynamic_pointer_cast<IIRBase_ProcedureCallStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->actual_parameter_part = dynamic_cast<IIR_AssociationList *>(convert_node(actual_parameter_part, factory));
+  new_node->actual_parameter_part = my_dynamic_pointer_cast<IIR_AssociationList>(convert_node(actual_parameter_part, factory));
   new_node->procedure_name = convert_node(procedure_name, factory);
 
   return new_node;
@@ -99,8 +91,8 @@ IIRBase_ProcedureCallStatement::publish_vhdl(ostream &vhdl_out) {
     vhdl_out << "(";
     
     if (get_procedure_name()->get_kind() == IIR_PROCEDURE_DECLARATION) {
-      IIRBase_ProcedureDeclaration *procDecl = 
-        dynamic_cast<IIRBase_ProcedureDeclaration *>( get_procedure_name() );
+      IIRBase_ProcedureDeclarationRef procDecl = 
+        my_dynamic_pointer_cast<IIRBase_ProcedureDeclaration>( get_procedure_name() );
       parameter_count = procDecl->get_interface_declarations()->size();
     }
     
@@ -108,7 +100,7 @@ IIRBase_ProcedureCallStatement::publish_vhdl(ostream &vhdl_out) {
       get_actual_parameter_part()->publish_vhdl(vhdl_out);
     }
     else {
-      dynamic_cast<IIRBase_AssociationList *>
+       my_dynamic_pointer_cast<IIRBase_AssociationList>
 	(get_actual_parameter_part())->publish_vhdl_without_formals(vhdl_out);
     }
     vhdl_out << ")";

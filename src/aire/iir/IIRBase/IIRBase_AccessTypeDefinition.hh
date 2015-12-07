@@ -40,20 +40,20 @@ namespace savant {
   template <class type> class set;
 }
 
-class IIRBase_AccessTypeDefinition : public virtual IIRBase_TypeDefinition, public virtual IIR_AccessTypeDefinition{
+class IIRBase_AccessTypeDefinition : public virtual IIRBase_TypeDefinition, public virtual IIR_AccessTypeDefinition {
 
 public:
   IIR_Kind get_kind() const {return IIR_ACCESS_TYPE_DEFINITION;}
-  const IIR_Char *get_kind_text() const {return "IIR_AccessTypeDefinition";}
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_AccessTypeDefinition"); }
 
-  static IIR_AccessTypeDefinition *get( IIR_TypeDefinition *designated_type );
+  static IIR_AccessTypeDefinitionRef get( IIR_TypeDefinitionRef designated_type );
 
-  void set_designated_type( IIR_TypeDefinition *designated_type);
+  void set_designated_type( IIR_TypeDefinitionRef designated_type);
 
-  IIR_TypeDefinition *get_designated_type();
-  IIR_ScalarTypeDefinition *get_resolved_index_subtype();
+  IIR_TypeDefinitionRef get_designated_type();
+  IIR_ScalarTypeDefinitionRef get_resolved_index_subtype();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_element();
   IIR_Boolean is_access_type() { return TRUE; }
@@ -62,10 +62,10 @@ public:
   IIR_Boolean is_unconstrained_array_type();
   IIR_Boolean is_record_type();
   
-  IIR_TypeDefinition *get_element_subtype();
-  void set_element_subtype( IIR_TypeDefinition * );
+  IIR_TypeDefinitionRef get_element_subtype();
+  void set_element_subtype( IIR_TypeDefinitionRef  );
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *);
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef );
 
   void publish_vhdl_decl(ostream &);
   void publish_vhdl_subtype_decl(ostream &);
@@ -75,7 +75,7 @@ protected:
   virtual ~IIRBase_AccessTypeDefinition() = 0;
     
 private:
-  IIR_TypeDefinition *access_for_type;
+  IIR_TypeDefinitionRef access_for_type;
 };
 
 typedef refcount<IIRBase_AccessTypeDefinition> IIRBase_AccessTypeDefinitionRef;

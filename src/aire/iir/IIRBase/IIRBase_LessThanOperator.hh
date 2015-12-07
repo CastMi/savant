@@ -37,8 +37,8 @@ class IIRBase_LessThanOperator : public virtual IIRBase_DyadicOperator,
 
 public:
 
-  IIR_Kind get_kind() const {return IIR_LESS_THAN_OPERATOR;}
-  const IIR_Char *get_kind_text() const {return "IIR_LessThanOperator";}
+  IIR_Kind get_kind() const override { return IIR_LESS_THAN_OPERATOR; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_LessThanOperator"); }
   const string &get_operator_string() const;
 
   Precedence get_precedence();

@@ -43,7 +43,7 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &, IIRScram_TypeDefinitionRef  );
 
 protected:
 private:

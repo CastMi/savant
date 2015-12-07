@@ -58,14 +58,14 @@ public:
 
 
   void _type_check();
-  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *,
-					     IIRScram_SubprogramDeclaration *subprogram_decl );
+  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinitionRef>,
+					     IIRScram_SubprogramDeclarationRef subprogram_decl );
   
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
   // Wrappers for IIRBase functions
-  IIRScram_SequentialStatementList *    _get_sequence_of_statements();
-  IIRScram *                            _get_while_condition();
+  IIRScram_SequentialStatementListRef    _get_sequence_of_statements();
+  IIRScramRef                            _get_while_condition();
 
 protected:
 private:

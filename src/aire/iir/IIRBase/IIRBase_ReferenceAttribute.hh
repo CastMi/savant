@@ -37,17 +37,17 @@ class IIRBase_ReferenceAttribute : public virtual IIRBase_Attribute, public virt
 
 public:
   /** Returns the IIR_Kind of this node. */
-  IIR_Kind get_kind() const {
+  IIR_Kind get_kind() const override {
     return IIR_REFERENCE_ATTRIBUTE;
   }
 
-  const IIR_Char *get_kind_text() const {
-    return "IIR_ReferenceAttribute";
+  IIR_CharConstRef get_kind_text() const override {
+    return IIR_CharConstRef("IIR_ReferenceAttribute");
   }
 
  /** This returns an IIR_TextLiteral when a Reference attribute is
      instantiated. */  
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
 
   void publish_vhdl(ostream &);
 protected:

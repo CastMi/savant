@@ -41,10 +41,10 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   void _type_check();
-  IIRScram *_clone();
-  IIRScram *_get_expression();
+  IIRScramRef _clone();
+  IIRScramRef _get_expression();
 
-  IIRScram *_get_target();
+  IIRScramRef _get_target();
 protected:
 private:
 };

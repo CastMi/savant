@@ -38,8 +38,8 @@ class IIR_FileTypeDefinition : public virtual IIR_TypeDefinition{
 public:
   virtual ~IIR_FileTypeDefinition() {}
     
-  virtual void set_type_mark( IIR_TypeDefinition* type_mark) = 0;
-  virtual IIR_TypeDefinition* get_type_mark() = 0;
+  virtual void set_type_mark( IIR_TypeDefinitionRef type_mark) = 0;
+  virtual IIR_TypeDefinitionRef get_type_mark() = 0;
 };
 
 typedef refcount<IIR_FileTypeDefinition> IIR_FileTypeDefinitionRef;

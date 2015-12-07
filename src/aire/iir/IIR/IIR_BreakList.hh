@@ -29,7 +29,7 @@
 #include "IIR_List.hh"
 #include "IRBasicDataTypes.hh"
   
-class IIR_BreakElement;
+REF_FORWARD_DECL(IIR_BreakElement);
 
 /** The extension base for BreakList. This is a list of all Break Elements
     present in a break statement. */
@@ -37,13 +37,13 @@ class IIR_BreakList : public virtual IIR_List {
 
 public:
   /** Append the BreakElement to the break list. */
-  virtual void append( IIR_BreakElement* ) = 0;
+  virtual void append( IIR_BreakElementRef ) = 0;
   
   /** Returns the first Break Element in the break list. */
-  virtual IIR_BreakElement* first() = 0;
+  virtual IIR_BreakElementRef first() = 0;
 
   /** Returns the next break element from the break list. */
-  virtual IIR_BreakElement* successor( IIR_BreakElement* ) = 0;
+  virtual IIR_BreakElementRef successor( IIR_BreakElementRef ) = 0;
  
 private:
   

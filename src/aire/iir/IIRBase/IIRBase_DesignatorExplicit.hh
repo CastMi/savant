@@ -38,16 +38,16 @@ class IIR_Signature;
 class IIRBase_DesignatorExplicit : public virtual IIRBase_Designator, public virtual IIR_DesignatorExplicit{
 
 public:
-  IIR_Kind get_kind() const {return IIR_DESIGNATOR_EXPLICIT;}
-  const IIR_Char *get_kind_text() const {return "IIR_DesignatorExplicit";}
+  IIR_Kind get_kind() const override { return IIR_DESIGNATOR_EXPLICIT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_DesignatorExplicit"); }
 
-  void set_name( IIR *name );
-  IIR *get_name();
+  void set_name( IIRRef name );
+  IIRRef get_name();
 
-  void set_signature( IIR_Signature *signature );
-  IIR_Signature *get_signature( );
+  void set_signature( IIR_SignatureRef signature );
+  IIR_SignatureRef get_signature( );
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_signal();
@@ -63,8 +63,8 @@ protected:
   virtual ~IIRBase_DesignatorExplicit() = 0;
     
 private:
-  IIR *name;
-  IIR_Signature *signature;
+  IIRRef name;
+  IIR_SignatureRef signature;
 };
 
 typedef refcount<IIRBase_DesignatorExplicit> IIRBase_DesignatorExplicitRef;

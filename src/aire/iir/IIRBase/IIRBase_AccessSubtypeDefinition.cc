@@ -25,12 +25,11 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "IIRBase_AccessSubtypeDefinition.hh"
 #include "savant.hh"
 #include "IIR_FunctionDeclaration.hh"
 #include <iostream>
+#include <boost/pointer_cast.hpp>
 
 using std::cerr;
 
@@ -42,34 +41,34 @@ IIRBase_AccessSubtypeDefinition::~IIRBase_AccessSubtypeDefinition(){
 }
 
 void 
-IIRBase_AccessSubtypeDefinition::set_designated_subtype( IIR_TypeDefinition *designated_type){
+IIRBase_AccessSubtypeDefinition::set_designated_subtype( IIR_TypeDefinitionRef designated_type ){
   IIRBase_AccessTypeDefinition::set_designated_type( designated_type );
 }
 
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_AccessSubtypeDefinition::get_designated_subtype(){
   return IIRBase_AccessTypeDefinition::get_designated_type();
 }
 
 
 void 
-IIRBase_AccessSubtypeDefinition::set_resolution_function( IIR_FunctionDeclaration *resolution_function ){
+IIRBase_AccessSubtypeDefinition::set_resolution_function( IIR_FunctionDeclarationRef resolution_function ){
   my_resolution_function = resolution_function;
 }
 
-IIR_FunctionDeclaration *
+IIR_FunctionDeclarationRef
 IIRBase_AccessSubtypeDefinition::get_resolution_function(){
   return my_resolution_function;
 }
 
-IIR *
-IIRBase_AccessSubtypeDefinition::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_AccessSubtypeDefinition::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_AccessSubtypeDefinition *new_node = dynamic_cast<IIRBase_AccessSubtypeDefinition *>(IIRBase_AccessTypeDefinition::convert_tree(factory));
+  IIRBase_AccessSubtypeDefinitionRef new_node = my_dynamic_pointer_cast<IIRBase_AccessSubtypeDefinition>(IIRBase_AccessTypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->my_resolution_function = dynamic_cast<IIR_FunctionDeclaration *>(convert_node(my_resolution_function, factory));
+  new_node->my_resolution_function = my_dynamic_pointer_cast<IIR_FunctionDeclaration>(convert_node(my_resolution_function, factory));
 
   return new_node;
 }

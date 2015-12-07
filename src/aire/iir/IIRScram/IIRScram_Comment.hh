@@ -47,7 +47,7 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  static IIRScram_Comment *get( IIR_Char *text, IIR_Int32 text_length );
+  static IIRScram_CommentRef get( IIR_CharRef text, IIR_Int32 text_length );
 protected:
     
 private:

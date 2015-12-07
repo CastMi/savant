@@ -31,18 +31,10 @@
 #include "IIRBase_AssociationList.hh"
 
 IIRBase_ConcurrentProcedureCallStatement::IIRBase_ConcurrentProcedureCallStatement() :
-  actual_parameter_part(0),
-  process_statement_part(0),
-  postponed(false),
-  procedure_name(0){}
+  postponed(false) {}
 
 
-IIRBase_ConcurrentProcedureCallStatement::~IIRBase_ConcurrentProcedureCallStatement(){
-  delete actual_parameter_part;
-  actual_parameter_part = 0;
-  delete process_statement_part;
-  process_statement_part = 0;
-}
+IIRBase_ConcurrentProcedureCallStatement::~IIRBase_ConcurrentProcedureCallStatement() {}
 
 void 
 IIRBase_ConcurrentProcedureCallStatement::set_postponed( IIR_Boolean postponed ){
@@ -55,50 +47,49 @@ IIRBase_ConcurrentProcedureCallStatement::get_postponed(){
 }
 
 void 
-IIRBase_ConcurrentProcedureCallStatement::set_procedure_name( IIR *procedure_name ){
+IIRBase_ConcurrentProcedureCallStatement::set_procedure_name( IIRRef procedure_name ){
   this->procedure_name = procedure_name;
 }
 
-IIR *
+IIRRef
 IIRBase_ConcurrentProcedureCallStatement::get_procedure_name(){
   return procedure_name;
 }
 
 // List Accessor(s)
-IIR_AssociationList *
+IIR_AssociationListRef
 IIRBase_ConcurrentProcedureCallStatement::get_actual_parameter_part() {
-  ASSERT(actual_parameter_part != NULL);
+  ASSERT(actual_parameter_part != nullptr);
   return actual_parameter_part;
 }
 
-IIR_ArchitectureStatementList *
+IIR_ArchitectureStatementListRef
 IIRBase_ConcurrentProcedureCallStatement::get_process_statement_part() {
-  ASSERT(process_statement_part != NULL);
+  ASSERT(process_statement_part != nullptr);
   return process_statement_part;
 }
 
 
 void
-IIRBase_ConcurrentProcedureCallStatement::set_actual_parameter_part(IIR_AssociationList *new_actual_parameter_part) {
-  ASSERT(new_actual_parameter_part != NULL);
+IIRBase_ConcurrentProcedureCallStatement::set_actual_parameter_part(IIR_AssociationListRef new_actual_parameter_part) {
+  ASSERT(new_actual_parameter_part != nullptr);
   actual_parameter_part = new_actual_parameter_part;
 }
 
 void
-IIRBase_ConcurrentProcedureCallStatement::set_process_statement_part(IIR_ArchitectureStatementList *new_process_statement_part) {
-  ASSERT(new_process_statement_part != NULL);
-  delete process_statement_part;
+IIRBase_ConcurrentProcedureCallStatement::set_process_statement_part(IIR_ArchitectureStatementListRef new_process_statement_part) {
+  ASSERT(new_process_statement_part != nullptr);
   process_statement_part = new_process_statement_part;
 }
 
-IIR *
-IIRBase_ConcurrentProcedureCallStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ConcurrentProcedureCallStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ConcurrentProcedureCallStatement *new_node = dynamic_cast<IIRBase_ConcurrentProcedureCallStatement *>(IIRBase_ConcurrentStatement::convert_tree(factory));
+  IIRBase_ConcurrentProcedureCallStatementRef new_node = my_dynamic_pointer_cast<IIRBase_ConcurrentProcedureCallStatement>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->actual_parameter_part = dynamic_cast<IIR_AssociationList *>(convert_node(actual_parameter_part, factory));
-  new_node->process_statement_part = dynamic_cast<IIR_ArchitectureStatementList *>(convert_node(process_statement_part, factory));
+  new_node->actual_parameter_part = my_dynamic_pointer_cast<IIR_AssociationList>(convert_node(actual_parameter_part, factory));
+  new_node->process_statement_part = my_dynamic_pointer_cast<IIR_ArchitectureStatementList>(convert_node(process_statement_part, factory));
   new_node->postponed = postponed;
   new_node->procedure_name = convert_node(procedure_name, factory);
 
@@ -120,7 +111,7 @@ IIRBase_ConcurrentProcedureCallStatement::publish_vhdl(ostream &vhdl_out) {
     vhdl_out << "(";
     
     if(get_actual_parameter_part()->size() != 0) {
-      dynamic_cast<IIRBase_AssociationList *>(get_actual_parameter_part())->publish_vhdl_without_formals(vhdl_out);
+       my_dynamic_pointer_cast<IIRBase_AssociationList>(get_actual_parameter_part())->publish_vhdl_without_formals(vhdl_out);
     }
     
     vhdl_out << ")";

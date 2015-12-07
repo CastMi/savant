@@ -24,24 +24,9 @@
 #include "plugin_class_factory.hh"
 
 IIRBase_Identifier::IIRBase_Identifier(){}
-
 IIRBase_Identifier::~IIRBase_Identifier(){}
 
-void 
-IIRBase_Identifier::release(){
-  delete this;
-}
-
-IIR_Identifier *
-IIRBase_Identifier::get( const IIR_Char *new_text, 
-			 IIR_Int32 new_length,
-			 plugin_class_factory *factory ){
-  IIR_Identifier *retval = factory->new_IIR_Identifier();  
-  dynamic_cast<IIRBase_Identifier *>(retval)->set_text( new_text, new_length );
-  return retval;
-}
-
-IIR_Identifier *
-IIRBase_Identifier::get( const string &text, plugin_class_factory *factory ){
-  return get( text.c_str(), text.length(), factory );
+IIR_IdentifierRef
+IIRBase_Identifier::get( std::string text, plugin_class_factoryRef factory ){
+  return get( text.c_str(), factory );
 }

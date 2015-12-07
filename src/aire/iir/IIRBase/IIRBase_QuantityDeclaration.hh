@@ -28,12 +28,11 @@
 class IIRBase_QuantityDeclaration : public virtual IIRBase_ObjectDeclaration, public virtual IIR_QuantityDeclaration {
 
 public:
-  IIR_Kind get_kind() const { return IIR_QUANTITY_DECLARATION;  }
-
-  const IIR_Char *get_kind_text() const { return "IIR_QuantityDeclaration";  }
+  IIR_Kind get_kind() const override { return IIR_QUANTITY_DECLARATION;  }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_QuantityDeclaration"); }
 
   declaration_type  get_declaration_type();
-  void set_value(IIR *);
+  void set_value(IIRRef );
   void publish_vhdl_decl(ostream &);
 protected:
   /*  IIRBase_QuantityDeclaration();

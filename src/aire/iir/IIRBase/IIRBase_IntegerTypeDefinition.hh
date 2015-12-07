@@ -34,10 +34,10 @@
 
 class IIRBase_IntegerTypeDefinition : public virtual IIRBase_ScalarTypeDefinition, public virtual IIR_IntegerTypeDefinition{
 public:
-  IIR_Kind get_kind() const {return IIR_INTEGER_TYPE_DEFINITION;}
-  const IIR_Char *get_kind_text() const {return "IIR_IntegerTypeDefinition";}
+  IIR_Kind get_kind() const override { return IIR_INTEGER_TYPE_DEFINITION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_IntegerTypeDefinition"); }
 
-  IIR_TypeDefinition *check_special_compatible( IIR_TypeDefinition * );
+  IIR_TypeDefinitionRef check_special_compatible( IIR_TypeDefinitionRef );
 
   IIR_Boolean is_discrete_type(){ return true; }
   IIR_Boolean is_integer_type(){ return true; }

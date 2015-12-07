@@ -30,30 +30,24 @@
 #include "IIRBase_OthersInitialization.hh"
 #include "IIR_TypeDefinition.hh"
 
-IIRBase_OthersInitialization::IIRBase_OthersInitialization() :
-  expression(0){}
-
-IIRBase_OthersInitialization::~IIRBase_OthersInitialization() {
-  delete expression;
-  expression = 0;
-}
+IIRBase_OthersInitialization::IIRBase_OthersInitialization() {}
+IIRBase_OthersInitialization::~IIRBase_OthersInitialization() {}
 
 void
-IIRBase_OthersInitialization::set_expression( IIR* expression) {
+IIRBase_OthersInitialization::set_expression( IIRRef expression) {
   this->expression = expression;
 }
 
-IIR*
+IIRRef
 IIRBase_OthersInitialization::get_expression() {
   return expression;
 }
 
 
-
-IIR *
-IIRBase_OthersInitialization::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_OthersInitialization::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_OthersInitialization *new_node = dynamic_cast<IIRBase_OthersInitialization *>(IIRBase_Expression::convert_tree(factory));
+  IIRBase_OthersInitializationRef new_node = my_dynamic_pointer_cast<IIRBase_OthersInitialization>(IIRBase_Expression::convert_tree(factory));
 
   // Process the variables
   new_node->expression = convert_node(expression, factory);
@@ -63,7 +57,7 @@ IIRBase_OthersInitialization::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean
 IIRBase_OthersInitialization::is_resolved(){
-  ASSERT( get_expression() != NULL );
+  ASSERT( get_expression() != nullptr );
 
   return get_expression()->is_resolved();
 }
@@ -71,7 +65,7 @@ IIRBase_OthersInitialization::is_resolved(){
 ostream & 
 IIRBase_OthersInitialization::print( ostream &os ) {
   os << " others => ";
-  ASSERT(get_expression() != NULL);
+  ASSERT(get_expression() != nullptr);
   os << *get_expression();
   
   return os;
@@ -79,13 +73,13 @@ IIRBase_OthersInitialization::print( ostream &os ) {
 
 void 
 IIRBase_OthersInitialization::publish_vhdl(ostream &vhdl_out) {
-  ASSERT(get_subtype() != NULL);
+  ASSERT(get_subtype() != nullptr);
   if (get_subtype()->is_record_type() == TRUE) {
     vhdl_out << " (";
   }
   vhdl_out << "others => ";
 
-  ASSERT(get_expression() != NULL);
+  ASSERT(get_expression() != nullptr);
   ASSERT(get_expression()->is_resolved() == TRUE);
   get_expression()->publish_vhdl(vhdl_out);
   if (get_subtype()->is_record_type() == TRUE) {

@@ -35,8 +35,8 @@
 class IIRBase_AdditionOperator : public virtual IIRBase_DyadicOperator, public virtual IIR_AdditionOperator{
 
 public:
-  IIR_Kind get_kind() const {return IIR_ADDITION_OPERATOR;}
-  const IIR_Char *get_kind_text() const {return "IIR_AdditionOperator";}
+  IIR_Kind get_kind() const override { return IIR_ADDITION_OPERATOR; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_AdditionOperator"); }
   const string &get_operator_string() const;
 
   Precedence  get_precedence();

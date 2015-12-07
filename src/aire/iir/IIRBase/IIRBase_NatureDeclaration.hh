@@ -41,34 +41,34 @@ class IIRBase_NatureDeclaration : public virtual IIRBase_Declaration, public vir
 
 public:
   // List Accessor(s)
-  IIR_AttributeSpecificationList  *get_attributes();
-  void                            set_attributes(IIR_AttributeSpecificationList *new_attributes);
+  IIR_AttributeSpecificationListRef get_attributes();
+  void                            set_attributes(IIR_AttributeSpecificationListRef new_attributes);
 
-  IIR_Kind get_kind() const {return IIR_NATURE_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_NatureDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_NATURE_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_NatureDeclaration"); }
 
   /** Set the Nature of the terminal */
-  void set_nature(IIR_NatureDefinition* nature);
+  void set_nature(IIR_NatureDefinitionRef nature);
 
   /** Get nature of the terminal */
-  IIR_NatureDefinition *get_nature();
+  IIR_NatureDefinitionRef get_nature();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_array_type();
 
   /** Returns the nature of the subtype */ 
-  IIR_TypeDefinition *get_subtype();
+  IIR_TypeDefinitionRef get_subtype();
 
   /** Returns the reference terminal */
-  IIR_TerminalDeclaration* get_reference_terminal();
+  IIR_TerminalDeclarationRef get_reference_terminal();
 
   /** Set the reference terminal */
-  void set_reference_terminal(IIR_TerminalDeclaration*);
+  void set_reference_terminal(IIR_TerminalDeclarationRef);
 
   declaration_type get_declaration_type();
 
-  IIR_TypeDefinition *get_final_subtype();
+  IIR_TypeDefinitionRef get_final_subtype();
   
   void publish_vhdl_decl(ostream &vhdl_out);
 
@@ -79,10 +79,10 @@ protected :
 
 private:
   // List Variable(s)
-  IIR_AttributeSpecificationList  *attributes;
+  IIR_AttributeSpecificationListRef attributes;
 
-  IIR_NatureDefinition* nature;
-  IIR_TerminalDeclaration* reference_terminal;
+  IIR_NatureDefinitionRef nature;
+  IIR_TerminalDeclarationRef reference_terminal;
 };
 
 typedef refcount<IIRBase_NatureDeclaration> IIRBase_NatureDeclarationRef;

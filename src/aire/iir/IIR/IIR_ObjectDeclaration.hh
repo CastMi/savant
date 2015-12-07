@@ -33,8 +33,8 @@
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
 
+REF_FORWARD_DECL(IIR_AttributeSpecificationList);
 class IIR_TypeDefinition;
-class IIR_AttributeSpecificationList;
 
 class IIR_ObjectDeclaration : public virtual IIR_Declaration{
 
@@ -42,13 +42,13 @@ public:
   virtual ~IIR_ObjectDeclaration() {}
     
   // List accessor(s)
-  virtual IIR_AttributeSpecificationList        *get_attributes() = 0;
-  virtual void                                  set_attributes(IIR_AttributeSpecificationList *) = 0;
+  virtual IIR_AttributeSpecificationListRef  get_attributes() = 0;
+  virtual void                               set_attributes( IIR_AttributeSpecificationListRef ) = 0;
 
   /** Make this virtual.  The only object declaration that doesn't have a
       value is a file type declaration... */
-  virtual IIR *get_value() = 0;
-  virtual void set_value(IIR *) = 0;
+  virtual IIRRef get_value() = 0;
+  virtual void set_value( IIRRef ) = 0;
 };
 
 typedef refcount<IIR_ObjectDeclaration> IIR_ObjectDeclarationRef;

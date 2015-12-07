@@ -41,20 +41,20 @@ public:
   IIRScram_FloatingSubtypeDefinition() {};  
   virtual ~IIRScram_FloatingSubtypeDefinition();    
 
-  static IIRScram_FloatingSubtypeDefinition* get( IIRScram_FloatingTypeDefinition* base_type, 
-                                                  IIRScram* left_limit,
-                                                  IIRScram* direction, IIRScram* right_limit);
+  static IIRScram_FloatingSubtypeDefinitionRef get( IIRScram_FloatingTypeDefinitionRef base_type, 
+                                                  IIRScramRef left_limit,
+                                                  IIRScramRef direction, IIRScramRef right_limit);
 
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  void _set_resolution_function(IIRScram_FunctionDeclaration *function);
+  void _set_resolution_function(IIRScram_FunctionDeclarationRef function);
 
-  void set_resolution_function(IIRScram_FunctionDeclaration *function) {
+  void set_resolution_function(IIRScram_FunctionDeclarationRef function) {
     IIRBase_FloatingSubtypeDefinition::set_resolution_function(function);
   }
 
-  IIRScram_FunctionDeclaration* _get_resolution_function();
+  IIRScram_FunctionDeclarationRef _get_resolution_function();
 
   virtual void _type_check();
 

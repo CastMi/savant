@@ -36,13 +36,13 @@
 class IIRBase_IndexedName : public virtual IIRBase_Name, public virtual IIR_IndexedName{
 
 public:
-  IIR_Kind get_kind() const {return IIR_INDEXED_NAME;}
-  const IIR_Char *get_kind_text() const {return "IIR_IndexedName";}
+  IIR_Kind get_kind() const override { return IIR_INDEXED_NAME; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_IndexedName"); }
 
-  void set_suffix( IIR* suffix);
-  IIR* get_suffix();
+  void set_suffix( IIRRef suffix);
+  IIRRef get_suffix();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_signal();
@@ -51,29 +51,28 @@ public:
   IIR_Boolean is_variable();
 
   // Override the IIR_Name default
-  void set_subtype(IIR_TypeDefinition *type) { IIRBase::set_subtype(type); }
+  void set_subtype(IIR_TypeDefinitionRef type) { IIRBase::set_subtype(type); }
 
-  IIR *get_index( int index_num );
-  void set_index( int index_num, IIR *new_index );
+  IIRRef get_index( int index_num );
+  void set_index( int index_num, IIRRef new_index );
 
   IIR_Int32 get_num_indexes();
 
   ostream &print( ostream & );
 
-  IIR *get_declarative_region();
+  IIRRef get_declarative_region();
 
   /** This method returns the declaration of the indexed name.  If the
       prefix is a declaration, returns it, or else, gets the declaration of
       the prefix recursively. */
-  IIR_Declaration* get_prefix_declaration();
+  IIR_DeclarationRef get_prefix_declaration();
   void publish_vhdl(ostream &);
 protected:
   IIRBase_IndexedName();
   virtual ~IIRBase_IndexedName() = 0;
     
 private:
-  IIR* suffix;  
-
+  IIRRef suffix;
 };
 
 typedef refcount<IIRBase_IndexedName> IIRBase_IndexedNameRef;

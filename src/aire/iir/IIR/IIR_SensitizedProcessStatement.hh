@@ -31,15 +31,16 @@
 
 #include "savant_config.hh"
 #include "IIR_ProcessStatement.hh"
-class IIR_DesignatorList;
+
+REF_FORWARD_DECL(IIR_DesignatorList);
 
 class IIR_SensitizedProcessStatement : public virtual IIR_ProcessStatement{
 public:
   virtual ~IIR_SensitizedProcessStatement() {}    
 
   // List accessor(s)
-  virtual IIR_DesignatorList    *get_sensitivity_list() = 0;
-  virtual void                  set_sensitivity_list(IIR_DesignatorList *) = 0;
+  virtual IIR_DesignatorListRef get_sensitivity_list() = 0;
+  virtual void                  set_sensitivity_list(IIR_DesignatorListRef ) = 0;
 };
 
 typedef refcount<IIR_SensitizedProcessStatement> IIR_SensitizedProcessStatementRef;

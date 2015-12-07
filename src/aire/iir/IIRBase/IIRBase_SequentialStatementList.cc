@@ -32,23 +32,23 @@ IIRBase_SequentialStatementList::IIRBase_SequentialStatementList() {}
 IIRBase_SequentialStatementList::~IIRBase_SequentialStatementList() {}
 
 
-IIR_SequentialStatement* 
+IIR_SequentialStatementRef 
 IIRBase_SequentialStatementList::first() {
-  return dynamic_cast<IIR_SequentialStatement*>(IIR_List::first());
+  return my_dynamic_pointer_cast<IIR_SequentialStatement>(IIR_List::first());
 }
 
 
-IIR_SequentialStatement*
-IIRBase_SequentialStatementList::successor(IIR_SequentialStatement* node) {
-  return dynamic_cast<IIR_SequentialStatement*>(IIR_List::successor((IIR*)node));
+IIR_SequentialStatementRef
+IIRBase_SequentialStatementList::successor(IIR_SequentialStatementRef node) {
+  return my_dynamic_pointer_cast<IIR_SequentialStatement>(IIR_List::successor(node));
 }
 
 IIR_Boolean
 IIRBase_SequentialStatementList::is_above_attribute_found() {
   IIR_Boolean retval = FALSE;
 
-  IIR_SequentialStatement *stmt = first();
-  while (stmt != NULL) {
+  IIR_SequentialStatementRef stmt = first();
+  while (stmt != nullptr) {
     retval = stmt->is_above_attribute_found() || retval;
     stmt = successor(stmt);
   }
@@ -59,7 +59,7 @@ IIRBase_SequentialStatementList::is_above_attribute_found() {
 
 void 
 IIRBase_SequentialStatementList::publish_vhdl(ostream &vhdl_out) {
-  IIR_SequentialStatement *stmt = NULL;
+  IIR_SequentialStatementRef stmt;
   for (stmt = first();
        stmt != NULL; 
        stmt = successor(stmt)) {

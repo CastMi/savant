@@ -44,20 +44,20 @@ class IIRScram_ScalarTypeDefinition : public virtual IIRScram_TypeDefinition,
 public:
   IIRScram_ScalarTypeDefinition();
 
-  virtual IIRScram_TypeDefinition *
-  _construct_new_subtype( IIRScram_Name                 *resolution_function,
-			  IIRScram_ScalarTypeDefinition *new_constraint);
+  virtual IIRScram_TypeDefinitionRef 
+  _construct_new_subtype( IIRScram_NameRef resolution_function,
+			  IIRScram_ScalarTypeDefinitionRef new_constraint);
   
   /** This method takes all of the data passed in, and attempts to
      generate valid IIR for it.  */
-  static void _init_scalar_type( IIRScram_RangeTypeDefinition *init_info,
-				 IIRScram_ScalarTypeDefinition *base_type,
-				 IIRScram_ScalarTypeDefinition *subtype,
-				 IIRScram_TypeDeclaration *type_decl );
+  static void _init_scalar_type( IIRScram_RangeTypeDefinitionRef init_info,
+				 IIRScram_ScalarTypeDefinitionRef base_type,
+				 IIRScram_ScalarTypeDefinitionRef subtype,
+				 IIRScram_TypeDeclarationRef type_decl );
 
-  virtual void set_resolution_function( IIRScram_FunctionDeclaration * );
+  virtual void set_resolution_function( IIRScram_FunctionDeclarationRef  );
 
-  virtual void _clone( IIRScram * );
+  virtual void _clone( IIRScramRef  );
 
   /** This method takes the range passed in, and determines the discrete type that applies.
       The type must be determinable WITHOUT context.  This method is appropriate for 
@@ -66,15 +66,15 @@ public:
       2) The discrete range of iteration schemes in for loops.
       3) The discrete range of iteration schemes in generate statements.
       See pg 42, line 354 of the 93 LRM. */
-  static IIRScram_ScalarTypeDefinition *_determine_discrete_type( IIRScram_RangeTypeDefinition * );
+  static IIRScram_ScalarTypeDefinitionRef _determine_discrete_type( IIRScram_RangeTypeDefinitionRef  );
 
   // Helper functions
-  IIRScram                      *_get_left();
-  IIRScram                      *_get_right();
-  IIRScram                      *_get_direction();
+  IIRScramRef                      _get_left();
+  IIRScramRef                      _get_right();
+  IIRScramRef                      _get_direction();
 protected:
   virtual ~IIRScram_ScalarTypeDefinition() = 0;
-  void _build_implicit_operators( savant::set<IIRScram_Declaration*> * );    
+  void _build_implicit_operators( savant::set<IIRScram_DeclarationRef> );    
 private:
 };
 

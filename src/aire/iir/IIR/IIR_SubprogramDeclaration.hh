@@ -31,24 +31,25 @@
 
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
-class IIR_InterfaceList;
-class IIR_DeclarationList;
-class IIR_SequentialStatementList;
-class IIR_AttributeSpecificationList;
+
+REF_FORWARD_DECL(IIR_InterfaceList);
+REF_FORWARD_DECL(IIR_SequentialStatementList);
+REF_FORWARD_DECL(IIR_AttributeSpecificationList);
+REF_FORWARD_DECL(IIR_DeclarationList);
 
 class IIR_SubprogramDeclaration : public virtual IIR_Declaration{
 public:
   virtual ~IIR_SubprogramDeclaration() {}    
 
   // List accessor(s)
-  virtual IIR_InterfaceList                     *get_interface_declarations() = 0;
-  virtual IIR_DeclarationList                   *get_subprogram_declarations() = 0;
-  virtual IIR_SequentialStatementList           *get_subprogram_body() = 0;
-  virtual IIR_AttributeSpecificationList        *get_attributes() = 0;
-  virtual void                                  set_interface_declarations(IIR_InterfaceList *) = 0;
-  virtual void                                  set_subprogram_declarations(IIR_DeclarationList *) = 0;
-  virtual void                                  set_subprogram_body(IIR_SequentialStatementList *) = 0;
-  virtual void                                  set_attributes(IIR_AttributeSpecificationList *) = 0;
+  virtual IIR_InterfaceListRef              get_interface_declarations() = 0;
+  virtual IIR_DeclarationListRef            get_subprogram_declarations() = 0;
+  virtual IIR_SequentialStatementListRef    get_subprogram_body() = 0;
+  virtual IIR_AttributeSpecificationListRef get_attributes() = 0;
+  virtual void                              set_interface_declarations( IIR_InterfaceListRef ) = 0;
+  virtual void                              set_subprogram_declarations( IIR_DeclarationListRef ) = 0;
+  virtual void                              set_subprogram_body( IIR_SequentialStatementListRef ) = 0;
+  virtual void                              set_attributes( IIR_AttributeSpecificationListRef ) = 0;
 
   /** This method returns true if this method contained a body when it was parsed.
       We need this to differentiate between:

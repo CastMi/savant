@@ -25,48 +25,46 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "IIRBase_Declaration.hh"
-
-
-
+#include "IIR_Declaration.hh"
 #include "savant.hh"
 #include "IIRBase_Attribute.hh"
 #include "IIRBase_Identifier.hh"
 #include "IIRBase_TextLiteral.hh"
 #include "IIRBase_TypeDefinition.hh"
 
-IIRBase_Declaration::IIRBase_Declaration() : 
-  declarative_region(0), 
-  implicit_flag(false),
-  visible_flag(true),
-  declarator(0),
-  attribute_name(0){}
-
-IIRBase_Declaration::~IIRBase_Declaration(){
+// FIXME: this is an error
+IIR_DeclarationRef get_prefix_declaration() {
+   // In theory it should return "this"
+   return IIRBase_DeclarationRef();
 }
 
+IIRBase_Declaration::IIRBase_Declaration() : 
+  implicit_flag(false),
+  visible_flag(true) {}
+
+IIRBase_Declaration::~IIRBase_Declaration() {}
+
 void 
-IIRBase_Declaration::set_declarator( IIR_TextLiteral *new_declarator ){
-  ASSERT ( new_declarator != NULL );
+IIRBase_Declaration::set_declarator( IIR_TextLiteralRef new_declarator ){
+  ASSERT ( new_declarator != nullptr );
   declarator = new_declarator;  
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_Declaration::get_declarator(){
   return declarator;
 }
 
-IIR *
-IIRBase_Declaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_Declaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_Declaration *new_node = dynamic_cast<IIRBase_Declaration *>(IIRBase::convert_tree(factory));
+  IIRBase_DeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_Declaration>(IIRBase::convert_tree(factory));
 
   // Process the variables
-  new_node->declarator = dynamic_cast<IIR_TextLiteral *>(convert_node(declarator, factory));
+  new_node->declarator = my_dynamic_pointer_cast<IIR_TextLiteral>(convert_node(declarator, factory));
   new_node->declarative_region = convert_node(declarative_region, factory);
-  new_node->attribute_name = dynamic_cast<IIR_Attribute *>(convert_node(attribute_name, factory));
+  new_node->attribute_name = my_dynamic_pointer_cast<IIR_Attribute>(convert_node(attribute_name, factory));
 
   new_node->implicit_flag = implicit_flag;
   new_node->visible_flag = visible_flag;
@@ -74,13 +72,13 @@ IIRBase_Declaration::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR *
+IIRRef
 IIRBase_Declaration::get_declarative_region(){
   return declarative_region;
 }
 
 void 
-IIRBase_Declaration::set_declarative_region( IIR *new_declarative_region ){
+IIRBase_Declaration::set_declarative_region( IIRRef new_declarative_region ){
   declarative_region = new_declarative_region;
 }
 
@@ -89,7 +87,7 @@ IIRBase_Declaration::get_declaration_type(){
   return ERROR;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_Declaration::get_prefix_string(){
   return get_declarator();
 }
@@ -106,13 +104,13 @@ IIRBase_Declaration::print( ostream &os ){
   return os;
 }
 
-IIR_Attribute *
+IIR_AttributeRef
 IIRBase_Declaration::get_attribute_name(){
   return attribute_name;
 }
 
 void 
-IIRBase_Declaration::set_attribute_name( IIR_Attribute *new_name ){
+IIRBase_Declaration::set_attribute_name( IIR_AttributeRef new_name ){
   attribute_name = new_name;
 }
 

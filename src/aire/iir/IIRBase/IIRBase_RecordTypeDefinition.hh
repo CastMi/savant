@@ -40,27 +40,27 @@ template <class type> class set;
 class IIRBase_RecordTypeDefinition : public virtual IIRBase_TypeDefinition, public virtual IIR_RecordTypeDefinition{
 public:
   // List Accessor(s)
-  IIR_ElementDeclarationList *get_element_declarations();
-  void                       set_element_declarations(IIR_ElementDeclarationList *new_element_declarations);
+  IIR_ElementDeclarationListRef get_element_declarations();
+  void                       set_element_declarations(IIR_ElementDeclarationListRef new_element_declarations);
 
-  IIR_Kind get_kind() const {return IIR_RECORD_TYPE_DEFINITION;}
-  const IIR_Char *get_kind_text() const {return "IIR_RecordTypeDefinition";}
+  IIR_Kind get_kind() const override { return IIR_RECORD_TYPE_DEFINITION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_RecordTypeDefinition"); }
 
-  IIR_FunctionDeclaration *get_resolution_function();
-  void set_resolution_function(   IIR_FunctionDeclaration * );
+  IIR_FunctionDeclarationRef get_resolution_function();
+  void set_resolution_function( IIR_FunctionDeclarationRef );
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_record_type() { return TRUE; }
   IIR_Boolean is_subtype();
   IIR_Boolean is_locally_static();
 
-  IIR_ScalarTypeDefinition *get_resolved_index_subtype();
+  IIR_ScalarTypeDefinitionRef get_resolved_index_subtype();
   
   // This method returns the subtype of the "nth" element.
-  IIR_TypeDefinition *get_element_subtype( int );
+  IIR_TypeDefinitionRef get_element_subtype( int );
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef );
 
   ostream &print( ostream & );
   void publish_vhdl_decl(ostream &);
@@ -71,8 +71,8 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_ElementDeclarationList *element_declarations;
-  IIR_FunctionDeclaration *my_resolution_function;
+  IIR_ElementDeclarationListRef element_declarations;
+  IIR_FunctionDeclarationRef my_resolution_function;
 };
 
 typedef refcount<IIRBase_RecordTypeDefinition> IIRBase_RecordTypeDefinitionRef;

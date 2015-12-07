@@ -40,10 +40,10 @@ public:
   virtual ~IIR_TerminalDeclaration() {};
 
   /** Set the nature of the terminal */
-  virtual void set_nature(IIR_NatureDefinition *nature) = 0;
+  virtual void set_nature(IIR_NatureDefinitionRef nature) = 0;
 
   /** Returns the nature of the terminal */
-  virtual IIR_NatureDefinition* get_nature() = 0;
+  virtual IIR_NatureDefinitionRef get_nature() = 0;
 };
 
 typedef refcount<IIR_TerminalDeclaration> IIR_TerminalDeclarationRef;

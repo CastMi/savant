@@ -32,46 +32,40 @@
 #include "IIR_LibraryDeclaration.hh"
 #include "savant.hh"
 
-IIRBase_LibraryClause::IIRBase_LibraryClause() :
-  logical_name( 0 ),
-  library_declaration( 0 ){}
-
-IIRBase_LibraryClause::~IIRBase_LibraryClause(){
-  // Do nothing; the name belongs to the string table and the declaration
-  // to a declaration list somewhere.
-}
+IIRBase_LibraryClause::IIRBase_LibraryClause() {}
+IIRBase_LibraryClause::~IIRBase_LibraryClause() {}
 
 void
-IIRBase_LibraryClause::set_logical_name(IIR_Identifier* logical_name) {
+IIRBase_LibraryClause::set_logical_name(IIR_IdentifierRef logical_name) {
   this->logical_name = logical_name;
 }
 
-IIR_Identifier*
+IIR_IdentifierRef
 IIRBase_LibraryClause::get_logical_name() {
   return logical_name;
 }
 
 void
-IIRBase_LibraryClause::set_library_declaration( IIR_LibraryDeclaration *new_library_declaration ){
+IIRBase_LibraryClause::set_library_declaration( IIR_LibraryDeclarationRef new_library_declaration ){
   library_declaration = new_library_declaration;
 }
 
-IIR_LibraryDeclaration *
+IIR_LibraryDeclarationRef
 IIRBase_LibraryClause::get_library_declaration(){
   return library_declaration;
 }
 
-IIR *
-IIRBase_LibraryClause::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_LibraryClause::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_LibraryClause *new_node =
-    dynamic_cast<IIRBase_LibraryClause *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_LibraryClauseRef new_node =
+    my_dynamic_pointer_cast<IIRBase_LibraryClause>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->logical_name = dynamic_cast<IIR_Identifier *>(convert_node(logical_name, factory));
+  new_node->logical_name = my_dynamic_pointer_cast<IIR_Identifier>(convert_node(logical_name, factory));
 
   new_node->library_declaration =
-    dynamic_cast<IIR_LibraryDeclaration *>(convert_node(library_declaration, factory));
+    my_dynamic_pointer_cast<IIR_LibraryDeclaration>(convert_node(library_declaration, factory));
   
   return new_node;
 }
@@ -79,7 +73,7 @@ IIRBase_LibraryClause::convert_tree(plugin_class_factory *factory) {
 bool
 IIRBase_LibraryClause::is_work_library(){
   bool retval = false;
-  if( library_declaration != 0 ){
+  if( library_declaration != nullptr ){
     retval = library_declaration->is_work_library();
   }
   return retval;

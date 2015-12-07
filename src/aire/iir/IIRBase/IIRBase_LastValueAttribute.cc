@@ -22,20 +22,21 @@
 #include "IIRBase_LastValueAttribute.hh"
 #include "IIR_DesignFile.hh"
 #include "savant.hh"
+#include <cstring>
 
 IIRBase_LastValueAttribute::IIRBase_LastValueAttribute() {}
 
 IIRBase_LastValueAttribute::~IIRBase_LastValueAttribute() {}
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_LastValueAttribute::build_attribute_name() {
-  const char *name = "last_value";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("last_value");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 
 IIRBase_LastValueAttribute::publish_vhdl(ostream &vhdl_out) {
-  ASSERT(get_prefix() != NULL);
+  ASSERT(get_prefix() != nullptr);
   ASSERT(get_prefix()->is_resolved() == TRUE);
   ASSERT(get_prefix()->is_signal() == TRUE);
 

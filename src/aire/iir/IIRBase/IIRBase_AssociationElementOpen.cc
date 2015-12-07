@@ -38,7 +38,7 @@ void
 IIRBase_AssociationElementOpen::publish_vhdl(ostream &vhdl_out) {
   if (get_formal() != NULL) {
     if( get_formal()->get_kind() == IIR_INTEGER_SUBTYPE_DEFINITION ){
-      dynamic_cast<IIRBase *>(get_formal())->publish_vhdl_range(vhdl_out);
+      dynamic_cast<IIRBase *>(get_formal().get())->publish_vhdl_range(vhdl_out);
     }
     else {
       get_formal()->publish_vhdl(vhdl_out);

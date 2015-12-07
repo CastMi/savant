@@ -25,50 +25,49 @@
 #include "IIRBase_Literal.hh"
 #include "IIR_TextLiteral.hh"
 #include "IIRBase_String.hh"
-#include "hash_table.hh"
+#include <map>
 
-class IIR_Name;
+REF_FORWARD_DECL(IIR_Name);
 
 class IIRBase_TextLiteral : public virtual IIRBase_Literal,
 			    public virtual IIR_TextLiteral{
 
 public:
-  IIR_Char *get_text();
+
+  // FIXME: Constructor/Destructor should be protected
+  IIRBase_TextLiteral();
+  virtual ~IIRBase_TextLiteral() = 0;
+  
+  std::string get_text();
   IIR_Int32 get_text_length();
 
-  IIR_Char &operator[]( IIR_Int32 subscript );
-
   /** Compares text literals. */
-  static int cmp(IIR_TextLiteral *, IIR_TextLiteral *);
-  static int cmp(IIR_TextLiteral *, const char *);
-  static int cmp(IIR_TextLiteral *, IIR_Name *);
+  static int cmp(IIR_TextLiteralRef, IIR_TextLiteralRef );
+  static int cmp(IIR_TextLiteralRef, const IIR_Char * );
+  static int cmp(IIR_TextLiteralRef, IIR_NameRef );
 
-  /** This method converts an IIR_Identifier into a C++ string. */
-  const string convert_to_string();
-  const string convert_to_library_name();
-
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
  
   IIR_Boolean is_text_literal() { return TRUE; }
 
-  IIR_TextLiteral *get_prefix_string(){ return this; }
+  // FIXME: this is an error
+  IIR_TextLiteralRef get_prefix_string(){ return IIR_TextLiteralRef(this); }
 
   ostream &print( ostream & );
 
   void publish_vhdl(ostream &);
 protected:
-  IIRBase_TextLiteral();
-  virtual ~IIRBase_TextLiteral() = 0;
 
-  IIRBase_String *text;
+  IIRBase_StringRef text;
     
   void check_bounds( IIR_Int32 subscript );
 
   // This method is intended for use on NEW objects only...  (Otherwise,
   // it will leak - and an assertion will fail)
-  void set_text( const IIR_Char *const, const IIR_Int32 );
+  void set_text( std::string );
 private:  
-  static hash_table<IIRBase_String> &get_string_table();
+  //FIXME: almost sure that this is pointless, use a simple list
+  std::map<std::string, IIRBase_StringRef> mymap;
 };
 
 typedef refcount<IIRBase_TextLiteral> IIRBase_TextLiteralRef;

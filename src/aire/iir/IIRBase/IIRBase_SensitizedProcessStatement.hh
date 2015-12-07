@@ -34,16 +34,17 @@
 #include "IIR_SensitizedProcessStatement.hh"
 
 class IIR_DesignatorList;
+
 class IIRBase_SensitizedProcessStatement : public virtual IIRBase_ProcessStatement, public virtual IIR_SensitizedProcessStatement{
 public:
   // List Accessor(s)
-  IIR_DesignatorList    *get_sensitivity_list();
-  void                  set_sensitivity_list(IIR_DesignatorList *new_sensitivity_list);
+  IIR_DesignatorListRef get_sensitivity_list();
+  void                  set_sensitivity_list(IIR_DesignatorListRef new_sensitivity_list);
 
-  IIR_Kind get_kind() const {return IIR_SENSITIZED_PROCESS_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_SensitizedProcessStatement";}
+  IIR_Kind get_kind() const override { return IIR_SENSITIZED_PROCESS_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SensitizedProcessStatement"); }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -52,7 +53,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DesignatorList *sensitivity_list;
+  IIR_DesignatorListRef sensitivity_list;
 };
 
 typedef refcount<IIRBase_SensitizedProcessStatement> IIRBase_SensitizedProcessStatementRef;

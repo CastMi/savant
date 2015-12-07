@@ -32,16 +32,16 @@
 #include "savant_config.hh"
 #include "IIR_List.hh"
 
-class IIR_Designator;
+REF_FORWARD_DECL(IIR_Designator);
 
 class IIR_DesignatorList : public virtual IIR_List{
 
 public:
   virtual ~IIR_DesignatorList() {}
     
-  virtual IIR *first() = 0;
-  virtual IIR *successor(IIR_Designator *) = 0;
-  virtual void append( IIR_Designator * ) = 0;
+  virtual IIRRef first() = 0;
+  virtual IIRRef successor(IIR_DesignatorRef ) = 0;
+  virtual void append( IIR_DesignatorRef  ) = 0;
 };
 
 typedef refcount<IIR_DesignatorList> IIR_DesignatorListRef;

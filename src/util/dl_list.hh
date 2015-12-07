@@ -26,7 +26,7 @@
 //          Tim McBrayer                tmcbraye@ece.uc.edu
 //          Dale E. Martin              dmartin@cliftonlabs.com
 
-#include "savant_config.hh"
+#include "savant.hh"
 #include <list>
 #include <algorithm>
 #include <functional>
@@ -57,25 +57,25 @@ public:
     return num_elements();
   }
 
-  void append( type *to_append ){
+  void append( type to_append ){
     my_list.push_back( to_append );
     elementCount++;
   }
 
-  void prepend( type* to_prepend ) {
+  void prepend( type to_prepend ) {
     my_list.push_front( to_prepend );
     elementCount++;
   }
 
-  void insert_after( const type *after_me, type* new_object ) {
-    typename list<type *>::iterator found = list_find( after_me );
+  void insert_after( const type after_me, type new_object ) {
+    typename list<type>::iterator found = list_find( after_me );
     assert( found != my_list.end() );
     found++;
     my_list.insert( found, new_object );
     elementCount++;
   }
     
-  bool remove( const type *to_remove ) {
+  bool remove( const type to_remove ) {
     bool retval = false;
     typename list<type *>::iterator found = list_find( to_remove );
     if( found != my_list.end() ){
@@ -89,8 +89,8 @@ public:
     return retval;
   }
 
-  type *successor( const type *to_succeed ) {
-    type *retval = 0;
+  type successor( const type to_succeed ) {
+    type retval;
     my_iterator = list_find( to_succeed );
     if( my_iterator != my_list.end() ){
       my_iterator++;
@@ -101,8 +101,8 @@ public:
     return retval;
   }
 
-  type *predecessor( const type *to_precede ) {
-    type *retval = 0;
+  type predecessor( const type to_precede ) {
+    type retval;
     my_iterator = list_find( to_precede );
     if( my_iterator != my_list.end() ){
       my_iterator--;
@@ -113,8 +113,8 @@ public:
     return retval;
   }
         
-  type *first() {
-    type *retval = 0;
+  type first() {
+    type retval;
     if( !my_list.empty() ){
       my_iterator = my_list.begin();
       retval = *my_iterator;
@@ -122,8 +122,8 @@ public:
     return retval;
   }
     
-  type *last() {
-    type *retval = 0;
+  type last() {
+    type retval;
     if( !my_list.empty() ){
       my_iterator = my_list.end();
       my_iterator--;
@@ -134,19 +134,19 @@ public:
     
   /** This returns the ordinal position in the dl_list of the object passed
       in.  Returns -1 if the element is not found in list. */
-  int get_position(type* data) {
+  int get_position(type data) {
     int retval = -1;
-    typename list<type *>::iterator element = list_find( data );
+    typename list<type>::iterator element = list_find( data );
     if( element != my_list.end() ){
-      retval = distance<typename list<type *>::iterator>( my_list.begin(), element );
+      retval = distance<typename list<type>::iterator>( my_list.begin(), element );
     }
     
     return retval;
   }
 
-  type *get_nth_element( int pos_to_get ){
+  type get_nth_element( int pos_to_get ){
     int i = 0;
-    type *current = first();
+    type current = first();
     for( i = 0; i < pos_to_get && current != NULL; i++ ){
       current = successor( current );
     }
@@ -165,8 +165,8 @@ public:
 
   // Replace "to_replace" with replace with, without disturbing the rest
   // of the list.
-  void _replace( type *to_replace, type *replace_with ){
-    typename list<type *>::iterator found = list_find( to_replace );
+  void _replace( type to_replace, type replace_with ){
+    typename list<type>::iterator found = list_find( to_replace );
     assert( found != my_list.end() );
     *found = replace_with;
   }
@@ -182,11 +182,11 @@ public:
 
 private:
   unsigned int elementCount;
-  list<type *> my_list;
-  typename list<type *>::iterator my_iterator;
+  list<type> my_list;
+  typename list<type>::iterator my_iterator;
 
-  typename list<type *>::iterator list_find( const type *to_find ){
-    typename list<type *>::iterator retval = my_list.end();
+  typename list<type>::iterator list_find( const type to_find ){
+    typename list<type>::iterator retval = my_list.end();
     if( !my_list.empty() ){
       if( my_iterator != my_list.end() && *my_iterator == to_find ){
 	retval = my_iterator;

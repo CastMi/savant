@@ -41,11 +41,11 @@ public:
   virtual ~IIR_ForLoopStatement() {}
     
   // List accessor(s)
-  virtual IIR_SequentialStatementList   *get_sequence_of_statements() = 0;
-  virtual void                          set_sequence_of_statements(IIR_SequentialStatementList *) = 0;
+  virtual IIR_SequentialStatementListRef get_sequence_of_statements() = 0;
+  virtual void                           set_sequence_of_statements(IIR_SequentialStatementListRef ) = 0;
 
-  virtual void set_iteration_scheme( IIR_ConstantDeclaration* iterator) = 0;
-  virtual IIR_ConstantDeclaration* get_iteration_scheme() = 0;
+  virtual void set_iteration_scheme( IIR_ConstantDeclarationRef iterator) = 0;
+  virtual IIR_ConstantDeclarationRef get_iteration_scheme() = 0;
 };
 
 typedef refcount<IIR_ForLoopStatement> IIR_ForLoopStatementRef;

@@ -32,18 +32,18 @@
 class IIRBase_ArchitectureStatement : public virtual IIRBase_Statement,
 				      public virtual IIR_ArchitectureStatement {
 public:
-  IIR_Kind      get_kind() const { return IIR_ARCHITECTURE_STATEMENT; }
-  const IIR_Char *get_kind_text() const { return "IIR_ArchitectureStatement"; }
+  IIR_Kind         get_kind() const override { return IIR_ARCHITECTURE_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ArchitectureStatement"); }
 
-  void set_declarative_region(IIR *);
-  IIR* get_declarative_region();
+  void set_declarative_region( IIRRef );
+  IIRRef get_declarative_region();
 protected:
   IIRBase_ArchitectureStatement();
   virtual ~IIRBase_ArchitectureStatement() = 0;
     
-  virtual void set_guard_signal( IIR_SignalDeclaration * );
+  virtual void set_guard_signal( IIR_SignalDeclarationRef );
 
-  IIR *enclosingRegion;
+  IIRRef enclosingRegion;
 private:
 };
 

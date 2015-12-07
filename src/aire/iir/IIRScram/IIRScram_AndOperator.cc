@@ -28,13 +28,11 @@
 #include "IIRScram_TypeDefinition.hh"
 #include "savant.hh"
 
-
-
 IIRScram_AndOperator::~IIRScram_AndOperator() {}
 
-IIRScram*
+IIRScramRef
 IIRScram_AndOperator::_clone() {
-  IIRScram_AndOperator *clone = new IIRScram_AndOperator();
+  IIRScramRef clone(new IIRScram_AndOperator());
   IIRScram_DyadicOperator::_clone(clone);
   return clone;
 }

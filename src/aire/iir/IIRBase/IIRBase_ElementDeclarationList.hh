@@ -37,14 +37,14 @@ class IIR_ElementDeclaration;
 class IIRBase_ElementDeclarationList : public virtual IIRBase_DeclarationList, public virtual IIR_ElementDeclarationList{
 
 public:
-  IIR_Kind get_kind() const {return IIR_ELEMENT_DECLARATION_LIST;}
-  const IIR_Char *get_kind_text() const {return "IIR_ElementDeclarationList";}
+  IIR_Kind get_kind() const override { return IIR_ELEMENT_DECLARATION_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ElementDeclarationList"); }
 
-  void append( IIR_ElementDeclaration * );
+  void append( IIR_ElementDeclarationRef );
 
-   IIR *successor( IIR_ElementDeclaration * );
-   IIR *first();
-   IIR *get_nth_element( int );
+   IIRRef successor( IIR_ElementDeclarationRef );
+   IIRRef first();
+   IIRRef get_nth_element( int );
 
   void publish_vhdl(ostream &);
 protected:

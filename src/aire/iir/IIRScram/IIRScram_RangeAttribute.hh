@@ -43,14 +43,14 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  IIRScram_TypeDefinition *_get_subtype();
-  IIRScram_Declaration *_get_implicit_declaration( const string &decl_name, 
-					      IIRScram_TypeDefinition *decl_type );
-  IIRScram_TypeDefinition *_get_prefix_rval();
+  IIRScram_TypeDefinitionRef _get_subtype();
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &decl_name, 
+					      IIRScram_TypeDefinitionRef decl_type );
+  IIRScram_TypeDefinitionRef _get_prefix_rval();
   
   IIR_Boolean has_suffix(){ return TRUE; }
-  void _set_suffix( IIRScram *new_suffix ){ IIRBase_RangeAttribute::set_suffix( new_suffix ); }
-  IIRScram* _get_suffix();
+  void _set_suffix( IIRScramRef new_suffix ){ IIRBase_RangeAttribute::set_suffix( new_suffix ); }
+  IIRScramRef _get_suffix();
 
   IIR_Boolean _is_range_attribute(){ return TRUE; }
 

@@ -30,42 +30,36 @@
 #include "IIR_SubprogramDeclaration.hh"
 #include "savant.hh"
 
-IIRBase_ReturnStatement::IIRBase_ReturnStatement() {
-  set_enclosing_subprogram(NULL);
-  set_return_expression(NULL); 
-}
-
-IIRBase_ReturnStatement::~IIRBase_ReturnStatement() {
-  delete get_return_expression();
-}
+IIRBase_ReturnStatement::IIRBase_ReturnStatement() {}
+IIRBase_ReturnStatement::~IIRBase_ReturnStatement() {}
 
 void
-IIRBase_ReturnStatement::set_enclosing_subprogram( IIR_SubprogramDeclaration*
-						   enclosing_subprogram) {
+IIRBase_ReturnStatement::set_enclosing_subprogram( IIR_SubprogramDeclarationRef 
+                      enclosing_subprogram) {
   this->enclosing_subprogram = enclosing_subprogram;
 }
 
-IIR_SubprogramDeclaration*
+IIR_SubprogramDeclarationRef
 IIRBase_ReturnStatement::get_enclosing_subprogram() {
   return enclosing_subprogram;
 }
 
-void IIRBase_ReturnStatement::set_return_expression( IIR* return_expression) {
+void IIRBase_ReturnStatement::set_return_expression( IIRRef return_expression) {
   this->return_expression =  return_expression;
 }
 
-IIR*
+IIRRef
 IIRBase_ReturnStatement::get_return_expression() {
   return  return_expression;
 }
 
-IIR *
-IIRBase_ReturnStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ReturnStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ReturnStatement *new_node = dynamic_cast<IIRBase_ReturnStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_ReturnStatementRef new_node = my_dynamic_pointer_cast<IIRBase_ReturnStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->enclosing_subprogram = dynamic_cast<IIR_SubprogramDeclaration *>(convert_node(enclosing_subprogram, factory));
+  new_node->enclosing_subprogram = my_dynamic_pointer_cast<IIR_SubprogramDeclaration>(convert_node(enclosing_subprogram, factory));
   new_node->return_expression = convert_node(return_expression, factory);
     
   return new_node;

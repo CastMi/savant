@@ -25,88 +25,69 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "savant.hh"
 #include "IIR_AssociationList.hh"
 #include "IIR_Declaration.hh"
 #include "IIRBase_ComponentInstantiationStatement.hh"
 
-IIRBase_ComponentInstantiationStatement::IIRBase_ComponentInstantiationStatement() : 
-  generic_map_aspect(0),
-  port_map_aspect(0),
-  my_instantiated_unit( NULL ),
-  my_configuration( NULL ) {
-}
-
-IIRBase_ComponentInstantiationStatement::~IIRBase_ComponentInstantiationStatement(){
-}
+IIRBase_ComponentInstantiationStatement::IIRBase_ComponentInstantiationStatement() {}
+IIRBase_ComponentInstantiationStatement::~IIRBase_ComponentInstantiationStatement() {}
 
 void 
-IIRBase_ComponentInstantiationStatement::set_instantiated_unit( IIR *instantiated_unit ){
+IIRBase_ComponentInstantiationStatement::set_instantiated_unit( IIRRef instantiated_unit ){
   my_instantiated_unit = instantiated_unit;
 }
 
-IIR *
+IIRRef
 IIRBase_ComponentInstantiationStatement::get_instantiated_unit(){
   return my_instantiated_unit;
 }
 
 // List Accessor(s)
-IIR_AssociationList *
+IIR_AssociationListRef
 IIRBase_ComponentInstantiationStatement::get_generic_map_aspect() {
-  ASSERT(generic_map_aspect != NULL);
+  ASSERT(generic_map_aspect != nullptr);
   return generic_map_aspect;
 }
 
-IIR_AssociationList *
+IIR_AssociationListRef
 IIRBase_ComponentInstantiationStatement::get_port_map_aspect() {
-  ASSERT(port_map_aspect != NULL);
+  ASSERT(port_map_aspect != nullptr);
   return port_map_aspect;
 }
 
 
 void
-IIRBase_ComponentInstantiationStatement::set_generic_map_aspect(IIR_AssociationList *new_generic_map_aspect) {
-  ASSERT(new_generic_map_aspect != NULL);
-  delete generic_map_aspect;
+IIRBase_ComponentInstantiationStatement::set_generic_map_aspect(IIR_AssociationListRef new_generic_map_aspect) {
+  ASSERT(new_generic_map_aspect != nullptr);
   generic_map_aspect = new_generic_map_aspect;
 }
 
 void
-IIRBase_ComponentInstantiationStatement::set_port_map_aspect(IIR_AssociationList *new_port_map_aspect) {
-  ASSERT(new_port_map_aspect != NULL);
-  delete port_map_aspect;
+IIRBase_ComponentInstantiationStatement::set_port_map_aspect(IIR_AssociationListRef new_port_map_aspect) {
+  ASSERT(new_port_map_aspect != nullptr);
   port_map_aspect = new_port_map_aspect;
 }
 
-IIR *
-IIRBase_ComponentInstantiationStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ComponentInstantiationStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ComponentInstantiationStatement *new_node = dynamic_cast<IIRBase_ComponentInstantiationStatement *>(IIRBase_ConcurrentStatement::convert_tree(factory));
+  IIRBase_ComponentInstantiationStatementRef new_node = my_dynamic_pointer_cast<IIRBase_ComponentInstantiationStatement>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->generic_map_aspect = dynamic_cast<IIR_AssociationList *>(convert_node(generic_map_aspect, factory));
-  new_node->port_map_aspect = dynamic_cast<IIR_AssociationList *>(convert_node(port_map_aspect, factory));
+  new_node->generic_map_aspect = my_dynamic_pointer_cast<IIR_AssociationList>(convert_node(generic_map_aspect, factory));
+  new_node->port_map_aspect = my_dynamic_pointer_cast<IIR_AssociationList>(convert_node(port_map_aspect, factory));
   new_node->my_instantiated_unit = convert_node(my_instantiated_unit, factory);
   new_node->my_configuration = convert_node(my_configuration, factory);
 
   return new_node;
 }
 
-IIR *
+IIRRef
 IIRBase_ComponentInstantiationStatement::get_configuration(){ return my_configuration; }
 
 void 
-IIRBase_ComponentInstantiationStatement::set_configuration( IIR *new_config ){ 
-  if( my_configuration != 0 ){
-    if( dynamic_cast<IIR_Declaration *>(my_configuration) != NULL){
-      // Then we generated it, we need to delete it.
-      delete my_configuration;
-    }
-  }
+IIRBase_ComponentInstantiationStatement::set_configuration( IIRRef new_config ){ 
   my_configuration = new_config; 
 }
 

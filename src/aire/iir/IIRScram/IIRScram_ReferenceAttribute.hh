@@ -45,11 +45,11 @@ public:
 
  /** Returns a pointer to the Quantity created by the build free quantity
      declaration. */
-  IIRScram_Declaration *_get_implicit_declaration( const string & , IIRScram_TypeDefinition * );
+  IIRScram_DeclarationRef _get_implicit_declaration( const string & , IIRScram_TypeDefinitionRef  );
   
   /** Returns the "across" type of the nature of the terminal. The implicit
       quantity is of the across type of the nature of terminal T.*/ 
-  IIRScram_TypeDefinition *_get_subtype();
+  IIRScram_TypeDefinitionRef _get_subtype();
   
 protected:
 

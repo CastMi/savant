@@ -45,12 +45,12 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &, IIRScram_TypeDefinitionRef  );
 
   IIR_Boolean has_suffix(){ return TRUE; }
-  void _set_suffix( IIRScram *new_suffix ){ IIRBase_LengthAttribute::set_suffix( new_suffix ); }
+  void _set_suffix( IIRScramRef new_suffix ){ IIRBase_LengthAttribute::set_suffix( new_suffix ); }
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
 protected:
   void _resolve_suffix_special();

@@ -37,11 +37,11 @@ class IIRBase_NatureDefinition : public virtual IIRBase_TypeDefinition,
 
 public:
   IIR_Kind get_kind() const { return IIR_NATURE_DEFINITION ; }
-  const IIR_Char *get_kind_text() const { return "IIR_NatureDefinition"; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_NatureDefinition"); }
 
   IIR_Boolean is_array_type() { return FALSE; }
 
-  virtual IIR_TypeDefinition *get_final_subtype();
+  virtual IIR_TypeDefinitionRef get_final_subtype();
 
   void publish_vhdl(ostream&);
 protected:

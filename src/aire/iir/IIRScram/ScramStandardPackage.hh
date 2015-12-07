@@ -131,7 +131,7 @@ public:
   IIR_AttributeDeclaration *get_foreign_decl();
   IIR_FunctionDeclaration *get_now_decl();
 
-  IIR_LibraryDeclaration *get_std_decl();
+  IIR_LibraryDeclarationRef get_std_decl();
   void set_std_decl( IIR_LibraryDeclaration * ){ abort(); }
   StandardPackage *get_std_standard_decl();
 

@@ -47,10 +47,10 @@ public:
   IIR_Boolean _is_association(){ return TRUE; }
   IIR_Boolean _is_positional();
 
-  IIRScram* _get_formal();
-  IIRScram* _get_actual();
+  IIRScramRef _get_formal();
+  IIRScramRef _get_actual();
 
-  IIRScram_Declaration *_find_formal_declaration();
+  IIRScram_DeclarationRef _find_formal_declaration();
 
 protected:    
 private:

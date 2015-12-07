@@ -39,15 +39,15 @@ class IIRBase_Allocator : public virtual IIRBase_Expression, public virtual IIR_
 
 public:
   IIR_Kind get_kind() const { return IIR_ALLOCATOR; }
-  const IIR_Char *get_kind_text() const { return "IIR_Allocator"; }
+  IIR_CharConstRef get_kind_text() const { return IIR_CharConstRef("IIR_Allocator"); }
 
-  void set_type_mark( IIR_TypeDefinition *);
-  IIR_TypeDefinition *get_type_mark();
+  void set_type_mark( IIR_TypeDefinitionRef );
+  IIR_TypeDefinitionRef get_type_mark();
 
-  void set_value( IIR* );
-  IIR *get_value();
+  void set_value( IIRRef );
+  IIRRef get_value();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   virtual IIR_Boolean is_resolved();
 
@@ -58,8 +58,8 @@ protected:
   virtual ~IIRBase_Allocator() = 0;
     
 private:
-  IIR_TypeDefinition *type_mark;
-  IIR *value;
+  IIR_TypeDefinitionRef type_mark;
+  IIRRef value;
 };
 
 typedef refcount<IIRBase_Allocator> IIRBase_AllocatorRef;

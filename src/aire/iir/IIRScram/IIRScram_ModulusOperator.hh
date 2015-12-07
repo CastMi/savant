@@ -39,7 +39,7 @@ public:
 
   
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
 protected:
 private:

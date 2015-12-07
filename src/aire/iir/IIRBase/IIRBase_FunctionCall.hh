@@ -40,21 +40,21 @@ class IIRBase_FunctionCall : public virtual IIRBase_Expression,
 			     public virtual IIR_FunctionCall{
 public:
   // List Accessor(s)
-  IIR_AssociationList *get_parameter_association_list();
-  void                set_parameter_association_list(IIR_AssociationList *new_parameter_association_list);
+  IIR_AssociationListRef get_parameter_association_list();
+  void                set_parameter_association_list(IIR_AssociationListRef new_parameter_association_list);
 
-  IIR_Kind get_kind() const {return IIR_FUNCTION_CALL;}
-  const IIR_Char *get_kind_text() const {return "IIR_FunctionCall";}
+  IIR_Kind get_kind() const override { return IIR_FUNCTION_CALL; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_FunctionCall"); }
 
-  void set_implementation( IIR_SubprogramDeclaration* implementation );
-  IIR_SubprogramDeclaration* get_implementation();
+  void set_implementation( IIR_SubprogramDeclarationRef implementation );
+  IIR_SubprogramDeclarationRef get_implementation();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
   IIR_Boolean is_resolved(){ return TRUE; }
   
   IIR_Boolean is_locally_static();
   
-  IIR_TypeDefinition *get_subtype();
+  IIR_TypeDefinitionRef get_subtype();
 
   ostream &print( ostream & );
   void publish_vhdl(ostream &);
@@ -64,9 +64,9 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_AssociationList *parameter_association_list;
+  IIR_AssociationListRef parameter_association_list;
 
-  IIR_SubprogramDeclaration* implementation;
+  IIR_SubprogramDeclarationRef implementation;
 
 };
 

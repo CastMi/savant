@@ -31,17 +31,18 @@
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
 #include "IIR_EnumerationTypeDefinition.hh"
-class IIR_AttributeSpecificationList;
+
+REF_FORWARD_DECL(IIR_AttributeSpecificationList);
 
 class IIR_EnumerationLiteral : public virtual IIR_Declaration{
 public:
   virtual ~IIR_EnumerationLiteral() {}    
 
   // List accessor(s)
-  virtual IIR_AttributeSpecificationList *get_attributes() = 0;
+  virtual IIR_AttributeSpecificationListRef get_attributes() = 0;
 
-  virtual void set_position( IIR *position ) = 0;
-  virtual IIR *get_position() = 0;
+  virtual void set_position( IIRRef position ) = 0;
+  virtual IIRRef get_position() = 0;
 
   virtual IIR_Boolean is_character_literal() = 0;
 };

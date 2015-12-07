@@ -27,25 +27,23 @@
 #include "IIRBase_TypeDefinition.hh"
 #include "savant.hh"
 
-IIRBase_FreeQuantityDeclaration::IIRBase_FreeQuantityDeclaration() :
-  value(0){}
-
+IIRBase_FreeQuantityDeclaration::IIRBase_FreeQuantityDeclaration() {}
 IIRBase_FreeQuantityDeclaration::~IIRBase_FreeQuantityDeclaration() {}
 
 void
-IIRBase_FreeQuantityDeclaration::set_value(IIR* value) {
+IIRBase_FreeQuantityDeclaration::set_value(IIRRef value) {
   this->value = value;
 }
 
-IIR*
+IIRRef
 IIRBase_FreeQuantityDeclaration::get_value() {
   return value;
 }
 
-IIR *
-IIRBase_FreeQuantityDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_FreeQuantityDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_FreeQuantityDeclaration *new_node = dynamic_cast<IIRBase_FreeQuantityDeclaration *>(IIRBase_QuantityDeclaration::convert_tree(factory));
+  IIRBase_FreeQuantityDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_FreeQuantityDeclaration>(IIRBase_QuantityDeclaration::convert_tree(factory));
 
   // Process the variables
   new_node->value = convert_node(value, factory);
@@ -58,10 +56,10 @@ IIRBase_FreeQuantityDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out << " quantity " ;
   get_declarator()->publish_vhdl(vhdl_out);
   vhdl_out << " : " ;
-  dynamic_cast<IIRBase_TypeDefinition *>(IIRBase_ObjectDeclaration::get_subtype())->publish_vhdl(vhdl_out);
-  if(IIRBase_FreeQuantityDeclaration::get_value() != NULL) {
+  my_dynamic_pointer_cast<IIRBase_TypeDefinition>(IIRBase_ObjectDeclaration::get_subtype())->publish_vhdl(vhdl_out);
+  if(IIRBase_FreeQuantityDeclaration::get_value() != nullptr) {
     vhdl_out << " := ";
-    dynamic_cast<IIRBase *>(IIRBase_FreeQuantityDeclaration::get_value())->publish_vhdl(vhdl_out);
+    my_dynamic_pointer_cast<IIRBase>(IIRBase_FreeQuantityDeclaration::get_value())->publish_vhdl(vhdl_out);
   }
   vhdl_out << " ;\n";
 

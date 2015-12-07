@@ -25,8 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "IIRBase_SelectedName.hh"
 #include "IIRBase_Declaration.hh"
 #include "IIR_AccessTypeDefinition.hh"
@@ -34,26 +32,23 @@
 
 #include "savant.hh"
 
-IIRBase_SelectedName::IIRBase_SelectedName(){
-  set_suffix( NULL );
-}
-
+IIRBase_SelectedName::IIRBase_SelectedName(){}
 IIRBase_SelectedName::~IIRBase_SelectedName() {}
 
 void 
-IIRBase_SelectedName::set_suffix( IIR *suffix ){
+IIRBase_SelectedName::set_suffix( IIRRef suffix ){
   this->suffix = suffix;
 }
 
-IIR *
+IIRRef
 IIRBase_SelectedName::get_suffix(){
   return suffix;
 }
 
-IIR *
-IIRBase_SelectedName::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SelectedName::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SelectedName *new_node = dynamic_cast<IIRBase_SelectedName *>(IIRBase_Name::convert_tree(factory));
+  IIRBase_SelectedNameRef new_node = my_dynamic_pointer_cast<IIRBase_SelectedName>(IIRBase_Name::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
@@ -94,14 +89,14 @@ IIRBase_SelectedName::is_entity_declaration() {
   return FALSE;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_SelectedName::get_subtype(){
   ASSERT( is_resolved() == TRUE );
   
   if (get_suffix()->get_kind() != IIR_DESIGNATOR_BY_ALL) {
     return get_suffix()->get_subtype();
   } else {
-    IIR_AccessTypeDefinition *type = dynamic_cast<IIR_AccessTypeDefinition *>(get_prefix()->get_subtype());
+    IIR_AccessTypeDefinitionRef type = my_dynamic_pointer_cast<IIR_AccessTypeDefinition>(get_prefix()->get_subtype());
     if (type != NULL) {
       return type->get_designated_type();
     } else {
@@ -161,13 +156,13 @@ IIRBase_SelectedName::print( ostream &os ){
   return os;
 }
 
-IIR_Declaration*
+IIR_DeclarationRef
 IIRBase_SelectedName::get_prefix_declaration() {
   // Since we mangle names, we need not have a selected name.  We just
   // need the object declaration, so return the suffix.
   if(get_prefix()->is_label() == TRUE) {
-    ASSERT(dynamic_cast<IIRBase_Declaration *>(get_prefix()) != NULL);
-    return dynamic_cast<IIR_Declaration *>(get_prefix());
+    ASSERT(my_dynamic_pointer_cast<IIRBase_Declaration>(get_prefix()) != NULL);
+    return my_dynamic_pointer_cast<IIR_Declaration>(get_prefix());
   } 
   else {
     return get_prefix()->get_prefix_declaration();

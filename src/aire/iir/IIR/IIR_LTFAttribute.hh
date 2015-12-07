@@ -36,13 +36,13 @@ public:
   virtual ~IIR_LTFAttribute() {};
 
   /** Set the numerator coefficients from the static expression.  */
-  virtual void set_num(IIR *numerator) = 0;
+  virtual void set_num(IIRRef numerator) = 0;
   /** Return the numerator coefficients.  */
-  virtual IIR* get_num() = 0;
+  virtual IIRRef get_num() = 0;
   /* Set the denominator coefficients from the static expression.  */
-  virtual void set_den(IIR *denominator) = 0;
+  virtual void set_den(IIRRef denominator) = 0;
   /* Return the denominator coefficients.  */
-  virtual IIR* get_den() = 0;
+  virtual IIRRef get_den() = 0;
 protected:
 private:
 };

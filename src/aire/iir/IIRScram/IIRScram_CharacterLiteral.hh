@@ -39,15 +39,15 @@ public:
   IIRScram_CharacterLiteral(const IIR_Char *const str, const IIR_Int32 len) {set_text( str, len ); }
   virtual ~IIRScram_CharacterLiteral();
 
-  static IIRScram_CharacterLiteral *get( IIR_Char *new_text, IIR_Int32 new_length );
-  static IIRScram_CharacterLiteral *get( const string new_text );
+  static IIRScram_CharacterLiteralRef get( IIR_CharRef new_text, IIR_Int32 new_length );
+  static IIRScram_CharacterLiteralRef get( const string new_text );
     
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   // This method takes a C-language character and returns a VHDL character literal
   // with the ' characters on either side.
-  static IIRScram_CharacterLiteral *_get_from_character( char );
+  static IIRScram_CharacterLiteralRef _get_from_character( char );
 
 protected:
 private:

@@ -30,53 +30,48 @@
 #include "IIR_SubprogramDeclaration.hh"
 #include "savant.hh"
 
-IIRBase_DyadicOperator::IIRBase_DyadicOperator(){
-  set_implementation( NULL );
-  set_left_operand( NULL );
-  set_right_operand( NULL );
-}
+IIRBase_DyadicOperator::IIRBase_DyadicOperator() {}
 
-IIRBase_DyadicOperator::~IIRBase_DyadicOperator(){
-}
+IIRBase_DyadicOperator::~IIRBase_DyadicOperator() {}
 
 void 
-IIRBase_DyadicOperator::set_implementation( IIR_SubprogramDeclaration *implementation ){
+IIRBase_DyadicOperator::set_implementation( IIR_SubprogramDeclarationRef implementation ){
   this->implementation = implementation;
 }
 
 
-IIR_SubprogramDeclaration *
+IIR_SubprogramDeclarationRef
 IIRBase_DyadicOperator::get_implementation(){
   return implementation;
 }
 
 void 
-IIRBase_DyadicOperator::set_left_operand( IIR *left_operand ){
+IIRBase_DyadicOperator::set_left_operand( IIRRef left_operand ){
   this->left_operand = left_operand;
 }
 
-IIR *
+IIRRef
 IIRBase_DyadicOperator::get_left_operand(){
   return left_operand;
 }
 
 void 
-IIRBase_DyadicOperator::set_right_operand( IIR *right_operand ){
+IIRBase_DyadicOperator::set_right_operand( IIRRef right_operand ){
   this->right_operand = right_operand;
 }
 
-IIR *
+IIRRef
 IIRBase_DyadicOperator::get_right_operand(){
   return right_operand;
 }
 
-IIR *
-IIRBase_DyadicOperator::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_DyadicOperator::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_DyadicOperator *new_node = dynamic_cast<IIRBase_DyadicOperator *>(IIRBase_Operator::convert_tree(factory));
+  IIRBase_DyadicOperatorRef new_node = my_dynamic_pointer_cast<IIRBase_DyadicOperator>(IIRBase_Operator::convert_tree(factory));
 
   // Process the variables
-  new_node->implementation = dynamic_cast<IIR_SubprogramDeclaration *>(convert_node(implementation, factory));
+  new_node->implementation = my_dynamic_pointer_cast<IIR_SubprogramDeclaration>(convert_node(implementation, factory));
   new_node->left_operand = convert_node(left_operand, factory);
   new_node->right_operand = convert_node(right_operand, factory);
 
@@ -85,15 +80,15 @@ IIRBase_DyadicOperator::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_DyadicOperator::is_resolved(){
-  if( get_implementation() != NULL && get_implementation()->is_resolved() == FALSE ){
+  if( get_implementation() != nullptr && get_implementation()->is_resolved() == FALSE ){
     return FALSE;
   }
-  ASSERT( get_left_operand() != NULL );
-  ASSERT( get_right_operand() != NULL );
+  ASSERT( get_left_operand() != nullptr );
+  ASSERT( get_right_operand() != nullptr );
 
   if( get_left_operand()->is_resolved() == TRUE 
       && get_right_operand()->is_resolved() == TRUE
-      && get_subtype() != NULL ){
+      && get_subtype() != nullptr ){
     return TRUE;
   }
   else{
@@ -144,12 +139,12 @@ IIRBase_DyadicOperator::publish_vhdl(ostream &vhdl_out){
   Precedence right_precedence = OTHERS;
   Precedence self_precedence = OTHERS;
   
-  left_precedence  = dynamic_cast<IIRBase *>(get_left_operand())->get_precedence();
-  right_precedence = dynamic_cast<IIRBase *>(get_right_operand())->get_precedence();
+  left_precedence  = my_dynamic_pointer_cast<IIRBase>(get_left_operand())->get_precedence();
+  right_precedence = my_dynamic_pointer_cast<IIRBase>(get_right_operand())->get_precedence();
   self_precedence  = get_precedence();
 
   if (( left_precedence < self_precedence ) ||
-      (dynamic_cast<IIRBase *>(get_left_operand())->is_relational_operator() )){
+      (my_dynamic_pointer_cast<IIRBase>(get_left_operand())->is_relational_operator() )){
     left_bracket = TRUE ;
   }
   if (( get_left_operand()->get_kind() == get_kind()) &&

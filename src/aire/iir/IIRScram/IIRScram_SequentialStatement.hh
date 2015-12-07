@@ -37,13 +37,13 @@
 
 template <class type> class dl_list;
 
+REF_FORWARD_DECL(IIRScram_SubprogramDeclaration);
+REF_FORWARD_DECL(IIRScram_SequentialStatement);
+REF_FORWARD_DECL(IIRScram_SequentialStatementList);
 class IIRScram_AboveAttribute;
 class IIRScram_List;
 class IIRScram_Name;
 class IIRScram_ProcedureCallStatement;
-class IIRScram_SequentialStatement;
-class IIRScram_SequentialStatementList;
-class IIRScram_SubprogramDeclaration;
 class IIRScram_TypeDefinition;
 class IIRScram_WaitStatement;
 
@@ -57,25 +57,25 @@ public:
       checked in is that of the declaration - not of the statement itself.)
       To do the actual cheking, the derived class calls into the second
       version of the method defined on the next line. */
-  virtual IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *,
-                                                     IIRScram_SubprogramDeclaration * );
+  virtual IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinitionRef> ,
+                                                     IIRScram_SubprogramDeclarationRef );
       
   /** Not virtual on purpose!  This is to reuse code instead of copying
       essentially the same code all of the place.  The only difference in
       how the derived classes type check their return statements is what
       the name of their list of statements is.  Therefore, we pass the list
       in. */
-  static IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *,
-                                                    IIRScram_SequentialStatementList *,
-                                                    IIRScram_SubprogramDeclaration * );
+  static IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinitionRef>,
+                                                    IIRScram_SequentialStatementListRef,
+                                                    IIRScram_SubprogramDeclarationRef );
 
   virtual IIR_Boolean _is_iir_sequential_statement(){ return TRUE; }
 
-  virtual IIRScram *_clone();
-  virtual void _clone( IIRScram * );
+  virtual IIRScramRef _clone();
+  virtual void _clone( IIRScramRef  );
 
-  virtual void _set_process_stmt_label(IIR_Label *);
-  virtual IIR_Label* _get_process_stmt_label();
+  virtual void _set_process_stmt_label(IIR_LabelRef );
+  virtual IIR_LabelRef _get_process_stmt_label();
 
 protected:
   virtual ~IIRScram_SequentialStatement() = 0;

@@ -30,54 +30,50 @@
 #include "library_manager.hh"
 
 IIRBase_LibraryUnitList::IIRBase_LibraryUnitList() {}
-
-
 IIRBase_LibraryUnitList::~IIRBase_LibraryUnitList() {}
 
-
 void
-IIRBase_LibraryUnitList::append( IIR_LibraryUnit *to_append ){
+IIRBase_LibraryUnitList::append( IIR_LibraryUnitRef to_append ){
   IIRBase_DeclarationList::append( to_append );
 }
 
-
-IIR * 
+IIRRef 
 IIRBase_LibraryUnitList::first() {
   return IIRBase_DeclarationList::first();
 }
 
-IIR * 
+IIRRef
 IIRBase_LibraryUnitList::last() {
   return IIRBase_DeclarationList::last();
 }
 
 
-IIR*
-IIRBase_LibraryUnitList::successor( IIR_LibraryUnit *node ){
+IIRRef
+IIRBase_LibraryUnitList::successor( IIR_LibraryUnitRef node ){
   return IIRBase_DeclarationList::successor(node);
 }
 
 
 void 
 IIRBase_LibraryUnitList::publish_vhdl_in_design_library(){
-  IIRBase_LibraryUnit *lib_unit = dynamic_cast<IIRBase_LibraryUnit *>(first());
-  while (lib_unit != NULL) {
-    ostream *file_handle = library_manager::instance()->get_file_handle( lib_unit );
+  IIRBase_LibraryUnitRef lib_unit = my_dynamic_pointer_cast<IIRBase_LibraryUnit>(first());
+  while (lib_unit != nullptr) {
+    ostream *file_handle = library_manager::instance()->get_file_handle( lib_unit.get() );
     ASSERT( file_handle != 0 );
     lib_unit->publish_vhdl_decl( *file_handle );
     file_handle->flush();
     delete file_handle;
 
-    lib_unit = dynamic_cast<IIRBase_LibraryUnit *>(successor(lib_unit));
+    lib_unit = my_dynamic_pointer_cast<IIRBase_LibraryUnit>(successor(lib_unit));
   }
 }
 
 void 
 IIRBase_LibraryUnitList::publish_vhdl(ostream &vhdl_out) {
-  IIRBase_LibraryUnit *lib_unit = dynamic_cast<IIRBase_LibraryUnit *>(first());
+  IIRBase_LibraryUnitRef lib_unit = my_dynamic_pointer_cast<IIRBase_LibraryUnit>(first());
 
-  while (lib_unit != NULL) {
+  while (lib_unit != nullptr) {
     lib_unit->publish_vhdl_decl(vhdl_out);
-    lib_unit = dynamic_cast<IIRBase_LibraryUnit *>(successor(lib_unit));
+    lib_unit = my_dynamic_pointer_cast<IIRBase_LibraryUnit>(successor(lib_unit));
   }
 }

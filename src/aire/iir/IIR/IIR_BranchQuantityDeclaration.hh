@@ -37,10 +37,10 @@ public:
   virtual ~IIR_BranchQuantityDeclaration() {}
 
   // List Accessor(s)
-  virtual IIR_DesignatorList    *get_across_aspect_identifier_list() = 0;
-  virtual IIR_DesignatorList    *get_through_aspect_designator_list() = 0;
-  virtual void                  set_across_aspect_identifier_list(IIR_DesignatorList *) = 0;
-  virtual void                  set_through_aspect_designator_list(IIR_DesignatorList *) = 0;
+  virtual IIR_DesignatorListRef get_across_aspect_identifier_list() = 0;
+  virtual IIR_DesignatorListRef get_through_aspect_designator_list() = 0;
+  virtual void                  set_across_aspect_identifier_list(IIR_DesignatorListRef ) = 0;
+  virtual void                  set_through_aspect_designator_list(IIR_DesignatorListRef ) = 0;
 
   /**
   Precondition: The type of the expression must be that of the quantity.
@@ -50,19 +50,19 @@ public:
   Postcondition: Initializes the branch quantity to the value specified in
                  the Initial Value Expression.                         */
  
-  virtual void set_across_aspect_expression(IIR* across_aspect_expression) = 0;
-  virtual IIR* get_across_aspect_expression() = 0;
+  virtual void set_across_aspect_expression(IIRRef across_aspect_expression) = 0;
+  virtual IIRRef get_across_aspect_expression() = 0;
 
-  virtual void set_through_aspect_expression(IIR* through_aspect_expression) = 0;
-  virtual IIR* get_through_aspect_expression() = 0;
+  virtual void set_through_aspect_expression(IIRRef through_aspect_expression) = 0;
+  virtual IIRRef get_through_aspect_expression() = 0;
 
   /** 
   Precondition:  The declaration must include a plus terminal name.
   Postcondition: The plus terminal and minus terminal of a branch quantity
 		 are determined as in LRM [ $ 4.3.1.6 - 425 ]          */
     
-  virtual void set_plus_terminal_name(IIR* plus_terminal_name) = 0;
-  virtual IIR* get_plus_terminal_name() = 0;
+  virtual void set_plus_terminal_name(IIRRef plus_terminal_name) = 0;
+  virtual IIRRef get_plus_terminal_name() = 0;
   
   /**
   Precondition:  A Branch Quantity Declaration exists.
@@ -71,14 +71,14 @@ public:
 		 equivalent to the reference terminal of the simple
 		 nature of the plus terminal's nature. LRM [ $ 4.3.1.6 - 405 ] 	*/
 
-  virtual void set_minus_terminal_name(IIR* minus_terminal_name) = 0;
-  virtual IIR* get_minus_terminal_name() = 0;
+  virtual void set_minus_terminal_name(IIRRef minus_terminal_name) = 0;
+  virtual IIRRef get_minus_terminal_name() = 0;
 
-  virtual void set_across_aspect_tolerance(IIR* across_aspect_tolerance) = 0;
-  virtual IIR* get_across_aspect_tolerance() = 0;
+  virtual void set_across_aspect_tolerance(IIRRef across_aspect_tolerance) = 0;
+  virtual IIRRef get_across_aspect_tolerance() = 0;
 
-  virtual void set_through_aspect_tolerance(IIR* through_aspect_tolerance) = 0;
-  virtual IIR* get_through_aspect_tolerance() = 0;
+  virtual void set_through_aspect_tolerance(IIRRef through_aspect_tolerance) = 0;
+  virtual IIRRef get_through_aspect_tolerance() = 0;
 };
 
 typedef refcount<IIR_BranchQuantityDeclaration> IIR_BranchQuantityDeclarationRef;

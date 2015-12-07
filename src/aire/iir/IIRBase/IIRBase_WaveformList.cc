@@ -31,22 +31,20 @@
 IIRBase_WaveformList::IIRBase_WaveformList() {}
 IIRBase_WaveformList::~IIRBase_WaveformList() {}
 
-
-IIR_WaveformElement*
+IIR_WaveformElementRef
 IIRBase_WaveformList::first() {
-  return dynamic_cast<IIR_WaveformElement*>(IIR_List::first());
+  return my_dynamic_pointer_cast<IIR_WaveformElement>(IIR_List::first());
 }
 
-
-IIR_WaveformElement*
-IIRBase_WaveformList::successor(IIR_WaveformElement* node) {
-  return dynamic_cast<IIR_WaveformElement*>(IIR_List::successor((IIR*)node));
+IIR_WaveformElementRef
+IIRBase_WaveformList::successor(IIR_WaveformElementRef node) {
+  return my_dynamic_pointer_cast<IIR_WaveformElement>(IIR_List::successor(node));
 }
 
 IIR_Boolean
 IIRBase_WaveformList::is_above_attribute_found() {
   IIR_Boolean retval = FALSE;
-  IIR_WaveformElement* element = first();
+  IIR_WaveformElementRef element = first();
   for(; element != NULL; element = successor(element)) {
     retval = retval || element->is_above_attribute_found();
   }
@@ -55,7 +53,7 @@ IIRBase_WaveformList::is_above_attribute_found() {
 
 void 
 IIRBase_WaveformList::publish_vhdl(ostream &vhdl_out) {
-  IIR_WaveformElement *element = first();
+  IIR_WaveformElementRef element = first();
   while (element != NULL) {
     element->publish_vhdl(vhdl_out);
     element = successor(element);

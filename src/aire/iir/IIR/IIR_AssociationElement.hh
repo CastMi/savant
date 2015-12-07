@@ -40,11 +40,11 @@ class IIR_AssociationElement : public virtual IIR_Tuple{
 public:
   virtual ~IIR_AssociationElement() {}
 
-  virtual void set_formal(IIR*) = 0;
-  virtual IIR* get_formal() = 0;
+  virtual void set_formal( IIRRef ) = 0;
+  virtual IIRRef get_formal() = 0;
 
-  virtual IIR* get_actual() = 0;
-  virtual void set_actual( IIR* ) = 0;
+  virtual IIRRef get_actual() = 0;
+  virtual void set_actual( IIRRef ) = 0;
 
   virtual IIR_Boolean is_resolved() = 0;
   virtual IIR_Boolean is_locally_static() = 0;

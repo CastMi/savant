@@ -34,10 +34,10 @@ public:
   
   /** Sets the value of the expression whose type 
       is the same as that of Q. */
-  virtual void set_suffix(IIR* suffix) = 0;
+  virtual void set_suffix( IIRRef suffix) = 0;
   
   /** Returns the value of the expression. */
-  virtual IIR* get_suffix() = 0;
+  virtual IIRRef get_suffix() = 0;
 protected:
 
 private:

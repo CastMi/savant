@@ -38,19 +38,19 @@ public:
   virtual ~IIR_ArrayNatureDefinition() {}
 
   /** Sets the index subtype of the array nature definition */
-  virtual void set_index_subtype(IIR_ScalarTypeDefinition* index_subtype) = 0;
+  virtual void set_index_subtype(IIR_ScalarTypeDefinitionRef index_subtype) = 0;
   
   /** Gets the index subtype of the array nature definition */
-  virtual IIR_ScalarTypeDefinition* get_index_subtype() = 0;
+  virtual IIR_ScalarTypeDefinitionRef get_index_subtype() = 0;
   
   /** Sets the element subtype in the array nature definition */
-  virtual void set_element_subtype(IIR_TypeDefinition* element_subtype) = 0;
+  virtual void set_element_subtype(IIR_TypeDefinitionRef element_subtype) = 0;
   
   /** Gets the element subtype in the array nature definition */
-  virtual IIR_TypeDefinition* get_element_subtype() = 0;
+  virtual IIR_TypeDefinitionRef get_element_subtype() = 0;
 
   /** Gets the pointer to the final index in a multidimensional array */
-  IIR_TypeDefinition *get_final_subtype() = 0;
+  IIR_TypeDefinitionRef get_final_subtype() = 0;
   
   /** The Boolean variable is set TRUE if the object is of element type
       i.e. one of subnature_indication type */

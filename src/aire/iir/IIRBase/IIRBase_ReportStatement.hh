@@ -36,17 +36,17 @@
 class IIRBase_ReportStatement : public virtual IIRBase_SequentialStatement, public virtual IIR_ReportStatement{
 public:
 
-  IIR_Kind get_kind() const {return IIR_REPORT_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_ReportStatement";}
+  IIR_Kind get_kind() const override { return IIR_REPORT_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ReportStatement"); }
 
-  void set_report_expression( IIR* report_expression);
-  IIR* get_report_expression();
-  void set_severity_expression( IIR* severity_expression);
-  IIR* get_severity_expression();
+  void set_report_expression( IIRRef report_expression);
+  IIRRef get_report_expression();
+  void set_severity_expression( IIRRef severity_expression);
+  IIRRef get_severity_expression();
 
   IIR_Boolean is_above_attribute_found();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -56,8 +56,8 @@ protected:
     
 private:
   
-  IIR* report_expression;
-  IIR* severity_expression;
+  IIRRef report_expression;
+  IIRRef severity_expression;
 
 };
 

@@ -37,16 +37,16 @@ class IIRBase_CaseStatement : public virtual IIRBase_SequentialStatement, public
 
 public:
   // List Accessor(s)
-  IIR_CaseStatementAlternativeList  *get_case_statement_alternatives();
-  void                              set_case_statement_alternatives(IIR_CaseStatementAlternativeList *new_case_statement_alternatives);
+  IIR_CaseStatementAlternativeListRef get_case_statement_alternatives();
+  void                              set_case_statement_alternatives(IIR_CaseStatementAlternativeListRef new_case_statement_alternatives);
 
-  IIR_Kind get_kind() const {return IIR_CASE_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_CaseStatement";}
+  IIR_Kind get_kind() const override { return IIR_CASE_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_CaseStatement"); }
 
-  void set_expression( IIR *expression);
-  IIR* get_expression();
+  void set_expression( IIRRef expression);
+  IIRRef get_expression();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
   IIR_Boolean has_statement_list() { return TRUE;  }
@@ -59,9 +59,9 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_CaseStatementAlternativeList  *case_statement_alternatives;
+  IIR_CaseStatementAlternativeListRef case_statement_alternatives;
 
-  IIR *my_expression;
+  IIRRef my_expression;
 };
 
 typedef refcount<IIRBase_CaseStatement> IIRBase_CaseStatementRef;

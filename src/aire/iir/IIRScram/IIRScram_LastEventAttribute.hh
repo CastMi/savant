@@ -47,9 +47,9 @@ public:
 
   IIR_Boolean _is_readable();
 
-  IIRScram_Declaration *_get_implicit_declaration( const string &decl_name, 
-					      IIRScram_TypeDefinition *decl_type );
-  virtual IIRScram *_clone();
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &decl_name, 
+					      IIRScram_TypeDefinitionRef decl_type );
+  virtual IIRScramRef _clone();
 
   IIR_Boolean _is_lastevent_attribute() { return TRUE; }
 

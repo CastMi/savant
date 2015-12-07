@@ -51,11 +51,12 @@ namespace savant {
             set( type elem );
             set();
             void insert( savant::set<type>* theSet );
+            void insert( savant::set<type> theSet );
             void insert( type elem );
             bool contains( type elem );
             void reduce_set( constraint_functor *functor );
             void intersect( savant::set<type> * theSet );
-            template <typename new_type> savant::set<new_type> *convert_set();
+            template <typename new_type> savant::set<refcount<new_type>> convert_set();
 
             /*
              * FIXME:
@@ -83,7 +84,7 @@ namespace savant {
       set<type>::reduce_set( constraint_functor *functor ){
          ASSERT( functor != NULL );
             for( auto it = std::set<type>::begin(); it != std::set<type>::end(); it++ ){
-               if( (*functor)(*it) == FALSE ){
+               if( (*functor)((*it).get()) == FALSE ){
                   std::set<type>::erase( *it );
                }
             }
@@ -121,6 +122,13 @@ namespace savant {
    template <typename type>
       inline
       void 
+      savant::set<type>::insert( savant::set<type> theSet ) {
+         std::set<type>::insert( theSet.begin(), theSet.end() );
+      } 
+   
+   template <typename type>
+      inline
+      void 
       savant::set<type>::insert( savant::set<type>* theSet ) {
          ASSERT( theSet != NULL );
          std::set<type>::insert( theSet->begin(), theSet->end() );
@@ -129,13 +137,13 @@ namespace savant {
    template <typename type>
       template <typename new_type> 
       inline
-      savant::set<new_type> *
+      savant::set<refcount<new_type>>
       savant::set<type>::convert_set() {
-         savant::set<new_type>* retv = new savant::set<new_type>;
+         savant::set<refcount<new_type>> retv;
 
          for( auto it = std::set<type>::begin(); it != std::set<type>::end(); it++ ) {
-            new_type new_val = dynamic_cast<new_type>(*it);
-            retv->insert(new_val);
+            refcount<new_type> new_val = my_dynamic_pointer_cast<new_type>(*it);
+            retv.insert(new_val);
          }
 
          return retv;

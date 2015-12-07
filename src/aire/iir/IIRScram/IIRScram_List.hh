@@ -33,26 +33,27 @@
 #include "IIRScram.hh"
 #include "IIRBase_List.hh"
 
-class IIRScram_Label;
+REF_FORWARD_DECL(IIRScram_Label);
+REF_FORWARD_DECL(IIRScram_SimpleName);
+
 class IIRScram_List;
-class IIRScram_SimpleName;
 
 class IIRScram_List : public virtual IIRScram, public virtual IIRBase_List{
 
 public:
   IIRScram_List() {};
 
-  static IIRScram_List *_listcopy( IIRScram_List *source, plugin_class_factory *factory );
+  static IIRScram_ListRef _listcopy( IIRScram_ListRef source, plugin_class_factoryRef factory );
   
   IIR_Boolean _is_iir_list(){ return TRUE; }
 
-  virtual IIRScram *_clone(  );
-  virtual void _clone( IIRScram * );
+  virtual IIRScramRef _clone(  );
+  virtual void _clone( IIRScramRef );
 
-  virtual IIRScram_Label *_find_instantiate_label( IIRScram_SimpleName * );
+  virtual IIRScram_LabelRef _find_instantiate_label( IIRScram_SimpleNameRef );
   
   /** Append all elements in this non-NULL list. */
-  virtual void _append( IIR_List * );
+  virtual void _append( IIR_ListRef );
   
   void _make_interface_visible( symbol_table * );
 

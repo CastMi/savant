@@ -26,10 +26,6 @@
 //---------------------------------------------------------------------------
 
 #include "IIRBase_AttributeSpecification.hh"
-
-
-
-
 #include "IIR_Declaration.hh"
 #include "IIR_DesignatorList.hh"
 #include "IIR_Identifier.hh"
@@ -47,68 +43,67 @@ IIRBase_AttributeSpecification::~IIRBase_AttributeSpecification(){
 }
 
 void 
-IIRBase_AttributeSpecification::set_value( IIR *new_value ){
+IIRBase_AttributeSpecification::set_value( IIRRef new_value ){
   value = new_value;
 }
 
-IIR *
+IIRRef
 IIRBase_AttributeSpecification::get_value(){
   return value;
 }
 
 void
-IIRBase_AttributeSpecification::set_entity_class( IIR_Identifier *new_entity_class ){
+IIRBase_AttributeSpecification::set_entity_class( IIR_IdentifierRef new_entity_class ){
   entity_class = new_entity_class ;
 }
 
-IIR_Identifier *
+IIR_IdentifierRef
 IIRBase_AttributeSpecification::get_entity_class(){
   return entity_class ;
 }
 
 // List Accessor(s)
-IIR_DesignatorList *
+IIR_DesignatorListRef
 IIRBase_AttributeSpecification::get_entity_name_list() {
   ASSERT(entity_name_list != NULL);
   return entity_name_list;
 }
 
 void
-IIRBase_AttributeSpecification::set_entity_name_list(IIR_DesignatorList *new_entity_name_list) {
-  ASSERT(new_entity_name_list != NULL);
-  delete entity_name_list;
+IIRBase_AttributeSpecification::set_entity_name_list(IIR_DesignatorListRef new_entity_name_list) {
+  ASSERT(new_entity_name_list != nullptr);
   entity_name_list = new_entity_name_list;
 }
 
-IIR *
-IIRBase_AttributeSpecification::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_AttributeSpecification::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_AttributeSpecification *new_node = dynamic_cast<IIRBase_AttributeSpecification *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_AttributeSpecificationRef new_node = my_dynamic_pointer_cast<IIRBase_AttributeSpecification>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->entity_name_list = dynamic_cast<IIR_DesignatorList *>(convert_node(entity_name_list, factory));
+  new_node->entity_name_list = my_dynamic_pointer_cast<IIR_DesignatorList>(convert_node(entity_name_list, factory));
   new_node->value = convert_node(value, factory);
-  new_node->entity_class = dynamic_cast<IIR_Identifier *>(convert_node(entity_class, factory));
-  new_node->attribute_declaration = dynamic_cast<IIR_Declaration *>(convert_node(attribute_declaration, factory));
+  new_node->entity_class = my_dynamic_pointer_cast<IIR_Identifier>(convert_node(entity_class, factory));
+  new_node->attribute_declaration = my_dynamic_pointer_cast<IIR_Declaration>(convert_node(attribute_declaration, factory));
 
   return new_node;
 }
 
 void 
-IIRBase_AttributeSpecification::set_declaration( IIR_Declaration *decl ){
-  if( decl != NULL ){
+IIRBase_AttributeSpecification::set_declaration( IIR_DeclarationRef decl ){
+  if( decl != nullptr ){
     ASSERT( decl->get_kind() == IIR_ATTRIBUTE_DECLARATION );
   }
 
   attribute_declaration = decl;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_AttributeSpecification::get_subtype() {
   return attribute_declaration->get_subtype();
 }
 
-IIR_Declaration *
+IIR_DeclarationRef
 IIRBase_AttributeSpecification::get_declaration(){
   return attribute_declaration;
 }

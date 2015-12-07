@@ -29,16 +29,16 @@
 #include "savant_config.hh"
 #include "IIR_List.hh"
 
-class IIR_Comment;
+REF_FORWARD_DECL(IIR_Comment);
 
 class IIR_CommentList : public virtual IIR_List{
 
 public:
   virtual ~IIR_CommentList() {}
 
-  virtual IIR* first() = 0;
-  virtual IIR* successor(IIR_Comment*) = 0;
-  virtual void append_element(IIR_Comment*) = 0;
+  virtual IIRRef first() = 0;
+  virtual IIRRef successor(IIR_CommentRef) = 0;
+  virtual void append_element(IIR_CommentRef) = 0;
 protected:  
 private:
 };

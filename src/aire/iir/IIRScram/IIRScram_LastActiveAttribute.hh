@@ -45,10 +45,10 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   
-  IIRScram_Declaration *_get_implicit_declaration( const string &_decl_name, 
-					      IIRScram_TypeDefinition *decl_type );
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &_decl_name, 
+					      IIRScram_TypeDefinitionRef decl_type );
   IIR_Boolean _is_readable();
-  virtual IIRScram *_clone();
+  virtual IIRScramRef _clone();
 
   IIR_Boolean _is_lastactive_attribute() { return TRUE; }
 

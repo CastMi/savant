@@ -47,12 +47,12 @@ public:
   IIR_Boolean _is_readable();
 
   // Wrapper functions
-  IIRScram * _get_across_aspect_expression();
-  IIRScram * _get_through_aspect_expression();
-  IIRScram * _get_across_aspect_tolerance();
-  IIRScram * _get_through_aspect_tolerance();
-  IIRScram_Name* _get_plus_terminal_name();
-  IIRScram_Name* _get_minus_terminal_name();
+  IIRScramRef      _get_across_aspect_expression();
+  IIRScramRef      _get_through_aspect_expression();
+  IIRScramRef      _get_across_aspect_tolerance();
+  IIRScramRef      _get_through_aspect_tolerance();
+  IIRScram_NameRef _get_plus_terminal_name();
+  IIRScram_NameRef _get_minus_terminal_name();
 
 protected:
 

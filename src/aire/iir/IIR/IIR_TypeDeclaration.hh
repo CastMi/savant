@@ -32,24 +32,24 @@
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
 
+REF_FORWARD_DECL(IIR_AttributeSpecificationList);
 class IIR_TypeDefinition;
-class IIR_AttributeSpecificationList;
  
-class IIR_TypeDeclaration : public virtual IIR_Declaration{
+class IIR_TypeDeclaration : public virtual IIR_Declaration {
 public:
   virtual ~IIR_TypeDeclaration() {}    
 
   // List accessor(s)
-  virtual IIR_AttributeSpecificationList        *get_attributes() = 0;
-  virtual void                                  set_attributes(IIR_AttributeSpecificationList *) = 0;
+  virtual IIR_AttributeSpecificationListRef get_attributes() = 0;
+  virtual void                              set_attributes(IIR_AttributeSpecificationListRef ) = 0;
 
-  virtual void set_type(IIR_TypeDefinition* type) = 0;
-  virtual IIR_TypeDefinition* get_type() = 0;
+  virtual void set_type(IIR_TypeDefinitionRef type) = 0;
+  virtual IIR_TypeDefinitionRef get_type() = 0;
 
   // This varies depending on the definition.  For Scalar types the get/set operators
   // for AccessTypeDeclaration it builds the deallocate functions, etc.
-  virtual savant::set<IIR_Declaration*> *get_implicit_declarations() = 0;
-  virtual void set_implicit_declarations( savant::set<IIR_Declaration*> *) = 0;
+  virtual savant::set<IIR_DeclarationRef> get_implicit_declarations() = 0;
+  virtual void set_implicit_declarations( savant::set<IIR_DeclarationRef> ) = 0;
 };
 
 typedef refcount<IIR_TypeDeclaration> IIR_TypeDeclarationRef;

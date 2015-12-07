@@ -37,12 +37,12 @@ class IIR_Identifier;
 class IIRBase_IdentifierList : public virtual IIRBase_List, public virtual IIR_IdentifierList{
 
 public:
-  IIR_Kind get_kind() const {return IIR_IDENTIFIER_LIST;}
-  const IIR_Char *get_kind_text() const {return "IIR_IdentifierList";}
+  IIR_Kind get_kind() const override { return IIR_IDENTIFIER_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_IdentifierList"); }
 
-  IIR_Identifier *first();
-  IIR_Identifier *successor( IIR_Identifier * );
-  void append( IIR_Identifier * );
+  IIR_IdentifierRef first();
+  IIR_IdentifierRef successor( IIR_IdentifierRef );
+  void append( IIR_IdentifierRef );
 
 protected:
   IIRBase_IdentifierList();

@@ -39,15 +39,15 @@ public:
   /** This function builds the implicit declarations associated with
       file types.  It also adds the declarations to the symbol table
       and to the type's list of implicit_declarations. */
-  void  _come_into_scope( symbol_table *, IIRScram_TypeDeclaration * );
+  void  _come_into_scope( symbol_table *, IIRScram_TypeDeclarationRef  );
 
   IIR_Boolean is_locally_static(){ return TRUE; }
 
-  void _set_resolution_function( IIRScram_FunctionDeclaration * );
+  void _set_resolution_function( IIRScram_FunctionDeclarationRef );
 
 protected:
 private:
-  IIRScram_TypeDefinition *_get_type_mark();
+  IIRScram_TypeDefinitionRef _get_type_mark();
 };
 
 typedef refcount<IIRScram_FileTypeDefinition> IIRScram_FileTypeDefinitionRef;

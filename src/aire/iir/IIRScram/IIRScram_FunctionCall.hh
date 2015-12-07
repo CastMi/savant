@@ -51,29 +51,29 @@ public:
 
   //void _publish_cc_kernel_type( ostream &os );
 
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
-  IIRScram * _rval_to_decl( IIRScram_TypeDefinition * );
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
+  IIRScramRef  _rval_to_decl( IIRScram_TypeDefinitionRef  );
   IIRScram_SubprogramDeclaration* _get_implementation();
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0);
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return FALSE; }
 
-  static IIRScram_FunctionCall *_build_function_call( IIRScram_SubprogramDeclaration *, IIRScram_IndexedName * );
+  static IIRScram_FunctionCallRef _build_function_call( IIRScram_SubprogramDeclarationRef , IIRScram_IndexedNameRef  );
 
-  savant::set<IIRScram_Declaration*> *_symbol_lookup();
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup();
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
   IIR_Mode _get_mode();
 
   // (See IIRScram.hh for description)
-  IIRScram_Declaration *_find_formal_declaration();
+  IIRScram_DeclarationRef _find_formal_declaration();
 
   /** Resets the index values and the list of quantity and signal
       indexes. */
 
   // Helper functions
-  IIRScram_AssociationList *_get_parameter_association_list();
+  IIRScram_AssociationListRef _get_parameter_association_list();
 protected:    
 
 private:

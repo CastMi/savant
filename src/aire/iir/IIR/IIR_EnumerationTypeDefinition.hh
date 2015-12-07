@@ -32,8 +32,8 @@
 #include "savant_config.hh"
 #include "IIR_ScalarTypeDefinition.hh"
 
-class IIR_FunctionDeclaration;
-class IIR_EnumerationLiteralList;
+REF_FORWARD_DECL(IIR_EnumerationLiteralList);
+REF_FORWARD_DECL(IIR_FunctionDeclaration);
 
 class IIR_EnumerationTypeDefinition : public virtual IIR_ScalarTypeDefinition{
 
@@ -41,10 +41,10 @@ public:
   virtual ~IIR_EnumerationTypeDefinition() {}
     
   // List accessor(s)
-  virtual IIR_EnumerationLiteralList    *get_enumeration_literals() = 0;
-  virtual void                          set_enumeration_literals(IIR_EnumerationLiteralList *) = 0;
+  virtual IIR_EnumerationLiteralListRef get_enumeration_literals() = 0;
+  virtual void                          set_enumeration_literals(IIR_EnumerationLiteralListRef ) = 0;
 
-  virtual IIR_FunctionDeclaration       *get_resolution_function() = 0;
+  virtual IIR_FunctionDeclarationRef get_resolution_function() = 0;
 };
 
 typedef refcount<IIR_EnumerationTypeDefinition> IIR_EnumerationTypeDefinitionRef;

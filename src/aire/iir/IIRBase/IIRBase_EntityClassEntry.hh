@@ -36,8 +36,8 @@
 class IIRBase_EntityClassEntry : public virtual IIRBase_Tuple, public virtual IIR_EntityClassEntry{
 
 public:
-  IIR_Kind get_kind() const {return IIR_ENTITY_CLASS_ENTRY;}
-  const IIR_Char *get_kind_text() const {return "IIR_EntityClassEntry";}
+  IIR_Kind get_kind() const override { return IIR_ENTITY_CLASS_ENTRY; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_EntityClassEntry"); }
 
   void  set_entity_kind( IIR_Kind entity_kind );
   IIR_Kind get_entity_kind();
@@ -45,7 +45,7 @@ public:
   void  set_boxed( IIR_Boolean is_boxed );
   IIR_Boolean get_boxed();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:

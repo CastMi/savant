@@ -36,19 +36,19 @@ public:
     return IIR_ARRAY_NATURE_DEFINITION;
   }
   
-  const IIR_Char *get_kind_text() const { return "IIR_ArrayNatureDefinition"; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ArrayNatureDefinition"); }
   
   /** Sets the index subtype of the array nature definition */
   void
-  set_index_subtype(IIR_ScalarTypeDefinition* index_subtype);
+  set_index_subtype(IIR_ScalarTypeDefinitionRef index_subtype);
   
   /** Gets the index subtype of the array nature definition */
-  IIR_ScalarTypeDefinition* get_index_subtype();
-  IIR_ScalarTypeDefinition* get_resolved_index_subtype() { return get_index_subtype(); }
+  IIR_ScalarTypeDefinitionRef get_index_subtype();
+  IIR_ScalarTypeDefinitionRef get_resolved_index_subtype() { return get_index_subtype(); }
   
   /** Sets the element subtype in the array nature definition */
   void
-  set_element_subtype(IIR_TypeDefinition* element_subtype);
+  set_element_subtype(IIR_TypeDefinitionRef element_subtype);
   
   /** The Boolean variable is set TRUE if the object is of element type
       i.e. one of subnature_indication type */
@@ -57,7 +57,7 @@ public:
   /** Returns true if the calling object is of element type */
   IIR_Boolean is_element();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   /** Used to check if the its an unconstrained array type */
   IIR_Boolean is_unconstrained_array_type();
@@ -66,16 +66,16 @@ public:
   IIR_Boolean is_array_type() { return TRUE; }     
   
   /** Gets the element subtype of a given index object */
-  IIR_TypeDefinition *get_element_subtype();        
+  IIR_TypeDefinitionRef get_element_subtype();        
  
   /** Gets the pointer to the final index in a multidimensional array */
-  IIR_TypeDefinition *get_final_subtype();
+  IIR_TypeDefinitionRef get_final_subtype();
 
   /** Sets the element subtype of the current index. Used to 
       form a linked list like structure to progressively refer 
       to the consecutive indexes in the array. The final index will 
       refer to the object returned by the subnature_indication  */
-  void _set_element_subtype(IIR_NatureDefinition *);        
+  void _set_element_subtype(IIR_NatureDefinitionRef );        
   void publish_vhdl_decl(ostream &);
   void publish_vhdl(ostream &);
   void publish_vhdl_subtype_decl(ostream &);
@@ -84,9 +84,9 @@ protected:
   virtual ~IIRBase_ArrayNatureDefinition() = 0;
   
 private:
-  IIR_ScalarTypeDefinition*     index_subtype;
-  IIR_NatureDefinition*         element_subtype;
-  IIR_Boolean                   my_is_element;
+  IIR_ScalarTypeDefinitionRef     index_subtype;
+  IIR_NatureDefinitionRef         element_subtype;
+  IIR_Boolean                     my_is_element;
   
 };
 

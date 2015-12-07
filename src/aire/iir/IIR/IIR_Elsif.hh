@@ -32,21 +32,21 @@
 #include "savant_config.hh"
 #include "IIR_Tuple.hh"
 
-class IIR_Elsif;
-class IIR_SequentialStatementList;
+REF_FORWARD_DECL(IIR_SequentialStatementList);
+REF_FORWARD_DECL(IIR_Elsif);
 
 class IIR_Elsif : public virtual IIR_Tuple{
 public:
   virtual ~IIR_Elsif() {}    
 
   // List accessor(s)
-  virtual IIR_SequentialStatementList *get_then_sequence_of_statements() = 0;
+  virtual IIR_SequentialStatementListRef get_then_sequence_of_statements() = 0;
 
-  virtual void set_condition(IIR*) = 0;
-  virtual IIR* get_condition() = 0;
+  virtual void set_condition( IIRRef ) = 0;
+  virtual IIRRef get_condition() = 0;
 
-  virtual void set_else_clause(IIR_Elsif*) = 0;
-  virtual IIR_Elsif* get_else_clause() = 0;
+  virtual void set_else_clause( IIR_ElsifRef ) = 0;
+  virtual IIR_ElsifRef get_else_clause() = 0;
 };
 
 typedef refcount<IIR_Elsif> IIR_ElsifRef;

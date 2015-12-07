@@ -37,10 +37,10 @@ class IIR_FileDeclaration : public virtual IIR_ObjectDeclaration{
 public:
   virtual ~IIR_FileDeclaration() {}
     
-  virtual void set_file_open_expression(IIR* file_open_expression) = 0;
-  virtual IIR* get_file_open_expression() = 0;
-  virtual void set_file_logical_name(IIR* file_logical_name) = 0;
-  virtual IIR* get_file_logical_name() = 0;
+  virtual void set_file_open_expression(IIRRef file_open_expression) = 0;
+  virtual IIRRef get_file_open_expression() = 0;
+  virtual void set_file_logical_name(IIRRef file_logical_name) = 0;
+  virtual IIRRef get_file_logical_name() = 0;
 };
 
 typedef refcount<IIR_FileDeclaration> IIR_FileDeclarationRef;

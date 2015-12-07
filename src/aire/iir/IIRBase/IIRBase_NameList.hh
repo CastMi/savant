@@ -36,8 +36,8 @@ class IIRBase_NameList : public virtual IIRBase_List, public virtual IIR_NameLis
 
 public:
 
-  IIR_Kind get_kind() const {return IIR_NAME_LIST;}
-  const IIR_Char *get_kind_text() const {return "IIR_NameList";}
+  IIR_Kind get_kind() const override { return IIR_NAME_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_NameList"); }
 
 protected:
   

@@ -35,18 +35,16 @@
 #include "savant.hh"
 
 IIRBase_SignalDeclaration::IIRBase_SignalDeclaration() {
-  set_value(NULL);
   set_signal_kind(IIR_NO_SIGNAL_KIND);
 }
-
 IIRBase_SignalDeclaration::~IIRBase_SignalDeclaration() {}
 
 void
-IIRBase_SignalDeclaration::set_value( IIR *new_value ){
+IIRBase_SignalDeclaration::set_value( IIRRef new_value ){
   value = new_value;
 }
 
-IIR*
+IIRRef
 IIRBase_SignalDeclaration::get_value() {
   return value;
 }
@@ -62,10 +60,10 @@ IIRBase_SignalDeclaration::get_signal_kind() {
 }
 
 
-IIR *
-IIRBase_SignalDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SignalDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SignalDeclaration *new_node = dynamic_cast<IIRBase_SignalDeclaration *>(IIRBase_ObjectDeclaration::convert_tree(factory));
+  IIRBase_SignalDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_SignalDeclaration>(IIRBase_ObjectDeclaration::convert_tree(factory));
 
   // Process the variables
   new_node->value = convert_node(value, factory);

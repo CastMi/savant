@@ -32,8 +32,8 @@
 #include "savant_config.hh"
 #include "IIR_LibraryUnit.hh"
 
-class IIR_ArchitectureStatementList;
-class IIR_EntityDeclaration;
+REF_FORWARD_DECL(IIR_ArchitectureStatementList);
+REF_FORWARD_DECL(IIR_EntityDeclaration);
 class IIR_DeclarationList;
 
 class IIR_ArchitectureDeclaration : public virtual IIR_LibraryUnit{
@@ -43,12 +43,12 @@ public:
 
   // List accessor(s)
 
-  virtual IIR_DeclarationList           *get_architecture_declarative_part() = 0;
-  virtual IIR_ArchitectureStatementList *get_architecture_statement_part() = 0;
+  virtual IIR_DeclarationListRef get_architecture_declarative_part() = 0;
+  virtual IIR_ArchitectureStatementListRef get_architecture_statement_part() = 0;
 
-  virtual void associate(IIR_EntityDeclaration *) = 0;
-  virtual void set_entity(IIR_EntityDeclaration *) = 0;
-  virtual IIR_EntityDeclaration* get_entity() = 0;
+  virtual void associate(IIR_EntityDeclarationRef ) = 0;
+  virtual void set_entity(IIR_EntityDeclarationRef ) = 0;
+  virtual IIR_EntityDeclarationRef get_entity() = 0;
 };
 
 typedef refcount<IIR_ArchitectureDeclaration> IIR_ArchitectureDeclarationRef;

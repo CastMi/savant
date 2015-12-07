@@ -38,21 +38,21 @@ class IIR_WaveformElement;
 class IIRBase_WaveformElement : public virtual IIRBase_Tuple, public virtual IIR_WaveformElement{
 public:
 
-  IIR_Kind get_kind() const {
+  IIR_Kind get_kind() const override {
     return IIR_WAVEFORM_ELEMENT;
   }
-  const IIR_Char *get_kind_text() const {
-    return "IIR_WaveformElement";
+  IIR_CharConstRef get_kind_text() const override {
+    return IIR_CharConstRef("IIR_WaveformElement");
   }
 
-  void set_value( IIR* value);
-  IIR* get_value();
-  void set_time( IIR* time);
-  IIR* get_time();
-  void set_next( IIR_WaveformElement* next);
-  IIR_WaveformElement* get_next();
+  void set_value( IIRRef value);
+  IIRRef get_value();
+  void set_time( IIRRef time);
+  IIRRef get_time();
+  void set_next( IIR_WaveformElementRef next);
+  IIR_WaveformElementRef get_next();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_above_attribute_found();
@@ -67,9 +67,9 @@ protected:
     
 private:
   
-  IIR* value;
-  IIR* time;
-  IIR_WaveformElement* next;
+  IIRRef value;
+  IIRRef time;
+  IIR_WaveformElementRef next;
 
 };
 

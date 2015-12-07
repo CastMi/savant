@@ -34,6 +34,7 @@
 #include "IIRScram_InterfaceDeclaration.hh"
 #include "IIRBase_SignalInterfaceDeclaration.hh"
 
+REF_FORWARD_DECL(IIRScram_SignalInterfaceDeclaration);
 class IIRScram_DesigantorList;
 class IIRScram_List;
 
@@ -46,13 +47,13 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
   void _type_check( IIRScram_InterfaceDeclaration::_InterfaceListType );
 
 protected:
 private:
-  IIRScram_SignalInterfaceDeclaration *_my_clone;
+  IIRScram_SignalInterfaceDeclarationRef _my_clone;
 };
 
 typedef refcount<IIRScram_SignalInterfaceDeclaration> IIRScram_SignalInterfaceDeclarationRef;

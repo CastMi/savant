@@ -35,13 +35,13 @@
 
 class IIRBase_OthersInitialization : public virtual IIRBase_Expression, public virtual IIR_OthersInitialization{
 public:
-  IIR_Kind get_kind() const {return IIR_OTHERS_INITIALIZATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_OthersInitialization";}
+  IIR_Kind get_kind() const override { return IIR_OTHERS_INITIALIZATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_OthersInitialization"); }
 
-  void set_expression( IIR* expression); 
-  IIR* get_expression();
+  void set_expression( IIRRef expression); 
+  IIRRef get_expression();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
 
@@ -54,7 +54,7 @@ protected:
     
 private:
   
-  IIR* expression;
+  IIRRef expression;
 
 };
 

@@ -35,10 +35,10 @@
 #include "IIRScram_ObjectDeclaration.hh"
 #include "IIRBase_SignalDeclaration.hh"
 
+REF_FORWARD_DECL(IIRScram_SignalDeclaration);
 class IIRScram_Declaration;
 class IIRScram_DesigantorList;
 class IIRScram_List;
-class IIRScram_SignalDeclaration;
 class IIRScram_TypeDefinition;
 
 class IIRScram_SignalDeclaration : public virtual IIRScram_ObjectDeclaration,
@@ -58,16 +58,16 @@ public:
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return TRUE; }
 
-  IIRScram *_clone();
-  IIRScram *_get_value();
+  IIRScramRef _clone();
+  IIRScramRef _get_value();
 
   /** For some reason, sometimes the code generate wants a fresh clone
      generated.  */
-  void _clear_clone(){ _my_clone = 0; }
+  void _clear_clone() { _my_clone = IIRScram_SignalDeclarationRef(); }
   
 protected:
 private:
-  IIRScram_SignalDeclaration *_my_clone;
+  IIRScram_SignalDeclarationRef _my_clone;
 };
 
 typedef refcount<IIRScram_SignalDeclaration> IIRScram_SignalDeclarationRef;

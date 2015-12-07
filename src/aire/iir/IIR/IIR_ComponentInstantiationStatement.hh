@@ -39,18 +39,18 @@ public:
   virtual ~IIR_ComponentInstantiationStatement() {}
     
   // List accessor(s)
-  virtual IIR_AssociationList   *get_generic_map_aspect() = 0;
-  virtual IIR_AssociationList   *get_port_map_aspect() = 0;
-  virtual void                  set_generic_map_aspect(IIR_AssociationList *) = 0;
-  virtual void                  set_port_map_aspect(IIR_AssociationList *) = 0;
+  virtual IIR_AssociationListRef get_generic_map_aspect() = 0;
+  virtual IIR_AssociationListRef get_port_map_aspect() = 0;
+  virtual void                  set_generic_map_aspect(IIR_AssociationListRef ) = 0;
+  virtual void                  set_port_map_aspect(IIR_AssociationListRef ) = 0;
 
-  virtual void set_instantiated_unit( IIR *instantiated_unit ) = 0;
-  virtual IIR *get_instantiated_unit() = 0;
+  virtual void set_instantiated_unit( IIRRef instantiated_unit ) = 0;
+  virtual IIRRef get_instantiated_unit() = 0;
 
   /** This returns the configuration for this component.  It can be an
       IIR_ConfigurationSpecification, or an IIR_ComponentConfiguration. */
-  virtual IIR *get_configuration() = 0;
-  virtual void set_configuration( IIR *new_config ) = 0;
+  virtual IIRRef get_configuration() = 0;
+  virtual void set_configuration( IIRRef new_config ) = 0;
 };
 
 typedef refcount<IIR_ComponentInstantiationStatement> IIR_ComponentInstantiationStatementRef;

@@ -32,8 +32,9 @@
 #include "savant_config.hh"
 #include "IIR.hh"
 
-class IIR_Name;
-class IIR_Label;
+REF_FORWARD_DECL(IIR_Label);
+REF_FORWARD_DECL(IIR_Name);
+
 namespace savant {
   template <class type> class set;
 }
@@ -42,37 +43,37 @@ class IIR_Statement : public virtual IIR{
 public:
   virtual ~IIR_Statement() {}
     
-  virtual void set_label( IIR_Label *label) = 0;
-  virtual IIR_Label *get_label() const = 0;
+  virtual void set_label( IIR_LabelRef label) = 0;
+  virtual IIR_LabelRef get_label() const = 0;
 
-  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_Name * ) = 0;
+  virtual savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef ) = 0;
 
   /** For assertion statements this method is overloaded to return the
       assertion condtion.  For anything else it returns 0. */
-  virtual IIR *get_assertion_condition() = 0;
+  virtual IIRRef get_assertion_condition() = 0;
   
   /** For report and assertion statements this method is overloaded to
       return the report expression.  For anything else it returns 0. */
-  virtual IIR *get_report_expression() = 0;
+  virtual IIRRef get_report_expression() = 0;
 
   /** For report and assertion statements this method is overloaded to
       return the report expression. For anything else it returns 0. */
-  virtual IIR *get_severity_expression() = 0;
+  virtual IIRRef get_severity_expression() = 0;
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
-  virtual void set_assertion_condition( IIR * ) = 0;
+  virtual void set_assertion_condition( IIRRef ) = 0;
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
-  virtual void set_report_expression( IIR * ) = 0;
+  virtual void set_report_expression( IIRRef ) = 0;
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
-  virtual void set_severity_expression( IIR * ) = 0;
+  virtual void set_severity_expression( IIRRef ) = 0;
 
-  virtual void set_reject_time_expression( IIR * ) = 0 ;
-  virtual void set_target( IIR * ) = 0;
+  virtual void set_reject_time_expression( IIRRef ) = 0 ;
+  virtual void set_target( IIRRef ) = 0;
 };
 
 typedef refcount<IIR_Statement> IIR_StatementRef;

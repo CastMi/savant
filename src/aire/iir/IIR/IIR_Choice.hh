@@ -37,8 +37,8 @@ class IIR_Choice : public virtual IIR_Tuple{
 public:
   virtual ~IIR_Choice() {}
 
-  virtual void set_value(IIR*) = 0;
-  virtual IIR* get_value() = 0;
+  virtual void set_value( IIRRef ) = 0;
+  virtual IIRRef get_value() = 0;
 };
 
 typedef refcount<IIR_Choice> IIR_ChoiceRef;

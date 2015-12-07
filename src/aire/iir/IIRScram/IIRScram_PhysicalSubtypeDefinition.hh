@@ -41,22 +41,22 @@ class IIRScram_PhysicalSubtypeDefinition : public virtual IIRScram_PhysicalTypeD
 					   public virtual IIRBase_PhysicalSubtypeDefinition{
 
 public:
-  static IIRScram_PhysicalSubtypeDefinition* get(IIRScram_PhysicalTypeDefinition* base_type,
-                                                 IIRScram* left_limit,
-                                                 IIRScram* right_limit);
+  static IIRScram_PhysicalSubtypeDefinitionRef get(IIRScram_PhysicalTypeDefinitionRef base_type,
+                                                 IIRScramRef left_limit,
+                                                 IIRScramRef_limit);
 
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
 
-  void _set_resolution_function(IIRScram_FunctionDeclaration *function);
-  IIRScram_FunctionDeclaration* _get_resolution_function();
+  void _set_resolution_function(IIRScram_FunctionDeclarationRef function);
+  IIRScram_FunctionDeclarationRef _get_resolution_function();
 
   virtual void _type_check();
 
-  virtual IIRScram *_clone();
-  virtual void _clone( IIRScram * );
+  virtual IIRScramRef _clone();
+  virtual void _clone( IIRScramRef  );
   virtual IIR_Boolean _is_iir_physical_subtype_definition(){ return TRUE; }
 
 protected:

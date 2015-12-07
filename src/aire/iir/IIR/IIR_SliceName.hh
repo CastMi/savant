@@ -36,8 +36,8 @@ class IIR_SliceName : public virtual IIR_Name{
 public:
   virtual ~IIR_SliceName() {}
     
-  virtual void set_suffix( IIR* suffix) = 0;
-  virtual IIR* get_suffix() = 0;
+  virtual void set_suffix( IIRRef suffix) = 0;
+  virtual IIRRef get_suffix() = 0;
 };
 
 typedef refcount<IIR_SliceName> IIR_SliceNameRef;

@@ -32,18 +32,18 @@
 #include "savant_config.hh"
 #include "IIR_Designator.hh"
 
-class IIR_Signature;
+REF_FORWARD_DECL(IIR_Signature);
 
 class IIR_DesignatorExplicit : public virtual IIR_Designator{
 
 public:
   virtual ~IIR_DesignatorExplicit() {}
     
-  virtual void set_name( IIR *name ) = 0;
-  virtual IIR *get_name() = 0;
+  virtual void set_name( IIRRef name ) = 0;
+  virtual IIRRef get_name() = 0;
 
-  virtual void set_signature( IIR_Signature *signature ) = 0;
-  virtual IIR_Signature *get_signature( ) = 0;
+  virtual void set_signature( IIR_SignatureRef signature ) = 0;
+  virtual IIR_SignatureRef get_signature( ) = 0;
 };
 
 typedef refcount<IIR_DesignatorExplicit> IIR_DesignatorExplicitRef;

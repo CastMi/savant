@@ -34,23 +34,23 @@ IIRBase_UnitList::IIRBase_UnitList() {}
 IIRBase_UnitList::~IIRBase_UnitList() {}
 
 
-IIR * 
+IIRRef 
 IIRBase_UnitList::first() {
-  IIR *retval = IIRBase_DeclarationList::first();
+  IIRRef retval = IIRBase_DeclarationList::first();
 
   return retval;
 }
 
 
-IIR*
-IIRBase_UnitList::successor(IIR_PhysicalUnit *node) {
-  IIR *retval = IIRBase_DeclarationList::successor( node );
+IIRRef
+IIRBase_UnitList::successor(IIR_PhysicalUnitRef node) {
+  IIRRef retval = IIRBase_DeclarationList::successor( node );
   return retval;
 }
 
-IIR*
-IIRBase_UnitList::predecessor(IIR_PhysicalUnit* node) {
-  IIR *retval = IIRBase_DeclarationList::successor( node );
+IIRRef
+IIRBase_UnitList::predecessor(IIR_PhysicalUnitRef node) {
+  IIRRef retval = IIRBase_DeclarationList::successor( node );
   ASSERT( retval != NULL );
 
   return retval;

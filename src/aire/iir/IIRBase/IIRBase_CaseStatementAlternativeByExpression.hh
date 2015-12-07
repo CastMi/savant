@@ -38,13 +38,13 @@ class IIR_Choice;
 class IIRBase_CaseStatementAlternativeByExpression : public virtual IIRBase_CaseStatementAlternative, public virtual IIR_CaseStatementAlternativeByExpression{
 
 public:
-  IIR_Kind get_kind() const { return IIR_CASE_STATEMENT_ALTERNATIVE_BY_EXPRESSION; }
-  const IIR_Char *get_kind_text() const { return "IIR_CaseStatementAlternativeByExpression"; }
+  IIR_Kind get_kind() const override { return IIR_CASE_STATEMENT_ALTERNATIVE_BY_EXPRESSION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_CaseStatementAlternativeByExpression"); }
 
-  void set_choice(IIR_Choice* c);
-  IIR_Choice* get_choice();
+  void set_choice(IIR_ChoiceRef c);
+  IIR_ChoiceRef get_choice();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
   
@@ -55,7 +55,7 @@ protected:
   virtual ~IIRBase_CaseStatementAlternativeByExpression() = 0;
     
 private:
-    IIR_Choice* choice;
+    IIR_ChoiceRef choice;
 };
 
 typedef refcount<IIRBase_CaseStatementAlternativeByExpression> IIRBase_CaseStatementAlternativeByExpressionRef;

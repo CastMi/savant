@@ -41,13 +41,13 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * ){}
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0 );
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> ){}
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0 );
 
-  IIRScram_Declaration *_find_formal_declaration();
+  IIRScram_DeclarationRef _find_formal_declaration();
 
-  IIRScram_TypeDefinition *_get_type_mark();
-  IIRScram * _get_expression();
+  IIRScram_TypeDefinitionRef _get_type_mark();
+  IIRScramRef  _get_expression();
 
 protected:
 

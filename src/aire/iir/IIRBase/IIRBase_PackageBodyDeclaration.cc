@@ -29,36 +29,30 @@
 #include "IIRBase_DeclarationList.hh"
 #include "IIR_TextLiteral.hh"
 
-IIRBase_PackageBodyDeclaration::IIRBase_PackageBodyDeclaration()  :
-  package_declarative_part(0){}
-
-IIRBase_PackageBodyDeclaration::~IIRBase_PackageBodyDeclaration() {
-  delete package_declarative_part;
-  package_declarative_part = 0;
-}
+IIRBase_PackageBodyDeclaration::IIRBase_PackageBodyDeclaration() {}
+IIRBase_PackageBodyDeclaration::~IIRBase_PackageBodyDeclaration() {}
 
 // List Accessor(s)
-IIR_DeclarationList *
+IIR_DeclarationListRef
 IIRBase_PackageBodyDeclaration::get_package_declarative_part() {
-  ASSERT(package_declarative_part != NULL);
+  ASSERT(package_declarative_part != nullptr);
   return package_declarative_part;
 }
 
 
 void
-IIRBase_PackageBodyDeclaration::set_package_declarative_part(IIR_DeclarationList *new_package_declarative_part) {
-  ASSERT(new_package_declarative_part != NULL);
-  delete package_declarative_part;
+IIRBase_PackageBodyDeclaration::set_package_declarative_part(IIR_DeclarationListRef new_package_declarative_part) {
+  ASSERT(new_package_declarative_part != nullptr);
   package_declarative_part = new_package_declarative_part;
 }
 
-IIR *
-IIRBase_PackageBodyDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_PackageBodyDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_PackageBodyDeclaration *new_node = dynamic_cast<IIRBase_PackageBodyDeclaration *>(IIRBase_LibraryUnit::convert_tree(factory));
+  IIRBase_PackageBodyDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_PackageBodyDeclaration>(IIRBase_LibraryUnit::convert_tree(factory));
 
   // Process the variables
-  new_node->package_declarative_part = dynamic_cast<IIR_DeclarationList *>(convert_node(package_declarative_part, factory));
+  new_node->package_declarative_part = my_dynamic_pointer_cast<IIR_DeclarationList>(convert_node(package_declarative_part, factory));
 
   return new_node;
 }
@@ -75,7 +69,7 @@ IIRBase_PackageBodyDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out << "package body ";
   get_declarator()->publish_vhdl(vhdl_out);
   vhdl_out << " is\n";
-  dynamic_cast<IIRBase_DeclarationList *>(get_package_declarative_part())->publish_vhdl_decl(vhdl_out);
+  my_dynamic_pointer_cast<IIRBase_DeclarationList>(get_package_declarative_part())->publish_vhdl_decl(vhdl_out);
   vhdl_out << "end package body ";
   get_declarator()->publish_vhdl(vhdl_out);
   vhdl_out << ";\n";

@@ -32,29 +32,28 @@
 #include "IIRBase_EnumerationTypeDefinition.hh"
 #include "IIR_EnumerationSubtypeDefinition.hh"
 
+REF_FORWARD_DECL(IIR_EnumerationLiteral);
 class IIR_EnumerationLiteralList;
 class IIR_FunctionDeclaration;
-class IIR_EnumerationLiteral;
 
 // class IIRBase_SubtypeDefinition provides the resolution_function methods.
 class IIRBase_EnumerationSubtypeDefinition : public virtual IIRBase_EnumerationTypeDefinition,
 					     public virtual IIR_EnumerationSubtypeDefinition {
 public:
   // List Accessor(s)
-  IIR_Kind get_kind() const {return IIR_ENUMERATION_SUBTYPE_DEFINITION;}
-  const IIR_Char *get_kind_text() const {return "IIR_EnumerationSubtypeDefinition";}
+  IIR_Kind get_kind() const override { return IIR_ENUMERATION_SUBTYPE_DEFINITION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_EnumerationSubtypeDefinition"); }
 
   
-  static IIR_EnumerationSubtypeDefinition *
-  get( IIR_EnumerationTypeDefinition *base_type,
-       IIR_EnumerationLiteral *left_limit,
-        IIR_EnumerationLiteral *right_limit);
-  void release();
+  static IIR_EnumerationSubtypeDefinitionRef 
+  get( IIR_EnumerationTypeDefinitionRef base_type,
+       IIR_EnumerationLiteralRef left_limit,
+        IIR_EnumerationLiteralRef right_limit);
 
-  void set_resolution_function( IIR_FunctionDeclaration * );
-  IIR_FunctionDeclaration *get_resolution_function();
+  void set_resolution_function( IIR_FunctionDeclarationRef );
+  IIR_FunctionDeclarationRef get_resolution_function();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_subtype();
 
@@ -65,9 +64,9 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_EnumerationLiteralList *enumeration_literals;
+  IIR_EnumerationLiteralListRef enumeration_literals;
 
-  IIR_FunctionDeclaration *my_resolution_function;
+  IIR_FunctionDeclarationRef my_resolution_function;
 };
 
 typedef refcount<IIRBase_EnumerationSubtypeDefinition> IIRBase_EnumerationSubtypeDefinitionRef;

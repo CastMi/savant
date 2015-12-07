@@ -29,16 +29,17 @@ IIRBase_ArchitectureStatement::IIRBase_ArchitectureStatement(){}
 IIRBase_ArchitectureStatement::~IIRBase_ArchitectureStatement(){}
 
 void 
-IIRBase_ArchitectureStatement::set_guard_signal( IIR_SignalDeclaration * ){
+IIRBase_ArchitectureStatement::set_guard_signal( IIR_SignalDeclarationRef ){
   _report_undefined_fn("set_guard_signal( IIR_Declaration * )");
 }
 
 void
-IIRBase_ArchitectureStatement::set_declarative_region( IIR *outerRegion ){
+IIRBase_ArchitectureStatement::set_declarative_region( IIRRef outerRegion ){
+  enclosingRegion.reset();
   enclosingRegion = outerRegion;
 }
 
-IIR *
+IIRRef
 IIRBase_ArchitectureStatement::get_declarative_region(){
   return enclosingRegion;
 }

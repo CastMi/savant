@@ -29,8 +29,8 @@
 class IIRBase_AssociationElementOpen : public virtual IIRBase_AssociationElement, public virtual IIR_AssociationElementOpen{
 
 public:
-  IIR_Kind get_kind() const {return IIR_ASSOCIATION_ELEMENT_BY_OPEN;}
-  const IIR_Char *get_kind_text() const {return "IIR_AssociationElementOpen";}
+  IIR_Kind get_kind() const override { return IIR_ASSOCIATION_ELEMENT_BY_OPEN; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_AssociationElementOpen"); }
 
   IIR_Boolean is_locally_static(){ return TRUE; }
 

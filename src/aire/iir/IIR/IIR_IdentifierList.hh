@@ -38,9 +38,9 @@ class IIR_IdentifierList : public virtual IIR_List{
 public:
   virtual ~IIR_IdentifierList() {}
 
-  virtual IIR_Identifier *first() = 0;
-  virtual IIR_Identifier *successor( IIR_Identifier * ) = 0;
-  virtual void append( IIR_Identifier * ) = 0;
+  virtual IIR_IdentifierRef first() = 0;
+  virtual IIR_IdentifierRef successor( IIR_IdentifierRef  ) = 0;
+  virtual void append( IIR_IdentifierRef  ) = 0;
 };
 
 typedef refcount<IIR_IdentifierList> IIR_IdentifierListRef;

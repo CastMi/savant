@@ -38,10 +38,10 @@ class IIRBase_IdentityOperator : public virtual IIRBase_MonadicOperator,
 				 public virtual IIR_IdentityOperator{
 
 public:
-  IIR_Kind get_kind() const {return IIR_IDENTITY_OPERATOR;}
-  const IIR_Char *get_kind_text() const {return "IIR_IdentityOperator";}
+  IIR_Kind get_kind() const override { return IIR_IDENTITY_OPERATOR; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_IdentityOperator"); }
 
-  IIR_TypeDefinition *get_subtype();
+  IIR_TypeDefinitionRef get_subtype();
   const string &get_operator_string() const;
 
   Precedence  get_precedence();

@@ -31,20 +31,21 @@
 
 #include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
-class IIR_DesignatorList;
+
+REF_FORWARD_DECL(IIR_DesignatorList);
 
 class IIR_WaitStatement : public virtual IIR_SequentialStatement{
 public:
   virtual ~IIR_WaitStatement() {}    
 
   // List accessor(s)
-  virtual IIR_DesignatorList    *get_sensitivity_list() = 0;
-  virtual void                  set_sensitivity_list(IIR_DesignatorList *) = 0;
+  virtual IIR_DesignatorListRef get_sensitivity_list() = 0;
+  virtual void                  set_sensitivity_list(IIR_DesignatorListRef ) = 0;
 
-  virtual void set_condition_clause( IIR* condition_clause) = 0;
-  virtual IIR* get_condition_clause() = 0;
-  virtual void set_timeout_clause( IIR* timeout_clause) = 0;
-  virtual IIR* get_timeout_clause() = 0;
+  virtual void set_condition_clause( IIRRef condition_clause) = 0;
+  virtual IIRRef get_condition_clause() = 0;
+  virtual void set_timeout_clause( IIRRef timeout_clause) = 0;
+  virtual IIRRef get_timeout_clause() = 0;
 };
 
 typedef refcount<IIR_WaitStatement> IIR_WaitStatementRef;

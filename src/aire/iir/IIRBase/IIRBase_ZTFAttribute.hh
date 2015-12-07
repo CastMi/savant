@@ -40,51 +40,51 @@ class IIRBase_ZTFAttribute : public virtual IIRBase_Attribute, public virtual II
 
 public:
   /** Returns the IIR_Kind of this node. */
-  IIR_Kind get_kind() const {
+  IIR_Kind get_kind() const override {
     return IIR_ZTF_ATTRIBUTE;
   }
   /** Returns the kind of this node in text form. */
-  const IIR_Char *get_kind_text() const {
-    return "IIR_ZTF_Attribute";
+  IIR_CharConstRef get_kind_text() const override {
+    return IIR_CharConstRef("IIR_ZTF_Attribute");
   }
   /** Set the numerator coefficients from the static expression. */
-  void set_num(IIR* numerator);
+  void set_num(IIRRef numerator);
 
   /** Return the numerator coefficients. */
-  IIR* get_num();
+  IIRRef get_num();
 
   /** Set the denominator coefficients from the static expression.  */
-  void set_den(IIR* denominator);
+  void set_den(IIRRef denominator);
 
   /** Return the denominator coefficients.  */
-  IIR* get_den();
+  IIRRef get_den();
 
   /** Set the sampling frequency. */ 
-  void set_t(IIR* period);
+  void set_t(IIRRef period);
 
   /** Return the sampling frequency. */ 
-  IIR* get_t();
+  IIRRef get_t();
 
   /** Set the initial_delay specifying the time of the first sampling. If omitted, it defaults to 0.0. */
-  void set_initial_delay(IIR* initial_delay);
+  void set_initial_delay(IIRRef initial_delay);
 
   /** Return the initial_delay specifying the time of the first sampling. */
-  IIR* get_initial_delay();
+  IIRRef get_initial_delay();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   /** This returns an IIR_TextLiteral when the ZTF attribute is  instantiated. */
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
   void publish_vhdl(ostream &);
 protected:
   IIRBase_ZTFAttribute();
   virtual ~IIRBase_ZTFAttribute() = 0;
 
 private:
-  IIR* numerator;
-  IIR* denominator;
-  IIR* period;
-  IIR* initial_delay;
+  IIRRef numerator;
+  IIRRef denominator;
+  IIRRef period;
+  IIRRef initial_delay;
 
 };
 

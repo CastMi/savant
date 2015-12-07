@@ -32,29 +32,29 @@
 #include "IIRBase.hh"
 #include "IIR_Name.hh"
 
-class IIR_Identifier;
-class IIR_LibraryDeclaration;
+REF_FORWARD_DECL(IIR_LibraryDeclaration);
+REF_FORWARD_DECL(IIR_Identifier);
 
-class IIRBase_Name : public virtual IIRBase, public virtual IIR_Name{
+class IIRBase_Name : public virtual IIRBase, public virtual IIR_Name {
 public:
   IIR_Kind get_kind() const {return IIR_NAME;}
-  const IIR_Char *get_kind_text() const {return "IIR_Name";}
+  IIR_CharConstRef get_kind_text() const { return IIR_CharConstRef("IIR_Name"); }
 
-  static IIR **lookup( IIR_Identifier *identifier,
+  static IIR **lookup( IIR_IdentifierRef identifier,
                        IIR_Int32      &number_of_matches,
                        IIR            *&first_match);
 
-  static IIR **lookup( IIR_Name    *name,
-                       IIR_Int32   &number_of_matches,
-                       IIR         *&first_match);
+  static IIR **lookup( IIR_NameRef  name,
+                       IIR_Int32    &number_of_matches,
+                       IIR          *&first_match);
   
-  void set_prefix( IIR *prefix );
-  IIR *get_prefix();
+  void set_prefix( IIRRef prefix );
+  IIRRef get_prefix();
 
-  void set_suffix( IIR *suffix );
-  IIR *get_suffix();
+  void set_suffix( IIRRef suffix );
+  IIRRef get_suffix();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
   
   IIR_Boolean is_name() { return TRUE; };
   IIR_Boolean is_signal();
@@ -63,14 +63,14 @@ public:
 
   IIR_SignalKind get_signal_kind();
 
-  void set_subtype( IIR_TypeDefinition * );
+  void set_subtype( IIR_TypeDefinitionRef );
 
   /** This method returns the prefix as an IIR_TextLiteral...  (this
       SHOULD always be possible...) */
-  IIR_TextLiteral *get_prefix_string();
+  IIR_TextLiteralRef get_prefix_string();
 
   /** Find the first prefix.  It should be a library.  Return it. */
-  virtual IIR_LibraryDeclaration *get_library_declaration(){ return 0; }
+  virtual IIR_LibraryDeclarationRef get_library_declaration(){ return 0; }
 
   IIR_Boolean is_locally_static();
 
@@ -80,7 +80,7 @@ protected:
   virtual ~IIRBase_Name() = 0;
     
 private:
-  IIR *prefix;
+  IIRRef prefix;
 
 };
 

@@ -34,18 +34,18 @@
 #include "IIR_AssociationElement.hh"
 
 class IIRBase_AssociationElement : public virtual IIRBase_Tuple,
-				   public virtual IIR_AssociationElement{
+				   public virtual IIR_AssociationElement {
 
 public:
-  void set_formal(IIR*);
-  IIR* get_formal();
+  void set_formal(IIRRef);
+  IIRRef get_formal();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   // These virtual method must never be called.  It is overloaded for
   // IIRBase_AssociationElementByExpression
-  IIR* get_actual() { return NULL; }
-  void set_actual( IIR* ) { ASSERT(0); }
+  IIRRef get_actual() { return NULL; }
+  void set_actual( IIRRef ) { ASSERT(0); }
 
   // This is overloaded in IIRBase_AssociationElementByExpression.
   IIR_Boolean is_resolved(){ return TRUE; }
@@ -60,7 +60,7 @@ protected:
   virtual ~IIRBase_AssociationElement() = 0;
     
 private:
-  IIR *formal;
+  IIRRef formal;
 };
 
 typedef refcount<IIRBase_AssociationElement> IIRBase_AssociationElementRef;

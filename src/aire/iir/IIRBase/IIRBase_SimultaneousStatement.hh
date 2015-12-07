@@ -31,12 +31,12 @@
 
 class IIRBase_SimultaneousStatement : public virtual IIRBase_ArchitectureStatement, public virtual IIR_SimultaneousStatement {
 public:
-  void set_declarative_region( IIR * );
+  void set_declarative_region( IIRRef );
 protected:
   IIRBase_SimultaneousStatement();
   virtual ~IIRBase_SimultaneousStatement() = 0;
     
-  IIR* enclosingRegion;
+  IIRRef enclosingRegion;
 private:
 };
 

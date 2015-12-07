@@ -33,17 +33,17 @@
   
 IIRScram_AccessSubtypeDefinition::~IIRScram_AccessSubtypeDefinition(){}
 
-IIRScram *
+IIRScramRef
 IIRScram_AccessSubtypeDefinition::_clone(){
-  IIRScram_AccessSubtypeDefinition *retval = new IIRScram_AccessSubtypeDefinition();
+  IIRScram_AccessSubtypeDefinitionRef retval;
   _clone( retval );
   return retval;
 }
 
 void 
-IIRScram_AccessSubtypeDefinition::_clone( IIRScram *copy_into ){
+IIRScram_AccessSubtypeDefinition::_clone( IIRScramRef copy_into ){
   ASSERT( copy_into->get_kind() == IIR_ACCESS_SUBTYPE_DEFINITION );
-  IIRScram_AccessSubtypeDefinition *as_access_subtype = dynamic_cast<IIRScram_AccessSubtypeDefinition *>(copy_into);
+  IIRScram_AccessSubtypeDefinitionRef as_access_subtype = my_dynamic_pointer_cast<IIRScram_AccessSubtypeDefinition>(copy_into);
   as_access_subtype->set_designated_subtype( get_designated_subtype() );
 
   IIRScram_AccessTypeDefinition::_clone( copy_into );
@@ -56,15 +56,15 @@ IIRScram_AccessSubtypeDefinition::_accept_visitor( node_visitor *visitor,
   return visitor->visit_IIR_AccessSubtypeDefinition(this, arg);
 }
 
-IIRScram_AccessSubtypeDefinition *
-IIRScram_AccessSubtypeDefinition::get( IIRScram_TypeDefinition * ){
+IIRScram_AccessSubtypeDefinitionRef
+IIRScram_AccessSubtypeDefinition::get( IIRScram_TypeDefinitionRef ){
   std::cerr << "IIRBase_AccessSubtypeDefinition::get has not been implemented yet.\n";
   abort();
 
   return NULL;
 }
 
-IIRScram_TypeDefinition *
+IIRScram_TypeDefinitionRef
 IIRScram_AccessSubtypeDefinition::_get_designated_subtype(){ 
-  return dynamic_cast<IIRScram_TypeDefinition *>(get_designated_subtype()); 
+  return my_dynamic_pointer_cast<IIRScram_TypeDefinition>(get_designated_subtype()); 
 }

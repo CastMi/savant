@@ -42,20 +42,20 @@ public:
   virtual ~IIR_ComponentConfiguration() {}
     
   // List accessor(s)
-  virtual IIR_DesignatorList    *get_instantiation_list() = 0;
-  virtual IIR_AssociationList   *get_generic_map_aspect() = 0;
-  virtual IIR_AssociationList   *get_port_map_aspect() = 0;
-  virtual void                  set_instantiation_list(IIR_DesignatorList *new_instantiation_list) = 0;
-  virtual void                  set_generic_map_aspect(IIR_AssociationList *new_generic_map_aspect) = 0;
-  virtual void                  set_port_map_aspect(IIR_AssociationList *new_port_map_aspect) = 0;
+  virtual IIR_DesignatorListRef get_instantiation_list() = 0;
+  virtual IIR_AssociationListRef get_generic_map_aspect() = 0;
+  virtual IIR_AssociationListRef get_port_map_aspect() = 0;
+  virtual void                  set_instantiation_list(IIR_DesignatorListRef new_instantiation_list) = 0;
+  virtual void                  set_generic_map_aspect(IIR_AssociationListRef new_generic_map_aspect) = 0;
+  virtual void                  set_port_map_aspect(IIR_AssociationListRef new_port_map_aspect) = 0;
 
   /**
      Gets the component name that was specified for this configuration.
      Prior to type check, this node will contain a descendant of IIR_Name.
      After type checking, it will contain an IIR_ComponentDeclaration.
   */
-  virtual IIR *get_component_name() = 0;
-  virtual void set_component_name( IIR *component_name ) = 0;
+  virtual IIRRef get_component_name() = 0;
+  virtual void set_component_name( IIRRef component_name ) = 0;
   
   /**
      Gets the entity aspect associated with the component specified.  This
@@ -65,11 +65,11 @@ public:
      If there was no binding indication specified explicitly, then the
      default rules specified in section 5.2.2 of the '93 LRM.
   */
-  virtual IIR_LibraryUnit *get_entity_aspect() = 0;
-  virtual void set_entity_aspect( IIR_LibraryUnit *entity_aspect ) = 0;
+  virtual IIR_LibraryUnitRef get_entity_aspect() = 0;
+  virtual void set_entity_aspect( IIR_LibraryUnitRef entity_aspect ) = 0;
 
-  virtual void set_block_configuration( IIR_BlockConfiguration *block_configuration ) = 0;
-  virtual IIR_BlockConfiguration *get_block_configuration() = 0;
+  virtual void set_block_configuration( IIR_BlockConfigurationRef block_configuration ) = 0;
+  virtual IIR_BlockConfigurationRef get_block_configuration() = 0;
 };
 
 typedef refcount<IIR_ComponentConfiguration> IIR_ComponentConfigurationRef;

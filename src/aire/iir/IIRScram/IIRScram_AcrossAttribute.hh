@@ -37,7 +37,7 @@ public:
   
   /** Returns the "across" type of the nature of the
       Nature.*/
-  IIRScram_TypeDefinition* _get_subtype();
+  IIRScram_TypeDefinitionRef _get_subtype();
   
 protected:
 

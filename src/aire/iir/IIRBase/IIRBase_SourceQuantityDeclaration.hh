@@ -38,32 +38,32 @@ class IIRBase_SourceQuantityDeclaration : public virtual IIR_SourceQuantityDecla
 public:
   /** Returns the IIR_Kind of this node. */
   IIR_Kind 
-  get_kind() const {
+  get_kind() const override {
     return IIR_SOURCE_QUANTITY_DECLARATION ;
   }
 
   /** Returns the kind of this node in text form */
-  const IIR_Char *get_kind_text() const { return "IIR_SourceQuantityDeclaration"; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SourceQuantityDeclaration"); }
 
   /** Sets the magnitude expression of the source quantity. */
-  void set_magnitude_expression(IIR* magnitude_expression);
+  void set_magnitude_expression(IIRRef magnitude_expression);
 
   /** Returns the magnitude expression of the quantity. */
-  IIR* get_magnitude_expression();
+  IIRRef get_magnitude_expression();
   
   /** Sets the phase expression of the source quantity. */
-  void set_phase_expression(IIR* phase_expression);
+  void set_phase_expression(IIRRef phase_expression);
 
   /** Returns the phase expression of the quantity. */
-  IIR* get_phase_expression();
+  IIRRef get_phase_expression();
 
   /** Sets the noise expression of the source quantity. */
-  void set_noise_expression(IIR* phase_expression);
+  void set_noise_expression(IIRRef phase_expression);
 
   /** Returns the noise expression of the quantity. */
-  IIR* get_noise_expression();
+  IIRRef get_noise_expression();
   
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl_decl(ostream&);
 protected:
@@ -71,9 +71,9 @@ protected:
   virtual ~IIRBase_SourceQuantityDeclaration() = 0;
 
 private:
-  IIR* magnitude_expression;
-  IIR* phase_expression;
-  IIR* noise_expression;
+  IIRRef magnitude_expression;
+  IIRRef phase_expression;
+  IIRRef noise_expression;
 };
 
 typedef refcount<IIRBase_SourceQuantityDeclaration> IIRBase_SourceQuantityDeclarationRef;

@@ -32,7 +32,7 @@ class IIR_SimultaneousStatement : public virtual IIR_ArchitectureStatement {
 public:
   virtual ~IIR_SimultaneousStatement() {}
 
-  virtual void set_declarative_region( IIR * ) = 0;
+  virtual void set_declarative_region( IIRRef ) = 0;
 };
 
 typedef refcount<IIR_SimultaneousStatement> IIR_SimultaneousStatementRef;

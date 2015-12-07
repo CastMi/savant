@@ -33,51 +33,48 @@
 #include "savant.hh"
 
 IIRBase_NatureDeclaration::IIRBase_NatureDeclaration() {}
-
 IIRBase_NatureDeclaration::~IIRBase_NatureDeclaration() {}
 
 void
-IIRBase_NatureDeclaration::set_nature(IIR_NatureDefinition *nature){
+IIRBase_NatureDeclaration::set_nature(IIR_NatureDefinitionRef nature){
   this-> nature = nature;
 }
 
-IIR_NatureDefinition*
+IIR_NatureDefinitionRef
 IIRBase_NatureDeclaration::get_nature(){
-  ASSERT(nature !=NULL);
+  ASSERT( nature != nullptr );
   return nature;
 }
 
 // List Accessor(s)
-IIR_AttributeSpecificationList *
+IIR_AttributeSpecificationListRef
 IIRBase_NatureDeclaration::get_attributes() {
-  ASSERT(attributes != NULL);
+  ASSERT( attributes != nullptr );
   return attributes;
 }
 
-
 void
-IIRBase_NatureDeclaration::set_attributes(IIR_AttributeSpecificationList *new_attributes) {
-  ASSERT(new_attributes != NULL);
-  delete attributes;
+IIRBase_NatureDeclaration::set_attributes(IIR_AttributeSpecificationListRef new_attributes) {
+  ASSERT(new_attributes != nullptr);
   attributes = new_attributes;
 }
 
-IIR *
-IIRBase_NatureDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_NatureDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_NatureDeclaration *new_node = dynamic_cast<IIRBase_NatureDeclaration *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_NatureDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_NatureDeclaration>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
-  new_node->nature = dynamic_cast<IIR_NatureDefinition *>(convert_node(nature, factory));
-  new_node->reference_terminal = dynamic_cast<IIR_TerminalDeclaration *>(convert_node(reference_terminal, factory));
+  new_node->attributes = my_dynamic_pointer_cast<IIR_AttributeSpecificationList>(convert_node(attributes, factory));
+  new_node->nature = my_dynamic_pointer_cast<IIR_NatureDefinition>(convert_node(nature, factory));
+  new_node->reference_terminal = my_dynamic_pointer_cast<IIR_TerminalDeclaration>(convert_node(reference_terminal, factory));
 
   return new_node;
 }
 
 IIR_Boolean
 IIRBase_NatureDeclaration::is_array_type() {
-  if( get_nature() != NULL ){
+  if( get_nature() != nullptr ){
     return get_nature()->is_array_type();
   }
   else {
@@ -85,9 +82,9 @@ IIRBase_NatureDeclaration::is_array_type() {
   }
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_NatureDeclaration::get_subtype(){
-  return dynamic_cast<IIR_TypeDefinition *>(get_nature());
+  return my_dynamic_pointer_cast<IIR_TypeDefinition>(get_nature());
 }
 
 IIR_Declaration::declaration_type 
@@ -95,19 +92,19 @@ IIRBase_NatureDeclaration::get_declaration_type(){
   return NATURE;
 }
 
-IIR_TerminalDeclaration*
+IIR_TerminalDeclarationRef
 IIRBase_NatureDeclaration::get_reference_terminal() {
   return reference_terminal;
 }
  
 void 
-IIRBase_NatureDeclaration::set_reference_terminal(IIR_TerminalDeclaration* ref_term) {
+IIRBase_NatureDeclaration::set_reference_terminal(IIR_TerminalDeclarationRef ref_term) {
   reference_terminal = ref_term;
 }
 
-IIR_TypeDefinition*
+IIR_TypeDefinitionRef
 IIRBase_NatureDeclaration::get_final_subtype(){
-  ASSERT( get_nature() != NULL );
+  ASSERT( get_nature() != nullptr );
 
   return get_nature()->get_final_subtype();
 }
@@ -123,10 +120,10 @@ IIRBase_NatureDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   get_declarator()->publish_vhdl(vhdl_out);
   vhdl_out << " is " ;
   if( nature_kind == IIR_ARRAY_SUBNATURE_DEFINITION ){
-    dynamic_cast<IIRBase_NatureDefinition *>(get_nature())->publish_vhdl_type_decl(vhdl_out);
+     my_dynamic_pointer_cast<IIRBase_NatureDefinition>(get_nature())->publish_vhdl_type_decl(vhdl_out);
   }
   else {
-    dynamic_cast<IIRBase_NatureDefinition *>(get_nature())->publish_vhdl_decl(vhdl_out);
+     my_dynamic_pointer_cast<IIRBase_NatureDefinition>(get_nature())->publish_vhdl_decl(vhdl_out);
   }
   vhdl_out << " ;\n";
 }

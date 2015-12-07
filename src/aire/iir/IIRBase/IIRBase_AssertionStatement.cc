@@ -39,28 +39,31 @@ IIRBase_AssertionStatement::~IIRBase_AssertionStatement() {
 }
 
 void
-IIRBase_AssertionStatement::set_assertion_condition( IIR* assertion_condition) {
+IIRBase_AssertionStatement::set_assertion_condition( IIRRef assertion_condition) {
   this->assertion_condition = assertion_condition;
 }
-IIR*
+
+IIRRef
 IIRBase_AssertionStatement::get_assertion_condition() {
   return assertion_condition;
 }
 
 void
-IIRBase_AssertionStatement::set_report_expression( IIR* report_expression) {
+IIRBase_AssertionStatement::set_report_expression( IIRRef report_expression) {
   this->report_expression = report_expression;
 }
-IIR*
+
+IIRRef
 IIRBase_AssertionStatement::get_report_expression() {
   return report_expression;
 }
 
 void
-IIRBase_AssertionStatement::set_severity_expression( IIR* expression) {
+IIRBase_AssertionStatement::set_severity_expression( IIRRef expression) {
   this->expression = expression;
 }
-IIR*
+
+IIRRef
 IIRBase_AssertionStatement::get_severity_expression() {
   return expression;
 }
@@ -78,10 +81,10 @@ IIRBase_AssertionStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
-IIRBase_AssertionStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_AssertionStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_AssertionStatement *new_node = dynamic_cast<IIRBase_AssertionStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_AssertionStatementRef new_node = my_dynamic_pointer_cast<IIRBase_AssertionStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
   new_node->assertion_condition = convert_node(assertion_condition, factory);

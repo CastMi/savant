@@ -35,76 +35,68 @@
 #include "IIR_TextLiteral.hh"
 
 IIRBase_SubprogramDeclaration::IIRBase_SubprogramDeclaration()  :
-  interface_declarations(0),
-  subprogram_declarations(0),
-  subprogram_body(0),
-  attributes(0),
-  my_contains_body(FALSE)
- { }
-
-IIRBase_SubprogramDeclaration::~IIRBase_SubprogramDeclaration() {
-}
+  my_contains_body(FALSE) {}
+IIRBase_SubprogramDeclaration::~IIRBase_SubprogramDeclaration() {}
 
 // List Accessor(s)
-IIR_InterfaceList *
+IIR_InterfaceListRef
 IIRBase_SubprogramDeclaration::get_interface_declarations() {
   ASSERT(interface_declarations != NULL);
   return interface_declarations;
 }
 
-IIR_DeclarationList *
+IIR_DeclarationListRef
 IIRBase_SubprogramDeclaration::get_subprogram_declarations() {
   ASSERT(subprogram_declarations != NULL);
   return subprogram_declarations;
 }
 
-IIR_SequentialStatementList *
+IIR_SequentialStatementListRef
 IIRBase_SubprogramDeclaration::get_subprogram_body() {
   ASSERT(subprogram_body != NULL);
   return subprogram_body;
 }
 
-IIR_AttributeSpecificationList *
+IIR_AttributeSpecificationListRef
 IIRBase_SubprogramDeclaration::get_attributes() {
   ASSERT(attributes != NULL);
   return attributes;
 }
 
 void
-IIRBase_SubprogramDeclaration::set_interface_declarations(IIR_InterfaceList *new_interface_declarations) {
+IIRBase_SubprogramDeclaration::set_interface_declarations(IIR_InterfaceListRef new_interface_declarations) {
   ASSERT(new_interface_declarations != NULL);
   interface_declarations = new_interface_declarations;
 }
 
 void
-IIRBase_SubprogramDeclaration::set_subprogram_declarations(IIR_DeclarationList *new_subprogram_declarations) {
+IIRBase_SubprogramDeclaration::set_subprogram_declarations(IIR_DeclarationListRef new_subprogram_declarations) {
   ASSERT(new_subprogram_declarations != NULL);
   subprogram_declarations = new_subprogram_declarations;
 }
 
 void
-IIRBase_SubprogramDeclaration::set_subprogram_body(IIR_SequentialStatementList *new_subprogram_body) {
+IIRBase_SubprogramDeclaration::set_subprogram_body(IIR_SequentialStatementListRef new_subprogram_body) {
   ASSERT(new_subprogram_body != NULL);
   subprogram_body = new_subprogram_body;
 }
 
 void
-IIRBase_SubprogramDeclaration::set_attributes(IIR_AttributeSpecificationList *new_attributes) {
+IIRBase_SubprogramDeclaration::set_attributes(IIR_AttributeSpecificationListRef new_attributes) {
   ASSERT(new_attributes != NULL);
-  delete attributes;
   attributes = new_attributes;
 }
 
-IIR *
-IIRBase_SubprogramDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SubprogramDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SubprogramDeclaration *new_node = dynamic_cast<IIRBase_SubprogramDeclaration *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_SubprogramDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_SubprogramDeclaration>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->interface_declarations = dynamic_cast<IIR_InterfaceList *>(convert_node(interface_declarations, factory));
-  new_node->subprogram_declarations = dynamic_cast<IIR_DeclarationList *>(convert_node(subprogram_declarations, factory));
-  new_node->subprogram_body = dynamic_cast<IIR_SequentialStatementList *>(convert_node(subprogram_body, factory));
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
+  new_node->interface_declarations = my_dynamic_pointer_cast<IIR_InterfaceList>(convert_node(interface_declarations, factory));
+  new_node->subprogram_declarations = my_dynamic_pointer_cast<IIR_DeclarationList>(convert_node(subprogram_declarations, factory));
+  new_node->subprogram_body = my_dynamic_pointer_cast<IIR_SequentialStatementList>(convert_node(subprogram_body, factory));
+  new_node->attributes = my_dynamic_pointer_cast<IIR_AttributeSpecificationList>(convert_node(attributes, factory));
   new_node->my_contains_body = my_contains_body;
 
   return new_node;
@@ -122,9 +114,9 @@ IIRBase_SubprogramDeclaration::set_contains_body( IIR_Boolean new_contains_body 
 
 IIR_Boolean 
 IIRBase_SubprogramDeclaration::is_operator(){
-  IIR_TextLiteral *declarator = get_declarator();
-  if( declarator->operator[]( 0 ) == '"' &&
-      declarator->operator[]( declarator->get_text_length() ) == '"' ){
+  IIR_TextLiteralRef declarator = get_declarator();
+  if( declarator->get_text()[0] == '"' &&
+      declarator->get_text()[ declarator->get_text_length() ] == '"' ){
     ASSERT( get_interface_declarations()->num_elements() == 1 ||
 	    get_interface_declarations()->num_elements() == 2 );
     
@@ -140,12 +132,12 @@ IIRBase_SubprogramDeclaration::print( ostream &os ){
   os << *get_declarator();
   os << "(";
 
-  IIR_InterfaceDeclaration *current_param = 
-    dynamic_cast<IIR_InterfaceDeclaration *>(get_interface_declarations()->first());
+  IIR_InterfaceDeclarationRef current_param = 
+    my_dynamic_pointer_cast<IIR_InterfaceDeclaration>(get_interface_declarations()->first());
   while( current_param != NULL ){
     os << *current_param;
     current_param = 
-      dynamic_cast<IIR_InterfaceDeclaration *>(get_interface_declarations()->successor( current_param ));
+      my_dynamic_pointer_cast<IIR_InterfaceDeclaration>(get_interface_declarations()->successor( current_param ));
     if( current_param != NULL ){
       os << ", ";
     }

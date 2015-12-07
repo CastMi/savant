@@ -31,43 +31,36 @@
 #include "savant.hh"
 #include "IIR_TextLiteral.hh"
 
-IIRBase_TypeConversion::IIRBase_TypeConversion() :
-  type_mark(0),
-  expression(0){}
-
-IIRBase_TypeConversion::~IIRBase_TypeConversion() {
-  delete expression;
-  expression = 0;
-  // Not type_mark
-}
+IIRBase_TypeConversion::IIRBase_TypeConversion() {}
+IIRBase_TypeConversion::~IIRBase_TypeConversion() {}
 
 void
-IIRBase_TypeConversion::set_type_mark( IIR_TypeDefinition *new_type_mark ) {
+IIRBase_TypeConversion::set_type_mark( IIR_TypeDefinitionRef new_type_mark ) {
   type_mark = new_type_mark;
 }
 
-IIR_TypeDefinition*
+IIR_TypeDefinitionRef
 IIRBase_TypeConversion::get_type_mark() {
   return type_mark;
 }
 
 void
-IIRBase_TypeConversion::set_expression( IIR *new_expression ){
+IIRBase_TypeConversion::set_expression( IIRRef new_expression ){
   expression = new_expression;
 }
 
-IIR*
+IIRRef
 IIRBase_TypeConversion:: get_expression() {
   return expression;
 }
 
-IIR *
-IIRBase_TypeConversion::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_TypeConversion::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_TypeConversion *new_node = dynamic_cast<IIRBase_TypeConversion *>(IIRBase_Expression::convert_tree(factory));
+  IIRBase_TypeConversionRef new_node = my_dynamic_pointer_cast<IIRBase_TypeConversion>(IIRBase_Expression::convert_tree(factory));
 
   // Process the variables
-  new_node->type_mark = dynamic_cast<IIR_TypeDefinition *>(convert_node(type_mark, factory));
+  new_node->type_mark = my_dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(type_mark, factory));
   new_node->expression = convert_node(expression, factory);
 
   return new_node;
@@ -83,7 +76,7 @@ IIRBase_TypeConversion::is_resolved(){
   return retval;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_TypeConversion::get_subtype(){
   return get_type_mark();
 }

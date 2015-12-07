@@ -30,24 +30,21 @@ using std::endl;
 void
 IIRScram_AboveAttribute::_resolve_suffix_special() {
   ASSERT( _get_suffix() != NULL );
-  savant::set<IIRScram_TypeDefinition*> *suffix_rvals = _get_suffix()->_get_rval_set();
-  if ( suffix_rvals == NULL ){
-    report_undefined_symbol( _get_suffix() );
-  }
-  switch( suffix_rvals->size() ){
+  savant::set<IIRScram_TypeDefinitionRef> suffix_rvals = my_dynamic_pointer_cast<IIRScram>(_get_suffix())->_get_rval_set();
+  switch( suffix_rvals.size() ){
   case 0:{
     cerr << "|" << _get_suffix() << "| was not declared in this scope." << endl;
     abort();
   }
   case 1:{
-    IIRScram_TypeDefinition *my_rval = *(suffix_rvals->begin());
+    IIRScram_TypeDefinitionRef my_rval = *(suffix_rvals.begin());
     set_suffix( _get_suffix()->_semantic_transform( my_rval ) );
     _get_suffix()->_type_check( my_rval );
     set_suffix( _get_suffix()->_rval_to_decl( my_rval ) );
     break;
   }
   default:{
-    report_ambiguous_error( get_suffix(), suffix_rvals->convert_set<IIR_TypeDefinition*>() );
+    report_ambiguous_error( get_suffix(), suffix_rvals.convert_set<IIR_TypeDefinition>() );
   }
   }
 }

@@ -40,21 +40,21 @@ class IIRBase_ForLoopStatement : public virtual IIRBase_SequentialStatement, pub
 
 public:
   // List Accessor(s)
-  IIR_SequentialStatementList   *get_sequence_of_statements();
-  void                          set_sequence_of_statements(IIR_SequentialStatementList *new_sequence_of_statements);
+  IIR_SequentialStatementListRef get_sequence_of_statements();
+  void                           set_sequence_of_statements(IIR_SequentialStatementListRef new_sequence_of_statements);
 
-  IIR_Kind get_kind() const {return IIR_FOR_LOOP_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_ForLoopStatement";}
+  IIR_Kind get_kind() const override { return IIR_FOR_LOOP_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ForLoopStatement"); }
 
-  void set_iteration_scheme( IIR_ConstantDeclaration* iterator);
-  IIR_ConstantDeclaration* get_iteration_scheme();
+  void set_iteration_scheme( IIR_ConstantDeclarationRef iterator);
+  IIR_ConstantDeclarationRef get_iteration_scheme();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
  
   IIR_Boolean has_statement_list() { return TRUE; }
   IIR_Boolean is_above_attribute_found();
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef  );
 
   void publish_vhdl(ostream &);
 protected:
@@ -63,9 +63,9 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_SequentialStatementList *sequence_of_statements;
+  IIR_SequentialStatementListRef sequence_of_statements;
 
-  IIR_ConstantDeclaration* iterator;
+  IIR_ConstantDeclarationRef iterator;
 
 };
 

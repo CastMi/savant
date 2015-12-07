@@ -29,7 +29,8 @@
 
 #include "savant_config.hh"
 #include "IIR_CaseStatementAlternative.hh"
-class IIR_ChoiceList;
+
+REF_FORWARD_DECL(IIR_ChoiceList);
 
 /*
  * Element simple name
@@ -40,8 +41,8 @@ public:
   virtual ~IIR_CaseStatementAlternativeByChoices() {}
     
   // List accessor(s)
-  virtual IIR_ChoiceList        *get_choices() = 0;
-  virtual void                  set_choices(IIR_ChoiceList *) = 0;
+  virtual IIR_ChoiceListRef get_choices() = 0;
+  virtual void                  set_choices(IIR_ChoiceListRef ) = 0;
 };
 
 typedef refcount<IIR_CaseStatementAlternativeByChoices> IIR_CaseStatementAlternativeByChoicesRef;

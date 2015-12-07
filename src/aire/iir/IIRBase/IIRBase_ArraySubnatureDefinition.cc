@@ -25,6 +25,7 @@
 #include "IIRBase_ArraySubnatureDefinition.hh"
 #include "IIRBase_ScalarTypeDefinition.hh"
 #include "IIR_Declaration.hh"
+#include <boost/pointer_cast.hpp>
 
 IIRBase_ArraySubnatureDefinition::IIRBase_ArraySubnatureDefinition(){}
 
@@ -45,7 +46,7 @@ IIRBase_ArraySubnatureDefinition::publish_vhdl( ostream &vhdl_out ){
     get_base_type()->publish_vhdl(vhdl_out);
     if (get_resolved_index_subtype() != NULL) {
       vhdl_out << "(";
-      dynamic_cast<IIRBase_ScalarTypeDefinition *>
+      my_dynamic_pointer_cast<IIRBase_ScalarTypeDefinition>
 	(get_resolved_index_subtype())->publish_vhdl_range(vhdl_out);
       vhdl_out << ")";
     }
@@ -72,7 +73,7 @@ IIRBase_ArraySubnatureDefinition::publish_vhdl_type_decl( ostream &vhdl_out ){
     max_index = get_num_indexes();
     for( node = this;
 	 index <= max_index;
-	 index++, node = dynamic_cast<IIRBase_TypeDefinition *>(node->get_element_subtype()) ){
+	 index++, node = my_dynamic_pointer_cast<IIRBase_TypeDefinition>(node->get_element_subtype()).get() ){
       ASSERT(node->is_array_type() == TRUE );
       ASSERT(node->get_resolved_index_subtype() != NULL );
       ASSERT(node->get_element_subtype() != NULL );
@@ -80,8 +81,8 @@ IIRBase_ArraySubnatureDefinition::publish_vhdl_type_decl( ostream &vhdl_out ){
         vhdl_out << ", ";
       }
 
-      dynamic_cast<IIRBase_ScalarTypeDefinition *>
-	(node->get_resolved_index_subtype())->publish_vhdl_index(vhdl_out);
+      my_dynamic_pointer_cast<IIRBase_ScalarTypeDefinition>
+	(node->get_resolved_index_subtype()).get()->publish_vhdl_index(vhdl_out);
     }
 
     vhdl_out << " ) ";
@@ -110,7 +111,7 @@ IIRBase_ArraySubnatureDefinition::publish_vhdl_decl(ostream &vhdl_out) {
     max_index = get_num_indexes();
     for (node = this;
 	 index <= max_index; index++,
-	   node = dynamic_cast<IIRBase_TypeDefinition *>(node->get_element_subtype()) ){
+	   node = my_dynamic_pointer_cast<IIRBase_TypeDefinition>(node->get_element_subtype()).get() ){
       ASSERT(node->is_array_type() == TRUE );
       ASSERT(node->get_resolved_index_subtype() != NULL );
       ASSERT(node->get_element_subtype() != NULL );
@@ -118,8 +119,8 @@ IIRBase_ArraySubnatureDefinition::publish_vhdl_decl(ostream &vhdl_out) {
         vhdl_out << ", ";
       }
 
-      dynamic_cast<IIRBase_ScalarTypeDefinition *>
-	(node->get_resolved_index_subtype())->publish_vhdl_index(vhdl_out);
+      my_dynamic_pointer_cast<IIRBase_ScalarTypeDefinition>
+	(node->get_resolved_index_subtype()).get()->publish_vhdl_index(vhdl_out);
     }
 
     vhdl_out << " ) ";

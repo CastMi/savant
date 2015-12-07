@@ -34,39 +34,28 @@
 #include "IIRBase_Name.hh"
 #include "IIR_TextLiteral.hh"
 
-IIRBase_GroupDeclaration::IIRBase_GroupDeclaration()  :
-  group_constituent_list(0),
-  attributes(0),
-  group_template_name(0){}
-
-IIRBase_GroupDeclaration::~IIRBase_GroupDeclaration(){
-  delete group_constituent_list;
-  group_constituent_list = 0;
-  delete attributes;
-  attributes = 0;
-  delete group_template_name;
-  group_template_name = 0;
-}
+IIRBase_GroupDeclaration::IIRBase_GroupDeclaration() {}
+IIRBase_GroupDeclaration::~IIRBase_GroupDeclaration() {}
 
 void
-IIRBase_GroupDeclaration:: set_group_template( IIR_Name *group_template_name ){
+IIRBase_GroupDeclaration:: set_group_template( IIR_NameRef group_template_name ){
   this->group_template_name = group_template_name;
 }
 
-IIR_Name*
+IIR_NameRef
 IIRBase_GroupDeclaration::get_group_template_name() {
   return group_template_name;
 }
 
 
 // List Accessor(s)
-IIR_DesignatorList *
+IIR_DesignatorListRef
 IIRBase_GroupDeclaration::get_group_constituent_list() {
   ASSERT(group_constituent_list != NULL);
   return group_constituent_list;
 }
 
-IIR_AttributeSpecificationList *
+IIR_AttributeSpecificationListRef
 IIRBase_GroupDeclaration::get_attributes() {
   ASSERT(attributes != NULL);
   return attributes;
@@ -74,28 +63,26 @@ IIRBase_GroupDeclaration::get_attributes() {
 
 
 void
-IIRBase_GroupDeclaration::set_group_constituent_list(IIR_DesignatorList *new_group_constituent_list) {
+IIRBase_GroupDeclaration::set_group_constituent_list(IIR_DesignatorListRef new_group_constituent_list) {
   ASSERT(new_group_constituent_list != NULL);
-  delete group_constituent_list;
   group_constituent_list = new_group_constituent_list;
 }
 
 void
-IIRBase_GroupDeclaration::set_attributes(IIR_AttributeSpecificationList *new_attributes) {
+IIRBase_GroupDeclaration::set_attributes(IIR_AttributeSpecificationListRef new_attributes) {
   ASSERT(new_attributes != NULL);
-  delete attributes;
   attributes = new_attributes;
 }
 
-IIR *
-IIRBase_GroupDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_GroupDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_GroupDeclaration *new_node = dynamic_cast<IIRBase_GroupDeclaration *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_GroupDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_GroupDeclaration>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->group_constituent_list = dynamic_cast<IIR_DesignatorList *>(convert_node(group_constituent_list, factory));
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
-  new_node->group_template_name = dynamic_cast<IIR_Name *>(convert_node(group_template_name, factory));
+  new_node->group_constituent_list = my_dynamic_pointer_cast<IIR_DesignatorList>(convert_node(group_constituent_list, factory));
+  new_node->attributes = my_dynamic_pointer_cast<IIR_AttributeSpecificationList>(convert_node(attributes, factory));
+  new_node->group_template_name = my_dynamic_pointer_cast<IIR_Name>(convert_node(group_template_name, factory));
 
   return new_node;
 }
@@ -110,7 +97,7 @@ IIRBase_GroupDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out << " group ";
   get_declarator()->publish_vhdl(vhdl_out);
   vhdl_out << " : ";
-  dynamic_cast<IIRBase_Name *>(get_group_template_name())->publish_vhdl(vhdl_out);
+  my_dynamic_pointer_cast<IIRBase_Name>(get_group_template_name())->publish_vhdl(vhdl_out);
   vhdl_out << " ( ";
   // XXX till it is fixed in aire spec let this be commented
   //  get_group_constituent_list()->publish_vhdl(vhdl_out);

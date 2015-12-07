@@ -29,27 +29,26 @@ IIRBase_CaseStatementAlternativeByChoices::~IIRBase_CaseStatementAlternativeByCh
 }
 
 // List Accessor(s)
-IIR_ChoiceList *
+IIR_ChoiceListRef
 IIRBase_CaseStatementAlternativeByChoices::get_choices() {
-  ASSERT(choices != NULL);
+  ASSERT(choices != nullptr);
   return choices;
 }
 
 
 void
-IIRBase_CaseStatementAlternativeByChoices::set_choices(IIR_ChoiceList *new_choices) {
-  ASSERT(new_choices != NULL);
-  delete choices;
+IIRBase_CaseStatementAlternativeByChoices::set_choices(IIR_ChoiceListRef new_choices) {
+  ASSERT(new_choices != nullptr);
   choices = new_choices;
 }
 
-IIR *
-IIRBase_CaseStatementAlternativeByChoices::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_CaseStatementAlternativeByChoices::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_CaseStatementAlternativeByChoices *new_node = dynamic_cast<IIRBase_CaseStatementAlternativeByChoices *>(IIRBase_CaseStatementAlternative::convert_tree(factory));
+  IIRBase_CaseStatementAlternativeByChoicesRef new_node = my_dynamic_pointer_cast<IIRBase_CaseStatementAlternativeByChoices>(IIRBase_CaseStatementAlternative::convert_tree(factory));
 
   // Process the variables
-  new_node->choices = dynamic_cast<IIR_ChoiceList *>(convert_node(choices, factory));
+  new_node->choices = my_dynamic_pointer_cast<IIR_ChoiceList>(convert_node(choices, factory));
 
   return new_node;
 }
@@ -57,13 +56,13 @@ IIRBase_CaseStatementAlternativeByChoices::convert_tree(plugin_class_factory *fa
 IIR_Boolean 
 IIRBase_CaseStatementAlternativeByChoices::is_resolved(){
   IIR_Boolean retval = TRUE;
-  IIR_Choice *current_choice = dynamic_cast<IIR_Choice *>(get_choices()->first());
-  while( current_choice != NULL ){
+  IIR_ChoiceRef current_choice = my_dynamic_pointer_cast<IIR_Choice>(get_choices()->first());
+  while( current_choice != nullptr ){
     if( current_choice->is_resolved() == FALSE ){
       retval = FALSE;
       break;
     }
-    current_choice = dynamic_cast<IIR_Choice *>(get_choices()->successor( current_choice ));
+    current_choice = my_dynamic_pointer_cast<IIR_Choice>(get_choices()->successor( current_choice ));
   }
   return retval;
 }

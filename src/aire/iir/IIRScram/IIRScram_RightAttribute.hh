@@ -50,12 +50,12 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  IIRScram_TypeDefinition *_get_subtype();
-  IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
+  IIRScram_TypeDefinitionRef _get_subtype();
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &, IIRScram_TypeDefinitionRef  );
 
-  void _set_suffix( IIRScram *new_suffix ){ IIRBase_RightAttribute::set_suffix( new_suffix ); }
+  void _set_suffix( IIRScramRef new_suffix ){ IIRBase_RightAttribute::set_suffix( new_suffix ); }
 
-  virtual savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0); 
+  virtual savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0); 
 
 protected:
   void _resolve_suffix_special();    

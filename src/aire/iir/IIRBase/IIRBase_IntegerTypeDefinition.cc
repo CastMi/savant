@@ -36,18 +36,18 @@
 IIRBase_IntegerTypeDefinition::IIRBase_IntegerTypeDefinition() {}
 IIRBase_IntegerTypeDefinition::~IIRBase_IntegerTypeDefinition() {}
 
-IIR_TypeDefinition *
-IIRBase_IntegerTypeDefinition::check_special_compatible( IIR_TypeDefinition *to_check ){
-  StandardPackage *package = to_check->get_design_file()->get_standard_package();
+IIR_TypeDefinitionRef
+IIRBase_IntegerTypeDefinition::check_special_compatible( IIR_TypeDefinitionRef to_check ){
+  StandardPackageRef package = to_check->get_design_file()->get_standard_package();
   // Note that it things like array indexes can be subtypes of universal
   // integer so we'll cut to the chase and simply check base types.
-  IIR_TypeDefinition *package_base_type = 
-    dynamic_cast<IIR_TypeDefinition *>(package->get_savant_universal_integer())->get_bottom_base_type();
+  IIR_TypeDefinitionRef package_base_type = 
+    my_dynamic_pointer_cast<IIR_TypeDefinition>(package->get_savant_universal_integer())->get_bottom_base_type();
 
   if( (to_check->get_bottom_base_type() == package_base_type) ||
       (( get_bottom_base_type() == package_base_type) &&
-       dynamic_cast<IIR_IntegerTypeDefinition *>(to_check) != NULL ) ) {
-    return dynamic_cast<IIR_TypeDefinition *>(package->get_savant_universal_integer());
+       my_dynamic_pointer_cast<IIR_IntegerTypeDefinition>(to_check) != nullptr ) ) {
+    return my_dynamic_pointer_cast<IIR_TypeDefinition>(package->get_savant_universal_integer());
   }
   else{
     return NULL;

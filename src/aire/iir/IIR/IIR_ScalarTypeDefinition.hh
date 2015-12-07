@@ -36,12 +36,12 @@ class IIR_ScalarTypeDefinition : public virtual IIR_TypeDefinition{
 public:
   virtual ~IIR_ScalarTypeDefinition() {}
     
-  virtual void set_left( IIR* left) = 0;
-  virtual IIR* get_left() = 0;
-  virtual void set_direction( IIR* direction) = 0;
-  virtual IIR* get_direction() = 0;
-  virtual void set_right(IIR* right) = 0;
-  virtual IIR* get_right() = 0;
+  virtual void set_left( IIRRef left) = 0;
+  virtual IIRRef get_left() = 0;
+  virtual void set_direction( IIRRef direction) = 0;
+  virtual IIRRef get_direction() = 0;
+  virtual void set_right(IIRRef right) = 0;
+  virtual IIRRef get_right() = 0;
 };
 
 typedef refcount<IIR_ScalarTypeDefinition> IIR_ScalarTypeDefinitionRef;

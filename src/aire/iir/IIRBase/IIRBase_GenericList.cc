@@ -24,6 +24,7 @@
 //          Dale E. Martin	dmartin@cliftonlabs.com
 
 //---------------------------------------------------------------------------
+
 #include "savant.hh"
 #include "IIRBase_ConstantInterfaceDeclaration.hh"
 #include "IIRBase_GenericList.hh"
@@ -33,20 +34,20 @@ IIRBase_GenericList::IIRBase_GenericList() {}
 IIRBase_GenericList::~IIRBase_GenericList() {}
 
 void
-IIRBase_GenericList::prepend( IIR_ConstantInterfaceDeclaration* element ){
+IIRBase_GenericList::prepend( IIR_ConstantInterfaceDeclarationRef element ){
   ASSERT( element->get_kind() == IIR_CONSTANT_INTERFACE_DECLARATION );  
   IIRBase_InterfaceList::prepend( element );
 }
 
 void
-IIRBase_GenericList::append( IIR_ConstantInterfaceDeclaration* element ){
+IIRBase_GenericList::append( IIR_ConstantInterfaceDeclarationRef element ){
   ASSERT( element->get_kind() == IIR_CONSTANT_INTERFACE_DECLARATION );  
   IIRBase_InterfaceList::append( element );
 }
 
 IIR_Boolean 
-IIRBase_GenericList::insert_after( IIR_ConstantInterfaceDeclaration* existing_element,
-				   IIR_ConstantInterfaceDeclaration* new_element) {
+IIRBase_GenericList::insert_after( IIR_ConstantInterfaceDeclarationRef existing_element,
+				   IIR_ConstantInterfaceDeclarationRef new_element) {
 
   ASSERT( existing_element->get_kind() == IIR_CONSTANT_INTERFACE_DECLARATION );
   ASSERT( new_element->get_kind() == IIR_CONSTANT_INTERFACE_DECLARATION );
@@ -57,78 +58,76 @@ IIRBase_GenericList::insert_after( IIR_ConstantInterfaceDeclaration* existing_el
 }
 
 IIR_Boolean
-IIRBase_GenericList::insert_before_element(  IIR_ConstantInterfaceDeclaration *,
-					     IIR_ConstantInterfaceDeclaration * ){
+IIRBase_GenericList::insert_before_element(  IIR_ConstantInterfaceDeclarationRef ,
+					     IIR_ConstantInterfaceDeclarationRef ){
 
   ASSERT(0);  // This function not defined
 
   return true;
 }
 
-IIR*
-IIRBase_GenericList::successor( IIR_ConstantInterfaceDeclaration* element ) {
+IIRRef
+IIRBase_GenericList::successor( IIR_ConstantInterfaceDeclarationRef element ) {
 
-  IIR_InterfaceDeclaration *retval = dynamic_cast<IIR_InterfaceDeclaration *>(IIRBase_InterfaceList::successor( element ));
+  IIR_InterfaceDeclarationRef retval = my_dynamic_pointer_cast<IIR_InterfaceDeclaration>(IIRBase_InterfaceList::successor( element ));
 
   return retval;
 }
 
-IIR*
-IIRBase_GenericList::predecessor( IIR_ConstantInterfaceDeclaration *element ){
+IIRRef
+IIRBase_GenericList::predecessor( IIR_ConstantInterfaceDeclarationRef element ){
   ASSERT( element->get_kind() == IIR_CONSTANT_INTERFACE_DECLARATION );
 
-  IIR_InterfaceDeclaration *retval = dynamic_cast<IIR_InterfaceDeclaration *>(IIRBase_InterfaceList::predecessor( element ));
+  IIR_InterfaceDeclarationRef retval = my_dynamic_pointer_cast<IIR_InterfaceDeclaration>(IIRBase_InterfaceList::predecessor( element ));
   
-  ASSERT( retval == NULL || retval->get_kind() == IIR_CONSTANT_INTERFACE_DECLARATION );
+  ASSERT( retval == nullptr || retval->get_kind() == IIR_CONSTANT_INTERFACE_DECLARATION );
 
   return retval;
 }
 
-IIR *
+IIRRef
 IIRBase_GenericList::first( ) {
-  IIR_InterfaceDeclaration *retval = dynamic_cast<IIR_InterfaceDeclaration *>(IIRBase_InterfaceList::first());
+  IIR_InterfaceDeclarationRef retval = my_dynamic_pointer_cast<IIR_InterfaceDeclaration>(IIRBase_InterfaceList::first());
   
-  ASSERT( retval == NULL || retval->get_kind() == IIR_CONSTANT_INTERFACE_DECLARATION );
+  ASSERT( retval == nullptr || retval->get_kind() == IIR_CONSTANT_INTERFACE_DECLARATION );
 
   return retval;
 }
 
-IIR*
+IIRRef
 IIRBase_GenericList::get_nth_element( IIR_Int32 position ){
   
-  IIR_InterfaceDeclaration *retval = dynamic_cast<IIR_InterfaceDeclaration *>(IIRBase_InterfaceList::get_nth_element( position ));
+  IIR_InterfaceDeclarationRef retval = my_dynamic_pointer_cast<IIR_InterfaceDeclaration>(IIRBase_InterfaceList::get_nth_element( position ));
   
-  ASSERT( retval == NULL || retval->get_kind() == IIR_CONSTANT_INTERFACE_DECLARATION );
+  ASSERT( retval == nullptr || retval->get_kind() == IIR_CONSTANT_INTERFACE_DECLARATION );
 
   return retval;  
 }
 
-IIR*
+IIRRef
 IIRBase_GenericList::last() {
-  IIR_InterfaceDeclaration *retval = dynamic_cast<IIR_InterfaceDeclaration *>(IIRBase_InterfaceList::last());
+  IIR_InterfaceDeclarationRef retval = my_dynamic_pointer_cast<IIR_InterfaceDeclaration>(IIRBase_InterfaceList::last());
   
-  ASSERT( retval == NULL || retval->get_kind() == IIR_CONSTANT_INTERFACE_DECLARATION );
+  ASSERT( retval == nullptr || retval->get_kind() == IIR_CONSTANT_INTERFACE_DECLARATION );
 
   return retval;
 }
 
 IIR_Int32
-IIRBase_GenericList::get_position( IIR_ConstantInterfaceDeclaration* element ) {
+IIRBase_GenericList::get_position( IIR_ConstantInterfaceDeclarationRef element ) {
 
   return IIRBase_InterfaceList::get_position(element);
 }
 
-
-
 void 
 IIRBase_GenericList::publish_vhdl(ostream &vhdl_out) {
-  IIRBase_ConstantInterfaceDeclaration* i = NULL;
-  for(i = dynamic_cast<IIRBase_ConstantInterfaceDeclaration *>(first()); 
-      i != NULL;) {
+  IIRBase_ConstantInterfaceDeclarationRef i;
+  for(i = my_dynamic_pointer_cast<IIRBase_ConstantInterfaceDeclaration>(first()); 
+      i != nullptr;) {
     vhdl_out << "  ";
     i->publish_vhdl_decl(vhdl_out);
-    i = dynamic_cast<IIRBase_ConstantInterfaceDeclaration *>(successor(i));
-    if (i != NULL) {
+    i = my_dynamic_pointer_cast<IIRBase_ConstantInterfaceDeclaration>(successor(i));
+    if (i != nullptr) {
       vhdl_out << ";\n";
     }
   }

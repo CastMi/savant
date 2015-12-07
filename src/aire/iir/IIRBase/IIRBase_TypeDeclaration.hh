@@ -38,33 +38,33 @@ class IIR_AttributeSpecificationList;
 class IIRBase_TypeDeclaration : public virtual IIRBase_Declaration, public virtual IIR_TypeDeclaration{
 public:
   // List Accessor(s)
-  IIR_AttributeSpecificationList        *get_attributes();
-  void                                  set_attributes(IIR_AttributeSpecificationList *new_attributes);
+  IIR_AttributeSpecificationListRef   get_attributes();
+  void                                set_attributes(IIR_AttributeSpecificationListRef new_attributes);
 
-  IIR_Kind get_kind() const {return IIR_TYPE_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_TypeDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_TYPE_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_TypeDeclaration"); }
 
-  void set_type(IIR_TypeDefinition* type);
-  IIR_TypeDefinition* get_type();
+  void set_type(IIR_TypeDefinitionRef type);
+  IIR_TypeDefinitionRef get_type();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_incomplete_type_declaration();
   IIR_Boolean is_type(){ return TRUE; }
   IIR_Boolean is_type_declaration(){ return TRUE; }
   IIR_Boolean is_locally_static();
 
-  IIR_TypeDefinition *get_subtype();
+  IIR_TypeDefinitionRef get_subtype();
 
   declaration_type get_declaration_type();
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
-  savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral * );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef  );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_TextLiteralRef  );
 
   // This varies depending on the definition.  For Scalar types the get/set operators
   // for AccessTypeDeclaration it builds the deallocate functions, etc.
-  savant::set<IIR_Declaration*> *get_implicit_declarations();
-  void set_implicit_declarations( savant::set<IIR_Declaration*> *);
+  savant::set<IIR_DeclarationRef> get_implicit_declarations();
+  void set_implicit_declarations( savant::set<IIR_DeclarationRef> );
   void publish_vhdl_decl(ostream &);
   void publish_vhdl_range(ostream &);
 protected:
@@ -73,10 +73,10 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_AttributeSpecificationList *attributes;  
-  IIR_TypeDefinition* type;
+  IIR_AttributeSpecificationListRef attributes;  
+  IIR_TypeDefinitionRef type;
 
-  savant::set<IIR_Declaration*> *implicit_declarations;
+  savant::set<IIR_DeclarationRef> implicit_declarations;
 };
 
 typedef refcount<IIRBase_TypeDeclaration> IIRBase_TypeDeclarationRef;

@@ -40,8 +40,8 @@ public:
     
   virtual void set_pure(IIR_Pure purity) = 0;
   virtual IIR_Pure get_pure() = 0;
-  virtual void set_return_type( IIR_TypeDefinition* return_type) = 0;
-  virtual IIR_TypeDefinition* get_return_type() = 0;
+  virtual void set_return_type( IIR_TypeDefinitionRef return_type) = 0;
+  virtual IIR_TypeDefinitionRef get_return_type() = 0;
 };
 
 typedef refcount<IIR_FunctionDeclaration> IIR_FunctionDeclarationRef;

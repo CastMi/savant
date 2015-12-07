@@ -32,7 +32,6 @@ IIRBase_EntityClassEntry::IIRBase_EntityClassEntry(){
   my_entity_kind = _IIR_ERROR;
   my_is_boxed = FALSE;
 }
-
 IIRBase_EntityClassEntry::~IIRBase_EntityClassEntry() {}
 
 void  
@@ -55,10 +54,10 @@ IIRBase_EntityClassEntry::get_boxed(){
   return my_is_boxed;
 }
 
-IIR *
-IIRBase_EntityClassEntry::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_EntityClassEntry::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_EntityClassEntry *new_node = dynamic_cast<IIRBase_EntityClassEntry *>(IIRBase_Tuple::convert_tree(factory));
+  IIRBase_EntityClassEntryRef new_node = my_dynamic_pointer_cast<IIRBase_EntityClassEntry>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
   new_node->my_entity_kind = my_entity_kind;

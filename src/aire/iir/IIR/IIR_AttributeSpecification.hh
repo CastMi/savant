@@ -31,8 +31,12 @@
 
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
+
+REF_FORWARD_DECL(IIR_DesignatorList);
+//REF_FORWARD_DECL(IIR);
+//REF_FORWARD_DECL(IIR);
+
 class IIR_Identifier;
-class IIR_DesignatorList;
 class IIR_Declaration;
 
 class IIR_AttributeSpecification : public virtual IIR_Declaration{
@@ -41,18 +45,18 @@ public:
   virtual ~IIR_AttributeSpecification() {}
     
   // List accessor(s)
-  virtual IIR_DesignatorList *get_entity_name_list() = 0;
+  virtual IIR_DesignatorListRef get_entity_name_list() = 0;
 
-  virtual void set_value(IIR*) = 0;
-  virtual IIR *get_value() = 0;
+  virtual void set_value( IIRRef ) = 0;
+  virtual IIRRef get_value() = 0;
 
-  virtual void set_entity_class(IIR_Identifier *) = 0;
-  virtual IIR_Identifier *get_entity_class() = 0;
+  virtual void set_entity_class(IIR_IdentifierRef ) = 0;
+  virtual IIR_IdentifierRef get_entity_class() = 0;
 
   /** This holds the the declaration of the attribute that is being
       specified... */
-  virtual void set_declaration( IIR_Declaration *) = 0;
-  virtual IIR_Declaration *get_declaration() = 0;
+  virtual void set_declaration( IIR_DeclarationRef ) = 0;
+  virtual IIR_DeclarationRef get_declaration() = 0;
 
 };
 

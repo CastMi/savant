@@ -26,72 +26,57 @@
 #include "IIR_TextLiteral.hh"
 #include "IIRBase_ComponentDeclaration.hh"
 
-IIRBase_ComponentDeclaration::IIRBase_ComponentDeclaration() :
-  entity(0),
-  local_generic_clause(0),
-  local_port_clause(0),
-  attributes(0) {
-}
+IIRBase_ComponentDeclaration::IIRBase_ComponentDeclaration() {}
 
-IIRBase_ComponentDeclaration::~IIRBase_ComponentDeclaration(){
-}
+IIRBase_ComponentDeclaration::~IIRBase_ComponentDeclaration() {}
 
 // List Accessor(s)
-IIR_GenericList *
+IIR_GenericListRef
 IIRBase_ComponentDeclaration::get_local_generic_clause() {
-  ASSERT(local_generic_clause != NULL);
+  ASSERT(local_generic_clause != nullptr);
   return local_generic_clause;
 }
 
-IIR_PortList *
+IIR_PortListRef
 IIRBase_ComponentDeclaration::get_local_port_clause() {
-  ASSERT(local_port_clause != NULL);
+  ASSERT(local_port_clause != nullptr);
   return local_port_clause;
 }
 
-IIR_AttributeSpecificationList *
+IIR_AttributeSpecificationListRef
 IIRBase_ComponentDeclaration::get_attributes() {
-  ASSERT(attributes != NULL);
+  ASSERT(attributes != nullptr);
   return attributes;
 }
 
 void
-IIRBase_ComponentDeclaration::set_local_generic_clause(IIR_GenericList *new_local_generic_clause) {
+IIRBase_ComponentDeclaration::set_local_generic_clause(IIR_GenericListRef new_local_generic_clause) {
   ASSERT(new_local_generic_clause != NULL);
-
-  if (local_generic_clause != NULL)
-    delete local_generic_clause;
-
   local_generic_clause = new_local_generic_clause;
 }
 
 void
-IIRBase_ComponentDeclaration::set_local_port_clause(IIR_PortList *new_local_port_clause) {
-  ASSERT(new_local_port_clause != NULL);
-
-  if (local_port_clause != NULL)
-    delete local_port_clause;
-
+IIRBase_ComponentDeclaration::set_local_port_clause(IIR_PortListRef new_local_port_clause) {
+  ASSERT(new_local_port_clause != nullptr);
   local_port_clause = new_local_port_clause;
 }
 
 void
-IIRBase_ComponentDeclaration::set_attributes(IIR_AttributeSpecificationList *new_attributes) {
-  ASSERT(new_attributes != NULL);
-  delete attributes;
+IIRBase_ComponentDeclaration::set_attributes(IIR_AttributeSpecificationListRef new_attributes) {
+  ASSERT(new_attributes != nullptr);
   attributes = new_attributes;
 }
 
-IIR *
-IIRBase_ComponentDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ComponentDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ComponentDeclaration *new_node = dynamic_cast<IIRBase_ComponentDeclaration *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_ComponentDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_ComponentDeclaration>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->entity = dynamic_cast<IIR_EntityDeclaration *>(convert_node(entity, factory));
-  new_node->local_generic_clause = dynamic_cast<IIR_GenericList *>(convert_node(local_generic_clause, factory));
-  new_node->local_port_clause = dynamic_cast<IIR_PortList *>(convert_node(local_port_clause, factory));
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
+  new_node->entity = my_dynamic_pointer_cast<IIR_EntityDeclaration>(convert_node(entity, factory));
+  new_node->local_generic_clause = my_dynamic_pointer_cast<IIR_GenericList>(convert_node(local_generic_clause, factory));
+  new_node->local_port_clause = my_dynamic_pointer_cast<IIR_PortList>(convert_node(local_port_clause, factory));
+  new_node->attributes = my_dynamic_pointer_cast<IIR_AttributeSpecificationList>(convert_node(attributes, factory));
 
   return new_node;
 }
@@ -101,21 +86,16 @@ IIRBase_ComponentDeclaration::get_declaration_type(){
    return COMPONENT;
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_ComponentDeclaration::find_declarations( IIR_Name *to_find ){
-  savant::set<IIR_Declaration*> *retval = new savant::set<IIR_Declaration*>;
-  savant::set<IIR_Declaration*> *current_set = get_local_generic_clause()->find_declarations( to_find );
-  if( current_set != NULL ){
-    retval->insert( current_set );
-  } 
+savant::set<IIR_DeclarationRef>
+IIRBase_ComponentDeclaration::find_declarations( IIR_NameRef to_find ){
+  savant::set<IIR_DeclarationRef> retval;
+
+  savant::set<IIR_DeclarationRef> current_set = get_local_generic_clause()->find_declarations( to_find );
+  retval.insert( current_set );
+
   current_set = get_local_port_clause()->find_declarations( to_find );
-  if( current_set != NULL ){
-    retval->insert( current_set );
-  }
-  if ( retval->size() == 0 ){
-    delete retval;
-    retval = NULL;
-  }
+  retval.insert( current_set );
+
   return retval;
 }
 
@@ -141,11 +121,11 @@ IIRBase_ComponentDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
 }
 
 void 
-IIRBase_ComponentDeclaration::set_entity( IIR_EntityDeclaration *entity ){
+IIRBase_ComponentDeclaration::set_entity( IIR_EntityDeclarationRef entity ){
   this->entity = entity;
 }
 
-IIR_EntityDeclaration *
+IIR_EntityDeclarationRef
 IIRBase_ComponentDeclaration::get_entity(){
   return entity;
 }

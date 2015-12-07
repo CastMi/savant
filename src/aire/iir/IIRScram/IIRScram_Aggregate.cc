@@ -46,24 +46,21 @@
 #include "symbol_table.hh"
 #include <sstream>
 
-IIRScram_Aggregate::IIRScram_Aggregate(){
-  set_element_association_list(new IIRScram_AssociationList());
-}
-
-IIRScram_Aggregate::~IIRScram_Aggregate(){}
+IIRScram_Aggregate::IIRScram_Aggregate() {}
+IIRScram_Aggregate::~IIRScram_Aggregate() {}
 
 IIR_Boolean 
 IIRScram_Aggregate::_is_readable( ){
   IIR_Boolean retval = TRUE;
-  IIRScram_AssociationElement *current_assoc;
-  IIRScram_AssociationList *list = dynamic_cast<IIRScram_AssociationList *>(get_element_association_list());
+  IIRScram_AssociationElementRef current_assoc;
+  IIRScram_AssociationListRef list = my_dynamic_pointer_cast<IIRScram_AssociationList>(get_element_association_list());
 
-  current_assoc = dynamic_cast<IIRScram_AssociationElement *>(list->first());
+  current_assoc = my_dynamic_pointer_cast<IIRScram_AssociationElement>(list->first());
   while( current_assoc != NULL ){
     if( current_assoc->_is_readable() == FALSE ){
       retval = FALSE;
     }
-    current_assoc = dynamic_cast<IIRScram_AssociationElement *>(list->successor( current_assoc ));
+    current_assoc = my_dynamic_pointer_cast<IIRScram_AssociationElement>(list->successor( current_assoc ));
   }
 
   return retval;
@@ -73,54 +70,53 @@ IIRScram_Aggregate::_is_readable( ){
 IIR_Boolean 
 IIRScram_Aggregate::_is_writable( ){
   IIR_Boolean retval = TRUE;
-  IIRScram_AssociationElement *current_assoc;
-  IIRScram_AssociationList *list = dynamic_cast<IIRScram_AssociationList *>(get_element_association_list());
+  IIRScram_AssociationElementRef current_assoc;
+  IIRScram_AssociationListRef list = my_dynamic_pointer_cast<IIRScram_AssociationList>(get_element_association_list());
 
-  current_assoc = dynamic_cast<IIRScram_AssociationElement *>(list->first());
+  current_assoc = my_dynamic_pointer_cast<IIRScram_AssociationElement>(list->first());
   while( current_assoc != NULL ){
     if( current_assoc->_is_writable() == FALSE ){
       retval = FALSE;
     }
-    current_assoc = dynamic_cast<IIRScram_AssociationElement *>(list->successor( current_assoc ));
+    current_assoc = my_dynamic_pointer_cast<IIRScram_AssociationElement>(list->successor( current_assoc ));
   }
 
   return retval;
 }
 
-savant::set<IIRScram_TypeDefinition*> *
+savant::set<IIRScram_TypeDefinitionRef>
 IIRScram_Aggregate::_get_rval_set( constraint_functor * ){
   // This implements lines 390 - 395, page 103 of the '93 LRM
-  savant::set<IIRScram_TypeDefinition*> *retval = new savant::set<IIRScram_TypeDefinition*>;
+  savant::set<IIRScram_TypeDefinitionRef> retval;
 
   // Add all in scope array types.
-  savant::set<IIRScram_ArrayTypeDefinition*> *array_types = _get_symbol_table()->get_in_scope_array_types()->convert_set<IIRScram_ArrayTypeDefinition*>();
-  for(auto it = array_types->begin(); it != array_types->end(); it++) {
+  savant::set<IIRScram_ArrayTypeDefinitionRef> array_types = _get_symbol_table()->get_in_scope_array_types().convert_set<IIRScram_ArrayTypeDefinition>();
+  for(auto it = array_types.begin(); it != array_types.end(); it++) {
     ASSERT( *it != NULL );
     ASSERT( (*it)->is_array_type() == TRUE );
-    retval->insert( *it );
+    retval.insert( *it );
   }
 
   // Add all in scope record types.
-  savant::set<IIRScram_RecordTypeDefinition*> *record_types = _get_symbol_table()->get_in_scope_record_types()->convert_set<IIRScram_RecordTypeDefinition*>();
+  savant::set<IIRScram_RecordTypeDefinitionRef> record_types = _get_symbol_table()->get_in_scope_record_types().convert_set<IIRScram_RecordTypeDefinition>();
   
-  for(auto it = record_types->begin(); it != record_types->end(); it++) {
+  for(auto it = record_types.begin(); it != record_types.end(); it++) {
     ASSERT( *it != NULL );
     ASSERT( (*it)->is_record_type() == TRUE );
-    retval->insert( *it );
+    retval.insert( *it );
   }
-  delete record_types;
 
   return retval;
 }
 
 void 
-IIRScram_Aggregate::_type_check( savant::set<IIRScram_TypeDefinition*> * ){
+IIRScram_Aggregate::_type_check( savant::set<IIRScram_TypeDefinitionRef> ){
   // First set of type checks.
   IIR_Boolean           have_seen_named = false;
   IIR_Boolean           have_seen_others = false;
-  IIRScram_AssociationList *list = dynamic_cast<IIRScram_AssociationList *>(get_element_association_list());
+  IIRScram_AssociationListRef list = my_dynamic_pointer_cast<IIRScram_AssociationList>(get_element_association_list());
 
-  IIRScram_AssociationElement *current = dynamic_cast<IIRScram_AssociationElement *>(list->first());
+  IIRScram_AssociationElementRef current = my_dynamic_pointer_cast<IIRScram_AssociationElement>(list->first());
 
   while( current != NULL ){
     if( current->is_named() == TRUE ){
@@ -129,7 +125,7 @@ IIRScram_Aggregate::_type_check( savant::set<IIRScram_TypeDefinition*> * ){
     if( current->_is_positional() == TRUE && have_seen_named == TRUE ){
       ostringstream err;
       err << "Positional associations cannot follow named associations in an aggregate.";
-      report_error( current, err.str() );
+      report_error( current.get(), err.str() );
     }
 
     if( have_seen_others == TRUE ){
@@ -137,47 +133,46 @@ IIRScram_Aggregate::_type_check( savant::set<IIRScram_TypeDefinition*> * ){
       // after the others!
       ostringstream err;
       err << "No association can follow an \"others\" association in an aggregate.";
-      report_error( current, err.str() );      
+      report_error( current.get(), err.str() );      
     }
 
     if( current->is_by_others() == TRUE ){
       have_seen_others = TRUE;
     }
-    current = dynamic_cast<IIRScram_AssociationElement *>(list->successor( current ));
+    current = my_dynamic_pointer_cast<IIRScram_AssociationElement>(list->successor( current ));
   }
 }
 
 void 
-IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *my_type, 
-						      IIRScram_AssociationElement *starting_with ){
+IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinitionRef my_type, 
+						      IIRScram_AssociationElementRef starting_with ){
   ASSERT( my_type->_is_iir_record_type_definition() == TRUE );
 
-  IIRScram_AssociationElement *current_association = starting_with;
+  IIRScram_AssociationElementRef current_association = starting_with;
   while( current_association != NULL ){
     if( current_association->get_formal() != NULL ){
-      IIRScram *current_formal = dynamic_cast<IIRScram *>(current_association->get_formal());
+      IIRScramRef current_formal = my_dynamic_pointer_cast<IIRScram>(current_association->get_formal());
       
       switch( current_formal->get_kind() ){
       case IIR_SIMPLE_NAME:{
-	savant::set<IIRScram_Declaration*> *element_decls = NULL;
+	savant::set<IIRScram_DeclarationRef> element_decls;
         
-        if ( my_type->find_declarations( dynamic_cast<IIRScram_Name *>(current_formal) ) != NULL ){
-	  element_decls = my_type->find_declarations( dynamic_cast<IIRScram_Name *>(current_formal) )->convert_set<IIRScram_Declaration*>();
+        if ( my_type->find_declarations( my_dynamic_pointer_cast<IIRScram_Name>(current_formal) ).size() <= 0 ){
+	  element_decls = my_type->find_declarations( my_dynamic_pointer_cast<IIRScram_Name>(current_formal) ).convert_set<IIRScram_Declaration>();
         }
 
-	if( element_decls == NULL ){
+	if( element_decls.size() <= 0 ){
 	  ostringstream err;
 	  err << "Internal error - |" << *current_formal << "| was not found in record type |"
 	      << *my_type << "| in IIRScram_Aggregate::_rval_to_decl_process_named_part.";
 	  report_error( this, err.str() );
 	}
 	else{
-	  ASSERT( element_decls->size() == 1 );
-	  IIRScram_Declaration *element_decl = *(element_decls->begin());
-	  delete element_decls;
+	  ASSERT( element_decls.size() == 1 );
+	  IIRScram_DeclarationRef element_decl = *(element_decls.begin());
 	  
 	  current_association->set_formal( element_decl );
-	  IIRScram_TypeDefinition *actual_type = element_decl->_get_subtype();
+	  IIRScram_TypeDefinitionRef actual_type = element_decl->_get_subtype();
 	  
 	  ASSERT( current_association->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION );	
 	  current_association->set_actual( current_association->_get_actual()->_semantic_transform( actual_type ) );
@@ -196,7 +191,7 @@ IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *m
       default:{
 	if( current_formal->is_resolved() == TRUE ){
 	  // OK, formal is already resolved; we need to deal with the actual.
-	  IIRScram_TypeDefinition *actual_type = current_formal->_get_subtype();
+	  IIRScram_TypeDefinitionRef actual_type = current_formal->_get_subtype();
 	  ASSERT( current_association->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION );	
 	  current_association->set_actual( current_association->_get_actual()->_semantic_transform( actual_type ) );
 	  current_association->_get_actual()->_type_check( actual_type );
@@ -233,12 +228,12 @@ IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *m
       }
     }
 
-    current_association = dynamic_cast<IIRScram_AssociationElement *>(get_element_association_list()->successor( current_association ));
+    current_association = my_dynamic_pointer_cast<IIRScram_AssociationElement>(get_element_association_list()->successor( my_dynamic_pointer_cast<IIR_AssociationElement>(current_association) ));
   }
 }
 
-IIRScram *
-IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
+IIRScramRef
+IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinitionRef my_type ){
   ASSERT( my_type->is_array_type() == TRUE || my_type->is_record_type() );
   
   enum processing_mode_t { ARRAY, RECORD, ERROR };
@@ -252,13 +247,13 @@ IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
   }
 
   ASSERT( processing_mode != ERROR );
-  IIRScram_TypeDefinition *actual_type = NULL;
-  IIRScram_TypeDefinition *formal_type = NULL;
+  IIRScram_TypeDefinitionRef actual_type;
+  IIRScram_TypeDefinitionRef formal_type;
 
   int i;
   for( i = 0; i < get_element_association_list()->size(); i++ ){
-    IIRScram_AssociationElement *current_association 
-      = dynamic_cast<IIRScram_AssociationElement *>(get_element_association_list()->get_nth_element( i ));
+    IIRScram_AssociationElementRef current_association 
+      = my_dynamic_pointer_cast<IIRScram_AssociationElement>(get_element_association_list()->get_nth_element( i ));
     
     if( processing_mode == ARRAY ){
       formal_type = my_type->_get_resolved_index_subtype();
@@ -266,14 +261,14 @@ IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
 	actual_type = my_type;
       }
       else{
-	actual_type = my_type->_get_element_subtype();
+	actual_type = my_dynamic_pointer_cast<IIRScram_TypeDefinition>(my_type->_get_element_subtype());
       }
     }
     else{
       // This code isn't handling named associations, at the moment!
-      IIRScram_RecordTypeDefinition *my_record_type = dynamic_cast<IIRScram_RecordTypeDefinition *>(my_type);
-      actual_type = my_record_type->_get_element_subtype( i );
-      formal_type = my_record_type->_get_element_subtype( i );
+      IIRScram_RecordTypeDefinitionRef my_record_type = my_dynamic_pointer_cast<IIRScram_RecordTypeDefinition>(my_type);
+      actual_type = my_dynamic_pointer_cast<IIRScram_TypeDefinition>(my_record_type->_get_element_subtype( i ));
+      formal_type = my_dynamic_pointer_cast<IIRScram_TypeDefinition>(my_record_type->_get_element_subtype( i ));
     }
     
     ASSERT( actual_type != NULL );
@@ -281,9 +276,9 @@ IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
 
     if( current_association->get_formal() != NULL ){
       if( processing_mode == ARRAY ){
-	IIRScram *old_formal = dynamic_cast<IIRScram *>(current_association->get_formal());
+	IIRScramRef old_formal = my_dynamic_pointer_cast<IIRScram>(current_association->get_formal());
 
-	IIRScram *new_formal = old_formal->_semantic_transform( formal_type );
+	IIRScramRef new_formal = old_formal->_semantic_transform( formal_type );
 	new_formal->_type_check( formal_type );
 	new_formal = new_formal->_rval_to_decl( formal_type );
 
@@ -306,23 +301,24 @@ IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
 
   ASSERT( is_resolved() == TRUE );
 
-  return this;
+  //FIXME: this is an error
+  return IIRScramRef();
 }
 
 
 // This method publishes a default range to the aggregate.  The default range
 // is not specified in the LRM.  I used (1, to, n) -- SK.
 
-IIRScram *
+IIRScramRef
 IIRScram_Aggregate::_clone(){
-  IIRScram_Aggregate *retval = new IIRScram_Aggregate();
+  IIRScram_AggregateRef retval(new IIRScram_Aggregate());
   IIRScram_Expression::_clone( retval );
 
-  IIRScram_AssociationList *new_list = new IIRScram_AssociationList();
+  IIR_AssociationListRef new_list(new IIRScram_AssociationList());
   
-  for (IIRScram_AssociationElement *cur_elem = dynamic_cast<IIRScram_AssociationElement *>(_get_element_association_list()->first());
+  for (IIRScram_AssociationElementRef cur_elem = my_dynamic_pointer_cast<IIRScram_AssociationElement>(_get_element_association_list()->first());
        cur_elem != NULL; 
-       cur_elem = dynamic_cast<IIRScram_AssociationElement *>(_get_element_association_list()->successor(cur_elem))) {
+       cur_elem = my_dynamic_pointer_cast<IIRScram_AssociationElement>(_get_element_association_list()->successor(cur_elem))) {
     new_list->append(cur_elem);
   }
   retval->set_element_association_list(new_list);
@@ -330,9 +326,9 @@ IIRScram_Aggregate::_clone(){
   return retval;
 }
 
-IIRScram_AssociationList *
+IIRScram_AssociationListRef
 IIRScram_Aggregate::_get_element_association_list() {
-  return dynamic_cast<IIRScram_AssociationList *>(get_element_association_list());
+  return my_dynamic_pointer_cast<IIRScram_AssociationList>(get_element_association_list());
 }
 
 visitor_return_type *

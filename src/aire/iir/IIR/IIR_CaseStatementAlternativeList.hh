@@ -32,15 +32,15 @@
 #include "savant_config.hh"
 #include "IIR_List.hh"
 
-class IIR_CaseStatementAlternative;
+REF_FORWARD_DECL(IIR_CaseStatementAlternative);
 
 class IIR_CaseStatementAlternativeList : public virtual IIR_List{
 
 public:
   virtual ~IIR_CaseStatementAlternativeList() {}
     
-  virtual IIR_CaseStatementAlternative* first() = 0;
-  virtual IIR_CaseStatementAlternative* successor(IIR_CaseStatementAlternative*) = 0;
+  virtual IIR_CaseStatementAlternativeRef first() = 0;
+  virtual IIR_CaseStatementAlternativeRef successor(IIR_CaseStatementAlternativeRef ) = 0;
 };
 
 typedef refcount<IIR_CaseStatementAlternativeList> IIR_CaseStatementAlternativeListRef;

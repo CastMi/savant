@@ -41,101 +41,99 @@ IIRBase_BranchQuantityDeclaration::IIRBase_BranchQuantityDeclaration() {
 IIRBase_BranchQuantityDeclaration::~IIRBase_BranchQuantityDeclaration() {
 }
 
-IIR_DesignatorList *
+IIR_DesignatorListRef
 IIRBase_BranchQuantityDeclaration::get_across_aspect_identifier_list() {
-  ASSERT(across_aspect_identifier_list != NULL);
+  ASSERT(across_aspect_identifier_list != nullptr);
   return across_aspect_identifier_list;
 }
 
-IIR_DesignatorList *
+IIR_DesignatorListRef
 IIRBase_BranchQuantityDeclaration::get_through_aspect_designator_list() {  
-  ASSERT(through_aspect_designator_list != NULL);
+  ASSERT(through_aspect_designator_list != nullptr);
   return through_aspect_designator_list;
 }
 
 void
-IIRBase_BranchQuantityDeclaration::set_across_aspect_identifier_list(IIR_DesignatorList *new_across_aspect_identifier_list) {
-  ASSERT(new_across_aspect_identifier_list != NULL);
-  delete across_aspect_identifier_list;
+IIRBase_BranchQuantityDeclaration::set_across_aspect_identifier_list(IIR_DesignatorListRef new_across_aspect_identifier_list) {
+  ASSERT(new_across_aspect_identifier_list != nullptr);
   across_aspect_identifier_list = new_across_aspect_identifier_list;
 }
 
 void
-IIRBase_BranchQuantityDeclaration::set_through_aspect_designator_list(IIR_DesignatorList *new_through_aspect_designator_list) {  
-  ASSERT(new_through_aspect_designator_list != NULL);  
-  delete through_aspect_designator_list;
+IIRBase_BranchQuantityDeclaration::set_through_aspect_designator_list(IIR_DesignatorListRef new_through_aspect_designator_list) {  
+  ASSERT(new_through_aspect_designator_list != nullptr);  
   through_aspect_designator_list = new_through_aspect_designator_list;
 }
 
 void
-IIRBase_BranchQuantityDeclaration::set_across_aspect_expression(IIR* across_aspect){
+IIRBase_BranchQuantityDeclaration::set_across_aspect_expression(IIRRef across_aspect){
   this->across_aspect_expression = across_aspect;
 }
 
-IIR*
+IIRRef
 IIRBase_BranchQuantityDeclaration::get_across_aspect_expression() {
   return across_aspect_expression;
 }
 
 void
-IIRBase_BranchQuantityDeclaration::set_through_aspect_expression(IIR* through_aspect){
+IIRBase_BranchQuantityDeclaration::set_through_aspect_expression(IIRRef through_aspect){
   this->through_aspect_expression = through_aspect;
 }
 
-IIR*
+IIRRef
 IIRBase_BranchQuantityDeclaration::get_through_aspect_expression() {
   return through_aspect_expression;
 }
 
 void
-IIRBase_BranchQuantityDeclaration::set_plus_terminal_name(IIR* plus_terminal_name  ) {
+IIRBase_BranchQuantityDeclaration::set_plus_terminal_name(IIRRef plus_terminal_name  ) {
   this->plus_terminal_name = plus_terminal_name;
 }
 
-IIR*
+IIRRef
 IIRBase_BranchQuantityDeclaration::get_plus_terminal_name() {
   return plus_terminal_name;
 }
 
 void
-IIRBase_BranchQuantityDeclaration::set_minus_terminal_name(IIR* minus_terminal_name ) {
+IIRBase_BranchQuantityDeclaration::set_minus_terminal_name(IIRRef minus_terminal_name ) {
   this->minus_terminal_name = minus_terminal_name;
 }
 
-IIR*
+IIRRef
 IIRBase_BranchQuantityDeclaration::get_minus_terminal_name() {
   return minus_terminal_name;
 }
 
 void
-IIRBase_BranchQuantityDeclaration::set_across_aspect_tolerance(IIR* tol_aspect) {
+IIRBase_BranchQuantityDeclaration::set_across_aspect_tolerance(IIRRef tol_aspect) {
   this->across_aspect_tolerance = tol_aspect;
 } 
  
-IIR*
+IIRRef
 IIRBase_BranchQuantityDeclaration::get_across_aspect_tolerance() {
   return across_aspect_tolerance;
 } 
 
 void
-IIRBase_BranchQuantityDeclaration::set_through_aspect_tolerance(IIR* tol_aspect) {
+IIRBase_BranchQuantityDeclaration::set_through_aspect_tolerance(IIRRef tol_aspect) {
   this->through_aspect_tolerance = tol_aspect;
 }
   
-IIR*
+IIRRef
 IIRBase_BranchQuantityDeclaration::get_through_aspect_tolerance() {
   return through_aspect_tolerance;
 }
 
 
-IIR *
-IIRBase_BranchQuantityDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_BranchQuantityDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_BranchQuantityDeclaration *new_node = dynamic_cast<IIRBase_BranchQuantityDeclaration *>(IIRBase_QuantityDeclaration::convert_tree(factory));
+  IIRBase_BranchQuantityDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_BranchQuantityDeclaration>(IIRBase_QuantityDeclaration::convert_tree(factory));
 
   // Process the variables
-  new_node->across_aspect_identifier_list = dynamic_cast<IIR_DesignatorList *>(convert_node(across_aspect_identifier_list, factory));
-  new_node->through_aspect_designator_list = dynamic_cast<IIR_DesignatorList *>(convert_node(through_aspect_designator_list, factory));
+  new_node->across_aspect_identifier_list = my_dynamic_pointer_cast<IIR_DesignatorList>(convert_node(across_aspect_identifier_list, factory));
+  new_node->through_aspect_designator_list = my_dynamic_pointer_cast<IIR_DesignatorList>(convert_node(through_aspect_designator_list, factory));
   new_node->across_aspect_expression = convert_node(across_aspect_expression, factory);
   new_node->through_aspect_expression = convert_node(through_aspect_expression, factory);
   new_node->plus_terminal_name = convert_node(plus_terminal_name, factory);

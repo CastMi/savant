@@ -23,30 +23,27 @@
 #include "IIR_DesignFile.hh"
 #include "IIR_EnumerationSubtypeDefinition.hh"
 #include "IIR_TypeDefinition.hh"
-
 #include "savant.hh"
 #include "StandardPackage.hh"
+#include <cstring>
 
-IIRBase_StableAttribute::IIRBase_StableAttribute() {
-  set_suffix(NULL);
-}
-
+IIRBase_StableAttribute::IIRBase_StableAttribute() {}
 IIRBase_StableAttribute::~IIRBase_StableAttribute() {}
 
 void
-IIRBase_StableAttribute:: set_suffix( IIR *new_suffix ) {
+IIRBase_StableAttribute:: set_suffix( IIRRef new_suffix ) {
   suffix = new_suffix;
 }
 
-IIR*
+IIRRef
 IIRBase_StableAttribute:: get_suffix() {
   return suffix;
 }
 
-IIR *
-IIRBase_StableAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_StableAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_StableAttribute *new_node = dynamic_cast<IIRBase_StableAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_StableAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_StableAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
@@ -54,15 +51,15 @@ IIRBase_StableAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_StableAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_boolean_type();
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_StableAttribute::build_attribute_name(){
-  const char *name = "stable";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("stable");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 

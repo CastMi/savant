@@ -36,8 +36,8 @@ class IIR_DelayedAttribute : public virtual IIR_Attribute{
 public:
   virtual ~IIR_DelayedAttribute() {}
     
-  virtual void set_suffix( IIR *suffix ) = 0;
-  virtual IIR *get_suffix() = 0;
+  virtual void set_suffix( IIRRef suffix ) = 0;
+  virtual IIRRef get_suffix() = 0;
 };
 
 typedef refcount<IIR_DelayedAttribute> IIR_DelayedAttributeRef;

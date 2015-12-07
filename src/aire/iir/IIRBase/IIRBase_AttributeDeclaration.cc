@@ -37,13 +37,13 @@ IIRBase_AttributeDeclaration::IIRBase_AttributeDeclaration(){
 
 IIRBase_AttributeDeclaration::~IIRBase_AttributeDeclaration(){}
 
-IIR *
-IIRBase_AttributeDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_AttributeDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_AttributeDeclaration *new_node = dynamic_cast<IIRBase_AttributeDeclaration *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_AttributeDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_AttributeDeclaration>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->one_attribute = dynamic_cast<IIR_Attribute *>(convert_node(one_attribute, factory));
+  new_node->one_attribute = my_dynamic_pointer_cast<IIR_Attribute>(convert_node(one_attribute, factory));
 
   return new_node;
 }
@@ -59,18 +59,18 @@ IIRBase_AttributeDeclaration::is_signal(){
   }
 }
 
-IIR_Attribute *
+IIR_AttributeRef
 IIRBase_AttributeDeclaration::get_attribute(){
   return one_attribute;
 }
 
 void
-IIRBase_AttributeDeclaration::set_attribute( IIR_Attribute *new_attr ){
+IIRBase_AttributeDeclaration::set_attribute( IIR_AttributeRef new_attr ){
   one_attribute = new_attr;
 }
 
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_AttributeDeclaration::get_subtype(){
   if( IIRBase::get_subtype() == NULL ){
     ASSERT( get_attribute() != NULL );
@@ -86,8 +86,8 @@ IIRBase_AttributeDeclaration::get_declaration_type(){
   return ATTRIBUTE;
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_AttributeDeclaration::find_declarations( IIR_Name *to_find){
+savant::set<IIR_DeclarationRef>
+IIRBase_AttributeDeclaration::find_declarations( IIR_NameRef to_find){
   return get_subtype()->find_declarations( to_find );
 }
 

@@ -34,6 +34,8 @@
 #include "IIRBase_ArchitectureDeclaration.hh"
 #include "symbol_table.hh"
 
+REF_FORWARD_DECL(IIRScram_List);
+REF_FORWARD_DECL(IIRScram_ArchitectureStatementList);
 
 class IIRScram_ArchitectureDeclaration : public virtual IIRScram_LibraryUnit,
 					 public virtual IIRBase_ArchitectureDeclaration {
@@ -45,9 +47,9 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  IIRScram_EntityDeclaration* _get_entity();
-  IIRScram_DeclarationList* _get_architecture_declarative_part();
-  IIRScram_ArchitectureStatementList* _get_architecture_statement_part();
+  IIRScram_EntityDeclarationRef _get_entity();
+  IIRScram_DeclarationListRef _get_architecture_declarative_part();
+  IIRScram_ArchitectureStatementListRef _get_architecture_statement_part();
 
 #ifdef PROCESS_COMBINATION
   void _static_elaborate(IIRScram_ArchitectureDeclaration*, IIRScram_DeclarationList*,
@@ -58,22 +60,22 @@ public:
   void _make_interface_visible(symbol_table * );
 
   void _type_check();
-  IIRScram_PortList *_get_port_list();
-  IIRScram_GenericList *_get_generic_list();
-  IIRScram_List *_get_statement_list();
+  IIRScram_PortListRef    _get_port_list();
+  IIRScram_GenericListRef _get_generic_list();
+  IIRScram_ListRef        _get_statement_list();
 
   /** This list holds the component declarations in this architectures
       declarative region.  It will be used to post process configuration
       specficiations such that ALL and OTHERS can be resolved, and so that
       labels that are not declared until the statement part can be resolved
       as well. */
-  IIRScram_DeclarationList *_get_component_declarations();
-  void _set_component_declarations(   IIRScram_DeclarationList * );
+  IIRScram_DeclarationListRef _get_component_declarations();
+  void _set_component_declarations( IIRScram_DeclarationListRef );
 
-  void _set_configuration_specifications( IIRScram_DeclarationList * );
-  IIRScram_DeclarationList *_get_configuration_specifications();
+  void _set_configuration_specifications( IIRScram_DeclarationListRef );
+  IIRScram_DeclarationListRef _get_configuration_specifications();
 
-  IIRScram_DeclarationList* _get_declaration_list();
+  IIRScram_DeclarationListRef _get_declaration_list();
 
 protected:
 private:

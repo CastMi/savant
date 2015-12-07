@@ -26,35 +26,29 @@
 
 //---------------------------------------------------------------------------
 
-
 #include "IIRBase_UserAttribute.hh"
 #include "IIR_Declaration.hh"
 #include "IIR_ConstantDeclaration.hh"
 #include "IIR_TextLiteral.hh"
-
 #include "savant.hh"
 
-IIRBase_UserAttribute::IIRBase_UserAttribute() {
-  set_suffix( NULL );
-}
-
+IIRBase_UserAttribute::IIRBase_UserAttribute() {}
 IIRBase_UserAttribute::~IIRBase_UserAttribute() {}
 
 void
-IIRBase_UserAttribute::set_suffix( IIR *new_suffix ){
+IIRBase_UserAttribute::set_suffix( IIRRef new_suffix ){
   suffix = new_suffix;
 }
 
-IIR*
+IIRRef
 IIRBase_UserAttribute::get_suffix() {
-
   return suffix;
 }
 
-IIR *
-IIRBase_UserAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_UserAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_UserAttribute *new_node = dynamic_cast<IIRBase_UserAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_UserAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_UserAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
@@ -76,14 +70,14 @@ IIRBase_UserAttribute::is_locally_static(){
   return as_constant->get_value()->is_locally_static();
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_UserAttribute::build_attribute_name(){
-  IIR_TextLiteral *retval = 0;
+  IIR_TextLiteralRef retval;
 
   if( get_suffix() && get_suffix()->is_name() == TRUE ){
-    retval = dynamic_cast<IIR_TextLiteral *>(dynamic_cast<IIR_Name *>(get_suffix())->get_prefix_string());
+    retval = my_dynamic_pointer_cast<IIR_TextLiteral>(my_dynamic_pointer_cast<IIR_Name>(get_suffix())->get_prefix_string());
   }
-  else if ( get_suffix() && dynamic_cast<IIR_Declaration *>(get_suffix()) != NULL ){
+  else if ( get_suffix() && my_dynamic_pointer_cast<IIR_Declaration>(get_suffix()) != NULL ){
     retval = get_suffix()->get_declarator();
   }
   

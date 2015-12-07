@@ -35,24 +35,24 @@
 
 class IIRBase_FunctionDeclaration : public virtual IIRBase_SubprogramDeclaration, public virtual IIR_FunctionDeclaration{
 public:
-  IIR_Kind get_kind() const {return IIR_FUNCTION_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_FunctionDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_FUNCTION_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_FunctionDeclaration"); }
 
   void set_pure(IIR_Pure purity);
   IIR_Pure get_pure();
 
   IIR_Boolean is_locally_static();
 
-  void set_return_type( IIR_TypeDefinition* return_type);
-  IIR_TypeDefinition* get_return_type();
+  void set_return_type( IIR_TypeDefinitionRef return_type);
+  IIR_TypeDefinitionRef get_return_type();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_function_declaration(){ return TRUE; }
   IIR_Boolean is_operator();
 
   declaration_type get_declaration_type();
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *){ return NULL;  }
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef ) { return savant::set<IIR_DeclarationRef>(); }
   void publish_vhdl_decl(ostream &);
 protected:
   IIRBase_FunctionDeclaration();

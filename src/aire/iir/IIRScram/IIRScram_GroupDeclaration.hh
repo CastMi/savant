@@ -43,10 +43,10 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  IIRScram_AttributeSpecificationList* _get_attribute_specification_list();
+  IIRScram_AttributeSpecificationListRef _get_attribute_specification_list();
 
   // Wrappers for IIRBase functions
-  IIRScram_DesignatorList *             _get_group_constituent_list();
+  IIRScram_DesignatorListRef             _get_group_constituent_list();
 
 protected:
 private:

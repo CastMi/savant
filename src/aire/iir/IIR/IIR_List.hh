@@ -32,7 +32,7 @@
 #include "IIR.hh"
 #include "dl_list.hh"
 
-class IIR_List : public virtual IIR, public dl_list<IIR> {
+class IIR_List : public virtual IIR, public dl_list<IIRRef> {
 
 public:
   IIR_List(){}

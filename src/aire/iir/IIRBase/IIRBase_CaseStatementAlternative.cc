@@ -28,33 +28,32 @@ IIRBase_CaseStatementAlternative::~IIRBase_CaseStatementAlternative(){
 }
 
 // List Accessor(s)
-IIR_SequentialStatementList *
+IIR_SequentialStatementListRef
 IIRBase_CaseStatementAlternative::get_sequence_of_statements() {
-  ASSERT(sequence_of_statements != NULL);
+  ASSERT(sequence_of_statements != nullptr);
   return sequence_of_statements;
 }
 
 
 void
-IIRBase_CaseStatementAlternative::set_sequence_of_statements(IIR_SequentialStatementList *new_sequence_of_statements) {
-  ASSERT(new_sequence_of_statements != NULL);
-  delete sequence_of_statements;
+IIRBase_CaseStatementAlternative::set_sequence_of_statements(IIR_SequentialStatementListRef new_sequence_of_statements) {
+  ASSERT(new_sequence_of_statements != nullptr);
   sequence_of_statements = new_sequence_of_statements;
 }
 
-IIR *
-IIRBase_CaseStatementAlternative::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_CaseStatementAlternative::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_CaseStatementAlternative *new_node = dynamic_cast<IIRBase_CaseStatementAlternative *>(IIRBase_Tuple::convert_tree(factory));
+  IIRBase_CaseStatementAlternativeRef new_node = my_dynamic_pointer_cast<IIRBase_CaseStatementAlternative>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->sequence_of_statements = dynamic_cast<IIR_SequentialStatementList *>(convert_node(sequence_of_statements, factory));
+  new_node->sequence_of_statements = my_dynamic_pointer_cast<IIR_SequentialStatementList>(convert_node(sequence_of_statements, factory));
 
   return new_node;
 }
 
 void
-IIRBase_CaseStatementAlternative::publish_vhdl_alternative(ostream &vhdl_out, IIR *choice) {
+IIRBase_CaseStatementAlternative::publish_vhdl_alternative(ostream &vhdl_out, IIRRef choice) {
 
   vhdl_out << "when ";
   choice->publish_vhdl(vhdl_out);

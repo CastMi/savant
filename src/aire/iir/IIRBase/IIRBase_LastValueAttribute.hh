@@ -36,13 +36,13 @@
 class IIRBase_LastValueAttribute : public virtual IIRBase_Attribute,
 				   public virtual IIR_LastValueAttribute{
 public:
-  IIR_Kind get_kind() const {return IIR_LAST_VALUE_ATTRIBUTE;}
-  const IIR_Char *get_kind_text() const {return "IIR_LastValueAttribute";}
+  IIR_Kind get_kind() const override { return IIR_LAST_VALUE_ATTRIBUTE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_LastValueAttribute"); }
 
   IIR_Boolean is_signal(){ return FALSE; }
   IIR_Boolean is_function_attribute(){ return TRUE; }
 
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
   void publish_vhdl(ostream &);
 protected:
   IIRBase_LastValueAttribute();

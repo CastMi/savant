@@ -47,29 +47,29 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  savant::set<IIRScram_Declaration*> *_symbol_lookup();
-  savant::set<IIRScram_Declaration*> *_symbol_lookup( savant::set<IIRScram_Declaration*> * );
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup();
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup( savant::set<IIRScram_DeclarationRef> );
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0);
 
-  IIRScram_TypeDefinition *_determine_rval_in_set( savant::set<IIRScram_TypeDefinition*> *search_in,
-                                                   IIRScram_TypeDefinition *looking_for );
+  IIRScram_TypeDefinitionRef _determine_rval_in_set( savant::set<IIRScram_TypeDefinitionRef> search_in,
+                                                   IIRScram_TypeDefinitionRef looking_for );
 
-  IIRScram_Declaration *_determine_decl_in_set( savant::set<IIRScram_Declaration*> *search_in,
-                                                IIRScram_TypeDefinition *looking_for );
+  IIRScram_DeclarationRef _determine_decl_in_set( savant::set<IIRScram_DeclarationRef> search_in,
+                                                IIRScram_TypeDefinitionRef looking_for );
 
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition *);
-  IIRScram *_decl_to_decl( IIRScram_Declaration * );
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef );
+  IIRScramRef _decl_to_decl( IIRScram_DeclarationRef );
 
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition *, IIRScram_TypeDefinition * );
-  IIRScram *_rval_to_decl( IIRScram_Declaration *, IIRScram_TypeDefinition * );
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef , IIRScram_TypeDefinitionRef  );
+  IIRScramRef _rval_to_decl( IIRScram_DeclarationRef , IIRScram_TypeDefinitionRef  );
   
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
-  IIRScram_TextLiteral *_get_string();
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
+  IIRScram_TextLiteralRef _get_string();
 
   const string convert_to_library_name();
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
 protected:
 private:
@@ -77,7 +77,7 @@ private:
   // This method looks at what this name is about to resolve to and decides
   // if it should be returning a function call instead.  So, it will return
   // either a function call, or the declaration passed in.
-  IIRScram *_convert_to_function_call( IIRScram_Declaration * );
+  IIRScramRef _convert_to_function_call( IIRScram_DeclarationRef  );
 };
 
 typedef refcount<IIRScram_SimpleName> IIRScram_SimpleNameRef;

@@ -32,12 +32,12 @@
 #include "IIRBase.hh"
 #include "IIR_Literal.hh"
 
-class IIRBase_Literal : public virtual IIRBase, public virtual IIR_Literal{
+class IIRBase_Literal : public virtual IIRBase, public virtual IIR_Literal {
 
 public:
 
   IIR_Kind get_kind() const {return IIR_LITERAL;}
-  const IIR_Char *get_kind_text() const {return "IIR_Literal";}
+  IIR_CharConstRef get_kind_text() const { return IIR_CharConstRef("IIR_Literal"); }
 
   IIR_Int32 _char_to_int(IIR_Char);
 

@@ -27,14 +27,12 @@
 class IIRBase_StringLiteral : public virtual IIRBase_TextLiteral, public virtual IIR_StringLiteral{
 public:
 
-  IIR_Kind get_kind() const {return IIR_STRING_LITERAL;}
-  const IIR_Char *get_kind_text() const {return "IIR_StringLiteral";}
-
-  void release();
+  IIR_Kind get_kind() const override { return IIR_STRING_LITERAL; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_StringLiteral"); }
 
   IIR_Boolean is_array_type(){ return TRUE; }
 
-  static IIR_StringLiteral *get( const IIR_Char* value, IIR_Int32 length, plugin_class_factory *factory);
+  static IIR_StringLiteralRef get( std::string value, plugin_class_factoryRef factory);
 protected:
   
   IIRBase_StringLiteral();

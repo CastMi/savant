@@ -39,20 +39,20 @@ class IIRBase_QualifiedExpression : public virtual IIRBase_Expression, public vi
 
 public:
 
-  IIR_Kind get_kind() const {return IIR_QUALIFIED_EXPRESSION;}
-  const IIR_Char *get_kind_text() const {return "IIR_QualifiedExpression";}
+  IIR_Kind get_kind() const override { return IIR_QUALIFIED_EXPRESSION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_QualifiedExpression"); }
 
-  void set_type_mark( IIR_TypeDefinition* type_mark);
-  IIR_TypeDefinition* get_type_mark();
-  void set_expression(IIR* expression);
-  IIR* get_expression();
+  void set_type_mark( IIR_TypeDefinitionRef type_mark);
+  IIR_TypeDefinitionRef get_type_mark();
+  void set_expression(IIRRef expression);
+  IIRRef get_expression();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_locally_static();
   IIR_Boolean is_resolved();
 
-  IIR_TypeDefinition *get_subtype();
+  IIR_TypeDefinitionRef get_subtype();
 
   ostream &print( ostream &os );
   void publish_vhdl(ostream &);
@@ -63,8 +63,8 @@ protected:
     
 private:
   
-  IIR* expression;
-  IIR_TypeDefinition* type_mark;
+  IIRRef expression;
+  IIR_TypeDefinitionRef type_mark;
 
 };
 

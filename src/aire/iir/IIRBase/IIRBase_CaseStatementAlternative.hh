@@ -38,19 +38,19 @@ class IIRBase_CaseStatementAlternative : public virtual IIRBase_Tuple, public vi
 
 public:
   // List Accessor(s)
-  IIR_SequentialStatementList *get_sequence_of_statements();
-  void                        set_sequence_of_statements(IIR_SequentialStatementList *new_sequence_of_statements);
+  IIR_SequentialStatementListRef get_sequence_of_statements();
+  void                        set_sequence_of_statements(IIR_SequentialStatementListRef new_sequence_of_statements);
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
-  void publish_vhdl_alternative(ostream &, IIR *);
+  void publish_vhdl_alternative(ostream &, IIRRef );
 protected:
   IIRBase_CaseStatementAlternative();
   virtual ~IIRBase_CaseStatementAlternative() = 0;
     
 private:
   // List Variable(s)
-  IIR_SequentialStatementList *sequence_of_statements;
+  IIR_SequentialStatementListRef sequence_of_statements;
 
 };
 

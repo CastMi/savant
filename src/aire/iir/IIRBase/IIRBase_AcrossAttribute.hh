@@ -40,13 +40,13 @@ public:
     return IIR_ACROSS_ATTRIBUTE;
   }
 
-  const IIR_Char *get_kind_text() const {
-  return "IIR_AcrossAttribute";
+  IIR_CharConstRef get_kind_text() const {
+  return IIR_CharConstRef("IIR_AcrossAttribute");
   }
 
  /** This returns an IIR_TextLiteral when an across attribute is
      instantiated. */
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
   
   void publish_vhdl(ostream &vhdl_out);
 protected:

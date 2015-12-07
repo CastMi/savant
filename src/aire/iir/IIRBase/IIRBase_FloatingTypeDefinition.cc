@@ -26,28 +26,26 @@
 //---------------------------------------------------------------------------
 
 #include "IIRBase_FloatingTypeDefinition.hh"
-
 #include "IIR_DesignFile.hh"
 #include "IIR_FloatingSubtypeDefinition.hh"
 #include "IIR_FloatingTypeDefinition.hh"
 #include "IIR_TypeDefinition.hh"
-
 #include "StandardPackage.hh"
 
 IIRBase_FloatingTypeDefinition::IIRBase_FloatingTypeDefinition() {}
 IIRBase_FloatingTypeDefinition::~IIRBase_FloatingTypeDefinition() {}
 
-IIR_TypeDefinition *
-IIRBase_FloatingTypeDefinition::check_special_compatible( IIR_TypeDefinition *to_check ){
-  IIR_FloatingTypeDefinition *package_real = 
-    dynamic_cast<IIR_FloatingTypeDefinition *>(to_check->get_design_file()->get_standard_package()->get_savant_universal_real());
+IIR_TypeDefinitionRef
+IIRBase_FloatingTypeDefinition::check_special_compatible( IIR_TypeDefinitionRef to_check ){
+  IIR_FloatingTypeDefinitionRef package_real = 
+    my_dynamic_pointer_cast<IIR_FloatingTypeDefinition>(to_check->get_design_file()->get_standard_package()->get_savant_universal_real());
 
-  if(((this == package_real) && 
-      (dynamic_cast<IIR_FloatingTypeDefinition *>(to_check) != NULL) ) ||
-     dynamic_cast<IIR_FloatingTypeDefinition *>(to_check) == package_real ){
+  if(((this == package_real.get()) && 
+      (my_dynamic_pointer_cast<IIR_FloatingTypeDefinition>(to_check) != nullptr) ) ||
+     my_dynamic_pointer_cast<IIR_FloatingTypeDefinition>(to_check) == package_real ){
     return package_real;
   }
   else{
-    return NULL;
+    return IIR_TypeDefinitionRef();
   }
 }

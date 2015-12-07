@@ -52,12 +52,12 @@ public:
   }
 
   IIR_Boolean _is_iir_disconnect_specification(){ return TRUE; }
-  void _type_check( IIRScram_DeclarationList *declarative_region );
+  void _type_check( IIRScram_DeclarationListRef declarative_region );
   
   // Wrappers for IIRBase functions
-  IIRScram_DesignatorList *     _get_guarded_signal_list();
-  IIRScram_TypeDefinition *     _get_type_mark();
-  IIRScram *                    _get_time_expression();
+  IIRScram_DesignatorListRef      _get_guarded_signal_list();
+  IIRScram_TypeDefinitionRef      _get_type_mark();
+  IIRScramRef                     _get_time_expression();
 
 protected:    
 private:  

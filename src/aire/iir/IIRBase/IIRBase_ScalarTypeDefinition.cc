@@ -38,48 +38,43 @@
 #include "IIRBase_ScalarTypeDefinition.hh"
 #include <sstream>
 
-IIRBase_ScalarTypeDefinition::IIRBase_ScalarTypeDefinition() :
-  left(0), direction(0), right(0){}
-
-IIRBase_ScalarTypeDefinition::~IIRBase_ScalarTypeDefinition(){
-  // In some cases resolution will have pointed left, direction, and right
-  // to elements of other lists.  We're not going to delete them for now.
-}
+IIRBase_ScalarTypeDefinition::IIRBase_ScalarTypeDefinition() {}
+IIRBase_ScalarTypeDefinition::~IIRBase_ScalarTypeDefinition() {}
 
 void
-IIRBase_ScalarTypeDefinition::set_left( IIR* left) {
+IIRBase_ScalarTypeDefinition::set_left( IIRRef left) {
   this->left = left;
 }
 
-IIR*
+IIRRef
 IIRBase_ScalarTypeDefinition::get_left() {
   return left;
 }
 
 void
-IIRBase_ScalarTypeDefinition::set_direction( IIR* direction) {
+IIRBase_ScalarTypeDefinition::set_direction( IIRRef direction) {
   this->direction = direction;
 }
 
-IIR*
+IIRRef
 IIRBase_ScalarTypeDefinition::get_direction() {
   return direction;
 }
 
 void
-IIRBase_ScalarTypeDefinition::set_right(IIR* right) {
+IIRBase_ScalarTypeDefinition::set_right(IIRRef right) {
   this->right = right;
 }
 
-IIR*
+IIRRef
 IIRBase_ScalarTypeDefinition::get_right() {
   return right;
 }
 
-IIR *
-IIRBase_ScalarTypeDefinition::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ScalarTypeDefinition::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ScalarTypeDefinition *new_node = dynamic_cast<IIRBase_ScalarTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));
+  IIRBase_ScalarTypeDefinitionRef new_node = my_dynamic_pointer_cast<IIRBase_ScalarTypeDefinition>(IIRBase_TypeDefinition::convert_tree(factory));
 
   // Process the variables
   new_node->left = convert_node(left, factory);
@@ -107,9 +102,9 @@ IIR_Boolean
 IIRBase_ScalarTypeDefinition::is_resolved(){
   IIR_Boolean retval = TRUE;
 
-  StandardPackage *package = get_design_file()->get_standard_package();
-  if( this != dynamic_cast<IIR_ScalarTypeDefinition *>(package->get_savant_universal_integer()) &&
-      this != dynamic_cast<IIR_ScalarTypeDefinition *>(package->get_savant_universal_real()) ){
+  StandardPackageRef package = get_design_file()->get_standard_package();
+  if( this != my_dynamic_pointer_cast<IIR_ScalarTypeDefinition>(package->get_savant_universal_integer()).get() &&
+      this != my_dynamic_pointer_cast<IIR_ScalarTypeDefinition>(package->get_savant_universal_real()).get() ){
     if( get_left() == NULL || get_right() == NULL || get_direction() == NULL ){
       ASSERT( get_left() == NULL);
       ASSERT( get_right() == NULL);
@@ -131,9 +126,9 @@ IIRBase_ScalarTypeDefinition::is_resolved(){
   return retval;
 }
 
-IIR *
+IIRRef
 IIRBase_ScalarTypeDefinition::get_base_type_left() {
-  IIR *retval = 0;
+  IIRRef retval = 0;
 
   if( get_left() != NULL ){
     retval = get_left();
@@ -144,9 +139,9 @@ IIRBase_ScalarTypeDefinition::get_base_type_left() {
   return retval;
 }
 
-IIR *
+IIRRef
 IIRBase_ScalarTypeDefinition::get_base_type_right() {
-  IIR *retval = 0;
+  IIRRef retval = 0;
 
   if( get_right() != NULL ){
     retval = get_right();
@@ -157,9 +152,9 @@ IIRBase_ScalarTypeDefinition::get_base_type_right() {
   return retval;
 }
 
-IIR *
+IIRRef
 IIRBase_ScalarTypeDefinition::get_base_type_direction() {
-  IIR *retval = 0;
+  IIRRef retval = 0;
 
   if( get_direction() != NULL ){
     retval = get_direction();
@@ -170,9 +165,9 @@ IIRBase_ScalarTypeDefinition::get_base_type_direction() {
   return retval;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_ScalarTypeDefinition::get_resolved_base_type() {
-  IIR_TypeDefinition *retval = get_base_type();
+  IIR_TypeDefinitionRef retval = get_base_type();
 
   if( dynamic_cast<IIR_SubtypeDeclaration *>(this) != NULL || 
       ( is_anonymous() == TRUE && get_type_mark() != NULL )){
@@ -241,7 +236,7 @@ IIRBase_ScalarTypeDefinition::publish_vhdl_decl(ostream &vhdl_out){
     get_type_mark()->get_declaration()->get_declarator()->publish_vhdl(vhdl_out);
     
     if (get_type_mark()->is_scalar_type_definition() == TRUE) {
-      IIRBase_ScalarTypeDefinition *as_scalar = dynamic_cast<IIRBase_ScalarTypeDefinition *>(get_type_mark());
+      IIRBase_ScalarTypeDefinitionRef as_scalar = my_dynamic_pointer_cast<IIRBase_ScalarTypeDefinition>(get_type_mark());
       if( get_base_type_left() == as_scalar->get_base_type_left() &&
 	  get_base_type_right() == as_scalar->get_base_type_right() &&
 	  get_direction() == as_scalar->get_direction() ){
@@ -269,7 +264,7 @@ IIRBase_ScalarTypeDefinition::publish_vhdl(ostream &vhdl_out){
   if( is_anonymous() == TRUE ){
     if( get_type_mark() != NULL ){
       ASSERT( get_type_mark()->is_scalar_type_definition() == TRUE );
-      IIRBase_ScalarTypeDefinition *as_scalar = dynamic_cast<IIRBase_ScalarTypeDefinition *>(get_type_mark());
+      IIRBase_ScalarTypeDefinitionRef as_scalar = my_dynamic_pointer_cast<IIRBase_ScalarTypeDefinition>(get_type_mark());
       get_type_mark()->publish_vhdl( vhdl_out );
       if( get_base_type_left() != as_scalar->get_base_type_left() ||
 	  get_base_type_right() != as_scalar->get_base_type_right() ||

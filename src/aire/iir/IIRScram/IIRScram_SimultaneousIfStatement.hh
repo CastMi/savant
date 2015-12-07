@@ -46,10 +46,10 @@ public:
   void _type_check();
  
   // Helper Functions
-  IIRScram                              *_get_condition();
-  IIRScram_ArchitectureStatementList    *_get_then_statement_list();
-  IIRScram_ArchitectureStatementList    *_get_else_statement_list();
-  IIRScram_SimultaneousElsif            *_get_elsif();
+  IIRScramRef                            _get_condition();
+  IIRScram_ArchitectureStatementListRef  _get_then_statement_list();
+  IIRScram_ArchitectureStatementListRef  _get_else_statement_list();
+  IIRScram_SimultaneousElsifRef          _get_elsif();
 protected:
 
 private:

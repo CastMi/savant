@@ -54,9 +54,9 @@ public:
   IIR_Boolean _is_numeric_type(){ return TRUE; };
 
 
-  void _set_resolution_function( IIRScram_FunctionDeclaration * );
+  void _set_resolution_function( IIRScram_FunctionDeclarationRef );
 
-  virtual IIRScram_TypeDefinition *_get_new_subtype();
+  virtual IIRScram_TypeDefinitionRef _get_new_subtype();
 
   // This method takes the range passed in, and determines the discrete type that applies.
   // The type must be determinable WITHOUT context.  This method is appropriate for 
@@ -65,12 +65,12 @@ public:
   // 2) The discrete range of iteration schemes in for loops.
   // 3) The discrete range of iteration schemes in generate statements.
   // See pg 42, line 354 of the 93 LRM.
-  IIRScram_ScalarTypeDefinition *_determine_discrete_type();
+  IIRScram_ScalarTypeDefinitionRef _determine_discrete_type();
 
 protected:    
 private:
-  IIRScram_ScalarTypeDefinition *_determine_universal_subtype(IIRScram_TypeDefinition *left_type,
-							      IIRScram_TypeDefinition *right_type);
+  IIRScram_ScalarTypeDefinitionRef _determine_universal_subtype(IIRScram_TypeDefinitionRef left_type,
+							      IIRScram_TypeDefinitionRef right_type);
   
 };
 

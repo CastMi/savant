@@ -38,7 +38,7 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
 protected:
 private:

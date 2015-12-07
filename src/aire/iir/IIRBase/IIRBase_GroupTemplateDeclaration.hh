@@ -38,13 +38,13 @@ class IIRBase_GroupTemplateDeclaration : public virtual IIRBase_Declaration, pub
 
 public:
   // List Accessor(s)
-  IIR_EntityClassEntryList *get_entity_class_entry_list();
-  void                     set_entity_class_entry_list(IIR_EntityClassEntryList *new_entity_class_entry_list);
+  IIR_EntityClassEntryListRef get_entity_class_entry_list();
+  void                     set_entity_class_entry_list(IIR_EntityClassEntryListRef new_entity_class_entry_list);
 
-  IIR_Kind get_kind() const {return IIR_GROUP_TEMPLATE_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_GroupTemplateDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_GROUP_TEMPLATE_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_GroupTemplateDeclaration"); }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   declaration_type get_declaration_type(){ return GROUP_TEMPLATE; }
   void publish_vhdl_decl(ostream &);
@@ -54,7 +54,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_EntityClassEntryList *entity_class_entry_list;
+  IIR_EntityClassEntryListRef entity_class_entry_list;
 
 };
 

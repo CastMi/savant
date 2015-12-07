@@ -38,13 +38,13 @@ class IIR_EnumerationLiteral;
 class IIRBase_EnumerationLiteralList : public virtual IIRBase_DeclarationList, public virtual IIR_EnumerationLiteralList{
 
 public:
-  IIR_Kind get_kind() const {return IIR_ENUMERATION_LITERAL_LIST;}
-  const IIR_Char *get_kind_text() const {return "IIR_EnumerationLiteralList";}
+  IIR_Kind get_kind() const override { return IIR_ENUMERATION_LITERAL_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_EnumerationLiteralList"); }
 
-  IIR *first();
-  IIR *last();
-  IIR *successor( IIR_EnumerationLiteral * );
-  IIR *predecessor( IIR_EnumerationLiteral * );
+  IIRRef first();
+  IIRRef last();
+  IIRRef successor( IIR_EnumerationLiteralRef );
+  IIRRef predecessor( IIR_EnumerationLiteralRef );
 
   ostream& print(ostream&);
   void publish_vhdl(ostream &);

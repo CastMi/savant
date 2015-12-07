@@ -34,23 +34,21 @@ class IIRBase_BreakList : public virtual IIR_BreakList, public virtual IIRBase_L
 
 public:
   /** Returns the IIR_Kind of this node. */
-  IIR_Kind get_kind() const {
-    return  IIR_BREAK_LIST;
-  }
+  IIR_Kind get_kind() const override { return  IIR_BREAK_LIST; }
   
-  const IIR_Char *get_kind_text() const { return "IIR_BreakList"; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_BreakList"); }
 
   IIRBase_BreakList();
   virtual ~IIRBase_BreakList()= 0;
   
   /** Append the BreakElement to the break list. */
-  void append( IIR_BreakElement* );
+  void append( IIR_BreakElementRef );
   
   /** Returns the first Break Element in the break list. */
-  IIR_BreakElement* first();
+  IIR_BreakElementRef first();
 
   /** Returns the next break element from the break list. */
-  IIR_BreakElement* successor( IIR_BreakElement* );
+  IIR_BreakElementRef successor( IIR_BreakElementRef );
  
   void publish_vhdl(ostream &);
 protected:

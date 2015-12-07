@@ -35,13 +35,13 @@
 class IIRBase_ConstantDeclaration : public virtual IIRBase_ObjectDeclaration, public virtual IIR_ConstantDeclaration{
 
 public:
-  IIR_Kind get_kind() const {return IIR_CONSTANT_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_ConstantDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_CONSTANT_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ConstantDeclaration"); }
   
-  void set_value(IIR *value);
-  IIR *get_value();
+  void set_value(IIRRef value);
+  IIRRef get_value();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_constant(){ return TRUE; }
   IIR_Boolean is_ascending_range();
@@ -57,7 +57,7 @@ protected:
   virtual ~IIRBase_ConstantDeclaration() = 0;
     
 private:
-  IIR *value;
+  IIRRef value;
 };
 
 typedef refcount<IIRBase_ConstantDeclaration> IIRBase_ConstantDeclarationRef;

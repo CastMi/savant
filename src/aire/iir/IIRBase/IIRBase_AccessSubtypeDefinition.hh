@@ -40,15 +40,15 @@ class IIRBase_AccessSubtypeDefinition : public virtual IIRBase_AccessTypeDefinit
 					public virtual IIR_AccessSubtypeDefinition{
 public:
   IIR_Kind get_kind() const {return IIR_ACCESS_SUBTYPE_DEFINITION;}
-  const IIR_Char *get_kind_text() const {return "IIR_AccessSubtypeDefinition";}
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_AccessSubtypeDefinition"); }
 
-  void set_designated_subtype( IIR_TypeDefinition *designated_type);
-  IIR_TypeDefinition *get_designated_subtype();
+  void set_designated_subtype( IIR_TypeDefinitionRef designated_type);
+  IIR_TypeDefinitionRef get_designated_subtype();
 
-  void set_resolution_function( IIR_FunctionDeclaration *resolution_function );
-  IIR_FunctionDeclaration *get_resolution_function();
+  void set_resolution_function( IIR_FunctionDeclarationRef resolution_function );
+  IIR_FunctionDeclarationRef get_resolution_function();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_subtype();
   IIR_Boolean is_locally_static(){ return TRUE; }
@@ -59,7 +59,7 @@ protected:
   virtual ~IIRBase_AccessSubtypeDefinition() = 0;
     
 private:
-  IIR_FunctionDeclaration *my_resolution_function;
+  IIR_FunctionDeclarationRef my_resolution_function;
 };
 
 typedef refcount<IIRBase_AccessSubtypeDefinition> IIRBase_AccessSubtypeDefinitionRef;

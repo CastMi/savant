@@ -29,7 +29,7 @@
 #include "savant_config.hh"
 #include "IIR_TypeDefinition.hh"
 
-class IIR_DesignatorList;
+REF_FORWARD_DECL(IIR_DesignatorList);
 class IIR_TypeDefinition;
 
 class IIR_Signature : public virtual IIR_TypeDefinition{
@@ -38,11 +38,11 @@ public:
   virtual ~IIR_Signature() {}    
 
   // List accessor(s)
-  virtual IIR_DesignatorList    *get_argument_type_list() = 0;
-  virtual void                  set_argument_type_list(IIR_DesignatorList *) = 0;
+  virtual IIR_DesignatorListRef get_argument_type_list() = 0;
+  virtual void                  set_argument_type_list(IIR_DesignatorListRef ) = 0;
 
-  virtual void set_return_type( IIR_TypeDefinition *return_type ) = 0;
-  virtual IIR_TypeDefinition *get_return_type() = 0;
+  virtual void set_return_type( IIR_TypeDefinitionRef return_type ) = 0;
+  virtual IIR_TypeDefinitionRef get_return_type() = 0;
 };
 
 typedef refcount<IIR_Signature> IIR_SignatureRef;

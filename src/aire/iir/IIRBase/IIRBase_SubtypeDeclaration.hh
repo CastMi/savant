@@ -40,13 +40,13 @@ class IIRBase_SubtypeDeclaration : public virtual IIRBase_Declaration,
 				   public virtual IIR_SubtypeDeclaration{
 public:
   // List Accessor(s)
-  IIR_AttributeSpecificationList *get_attributes();
-  void                           set_attributes(IIR_AttributeSpecificationList *new_attributes);
+  IIR_AttributeSpecificationListRef get_attributes();
+  void                           set_attributes(IIR_AttributeSpecificationListRef new_attributes);
 
-  IIR_Kind get_kind() const {return IIR_SUBTYPE_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_SubtypeDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_SUBTYPE_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SubtypeDeclaration"); }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_subtype_decl() { return TRUE; }
   IIR_Boolean is_type(){ return TRUE; }
@@ -61,7 +61,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_AttributeSpecificationList *attributes;  
+  IIR_AttributeSpecificationListRef attributes;  
 };
 
 typedef refcount<IIRBase_SubtypeDeclaration> IIRBase_SubtypeDeclarationRef;

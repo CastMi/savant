@@ -31,65 +31,56 @@
 #include "IIR_LibraryDeclaration.hh"
 #include "plugin_class_factory.hh"
 
-IIRBase_LibraryUnit::IIRBase_LibraryUnit()  :
-  context_items(0),
-  attributes(0) { }
+IIRBase_LibraryUnit::IIRBase_LibraryUnit() {}
 
-IIRBase_LibraryUnit::~IIRBase_LibraryUnit() {
-  delete context_items;
-  context_items = 0;
-  delete attributes;
-  attributes = 0;
-}
+IIRBase_LibraryUnit::~IIRBase_LibraryUnit() {}
 
 // List Accessor(s)
-IIR_DeclarationList *
+IIR_DeclarationListRef
 IIRBase_LibraryUnit::get_context_items() {
-  if( context_items == 0 ){
+  if( context_items == nullptr ){
     context_items = get_class_factory()->new_IIR_DeclarationList();
   }
   return context_items;
 }
 
-IIR_AttributeSpecificationList *
+IIR_AttributeSpecificationListRef
 IIRBase_LibraryUnit::get_attributes() {
-  if( attributes == 0 ){
+  if( attributes == nullptr ){
     attributes = get_class_factory()->new_IIR_AttributeSpecificationList();
   }
   return attributes;
 }
 
 void
-IIRBase_LibraryUnit::set_context_items(IIR_DeclarationList *new_context_items) {
-  delete context_items;
+IIRBase_LibraryUnit::set_context_items(IIR_DeclarationListRef new_context_items) {
   context_items = new_context_items;
 }
 
 void
-IIRBase_LibraryUnit::set_attributes(IIR_AttributeSpecificationList *new_attributes) {
-  delete attributes;
+IIRBase_LibraryUnit::set_attributes(IIR_AttributeSpecificationListRef new_attributes) {
   attributes = new_attributes;
 }
 
-IIR *
-IIRBase_LibraryUnit::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_LibraryUnit::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_LibraryUnit *new_node =
-    dynamic_cast<IIRBase_LibraryUnit *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_LibraryUnitRef new_node =
+    my_dynamic_pointer_cast<IIRBase_LibraryUnit>(IIRBase_Declaration::convert_tree(factory));
   // Process the variables
   new_node->context_items =
-    dynamic_cast<IIR_DeclarationList *>(convert_node(context_items, factory));
+    my_dynamic_pointer_cast<IIR_DeclarationList>(convert_node(context_items, factory));
   new_node->attributes =
-    dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
+    my_dynamic_pointer_cast<IIR_AttributeSpecificationList>(convert_node(attributes, factory));
 
   return new_node;
 }
 
-IIR_LibraryDeclaration *
+IIR_LibraryDeclarationRef
 IIRBase_LibraryUnit::get_library(){
-  ASSERT( get_declarative_region() != NULL );
+  ASSERT( get_declarative_region() != nullptr );
   ASSERT( get_declarative_region()->get_kind() == IIR_LIBRARY_DECLARATION );
-  return dynamic_cast<IIR_LibraryDeclaration *>(get_declarative_region());
+  return my_dynamic_pointer_cast<IIR_LibraryDeclaration>(get_declarative_region());
 }
 
 IIR_Boolean

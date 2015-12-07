@@ -39,11 +39,11 @@ class IIR_DesignFileList : public virtual IIR_List{
 public:
   virtual ~IIR_DesignFileList() {}
     
-  virtual void prepend( IIR_DesignFile *) = 0;
-  virtual void append( IIR_DesignFile * ) = 0;
-  virtual IIR *successor( IIR_DesignFile * ) = 0;
-  virtual IIR *predecessor( IIR_DesignFile * ) = 0;
-  virtual IIR *first( ) = 0;
+  virtual void prepend( IIR_DesignFileRef ) = 0;
+  virtual void append( IIR_DesignFileRef  ) = 0;
+  virtual IIRRef successor( IIR_DesignFileRef  ) = 0;
+  virtual IIRRef predecessor( IIR_DesignFileRef  ) = 0;
+  virtual IIRRef first( ) = 0;
 };
 
 typedef refcount<IIR_DesignFileList> IIR_DesignFileListRef;

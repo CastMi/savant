@@ -36,8 +36,8 @@ class IIRBase_SubtractionOperator : public virtual IIRBase_DyadicOperator,
 				    public virtual IIR_SubtractionOperator{
 public:
 
-  IIR_Kind get_kind() const {return IIR_SUBTRACTION_OPERATOR;}
-  const IIR_Char *get_kind_text() const {return "IIR_SubtractionOperator";}
+  IIR_Kind get_kind() const override { return IIR_SUBTRACTION_OPERATOR; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SubtractionOperator"); }
 
   const string &get_operator_string() const;
 

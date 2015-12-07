@@ -37,8 +37,8 @@ class IIRBase_CaseStatementAlternativeByOthers :
   public virtual IIR_CaseStatementAlternativeByOthers{
 
 public:
-  IIR_Kind get_kind() const {return IIR_CASE_STATEMENT_ALTERNATIVE_BY_OTHERS;}
-  const IIR_Char *get_kind_text() const {return "IIR_CaseStatementAlternativeByOthers";}
+  IIR_Kind get_kind() const override { return IIR_CASE_STATEMENT_ALTERNATIVE_BY_OTHERS; }
+  IIR_CharConstRef get_kind_text() const override {return IIR_CharConstRef("IIR_CaseStatementAlternativeByOthers"); }
 
   IIR_Boolean is_resolved(){ return TRUE; }
 

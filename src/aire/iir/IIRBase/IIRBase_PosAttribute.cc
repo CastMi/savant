@@ -23,29 +23,26 @@
 #include "IIR_DesignFile.hh"
 #include "IIR_IntegerSubtypeDefinition.hh"
 #include "IIR_TypeDefinition.hh"
-
 #include "StandardPackage.hh"
+#include <cstring>
 
-IIRBase_PosAttribute::IIRBase_PosAttribute() {
-  my_suffix = NULL;
-}
-
+IIRBase_PosAttribute::IIRBase_PosAttribute() {}
 IIRBase_PosAttribute::~IIRBase_PosAttribute() {}
 
 void 
-IIRBase_PosAttribute::set_suffix( IIR *suffix ){
+IIRBase_PosAttribute::set_suffix( IIRRef suffix ){
   my_suffix = suffix;
 }
 
-IIR * 
+IIRRef
 IIRBase_PosAttribute::get_suffix() {
   return my_suffix;
 }
 
-IIR *
-IIRBase_PosAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_PosAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_PosAttribute *new_node = dynamic_cast<IIRBase_PosAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_PosAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_PosAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->my_suffix = convert_node(my_suffix, factory);
@@ -53,15 +50,15 @@ IIRBase_PosAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_PosAttribute::get_subtype(){
-  return dynamic_cast<IIR_TypeDefinition *>(get_design_file()->get_standard_package()->get_savant_universal_integer());
+  return my_dynamic_pointer_cast<IIR_TypeDefinition>(get_design_file()->get_standard_package()->get_savant_universal_integer());
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_PosAttribute::build_attribute_name() {
-  const char *name = "pos";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("pos");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 

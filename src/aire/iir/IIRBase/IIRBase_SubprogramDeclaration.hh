@@ -43,19 +43,19 @@ class IIRBase_SubprogramDeclaration : public virtual IIRBase_Declaration, public
 
 public:
   // List Accessor(s)
-  IIR_InterfaceList                     *get_interface_declarations();
-  IIR_DeclarationList                   *get_subprogram_declarations();
-  IIR_SequentialStatementList           *get_subprogram_body();
-  IIR_AttributeSpecificationList        *get_attributes();
-  void                                  set_interface_declarations(IIR_InterfaceList *new_interface_declarations);
-  void                                  set_subprogram_declarations(IIR_DeclarationList *new_subprogram_declarations); 
-  void                                  set_subprogram_body(IIR_SequentialStatementList *new_subprogram_body);
-  void                                  set_attributes(IIR_AttributeSpecificationList *new_attributes);
+  IIR_InterfaceListRef                get_interface_declarations();
+  IIR_DeclarationListRef              get_subprogram_declarations();
+  IIR_SequentialStatementListRef      get_subprogram_body();
+  IIR_AttributeSpecificationListRef   get_attributes();
+  void                                set_interface_declarations(IIR_InterfaceListRef new_interface_declarations);
+  void                                set_subprogram_declarations(IIR_DeclarationListRef new_subprogram_declarations); 
+  void                                set_subprogram_body(IIR_SequentialStatementListRef new_subprogram_body);
+  void                                set_attributes(IIR_AttributeSpecificationListRef new_attributes);
 
-  IIR_Kind get_kind() const {return IIR_SUBPROGRAM_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_SubprogramDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_SUBPROGRAM_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SubprogramDeclaration"); }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   /** This method returns true if this method contained a body when it was parsed.
       We need this to differentiate between:
@@ -80,10 +80,10 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_InterfaceList                     *interface_declarations;
-  IIR_DeclarationList                   *subprogram_declarations;
-  IIR_SequentialStatementList           *subprogram_body;
-  IIR_AttributeSpecificationList        *attributes;
+  IIR_InterfaceListRef                interface_declarations;
+  IIR_DeclarationListRef              subprogram_declarations;
+  IIR_SequentialStatementListRef      subprogram_body;
+  IIR_AttributeSpecificationListRef   attributes;
 
   IIR_Boolean                           my_contains_body;
 };

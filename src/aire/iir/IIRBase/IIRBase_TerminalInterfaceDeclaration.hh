@@ -32,10 +32,10 @@
 class IIRBase_TerminalInterfaceDeclaration : public virtual IIRBase_InterfaceDeclaration, public virtual IIR_TerminalInterfaceDeclaration {
 public:
   /** Returns the IIR_Kind of this node. */
-  IIR_Kind get_kind() const {  return IIR_TERMINAL_INTERFACE_DECLARATION;  }
+  IIR_Kind get_kind() const override { return IIR_TERMINAL_INTERFACE_DECLARATION; }
   
   /** Returns the text name of this node. */
-  const IIR_Char *get_kind_text() const {  return "IIR_TerminalInterfaceDeclaration";  }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_TerminalInterfaceDeclaration"); }
 
   declaration_type get_declaration_type();
   void publish_vhdl_decl(ostream &);

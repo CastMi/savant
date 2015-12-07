@@ -31,7 +31,8 @@
 
 #include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
-class IIR_AssociationList;
+
+REF_FORWARD_DECL(IIR_AssociationList);
 
 class IIR_ProcedureCallStatement : public virtual IIR_SequentialStatement{
 
@@ -39,11 +40,11 @@ public:
   virtual ~IIR_ProcedureCallStatement() {}
     
   // List accessor(s)
-  virtual IIR_AssociationList   *get_actual_parameter_part() = 0;
-  virtual void                  set_actual_parameter_part(IIR_AssociationList *) = 0;
+  virtual IIR_AssociationListRef get_actual_parameter_part() = 0;
+  virtual void                   set_actual_parameter_part(IIR_AssociationListRef ) = 0;
 
-  virtual void set_procedure_name( IIR* procedure_name) = 0;
-  virtual IIR* get_procedure_name() = 0;
+  virtual void set_procedure_name( IIRRef procedure_name) = 0;
+  virtual IIRRef get_procedure_name() = 0;
 };
 
 typedef refcount<IIR_ProcedureCallStatement> IIR_ProcedureCallStatementRef;

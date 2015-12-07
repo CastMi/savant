@@ -47,7 +47,7 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
 #ifdef PROCESS_COMBINATION
   void _static_elaborate(IIRScram_ArchitectureDeclaration*, IIRScram_DeclarationList*,
@@ -56,16 +56,16 @@ public:
 
   void _type_check();
 
-  IIRScram *_get_target();
+  IIRScramRef _get_target();
   IIR_DelayMechanism _get_delay_mechanism();
-  IIRScram *_get_reject_time_expression();
-  IIRScram *_get_case_statement_expression();
-  void _set_case_statement_expression( IIRScram *new_expression );
+  IIRScramRef _get_reject_time_expression();
+  IIRScramRef _get_case_statement_expression();
+  void _set_case_statement_expression( IIRScramRef new_expression );
 
-  IIRScram_SignalDeclaration *_get_guard_signal();
+  IIRScram_SignalDeclarationRef _get_guard_signal();
 
-  IIRScram *                            _get_expression();
-  IIRScram_SelectedWaveformList *       _get_selected_waveforms();
+  IIRScramRef                             _get_expression();
+  IIRScram_SelectedWaveformListRef        _get_selected_waveforms();
 protected:
 private:
   // These methods are used to transform our data into and out of case
@@ -73,7 +73,7 @@ private:
   // should be during transmute, too.  The read method is used during type
   // checking to take a resolved list returned to us, and put it back into
   // the selected waveforms.
-  void _read_alternative_list(  IIRScram_CaseStatementAlternativeList * );
+  void _read_alternative_list(  IIRScram_CaseStatementAlternativeListRef  );
   void _type_check_expression_and_choices();
   void _type_check_target_and_waveforms();
 };

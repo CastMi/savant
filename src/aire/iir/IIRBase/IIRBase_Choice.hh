@@ -33,13 +33,13 @@
 class IIRBase_Choice : public virtual IIRBase_Tuple, public virtual IIR_Choice{
 
 public:
-  IIR_Kind get_kind() const {return IIR_CHOICE;}
-  const IIR_Char *get_kind_text() const {return "IIR_Choice";}
+  IIR_Kind get_kind() const override { return IIR_CHOICE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_Choice"); }
 
-  void set_value(IIR*);
-  IIR* get_value();
+  void set_value(IIRRef);
+  IIRRef get_value();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
 
@@ -50,7 +50,7 @@ protected:
   virtual ~IIRBase_Choice() = 0;
     
 private:
-  IIR* my_value;
+  IIRRef my_value;
 };
 
 typedef refcount<IIRBase_Choice> IIRBase_ChoiceRef;

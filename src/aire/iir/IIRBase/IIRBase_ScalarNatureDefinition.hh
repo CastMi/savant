@@ -41,28 +41,28 @@ class IIR;
 class IIRBase_ScalarNatureDefinition : public virtual IIRBase_NatureDefinition, public virtual IIR_ScalarNatureDefinition {
  
 public:
-  IIR_Kind get_kind() const {return IIR_SCALAR_NATURE_DEFINITION;}
-  const IIR_Char *get_kind_text() const {return "IIR_ScalarNatureDefinition";}
+  IIR_Kind get_kind() const override { return IIR_SCALAR_NATURE_DEFINITION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ScalarNatureDefinition"); }
  
   /** Set the across type of the nature */
-  void set_across(IIR_TypeDefinition *across);
+  void set_across(IIR_TypeDefinitionRef across);
  
   /** Returns the across type of the nature */
-  IIR_TypeDefinition *get_across();
+  IIR_TypeDefinitionRef get_across();
  
   /** Set the though type of nature */
-  void set_through(IIR_TypeDefinition *through);
+  void set_through(IIR_TypeDefinitionRef through);
  
   /** Returns the through type of nature */
-  IIR_TypeDefinition *get_through();
+  IIR_TypeDefinitionRef get_through();
  
   /** Set the reference terminal of the nature */
-  void set_reference_terminal( IIR_TerminalDeclaration *);
+  void set_reference_terminal( IIR_TerminalDeclarationRef );
  
   /** Returns the reference terminal of the nature */
-  IIR_TerminalDeclaration *get_reference_terminal();
+  IIR_TerminalDeclarationRef get_reference_terminal();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
  
   void publish_vhdl_decl(ostream &);
 protected:
@@ -72,11 +72,11 @@ protected:
  
 private:
 
-  IIR_TypeDefinition *across;
-  IIR_TypeDefinition *through;
-  IIR_TerminalDeclaration *reference_terminal;
-  IIR *across_tolerance;
-  IIR *through_tolerance;
+  IIR_TypeDefinitionRef across;
+  IIR_TypeDefinitionRef through;
+  IIR_TerminalDeclarationRef reference_terminal;
+  IIRRef across_tolerance;
+  IIRRef through_tolerance;
 
 };
 

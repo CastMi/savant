@@ -38,25 +38,25 @@ class IIR_ArrayTypeDefinition : public virtual IIR_TypeDefinition{
 public:
   virtual ~IIR_ArrayTypeDefinition() {}
 
-  virtual void set_index_subtype( IIR_ScalarTypeDefinition *index_subtype ) = 0;
-  virtual IIR_ScalarTypeDefinition *get_index_subtype() = 0;
+  virtual void set_index_subtype( IIR_ScalarTypeDefinitionRef index_subtype ) = 0;
+  virtual IIR_ScalarTypeDefinitionRef get_index_subtype() = 0;
 
-  virtual void set_element_subtype( IIR_TypeDefinition *element_subtype ) = 0;
-  virtual IIR_TypeDefinition *get_element_subtype() = 0;
+  virtual void set_element_subtype( IIR_TypeDefinitionRef element_subtype ) = 0;
+  virtual IIR_TypeDefinitionRef get_element_subtype() = 0;
 
   /** Due to the complexities of the IIR, sometimes
       _get_element_subtype() doesn't actually return the element
       subtype.  This is the case for multidimensional arrays, for
       instance.  _get_final_subtype() _will_ return the _real_ element
       subtype. */
-  virtual IIR_TypeDefinition *get_final_subtype() = 0;
+  virtual IIR_TypeDefinitionRef get_final_subtype() = 0;
 
   // This method returns TRUE if the element_subtype is REALLY that of the
   // element, or FALSE if it's simply a placeholder for a mutlidimensional array.
   virtual IIR_Boolean is_element() = 0;
   virtual void set_is_element( IIR_Boolean ) = 0;
 
-  virtual void set_declaration( IIR_Declaration *corresponding_decl ) = 0;
+  virtual void set_declaration( IIR_DeclarationRef corresponding_decl ) = 0;
 };
 
 typedef refcount<IIR_ArrayTypeDefinition> IIR_ArrayTypeDefinitionRef;

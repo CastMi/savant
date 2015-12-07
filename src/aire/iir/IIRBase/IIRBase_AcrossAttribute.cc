@@ -21,16 +21,16 @@
 #include "IIRBase_Identifier.hh"
 #include "IIRBase_AcrossAttribute.hh"
 #include "IIRBase_DesignFile.hh"
-
 #include "savant.hh"
+#include <cstring>
 
 IIRBase_AcrossAttribute::IIRBase_AcrossAttribute(){}
 IIRBase_AcrossAttribute::~IIRBase_AcrossAttribute(){}
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_AcrossAttribute::build_attribute_name(){
-  const char *name = "across";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );
+   std::string name("across");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory() );
 }
 
 void

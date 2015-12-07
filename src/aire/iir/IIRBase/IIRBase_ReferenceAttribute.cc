@@ -22,15 +22,15 @@
 #include "IIRBase_Identifier.hh"
 #include "IIRBase_ReferenceAttribute.hh"
 #include "savant.hh"
+#include <cstring>
 
 IIRBase_ReferenceAttribute::IIRBase_ReferenceAttribute() {}
-
 IIRBase_ReferenceAttribute::~IIRBase_ReferenceAttribute() {}
       
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_ReferenceAttribute::build_attribute_name() {
-  const char *name = "reference";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("reference");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void

@@ -33,29 +33,29 @@ public:
   virtual ~IIR_ZTFAttribute() {};
 
   /** Set the numerator coefficients from the static expression. */
-  virtual void set_num(IIR* numerator) = 0;
+  virtual void set_num(IIRRef numerator) = 0;
 
   /** Return the numerator coefficients. */
-  virtual IIR* get_num() = 0;
+  virtual IIRRef get_num() = 0;
 
   /** Set the denominator coefficients from the static expression.  */
-  virtual void set_den(IIR* denominator) = 0;
+  virtual void set_den(IIRRef denominator) = 0;
 
   /** Return the denominator coefficients.  */
-  virtual IIR* get_den() = 0;
+  virtual IIRRef get_den() = 0;
 
   /** Set the sampling frequency. */ 
-  virtual void set_t(IIR* period) = 0;
+  virtual void set_t(IIRRef period) = 0;
 
   /** Return the sampling frequency. */ 
-  virtual IIR* get_t() = 0;
+  virtual IIRRef get_t() = 0;
 
   /** Set the initial_delay specifying the time of the first sampling. If
       omitted, it defaults to 0.0. */
-  virtual void set_initial_delay(IIR* initial_delay) = 0;
+  virtual void set_initial_delay(IIRRef initial_delay) = 0;
 
   /** Return the initial_delay specifying the time of the first sampling. */
-  virtual IIR* get_initial_delay() = 0;  
+  virtual IIRRef get_initial_delay() = 0;  
 protected:
 private:
 };

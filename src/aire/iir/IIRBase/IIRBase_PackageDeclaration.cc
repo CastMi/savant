@@ -31,48 +31,40 @@
 #include "IIR_PackageBodyDeclaration.hh"
 #include "IIR_TextLiteral.hh"
 
-IIRBase_PackageDeclaration::IIRBase_PackageDeclaration() :
-  package_declarative_part(0),
-  my_package_body(0){}
+IIRBase_PackageDeclaration::IIRBase_PackageDeclaration() {}
+IIRBase_PackageDeclaration::~IIRBase_PackageDeclaration() {}
 
-IIRBase_PackageDeclaration::~IIRBase_PackageDeclaration(){
-  delete package_declarative_part;
-  package_declarative_part = 0;
-  // Not my_package_body
-}
-
-IIR_PackageBodyDeclaration *
+IIR_PackageBodyDeclarationRef
 IIRBase_PackageDeclaration::get_package_body(){
   return my_package_body;
 }
 
 void 
-IIRBase_PackageDeclaration::set_package_body( IIR_PackageBodyDeclaration *package_body ){
+IIRBase_PackageDeclaration::set_package_body( IIR_PackageBodyDeclarationRef package_body ){
   my_package_body = package_body;
 }
 
 // List Accessor(s)
-IIR_DeclarationList *
+IIR_DeclarationListRef
 IIRBase_PackageDeclaration::get_package_declarative_part() {
-  ASSERT(package_declarative_part != NULL);
+  ASSERT(package_declarative_part != nullptr);
   return package_declarative_part;
 }
 
 void
-IIRBase_PackageDeclaration::set_package_declarative_part(IIR_DeclarationList *new_package_declarative_part) {
-  ASSERT(new_package_declarative_part != NULL);
-  delete package_declarative_part;
+IIRBase_PackageDeclaration::set_package_declarative_part(IIR_DeclarationListRef new_package_declarative_part) {
+  ASSERT(new_package_declarative_part != nullptr);
   package_declarative_part = new_package_declarative_part;
 }
 
-IIR *
-IIRBase_PackageDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_PackageDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_PackageDeclaration *new_node = dynamic_cast<IIRBase_PackageDeclaration *>(IIRBase_LibraryUnit::convert_tree(factory));
+  IIRBase_PackageDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_PackageDeclaration>(IIRBase_LibraryUnit::convert_tree(factory));
 
   // Process the variables
-  new_node->package_declarative_part = dynamic_cast<IIR_DeclarationList *>(convert_node(package_declarative_part, factory));
-  new_node->my_package_body = dynamic_cast<IIR_PackageBodyDeclaration *>(convert_node(my_package_body, factory));
+  new_node->package_declarative_part = my_dynamic_pointer_cast<IIR_DeclarationList>(convert_node(package_declarative_part, factory));
+  new_node->my_package_body = my_dynamic_pointer_cast<IIR_PackageBodyDeclaration>(convert_node(my_package_body, factory));
 
   return new_node;
 }
@@ -82,8 +74,8 @@ IIRBase_PackageDeclaration::get_declaration_type(){
   return PACKAGE_DT;
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_PackageDeclaration::find_declarations( IIR_Name *to_find ){
+savant::set<IIR_DeclarationRef>
+IIRBase_PackageDeclaration::find_declarations( IIR_NameRef to_find ){
   return get_package_declarative_part()->find_declarations( to_find );
 }
 
@@ -93,7 +85,7 @@ IIRBase_PackageDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out << "package ";
   get_declarator()->publish_vhdl(vhdl_out);
   vhdl_out << " is\n";
-  dynamic_cast<IIRBase_DeclarationList *>
+  my_dynamic_pointer_cast<IIRBase_DeclarationList>
     (get_package_declarative_part())->publish_vhdl_decl(vhdl_out);
   vhdl_out << "end package;\n";
 }

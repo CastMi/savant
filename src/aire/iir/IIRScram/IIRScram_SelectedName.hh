@@ -51,17 +51,17 @@ public:
 
 
   /** Find the first prefix.  It should be a library.  Return it. */
-  IIRScram_LibraryDeclaration *_get_library_declaration();
+  IIRScram_LibraryDeclarationRef _get_library_declaration();
 
-  savant::set<IIRScram_Declaration*> *_symbol_lookup();
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup();
   
-  IIRScram *_get_suffix();
+  IIRScramRef _get_suffix();
 
   const string convert_to_library_name();
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
-  IIRScram *_decl_to_decl( IIRScram_Declaration * );
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0);
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef  );
+  IIRScramRef _decl_to_decl( IIRScram_DeclarationRef  );
 
   IIR_Boolean is_object();
   IIR_Boolean is_configuration_declaration();
@@ -72,20 +72,20 @@ public:
 
   IIR_Boolean is_locally_static();
   
-  void _set_suffix(IIRScram *suffix);
+  void _set_suffix(IIRScramRef suffix);
 
-  void _build_lib( IIRScram_LibraryUnit * );
+  void _build_lib( IIRScram_LibraryUnitRef  );
   
   void _make_interface_visible( symbol_table * );
   void _come_into_scope( symbol_table * );
   void _come_out_of_scope( symbol_table * );
   
-  IIRScram_GenericList *_get_generic_list();
-  IIRScram_PortList *_get_port_list();
+  IIRScram_GenericListRef _get_generic_list();
+  IIRScram_PortListRef _get_port_list();
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
-  IIRScram_TypeDefinition *_get_rval_pointed_at();
+  IIRScram_TypeDefinitionRef _get_rval_pointed_at();
 
 protected:
 private:

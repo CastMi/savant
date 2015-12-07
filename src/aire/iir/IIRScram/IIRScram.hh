@@ -41,42 +41,42 @@ namespace savant {
   template <class type> class set;
 }
 
-class IIRScram;
+REF_FORWARD_DECL(IIRScram_TypeDefinition);
+REF_FORWARD_DECL(IIRScram_Declaration);
+REF_FORWARD_DECL(IIRScram);
+REF_FORWARD_DECL(IIRScram_AttributeSpecification);
+REF_FORWARD_DECL(IIRScram_FunctionDeclaration);
+REF_FORWARD_DECL(IIRScram_IntegerLiteral);
+REF_FORWARD_DECL(IIRScram_LibraryDeclaration);
+REF_FORWARD_DECL(IIRScram_AttributeSpecificationList);
+REF_FORWARD_DECL(IIRScram_PortList);
+REF_FORWARD_DECL(IIRScram_GenericList);
+REF_FORWARD_DECL(IIRScram_List);
+REF_FORWARD_DECL(IIRScram_LibraryUnit);
+REF_FORWARD_DECL(IIRScram_DeclarationList);
+REF_FORWARD_DECL(IIRScram_ConstantDeclaration);
+REF_FORWARD_DECL(IIRScram_DesignFile);
+REF_FORWARD_DECL(IIRScram_Identifier);
+REF_FORWARD_DECL(IIRScram_TextLiteral);
+REF_FORWARD_DECL(IIRScram_Label);
+REF_FORWARD_DECL(IIRScram_InterfaceList);
+REF_FORWARD_DECL(IIRScram_AssociationList);
 class IIRScram_ArchitectureDeclaration;
 class IIRScram_ArchitectureStatementList;
-class IIRScram_AssociationList;
-class IIRScram_AttributeSpecification;
-class IIRScram_AttributeSpecificationList;
 class IIRScram_ConcurrentStatement;
-class IIRScram_ConstantDeclaration;
 class IIRScram_ContributionAttribute;
-class IIRScram_Declaration;
-class IIRScram_DeclarationList;
 class IIRScram_Designator;
 class IIRScram_DesignatorList;
-class IIRScram_DesignFile;
 class IIRScram_DotAttribute;
 class IIRScram_EntityDeclaration;
-class IIRScram_FunctionDeclaration;
-class IIRScram_GenericList;
-class IIRScram_Identifier;
-class IIRScram_IntegerLiteral;
-class IIRScram_InterfaceList;
-class IIRScram_Label;
-class IIRScram_LibraryDeclaration;
-class IIRScram_LibraryUnit;
-class IIRScram_List;
 class IIRScram_NatureDeclaration;
 class IIRScram_NatureDefinition;
 class IIRScram_PackageDeclaration;
-class IIRScram_PortList;
 class IIRScram_ProcessStatement;
 class IIRScram_ReferenceAttribute;
 class IIRScram_SimultaneousStatement;
 class IIRScram_Statement;
 class IIRScram_TypeDeclaration;
-class IIRScram_TypeDefinition;
-class IIRScram_TextLiteral;
 
 /** This class is the base of the SAVANT extensions to the IIR.  Due to the
     design of the IIR, lots of things have been put in here that seem like
@@ -109,12 +109,12 @@ public:
   //@{
   /** These methods only apply to entities, components, etc.  (Or names
       representing them, like resolved selected names, etc.) */
-  virtual IIRScram_GenericList *_get_generic_list();
-  virtual IIRScram_PortList *_get_port_list();
+  virtual IIRScram_GenericListRef _get_generic_list();
+  virtual IIRScram_PortListRef _get_port_list();
   //@}
 
   /** This method returns any statement region found in the node. */
-  virtual IIRScram_List *_get_statement_list();
+  virtual IIRScram_ListRef _get_statement_list();
 
   /** This method has been introduced to remove unneccessary type
       castings. */
@@ -222,35 +222,35 @@ public:
      in a variable or signal assignment context, else returns false. */
   virtual IIR_Boolean _is_writable();
 
-  virtual IIRScram *_clone();
-  virtual void _clone( IIRScram *);
+  virtual IIRScramRef _clone();
+  virtual void _clone( IIRScramRef );
 
-  virtual IIRScram_AttributeSpecificationList *_get_attribute_specification_list( );
+  virtual IIRScram_AttributeSpecificationListRef _get_attribute_specification_list( );
 
   /** This method returns the declaration of an indexed name.  If the
       prefix is a declaration, returns it, or else, gets the declaration of
       the prefix recursively. */
-  virtual IIRScram_Declaration* _get_prefix_declaration();
+  virtual IIRScram_DeclarationRef _get_prefix_declaration();
 
   /** This is used on a selected name to get the package name in it. */
-  virtual IIRScram_Declaration* _get_package_declaration();
+  virtual IIRScram_DeclarationRef _get_package_declaration();
 
   /** The following function returns the type of the IIRScram_Name object that
       is referred to. */
-  virtual IIRScram_TypeDefinition* _get_name_type();
+  virtual IIRScram_TypeDefinitionRef _get_name_type();
 
   /** The following function is used for building the generic parameter
       set when generic statements occur inside Simultaneous Statements */
-  virtual void _build_generic_parameter_set( savant::set<IIRScram_Declaration*> *);
+  virtual void _build_generic_parameter_set( savant::set<IIRScram_DeclarationRef> );
 
   /** The following function is used to pick up the resolution function
       for a subtype/type definition. This function is needed as all the
       vhdl publishing is now done in scalar type.  This function is
       overloaded in the corresponding nodes that have resolution
       function defined.  */
-  virtual IIRScram_FunctionDeclaration *_get_resolution_function();
+  virtual IIRScram_FunctionDeclarationRef _get_resolution_function();
 
-  IIRScram_LibraryDeclaration *_get_work_library( );
+  IIRScram_LibraryDeclarationRef _get_work_library( );
 
   /** These methods give derived classes a chance to generate implicit
       declarations and so forth. */
@@ -267,13 +267,13 @@ public:
       accepting an argument essentially narrows the search to be within the
       context of a set of declarations.  I.e. find the "foo.bars" within
       the context of the declarations of "baz"es. */
-  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup();
-  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup( IIRScram_Declaration *);
-  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup( savant::set<IIRScram_Declaration*> *);
-  virtual savant::set<IIRScram_Declaration*> *_symbol_lookup(constraint_functor *functor);
+  virtual savant::set<IIRScram_DeclarationRef> _symbol_lookup();
+  virtual savant::set<IIRScram_DeclarationRef> _symbol_lookup( IIRScram_DeclarationRef );
+  virtual savant::set<IIRScram_DeclarationRef> _symbol_lookup( savant::set<IIRScram_DeclarationRef> );
+  virtual savant::set<IIRScram_DeclarationRef> _symbol_lookup(constraint_functor *functor);
 
   
-  IIRScram_Label *_lookup_label( IIR_Boolean complain_on_error );
+  IIRScram_LabelRef _lookup_label( IIR_Boolean complain_on_error );
   
   /** These methods calculate a node's rval_set.  Either will return a
       a set with a bunch of type definitions, or will return NULL if it
@@ -287,11 +287,11 @@ public:
       variable "FOO", and we're looking for the target of a variable
       assignment statement, only the variable assignment will be
       considered. */
-  virtual savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
+  virtual savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0);
 
-  virtual savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_TypeDefinition*> *,
+  virtual savant::set<IIRScram_TypeDefinitionRef> _get_rval_set( savant::set<IIRScram_TypeDefinitionRef>,
                                                                constraint_functor *functor = 0 );
-  virtual savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_Declaration*> *,
+  virtual savant::set<IIRScram_TypeDefinitionRef> _get_rval_set( savant::set<IIRScram_DeclarationRef>,
                                                                constraint_functor *functor = 0 );
 
   /** This method takes the a set of return values that are context,
@@ -300,35 +300,35 @@ public:
       foo( 1 to  3 ).bar( 1 ) and we know the type of the whole expression,
       and we have a set of types for foo( 1 to 3 ), this method will tell
       us which is correct... */
-  virtual IIRScram_TypeDefinition *_determine_rval_in_set( savant::set<IIRScram_TypeDefinition*> *,
-                                                           IIRScram_TypeDefinition * );
+  virtual IIRScram_TypeDefinitionRef _determine_rval_in_set( savant::set<IIRScram_TypeDefinitionRef>,
+                                                           IIRScram_TypeDefinitionRef );
 
   /** Same as previous method, but in cases like: work.foo( 1 ), where the
       prefix has a declaration, but not a type... */
-  virtual IIRScram_Declaration *_determine_decl_in_set( savant::set<IIRScram_Declaration*> *,
-                                                        IIRScram_TypeDefinition * );  
+  virtual IIRScram_DeclarationRef _determine_decl_in_set( savant::set<IIRScram_DeclarationRef>,
+                                                        IIRScram_TypeDefinitionRef );  
 
   /** This method looks at this node as having been resolved as a formal in
       an association, and returns the declaration associated with it. */
-  virtual IIRScram_Declaration *_find_formal_declaration();
+  virtual IIRScram_DeclarationRef _find_formal_declaration();
 
   /** This method should only be called on resolved "things".  For
       instance, declarations, resolved names (indexed names with
       declaration prefixes, etc.) */
-  virtual IIRScram_TypeDefinition *_get_subtype();
+  virtual IIRScram_TypeDefinitionRef _get_subtype();
 
   /** This method should only be called on resolved "things".  For
       instance, declarations, resolved names (indexed names with
       declaration prefixes, etc.)  It should only be called in objects that
       are access types (otherwise, it returns NULL). */
-  virtual IIRScram_TypeDefinition *_get_rval_pointed_at();
+  virtual IIRScram_TypeDefinitionRef _get_rval_pointed_at();
 
   /** This method calculates the locally static value of the expression
       it's called on.  If this is impossible (i.e. the expression isn't
       static, or it's not integer valued, it will return NULL.)  If
       possible, it _allocates_ an IIRScram_IntegerLiteral with the result
       represented in it. */
-  virtual IIRScram_IntegerLiteral *_get_integer_static_value();
+  virtual IIRScram_IntegerLiteralRef _get_integer_static_value();
   
   /** This method should only be called on resolved "things".  For
       instance, declarations, resolved names (indexed names with
@@ -338,36 +338,36 @@ public:
       array type definition.  If the number passed in is higher than the
       number of indexes of the array, or if the object the method is called
       on isn't an array, the return value is NULL.  */
-  virtual IIRScram_TypeDefinition *_get_type_of_element( int );
+  virtual IIRScram_TypeDefinitionRef _get_type_of_element( int );
 
   /** This method returns the type of an objects port in a particular
       position: port( x : in bit; y : out integer; ) 0 = bit
       typedefinition, 1 = integertypedefinition */
-  virtual IIRScram_TypeDefinition *_get_port_type( int );
+  virtual IIRScram_TypeDefinitionRef _get_port_type( int );
   
   /** Given our (resolved) r value, plus knowing what type of node we are,
       transform ourselves into the correct declaration... */
-  virtual IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
+  virtual IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef );
 
   /** Given a prefix of type (param 1), return the declaration for a suffix
       with type (param 2) */
-  virtual IIRScram *_rval_to_decl( IIRScram_TypeDefinition *, IIRScram_TypeDefinition * );
+  virtual IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef , IIRScram_TypeDefinitionRef  );
 
   /** Given a prefix declaration (param 1), return the declaration for a suffix with
       type (param 2) */
-  virtual IIRScram *_rval_to_decl( IIRScram_Declaration *, IIRScram_TypeDefinition * );
+  virtual IIRScramRef _rval_to_decl( IIRScram_DeclarationRef , IIRScram_TypeDefinitionRef  );
 
   /** This method takes a declaration, and returns a resolved IIRScram * that
       has had the declaration applied to it.  For instance, a
       IIRScram_SimpleName returns the declaration itself.  An IIRScram_SelectedName
       resolves the prefix and the suffix, and returns itself. */
-  virtual IIRScram *_decl_to_decl( IIRScram_Declaration * );
+  virtual IIRScramRef _decl_to_decl( IIRScram_DeclarationRef  );
 
   /** This is the main call into the semantic processing routines.  The set
       that gets passed in is the list of possible l-values of the node
       being type-checked. */
-  virtual void _type_check( savant::set<IIRScram_TypeDefinition*> * );
-  virtual void _type_check( IIRScram_TypeDefinition * );
+  virtual void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
+  virtual void _type_check( IIRScram_TypeDefinitionRef  );
 
   /** The following methods are used to type check component
       configurations, and configuration specifications.  Unfortunately, IIR
@@ -376,24 +376,24 @@ public:
       Note the that int is actually an 
       IIRScram_ConfigurationSpecification::type_check_mode, but we can't easily
       #include that here.*/
-  void _type_check_configuration( IIRScram_AssociationList &port_map_aspect,
-				  IIRScram_AssociationList &generic_map_aspect,
+  void _type_check_configuration( IIRScram_AssociationListRef port_map_aspect,
+				  IIRScram_AssociationListRef generic_map_aspect,
 				  int mode );
 
   /** Used by _type_check_configuration to resolve the port/generic map
       aspects.
      
       @see IIRScram#_type_check_configuration  */
-  void _resolve_map( IIRScram_InterfaceList *entity_interface_list,
-		     IIRScram_InterfaceList *component_interface_list,
-		     IIRScram_AssociationList &map,
+  void _resolve_map( IIRScram_InterfaceListRef entity_interface_list,
+		     IIRScram_InterfaceListRef component_interface_list,
+		     IIRScram_AssociationListRef map,
 		     int tmp_mode );
 
   /** This method type checks the iteration scheme of IIR_ForLoopStatement
       and IIR_ConcurrentGenerateForLoop statement.  Again, IIR is the
       closest ancestor.  It takes the iteration scheme as param, and
       returns the correctly resolved subtype for it. */
-  IIRScram_TypeDefinition *_type_check_iteration_scheme( IIRScram_ConstantDeclaration *iteration_scheme );
+  IIRScram_TypeDefinitionRef _type_check_iteration_scheme( IIRScram_ConstantDeclarationRef iteration_scheme );
 
   /**
      Type check/resolve this node to make sure it's valid "file open
@@ -401,14 +401,14 @@ public:
      is READ_MODE or WRITE_MODE, but technically it could be something like
      a function call.  The return is the resolved node.
   */
-  IIR *_type_check_file_open_information();
+  IIRRef _type_check_file_open_information();
 
-  virtual IIRScram *_get_component_name( );
-  virtual void _set_component_name( IIRScram * );
+  virtual IIRScramRef _get_component_name( );
+  virtual void _set_component_name( IIRScramRef );
 
   /** Calls "get_entity_aspect" on nodes that define it.  Generates an
       error for any other node. */
-  virtual IIRScram_LibraryUnit *_get_entity_aspect();
+  virtual IIRScram_LibraryUnitRef _get_entity_aspect();
 
   /** This method implements the rules found in section 5.2.2 of the '93
       LRM.  It looks for an entity with the same simple name as the
@@ -416,7 +416,7 @@ public:
       include IIR_SimpleName, and IIR_ComponentDeclaration.  Anything else
       will generate an error.  If no matching entity is found, NULL is
       returned. */
-  IIRScram_LibraryUnit *_find_default_binding( IIRScram *component_name );
+  IIRScram_LibraryUnitRef _find_default_binding( IIRScramRef component_name );
 
   /** This virtual method allows semantic transformations to be made as
       part of type_checking.  These transformations include things like the
@@ -428,8 +428,8 @@ public:
       return "this".  NOTE: This method is intended to be called from
       _type_check of the _containing_ node. I.e. this method is not
       intended to be "recursively descending". */
-  virtual IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition*> * );
-  virtual IIRScram *_semantic_transform( IIRScram_TypeDefinition * );
+  virtual IIRScramRef _semantic_transform( savant::set<IIRScram_TypeDefinitionRef> );
+  virtual IIRScramRef _semantic_transform( IIRScram_TypeDefinitionRef  );
 
   /** This method, defined within the name class, IIRScram_Identifier class, and
       IIRScram_Identifier class, converts a name into a string suitable for use
@@ -453,8 +453,8 @@ public:
   virtual void _make_interface_visible( symbol_table *add_declarations_into );
   virtual void _make_interface_visible( );
 
-  IIRScram_DesignFile *_get_design_file() const;
-  void _set_design_file( IIRScram_DesignFile *new_design_file );
+  IIRScram_DesignFileRef _get_design_file() const;
+  void _set_design_file( IIRScram_DesignFileRef new_design_file );
 
   /** Like strdup but allocates the memory with "new".  If no length > 0 is
       passed / in then strlen is called on "to_copy". */
@@ -466,21 +466,21 @@ public:
       "attribute bar of foo is 7;", this attribute specification will be
       attached to foo.  Similarly, disconnection specifications will be
       attached to guarded signals as required. */
-  IIR_Boolean _attach_attribute_specification( IIRScram_AttributeSpecification * );
-  IIR_Boolean _attach_disconnection_specification( IIRScram_AttributeSpecification * );
+  IIR_Boolean _attach_attribute_specification( IIRScram_AttributeSpecificationRef );
+  IIR_Boolean _attach_disconnection_specification( IIRScram_AttributeSpecificationRef );
 
-  virtual IIRScram_DeclarationList* _get_declaration_list();
+  virtual IIRScram_DeclarationListRef _get_declaration_list();
 
-  virtual void _build_reference_quantity_list(dl_list<IIRScram_ReferenceAttribute> *);
+  virtual void _build_reference_quantity_list( dl_list<IIRScram_ReferenceAttribute> );
 
   virtual ~IIRScram();
 
   // IIRScram level wrapper functions
-  IIRScram_Identifier *_get_file_name();
-  IIRScram_TextLiteral *_get_declarator();
+  IIRScram_IdentifierRef _get_file_name();
+  IIRScram_TextLiteralRef _get_declarator();
 protected:
   // Return a cast pointer to the design file
-  IIRScram_DesignFile *_get_my_design_file(); 
+  IIRScram_DesignFileRef _get_my_design_file(); 
 
 private:
 

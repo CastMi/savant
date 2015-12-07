@@ -48,26 +48,26 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
   
 
-  void _type_check_as_instantiation_list( IIRScram *instantiated_unit, 
-					  IIRScram_List *,
-					  IIRScram *configuration );
+  void _type_check_as_instantiation_list( IIRScramRef instantiated_unit, 
+					  IIRScram_ListRef ,
+					  IIRScramRef configuration );
 
   // This method walks the designator list, looking for a label for an
   // instantiate statement that instantiates "instantiated_unit".  When
   // finding one, it returns the label.
-  IIRScram_Label *_process_instantiate_statement( IIRScram_Declaration *instantiated_unit,
-                                                  IIRScram *statement );
+  IIRScram_LabelRef _process_instantiate_statement( IIRScram_DeclarationRef instantiated_unit,
+                                                  IIRScramRef statement );
 
 protected:
 private:
-  void _process_by_all_or_others( IIRScram_Declaration *instantiated_unit,
-				  IIRScram_List *,
+  void _process_by_all_or_others( IIRScram_DeclarationRef instantiated_unit,
+				  IIRScram_ListRef ,
 				  IIR_Boolean by_all,
-				  IIRScram *configuration );
+				  IIRScramRef configuration );
 
-  void _process_explicit_list( IIRScram_Declaration *instantiated_unit, 
-			       IIRScram_List *,
-			       IIRScram *configuration );    
+  void _process_explicit_list( IIRScram_DeclarationRef instantiated_unit, 
+			       IIRScram_ListRef ,
+			       IIRScramRef configuration );    
 };
 
 typedef refcount<IIRScram_DesignatorList> IIRScram_DesignatorListRef;

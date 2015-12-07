@@ -32,8 +32,8 @@
 #include "savant_config.hh"
 #include "IIR_Expression.hh"
 
-class IIR_SubprogramDeclaration;
-class IIR_AssociationList;
+REF_FORWARD_DECL(IIR_AssociationList);
+REF_FORWARD_DECL(IIR_SubprogramDeclaration);
 
 class IIR_FunctionCall : public virtual IIR_Expression{
 
@@ -41,10 +41,10 @@ public:
   virtual ~IIR_FunctionCall() {}
     
   // List accessor(s)
-  virtual IIR_AssociationList *get_parameter_association_list() = 0;
+  virtual IIR_AssociationListRef get_parameter_association_list() = 0;
 
-  virtual void set_implementation( IIR_SubprogramDeclaration* implementation ) = 0;
-  virtual IIR_SubprogramDeclaration* get_implementation() = 0;
+  virtual void set_implementation( IIR_SubprogramDeclarationRef implementation ) = 0;
+  virtual IIR_SubprogramDeclarationRef get_implementation() = 0;
 };
 
 typedef refcount<IIR_FunctionCall> IIR_FunctionCallRef;

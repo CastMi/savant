@@ -45,11 +45,11 @@ class IIRScram_ProcedureDeclaration : public virtual IIRScram_SubprogramDeclarat
 public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-  IIRScram *                _get_procedure_name();
+  IIRScramRef                 _get_procedure_name();
 
-  virtual IIR_TypeDefinition *get_subtype();
+  virtual IIR_TypeDefinitionRef get_subtype();
 
-  static IIR_TypeDefinition *get_procedure_return_type();
+  static IIR_TypeDefinitionRef get_procedure_return_type();
 
 protected:
 private:

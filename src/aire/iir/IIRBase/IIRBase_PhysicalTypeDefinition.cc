@@ -32,29 +32,21 @@
 #include "IIR_TextLiteral.hh"
 #include "IIR_UnitList.hh"
 
-IIRBase_PhysicalTypeDefinition::IIRBase_PhysicalTypeDefinition()  :
-  units(0),
-  primary_unit(0){}
-
-IIRBase_PhysicalTypeDefinition::~IIRBase_PhysicalTypeDefinition(){
-  delete units;
-  units = 0;
-  delete primary_unit;
-  primary_unit = 0;
-}
+IIRBase_PhysicalTypeDefinition::IIRBase_PhysicalTypeDefinition() {}
+IIRBase_PhysicalTypeDefinition::~IIRBase_PhysicalTypeDefinition() {}
 
 void 
-IIRBase_PhysicalTypeDefinition::set_primary_unit( IIR_PhysicalUnit *unit) {
+IIRBase_PhysicalTypeDefinition::set_primary_unit( IIR_PhysicalUnitRef unit) {
   ASSERT( !is_subtype() );
   primary_unit = unit;
 }
 
 
-IIR_PhysicalUnit *
+IIR_PhysicalUnitRef
 IIRBase_PhysicalTypeDefinition::get_primary_unit() {
   if( is_subtype() ){
     ASSERT( primary_unit == 0 );
-    return dynamic_cast<IIR_PhysicalTypeDefinition *>(get_base_type())->get_primary_unit();
+    return my_dynamic_pointer_cast<IIR_PhysicalTypeDefinition>(get_base_type())->get_primary_unit();
   }
   else{
     ASSERT( primary_unit != 0 );
@@ -63,14 +55,14 @@ IIRBase_PhysicalTypeDefinition::get_primary_unit() {
 }
 
 // List Accessor(s)
-IIR_UnitList *
+IIR_UnitListRef
 IIRBase_PhysicalTypeDefinition::get_units() {
   if( is_subtype() ){
-    ASSERT( units == 0 );
-    return dynamic_cast<IIR_PhysicalTypeDefinition *>(get_base_type())->get_units();
+    ASSERT( units == nullptr );
+    return my_dynamic_pointer_cast<IIR_PhysicalTypeDefinition>(get_base_type())->get_units();
   }
   else{
-    if( units == 0 ){
+    if( units == nullptr ){
       units = get_class_factory()->new_IIR_UnitList();
     }
     return units;
@@ -79,23 +71,22 @@ IIRBase_PhysicalTypeDefinition::get_units() {
 
 
 void
-IIRBase_PhysicalTypeDefinition::set_units(IIR_UnitList *new_units) {
+IIRBase_PhysicalTypeDefinition::set_units(IIR_UnitListRef new_units) {
   ASSERT( !is_subtype() );
-  ASSERT(new_units != NULL);
-  delete units;
+  ASSERT( new_units != nullptr );
   units = new_units;
 }
 
-IIR *
-IIRBase_PhysicalTypeDefinition::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_PhysicalTypeDefinition::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_PhysicalTypeDefinition *new_node =
-    dynamic_cast<IIRBase_PhysicalTypeDefinition *>
+  IIRBase_PhysicalTypeDefinitionRef new_node =
+    my_dynamic_pointer_cast<IIRBase_PhysicalTypeDefinition>
     (IIRBase_ScalarTypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->units = dynamic_cast<IIR_UnitList *>(convert_node(units, factory));
-  new_node->primary_unit = dynamic_cast<IIR_PhysicalUnit *>(convert_node(primary_unit, factory));
+  new_node->units = my_dynamic_pointer_cast<IIR_UnitList>(convert_node(units, factory));
+  new_node->primary_unit = my_dynamic_pointer_cast<IIR_PhysicalUnit>(convert_node(primary_unit, factory));
 
   return new_node;
 }

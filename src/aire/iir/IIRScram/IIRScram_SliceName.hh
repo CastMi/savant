@@ -48,33 +48,33 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0 );
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0 );
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
 
 
   IIR_Mode _get_mode();
 
   IIR_Boolean _is_readable();
   IIR_Boolean _is_writable();  
-  savant::set<IIRScram_Declaration*> *_symbol_lookup(){ return NULL; }
-  IIRScram_TypeDefinition* _get_name_type();
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup(){ return NULL; }
+  IIRScram_TypeDefinitionRef _get_name_type();
   
   // These methods can be called when a block configuration has a
   // block specification in the form of <GENERATE LABEL>( <RANGE> ) -
   // the parser builds a slice to represent this.
   void _make_interface_visible( symbol_table * );
 
-  IIRScram_List *_get_statement_list();
+  IIRScram_ListRef _get_statement_list();
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
-  IIRScram *_get_suffix();
+  IIRScramRef _get_suffix();
 
   // (See IIRScram.hh for description)
-  IIRScram_Declaration *_find_formal_declaration();
+  IIRScram_DeclarationRef _find_formal_declaration();
 
   // Override the undefined definition in IIRScram_Name
-  void set_subtype(IIR_TypeDefinition *type) { IIRBase::set_subtype(type); }
+  void set_subtype(IIR_TypeDefinitionRef type) { IIRBase::set_subtype(type); }
 protected:  
 private:
 

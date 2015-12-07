@@ -29,20 +29,20 @@
 #include "IIRScram_TypeDefinition.hh"
 #include "IIRBase_NatureDefinition.hh"
 
+REF_FORWARD_DECL(IIRScram_TerminalDeclaration);
 class IIRScram_FunctionDeclaration;
-class IIRScram_TerminalDeclaration;
 class IIRScram_TextLiteral;
 
 class IIRScram_NatureDefinition : public virtual IIRScram_TypeDefinition, public virtual IIRBase_NatureDefinition {
 public:
   IIR_Boolean _is_nature_definition() { return TRUE; }
 
-  virtual IIRScram_TerminalDeclaration *get_reference_terminal();
-  virtual IIRScram_TypeDefinition *_get_element_subtype();
-  void _set_resolution_function(IIRScram_FunctionDeclaration *);
+  virtual IIRScram_TerminalDeclarationRef get_reference_terminal();
+  virtual IIRBase_TypeDefinitionRef _get_element_subtype();
+  void _set_resolution_function(IIRScram_FunctionDeclarationRef );
 
-  IIRScram_Declaration * _get_declaration();
-  IIRScram_TypeDefinition *_get_final_subtype();
+  IIRScram_DeclarationRef  _get_declaration();
+  IIRScram_TypeDefinitionRef _get_final_subtype();
 protected:
 };
 

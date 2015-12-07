@@ -31,7 +31,7 @@
 #include "savant_config.hh"
 #include "IIR_Expression.hh"
 
-class IIR_SubprogramDeclaration;
+REF_FORWARD_DECL(IIR_SubprogramDeclaration);
 
 /*
  * Binary operators
@@ -41,14 +41,14 @@ class IIR_DyadicOperator : public virtual IIR_Expression {
 public:
   virtual ~IIR_DyadicOperator() {}
     
-  virtual void set_implementation( IIR_SubprogramDeclaration *implementation ) = 0;
-  virtual IIR_SubprogramDeclaration *get_implementation() = 0;
+  virtual void set_implementation( IIR_SubprogramDeclarationRef implementation ) = 0;
+  virtual IIR_SubprogramDeclarationRef get_implementation() = 0;
 
-  virtual void set_left_operand( IIR *left_operand ) = 0;
-  virtual IIR *get_left_operand() = 0;
+  virtual void set_left_operand( IIRRef left_operand ) = 0;
+  virtual IIRRef get_left_operand() = 0;
 
-  virtual void set_right_operand( IIR *right_operand ) = 0;
-  virtual IIR *get_right_operand() = 0;
+  virtual void set_right_operand( IIRRef right_operand ) = 0;
+  virtual IIRRef get_right_operand() = 0;
 };
 
 typedef refcount<IIR_DyadicOperator> IIR_DyadicOperatorRef;

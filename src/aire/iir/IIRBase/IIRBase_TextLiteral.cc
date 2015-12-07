@@ -22,28 +22,21 @@
 #include "IIR_Name.hh"
 #include "IIRBase_String.hh"
 #include "IIRBase_TextLiteral.hh"
-
 #include <sstream>
+#include <utility>
+#include <cstring>
 
-IIRBase_TextLiteral::IIRBase_TextLiteral() :
-  text(0){}
+IIRBase_TextLiteral::IIRBase_TextLiteral() {}
+IIRBase_TextLiteral::~IIRBase_TextLiteral() {}
 
-IIRBase_TextLiteral::~IIRBase_TextLiteral(){}
-
-IIR_Char *
+std::string
 IIRBase_TextLiteral::get_text(){
-  return const_cast<char *>(text->get_text().c_str());
+  return text->get_text();
 }
 
 IIR_Int32 
 IIRBase_TextLiteral::get_text_length(){
   return text->get_text_length();
-}
-
-IIR_Char &
-IIRBase_TextLiteral::operator[]( IIR_Int32 subscript ){
-  check_bounds( subscript );
-  return text->operator[]( subscript );
 }
 
 void 
@@ -56,31 +49,24 @@ IIRBase_TextLiteral::check_bounds( IIR_Int32 subscript ){
   }  
 }
 
-const string
-IIRBase_TextLiteral::convert_to_string(){
-  return text->convert_to_string();
-}
-
-const string
-IIRBase_TextLiteral::convert_to_library_name(){
-  return convert_to_string();
-}
-
-IIR *
-IIRBase_TextLiteral::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_TextLiteral::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_TextLiteral *new_node = dynamic_cast<IIRBase_TextLiteral *>(IIRBase_Literal::convert_tree(factory));
+  IIRBase_TextLiteralRef new_node = my_dynamic_pointer_cast<IIRBase_TextLiteral>(IIRBase_Literal::convert_tree(factory));
 
   // Process the variables
-  new_node->set_text(text->get_text().c_str(), text->get_text_length());
+  new_node->set_text(text->get_text());
 
   return new_node;
 }
 
 int 
-IIRBase_TextLiteral::cmp(IIR_TextLiteral *a, IIR_TextLiteral *b) {
+IIRBase_TextLiteral::cmp(IIR_TextLiteralRef a, IIR_TextLiteralRef b) {
+  if( a == b ){
+    return 0;
+  }
   int size_a, size_b;
-  
+
   ASSERT( a != 0 );
   ASSERT( b != 0 );
 
@@ -96,19 +82,14 @@ IIRBase_TextLiteral::cmp(IIR_TextLiteral *a, IIR_TextLiteral *b) {
     }
   }
 
-  IIR_Char *text_a = a->get_text();
-  IIR_Char *text_b = b->get_text();
+  std::string text_a = a->get_text();
+  std::string text_b = b->get_text();
   
-  if( text_a == text_b ){
-    return 0;
-  }
-  else{
-    return memcmp( text_a, text_b, size_a );
-  }
+  return memcmp( text_a.c_str(), text_b.c_str(), size_a );
 }
 
 int 
-IIRBase_TextLiteral::cmp( IIR_TextLiteral *a, const char *b ) {
+IIRBase_TextLiteral::cmp( IIR_TextLiteralRef a, const IIR_Char *b ) {
   int size_a, size_b;
   size_a = a->get_text_length();
   size_b = strlen(b);
@@ -120,7 +101,7 @@ IIRBase_TextLiteral::cmp( IIR_TextLiteral *a, const char *b ) {
     return -1;
   }
 
-  char *text_a = a->get_text();
+  const char *text_a = a->get_text().c_str();
 
   int i;
   for( i = 0; i < size_a; i++ ){
@@ -132,7 +113,7 @@ IIRBase_TextLiteral::cmp( IIR_TextLiteral *a, const char *b ) {
 }
 
 int 
-IIRBase_TextLiteral::cmp(IIR_TextLiteral *a, IIR_Name *b){
+IIRBase_TextLiteral::cmp(IIR_TextLiteralRef a, IIR_NameRef b){
   int retval;
 
   if ( b->get_kind() != IIR_SIMPLE_NAME ){
@@ -142,30 +123,29 @@ IIRBase_TextLiteral::cmp(IIR_TextLiteral *a, IIR_Name *b){
     retval = -1;
   }
   else {
-    retval = IIRBase_TextLiteral::cmp( a, dynamic_cast<IIR_TextLiteral *>(b->get_prefix()) );
+    retval = IIRBase_TextLiteral::cmp( a, my_dynamic_pointer_cast<IIR_TextLiteral>(b->get_prefix()) );
   }
 
   return retval;
 }
 
 void 
-IIRBase_TextLiteral::set_text( const IIR_Char *const new_text, const IIR_Int32 new_length ){
-  ASSERT( new_length > 0 );
-  ASSERT( new_text != NULL);
+IIRBase_TextLiteral::set_text( std::string new_text ){
+  ASSERT( new_text.size() > 0 );
 
-  text = get_string_table().hash_look( new_text, new_length );
-}
-
-hash_table<IIRBase_String> &
-IIRBase_TextLiteral::get_string_table(){
-  static hash_table<IIRBase_String> *our_string_table = new hash_table<IIRBase_String>;
-
-  return *our_string_table;
+  if(mymap.find(new_text) == mymap.end()) {
+      IIRBase_StringRef elem(new IIRBase_String());
+      elem->set_key( new_text, new_text.size() );
+      // FIXME: change the signature of set_text removing the const from the IIR_Char *
+      // using string?!?
+      mymap.insert( std::pair<std::string, IIRBase_StringRef>(new_text, elem) );
+  }
+  text = mymap.find(new_text)->second;
 }
 
 ostream &
 IIRBase_TextLiteral::print( ostream &os ){
-  os.write( get_text(), get_text_length() );
+  os.write( get_text().c_str(), get_text_length() );
 
   return os;
 }

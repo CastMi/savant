@@ -60,19 +60,19 @@ public:
 
   void _type_check();
 
-  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *,
-					     IIRScram_SubprogramDeclaration *subprogram_decl );
-  IIRScram *_clone();
+  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinitionRef> ,
+					     IIRScram_SubprogramDeclarationRef subprogram_decl );
+  IIRScramRef _clone();
 
   // Wrappers for IIRBase functions
-  IIRScram_SequentialStatementList      *_get_then_sequence();
-  IIRScram                              *_get_condition();
-  IIRScram_Elsif                        *_get_elsif();
-  IIRScram_SequentialStatementList      *_get_else_sequence();
+  IIRScram_SequentialStatementListRef  _get_then_sequence();
+  IIRScramRef                          _get_condition();
+  IIRScram_ElsifRef                    _get_elsif();
+  IIRScram_SequentialStatementListRef  _get_else_sequence();
 
 protected:
 private:
-  IIRScram_List                         *_full_statement_list;
+  IIRScram_List                        Ref _full_statement_list;
 };
 
 typedef refcount<IIRScram_IfStatement> IIRScram_IfStatementRef;

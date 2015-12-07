@@ -51,16 +51,16 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
-  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition*> *,
-			     IIRScram_SubprogramDeclaration *subprogram_decl );
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
+  IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinitionRef> ,
+			     IIRScram_SubprogramDeclarationRef subprogram_decl );
     
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
   // Wrappers for IIRBase functions
-  IIRScram_SequentialStatementList *    _get_then_sequence_of_statements();
-  IIRScram *                            _get_condition();
-  IIRScram_Elsif *                      _get_else_clause();
+  IIRScram_SequentialStatementListRef     _get_then_sequence_of_statements();
+  IIRScramRef                             _get_condition();
+  IIRScram_ElsifRef                       _get_else_clause();
 
 protected:
 private:

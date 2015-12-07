@@ -39,11 +39,11 @@ class IIR_AccessSubtypeDefinition : public virtual IIR_AccessTypeDefinition{
 public:
   virtual ~IIR_AccessSubtypeDefinition() {}
 
-  virtual void set_designated_subtype( IIR_TypeDefinition *designated_type) = 0;
-  virtual IIR_TypeDefinition *get_designated_subtype() = 0;
+  virtual void set_designated_subtype( IIR_TypeDefinitionRef designated_type) = 0;
+  virtual IIR_TypeDefinitionRef get_designated_subtype() = 0;
 
-  virtual void set_resolution_function( IIR_FunctionDeclaration *resolution_function ) = 0;
-  virtual IIR_FunctionDeclaration *get_resolution_function() = 0;
+  virtual void set_resolution_function( IIR_FunctionDeclarationRef resolution_function ) = 0;
+  virtual IIR_FunctionDeclarationRef get_resolution_function() = 0;
 };
 
 typedef refcount<IIR_AccessSubtypeDefinition> IIR_AccessSubtypeDefinitionRef;

@@ -59,11 +59,11 @@ public:
 
   void _type_check();
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
   // Wrappers for IIRBase functions
-  IIRScram_AssociationList *    _get_actual_parameter_part();
-  IIRScram *                    _get_procedure_name();
+  IIRScram_AssociationListRef     _get_actual_parameter_part();
+  IIRScramRef                     _get_procedure_name();
 protected:
 private:
 };

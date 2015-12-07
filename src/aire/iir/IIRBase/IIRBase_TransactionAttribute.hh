@@ -37,14 +37,14 @@ class IIRBase_TransactionAttribute : public virtual IIRBase_Attribute,
 				     public virtual IIR_TransactionAttribute{
 public:
 
-  IIR_Kind get_kind() const {return IIR_TRANSACTION_ATTRIBUTE;}
-  const IIR_Char *get_kind_text() const {return "IIR_TransactionAttribute";}
+  IIR_Kind get_kind() const override { return IIR_TRANSACTION_ATTRIBUTE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_TransactionAttribute"); }
 
   IIR_Boolean is_signal() { return TRUE; }
 
-  IIR_TypeDefinition *get_subtype();
+  IIR_TypeDefinitionRef get_subtype();
 
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
   void publish_vhdl(ostream &);
 protected:
   

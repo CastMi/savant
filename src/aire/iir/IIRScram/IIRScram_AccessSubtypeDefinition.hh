@@ -46,16 +46,16 @@ public:
   IIRScram_AccessSubtypeDefinition() {}
   virtual ~IIRScram_AccessSubtypeDefinition();
 
-  static IIRScram_AccessSubtypeDefinition *get( IIRScram_TypeDefinition *designated_type);
+  static IIRScram_AccessSubtypeDefinitionRef get( IIRScram_TypeDefinitionRef designated_type);
 
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  virtual IIRScram *_clone();
-  virtual void _clone( IIRScram * );
+  virtual IIRScramRef _clone();
+  virtual void _clone( IIRScramRef );
 
-  IIRScram_TypeDefinition *_get_designated_subtype();
+  IIRScram_TypeDefinitionRef _get_designated_subtype();
 
 protected:     
 private:

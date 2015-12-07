@@ -33,16 +33,16 @@
 #include "savant_config.hh"
 #include "IIR_List.hh"
 
-class IIR_ConditionalWaveform;
+REF_FORWARD_DECL(IIR_ConditionalWaveform);
 
 class IIR_ConditionalWaveformList : public virtual IIR_List{
 
 public:
   virtual ~IIR_ConditionalWaveformList() {}
     
-  virtual IIR_ConditionalWaveform* first() = 0;
-  virtual IIR_ConditionalWaveform* last() = 0;
-  virtual IIR_ConditionalWaveform* successor(IIR_ConditionalWaveform* node) = 0;
+  virtual IIR_ConditionalWaveformRef first() = 0;
+  virtual IIR_ConditionalWaveformRef last() = 0;
+  virtual IIR_ConditionalWaveformRef successor(IIR_ConditionalWaveformRef node) = 0;
 
 };
 

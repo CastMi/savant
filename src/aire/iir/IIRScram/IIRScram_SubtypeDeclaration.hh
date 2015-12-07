@@ -55,7 +55,7 @@ public:
 
   IIR_Boolean is_subtype_declaration(){ return TRUE; }
   IIR_Boolean _is_readable(){ return TRUE; }
-  virtual IIRScram *_clone();
+  virtual IIRScramRef _clone();
 
   virtual void _type_check();
 
@@ -68,7 +68,7 @@ public:
   IIR_Int32 get_num_indexes();
 
   // Wrappers for IIRBase functions
-  IIRScram_AttributeSpecificationList * _get_attributes();
+  IIRScram_AttributeSpecificationListRef  _get_attributes();
 
 protected:
 private:

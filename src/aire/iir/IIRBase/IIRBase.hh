@@ -21,15 +21,20 @@
 // version 2, June 1991. A copy of this license agreement can be found in
 // the file "LGPL", distributed with this archive.
 
-#include "savant_config.hh"
+#include "savant.hh"
 #include "IIR.hh"
 #include "IRBasicDataTypes.hh"
 
+CONSTREF_FORWARD_DECL(IIR);
+REF_FORWARD_DECL(IIRBase);
+
 /** This is the base node definition for the intermediate form.  All nodes
     in IIR are descendants of this node.  */
-
 class IIRBase : public virtual IIR {
 public:
+  // FIXME:: Constructor/Destructor should be protected
+  IIRBase();
+  virtual ~IIRBase() = 0;
 
   /** Returns the IIR_Kind of this node.  This is useful
       in determining the type of a node when an IIR * is
@@ -38,14 +43,14 @@ public:
 
   /** Returns the kind of this node in text form.  This is here for output
       and debugging purposes. */
-  virtual const IIR_Char *get_kind_text() const = 0;
+  virtual IIR_CharConstRef get_kind_text() const = 0;
 
   string get_implementation_class() const;
 
   /** Accessor to set the VHDL file name that this node was parsed from. 
       @param file_name The IIR_Identifier representation of the file name.
   */
-  void set_file_name(IIR_Identifier *file_name, plugin_class_factory *factory);
+  void set_file_name(IIR_IdentifierRef file_name, plugin_class_factoryRef factory);
   
   /** Accessor to set the line number of the VHDL this node corresponds
       to. 
@@ -56,25 +61,25 @@ public:
   }
 
   /** Read the file name from the node. */
-  IIR_Identifier *get_file_name();
+  IIR_IdentifierRef get_file_name();
 
   /** Read the line number from the node. */
   IIR_Int32 get_line_number()  const { return iir_line_number; }
 
   /** Get and set the design file */
-  virtual IIR_DesignFile *get_design_file() const { return _my_design_file; }
-  virtual void set_design_file(IIR_DesignFile *new_file) {
+  virtual IIR_DesignFileRef get_design_file() const { return _my_design_file; }
+  virtual void set_design_file(IIR_DesignFileRef new_file) {
     ASSERT(new_file != NULL);
     _my_design_file = new_file;
   }
    
-  virtual void set_base_info( IIR_DesignFile    *design_file,
+  virtual void set_base_info( IIR_DesignFileRef design_file,
                               int               line_number,
                               int               column_offset, 
                               int               character_offset );
 
-  virtual void copy_location( const IIR *, IIR *);
-  virtual void copy_location(IIR *);
+  virtual void copy_location( const IIR *, IIR* );
+  virtual void copy_location( IIR* );
 #ifdef SCHEMATIC_INFO
   /** The following nodes apply to schematic capture tools only and have to
       be #ifdefed in with SCHEMATIC_INFO. */
@@ -83,7 +88,7 @@ public:
   /** Set the sheet name of this node (if instantiated from schematic capture).
       @param sheet_name The IIR_Identifier representation of the sheet name.
   */
-  void set_sheet_name(IIR_Identifier *sheet_name) {
+  void set_sheet_name(IIR_IdentifierRef sheet_name) {
     iir_sheet_name = sheet_name;
   }
 
@@ -102,7 +107,7 @@ public:
   }
 
   /** Get the sheet name. */
-  IIR_Identifier *get_sheet_name() {return iir_sheet_name;}
+  IIR_IdentifierRef get_sheet_name() {return iir_sheet_name;}
 
   /** Get the X coordinate. */
   IIR_Int32 get_x_coordinate()     {return iir_x_coordinate;}
@@ -146,18 +151,18 @@ public:
   
   /** This method gets the prefix of a name, and returns the string version
       of it. */
-  IIR_TextLiteral *get_prefix_string();
+  IIR_TextLiteralRef get_prefix_string();
 
   /** This method has been introduced to remove unneccessary type
       casting.  If this method is overridden, it will call the derived
       method.  If not it simply returns NULL. */
-  virtual IIR *get_value();
+  virtual IIRRef get_value();
 
   /** This function performs the conversion of one tree into another.  At this 
       level it creates a copy of the current node using the passed in factory, 
       assuming it hasn't already been created.  */
-  virtual IIR *convert_tree(plugin_class_factory *factory);
-  virtual IIR *convert_node(IIR *node, plugin_class_factory *factory);
+  virtual IIRRef convert_tree( plugin_class_factoryRef factory);
+  IIRRef convert_node( IIRRef node, plugin_class_factoryRef factory );
 
   /** Needed for guard signals */
   IIR_SignalKind get_signal_kind();
@@ -263,13 +268,13 @@ public:
   IIR_Boolean is_locally_static();
   //@}
 
-  IIR_TypeDefinition *get_subtype();
-  void set_subtype(IIR_TypeDefinition *);
+  IIR_TypeDefinitionRef get_subtype();
+  void set_subtype(IIR_TypeDefinitionRef );
 
   /** This method returns the number of indexes an array object has. */
   IIR_Int32 get_num_indexes( );
 
-  IIRBase* converted_node;
+  IIRBaseRef converted_node;
 
   /** The "print" method is intended to print out ONLY the raw data found
       in the IF.  This means it should not be made to print any formatting
@@ -282,12 +287,12 @@ public:
       method of it's direct decendent. */
   ostream &print( ostream & );
 
-  virtual IIR_TextLiteral *get_declarator();
+  virtual IIR_TextLiteralRef get_declarator();
 
   /** This method returns the declaration of an indexed name.  If the
       prefix is a declaration, returns it, or else, gets the declaration of
       the prefix recursively. */
-  virtual IIR_Declaration* get_prefix_declaration();
+  virtual IIR_DeclarationRef get_prefix_declaration();
 
   /** @name VHDL publishing methods 
       Methods related to publishing of VHDL.
@@ -323,15 +328,12 @@ public:
   virtual Precedence get_precedence();
 
 protected:
-  IIRBase();
-  virtual ~IIRBase() = 0;
-
-  plugin_class_factory *get_class_factory();
+  plugin_class_factoryRef get_class_factory();
 
   /** The Savant implementation of IIR stores a pointer back to the design
       file.  This allows access to the file name, as well as the symbol
       table associated with the file. */
-  IIR_DesignFile *_my_design_file;
+  IIR_DesignFileRef _my_design_file;
     
   void _report_undefined_fn(const char *);
 private:
@@ -346,7 +348,7 @@ private:
   IIR_Int32  iir_y_coordinate;
 
   /** Where the sheet name is stored. */
-  IIR_Identifier *iir_sheet_name;
+  IIR_IdentifierRef iir_sheet_name;
 #endif
 
 #ifdef EXTRA_LOCATERS
@@ -357,7 +359,7 @@ private:
   IIR_Int32  iir_character_offset;
 #endif
   bool already_entered;
-  IIR_TypeDefinition *subtype;
+  IIR_TypeDefinitionRef subtype;
 };
 
 typedef refcount<IIRBase> IIRBaseRef;

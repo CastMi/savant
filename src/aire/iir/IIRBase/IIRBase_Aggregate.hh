@@ -37,13 +37,13 @@ class IIRBase_Aggregate : public virtual IIRBase_Expression,
 			  public virtual IIR_Aggregate{
 public:
   // List Accessor(s)
-  IIR_AssociationList *get_element_association_list();
-  void                set_element_association_list(IIR_AssociationList *new_element_association_list);
+  IIR_AssociationListRef get_element_association_list();
+  void                set_element_association_list(IIR_AssociationListRef new_element_association_list);
 
-  IIR_Kind get_kind() const {return IIR_AGGREGATE;}
-  const IIR_Char *get_kind_text() const {return "IIR_Aggregate";}
+  IIR_Kind get_kind() const override { return IIR_AGGREGATE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_Aggregate"); }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved( );
   IIR_Boolean is_signal( );
@@ -53,7 +53,7 @@ public:
 
   ostream &print( ostream & );
 
-  IIR_Declaration* get_prefix_declaration() { return NULL; }
+  IIR_DeclarationRef get_prefix_declaration() { return NULL; }
   void publish_vhdl(ostream &);
 protected:
   IIRBase_Aggregate();
@@ -61,7 +61,7 @@ protected:
 
 private:
   // List Variable(s)
-  IIR_AssociationList *element_association_list;
+  IIR_AssociationListRef element_association_list;
 };
 
 typedef refcount<IIRBase_Aggregate> IIRBase_AggregateRef;

@@ -61,25 +61,25 @@ public:
 
   IIR_Boolean _is_readable();
 
-  void _resolve_operands( IIRScram_TypeDefinition *left_type, IIRScram_TypeDefinition *right_type );
+  void _resolve_operands( IIRScram_TypeDefinitionRef left_type, IIRScram_TypeDefinitionRef right_type );
 
-  void _resolve_operand( IIRScram *(IIRScram_DyadicOperator::*get_method)(), 
-			 void (IIRScram_DyadicOperator::*set_method)( IIRScram *),
-			 IIRScram_TypeDefinition *operand_type );
+  void _resolve_operand( IIRScramRef (IIRScram_DyadicOperator::*get_method)(), 
+			 void (IIRScram_DyadicOperator::*set_method)( IIRScramRef ),
+			 IIRScram_TypeDefinitionRef operand_type );
 
-  virtual void _clone( IIRScram * );
+  virtual void _clone( IIRScramRef  );
 
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition *my_rval );
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef my_rval );
 
   // Wrappers
-  IIRScram *_get_left_operand();
-  IIRScram *_get_right_operand();
-  IIRScram_SubprogramDeclaration *_get_implementation();
-  void _build_reference_quantity_list(dl_list<IIRScram_ReferenceAttribute> *);
+  IIRScramRef _get_left_operand();
+  IIRScramRef _get_right_operand();
+  IIRScram_SubprogramDeclarationRef _get_implementation();
+  void _build_reference_quantity_list(dl_list<IIRScram_ReferenceAttribute> );
 
 protected:
   IIR_Int32 _get_num_args(){ return 2; }
-  IIRScram_AssociationList *_build_argument_list();
+  IIRScram_AssociationListRef _build_argument_list();
 
   virtual ~IIRScram_DyadicOperator() = 0;
 

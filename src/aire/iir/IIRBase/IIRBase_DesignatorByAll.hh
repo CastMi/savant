@@ -36,8 +36,8 @@
 class IIRBase_DesignatorByAll : public virtual IIRBase_Designator, public virtual IIR_DesignatorByAll{
 
 public:
-  IIR_Kind get_kind() const {return IIR_DESIGNATOR_BY_ALL;}
-  const IIR_Char *get_kind_text() const {return "IIR_DesignatorByAll";}
+  IIR_Kind get_kind() const override { return IIR_DESIGNATOR_BY_ALL; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_DesignatorByAll"); }
 
   IIR_Boolean is_resolved();
 

@@ -38,13 +38,13 @@ class IIR_TypeDefinition;
 class IIRBase_LastEventAttribute : public virtual IIRBase_Attribute,
 				   public virtual IIR_LastEventAttribute{
 public:
-  IIR_Kind get_kind() const {return IIR_LAST_EVENT_ATTRIBUTE;}
-  const IIR_Char *get_kind_text() const {return "IIR_LastEventAttribute";}
+  IIR_Kind get_kind() const override { return IIR_LAST_EVENT_ATTRIBUTE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_LastEventAttribute"); }
 
-  IIR_TypeDefinition *get_subtype();
+  IIR_TypeDefinitionRef get_subtype();
   IIR_Boolean is_function_attribute(){ return TRUE; }
 
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
 
   void publish_vhdl(ostream &);
 protected:

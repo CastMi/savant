@@ -23,29 +23,26 @@
 #include "IIR_DesignFile.hh"
 #include "IIR_EnumerationSubtypeDefinition.hh"
 #include "IIR_TypeDefinition.hh"
-
 #include "savant.hh"
 #include "StandardPackage.hh"
+#include <cstring>
 
-IIRBase_QuietAttribute::IIRBase_QuietAttribute() {
-  set_suffix(NULL);
-}
-
+IIRBase_QuietAttribute::IIRBase_QuietAttribute() {}
 IIRBase_QuietAttribute::~IIRBase_QuietAttribute() {}
 
 void 
-IIRBase_QuietAttribute::set_suffix( IIR* suffix) {
+IIRBase_QuietAttribute::set_suffix( IIRRef suffix) {
   this->suffix = suffix;
 }
 
-IIR* IIRBase_QuietAttribute::get_suffix() {
+IIRRef IIRBase_QuietAttribute::get_suffix() {
   return suffix;
 }
 
-IIR *
-IIRBase_QuietAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_QuietAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_QuietAttribute *new_node = dynamic_cast<IIRBase_QuietAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_QuietAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_QuietAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
@@ -54,15 +51,15 @@ IIRBase_QuietAttribute::convert_tree(plugin_class_factory *factory) {
 }
 
 // The Quiet attribute is a boolean signal valued attribute...
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_QuietAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_boolean_type();
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_QuietAttribute::build_attribute_name(){
-  const char *name = "quiet";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("quiet");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 

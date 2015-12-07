@@ -45,10 +45,10 @@ public:
 
   IIR_Boolean _is_readable();
 
-  IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition *decl_type );
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &, IIRScram_TypeDefinitionRef decl_type );
   
   IIR_Boolean has_suffix(){ return TRUE; }
-  void _set_suffix( IIRScram *new_suffix ){ IIRBase_StableAttribute::set_suffix( new_suffix ); }
+  void _set_suffix( IIRScramRef new_suffix ){ IIRBase_StableAttribute::set_suffix( new_suffix ); }
 
   IIR_Boolean _is_stable_attribute() { return TRUE; }
   IIR_Boolean _is_signal_attribute(){ return TRUE; }

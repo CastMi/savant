@@ -42,10 +42,10 @@ class IIR_MonadicOperator : public virtual IIR_Expression {
 public:
   virtual ~IIR_MonadicOperator() {}
     
-  virtual void set_implementation( IIR_SubprogramDeclaration* implementation) = 0;
-  virtual IIR_SubprogramDeclaration* get_implementation() = 0;
-  virtual void set_operand( IIR* operand) = 0;
-  virtual IIR* get_operand() = 0;
+  virtual void set_implementation( IIR_SubprogramDeclarationRef implementation) = 0;
+  virtual IIR_SubprogramDeclarationRef get_implementation() = 0;
+  virtual void set_operand( IIRRef operand) = 0;
+  virtual IIRRef get_operand() = 0;
 };
 
 typedef refcount<IIR_MonadicOperator> IIR_MonadicOperatorRef;

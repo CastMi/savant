@@ -35,8 +35,8 @@
 class IIRBase_ConfigurationItem : public virtual IIRBase_Tuple, public virtual IIR_ConfigurationItem{
 
 public:
-  IIR_Kind get_kind() const {return IIR_CONFIGURATION_ITEM;}
-  const IIR_Char *get_kind_text() const {return "IIR_ConfigurationItem";}
+  IIR_Kind get_kind() const override { return IIR_CONFIGURATION_ITEM; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ConfigurationItem"); }
 
 protected:
   IIRBase_ConfigurationItem();

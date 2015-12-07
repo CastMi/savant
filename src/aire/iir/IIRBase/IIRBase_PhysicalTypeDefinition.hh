@@ -41,16 +41,16 @@ class IIRBase_PhysicalTypeDefinition : public virtual IIRBase_ScalarTypeDefiniti
 				       public virtual IIR_PhysicalTypeDefinition{
 public:
   // List Accessor(s)
-  IIR_UnitList *get_units();
-  void         set_units(IIR_UnitList *new_units);
+  IIR_UnitListRef get_units();
+  void         set_units(IIR_UnitListRef new_units);
 
-  IIR_Kind get_kind() const { return IIR_PHYSICAL_TYPE_DEFINITION; }
-  const IIR_Char *get_kind_text() const { return "IIR_PhysicalTypeDefinition"; }
+  IIR_Kind get_kind() const override { return IIR_PHYSICAL_TYPE_DEFINITION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_PhysicalTypeDefinition"); }
 
-  void set_primary_unit(IIR_PhysicalUnit*);
-  IIR_PhysicalUnit *get_primary_unit();
+  void set_primary_unit(IIR_PhysicalUnitRef);
+  IIR_PhysicalUnitRef get_primary_unit();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl_type_decl(ostream &);
 protected:
@@ -59,10 +59,10 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_UnitList *units;
+  IIR_UnitListRef units;
 
   // This is different from the spec-- bus is as discussed with J. Willis.
-  IIR_PhysicalUnit *primary_unit;
+  IIR_PhysicalUnitRef primary_unit;
 };
 
 typedef refcount<IIRBase_PhysicalTypeDefinition> IIRBase_PhysicalTypeDefinitionRef;

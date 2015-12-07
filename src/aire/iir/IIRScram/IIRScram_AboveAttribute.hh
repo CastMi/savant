@@ -36,7 +36,7 @@ public:
 
   /** Returns a pointer to the implicit quantity created using
       build_signal_declaration. */
-  IIRScram_Declaration* _get_implicit_declaration(const string &, IIRScram_TypeDefinition *);
+  IIRScram_DeclarationRef _get_implicit_declaration(const string &, IIRScram_TypeDefinitionRef );
 
   IIR_Boolean has_suffix(){ return TRUE; }
   

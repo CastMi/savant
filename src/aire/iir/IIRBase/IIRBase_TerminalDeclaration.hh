@@ -37,16 +37,16 @@
 class IIR_NatureDefinition;
 class IIRBase_TerminalDeclaration : public virtual IIRBase_ObjectDeclaration, public virtual IIR_TerminalDeclaration {
 public: 
-  IIR_Kind get_kind() const { return IIR_TERMINAL_DECLARATION; }
-  const IIR_Char *get_kind_text() const { return "IIR_TerminalDeclaration"; }
+  IIR_Kind get_kind() const override { return IIR_TERMINAL_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_TerminalDeclaration"); }
 
   /** Set the nature of the terminal */
-  void set_nature(IIR_NatureDefinition *nature);
+  void set_nature(IIR_NatureDefinitionRef nature);
 
   /** Returns the nature of the terminal */
-  IIR_NatureDefinition* get_nature();
+  IIR_NatureDefinitionRef get_nature();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   declaration_type get_declaration_type();
   void publish_vhdl_decl(ostream &);
@@ -57,7 +57,7 @@ protected:
 
 private:
 
-  IIR_NatureDefinition* nature;
+  IIR_NatureDefinitionRef nature;
 
 };
 

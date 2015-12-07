@@ -45,15 +45,15 @@ public:
   
   void _type_check();
 
-  IIRScram *_resolve_signal_name(IIRScram *);
+  IIRScramRef _resolve_signal_name(IIRScramRef );
 
   /** Appends the break statement info to the break handler. */
   void _build_break_info();
 
   // Helper Functions
-  IIRScram_BreakList            *_get_concurrent_break_list();
-  IIRScram_DesignatorList       *_get_sensitivity_list();
-  IIRScram                      *_get_condition();
+  IIRScram_BreakListRef      _get_concurrent_break_list();
+  IIRScram_DesignatorListRef _get_sensitivity_list();
+  IIRScramRef                _get_condition();
 
 protected:
 private:

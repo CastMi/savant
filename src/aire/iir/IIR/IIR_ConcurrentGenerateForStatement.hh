@@ -31,7 +31,7 @@
 #include "savant_config.hh"
 #include "IIR_ConcurrentStatement.hh"
 
-class IIR_ConstantDeclaration;
+REF_FORWARD_DECL(IIR_ConstantDeclaration);
 class IIR_DeclarationList;
 class IIR_ArchitectureStatementList;
 
@@ -41,13 +41,13 @@ public:
   virtual ~IIR_ConcurrentGenerateForStatement() {}
     
   // List accessor(s)
-  virtual IIR_DeclarationList           *get_block_declarative_part() = 0;
-  virtual IIR_ArchitectureStatementList *get_concurrent_statement_part() = 0;
-  virtual void                          set_block_declarative_part(IIR_DeclarationList *) = 0;
-  virtual void                          set_concurrent_statement_part(IIR_ArchitectureStatementList *) = 0;
+  virtual IIR_DeclarationListRef get_block_declarative_part() = 0;
+  virtual IIR_ArchitectureStatementListRef get_concurrent_statement_part() = 0;
+  virtual void                          set_block_declarative_part(IIR_DeclarationListRef ) = 0;
+  virtual void                          set_concurrent_statement_part(IIR_ArchitectureStatementListRef ) = 0;
 
-  virtual void set_generate_parameter_specification(IIR_ConstantDeclaration *parameter) = 0;
-  virtual IIR_ConstantDeclaration *get_generate_parameter_specification() = 0;
+  virtual void set_generate_parameter_specification(IIR_ConstantDeclarationRef parameter) = 0;
+  virtual IIR_ConstantDeclarationRef get_generate_parameter_specification() = 0;
 };
 
 typedef refcount<IIR_ConcurrentGenerateForStatement> IIR_ConcurrentGenerateForStatementRef;

@@ -34,6 +34,8 @@
 #include "IIRScram_Literal.hh"
 #include "IIRBase_IntegerLiteral32.hh"
 
+REF_FORWARD_DECL(IIRScram_IntegerLiteral32);
+
 class IIRScram_IntegerLiteral32 : public virtual IIRScram_Literal, public virtual IIRBase_IntegerLiteral32{
 
 public:
@@ -41,14 +43,15 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   IIR_Boolean _is_integer_literal();
-  IIRScram *_clone() { return this; }
+  //FIXME: this is an error
+  IIRScramRef _clone() { return IIRScramRef(); }
 
-  static IIRScram_IntegerLiteral32 *get( IIR_Int32 );
+  static IIRScram_IntegerLiteral32Ref get( IIR_Int32 );
 
   /**
      Do nothing.
    */
-  virtual void _type_check( savant::set<IIRScram_TypeDefinition> * ){}
+  virtual void _type_check( savant::set<IIRScram_TypeDefinitionRef> ){}
 
 protected:    
 private:

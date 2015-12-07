@@ -25,10 +25,11 @@
 #include "IIRScram_Declaration.hh"
 #include "IIRBase_ComponentDeclaration.hh"
 
-class IIRScram_GenericList;
+REF_FORWARD_DECL(IIRScram_GenericList);
+REF_FORWARD_DECL(IIRScram_PortList);
+REF_FORWARD_DECL(IIRScram_EntityDeclaration);
 class IIRScram_List;
 class IIRScram_Name;
-class IIRScram_PortList;
 class IIRScram_TypeDefinition;
 
 class IIRScram_ComponentDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_ComponentDeclaration{
@@ -39,22 +40,22 @@ public:
     
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-  IIRScram_PortList *_get_port_list();
-  IIRScram_GenericList *_get_generic_list();
+  IIRScram_PortListRef _get_port_list();
+  IIRScram_GenericListRef _get_generic_list();
 
   void _make_interface_visible( symbol_table * );
 
-  IIRScram_TypeDefinition *_get_port_type( int );
+  IIRScram_TypeDefinitionRef _get_port_type( int );
 
 
 #ifdef PROCESS_COMBINATION
-  void _static_elaborate(IIRScram_ArchitectureDeclaration*, IIRScram_DeclarationList*,  char*);
+  void _static_elaborate(IIRScram_ArchitectureDeclarationRef, IIRScram_DeclarationListRef,  char*);
 #endif
 
-  IIRScram_AttributeSpecificationList	*_get_attribute_specification_list();
-  IIRScram_GenericList			*_get_local_generic_clause();
-  IIRScram_PortList			*_get_local_port_clause();
-  IIRScram_EntityDeclaration		*_get_entity();
+  IIRScram_AttributeSpecificationListRef	_get_attribute_specification_list();
+  IIRScram_GenericListRef			         _get_local_generic_clause();
+  IIRScram_PortListRef		            	_get_local_port_clause();
+  IIRScram_EntityDeclarationRef		      _get_entity();
   
 protected:
 private:

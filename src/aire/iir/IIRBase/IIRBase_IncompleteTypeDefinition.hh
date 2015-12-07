@@ -50,15 +50,15 @@ public:
   ~IIRBase_IncompleteTypeDefinition(){}
 
   IIR_Kind get_kind() const { return   IIR_INCOMPLETE_TYPE_DEFINITION; }
-  const IIR_Char *get_kind_text() const { return "IIR_IncompleteTypeDefinition"; }
+  IIR_CharConstRef get_kind_text() const { return "IIR_IncompleteTypeDefinition"; }
 
   IIR_Boolean is_subtype(){ return TRUE; }
   
-  IIR_Identifier *get_designated_type_name(){
+  IIR_IdentifierRef get_designated_type_name(){
     return my_designated_type_name;
   }
 
-  void set_designated_type_name( IIR_Identifier *new_type_name ){
+  void set_designated_type_name( IIR_IdentifierRef new_type_name ){
     my_designated_type_name = new_type_name;
   }
 
@@ -66,10 +66,10 @@ public:
     return TRUE;
   }
 
-  IIR *get_value() {ASSERT(0); return NULL;}
+  IIRRef get_value() {ASSERT(0); return NULL;}
 
 private:
-  IIR_Identifier *my_designated_type_name;
+  IIR_IdentifierRef my_designated_type_name;
 };
 
 typedef refcount<IIRBase_IncompleteTypeDefinition> IIRBase_IncompleteTypeDefinitionRef;

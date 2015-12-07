@@ -47,11 +47,11 @@ public:
 
   virtual void set_base(IIR_Int32) = 0;
   virtual IIR_Int32 get_base() = 0;
-  virtual void set_mantissa(IIR_Char*, IIR_Int32) = 0;
-  virtual IIR_Char* get_mantissa() = 0;
+  virtual void set_mantissa(IIR_CharRef, IIR_Int32) = 0;
+  virtual IIR_CharRef get_mantissa() = 0;
   virtual IIR_Int32 get_mantissa_length() = 0;
-  virtual void set_exponent(IIR_Char*, IIR_Int32) = 0;
-  virtual IIR_Char* get_exponent() = 0;
+  virtual void set_exponent(IIR_CharRef, IIR_Int32) = 0;
+  virtual IIR_CharRef get_exponent() = 0;
   virtual IIR_Int32 get_exponent_length() = 0;
 };
 

@@ -37,11 +37,12 @@
 #include "IIRScram_Declaration.hh"
 #include "IIRBase_SubprogramDeclaration.hh"
 
-class IIRScram_AttributeSpecificationList;
+REF_FORWARD_DECL(IIRScram_SubprogramDeclaration);
+REF_FORWARD_DECL(IIRScram_SequentialStatementList);
+REF_FORWARD_DECL(IIRScram_AttributeSpecificationList);
 class IIRScram_Declaration;
 class IIRScram_DeclarationList;
 class IIRScram_InterfaceList;
-class IIRScram_SequentialStatementList;
 class IIRScram_TypeDefinition;
 
 class IIRScram_SubprogramDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_SubprogramDeclaration{
@@ -54,13 +55,13 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   /** See header of IIRScram_Declaration for description. */
-  bool _check_param( IIRScram_TypeDefinition *type_def, int arg_num );
+  bool _check_param( IIRScram_TypeDefinitionRef type_def, int arg_num );
 
   /** This method type checks all of the return statements in this
       subprogram.  It recursively descends the statements within the
       declaration as well.  The return value tells us if at least one
       return was encountered. */
-  IIR_Boolean _type_check_return_statements( IIRScram_TypeDefinition *context_set );
+  IIR_Boolean _type_check_return_statements( IIRScram_TypeDefinitionRef context_set );
   
   virtual void _type_check();
 
@@ -74,7 +75,7 @@ public:
   /** This method returns the type definition of the parameter passed in.
       For the first parameter, pass in 0.  If the number passed in is
       greater than the number of parameters, a NULL is returned. */
-  IIRScram_TypeDefinition *_get_type_of_param(int);
+  IIRScram_TypeDefinitionRef _get_type_of_param(int);
   
   IIR_Boolean _is_implicit_operator();
   IIR_Boolean _is_overloadable(){ return TRUE; }
@@ -83,24 +84,24 @@ public:
       return values and signatures (ONLY - not parameter names or anything
       like that), and returns a boolean value indicating whether or not
       they are equivalent. */
-  static IIR_Boolean _compare_signatures( IIRScram_SubprogramDeclaration *,
-					  IIRScram_SubprogramDeclaration *);
+  static IIR_Boolean _compare_signatures( IIRScram_SubprogramDeclarationRef ,
+					  IIRScram_SubprogramDeclarationRef );
   
-  IIR_Boolean _is_homograph_of( IIRScram_Declaration * );
-  IIR_Boolean _can_be_in_same_region( IIRScram_Declaration * );
+  IIR_Boolean _is_homograph_of( IIRScram_DeclarationRef  );
+  IIR_Boolean _can_be_in_same_region( IIRScram_DeclarationRef  );
 
   void _make_interface_visible( symbol_table * );
 
-  IIRScram_AttributeSpecificationList* _get_attribute_specification_list();
+  IIRScram_AttributeSpecificationListRef _get_attribute_specification_list();
 
   IIR_Int32 _num_required_args();
 
-  IIRScram_List *_get_statement_list();
+  IIRScram_ListRef _get_statement_list();
 
   // Wrappers for IIRBase functions
-  IIRScram_InterfaceList *              _get_interface_declarations();
-  IIRScram_SequentialStatementList *    _get_subprogram_body();
-  IIRScram_DeclarationList *            _get_subprogram_declarations();
+  IIRScram_InterfaceListRef               _get_interface_declarations();
+  IIRScram_SequentialStatementListRef     _get_subprogram_body();
+  IIRScram_DeclarationListRef             _get_subprogram_declarations();
 
 protected:    
 private:

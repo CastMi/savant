@@ -34,8 +34,9 @@
 #include "IIRScram_ScalarTypeDefinition.hh"
 #include "IIRBase_IntegerTypeDefinition.hh"
 
+REF_FORWARD_DECL(IIRScram_IntegerTypeDefinition);
+REF_FORWARD_DECL(IIRScram_IntegerSubtypeDefinition);
 class IIRScram_FunctionDeclaration;
-class IIRScram_IntegerSubtypeDefinition;
 class IIRScram_TypeDefinition;
 
 class IIRScram_IntegerTypeDefinition : public virtual IIRScram_ScalarTypeDefinition, public virtual IIRBase_IntegerTypeDefinition{
@@ -47,20 +48,20 @@ public:
   IIR_Boolean _is_numeric_type(){ return true; }
   IIR_Boolean _is_iir_integer_type_definition(){ return true; }
 
-  IIRScram_TypeDefinition *_get_new_subtype();
+  IIRScram_TypeDefinitionRef _get_new_subtype();
 
-  void _set_resolution_function( IIRScram_FunctionDeclaration * );
+  void _set_resolution_function( IIRScram_FunctionDeclarationRef  );
 
   /**
      Given the left, direction, and right passed in, construct a new type/subtype for 
      this range.
    */
-  static IIRScram_IntegerSubtypeDefinition *_construct_new_type( IIRScram_RangeTypeDefinition   *init_info,
-                                                                 IIRScram_TypeDeclaration       *type_decl,
-                                                                 IIRScram_DesignFile            *design_file);
+  static IIRScram_IntegerSubtypeDefinitionRef _construct_new_type( IIRScram_RangeTypeDefinitionRef init_info,
+                                                                 IIRScram_TypeDeclarationRef type_decl,
+                                                                 IIRScram_DesignFileRef design_file);
 
 protected:
-  void _build_implicit_operators( savant::set<IIRScram_Declaration*> * );
+  void _build_implicit_operators( savant::set<IIRScram_DeclarationRef> );
     
 private:
 };

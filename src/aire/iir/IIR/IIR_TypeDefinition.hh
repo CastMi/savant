@@ -32,9 +32,9 @@
 #include "savant_config.hh"
 #include "IIR.hh"
 
-class IIR_Name;
-class IIR_ScalarTypeDefinition;
-class IIR_FunctionDeclaration;
+REF_FORWARD_DECL(IIR_Name);
+REF_FORWARD_DECL(IIR_ScalarTypeDefinition);
+REF_FORWARD_DECL(IIR_FunctionDeclaration);
 
 namespace savant {
   template <class type> class set;
@@ -44,48 +44,48 @@ class IIR_TypeDefinition : public virtual IIR {
 public:
   virtual ~IIR_TypeDefinition() {}
     
-  virtual void                          set_base_type(IIR_TypeDefinition *) = 0;
-  virtual IIR_TypeDefinition            *get_base_type() = 0;
-  virtual IIR_TypeDefinition            *get_resolved_base_type() = 0;
+  virtual void                          set_base_type( IIR_TypeDefinitionRef ) = 0;
+  virtual IIR_TypeDefinitionRef get_base_type() = 0;
+  virtual IIR_TypeDefinitionRef get_resolved_base_type() = 0;
 
-  virtual IIR_Declaration               *get_declaration() = 0;
-  virtual void                          set_declaration( IIR_Declaration *) = 0;
+  virtual IIR_DeclarationRef get_declaration() = 0;
+  virtual void               set_declaration( IIR_DeclarationRef ) = 0;
 
-  virtual IIR_TypeDefinition            *get_type_mark() = 0;
-  virtual void                          set_type_mark( IIR_TypeDefinition * ) = 0;
+  virtual IIR_TypeDefinitionRef get_type_mark() = 0;
+  virtual void                  set_type_mark( IIR_TypeDefinitionRef ) = 0;
 
   virtual IIR_Boolean                   is_element() = 0;
   virtual IIR_Boolean                   is_unconstrained_array_type() = 0;
   virtual IIR_Boolean                   is_incomplete_type_definition() = 0;
   virtual IIR_Boolean                   is_anonymous() = 0;
 
-  virtual IIR_ScalarTypeDefinition      *get_resolved_index_subtype() = 0;
-  virtual void                          set_index_subtype(IIR_ScalarTypeDefinition *) = 0;
+  virtual IIR_ScalarTypeDefinitionRef get_resolved_index_subtype() = 0;
+  virtual void                        set_index_subtype(IIR_ScalarTypeDefinitionRef ) = 0;
 
   /** If this is an array type (or an access to an array type?), returns
       it's element subtype.  Otherwise, it complains and aborts! */
-  virtual IIR_TypeDefinition            *get_element_subtype() = 0;
-  virtual void                          set_element_subtype(IIR_TypeDefinition *) = 0;
+  virtual IIR_TypeDefinitionRef get_element_subtype() = 0;
+  virtual void                  set_element_subtype(IIR_TypeDefinitionRef ) = 0;
 
   // A scalar subtype may return NULL as it's left even if it has a range
   // constraint.  These methods will travel down to the first base type
   // that has a left defined.  Similarly for right and direction.
-  virtual IIR*                          get_base_type_left() = 0;
-  virtual IIR*                          get_base_type_direction() = 0;
-  virtual IIR*                          get_base_type_right() = 0;
+  virtual IIRRef                       get_base_type_left() = 0;
+  virtual IIRRef                       get_base_type_direction() = 0;
+  virtual IIRRef                       get_base_type_right() = 0;
 
   /** This method returns a pointer to the most constrained common
    subtype of "this" type, and the one passed in.  It returns NULL if
    the types are not compatible at all. */
-  virtual IIR_TypeDefinition *is_compatible( IIR_TypeDefinition * ) = 0;
-  virtual IIR_TypeDefinition *check_special_compatible( IIR_TypeDefinition * ) = 0;
+  virtual IIR_TypeDefinitionRef is_compatible( IIR_TypeDefinitionRef ) = 0;
+  virtual IIR_TypeDefinitionRef check_special_compatible( IIR_TypeDefinitionRef ) = 0;
   
-  virtual IIR_TypeDefinition *get_bottom_base_type() = 0;
+  virtual IIR_TypeDefinitionRef get_bottom_base_type() = 0;
 
-  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_Name * ) = 0;
-  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral * ) = 0;
+  virtual savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef ) = 0;
+  virtual savant::set<IIR_DeclarationRef> find_declarations( IIR_TextLiteralRef ) = 0;
 
-  virtual IIR_FunctionDeclaration *get_resolution_function() = 0;
+  virtual IIR_FunctionDeclarationRef get_resolution_function() = 0;
 };
 
 typedef refcount<IIR_TypeDefinition> IIR_TypeDefinitionRef;

@@ -27,54 +27,43 @@
 #include "IIRBase_TextLiteral.hh"
 #include "IIR_TypeDefinition.hh"
 
-IIRBase_SourceQuantityDeclaration::IIRBase_SourceQuantityDeclaration() :
-  magnitude_expression(0),
-  phase_expression(0),
-  noise_expression(0){}
-
-IIRBase_SourceQuantityDeclaration::~IIRBase_SourceQuantityDeclaration(){
-  delete magnitude_expression;
-  magnitude_expression = 0;
-  delete phase_expression;
-  phase_expression = 0;
-  delete noise_expression;
-  noise_expression = 0;
-}
+IIRBase_SourceQuantityDeclaration::IIRBase_SourceQuantityDeclaration() {}
+IIRBase_SourceQuantityDeclaration::~IIRBase_SourceQuantityDeclaration() {}
 
 void
-IIRBase_SourceQuantityDeclaration::set_magnitude_expression(IIR* magnitude_exp){
+IIRBase_SourceQuantityDeclaration::set_magnitude_expression(IIRRef magnitude_exp){
   this->magnitude_expression = magnitude_exp;
 }
 
-IIR*
+IIRRef
 IIRBase_SourceQuantityDeclaration::get_magnitude_expression() {
   return magnitude_expression;
 }
 
 void
-IIRBase_SourceQuantityDeclaration::set_phase_expression(IIR* phase) {
+IIRBase_SourceQuantityDeclaration::set_phase_expression(IIRRef phase) {
   this->phase_expression = phase;
 }
 
-IIR*
+IIRRef
 IIRBase_SourceQuantityDeclaration::get_phase_expression() {
   return phase_expression;
 }
 
 void
-IIRBase_SourceQuantityDeclaration::set_noise_expression(IIR* noise_exp  ) {
+IIRBase_SourceQuantityDeclaration::set_noise_expression(IIRRef noise_exp  ) {
   this->noise_expression = noise_exp;
 }
 
-IIR*
+IIRRef
 IIRBase_SourceQuantityDeclaration::get_noise_expression() {
   return noise_expression;
 }
 
-IIR *
-IIRBase_SourceQuantityDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SourceQuantityDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SourceQuantityDeclaration *new_node = dynamic_cast<IIRBase_SourceQuantityDeclaration *>(IIRBase_QuantityDeclaration::convert_tree(factory));
+  IIRBase_SourceQuantityDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_SourceQuantityDeclaration>(IIRBase_QuantityDeclaration::convert_tree(factory));
 
   // Process the variables
   new_node->magnitude_expression = convert_node(magnitude_expression, factory);

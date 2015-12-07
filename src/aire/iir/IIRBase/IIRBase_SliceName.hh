@@ -37,23 +37,23 @@ class IIRBase_SliceName : public virtual IIRBase_Name, public virtual IIR_SliceN
 
 public:
 
-  IIR_Kind get_kind() const {return IIR_SLICE_NAME;}
-  const IIR_Char *get_kind_text() const {return "IIR_SliceName";}
+  IIR_Kind get_kind() const override { return IIR_SLICE_NAME; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SliceName"); }
 
-  void set_suffix( IIR* suffix);
-  IIR* get_suffix();
+  void set_suffix( IIRRef suffix);
+  IIRRef get_suffix();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_variable();
 
   // Override the undefined definition in IIRBase_Name
-  void set_subtype(IIR_TypeDefinition *type) { IIRBase::set_subtype(type); }
+  void set_subtype(IIR_TypeDefinitionRef type) { IIRBase::set_subtype(type); }
   
   ostream &print( ostream &os );
 
-  IIR_Declaration* get_prefix_declaration();
+  IIR_DeclarationRef get_prefix_declaration();
   void publish_vhdl(ostream &);
 protected:
   
@@ -62,7 +62,7 @@ protected:
     
 private:
   
-  IIR*    suffix;
+  IIRRef    suffix;
 
 };
 

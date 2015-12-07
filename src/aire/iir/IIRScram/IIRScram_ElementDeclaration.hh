@@ -44,18 +44,18 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_TypeDefinition*> *,
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set( savant::set<IIRScram_TypeDefinitionRef>,
                                                        constraint_functor *functor = 0 );
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set( savant::set<IIRScram_Declaration*> *,
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set( savant::set<IIRScram_DeclarationRef>,
                                                        constraint_functor *functor = 0 ); 
 
-  IIRScram_TypeDefinition *_determine_rval_in_set( savant::set<IIRScram_TypeDefinition*> *, IIRScram_TypeDefinition * );
+  IIRScram_TypeDefinitionRef _determine_rval_in_set( savant::set<IIRScram_TypeDefinitionRef>, IIRScram_TypeDefinitionRef );
 
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition *prefix_rval, IIRScram_TypeDefinition *suffix_rval );
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef prefix_rval, IIRScram_TypeDefinitionRef suffix_rval );
   IIR_Boolean _is_iir_element_declaration(){ return TRUE; }
 
-  IIRScram_TypeDefinition *_get_type_of_element( int );
+  IIRScram_TypeDefinitionRef _get_type_of_element( int );
 
 protected:
 private:

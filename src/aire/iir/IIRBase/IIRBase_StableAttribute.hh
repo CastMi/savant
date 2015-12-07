@@ -36,20 +36,20 @@
 class IIRBase_StableAttribute : public virtual IIRBase_Attribute, public virtual IIR_StableAttribute{
 public:
 
-  IIR_Kind get_kind() const {return IIR_STABLE_ATTRIBUTE;}
-  const IIR_Char *get_kind_text() const {return "IIR_StableAttribute";}
+  IIR_Kind get_kind() const override { return IIR_STABLE_ATTRIBUTE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_StableAttribute"); }
 
-  void set_suffix( IIR* suffix);
-  IIR* get_suffix();
+  void set_suffix( IIRRef suffix);
+  IIRRef get_suffix();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_signal(){ return TRUE; }  
   IIR_Boolean has_suffix(){ return TRUE; }
 
-  IIR_TypeDefinition *get_subtype();
+  IIR_TypeDefinitionRef get_subtype();
 
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
   void publish_vhdl(ostream &);
 protected:
  
@@ -57,7 +57,7 @@ protected:
   virtual ~IIRBase_StableAttribute() = 0;
     
 private:
-  IIR*    suffix;
+  IIRRef    suffix;
 };
 
 typedef refcount<IIRBase_StableAttribute> IIRBase_StableAttributeRef;

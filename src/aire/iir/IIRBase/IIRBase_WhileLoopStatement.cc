@@ -25,27 +25,19 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 //---------------------------------------------------------------------------
 
-
-
-
 #include "savant.hh"
 #include "IIRBase_WhileLoopStatement.hh"
 #include "IIR_SequentialStatementList.hh"
 
-IIRBase_WhileLoopStatement::IIRBase_WhileLoopStatement()  :
-  sequence_of_statements(0),
-  while_condition(0) {}
-
-IIRBase_WhileLoopStatement::~IIRBase_WhileLoopStatement() {
-  delete get_while_condition();
-}
+IIRBase_WhileLoopStatement::IIRBase_WhileLoopStatement() {}
+IIRBase_WhileLoopStatement::~IIRBase_WhileLoopStatement() {}
 
 void
-IIRBase_WhileLoopStatement::set_while_condition( IIR *new_while_condition ){
+IIRBase_WhileLoopStatement::set_while_condition( IIRRef new_while_condition ){
   while_condition = new_while_condition;
 }
 
-IIR *
+IIRRef
 IIRBase_WhileLoopStatement::get_while_condition() {
   return while_condition;
 }
@@ -61,26 +53,25 @@ IIRBase_WhileLoopStatement::is_above_attribute_found() {
 }
 
 // List Accessor(s)
-IIR_SequentialStatementList *
+IIR_SequentialStatementListRef
 IIRBase_WhileLoopStatement::get_sequence_of_statements() {
   ASSERT(sequence_of_statements != NULL);
   return sequence_of_statements;
 }
 
 void
-IIRBase_WhileLoopStatement::set_sequence_of_statements(IIR_SequentialStatementList *new_sequence_of_statements) {
+IIRBase_WhileLoopStatement::set_sequence_of_statements(IIR_SequentialStatementListRef new_sequence_of_statements) {
   ASSERT(new_sequence_of_statements != NULL);
-  delete sequence_of_statements;
   sequence_of_statements = new_sequence_of_statements;
 }
 
-IIR *
-IIRBase_WhileLoopStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_WhileLoopStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_WhileLoopStatement *new_node = dynamic_cast<IIRBase_WhileLoopStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_WhileLoopStatementRef new_node = my_dynamic_pointer_cast<IIRBase_WhileLoopStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->sequence_of_statements = dynamic_cast<IIR_SequentialStatementList *>(convert_node(sequence_of_statements, factory));
+  new_node->sequence_of_statements = my_dynamic_pointer_cast<IIR_SequentialStatementList>(convert_node(sequence_of_statements, factory));
   new_node->while_condition = convert_node(while_condition, factory);
 
   return new_node;

@@ -62,8 +62,8 @@ public:
   // the symbol_lookup class.  Don't modify the list it points at! 
   // NOTE2:  Since the list is persistent, any calls to methods
   // _INCLUDING_ find_list can and will modify the list pointed too.
-  savant::set<IIR_Declaration*> *find_set( IIR_TextLiteral * );
-  savant::set<IIR_Declaration*> *find_set( char * );
+  savant::set<IIR_DeclarationRef> find_set( IIR_TextLiteralRef );
+  savant::set<IIR_DeclarationRef> find_set( char * );
   
   symbol_lookup(int table_size = 4093) : ht_size(table_size) {
     ht = new dl_list<declaration_chain>[ht_size];

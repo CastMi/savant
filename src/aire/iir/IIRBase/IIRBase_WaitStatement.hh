@@ -37,23 +37,23 @@ class IIR_DesignatorList;
 class IIRBase_WaitStatement : public virtual IIRBase_SequentialStatement, public virtual IIR_WaitStatement{
 public:
   // List Accessor(s)
-  IIR_DesignatorList *get_sensitivity_list();
-  void               set_sensitivity_list(IIR_DesignatorList *new_sensitivity_list);
+  IIR_DesignatorListRef get_sensitivity_list();
+  void               set_sensitivity_list(IIR_DesignatorListRef new_sensitivity_list);
 
   IIR_Kind get_kind() const {
     return IIR_WAIT_STATEMENT;
   }
-  const IIR_Char *get_kind_text() const {
-    return "IIR_WaitStatement";
+  IIR_CharConstRef get_kind_text() const {
+    return IIR_CharConstRef("IIR_WaitStatement");
   }
-  void set_condition_clause( IIR* condition_clause);
-  IIR* get_condition_clause();
-  void set_timeout_clause( IIR* timeout_clause);
-  IIR* get_timeout_clause();
+  void set_condition_clause( IIRRef condition_clause);
+  IIRRef get_condition_clause();
+  void set_timeout_clause( IIRRef timeout_clause);
+  IIRRef get_timeout_clause();
 
   IIR_Boolean is_above_attribute_found();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -62,10 +62,10 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DesignatorList *sensitivity_list;
+  IIR_DesignatorListRef sensitivity_list;
   
-  IIR* condition_clause;
-  IIR* timeout_clause;
+  IIRRef condition_clause;
+  IIRRef timeout_clause;
 };
 
 typedef refcount<IIRBase_WaitStatement> IIRBase_WaitStatementRef;

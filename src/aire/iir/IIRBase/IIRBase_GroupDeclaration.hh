@@ -41,18 +41,18 @@ class IIRBase_GroupDeclaration : public virtual IIRBase_Declaration, public virt
 
 public:
   // List Accessor(s)
-  IIR_DesignatorList                    *get_group_constituent_list();
-  IIR_AttributeSpecificationList        *get_attributes();
-  void                                  set_group_constituent_list(IIR_DesignatorList *new_group_constituent_list);
-  void                                  set_attributes(IIR_AttributeSpecificationList *new_attributes);
+  IIR_DesignatorListRef               get_group_constituent_list();
+  IIR_AttributeSpecificationListRef   get_attributes();
+  void                                set_group_constituent_list(IIR_DesignatorListRef new_group_constituent_list);
+  void                                set_attributes(IIR_AttributeSpecificationListRef new_attributes);
 
-  IIR_Kind get_kind() const {return IIR_GROUP_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_GroupDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_GROUP_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_GroupDeclaration"); }
 
-  void set_group_template(IIR_Name* group_template_name);
-  IIR_Name* get_group_template_name();
+  void set_group_template(IIR_NameRef group_template_name);
+  IIR_NameRef get_group_template_name();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   declaration_type                      get_declaration_type();
 
@@ -64,10 +64,10 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DesignatorList *group_constituent_list;
-  IIR_AttributeSpecificationList *attributes;
+  IIR_DesignatorListRef group_constituent_list;
+  IIR_AttributeSpecificationListRef attributes;
 
-  IIR_Name*  group_template_name;  
+  IIR_NameRef  group_template_name;  
 
 };
 

@@ -44,8 +44,8 @@ class IIR_Identifier;
 */
 class IIR_IncompleteTypeDefinition : public virtual IIR_TypeDefinition {
 public:
-  virtual IIR_Identifier *get_designated_type_name() = 0;
-  virtual void set_designated_type_name( IIR_Identifier *new_type_name ) = 0;
+  virtual IIR_IdentifierRef get_designated_type_name() = 0;
+  virtual void set_designated_type_name( IIR_IdentifierRef new_type_name ) = 0;
 
 protected:
   virtual ~IIR_IncompleteTypeDefinition(){}

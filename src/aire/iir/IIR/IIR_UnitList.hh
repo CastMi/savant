@@ -38,9 +38,9 @@ class IIR_UnitList : public virtual IIR_DeclarationList{
 public:
   virtual ~IIR_UnitList() {}
     
-  virtual IIR *first() = 0;
-  virtual IIR *successor(IIR_PhysicalUnit*) = 0;
-  virtual IIR *predecessor(IIR_PhysicalUnit*) = 0;
+  virtual IIRRef first() = 0;
+  virtual IIRRef successor( IIR_PhysicalUnitRef ) = 0;
+  virtual IIRRef predecessor( IIR_PhysicalUnitRef ) = 0;
 };
 
 typedef refcount<IIR_UnitList> IIR_UnitListRef;

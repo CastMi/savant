@@ -36,8 +36,8 @@ class IIRBase_DivisionOperator : public virtual IIRBase_DyadicOperator,
 				 public virtual IIR_DivisionOperator{
 
 public:
-  IIR_Kind get_kind() const {return IIR_DIVISION_OPERATOR;}
-  const IIR_Char *get_kind_text() const {return "IIR_DivisionOperator";}
+  IIR_Kind get_kind() const override { return IIR_DIVISION_OPERATOR; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_DivisionOperator"); }
   const string &get_operator_string() const;
 
   Precedence get_precedence();

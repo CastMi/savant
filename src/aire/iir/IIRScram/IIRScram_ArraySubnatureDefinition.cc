@@ -27,9 +27,9 @@
 
 IIRScram_ArraySubnatureDefinition::~IIRScram_ArraySubnatureDefinition() {}
 
-IIRScram *
+IIRScramRef
 IIRScram_ArraySubnatureDefinition::_clone(){
-  IIRScram_ArraySubnatureDefinition *my_clone = new IIRScram_ArraySubnatureDefinition();
+  IIRScram_ArraySubnatureDefinitionRef my_clone(new IIRScram_ArraySubnatureDefinition());
   IIRScram::_clone( my_clone );
 
   IIRScram_ArrayNatureDefinition::_clone( my_clone );

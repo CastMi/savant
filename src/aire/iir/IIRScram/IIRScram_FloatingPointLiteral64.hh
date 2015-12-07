@@ -43,14 +43,14 @@ public:
 
   IIR_Boolean _is_floating_literal() { return TRUE; }
 
-  IIRScram *_clone() { return this; }
+  IIRScramRef _clone() { return this; }
 
   static IIRScram_FloatingPointLiteral64* get_value(IIR_FP64);
 
   /**
      Do nothing.
    */
-  virtual void _type_check( savant::set<IIRScram_TypeDefinition> * ){}
+  virtual void _type_check( savant::set<IIRScram_TypeDefinition> ){}
   
 protected:    
 private:

@@ -33,12 +33,12 @@ class IIRBase_FreeQuantityDeclaration : public virtual IIRBase_QuantityDeclarati
 
 public:
   /** Returns the IIR_Kind of this node. */
-  IIR_Kind get_kind() const {
+  IIR_Kind get_kind() const override {
     return IIR_FREE_QUANTITY_DECLARATION;
   }
 
-  const IIR_Char *get_kind_text() const {
-    return "IIR_FreeQuantityDeclaration";
+  IIR_CharConstRef get_kind_text() const override {
+    return IIR_CharConstRef("IIR_FreeQuantityDeclaration");
   }
   
   /**
@@ -47,11 +47,11 @@ public:
   Postcondition: Initializes the free quantity to the value specified in 
 		 the Initial Value Expression.                          */
 
-  void set_value(IIR* value);
+  void set_value(IIRRef value);
 
-  IIR* get_value();
+  IIRRef get_value();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl_decl(ostream &);
 protected:
@@ -59,7 +59,7 @@ protected:
   virtual ~IIRBase_FreeQuantityDeclaration() = 0;
 
 private:
-  IIR* value;
+  IIRRef value;
 
 };
 

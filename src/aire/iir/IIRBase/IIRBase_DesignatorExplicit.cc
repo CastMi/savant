@@ -30,42 +30,37 @@
 #include "IIR_Signature.hh"
 #include "savant.hh"
 
-IIRBase_DesignatorExplicit::IIRBase_DesignatorExplicit() {
-  set_name( NULL );
-  set_signature( NULL );
-}
-
-IIRBase_DesignatorExplicit::~IIRBase_DesignatorExplicit(){
-}
+IIRBase_DesignatorExplicit::IIRBase_DesignatorExplicit() {}
+IIRBase_DesignatorExplicit::~IIRBase_DesignatorExplicit() {}
 
 void 
-IIRBase_DesignatorExplicit::set_name( IIR *name ){
+IIRBase_DesignatorExplicit::set_name( IIRRef name ){
   this->name = name;
 }
 
-IIR *
+IIRRef
 IIRBase_DesignatorExplicit::get_name(){
   return name;
 }
 
 void 
-IIRBase_DesignatorExplicit::set_signature( IIR_Signature *signature ){
+IIRBase_DesignatorExplicit::set_signature( IIR_SignatureRef signature ){
   this->signature = signature;
 }
 
-IIR_Signature *
+IIR_SignatureRef
 IIRBase_DesignatorExplicit::get_signature(){
   return signature;
 }
 
-IIR *
-IIRBase_DesignatorExplicit::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_DesignatorExplicit::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_DesignatorExplicit *new_node = dynamic_cast<IIRBase_DesignatorExplicit *>(IIRBase_Designator::convert_tree(factory));
+  IIRBase_DesignatorExplicitRef new_node = my_dynamic_pointer_cast<IIRBase_DesignatorExplicit>(IIRBase_Designator::convert_tree(factory));
 
   // Process the variables
   new_node->name = convert_node(name, factory);
-  new_node->signature = dynamic_cast<IIR_Signature *>(convert_node(signature, factory));
+  new_node->signature = my_dynamic_pointer_cast<IIR_Signature>(convert_node(signature, factory));
 
   return new_node;
 }

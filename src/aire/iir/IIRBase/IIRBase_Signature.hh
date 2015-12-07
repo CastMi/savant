@@ -37,16 +37,16 @@ class IIRBase_Signature : public virtual IIRBase_TypeDefinition, public virtual 
 
 public:
   // List Accessor(s)
-  IIR_DesignatorList    *get_argument_type_list();
-  void                  set_argument_type_list(IIR_DesignatorList *new_argument_type_list);
+  IIR_DesignatorListRef  get_argument_type_list();
+  void                   set_argument_type_list(IIR_DesignatorListRef new_argument_type_list);
 
-  IIR_Kind get_kind() const {return IIR_SIGNATURE;}
-  const IIR_Char *get_kind_text() const {return "IIR_Signature";}
+  IIR_Kind get_kind() const override { return IIR_SIGNATURE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_Signature"); }
 
-  void set_return_type( IIR_TypeDefinition* return_type);
-  IIR_TypeDefinition* get_return_type();
+  void set_return_type( IIR_TypeDefinitionRef return_type);
+  IIR_TypeDefinitionRef get_return_type();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -55,8 +55,8 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DesignatorList *argument_type_list;
-  IIR_TypeDefinition* return_type;
+  IIR_DesignatorListRef argument_type_list;
+  IIR_TypeDefinitionRef return_type;
 };
 
 typedef refcount<IIRBase_Signature> IIRBase_SignatureRef;

@@ -38,26 +38,26 @@ class IIR_ConstantInterfaceDeclaration;
 class IIRBase_GenericList : public virtual IIRBase_InterfaceList, public virtual IIR_GenericList{
 
 public:
-  IIR_Kind get_kind() const {return IIR_GENERIC_LIST;}
-  const IIR_Char *get_kind_text() const {return "IIR_GenericList";}
+  IIR_Kind get_kind() const override { return IIR_GENERIC_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_GenericList"); }
 
-  void prepend( IIR_ConstantInterfaceDeclaration* element);
+  void prepend( IIR_ConstantInterfaceDeclarationRef element);
 
-  void append( IIR_ConstantInterfaceDeclaration* element);
+  void append( IIR_ConstantInterfaceDeclarationRef element);
 
-  IIR_Boolean insert_after( IIR_ConstantInterfaceDeclaration *existing_element,
-				    IIR_ConstantInterfaceDeclaration* new_element);
+  IIR_Boolean insert_after( IIR_ConstantInterfaceDeclarationRef existing_element,
+				    IIR_ConstantInterfaceDeclarationRef new_element);
 
-  IIR_Boolean insert_before_element( IIR_ConstantInterfaceDeclaration *existing_element, 
-				     IIR_ConstantInterfaceDeclaration* new_element);
+  IIR_Boolean insert_before_element( IIR_ConstantInterfaceDeclarationRef existing_element, 
+				     IIR_ConstantInterfaceDeclarationRef new_element);
 
-  IIR *successor( IIR_ConstantInterfaceDeclaration* existing_element);
-  IIR *predecessor( IIR_ConstantInterfaceDeclaration* element );
-  IIR *first( );
-  IIR *get_nth_element( IIR_Int32 );
-  IIR *last();
+  IIRRef successor( IIR_ConstantInterfaceDeclarationRef existing_element);
+  IIRRef predecessor( IIR_ConstantInterfaceDeclarationRef element );
+  IIRRef first( );
+  IIRRef get_nth_element( IIR_Int32 );
+  IIRRef last();
 
-  IIR_Int32 get_position( IIR_ConstantInterfaceDeclaration* element );
+  IIR_Int32 get_position( IIR_ConstantInterfaceDeclarationRef element );
 
   void publish_vhdl(ostream &);
 protected:

@@ -48,8 +48,8 @@ public:
 
   void _type_check();
 
-  IIRScram *                    _get_procedure_name();
-  IIRScram_AssociationList *    _get_actual_parameter_part();
+  IIRScramRef                     _get_procedure_name();
+  IIRScram_AssociationListRef     _get_actual_parameter_part();
 
 protected:
 private:

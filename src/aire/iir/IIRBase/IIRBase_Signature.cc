@@ -24,34 +24,25 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "savant.hh"
 #include "IIRBase_Signature.hh"
 #include "IIR_DesignatorList.hh"
 
-IIRBase_Signature::IIRBase_Signature()  :
-  argument_type_list(0) {
-  set_return_type(NULL);
-}
-
-IIRBase_Signature::~IIRBase_Signature() {
-}
+IIRBase_Signature::IIRBase_Signature() {}
+IIRBase_Signature::~IIRBase_Signature() {}
 
 void
-IIRBase_Signature:: set_return_type( IIR_TypeDefinition* return_type) {
+IIRBase_Signature:: set_return_type( IIR_TypeDefinitionRef return_type) {
   this->return_type = return_type;
 }
 
-IIR_TypeDefinition*
+IIR_TypeDefinitionRef
 IIRBase_Signature::get_return_type() {
   return return_type;
 }
 
 // List Accessor(s)
-IIR_DesignatorList *
+IIR_DesignatorListRef
 IIRBase_Signature::get_argument_type_list() {
   ASSERT(argument_type_list != NULL);
   return argument_type_list;
@@ -59,20 +50,19 @@ IIRBase_Signature::get_argument_type_list() {
 
 
 void
-IIRBase_Signature::set_argument_type_list(IIR_DesignatorList *new_argument_type_list) {
+IIRBase_Signature::set_argument_type_list(IIR_DesignatorListRef new_argument_type_list) {
   ASSERT(new_argument_type_list != NULL);
-  delete argument_type_list;
   argument_type_list = new_argument_type_list;
 }
 
-IIR *
-IIRBase_Signature::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_Signature::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_Signature *new_node = dynamic_cast<IIRBase_Signature *>(IIRBase_TypeDefinition::convert_tree(factory));
+  IIRBase_SignatureRef new_node = my_dynamic_pointer_cast<IIRBase_Signature>(IIRBase_TypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->argument_type_list = dynamic_cast<IIR_DesignatorList *>(convert_node(argument_type_list, factory));
-  new_node->return_type = dynamic_cast<IIR_TypeDefinition *>(convert_node(return_type, factory));
+  new_node->argument_type_list = my_dynamic_pointer_cast<IIR_DesignatorList>(convert_node(argument_type_list, factory));
+  new_node->return_type = my_dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(return_type, factory));
 
   return new_node;
 }
@@ -81,5 +71,5 @@ void
 IIRBase_Signature::publish_vhdl(ostream &vhdl_out) {
   get_argument_type_list()->publish_vhdl(vhdl_out);
   vhdl_out << " return ";
-  dynamic_cast<IIRBase_TypeDefinition *>(get_return_type())->publish_vhdl(vhdl_out);
+  my_dynamic_pointer_cast<IIRBase_TypeDefinition>(get_return_type())->publish_vhdl(vhdl_out);
 }

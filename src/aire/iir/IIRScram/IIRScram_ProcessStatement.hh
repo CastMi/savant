@@ -35,8 +35,8 @@
 #include "IIRScram_ConcurrentStatement.hh"
 #include "IIRBase_ProcessStatement.hh"
 
+REF_FORWARD_DECL(IIRScram_SequentialStatementList);
 class IIRScram_Name;
-class IIRScram_SequentialStatementList;
 class IIRScram_WaitStatement;
 
 class IIRScram_ProcessStatement : public virtual IIRScram_ConcurrentStatement,
@@ -52,11 +52,11 @@ public:
   void _add_declarations_in_initializations();
 
   virtual void _type_check();
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
-  IIRScram_SequentialStatementList *    _get_process_statement_part();
+  IIRScram_SequentialStatementListRef     _get_process_statement_part();
   // Wrappers for IIRBase functions
-  IIRScram_DeclarationList *            _get_process_declarative_part();
+  IIRScram_DeclarationListRef             _get_process_declarative_part();
 
 protected:
 private:

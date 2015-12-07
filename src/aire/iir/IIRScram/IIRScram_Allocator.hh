@@ -45,14 +45,14 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0);
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
 
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return FALSE; }
 
-  IIRScram                      *_get_value();
-  IIRScram_TypeDefinition       *_get_type_mark();
+  IIRScramRef                _get_value();
+  IIRScram_TypeDefinitionRef _get_type_mark();
 protected:
     
 private:

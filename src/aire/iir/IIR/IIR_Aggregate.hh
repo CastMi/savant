@@ -30,7 +30,8 @@
 
 #include "savant_config.hh"
 #include "IIR_Expression.hh"
-class IIR_AssociationList;
+
+REF_FORWARD_DECL(IIR_AssociationList);
 
 class IIR_Aggregate : public virtual IIR_Expression{
 
@@ -38,7 +39,7 @@ public:
   virtual ~IIR_Aggregate() {}
 
   // List accessor(s)
-  virtual IIR_AssociationList *get_element_association_list() = 0;
+  virtual IIR_AssociationListRef get_element_association_list() = 0;
 };
 
 typedef refcount<IIR_Aggregate> IIR_AggregateRef;

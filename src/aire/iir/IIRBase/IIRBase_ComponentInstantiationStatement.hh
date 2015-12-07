@@ -38,23 +38,23 @@ class IIRBase_ComponentInstantiationStatement : public virtual IIRBase_Concurren
 
 public:
   // List Accessor(s)
-  IIR_AssociationList  *get_generic_map_aspect();
-  IIR_AssociationList  *get_port_map_aspect();
-  void                 set_generic_map_aspect(IIR_AssociationList *new_generic_map_aspect);
-  void                 set_port_map_aspect(IIR_AssociationList *new_port_map_aspect);
+  IIR_AssociationListRef get_generic_map_aspect();
+  IIR_AssociationListRef get_port_map_aspect();
+  void                   set_generic_map_aspect(IIR_AssociationListRef new_generic_map_aspect);
+  void                   set_port_map_aspect(IIR_AssociationListRef new_port_map_aspect);
 
-  IIR_Kind get_kind() const {return IIR_COMPONENT_INSTANTIATION_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_ComponentInstantiationStatement";}
+  IIR_Kind get_kind() const override { return IIR_COMPONENT_INSTANTIATION_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override {return IIR_CharConstRef("IIR_ComponentInstantiationStatement"); }
 
-  void set_instantiated_unit( IIR *instantiated_unit );
-  IIR *get_instantiated_unit();
+  void set_instantiated_unit( IIRRef instantiated_unit );
+  IIRRef get_instantiated_unit();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   /** This returns the configuration for this component.  It can be an
       IIR_ConfigurationSpecification, or an IIR_ComponentConfiguration. */
-  IIR *get_configuration();
-  void set_configuration( IIR *new_config );
+  IIRRef get_configuration();
+  void set_configuration( IIRRef new_config );
 
   void publish_vhdl(ostream &);
 protected:
@@ -63,11 +63,11 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_AssociationList  *generic_map_aspect;
-  IIR_AssociationList  *port_map_aspect;
+  IIR_AssociationListRef generic_map_aspect;
+  IIR_AssociationListRef port_map_aspect;
 
-  IIR *my_instantiated_unit;
-  IIR *my_configuration;
+  IIRRef my_instantiated_unit;
+  IIRRef my_configuration;
 };
 
 typedef refcount<IIRBase_ComponentInstantiationStatement> IIRBase_ComponentInstantiationStatementRef;

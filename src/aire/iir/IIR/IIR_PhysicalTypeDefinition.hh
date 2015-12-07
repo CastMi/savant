@@ -33,8 +33,8 @@
 #include "savant_config.hh"
 #include "IIR_ScalarTypeDefinition.hh"
 
-class IIR_PhysicalUnit;
-class IIR_UnitList;
+REF_FORWARD_DECL(IIR_UnitList);
+REF_FORWARD_DECL(IIR_PhysicalUnit);
 
 class IIR_PhysicalTypeDefinition : public virtual IIR_ScalarTypeDefinition{
 
@@ -42,11 +42,11 @@ public:
   virtual ~IIR_PhysicalTypeDefinition() {}
 
   // List accessor(s)
-  virtual IIR_UnitList  *get_units() = 0;
-  virtual void          set_units(IIR_UnitList *) = 0;
+  virtual IIR_UnitListRef get_units() = 0;
+  virtual void            set_units(IIR_UnitListRef ) = 0;
 
-  virtual void set_primary_unit(IIR_PhysicalUnit*) = 0;
-  virtual IIR_PhysicalUnit *get_primary_unit() = 0;
+  virtual void set_primary_unit( IIR_PhysicalUnitRef ) = 0;
+  virtual IIR_PhysicalUnitRef get_primary_unit() = 0;
 
 };
 

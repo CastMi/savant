@@ -26,9 +26,6 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
 #include "IIR_TypeDefinition.hh"
 #include "IIRBase_InterfaceDeclaration.hh"
 #include "IIR_TextLiteral.hh"
@@ -36,7 +33,6 @@
 
 IIRBase_InterfaceDeclaration::IIRBase_InterfaceDeclaration() {
   set_mode(IIR_UNKNOWN_MODE);
-  set_value(NULL);
 }
 
 IIRBase_InterfaceDeclaration::~IIRBase_InterfaceDeclaration() {}
@@ -53,19 +49,19 @@ IIRBase_InterfaceDeclaration::get_mode() {
 
 
 void
-IIRBase_InterfaceDeclaration::set_value( IIR *new_value ){
+IIRBase_InterfaceDeclaration::set_value( IIRRef new_value ){
   value = new_value;
 }
 
-IIR *
+IIRRef
 IIRBase_InterfaceDeclaration::get_value() {
   return value;
 }
 
-IIR *
-IIRBase_InterfaceDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_InterfaceDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_InterfaceDeclaration *new_node = dynamic_cast<IIRBase_InterfaceDeclaration *>(IIRBase_ObjectDeclaration::convert_tree(factory));
+  IIRBase_InterfaceDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_InterfaceDeclaration>(IIRBase_ObjectDeclaration::convert_tree(factory));
 
   // Process the variables
   new_node->value = convert_node(value, factory);

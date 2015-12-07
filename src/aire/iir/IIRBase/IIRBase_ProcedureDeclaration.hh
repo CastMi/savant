@@ -36,12 +36,12 @@ class IIRBase_ProcedureDeclaration : public virtual IIRBase_SubprogramDeclaratio
 				     public virtual IIR_ProcedureDeclaration{
 
 public:
-  IIR_Kind get_kind() const {return IIR_PROCEDURE_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_ProcedureDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_PROCEDURE_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ProcedureDeclaration"); }
 
   /* Ruda M.: Commented out to use the default implementation in
      IIRBase.h */
-  //IIR_TypeDefinition *get_subtype() = 0;
+  //IIR_TypeDefinitionRef get_subtype() = 0;
 
   declaration_type get_declaration_type();
 

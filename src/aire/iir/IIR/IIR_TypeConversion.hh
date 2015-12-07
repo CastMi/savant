@@ -38,10 +38,10 @@ class IIR_TypeConversion : public virtual IIR_Expression{
 public:
   virtual ~IIR_TypeConversion() {}
     
-  virtual void set_type_mark( IIR_TypeDefinition* type_mark) = 0;
-  virtual IIR_TypeDefinition* get_type_mark() = 0;
-  virtual void set_expression( IIR* expression) = 0;
-  virtual IIR* get_expression() = 0;
+  virtual void set_type_mark( IIR_TypeDefinitionRef type_mark) = 0;
+  virtual IIR_TypeDefinitionRef get_type_mark() = 0;
+  virtual void set_expression( IIRRef expression) = 0;
+  virtual IIRRef get_expression() = 0;
 };
 
 typedef refcount<IIR_TypeConversion> IIR_TypeConversionRef;

@@ -28,36 +28,34 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
+#include "savant.hh"
+#include "IRBasicDataTypes.hh"
 #include "IIRBase_LibraryUnit.hh"
 #include "IIR_PackageDeclaration.hh"
+#include "set.hh"
 
-class IIR_PackageBodyDeclaration;
-class IIR_DeclarationList;
-
-class IIRBase_PackageDeclaration : public virtual IIRBase_LibraryUnit, public virtual IIR_PackageDeclaration{
+class IIRBase_PackageDeclaration : public virtual IIRBase_LibraryUnit, public virtual IIR_PackageDeclaration {
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList         *get_package_declarative_part();
-  void                        set_package_declarative_part(IIR_DeclarationList *new_package_declarative_part);
+  IIR_DeclarationListRef    get_package_declarative_part();
+  void                      set_package_declarative_part(IIR_DeclarationListRef new_package_declarative_part);
 
   IIR_Kind get_kind() const {return IIR_PACKAGE_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_PackageDeclaration";}
+  IIR_CharConstRef get_kind_text() const {return IIR_CharConstRef("IIR_PackageDeclaration");}
 
-  IIR_PackageBodyDeclaration *get_package_body();
-  void set_package_body( IIR_PackageBodyDeclaration * );
+  IIR_PackageBodyDeclarationRef get_package_body();
+  void set_package_body( IIR_PackageBodyDeclarationRef );
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   declaration_type get_declaration_type();
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *);
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef );
 
   IIR_Boolean is_package_declaration(){ return TRUE; }
   IIR_Boolean is_primary_unit(){ return TRUE; }
 
-  IIR_Declaration          *get_prefix_declaration() { return this; }
   void publish_vhdl_decl(ostream &);
   void publish_vhdl(ostream &);
 protected:
@@ -67,9 +65,9 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList         *package_declarative_part;
+  IIR_DeclarationListRef         package_declarative_part;
   
-  IIR_PackageBodyDeclaration *my_package_body;
+  IIR_PackageBodyDeclarationRef  my_package_body;
 
 };
 

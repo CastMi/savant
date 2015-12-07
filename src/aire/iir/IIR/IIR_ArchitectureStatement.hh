@@ -28,20 +28,20 @@
 #include "savant_config.hh"
 #include "IIR_Statement.hh"
 
-class IIR_SignalDeclaration;
+REF_FORWARD_DECL(IIR_SignalDeclaration);
 
 class IIR_ArchitectureStatement : public virtual IIR_Statement {
 public:
   enum SimultaneousIfPublishingPart {IF_PART, ELSE_PART, None};
 
-  virtual void set_declarative_region(IIR *) = 0;
-  virtual IIR* get_declarative_region() = 0;
+  virtual void set_declarative_region(IIRRef ) = 0;
+  virtual IIRRef get_declarative_region() = 0;
 protected:
  
   IIR_ArchitectureStatement() {};
   virtual ~IIR_ArchitectureStatement() {}
 
-  virtual void set_guard_signal( IIR_SignalDeclaration * ) = 0;
+  virtual void set_guard_signal( IIR_SignalDeclarationRef  ) = 0;
 };
 
 typedef refcount<IIR_ArchitectureStatement> IIR_ArchitectureStatementRef;

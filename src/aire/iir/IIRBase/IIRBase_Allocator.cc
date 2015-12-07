@@ -25,12 +25,9 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "IIRBase_Allocator.hh"
 #include "savant.hh"
 #include "IIR_TypeDefinition.hh"
-
 
 IIRBase_Allocator::IIRBase_Allocator(){
   set_type_mark( NULL );
@@ -38,39 +35,39 @@ IIRBase_Allocator::IIRBase_Allocator(){
 }
 
 IIRBase_Allocator::~IIRBase_Allocator(){
-  delete get_type_mark();
-  delete get_value();
 }
 
 void 
-IIRBase_Allocator::set_type_mark( IIR_TypeDefinition *new_type_mark ){
+IIRBase_Allocator::set_type_mark( IIR_TypeDefinitionRef new_type_mark ){
+  type_mark.reset();
   type_mark = new_type_mark;
 }
 
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_Allocator::get_type_mark(){
   return type_mark;
 }
 
 void 
-IIRBase_Allocator::set_value( IIR *new_value ) {
+IIRBase_Allocator::set_value( IIRRef new_value ) {
+  value.reset();
   value = new_value;
 }
 
 
-IIR*
+IIRRef
 IIRBase_Allocator::get_value() {
   return value;
 }
 
-IIR *
-IIRBase_Allocator::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_Allocator::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_Allocator *new_node = dynamic_cast<IIRBase_Allocator *>(IIRBase_Expression::convert_tree(factory));
+  IIRBase_AllocatorRef new_node = my_dynamic_pointer_cast<IIRBase_Allocator>(IIRBase_Expression::convert_tree(factory));
 
   // Process the variables
-  new_node->type_mark = dynamic_cast<IIR_TypeDefinition *>(convert_node(type_mark, factory));
+  new_node->type_mark = my_dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(type_mark, factory));
   new_node->value = convert_node(value, factory);
 
   return new_node;

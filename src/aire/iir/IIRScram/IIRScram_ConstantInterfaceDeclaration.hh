@@ -48,13 +48,13 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  void _build_generic_parameter_set(savant::set<IIRScram_Declaration*> *);
+  void _build_generic_parameter_set(savant::set<IIRScram_DeclarationRef> );
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
   void _type_check( IIRScram_InterfaceDeclaration::_InterfaceListType );
 
-  IIRScram * _get_value();
+  IIRScramRef  _get_value();
 
 protected:    
 

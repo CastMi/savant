@@ -30,34 +30,30 @@
 #include "IIR_EntityClassEntryList.hh"
 #include "IIR_TextLiteral.hh"
 
-IIRBase_GroupTemplateDeclaration::IIRBase_GroupTemplateDeclaration()  :
-  entity_class_entry_list(0) { }
-
-IIRBase_GroupTemplateDeclaration::~IIRBase_GroupTemplateDeclaration() {
-}
+IIRBase_GroupTemplateDeclaration::IIRBase_GroupTemplateDeclaration() {}
+IIRBase_GroupTemplateDeclaration::~IIRBase_GroupTemplateDeclaration() {}
 
 // List Accessor(s)
-IIR_EntityClassEntryList *
+IIR_EntityClassEntryListRef
 IIRBase_GroupTemplateDeclaration::get_entity_class_entry_list() {
-  ASSERT(entity_class_entry_list != NULL);
+  ASSERT(entity_class_entry_list != nullptr);
   return entity_class_entry_list;
 }
 
 
 void
-IIRBase_GroupTemplateDeclaration::set_entity_class_entry_list(IIR_EntityClassEntryList *new_entity_class_entry_list) {
-  ASSERT(new_entity_class_entry_list != NULL);
-  delete entity_class_entry_list;
+IIRBase_GroupTemplateDeclaration::set_entity_class_entry_list(IIR_EntityClassEntryListRef new_entity_class_entry_list) {
+  ASSERT(new_entity_class_entry_list != nullptr);
   entity_class_entry_list = new_entity_class_entry_list;
 }
 
-IIR *
-IIRBase_GroupTemplateDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_GroupTemplateDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_GroupTemplateDeclaration *new_node = dynamic_cast<IIRBase_GroupTemplateDeclaration *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_GroupTemplateDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_GroupTemplateDeclaration>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->entity_class_entry_list = dynamic_cast<IIR_EntityClassEntryList *>(convert_node(entity_class_entry_list, factory));
+  new_node->entity_class_entry_list = my_dynamic_pointer_cast<IIR_EntityClassEntryList>(convert_node(entity_class_entry_list, factory));
 
   return new_node;
 }

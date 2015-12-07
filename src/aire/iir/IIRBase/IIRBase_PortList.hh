@@ -40,23 +40,23 @@ class IIR_TerminalInterfaceDeclaration;
 class IIRBase_PortList : public virtual IIRBase_InterfaceList, public virtual IIR_PortList{
 
 public:
-  IIR_Kind get_kind() const { return IIR_PORT_LIST; }
-  const IIR_Char *get_kind_text() const { return "IIR_PortList"; }
+  IIR_Kind get_kind() const override { return IIR_PORT_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_PortList"); }
 
-  void prepend( IIR_InterfaceDeclaration * );
-  void append( IIR_InterfaceDeclaration * );
+  void prepend( IIR_InterfaceDeclarationRef );
+  void append( IIR_InterfaceDeclarationRef );
 
-  void insert_after( IIR_InterfaceDeclaration *,
-                     IIR_InterfaceDeclaration * );
+  void insert_after( IIR_InterfaceDeclarationRef,
+                     IIR_InterfaceDeclarationRef );
 
-  IIR_Boolean insert_before_element( IIR_InterfaceDeclaration *,
-				     IIR_InterfaceDeclaration * );
+  IIR_Boolean insert_before_element( IIR_InterfaceDeclarationRef,
+				     IIR_InterfaceDeclarationRef );
 
-  IIR *successor( IIR_InterfaceDeclaration * );
-  IIR *predecessor( IIR_InterfaceDeclaration * );
-  IIR *first( );
-  IIR *last();
-  IIR_Int32 get_position( IIR_InterfaceDeclaration * );
+  IIRRef successor( IIR_InterfaceDeclarationRef );
+  IIRRef predecessor( IIR_InterfaceDeclarationRef );
+  IIRRef first( );
+  IIRRef last();
+  IIR_Int32 get_position( IIR_InterfaceDeclarationRef  );
 
   void publish_vhdl(ostream &);
 protected:

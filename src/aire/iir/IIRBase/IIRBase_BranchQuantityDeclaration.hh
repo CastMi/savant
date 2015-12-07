@@ -30,12 +30,8 @@ class IIRBase_BranchQuantityDeclaration : public virtual IIRBase_QuantityDeclara
 
 public:
   /** Returns the IIR_Kind of this node. */
-  IIR_Kind
-  get_kind() const {
-    return IIR_BRANCH_QUANTITY_DECLARATION ;
-  }
-
-  const IIR_Char *get_kind_text() const { return "IIR_BranchQuantityDeclaration"; }
+  IIR_Kind get_kind() const override { return IIR_BRANCH_QUANTITY_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_BranchQuantityDeclaration"); }
 
   /**
   Precondition: The type of the expression must be that of the quantity.
@@ -45,19 +41,19 @@ public:
   Postcondition: Initializes the branch quantity to the value specified in
                  the Initial Value Expression.                         */
 
-  void set_across_aspect_expression(IIR* across_aspect_expression);
-  IIR* get_across_aspect_expression();
+  void   set_across_aspect_expression(IIRRef across_aspect_expression);
+  IIRRef get_across_aspect_expression();
 
-  void set_through_aspect_expression(IIR* through_aspect_expression);
-  IIR* get_through_aspect_expression();
+  void   set_through_aspect_expression(IIRRef through_aspect_expression);
+  IIRRef get_through_aspect_expression();
 
   /** 
   Precondition:  The declaration must include a plus terminal name.
   Postcondition: The plus terminal and minus terminal of a branch quantity
 		 are determined as in LRM [ $ 4.3.1.6 - 425 ]          */
 
-  void set_plus_terminal_name(IIR* plus_terminal_name);
-  IIR* get_plus_terminal_name();
+  void   set_plus_terminal_name(IIRRef plus_terminal_name);
+  IIRRef get_plus_terminal_name();
   
   /**
   Precondition:  A Branch Quantity Declaration exists.
@@ -66,22 +62,22 @@ public:
 		 equivalent to the reference terminal of the simple
 		 nature of the plus terminal's nature. LRM [ $ 4.3.1.6 - 405 ] 	*/
 
-  void set_minus_terminal_name(IIR* minus_terminal_name);
-  IIR* get_minus_terminal_name();
+  void   set_minus_terminal_name(IIRRef minus_terminal_name);
+  IIRRef get_minus_terminal_name();
 
   // Accessor functions
-  IIR_DesignatorList *get_across_aspect_identifier_list();
-  IIR_DesignatorList *get_through_aspect_designator_list();
-  void set_across_aspect_identifier_list(IIR_DesignatorList *);
-  void set_through_aspect_designator_list(IIR_DesignatorList *);
+  IIR_DesignatorListRef get_across_aspect_identifier_list();
+  IIR_DesignatorListRef get_through_aspect_designator_list();
+  void set_across_aspect_identifier_list(IIR_DesignatorListRef );
+  void set_through_aspect_designator_list(IIR_DesignatorListRef );
   
-  void set_across_aspect_tolerance(IIR* across_aspect_tolerance);
-  IIR* get_across_aspect_tolerance();
+  void   set_across_aspect_tolerance(IIRRef across_aspect_tolerance);
+  IIRRef get_across_aspect_tolerance();
 
-  void set_through_aspect_tolerance(IIR* through_aspect_tolerance);
-  IIR* get_through_aspect_tolerance();
+  void   set_through_aspect_tolerance(IIRRef through_aspect_tolerance);
+  IIRRef get_through_aspect_tolerance();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean _is_across_quantity();
   
@@ -91,14 +87,14 @@ protected:
   virtual ~IIRBase_BranchQuantityDeclaration() = 0;
 
 private:
-  IIR_DesignatorList* across_aspect_identifier_list;
-  IIR_DesignatorList* through_aspect_designator_list;
-  IIR* across_aspect_expression;
-  IIR* through_aspect_expression;
-  IIR* plus_terminal_name;
-  IIR* minus_terminal_name;
-  IIR* across_aspect_tolerance;
-  IIR* through_aspect_tolerance;
+  IIR_DesignatorListRef across_aspect_identifier_list;
+  IIR_DesignatorListRef through_aspect_designator_list;
+  IIRRef across_aspect_expression;
+  IIRRef through_aspect_expression;
+  IIRRef plus_terminal_name;
+  IIRRef minus_terminal_name;
+  IIRRef across_aspect_tolerance;
+  IIRRef through_aspect_tolerance;
 
 };
 

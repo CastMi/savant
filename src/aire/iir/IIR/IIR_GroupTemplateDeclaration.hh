@@ -31,15 +31,16 @@
 
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
-class IIR_EntityClassEntryList;
+
+REF_FORWARD_DECL(IIR_EntityClassEntryList);
 
 class IIR_GroupTemplateDeclaration : public virtual IIR_Declaration{
 public:
   virtual ~IIR_GroupTemplateDeclaration() {}    
 
   // List accessor(s)
-  virtual IIR_EntityClassEntryList      *get_entity_class_entry_list() = 0;
-  virtual void                          set_entity_class_entry_list(IIR_EntityClassEntryList *) = 0;
+  virtual IIR_EntityClassEntryListRef   get_entity_class_entry_list() = 0;
+  virtual void                          set_entity_class_entry_list(IIR_EntityClassEntryListRef ) = 0;
 };
 
 typedef refcount<IIR_GroupTemplateDeclaration> IIR_GroupTemplateDeclarationRef;

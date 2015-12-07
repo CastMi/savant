@@ -25,6 +25,7 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 
 //---------------------------------------------------------------------------
+
 #include "savant.hh"
 #include "error_func.hh"
 #include "IIRBase_ObjectDeclaration.hh"
@@ -37,42 +38,38 @@ using std::cerr;
 #include <sstream>
 using std::ostringstream;
 
-IIRBase_ObjectDeclaration::IIRBase_ObjectDeclaration()  :
-  attributes(0)
-{}
-
-IIRBase_ObjectDeclaration::~IIRBase_ObjectDeclaration() {
-}
+IIRBase_ObjectDeclaration::IIRBase_ObjectDeclaration() {}
+IIRBase_ObjectDeclaration::~IIRBase_ObjectDeclaration() {}
 
 // List Accessor(s)
-IIR_AttributeSpecificationList *
+IIR_AttributeSpecificationListRef
 IIRBase_ObjectDeclaration::get_attributes() {
-  ASSERT(attributes != NULL);
+  ASSERT( attributes != nullptr );
   return attributes;
 }
 
 void
-IIRBase_ObjectDeclaration::set_attributes(IIR_AttributeSpecificationList *new_attributes) {
-  ASSERT(new_attributes != NULL);
-  delete attributes;
+IIRBase_ObjectDeclaration::set_attributes(IIR_AttributeSpecificationListRef new_attributes) {
+  ASSERT( new_attributes != nullptr );
   attributes = new_attributes;
 }
 
 void
-IIRBase_ObjectDeclaration::set_subtype( IIR_TypeDefinition *subtype ){
-  if( subtype && subtype->get_declaration() == 0 ){
-    subtype->set_declaration( this );
+IIRBase_ObjectDeclaration::set_subtype( IIR_TypeDefinitionRef subtype ){
+  if( subtype && subtype->get_declaration() == nullptr ){
+     // FIXME: this is an error
+    subtype->set_declaration( IIRBase_ObjectDeclarationRef() );
   }
   IIRBase::set_subtype(subtype);
 }
 
-IIR *
-IIRBase_ObjectDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ObjectDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ObjectDeclaration *new_node = dynamic_cast<IIRBase_ObjectDeclaration *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_ObjectDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_ObjectDeclaration>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
+  new_node->attributes = my_dynamic_pointer_cast<IIR_AttributeSpecificationList>(convert_node(attributes, factory));
 
   return new_node;
 }
@@ -85,29 +82,29 @@ IIRBase_ObjectDeclaration::get_signal_kind(){
 }
 
 void
-IIRBase_ObjectDeclaration::set_value(IIR *){
+IIRBase_ObjectDeclaration::set_value( IIRRef ){
   _report_undefined_fn("set_value(IIR *)");
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_ObjectDeclaration::find_declarations( IIR_Name *to_find){
-  savant::set<IIR_Declaration*> *retval = NULL;
+savant::set<IIR_DeclarationRef>
+IIRBase_ObjectDeclaration::find_declarations( IIR_NameRef to_find){
+  savant::set<IIR_DeclarationRef> retval;
 
-  ASSERT( get_subtype() != NULL );
+  ASSERT( get_subtype() != nullptr );
 
   if( get_subtype()->is_record_type() == TRUE ){
-    IIR_TypeDefinition *my_subtype = get_subtype();
+    IIR_TypeDefinitionRef my_subtype = get_subtype();
     retval = my_subtype->find_declarations( to_find );
   }
   else if( get_subtype()->is_access_type() == TRUE ){
-    IIR_AccessTypeDefinition *my_subtype = dynamic_cast<IIR_AccessTypeDefinition *>(get_subtype());
-    if( my_subtype == NULL ){
+    IIR_AccessTypeDefinitionRef my_subtype = my_dynamic_pointer_cast<IIR_AccessTypeDefinition>(get_subtype());
+    if( my_subtype == nullptr ){
       ostringstream err;
       err << "Cannot refer to element, as subtype has not yet been defined.";
 //       err << "|" << *this << "| cannot refer to element |" << *dynamic_cast<IIR *>(to_find) << "|, as " 
 // 	  << "subtype |" << *get_subtype() << "| has not yet been defined.";
-      report_error( dynamic_cast<IIR *>(to_find), err.str());
-      return NULL;
+      report_error( dynamic_cast<IIR*>(to_find.get()), err.str());
+      return retval;
     }
     else{
       retval = my_subtype->find_declarations( to_find );
@@ -127,7 +124,7 @@ IIRBase_ObjectDeclaration::publish_vhdl_subtype_indication(ostream &vhdl_out){
 
   ASSERT( get_subtype() != NULL );	
   if (get_subtype()->is_anonymous() == TRUE) {
-    dynamic_cast<IIRBase_TypeDefinition *>(get_subtype())->publish_vhdl_decl(vhdl_out);
+     my_dynamic_pointer_cast<IIRBase_TypeDefinition>(get_subtype())->publish_vhdl_decl(vhdl_out);
   }
   else {
     get_subtype()->publish_vhdl(vhdl_out);
@@ -136,8 +133,8 @@ IIRBase_ObjectDeclaration::publish_vhdl_subtype_indication(ostream &vhdl_out){
 
 void
 IIRBase_ObjectDeclaration::publish_vhdl_expression(ostream &vhdl_out){
-  IIRBase *val = dynamic_cast<IIRBase *>(get_value());
-  if (val != NULL) {
+  IIRBaseRef val = my_dynamic_pointer_cast<IIRBase>(get_value());
+  if (val != nullptr) {
     vhdl_out << " := ";
     val->publish_vhdl(vhdl_out);
   }

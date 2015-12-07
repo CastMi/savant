@@ -24,8 +24,8 @@
 #include "savant_config.hh"
 #include "IIR_LibraryUnit.hh"
 
-class IIR_BlockConfiguration;
-class IIR_EntityDeclaration;
+REF_FORWARD_DECL(IIR_BlockConfiguration);
+REF_FORWARD_DECL(IIR_EntityDeclaration);
 class IIR_DeclarationList;
 
 class IIR_ConfigurationDeclaration : public virtual IIR_LibraryUnit{
@@ -34,14 +34,14 @@ public:
   virtual ~IIR_ConfigurationDeclaration() {}
     
   // List accessor(s)
-  virtual IIR_DeclarationList   *get_configuration_declarative_part() = 0;
-  virtual void                  set_configuration_declarative_part(IIR_DeclarationList *) = 0;
+  virtual IIR_DeclarationListRef get_configuration_declarative_part() = 0;
+  virtual void                  set_configuration_declarative_part(IIR_DeclarationListRef ) = 0;
 
-  virtual void set_block_configuration(IIR_BlockConfiguration *block_configuration) = 0;
-  virtual IIR_BlockConfiguration *get_block_configuration() = 0;
+  virtual void set_block_configuration(IIR_BlockConfigurationRef block_configuration) = 0;
+  virtual IIR_BlockConfigurationRef get_block_configuration() = 0;
 
-  virtual void set_entity( IIR_EntityDeclaration *entity ) = 0;
-  virtual IIR_EntityDeclaration *get_entity() = 0;
+  virtual void set_entity( IIR_EntityDeclarationRef entity ) = 0;
+  virtual IIR_EntityDeclarationRef get_entity() = 0;
 };
 
 typedef refcount<IIR_ConfigurationDeclaration> IIR_ConfigurationDeclarationRef;

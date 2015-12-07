@@ -39,16 +39,15 @@ class IIR_FloatingPointLiteral64;
 class IIRBase_FloatingPointLiteral64 : public virtual IIRBase_Literal, public virtual IIR_FloatingPointLiteral64{
 
 public:
-  IIR_Kind get_kind() const { return IIR_FLOATING_POINT_LITERAL64; }
-  const IIR_Char *get_kind_text() const { return "IIR_FloatingPointLiteral64"; }
+  IIR_Kind get_kind() const override { return IIR_FLOATING_POINT_LITERAL64; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_FloatingPointLiteral64"); }
 
-  static IIR_FloatingPointLiteral64* get_value(IIR_FP64);
-  void release();
+  static IIR_FloatingPointLiteral64Ref get_value(IIR_FP64);
 
   IIR_FP64 value();
   void set_value(IIR_FP64);
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:

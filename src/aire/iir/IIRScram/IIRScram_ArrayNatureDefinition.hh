@@ -32,9 +32,10 @@
 #include "error_func.hh"
 #include <stdlib.h>
 
-class IIRScram_NatureDeclaration;
+REF_FORWARD_DECL(IIRScram_ArrayNatureDefinition);
+REF_FORWARD_DECL(IIRScram_NatureDeclaration);
+REF_FORWARD_DECL(IIRScram_ArraySubnatureDefinition);
 class IIRScram_NatureDefinition;
-class IIRScram_ArraySubnatureDefinition;
 class IIRScram_ScalarTypeDefinition;
 
 class IIRScram_ArrayNatureDefinition : public virtual IIRScram_NatureDefinition, public virtual IIRBase_ArrayNatureDefinition {
@@ -48,41 +49,41 @@ public:
   IIR_Boolean _is_iir_array_type_definition() { return TRUE; }
 
   /** Used to construct constrained and unconstrained arrays */
-  static IIRScram_ArrayNatureDefinition *
-  _construct_array_type( IIRScram_ScalarTypeDefinition *index_subtype,
-                         IIRScram_NatureDefinition *, 
-                         IIRScram_NatureDeclaration *);
+  static IIRScram_ArrayNatureDefinitionRef 
+  _construct_array_type( IIRScram_ScalarTypeDefinitionRef index_subtype,
+                         IIRScram_NatureDefinitionRef , 
+                         IIRScram_NatureDeclarationRef );
 
-  IIRScram_TypeDefinition *
-  _construct_new_subtype( IIRScram_Name *,
-                          IIRScram_ScalarTypeDefinition *);
+  IIRScram_TypeDefinitionRef 
+  _construct_new_subtype( IIRScram_NameRef ,
+                          IIRScram_ScalarTypeDefinitionRef );
 
-  IIRScram_TypeDefinition *
-  _index_constrain_array( IIRScram_ScalarTypeDefinition * );
+  IIRScram_TypeDefinitionRef 
+  _index_constrain_array( IIRScram_ScalarTypeDefinitionRef  );
 
   /** Gets the element subtype of a given index object */
-  IIRScram_TypeDefinition *_get_element_subtype();        
+  IIRBase_TypeDefinitionRef _get_element_subtype();        
 
   /** Gets the index subtype of a base object */
-  IIRScram_ScalarTypeDefinition *_get_index_subtype();
+  IIRScram_ScalarTypeDefinitionRef _get_index_subtype();
 
-  IIRScram_TypeDefinition *_get_new_subtype();
+  IIRScram_TypeDefinitionRef _get_new_subtype();
 
-  IIRScram *_clone();
-  virtual void _clone( IIRScram *my_clone );
+  IIRScramRef _clone();
+  virtual void _clone( IIRScramRef my_clone );
 
   /** Gets number of indexes in an array */
   IIR_Int32 get_num_indexes();
 
 protected:
 private:
-  static IIRScram_ArraySubnatureDefinition *_construct_unconstrained( IIRScram_ScalarTypeDefinition *, 
-                                                                      IIRScram_NatureDefinition *, 
-                                                                      IIRScram_NatureDeclaration *);
+  static IIRScram_ArraySubnatureDefinitionRef _construct_unconstrained( IIRScram_ScalarTypeDefinitionRef,
+                                                                      IIRScram_NatureDefinitionRef,
+                                                                      IIRScram_NatureDeclarationRef);
 
-  static IIRScram_ArraySubnatureDefinition *_construct_constrained( IIRScram_ScalarTypeDefinition *,
-                                                                    IIRScram_NatureDefinition *,
-                                                                    IIRScram_NatureDeclaration *);
+  static IIRScram_ArraySubnatureDefinitionRef _construct_constrained( IIRScram_ScalarTypeDefinitionRef,
+                                                                    IIRScram_NatureDefinitionRef,
+                                                                    IIRScram_NatureDeclarationRef);
 };
 
 typedef refcount<IIRScram_ArrayNatureDefinition> IIRScram_ArrayNatureDefinitionRef;

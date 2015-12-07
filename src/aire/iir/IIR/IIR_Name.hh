@@ -37,14 +37,14 @@ public:
 
   //@{
   /// All names have a prefix.
-  virtual void set_prefix( IIR *prefix ) = 0;
-  virtual IIR *get_prefix() = 0;
+  virtual void set_prefix( IIRRef prefix ) = 0;
+  virtual IIRRef get_prefix() = 0;
   //@}
 
   //@{
   // Selected names and indexed names can have a suffix.
-  virtual void set_suffix( IIR *suffix ) = 0;
-  virtual IIR *get_suffix() = 0;
+  virtual void set_suffix( IIRRef suffix ) = 0;
+  virtual IIRRef get_suffix() = 0;
   //@}
 };
 

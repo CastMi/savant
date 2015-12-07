@@ -35,18 +35,10 @@ using std::ostringstream;
 
 IIRBase_IntegerLiteral::IIRBase_IntegerLiteral() :
   base( 10 ),
-  mantissa( NULL ),
   mantissa_length( 0 ),
-  exponent( NULL ),
   exponent_length( 0 ){}
 
 IIRBase_IntegerLiteral::~IIRBase_IntegerLiteral() {}
-
-void
-IIRBase_IntegerLiteral::release() {
-  delete this;
-}
-
 
 const string
 IIRBase_IntegerLiteral::print( IIR_Int32 ){
@@ -70,13 +62,13 @@ IIRBase_IntegerLiteral::get_base() {
 
 
 void
-IIRBase_IntegerLiteral::set_mantissa(IIR_Char* m, IIR_Int32 ml) {
+IIRBase_IntegerLiteral::set_mantissa(IIR_CharRef m, IIR_Int32 ml) {
   mantissa = m;
   mantissa_length = ml;
 }
 
 
-IIR_Char*
+IIR_CharRef
 IIRBase_IntegerLiteral::get_mantissa() {
   return mantissa;
 }
@@ -89,13 +81,13 @@ IIRBase_IntegerLiteral::get_mantissa_length() {
 
 
 void
-IIRBase_IntegerLiteral::set_exponent(IIR_Char* e, IIR_Int32 el) {
+IIRBase_IntegerLiteral::set_exponent(IIR_CharRef e, IIR_Int32 el) {
   exponent = e;
   exponent_length = el;
 }
 
 
-IIR_Char*
+IIR_CharRef
 IIRBase_IntegerLiteral::get_exponent() {
   return exponent;
 }
@@ -106,10 +98,10 @@ IIRBase_IntegerLiteral::get_exponent_length() {
   return exponent_length;
 }
 
-IIR *
-IIRBase_IntegerLiteral::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_IntegerLiteral::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_IntegerLiteral *new_node = dynamic_cast<IIRBase_IntegerLiteral *>(IIRBase_Literal::convert_tree(factory));
+  IIRBase_IntegerLiteralRef new_node = my_dynamic_pointer_cast<IIRBase_IntegerLiteral>(IIRBase_Literal::convert_tree(factory));
 
   // Process the variables
   new_node->base = base;
@@ -126,46 +118,46 @@ IIRBase_IntegerLiteral::get_integer_value(){
   register int i;
   IIR_Int32 value = 0;
   IIR_Int32 base = get_base();
-  IIR_Char* man = get_mantissa();
+  IIR_CharRef man = get_mantissa();
   register int sign = 1;
 
   ASSERT(get_mantissa_length() > 0);
 
-  if(man[0] == '-') {
+  if(man.get()[0] == '-') {
     sign = -1;
-    value = sign * _char_to_int(man[1]);
+    value = sign * _char_to_int(man.get()[1]);
   } else {
     sign = 1;
-    value = _char_to_int(man[0]);
+    value = _char_to_int(man.get()[0]);
     if(get_mantissa_length() > 1) {
-      value = value * base + _char_to_int(man[1]);
+      value = value * base + _char_to_int(man.get()[1]);
     }
   }
   for (i = 2; i < get_mantissa_length(); i++) {
-    value = value * base + sign *_char_to_int(man[i]);
+    value = value * base + sign *_char_to_int(man.get()[i]);
   }
   if (get_exponent_length() > 0) {
-    IIR_Char* exp = get_exponent();
+    IIR_CharRef exp = get_exponent();
     IIR_Int32 exp_val;
-    if (exp[0] == '+') {
+    if (exp.get()[0] == '+') {
       i = 2;
-      exp_val = _char_to_int(exp[1]);
+      exp_val = _char_to_int(exp.get()[1]);
     }
-    else if (exp[0] == '-') {
+    else if (exp.get()[0] == '-') {
       i = 2;
-      exp_val = _char_to_int(exp[1]);
+      exp_val = _char_to_int(exp.get()[1]);
     }
     else {
       i = 1;
-      exp_val = _char_to_int(exp[0]);
+      exp_val = _char_to_int(exp.get()[0]);
     }
     for (/* i already set */; i < get_exponent_length(); i++) {
-      exp_val = exp_val * 10 + _char_to_int(exp[i]);
+      exp_val = exp_val * 10 + _char_to_int(exp.get()[i]);
     }
     // exp_val is now the base-10 representation of the exponent.  The
     // value of this node is value * base^exp_val.  Care must be taken if
     // the exponent is < 0.
-    if (exp[0] == '-') {
+    if (exp.get()[0] == '-') {
       for (i = 0; i < exp_val; i++) {
 	value = value / base;
       }
@@ -202,14 +194,14 @@ IIRBase_IntegerLiteral::print_value(IIR_Int32 length) {
 ostream &
 IIRBase_IntegerLiteral::print( ostream &os ) {
   register int i;
-  IIR_Char* man = get_mantissa();
-  IIR_Char* exp = get_exponent();
+  IIR_CharRef man = get_mantissa();
+  IIR_CharRef exp = get_exponent();
 
   if (get_base() != 10) {
     os << get_base() << "#";
   }
   for (i = 0; i < get_mantissa_length(); i++) {
-    os << man[i];
+    os << man.get()[i];
   }
   if (get_base() != 10) {
     os << "#";
@@ -217,7 +209,7 @@ IIRBase_IntegerLiteral::print( ostream &os ) {
   if (get_exponent() != NULL) {
     os << "E";
     for (i = 0; i < get_exponent_length(); i++) {
-      os << exp[i];
+      os << exp.get()[i];
     }
   }
   return os;
@@ -231,8 +223,8 @@ IIRBase_IntegerLiteral::publish_vhdl_range(ostream &vhdl_out){
 void 
 IIRBase_IntegerLiteral::publish_vhdl(ostream &vhdl_out) {
   register int i;
-  IIR_Char* man = get_mantissa();
-  IIR_Char* exp = get_exponent();
+  IIR_CharRef man = get_mantissa();
+  IIR_CharRef exp = get_exponent();
   char force_paranthesis = 0;
 
   if( is_negative() ){
@@ -243,7 +235,7 @@ IIRBase_IntegerLiteral::publish_vhdl(ostream &vhdl_out) {
     vhdl_out << get_base() << "#";
   }
   for (i = 0; i < get_mantissa_length(); i++) {
-    vhdl_out << man[i];
+    vhdl_out << man.get()[i];
   }
   if (get_base() != 10) {
     vhdl_out << "#";
@@ -251,7 +243,7 @@ IIRBase_IntegerLiteral::publish_vhdl(ostream &vhdl_out) {
   if (get_exponent() != NULL && get_exponent_length() > 0 ) {
     vhdl_out << "E";
     for (i = 0; i < get_exponent_length(); i++) {
-      vhdl_out << exp[i];
+      vhdl_out << exp.get()[i];
     }
   }
   if (force_paranthesis == 1) {
@@ -261,8 +253,8 @@ IIRBase_IntegerLiteral::publish_vhdl(ostream &vhdl_out) {
 
 IIR_Boolean
 IIRBase_IntegerLiteral::is_negative(){
-  IIR_Char* man = get_mantissa();
-  if (man[0] == '-') {
+  IIR_CharRef man = get_mantissa();
+  if (man.get()[0] == '-') {
     return TRUE;
   }
   return FALSE;

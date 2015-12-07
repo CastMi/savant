@@ -35,11 +35,6 @@
 IIRBase_FloatingPointLiteral64::IIRBase_FloatingPointLiteral64(){}
 IIRBase_FloatingPointLiteral64::~IIRBase_FloatingPointLiteral64(){}
 
-void
-IIRBase_FloatingPointLiteral64::release() {
-  delete this;
-}
-
 IIR_FP64
 IIRBase_FloatingPointLiteral64::value() {
   return val;
@@ -50,10 +45,10 @@ IIRBase_FloatingPointLiteral64::set_value(IIR_FP64 v) {
   val = v;
 }
 
-IIR *
-IIRBase_FloatingPointLiteral64::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_FloatingPointLiteral64::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_FloatingPointLiteral64 *new_node = dynamic_cast<IIRBase_FloatingPointLiteral64 *>(IIRBase_Literal::convert_tree(factory));
+  IIRBase_FloatingPointLiteral64Ref new_node = my_dynamic_pointer_cast<IIRBase_FloatingPointLiteral64>(IIRBase_Literal::convert_tree(factory));
 
   // Process the variables
   new_node->val = val;

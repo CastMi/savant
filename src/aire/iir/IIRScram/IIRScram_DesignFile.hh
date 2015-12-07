@@ -38,11 +38,11 @@
 #include "dl_list.hh"
 #include "scram.hh"
 
+REF_FORWARD_DECL(IIRScram_CommentList);
+REF_FORWARD_DECL(IIRScram_LibraryUnitList);
 class IIRScram_ArchitectureDeclaration;
-class IIRScram_CommentList;
 class IIRScram_DesignFileList;
 class IIRScram_LibraryDeclaration;
-class IIRScram_LibraryUnitList;
 class plugin_class_factory;
 class StandardPackage;
 class library_manager;
@@ -58,7 +58,7 @@ public:
 
 
   /** Returns a handle to the work library that we were created with. */ 
-  IIRScram_LibraryDeclaration *_get_work_library();
+  IIRScram_LibraryDeclarationRef _get_work_library();
 
   /** Sets the file name to the string passed in. */
   void _set_file_name( const string &new_file_name );
@@ -66,9 +66,9 @@ public:
   symbol_table                  *_get_symbol_table();
 
   // Wrappers for IIRBase functions
-  IIRScram *                    _get_name();
-  IIRScram_LibraryUnitList *    _get_library_units();
-  IIRScram_CommentList *        _get_comments();
+  IIRScramRef                     _get_name();
+  IIRScram_LibraryUnitListRef     _get_library_units();
+  IIRScram_CommentListRef         _get_comments();
 
 protected:   
 private:

@@ -37,12 +37,12 @@
 class IIRBase_UnitList : public virtual IIRBase_DeclarationList, public virtual IIR_UnitList{
 
 public:
-  IIR_Kind get_kind() const { return IIR_UNIT_LIST; }
-  const IIR_Char *get_kind_text() const { return "IIR_UnitList"; }
+  IIR_Kind get_kind() const override { return IIR_UNIT_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_UnitList"); }
 
-  IIR *first();
-  IIR *successor(IIR_PhysicalUnit*);
-  IIR *predecessor(IIR_PhysicalUnit*);
+  IIRRef first();
+  IIRRef successor(IIR_PhysicalUnitRef);
+  IIRRef predecessor(IIR_PhysicalUnitRef);
 
   void publish_vhdl(ostream &);
 protected:

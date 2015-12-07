@@ -50,16 +50,16 @@ public:
 
   void _type_check_instantiate_statements();
 
-  IIRScram_List *_get_statement_list();
-  virtual IIRScram_AssociationList *_get_generic_map_aspect(){ return NULL; }
+  IIRScram_ListRef _get_statement_list();
+  virtual IIRScram_AssociationListRef _get_generic_map_aspect(){ return NULL; }
 
-  IIRScram_DeclarationList* _get_declaration_list();
+  IIRScram_DeclarationListRef _get_declaration_list();
   
-  IIRScram_Label *_find_instantiate_label( IIRScram_SimpleName * );
+  IIRScram_LabelRef _find_instantiate_label( IIRScram_SimpleNameRef  );
 
-  IIRScram_ConstantDeclaration *                _get_generate_parameter_specification();
-  IIRScram_DeclarationList *                    _get_block_declarative_part();
-  IIRScram_ArchitectureStatementList *          _get_concurrent_statement_part();
+  IIRScram_ConstantDeclarationRef                 _get_generate_parameter_specification();
+  IIRScram_DeclarationListRef                     _get_block_declarative_part();
+  IIRScram_ArchitectureStatementListRef           _get_concurrent_statement_part();
 
 protected:
     

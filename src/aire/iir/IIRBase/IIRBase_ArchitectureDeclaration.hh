@@ -38,25 +38,28 @@ class IIR_ArchitectureStatement;
 class IIRBase_ArchitectureDeclaration : public virtual IIRBase_LibraryUnit, public virtual IIR_ArchitectureDeclaration{
 
 public:
+  // FIXME:: Constructor/Destructor should be protected
+  IIRBase_ArchitectureDeclaration();
+  virtual ~IIRBase_ArchitectureDeclaration() = 0;
   // List Accessor(s)
-  IIR_DeclarationList           *get_architecture_declarative_part();
-  IIR_ArchitectureStatementList *get_architecture_statement_part();
+  IIR_DeclarationListRef           get_architecture_declarative_part();
+  IIR_ArchitectureStatementListRef get_architecture_statement_part();
 
-  void                          set_architecture_declarative_part(IIR_DeclarationList *new_architecture_declarative_part);
-  void                          set_architecture_statement_part(IIR_ArchitectureStatementList *new_architecture_statement_part);
+  void                          set_architecture_declarative_part(IIR_DeclarationListRef new_architecture_declarative_part);
+  void                          set_architecture_statement_part(IIR_ArchitectureStatementListRef new_architecture_statement_part);
 
-  IIR_Kind get_kind() const {return IIR_ARCHITECTURE_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_ArchitectureDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_ARCHITECTURE_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ArchitectureDeclaration"); }
 
-  void associate(IIR_EntityDeclaration *);
-  void set_entity(IIR_EntityDeclaration *);
-  IIR_EntityDeclaration* get_entity();
+  void associate(IIR_EntityDeclarationRef );
+  void set_entity(IIR_EntityDeclarationRef );
+  IIR_EntityDeclarationRef get_entity();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   declaration_type get_declaration_type();
     
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *to_find);
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef to_find);
   IIR_Boolean is_architecture_declaration(){ return TRUE; }
   IIR_Boolean is_secondary_unit(){ return TRUE; }
 
@@ -65,15 +68,14 @@ public:
   void publish_vhdl_binding_name(ostream &);
   void publish_vhdl_with_library_name(ostream &);
 protected:
-  IIRBase_ArchitectureDeclaration();
-  virtual ~IIRBase_ArchitectureDeclaration() = 0;
+  
     
 private:
   // List Variable(s)
-  IIR_DeclarationList           *architecture_declarative_part;
-  IIR_ArchitectureStatementList *architecture_statement_part;
+  IIR_DeclarationListRef           architecture_declarative_part;
+  IIR_ArchitectureStatementListRef architecture_statement_part;
 
-  IIR_EntityDeclaration* entity;
+  IIR_EntityDeclarationRef entity;
 };
 
 typedef refcount<IIRBase_ArchitectureDeclaration> IIRBase_ArchitectureDeclarationRef;

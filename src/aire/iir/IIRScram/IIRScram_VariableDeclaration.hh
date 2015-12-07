@@ -54,13 +54,13 @@ public:
      generated.  */
   void _clear_clone(){ _my_clone = 0; }
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
-  IIRScram *_get_value();
+  IIRScramRef _get_value();
 
 protected:
 private:
-  IIRScram_VariableDeclaration *_my_clone;
+  IIRScram_VariableDeclarationRef _my_clone;
 };
 
 typedef refcount<IIRScram_VariableDeclaration> IIRScram_VariableDeclarationRef;

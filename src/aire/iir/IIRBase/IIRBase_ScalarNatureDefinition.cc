@@ -29,59 +29,48 @@
 #include "IIRBase_ScalarNatureDefinition.hh"
 #include "IIR_TextLiteral.hh"
 
-IIRBase_ScalarNatureDefinition::IIRBase_ScalarNatureDefinition() :
-  across(0),
-  through(0),
-  reference_terminal(0){}
-
-IIRBase_ScalarNatureDefinition::~IIRBase_ScalarNatureDefinition(){
-  delete across;
-  across = 0;
-  delete through;
-  through = 0;
-  delete reference_terminal;
-  reference_terminal = 0;
-}
+IIRBase_ScalarNatureDefinition::IIRBase_ScalarNatureDefinition() {}
+IIRBase_ScalarNatureDefinition::~IIRBase_ScalarNatureDefinition() {}
 
 void
-IIRBase_ScalarNatureDefinition::set_across(IIR_TypeDefinition *across_type){
+IIRBase_ScalarNatureDefinition::set_across(IIR_TypeDefinitionRef across_type){
   this->across = across_type;
 }
 
-IIR_TypeDefinition*
+IIR_TypeDefinitionRef
 IIRBase_ScalarNatureDefinition::get_across(){
   return across;
 }
 
 void
-IIRBase_ScalarNatureDefinition::set_through( IIR_TypeDefinition *new_through ){
+IIRBase_ScalarNatureDefinition::set_through( IIR_TypeDefinitionRef new_through ){
   through = new_through;
 }
 
-IIR_TypeDefinition*
+IIR_TypeDefinitionRef
 IIRBase_ScalarNatureDefinition::get_through(){
   return through;
 }
 
 void
-IIRBase_ScalarNatureDefinition::set_reference_terminal( IIR_TerminalDeclaration *new_ref_term ){
+IIRBase_ScalarNatureDefinition::set_reference_terminal( IIR_TerminalDeclarationRef new_ref_term ){
   reference_terminal = new_ref_term;
 }
 
-IIR_TerminalDeclaration *
+IIR_TerminalDeclarationRef
 IIRBase_ScalarNatureDefinition::get_reference_terminal(){
   return reference_terminal ;
 }
 
-IIR *
-IIRBase_ScalarNatureDefinition::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ScalarNatureDefinition::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ScalarNatureDefinition *new_node = dynamic_cast<IIRBase_ScalarNatureDefinition *>(IIRBase_NatureDefinition::convert_tree(factory));
+  IIRBase_ScalarNatureDefinitionRef new_node = my_dynamic_pointer_cast<IIRBase_ScalarNatureDefinition>(IIRBase_NatureDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->across = dynamic_cast<IIR_TypeDefinition *>(convert_node(across, factory));
-  new_node->through = dynamic_cast<IIR_TypeDefinition *>(convert_node(through, factory));
-  new_node->reference_terminal = dynamic_cast<IIR_TerminalDeclaration *>(convert_node(reference_terminal, factory));
+  new_node->across = my_dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(across, factory));
+  new_node->through = my_dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(through, factory));
+  new_node->reference_terminal = my_dynamic_pointer_cast<IIR_TerminalDeclaration>(convert_node(reference_terminal, factory));
   new_node->across_tolerance = convert_node(across_tolerance, factory);
   new_node->through_tolerance = convert_node(through_tolerance, factory);
 

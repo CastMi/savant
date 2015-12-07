@@ -31,14 +31,15 @@
 
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
-class IIR_LibraryUnitList;
+
+REF_FORWARD_DECL(IIR_LibraryUnitList);
 
 class IIR_LibraryDeclaration : public virtual IIR_Declaration{
 public:
   virtual ~IIR_LibraryDeclaration() {}    
 
   // List accessor(s)
-  virtual IIR_LibraryUnitList *get_primary_units() = 0;
+  virtual IIR_LibraryUnitListRef get_primary_units() = 0;
 
   virtual void set_path_to_directory( const string &new_path ) = 0;
   virtual const string &get_path_to_directory() = 0;

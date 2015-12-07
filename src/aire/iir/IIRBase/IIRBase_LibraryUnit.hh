@@ -43,22 +43,22 @@ class IIRBase_LibraryUnit : public virtual IIRBase_Declaration, public virtual I
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList                  *get_context_items();
-  IIR_AttributeSpecificationList       *get_attributes();
-  void                                 set_context_items(IIR_DeclarationList *new_context_items);
-  void                                 set_attributes(IIR_AttributeSpecificationList *new_attributes);
+  IIR_DeclarationListRef             get_context_items();
+  IIR_AttributeSpecificationListRef  get_attributes();
+  void                               set_context_items(IIR_DeclarationListRef new_context_items);
+  void                               set_attributes(IIR_AttributeSpecificationListRef new_attributes);
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   /**
      Library Units don't have subtypes.
   */
-  IIR_TypeDefinition *get_subtype(){ return NULL; }
+  IIR_TypeDefinitionRef get_subtype(){ return NULL; }
   /**
      Returns the library declaration that this unit is declared in.  Should
      never be NULL.  
   */
-  IIR_LibraryDeclaration *get_library();
+  IIR_LibraryDeclarationRef get_library();
   IIR_Boolean is_primary_unit();
   IIR_Boolean is_secondary_unit();
 
@@ -71,8 +71,8 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList                  *context_items;
-  IIR_AttributeSpecificationList       *attributes;
+  IIR_DeclarationListRef             context_items;
+  IIR_AttributeSpecificationListRef  attributes;
 
 };
 

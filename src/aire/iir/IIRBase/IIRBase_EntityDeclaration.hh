@@ -39,29 +39,29 @@ class IIRBase_EntityDeclaration : public virtual IIRBase_LibraryUnit, public vir
 
 public:
   // List Accessor(s)
-  IIR_GenericList               *get_generic_clause();
-  IIR_PortList                  *get_port_clause();
-  IIR_DeclarationList           *get_entity_declarative_part();
-  IIR_ArchitectureStatementList *get_entity_statement_part();
-  IIR_DesignUnitList            *get_architectures();
+  IIR_GenericListRef               get_generic_clause();
+  IIR_PortListRef                  get_port_clause();
+  IIR_DeclarationListRef           get_entity_declarative_part();
+  IIR_ArchitectureStatementListRef get_entity_statement_part();
+  IIR_DesignUnitListRef            get_architectures();
 
-  void                          set_generic_clause(IIR_GenericList *new_generic_clause);
-  void                          set_port_clause(IIR_PortList *new_port_clause);
-  void                          set_entity_declarative_part(IIR_DeclarationList *new_entity_declarative_part);
-  void                          set_entity_statement_part(IIR_ArchitectureStatementList *new_entity_statement_part);
-  void                          set_architectures(IIR_DesignUnitList *new_architectures);
+  void                          set_generic_clause(IIR_GenericListRef new_generic_clause);
+  void                          set_port_clause(IIR_PortListRef new_port_clause);
+  void                          set_entity_declarative_part(IIR_DeclarationListRef new_entity_declarative_part);
+  void                          set_entity_statement_part(IIR_ArchitectureStatementListRef new_entity_statement_part);
+  void                          set_architectures(IIR_DesignUnitListRef new_architectures);
 
-  IIR_Kind get_kind() const {return IIR_ENTITY_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_EntityDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_ENTITY_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_EntityDeclaration"); }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_entity_declaration() { return TRUE; }
   IIR_Boolean is_primary_unit() { return TRUE; }
 
   declaration_type                      get_declaration_type();
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef );
   void publish_vhdl(ostream &);
   void publish_vhdl_decl(ostream &);
   void publish_vhdl_binding_name(ostream &);
@@ -72,11 +72,11 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_GenericList               *generic_clause;
-  IIR_PortList                  *port_clause;
-  IIR_DeclarationList           *entity_declarative_part;
-  IIR_ArchitectureStatementList *entity_statement_part;
-  IIR_DesignUnitList            *architectures;
+  IIR_GenericListRef               generic_clause;
+  IIR_PortListRef                  port_clause;
+  IIR_DeclarationListRef           entity_declarative_part;
+  IIR_ArchitectureStatementListRef entity_statement_part;
+  IIR_DesignUnitListRef            architectures;
 
 };
 

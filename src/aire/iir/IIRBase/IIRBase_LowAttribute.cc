@@ -22,27 +22,25 @@
 #include "IIRBase_DesignFile.hh"
 #include "IIRBase_LowAttribute.hh"
 #include "savant.hh"
+#include <cstring>
 
-IIRBase_LowAttribute::IIRBase_LowAttribute(){
-  set_suffix( NULL );
-}
-
+IIRBase_LowAttribute::IIRBase_LowAttribute() {}
 IIRBase_LowAttribute::~IIRBase_LowAttribute() {}
 
 void 
-IIRBase_LowAttribute::set_suffix( IIR *suffix ){
+IIRBase_LowAttribute::set_suffix( IIRRef suffix ){
   my_suffix = suffix;
 }
 
-IIR *
+IIRRef
 IIRBase_LowAttribute::get_suffix( ){
   return my_suffix;
 }
 
-IIR *
-IIRBase_LowAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_LowAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_LowAttribute *new_node = dynamic_cast<IIRBase_LowAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_LowAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_LowAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->my_suffix = convert_node(my_suffix, factory);
@@ -72,10 +70,10 @@ IIRBase_LowAttribute::is_function_attribute(){
   }
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_LowAttribute::build_attribute_name() {
-  const char *name = "low";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("low");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 

@@ -28,24 +28,24 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
+#include "savant.hh"
 #include "IIR.hh"
 
-class IIR_Name;
-class IIR_TextLiteral;
+REF_FORWARD_DECL(IIR_Name);
+REF_FORWARD_DECL(IIR_TextLiteral);
+REF_FORWARD_DECL(IIR_Attribute);
+
 namespace savant {
   template <class type> class set;
 }
-
-class IIR_Attribute;
 
 class IIR_Declaration : public virtual IIR{
 
 public:
   virtual ~IIR_Declaration() {};
 
-  virtual void set_declarator( IIR_TextLiteral *identifier ) = 0;
-  virtual IIR_TextLiteral *get_declarator() = 0;
+  virtual void set_declarator( IIR_TextLiteralRef identifier ) = 0;
+  virtual IIR_TextLiteralRef get_declarator() = 0;
 
   /** This enumeration defines all of the types of declarations.  The
       enumeration LAST_TYPE is so that we can get the number of elements in
@@ -68,8 +68,8 @@ public:
 
   /** These methods are referring to the region that this declaration is
       IN. */
-  virtual IIR *get_declarative_region() = 0;
-  virtual void set_declarative_region( IIR * ) = 0;
+  virtual IIRRef get_declarative_region() = 0;
+  virtual void set_declarative_region( IIRRef  ) = 0;
 
   /** Sometimes implicit declarations need to be visible in the symbol table
       and sometimes they should.  deallocate( foo : some_access_type )
@@ -87,14 +87,14 @@ public:
 
   virtual IIR_Boolean contains_body() = 0;
 
-  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_Name * ) = 0;
-  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral *) = 0;
+  virtual savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef  ) = 0;
+  virtual savant::set<IIR_DeclarationRef> find_declarations( IIR_TextLiteralRef ) = 0;
 
   /** Since we can now have implicit declarations due to attributes, we
       need to be able to tell if THIS declaration is the result of an
       attribute. */
-  virtual IIR_Attribute *get_attribute_name() = 0;
-  virtual void set_attribute_name( IIR_Attribute * ) = 0;
+  virtual IIR_AttributeRef get_attribute_name() = 0;
+  virtual void set_attribute_name( IIR_AttributeRef  ) = 0;
 
   /**
      Does this declaration represent the work library in some way?

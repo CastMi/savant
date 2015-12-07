@@ -45,15 +45,15 @@ public:
   IIRScram_InterfaceDeclaration() {}
   virtual ~IIRScram_InterfaceDeclaration();
 
-  IIR_Boolean _attach_attribute_specification( IIRScram_AttributeSpecification * );
+  IIR_Boolean _attach_attribute_specification( IIRScram_AttributeSpecificationRef );
 
   IIR_Boolean is_object() { return TRUE;}
   IIR_Boolean _is_iir_interface_declaration(){ return TRUE; }
 
-  IIRScram_TypeDefinition *_get_type_of_element( int );
+  IIRScram_TypeDefinitionRef _get_type_of_element( int );
 
   IIR_Int32 get_num_indexes();
-  virtual void _clone( IIRScram * );
+  virtual void _clone( IIRScramRef );
 
   IIR_Boolean _is_readable();
   IIR_Boolean _is_writable();
@@ -64,7 +64,7 @@ public:
   virtual void _type_check( _InterfaceListType ) = 0;
   virtual void _type_check( );
 
-  IIRScram * _get_value();
+  IIRScramRef _get_value();
 
 protected:
 private:

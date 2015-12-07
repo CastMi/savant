@@ -34,13 +34,13 @@
 
 class IIRBase_SignalInterfaceDeclaration : public virtual IIRBase_InterfaceDeclaration, public virtual IIR_SignalInterfaceDeclaration{
 public:
-  IIR_Kind get_kind() const {return IIR_SIGNAL_INTERFACE_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_SignalInterfaceDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_SIGNAL_INTERFACE_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SignalInterfaceDeclaration"); }
 
   void set_signal_kind( IIR_SignalKind signal_kind);
   IIR_SignalKind get_signal_kind();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_signal(){ return TRUE; }
 

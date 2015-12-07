@@ -28,37 +28,33 @@
 #include "IIRBase_FileDeclaration.hh"
 #include "savant.hh"
 
-IIRBase_FileDeclaration::IIRBase_FileDeclaration() {
-  set_file_open_expression(NULL);
-  set_file_logical_name(NULL);
-}
-
+IIRBase_FileDeclaration::IIRBase_FileDeclaration() {}
 IIRBase_FileDeclaration::~IIRBase_FileDeclaration() {}
 
 void
-IIRBase_FileDeclaration::set_file_open_expression( IIR *new_file_open_expression ){
+IIRBase_FileDeclaration::set_file_open_expression( IIRRef new_file_open_expression ){
   file_open_expression = new_file_open_expression;
 }
 
-IIR*
+IIRRef
 IIRBase_FileDeclaration::get_file_open_expression() {
   return file_open_expression;
 }
 
 void
-IIRBase_FileDeclaration::set_file_logical_name( IIR *new_file_logical_name ){
+IIRBase_FileDeclaration::set_file_logical_name( IIRRef new_file_logical_name ){
   file_logical_name = new_file_logical_name;
 }
 
-IIR*
+IIRRef
 IIRBase_FileDeclaration::get_file_logical_name() {
   return file_logical_name;
 }
 
-IIR *
-IIRBase_FileDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_FileDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_FileDeclaration *new_node = dynamic_cast<IIRBase_FileDeclaration *>(IIRBase_ObjectDeclaration::convert_tree(factory));
+  IIRBase_FileDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_FileDeclaration>(IIRBase_ObjectDeclaration::convert_tree(factory));
 
   // Process the variables
   new_node->file_open_expression = convert_node(file_open_expression, factory);
@@ -78,12 +74,12 @@ IIRBase_FileDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   publish_vhdl_declarator_with_colon(vhdl_out);
   publish_vhdl_subtype_indication(vhdl_out);
 
-  if (get_file_open_expression() != NULL) {
+  if (get_file_open_expression() != nullptr) {
     vhdl_out << " open ";
     get_file_open_expression()->publish_vhdl(vhdl_out);
   }
   
-  if (get_file_logical_name() != NULL) {
+  if (get_file_logical_name() != nullptr) {
     vhdl_out << " is ";
     get_file_logical_name()->publish_vhdl(vhdl_out);
   }

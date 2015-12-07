@@ -47,12 +47,12 @@ public:
 
 
   /** We can have array valued functions. */
-  IIRScram_TypeDefinition *_get_type_of_element( int );
+  IIRScram_TypeDefinitionRef _get_type_of_element( int );
   IIR_Int32 get_num_indexes();
   
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return FALSE; }
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
   /** This method looks at the function declaration and determines if it
       could be a conversion function based on the rules in 4.3.2.1 of
@@ -63,10 +63,10 @@ public:
      check it to be sure that it meets all of the criteria of such a
      function.  Generates errors if there are any, silent otherwise.
   */
-  virtual void _type_check_resolution_function( IIRScram_TypeDefinition *subtype_indication );
+  virtual void _type_check_resolution_function( IIRScram_TypeDefinitionRef subtype_indication );
 
-  IIRScram_DeclarationList *    _get_subprogram_declarations();
-  IIRScram_TypeDefinition*      _get_return_type();
+  IIRScram_DeclarationListRef     _get_subprogram_declarations();
+  IIRScram_TypeDefinitionRef      _get_return_type();
 
 protected:    
 private:

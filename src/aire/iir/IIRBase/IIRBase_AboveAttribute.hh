@@ -42,28 +42,28 @@ public:
     return IIR_ABOVE_ATTRIBUTE;
   }
   
-  const IIR_Char *get_kind_text() const {
-    return "IIR_AboveAttribute";
+  IIR_CharConstRef get_kind_text() const {
+    return IIR_CharConstRef("IIR_AboveAttribute");
    }
   
   /** This returns an IIR_TextLiteral when a Dot attribute is
       instantiated. */
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
 
   /** Sets the value of the expression whose type 
       is the same as that of Q. */
-  void set_suffix(IIR* suffix);
+  void set_suffix(IIRRef suffix);
   
   /** Returns the value of the expression. */
-  IIR* get_suffix();
+  IIRRef get_suffix();
   
   /** Returns the type of the signal created. */
-  IIR_TypeDefinition *get_subtype();
+  IIR_TypeDefinitionRef get_subtype();
 
   IIR_Boolean is_signal() { return TRUE; }
   IIR_Boolean has_suffix(){ return TRUE; }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   /** Returns TRUE if above attribute is found. */
   IIR_Boolean is_above_attribute_found() { return TRUE; }
@@ -74,8 +74,7 @@ protected:
   virtual ~IIRBase_AboveAttribute() = 0;
   
 private:
-  IIR* suffix;
-
+  IIRRef suffix;
 };
 
 typedef refcount<IIRBase_AboveAttribute> IIRBase_AboveAttributeRef;

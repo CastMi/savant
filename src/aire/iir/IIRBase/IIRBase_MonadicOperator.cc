@@ -31,42 +31,38 @@
 #include "IIR_SubprogramDeclaration.hh"
 #include "savant.hh"
 
-IIRBase_MonadicOperator::IIRBase_MonadicOperator() {
-  set_implementation(NULL);
-  set_operand(NULL);
-}
-
+IIRBase_MonadicOperator::IIRBase_MonadicOperator() {}
 IIRBase_MonadicOperator::~IIRBase_MonadicOperator() {}
 
 void 
-IIRBase_MonadicOperator::set_implementation(IIR_SubprogramDeclaration* implementation) {
+IIRBase_MonadicOperator::set_implementation(IIR_SubprogramDeclarationRef implementation) {
   this->implementation = implementation;
 }
 
-IIR_SubprogramDeclaration*
+IIR_SubprogramDeclarationRef
 IIRBase_MonadicOperator::get_implementation() {
   return implementation;
 }
 
 void
-IIRBase_MonadicOperator::set_operand( IIR* operand) {
+IIRBase_MonadicOperator::set_operand( IIRRef operand) {
   this->operand = operand;
 }
 
-IIR*
+IIRRef
 IIRBase_MonadicOperator::get_operand() {
   return operand;
 }
 
-IIR *
-IIRBase_MonadicOperator::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_MonadicOperator::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_MonadicOperator *new_node =
-    dynamic_cast<IIRBase_MonadicOperator *>(IIRBase_Operator::convert_tree(factory));
+  IIRBase_MonadicOperatorRef new_node =
+    my_dynamic_pointer_cast<IIRBase_MonadicOperator>(IIRBase_Operator::convert_tree(factory));
 
   // Process the variables
   new_node->operand = convert_node(operand, factory);
-  new_node->implementation = dynamic_cast<IIR_SubprogramDeclaration *>(convert_node(implementation, factory));
+  new_node->implementation = my_dynamic_pointer_cast<IIR_SubprogramDeclaration>(convert_node(implementation, factory));
 
   return new_node;
 }

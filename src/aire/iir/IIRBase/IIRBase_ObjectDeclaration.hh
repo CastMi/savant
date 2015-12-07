@@ -42,29 +42,29 @@ class IIRBase_ObjectDeclaration : public virtual IIRBase_Declaration,
 
 public:
   // List Accessor(s)
-  IIR_AttributeSpecificationList        *get_attributes();
-  void                                  set_attributes(IIR_AttributeSpecificationList *new_attributes);
+  IIR_AttributeSpecificationListRef  get_attributes();
+  void                               set_attributes(IIR_AttributeSpecificationListRef new_attributes);
 
-  IIR *get_value() { return NULL; }
-  void set_value(IIR *);
+  IIRRef get_value() { return NULL; }
+  void set_value( IIRRef );
   /**
      Sets the subtype for this object.  If the subtype's declaration is 0,
      then the subtype will be modified to point to this declaration as it's
      own.
   */
-  void set_subtype(IIR_TypeDefinition* subtype);
+  void set_subtype(IIR_TypeDefinitionRef subtype);
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_object(){ return TRUE; }
  
   IIR_SignalKind get_signal_kind();
 
-  IIR_TypeDefinition *get_subtype() { return IIRBase::get_subtype(); }
+  IIR_TypeDefinitionRef get_subtype() { return IIRBase::get_subtype(); }
 
   /** This method is for objects that are instances of records, to find the
       pieces within them... */
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *);
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef );
 
   IIR_Boolean is_locally_static(){ return false; }
 
@@ -79,7 +79,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_AttributeSpecificationList *attributes;
+  IIR_AttributeSpecificationListRef attributes;
 };
 
 typedef refcount<IIRBase_ObjectDeclaration> IIRBase_ObjectDeclarationRef;

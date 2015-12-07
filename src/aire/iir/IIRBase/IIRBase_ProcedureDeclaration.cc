@@ -47,7 +47,7 @@ IIRBase_ProcedureDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   
   if (get_interface_declarations()->size() != 0) {
     vhdl_out << "(";
-    dynamic_cast<IIRBase_InterfaceList *>
+    my_dynamic_pointer_cast<IIRBase_InterfaceList>
       (get_interface_declarations())->publish_vhdl_decl(vhdl_out);
     vhdl_out << ")";
   }
@@ -55,7 +55,7 @@ IIRBase_ProcedureDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   if (contains_body() == TRUE) {
     vhdl_out << " is\n";
     if( get_subprogram_declarations()->size() != 0) {
-      dynamic_cast<IIRBase_DeclarationList *>
+       my_dynamic_pointer_cast<IIRBase_DeclarationList>
 	(get_subprogram_declarations())->publish_vhdl_decl(vhdl_out);
     }
     vhdl_out << "begin\n";

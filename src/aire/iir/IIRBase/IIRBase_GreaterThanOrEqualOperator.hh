@@ -36,8 +36,8 @@ class IIRBase_GreaterThanOrEqualOperator : public virtual IIRBase_DyadicOperator
 					   public virtual IIR_GreaterThanOrEqualOperator{
 
 public:
-  IIR_Kind get_kind() const {return IIR_GREATER_THAN_OR_EQUAL_OPERATOR;}
-  const IIR_Char *get_kind_text() const {return "IIR_GreaterThanOrEqualOperator";}
+  IIR_Kind get_kind() const override { return IIR_GREATER_THAN_OR_EQUAL_OPERATOR; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_GreaterThanOrEqualOperator"); }
   const string &get_operator_string() const;
 
   Precedence  get_precedence();

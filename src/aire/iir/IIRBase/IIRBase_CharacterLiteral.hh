@@ -39,11 +39,11 @@ class IIRBase_CharacterLiteral : public virtual IIRBase_TextLiteral, public virt
   //friend ostream &operator<<( ostream &, IIR_CharacterLiteral & );
 
 public:
-  IIR_Kind get_kind() const { return IIR_CHARACTER_LITERAL; }
-  const IIR_Char *get_kind_text() const { return "IIR_CharacterLiteral"; }
+  IIR_Kind get_kind() const override { return IIR_CHARACTER_LITERAL; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_CharacterLiteral"); }
 
-  static IIR_CharacterLiteral *get( IIR_Char *new_text, IIR_Int32 new_length, plugin_class_factory *factory );
-  static IIR_CharacterLiteral *get( const string new_text, plugin_class_factory *factory );
+  static IIR_CharacterLiteralRef get( IIR_CharRef new_text, IIR_Int32 new_length, plugin_class_factoryRef factory );
+  static IIR_CharacterLiteralRef get( const string new_text, plugin_class_factoryRef factory );
 
   void release();
 

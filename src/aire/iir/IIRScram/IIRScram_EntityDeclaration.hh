@@ -49,13 +49,13 @@ public:
   void _type_check();
   
   // Wrappers for IIRBase functions
-  IIRScram_DeclarationList *                    _get_entity_declarative_part();
-  IIRScram_EntityDeclaration*                   _get_entity();
-  IIRScram_PortList *                           _get_port_clause();
-  IIRScram_PortList *                           _get_port_list();
-  IIRScram_GenericList *                        _get_generic_clause();
-  IIRScram_GenericList *                        _get_generic_list();
-  IIRScram_ArchitectureStatementList *          _get_entity_statement_part();
+  IIRScram_DeclarationListRef                     _get_entity_declarative_part();
+  IIRScram_EntityDeclarationRef                   _get_entity();
+  IIRScram_PortListRef                            _get_port_clause();
+  IIRScram_PortListRef                            _get_port_list();
+  IIRScram_GenericListRef                         _get_generic_clause();
+  IIRScram_GenericListRef                         _get_generic_list();
+  IIRScram_ArchitectureStatementListRef           _get_entity_statement_part();
    
 private:
 };

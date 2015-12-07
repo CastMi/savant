@@ -1,4 +1,4 @@
-
+ 
 // Copyright (c) The University of Cincinnati.  
 // All rights reserved.
 
@@ -22,15 +22,16 @@
 #include "IIRBase_Identifier.hh"
 #include "IIRBase_SimpleNameAttribute.hh"
 #include "savant.hh"
+#include <cstring>
 
 IIRBase_SimpleNameAttribute::IIRBase_SimpleNameAttribute() {}
 
 IIRBase_SimpleNameAttribute::~IIRBase_SimpleNameAttribute(){}
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_SimpleNameAttribute::build_attribute_name() {
-  const char *name = "simplename";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+  std::string name("simplename");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 

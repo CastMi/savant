@@ -52,30 +52,30 @@ public:
 
   virtual IIR_Boolean _is_iir_record_type_definition() { return TRUE; }
 
-  IIRScram_ElementDeclarationList *_get_element_declarations();
+  IIRScram_ElementDeclarationListRef _get_element_declarations();
 
-  int _get_field_number(IIRScram *);
+  int _get_field_number(IIRScramRef );
   
-  IIRScram_FunctionDeclaration* _get_resolution_function();
+  IIRScram_FunctionDeclarationRef _get_resolution_function();
   void _set_resolution_function(IIRScram_FunctionDeclaration *new_function );
   
-  IIRScram_TypeDefinition *_get_new_subtype();
+  IIRScram_TypeDefinitionRef _get_new_subtype();
 
-  IIRScram_TypeDefinition *
-  _construct_new_subtype( IIRScram_Name                 *resolution_function,
-			  IIRScram_ScalarTypeDefinition *new_constraint);
+  IIRScram_TypeDefinitionRef 
+  _construct_new_subtype( IIRScram_NameRef resolution_function,
+			  IIRScram_ScalarTypeDefinitionRef new_constraint);
 
   void _make_interface_visible( symbol_table * );
 
   virtual void _type_check();
 
-  virtual IIRScram *_clone();
-  virtual void _clone( IIRScram * );
+  virtual IIRScramRef _clone();
+  virtual void _clone( IIRScramRef  );
 
-  void _come_into_scope( symbol_table *, IIRScram_TypeDeclaration * );
+  void _come_into_scope( symbol_table *, IIRScram_TypeDeclarationRef  );
   void _come_out_of_scope( symbol_table * );
 
-  IIRScram_TypeDefinition *_get_element_subtype(int);
+  IIRBase_TypeDefinitionRef _get_element_subtype(int);
 protected:
 private:
 };

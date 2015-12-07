@@ -26,46 +26,38 @@
 
 //---------------------------------------------------------------------------
 
-
 #include "IIRBase_WaveformElement.hh"
 #include "IIR.hh"
 
-IIRBase_WaveformElement::IIRBase_WaveformElement() :
-  value(0),
-  time(0),
-  next(0){}
-
-IIRBase_WaveformElement::~IIRBase_WaveformElement() {
-  delete get_value();
-  delete get_time();
-}
+IIRBase_WaveformElement::IIRBase_WaveformElement() {}
+IIRBase_WaveformElement::~IIRBase_WaveformElement() {}
 
 void
-IIRBase_WaveformElement::set_value( IIR *new_value ){
+IIRBase_WaveformElement::set_value( IIRRef new_value ){
   value = new_value;
 }
 
-IIR*
+IIRRef
 IIRBase_WaveformElement::get_value() {
   return value;
 }
 
 void
-IIRBase_WaveformElement::set_time( IIR *new_time ){
+IIRBase_WaveformElement::set_time( IIRRef new_time ){
   time = new_time;
 }
 
-IIR*
+IIRRef
 IIRBase_WaveformElement::get_time() {
   return time;
 }
 
 void
-IIRBase_WaveformElement::set_next( IIR_WaveformElement *new_next ){
+IIRBase_WaveformElement::set_next( IIR_WaveformElementRef new_next ){
   next = new_next;
 }
 
-IIR_WaveformElement*
+IIR_WaveformElementRef
 IIRBase_WaveformElement::get_next() {
   return next;
 }
@@ -76,15 +68,15 @@ IIRBase_WaveformElement::is_above_attribute_found() {
   return get_value()->is_above_attribute_found();
 }
 
-IIR *
-IIRBase_WaveformElement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_WaveformElement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_WaveformElement *new_node = dynamic_cast<IIRBase_WaveformElement *>(IIRBase_Tuple::convert_tree(factory));
+  IIRBase_WaveformElementRef new_node = my_dynamic_pointer_cast<IIRBase_WaveformElement>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
   new_node->value = convert_node(value, factory);
   new_node->time = convert_node(time, factory);
-  new_node->next = dynamic_cast<IIR_WaveformElement *>(convert_node(next, factory));
+  new_node->next = my_dynamic_pointer_cast<IIR_WaveformElement>(convert_node(next, factory));
 
   return new_node;
 }

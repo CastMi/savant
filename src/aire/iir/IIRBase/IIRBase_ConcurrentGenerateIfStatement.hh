@@ -36,18 +36,18 @@ class IIRBase_ConcurrentGenerateIfStatement : public virtual IIRBase_ConcurrentS
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList           *get_block_declarative_part();
-  IIR_ArchitectureStatementList *get_concurrent_statement_part();
-  void                          set_block_declarative_part(IIR_DeclarationList *new_block_declarative_part);
-  void                          set_concurrent_statement_part(IIR_ArchitectureStatementList *new_concurrent_statement_part);
+  IIR_DeclarationListRef           get_block_declarative_part();
+  IIR_ArchitectureStatementListRef get_concurrent_statement_part();
+  void                             set_block_declarative_part(IIR_DeclarationListRef new_block_declarative_part);
+  void                             set_concurrent_statement_part(IIR_ArchitectureStatementListRef new_concurrent_statement_part);
 
-  IIR_Kind get_kind() const {return IIR_CONCURRENT_GENERATE_IF_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_ConcurrentGenerateIfStatement";}
+  IIR_Kind get_kind() const override { return IIR_CONCURRENT_GENERATE_IF_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override {return IIR_CharConstRef("IIR_ConcurrentGenerateIfStatement"); }
 
-  void set_if_condition( IIR *condition );
-  IIR *get_if_condition();
+  void set_if_condition( IIRRef condition );
+  IIRRef get_if_condition();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -56,9 +56,9 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList           *block_declarative_part;
-  IIR_ArchitectureStatementList *concurrent_statement_part;
-  IIR *condition;
+  IIR_DeclarationListRef           block_declarative_part;
+  IIR_ArchitectureStatementListRef concurrent_statement_part;
+  IIRRef condition;
 };
 
 typedef refcount<IIRBase_ConcurrentGenerateIfStatement> IIRBase_ConcurrentGenerateIfStatementRef;

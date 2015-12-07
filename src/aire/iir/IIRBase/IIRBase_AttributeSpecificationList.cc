@@ -32,16 +32,16 @@ IIRBase_AttributeSpecificationList::IIRBase_AttributeSpecificationList(){}
 IIRBase_AttributeSpecificationList::~IIRBase_AttributeSpecificationList(){}
 
 void 
-IIRBase_AttributeSpecificationList::append( IIR_AttributeSpecification *to_append ){
+IIRBase_AttributeSpecificationList::append( IIR_AttributeSpecificationRef to_append ){
     IIRBase_List::append( to_append );
 }
 
-IIR_AttributeSpecification *
-IIRBase_AttributeSpecificationList::successor( IIR_AttributeSpecification *succeed_me ){
-  return dynamic_cast<IIR_AttributeSpecification *>(IIRBase_List::successor( succeed_me ));
+IIR_AttributeSpecificationRef
+IIRBase_AttributeSpecificationList::successor( IIR_AttributeSpecificationRef succeed_me ){
+  return my_dynamic_pointer_cast<IIR_AttributeSpecification>(IIRBase_List::successor( succeed_me ));
 }
 
-IIR_AttributeSpecification *
+IIR_AttributeSpecificationRef
 IIRBase_AttributeSpecificationList::first(){
-  return dynamic_cast<IIR_AttributeSpecification *>(IIRBase_List::first());
+  return my_dynamic_pointer_cast<IIR_AttributeSpecification>(IIRBase_List::first());
 }

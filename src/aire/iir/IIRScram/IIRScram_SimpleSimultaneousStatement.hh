@@ -44,12 +44,12 @@ public:
   void _type_check();
   
   // Helper Functions
-  IIRScram *_get_left_expression();
-  IIRScram *_get_right_expression();
+  IIRScramRef _get_left_expression();
+  IIRScramRef _get_right_expression();
   
 protected:
 private:
-  IIR_Label * _mangled_stmt_label;
+  IIR_LabelRef  _mangled_stmt_label;
 };
 
 typedef refcount<IIRScram_SimpleSimultaneousStatement> IIRScram_SimpleSimultaneousStatementRef;

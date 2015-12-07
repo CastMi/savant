@@ -25,10 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "savant.hh"
 #include "IIR_EnumerationSubtypeDefinition.hh"
 #include "IIR_EnumerationLiteral.hh"
@@ -36,40 +32,30 @@
 #include "IIR_FunctionDeclaration.hh"
 #include "IIRBase_EnumerationSubtypeDefinition.hh"
 
-IIRBase_EnumerationSubtypeDefinition::IIRBase_EnumerationSubtypeDefinition() :
-  enumeration_literals(0) {
-  my_resolution_function = NULL;
-}
-
-IIRBase_EnumerationSubtypeDefinition::~IIRBase_EnumerationSubtypeDefinition(){ 
-}
+IIRBase_EnumerationSubtypeDefinition::IIRBase_EnumerationSubtypeDefinition() {}
+IIRBase_EnumerationSubtypeDefinition::~IIRBase_EnumerationSubtypeDefinition() {}
  
 void 
-IIRBase_EnumerationSubtypeDefinition::release(){
-  delete this;
-}
-
-void 
-IIRBase_EnumerationSubtypeDefinition::set_resolution_function( IIR_FunctionDeclaration *resolution_function ){
+IIRBase_EnumerationSubtypeDefinition::set_resolution_function( IIR_FunctionDeclarationRef resolution_function ){
   my_resolution_function = resolution_function;
 }
 
 
-IIR_FunctionDeclaration *
+IIR_FunctionDeclarationRef
 IIRBase_EnumerationSubtypeDefinition::get_resolution_function(){
   return my_resolution_function;
 }
  
 
-IIR *
-IIRBase_EnumerationSubtypeDefinition::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_EnumerationSubtypeDefinition::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_EnumerationSubtypeDefinition *new_node =
-    dynamic_cast<IIRBase_EnumerationSubtypeDefinition *>
+  IIRBase_EnumerationSubtypeDefinitionRef new_node =
+    my_dynamic_pointer_cast<IIRBase_EnumerationSubtypeDefinition>
     (IIRBase_EnumerationTypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->my_resolution_function = dynamic_cast<IIR_FunctionDeclaration *>(convert_node(my_resolution_function, factory));
+  new_node->my_resolution_function = my_dynamic_pointer_cast<IIR_FunctionDeclaration>(convert_node(my_resolution_function, factory));
 
   return new_node;
 }

@@ -26,23 +26,23 @@ IIRBase_CaseStatementAlternativeByExpression::~IIRBase_CaseStatementAlternativeB
 
 
 void 
-IIRBase_CaseStatementAlternativeByExpression::set_choice(IIR_Choice* c) {
+IIRBase_CaseStatementAlternativeByExpression::set_choice(IIR_ChoiceRef c) {
   choice = c;
 }
 
 
-IIR_Choice*
+IIR_ChoiceRef
 IIRBase_CaseStatementAlternativeByExpression::get_choice() {
   return choice;
 }
 
-IIR *
-IIRBase_CaseStatementAlternativeByExpression::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_CaseStatementAlternativeByExpression::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_CaseStatementAlternativeByExpression *new_node = dynamic_cast<IIRBase_CaseStatementAlternativeByExpression *>(IIRBase_CaseStatementAlternative::convert_tree(factory));
+  IIRBase_CaseStatementAlternativeByExpressionRef new_node = my_dynamic_pointer_cast<IIRBase_CaseStatementAlternativeByExpression>(IIRBase_CaseStatementAlternative::convert_tree(factory));
 
   // Process the variables
-  new_node->choice = dynamic_cast<IIR_Choice *>(convert_node(choice, factory));
+  new_node->choice = my_dynamic_pointer_cast<IIR_Choice>(convert_node(choice, factory));
 
   return new_node;
 }

@@ -30,15 +30,10 @@
 #include "plugin_class_factory.hh"
 #include "IIRBase_SelectedWaveformList.hh"
 
-IIRBase_ConcurrentSelectedSignalAssignment::IIRBase_ConcurrentSelectedSignalAssignment() :
-  selected_waveforms(0) {
+IIRBase_ConcurrentSelectedSignalAssignment::IIRBase_ConcurrentSelectedSignalAssignment() {
   set_postponed( FALSE );
-  set_target( NULL );
-  set_expression( NULL );
   set_guarded( FALSE );
   set_delay_mechanism( IIR_INERTIAL_DELAY );
-  set_reject_time_expression( NULL );
-  set_guard_signal(NULL);
 }
 
 IIRBase_ConcurrentSelectedSignalAssignment::~IIRBase_ConcurrentSelectedSignalAssignment() {}
@@ -54,21 +49,21 @@ IIRBase_ConcurrentSelectedSignalAssignment::get_postponed(){
 }
 
 void 
-IIRBase_ConcurrentSelectedSignalAssignment::set_target(IIR *target ){
+IIRBase_ConcurrentSelectedSignalAssignment::set_target(IIRRef target ){
   this->target = target;
 }
 
-IIR * 
+IIRRef
 IIRBase_ConcurrentSelectedSignalAssignment::get_target(){
   return target;
 }
 
 void 
-IIRBase_ConcurrentSelectedSignalAssignment::set_expression(IIR *expr ){
+IIRBase_ConcurrentSelectedSignalAssignment::set_expression(IIRRef expr ){
   expression = expr;
 }
 
-IIR * 
+IIRRef
 IIRBase_ConcurrentSelectedSignalAssignment::get_expression(){
   return expression;
 }
@@ -94,37 +89,36 @@ IIRBase_ConcurrentSelectedSignalAssignment::get_delay_mechanism(){
 }
 
 void 
-IIRBase_ConcurrentSelectedSignalAssignment::set_reject_time_expression( IIR *reject_time_expression ){
+IIRBase_ConcurrentSelectedSignalAssignment::set_reject_time_expression( IIRRef reject_time_expression ){
   this->reject_time_expression = reject_time_expression;
 }
 
-IIR *
+IIRRef
 IIRBase_ConcurrentSelectedSignalAssignment::get_reject_time_expression(){
   return reject_time_expression;
 }
 
 // List Accessor(s)
-IIR_SelectedWaveformList *
+IIR_SelectedWaveformListRef
 IIRBase_ConcurrentSelectedSignalAssignment::get_selected_waveforms() {
-  ASSERT(selected_waveforms != NULL);
+  ASSERT(selected_waveforms != nullptr);
   return selected_waveforms;
 }
 
 void
-IIRBase_ConcurrentSelectedSignalAssignment::set_selected_waveforms(IIR_SelectedWaveformList *new_selected_waveforms) {
-  ASSERT(new_selected_waveforms != NULL);
-  delete selected_waveforms;
+IIRBase_ConcurrentSelectedSignalAssignment::set_selected_waveforms(IIR_SelectedWaveformListRef new_selected_waveforms) {
+  ASSERT(new_selected_waveforms != nullptr);
   selected_waveforms = new_selected_waveforms;
 }
 
-IIR *
-IIRBase_ConcurrentSelectedSignalAssignment::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ConcurrentSelectedSignalAssignment::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ConcurrentSelectedSignalAssignment *new_node = dynamic_cast<IIRBase_ConcurrentSelectedSignalAssignment *>(IIRBase_ConcurrentStatement::convert_tree(factory));
+  IIRBase_ConcurrentSelectedSignalAssignmentRef new_node = my_dynamic_pointer_cast<IIRBase_ConcurrentSelectedSignalAssignment>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->selected_waveforms = dynamic_cast<IIR_SelectedWaveformList *>(selected_waveforms->convert_tree(factory));
-  new_node->my_guard_signal = dynamic_cast<IIR_SignalDeclaration *>(convert_node(my_guard_signal, factory));
+  new_node->selected_waveforms = my_dynamic_pointer_cast<IIR_SelectedWaveformList>(selected_waveforms->convert_tree(factory));
+  new_node->my_guard_signal = my_dynamic_pointer_cast<IIR_SignalDeclaration>(convert_node(my_guard_signal, factory));
 
   new_node->postponed = postponed;
   new_node->guarded = guarded;
@@ -156,21 +150,21 @@ IIRBase_ConcurrentSelectedSignalAssignment::is_resolved(){
   return retval;
 }
 
-IIR_CaseStatementAlternativeList *
+IIR_CaseStatementAlternativeListRef
 IIRBase_ConcurrentSelectedSignalAssignment::build_alternative_list(IIR_Boolean bPublishingVhdl){
-  IIR_SelectedWaveform *current_waveform = NULL;
-  IIR_CaseStatementAlternativeList *retval = get_design_file()->get_class_factory()->new_IIR_CaseStatementAlternativeList();
-  IIR_SignalAssignmentStatement *sastmt = NULL;
+  IIR_SelectedWaveformRef current_waveform;
+  IIR_CaseStatementAlternativeListRef retval = get_design_file()->get_class_factory()->new_IIR_CaseStatementAlternativeList();
+  IIR_SignalAssignmentStatementRef sastmt;
   
   //  copy_location( this, retval );
   current_waveform = get_selected_waveforms()->first();
   while( current_waveform != NULL ){
-    IIR *current_choice = current_waveform->get_choice();
-    ASSERT( dynamic_cast<IIR_CaseStatementAlternative *>(current_choice) );
+    IIRRef current_choice = current_waveform->get_choice();
+    ASSERT( my_dynamic_pointer_cast<IIR_CaseStatementAlternative>(current_choice) );
    
     if (bPublishingVhdl) {
       sastmt = get_design_file()->get_class_factory()->new_IIR_SignalAssignmentStatement();
-      copy_location (this, sastmt);
+      copy_location (sastmt.get());
       ASSERT ( get_target()->is_resolved() == TRUE );
       
       sastmt->set_target(get_target());
@@ -178,7 +172,7 @@ IIRBase_ConcurrentSelectedSignalAssignment::build_alternative_list(IIR_Boolean b
       sastmt->set_reject_time_expression(get_reject_time_expression());
       sastmt->set_waveform(current_waveform->get_waveform());
       
-      dynamic_cast<IIR_CaseStatementAlternative *>(current_choice)->get_sequence_of_statements()->append(sastmt);
+      my_dynamic_pointer_cast<IIR_CaseStatementAlternative>(current_choice)->get_sequence_of_statements()->append(sastmt);
     }
     retval->append(current_choice);
     current_waveform = get_selected_waveforms()->successor( current_waveform );    
@@ -205,6 +199,6 @@ IIRBase_ConcurrentSelectedSignalAssignment::publish_vhdl(ostream &vhdl_out) {
   vhdl_out << " <= ";
 
   publish_vhdl_delay_mechanism(vhdl_out, get_delay_mechanism(), get_reject_time_expression());
-  dynamic_cast<IIRBase_SelectedWaveformList*>(get_selected_waveforms())->publish_vhdl(vhdl_out, ",\n");
+  my_dynamic_pointer_cast<IIRBase_SelectedWaveformList>(get_selected_waveforms())->publish_vhdl(vhdl_out, ",\n");
   vhdl_out << ";\n";
 }

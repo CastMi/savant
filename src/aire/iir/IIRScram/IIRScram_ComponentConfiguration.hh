@@ -49,16 +49,16 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  void _type_check_configuration_item( IIRScram_List *, IIRScram * );
+  void _type_check_configuration_item( IIRScram_ListRef , IIRScramRef  );
 
-  IIRScram *_get_component_name( );
-  void _set_component_name( IIRScram * );
-  IIRScram_LibraryUnit *_get_entity_aspect();
+  IIRScramRef _get_component_name( );
+  void _set_component_name( IIRScramRef  );
+  IIRScram_LibraryUnitRef _get_entity_aspect();
 
-  IIRScram_DesignatorList *     _get_instantiation_list();
-  IIRScram_AssociationList *    _get_generic_map_aspect();
-  IIRScram_AssociationList *    _get_port_map_aspect();
-  IIRScram_BlockConfiguration * _get_block_configuration();
+  IIRScram_DesignatorListRef      _get_instantiation_list();
+  IIRScram_AssociationListRef     _get_generic_map_aspect();
+  IIRScram_AssociationListRef     _get_port_map_aspect();
+  IIRScram_BlockConfigurationRef  _get_block_configuration();
 
 protected:    
 private:

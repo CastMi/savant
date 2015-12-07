@@ -41,18 +41,18 @@ class IIRBase_PhysicalUnit : public virtual IIRBase_Declaration,
 			     public virtual IIR_PhysicalUnit{
 public:
   // List Accessor(s)
-  IIR_AttributeSpecificationList *get_attributes();
-  void                           set_attributes(IIR_AttributeSpecificationList *new_attributes);
+  IIR_AttributeSpecificationListRef get_attributes();
+  void                           set_attributes(IIR_AttributeSpecificationListRef new_attributes);
 
-  IIR_Kind get_kind() const { return IIR_PHYSICAL_UNIT; }
-  const IIR_Char *get_kind_text() const { return "IIR_PhysicalUnit"; }
+  IIR_Kind get_kind() const override { return IIR_PHYSICAL_UNIT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_PhysicalUnit"); }
 
-  void set_multiplier(IIR*);
-  IIR* get_multiplier();
-  void set_unit_name(IIR_PhysicalUnit*);
-  IIR_PhysicalUnit* get_unit_name();
+  void set_multiplier(IIRRef);
+  IIRRef get_multiplier();
+  void set_unit_name(IIR_PhysicalUnitRef);
+  IIR_PhysicalUnitRef get_unit_name();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   declaration_type get_declaration_type();
 
@@ -68,10 +68,10 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_AttributeSpecificationList *attributes;
+  IIR_AttributeSpecificationListRef attributes;
 
-  IIR* multiplier;
-  IIR_PhysicalUnit *unit_name;
+  IIRRef multiplier;
+  IIR_PhysicalUnitRef unit_name;
 };
 
 typedef refcount<IIRBase_PhysicalUnit> IIRBase_PhysicalUnitRef;

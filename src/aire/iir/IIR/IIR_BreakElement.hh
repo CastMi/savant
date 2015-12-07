@@ -29,7 +29,7 @@
 #include "IIR_Tuple.hh"
 #include "IRBasicDataTypes.hh"
   
-class IIR_Name;
+REF_FORWARD_DECL(IIR_Name);
 
 /** The extension base for Break Element. In each Break Element, the
     quantity denoted by the quantity name is the break quantity of the
@@ -40,19 +40,19 @@ public:
   /** In each Break Element, the quantity denoted by the quantity name is
       the break quantity of the break element. It is set and returned using
       these functions. */
-  virtual void set_quantity_name(IIR_Name* quantity_name) = 0;
-  virtual IIR_Name* get_quantity_name() = 0;
+  virtual void set_quantity_name(IIR_NameRef quantity_name) = 0;
+  virtual IIR_NameRef get_quantity_name() = 0;
   
   /** Sets and returns the expression for each break element (break
       quantity).  The expression and the break quantity must have the same
       type. */ 
-  virtual void set_expression(IIR* value) = 0;
-  virtual IIR* get_expression() = 0;
+  virtual void set_expression(IIRRef value) = 0;
+  virtual IIRRef get_expression() = 0;
   
   /** Sets and returns the selector quantity, if present. The Selector
       quantity is the quantity name in the break selector clause. */
-  virtual void set_selector_quantity_name(IIR_Name* quantity_name) = 0;
-  virtual IIR_Name* get_selector_quantity_name() = 0;
+  virtual void set_selector_quantity_name(IIR_NameRef quantity_name) = 0;
+  virtual IIR_NameRef get_selector_quantity_name() = 0;
 
 protected:
 };

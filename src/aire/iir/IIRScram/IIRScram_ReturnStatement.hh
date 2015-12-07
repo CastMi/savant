@@ -43,10 +43,10 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   void _type_check();
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
 
-  IIRScram *_get_return_expression();
-  IIRScram_SubprogramDeclaration*_get_enclosing_subprogram();
+  IIRScramRef _get_return_expression();
+  IIRScram_SubprogramDeclarationRef _get_enclosing_subprogram();
 
 protected:
 private:

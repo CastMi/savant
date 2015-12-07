@@ -39,26 +39,26 @@ class IIRBase_LTFAttribute  : public virtual IIR_LTFAttribute, public virtual II
 
 public:
   /** Returns the IIR_Kind of this node. */
-  IIR_Kind get_kind() const {
+  IIR_Kind get_kind() const override {
     return IIR_LTF_ATTRIBUTE;
   }
   /** Returns the kind of this node in text form. */
-  const IIR_Char *get_kind_text() const {
-    return "IIR_LTFAttribute";
+  IIR_CharConstRef get_kind_text() const override {
+    return IIR_CharConstRef("IIR_LTFAttribute");
   }
   /** Set the numerator coefficients from the static expression.  */
-  void set_num(IIR *numerator);
+  void set_num(IIRRef numerator);
   /** Return the numerator coefficients.  */
-  IIR* get_num();
+  IIRRef get_num();
   /* Set the denominator coefficients from the static expression.  */
-  void set_den(IIR *denominator);
+  void set_den(IIRRef denominator);
   /* Return the denominator coefficients.  */
-  IIR* get_den();
+  IIRRef get_den();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   /** This returns an IIR_TextLiteral when the LTF attribute is  instantiated. */
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
 
   void publish_vhdl(ostream&);
 protected:
@@ -66,8 +66,8 @@ protected:
   virtual ~IIRBase_LTFAttribute() = 0;
 
 private:
-  IIR* numerator;
-  IIR* denominator;
+  IIRRef numerator;
+  IIRRef denominator;
 };
 
 typedef refcount<IIRBase_LTFAttribute> IIRBase_LTFAttributeRef;

@@ -37,17 +37,17 @@ class IIR_AttributeSpecification;
 class IIRBase_AttributeSpecificationList : public virtual IIRBase_List, public virtual IIR_AttributeSpecificationList{
 
 public:
-  IIR_Kind get_kind() const {return IIR_ATTRIBUTE_SPECIFICATION_LIST;}
-  const IIR_Char *get_kind_text() const {return "IIR_AttributeSpecificationList";}
+  IIR_Kind get_kind() const override { return IIR_ATTRIBUTE_SPECIFICATION_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_AttributeSpecificationList"); }
 
   IIRBase_AttributeSpecificationList();
   virtual ~IIRBase_AttributeSpecificationList() = 0;
 
-  void append( IIR_AttributeSpecification * );
+  void append( IIR_AttributeSpecificationRef );
 
-  IIR_AttributeSpecification *successor( IIR_AttributeSpecification * );
+  IIR_AttributeSpecificationRef successor( IIR_AttributeSpecificationRef );
 
-  IIR_AttributeSpecification *first();
+  IIR_AttributeSpecificationRef first();
 
 protected:
   

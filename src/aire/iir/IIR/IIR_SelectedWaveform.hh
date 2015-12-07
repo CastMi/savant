@@ -32,18 +32,19 @@
 
 #include "savant_config.hh"
 #include "IIR_Tuple.hh"
-class IIR_WaveformList;
+
+REF_FORWARD_DECL(IIR_WaveformList);
 
 class IIR_SelectedWaveform : public virtual IIR_Tuple{
 public:
   virtual ~IIR_SelectedWaveform() {}    
 
   // List accessor(s)
-  virtual IIR_WaveformList      *get_waveform() = 0;
-  virtual void                  set_waveform(IIR_WaveformList *) = 0;
+  virtual IIR_WaveformListRef get_waveform() = 0;
+  virtual void                set_waveform( IIR_WaveformListRef ) = 0;
 
-  virtual IIR *get_choice() = 0;
-  virtual void set_choice( IIR * ) = 0;
+  virtual IIRRef get_choice() = 0;
+  virtual void set_choice( IIRRef ) = 0;
 };
 
 typedef refcount<IIR_SelectedWaveform> IIR_SelectedWaveformRef;

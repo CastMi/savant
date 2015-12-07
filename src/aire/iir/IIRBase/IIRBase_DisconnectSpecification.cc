@@ -26,66 +26,56 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
 #include "savant.hh"
 #include "IIRBase_DisconnectSpecification.hh"
 #include "IIR_DesignatorList.hh"
 #include "IIR_TypeDefinition.hh"
 
-IIRBase_DisconnectSpecification::IIRBase_DisconnectSpecification() :
-  guarded_signal_list(0) {
-  my_type_mark = NULL;
-  my_time_expression = NULL;
-}
-
-IIRBase_DisconnectSpecification::~IIRBase_DisconnectSpecification(){
-}
+IIRBase_DisconnectSpecification::IIRBase_DisconnectSpecification() {}
+IIRBase_DisconnectSpecification::~IIRBase_DisconnectSpecification() {}
 
 void 
-IIRBase_DisconnectSpecification::set_type_mark( IIR_TypeDefinition *type_mark ){
+IIRBase_DisconnectSpecification::set_type_mark( IIR_TypeDefinitionRef type_mark ){
   my_type_mark = type_mark;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_DisconnectSpecification::get_type_mark(){
   return my_type_mark;
 }
 
 void 
-IIRBase_DisconnectSpecification::set_time_expression( IIR *time_expression ){
+IIRBase_DisconnectSpecification::set_time_expression( IIRRef time_expression ){
   my_time_expression = time_expression;
 }
 
-IIR *
+IIRRef
 IIRBase_DisconnectSpecification::get_time_expression(){
   return my_time_expression;
 }
 
 // List Accessor(s)
-IIR_DesignatorList *
+IIR_DesignatorListRef
 IIRBase_DisconnectSpecification::get_guarded_signal_list() {
-  ASSERT(guarded_signal_list != NULL);
+  ASSERT(guarded_signal_list != nullptr);
   return guarded_signal_list;
 }
 
 
 void
-IIRBase_DisconnectSpecification::set_guarded_signal_list(IIR_DesignatorList *new_guarded_signal_list) {
-  ASSERT(new_guarded_signal_list != NULL);
-  delete guarded_signal_list;
+IIRBase_DisconnectSpecification::set_guarded_signal_list(IIR_DesignatorListRef new_guarded_signal_list) {
+  ASSERT(new_guarded_signal_list != nullptr);
   guarded_signal_list = new_guarded_signal_list;
 }
 
-IIR *
-IIRBase_DisconnectSpecification::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_DisconnectSpecification::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_DisconnectSpecification *new_node = dynamic_cast<IIRBase_DisconnectSpecification *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_DisconnectSpecificationRef new_node = my_dynamic_pointer_cast<IIRBase_DisconnectSpecification>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->guarded_signal_list = dynamic_cast<IIR_DesignatorList *>(convert_node(guarded_signal_list, factory));
-  new_node->my_type_mark = dynamic_cast<IIR_TypeDefinition *>(convert_node(my_type_mark, factory));
+  new_node->guarded_signal_list = my_dynamic_pointer_cast<IIR_DesignatorList>(convert_node(guarded_signal_list, factory));
+  new_node->my_type_mark = my_dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(my_type_mark, factory));
   new_node->my_time_expression = convert_node(my_time_expression, factory);
 
   return new_node;

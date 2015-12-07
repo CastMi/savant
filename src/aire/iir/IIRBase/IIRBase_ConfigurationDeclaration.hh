@@ -33,19 +33,19 @@ class IIRBase_ConfigurationDeclaration : public virtual IIRBase_LibraryUnit, pub
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList   *get_configuration_declarative_part();
-  void                  set_configuration_declarative_part(IIR_DeclarationList *new_configuration_declarative_part);
+  IIR_DeclarationListRef get_configuration_declarative_part();
+  void                   set_configuration_declarative_part(IIR_DeclarationListRef new_configuration_declarative_part);
 
-  IIR_Kind get_kind() const {return IIR_CONFIGURATION_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_ConfigurationDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_CONFIGURATION_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ConfigurationDeclaration"); }
 
-  void set_block_configuration(IIR_BlockConfiguration *block_configuration);
-  IIR_BlockConfiguration *get_block_configuration();
+  void set_block_configuration(IIR_BlockConfigurationRef block_configuration);
+  IIR_BlockConfigurationRef get_block_configuration();
 
-  void set_entity( IIR_EntityDeclaration *entity );
-  IIR_EntityDeclaration *get_entity();
+  void set_entity( IIR_EntityDeclarationRef entity );
+  IIR_EntityDeclarationRef get_entity();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   declaration_type get_declaration_type();
 
@@ -61,10 +61,10 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList   *configuration_declarative_part;
+  IIR_DeclarationListRef configuration_declarative_part;
 
-  IIR_BlockConfiguration *block_configuration;
-  IIR_EntityDeclaration *entity;
+  IIR_BlockConfigurationRef block_configuration;
+  IIR_EntityDeclarationRef  entity;
 };
 
 typedef refcount<IIRBase_ConfigurationDeclaration> IIRBase_ConfigurationDeclarationRef;

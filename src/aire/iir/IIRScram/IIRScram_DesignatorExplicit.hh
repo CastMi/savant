@@ -61,19 +61,19 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0);
 
-  IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition*> * );
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
+  IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinitionRef> );
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef  );
 
-  IIRScram *_get_name();
+  IIRScramRef _get_name();
 
   // This method looks up the name, and then eliminates declarations that
   // don't match the signature.
-  savant::set<IIRScram_Declaration*> *_symbol_lookup();
+  savant::set<IIRScram_DeclarationRef> _symbol_lookup();
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
 protected:    
 private:

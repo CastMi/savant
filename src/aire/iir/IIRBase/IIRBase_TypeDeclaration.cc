@@ -38,53 +38,45 @@
 #include <iostream>
 using std::cerr;
 
-IIRBase_TypeDeclaration::IIRBase_TypeDeclaration()  :
-  attributes(0) {
-  type = NULL;
-  implicit_declarations = NULL;
-}
-
-
-IIRBase_TypeDeclaration::~IIRBase_TypeDeclaration() {
-}
+IIRBase_TypeDeclaration::IIRBase_TypeDeclaration() {}
+IIRBase_TypeDeclaration::~IIRBase_TypeDeclaration() {}
 
 void
-IIRBase_TypeDeclaration::set_type( IIR_TypeDefinition *new_type ){
+IIRBase_TypeDeclaration::set_type( IIR_TypeDefinitionRef new_type ){
   type = new_type;
 }
 
-IIR_TypeDefinition*
+IIR_TypeDefinitionRef
 IIRBase_TypeDeclaration::get_type() {
   return type;
 }
 
 // List Accessor(s)
-IIR_AttributeSpecificationList *
+IIR_AttributeSpecificationListRef
 IIRBase_TypeDeclaration::get_attributes() {
   ASSERT(attributes != NULL);
   return attributes;
 }
 
 void
-IIRBase_TypeDeclaration::set_attributes(IIR_AttributeSpecificationList *new_attributes) {
+IIRBase_TypeDeclaration::set_attributes(IIR_AttributeSpecificationListRef new_attributes) {
   ASSERT(new_attributes != NULL);
-  delete attributes;
   attributes = new_attributes;
 }
 
-IIR *
-IIRBase_TypeDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_TypeDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_TypeDeclaration *new_node = dynamic_cast<IIRBase_TypeDeclaration *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_TypeDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_TypeDeclaration>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
-  new_node->type = dynamic_cast<IIR_TypeDefinition *>(convert_node(type, factory));
+  new_node->attributes = my_dynamic_pointer_cast<IIR_AttributeSpecificationList>(convert_node(attributes, factory));
+  new_node->type = my_dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(type, factory));
 
   return new_node;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_TypeDeclaration::get_subtype(){
   return get_type();
 }
@@ -109,25 +101,25 @@ IIRBase_TypeDeclaration::get_declaration_type() {
   return IIR_Declaration::TYPE;
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_TypeDeclaration::find_declarations( IIR_Name *to_find ){
+savant::set<IIR_DeclarationRef>
+IIRBase_TypeDeclaration::find_declarations( IIR_NameRef to_find ){
   ASSERT( get_type() != NULL );
   return get_type()->find_declarations( to_find );
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_TypeDeclaration::find_declarations( IIR_TextLiteral *to_find ){
+savant::set<IIR_DeclarationRef>
+IIRBase_TypeDeclaration::find_declarations( IIR_TextLiteralRef to_find ){
   ASSERT( get_type() != NULL );
   return get_type()->find_declarations( to_find );
 }
 
-savant::set<IIR_Declaration*> *
+savant::set<IIR_DeclarationRef>
 IIRBase_TypeDeclaration::get_implicit_declarations() {
   return implicit_declarations;
 }
 
 void 
-IIRBase_TypeDeclaration::set_implicit_declarations( savant::set<IIR_Declaration*> *new_implicit_declarations) {
+IIRBase_TypeDeclaration::set_implicit_declarations( savant::set<IIR_DeclarationRef> new_implicit_declarations) {
   implicit_declarations = new_implicit_declarations;
 }
 
@@ -137,7 +129,7 @@ IIRBase_TypeDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   get_declarator()->publish_vhdl(vhdl_out);
   if( get_type() ) {
     vhdl_out << " is ";
-    dynamic_cast<IIRBase_TypeDefinition *>(get_type())->publish_vhdl_type_decl(vhdl_out);
+    my_dynamic_pointer_cast<IIRBase_TypeDefinition>(get_type())->publish_vhdl_type_decl(vhdl_out);
   }
   vhdl_out << ";\n";
 }

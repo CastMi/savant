@@ -33,60 +33,59 @@
 IIRBase_EnumerationLiteralList::IIRBase_EnumerationLiteralList() {}
 IIRBase_EnumerationLiteralList::~IIRBase_EnumerationLiteralList() {}
 
-
-IIR* 
+IIRRef 
 IIRBase_EnumerationLiteralList::first(){
-  IIR_Declaration *retval = dynamic_cast<IIR_Declaration *>(IIRBase_List::first());
+  IIR_DeclarationRef retval = my_dynamic_pointer_cast<IIR_Declaration>(IIRBase_List::first());
 
-  if (retval != NULL)
+  if (retval != nullptr)
     ASSERT( retval->get_kind() == IIR_ENUMERATION_LITERAL );
 
   return retval;
 }
 
-IIR* 
+IIRRef
 IIRBase_EnumerationLiteralList::last(){
-  IIR_Declaration *retval = dynamic_cast<IIR_Declaration *>(IIRBase_List::last());
+  IIR_DeclarationRef retval = my_dynamic_pointer_cast<IIR_Declaration>(IIRBase_List::last());
 
-  if (retval != NULL)
+  if (retval != nullptr)
     ASSERT( retval->get_kind() == IIR_ENUMERATION_LITERAL );
 
-  return dynamic_cast<IIR_EnumerationLiteral *>(retval);
+  return my_dynamic_pointer_cast<IIR_EnumerationLiteral>(retval);
 }
 
 
-IIR* 
-IIRBase_EnumerationLiteralList::successor( IIR_EnumerationLiteral *lit ) { 
-  ASSERT( lit->get_kind() == IIR_ENUMERATION_LITERAL );
+IIRRef
+IIRBase_EnumerationLiteralList::successor( IIR_EnumerationLiteralRef lit ) { 
+  ASSERT( lit->get_kind() == IIR_ENUMERATION_LITERAL ); 
 
-  IIR_Declaration *retval = dynamic_cast<IIR_Declaration *>(IIRBase_List::successor( lit ));
+  IIR_DeclarationRef retval = my_dynamic_pointer_cast<IIR_Declaration>(IIRBase_List::successor( lit ));
 
-  return dynamic_cast<IIR_EnumerationLiteral *>(retval);
+  return my_dynamic_pointer_cast<IIR_EnumerationLiteral>(retval);
 }
 
 
-IIR * 
-IIRBase_EnumerationLiteralList::predecessor( IIR_EnumerationLiteral *lit ) { 
+IIRRef
+IIRBase_EnumerationLiteralList::predecessor( IIR_EnumerationLiteralRef lit ) { 
   ASSERT( lit->get_kind() == IIR_ENUMERATION_LITERAL );
 
-  IIR_Declaration *retval = dynamic_cast<IIR_Declaration *>(IIRBase_List::predecessor( lit ));
+  IIR_DeclarationRef retval = my_dynamic_pointer_cast<IIR_Declaration>(IIRBase_List::predecessor( lit ));
 
-  if (retval != NULL)
+  if (retval != nullptr)
     ASSERT( retval->get_kind() == IIR_ENUMERATION_LITERAL );
 
-  return dynamic_cast<IIR_EnumerationLiteral *>(retval);
+  return my_dynamic_pointer_cast<IIR_EnumerationLiteral>(retval);
 }
 
 ostream&
 IIRBase_EnumerationLiteralList::print(ostream& os) {
-  IIR_EnumerationLiteral *literal = NULL;
+  IIR_EnumerationLiteralRef literal = NULL;
     
   os << "(";
     
-  literal = dynamic_cast<IIR_EnumerationLiteral *>(first());
-  while (literal != NULL) {
+  literal = my_dynamic_pointer_cast<IIR_EnumerationLiteral>(first());
+  while (literal != nullptr) {
     literal->print(os);
-    literal = dynamic_cast<IIR_EnumerationLiteral *>(successor(literal));
+    literal = my_dynamic_pointer_cast<IIR_EnumerationLiteral>(successor(literal));
     if (literal != NULL) {
       os << ", ";
     }
@@ -99,15 +98,15 @@ IIRBase_EnumerationLiteralList::print(ostream& os) {
 
 void 
 IIRBase_EnumerationLiteralList::publish_vhdl(ostream &vhdl_out) {
-  IIRBase_EnumerationLiteral *literal = NULL;
+  IIRBase_EnumerationLiteralRef literal;
     
   vhdl_out << "(";
     
-  literal = dynamic_cast<IIRBase_EnumerationLiteral *>(first());
-  while (literal != NULL) {
+  literal = my_dynamic_pointer_cast<IIRBase_EnumerationLiteral>(first());
+  while (literal != nullptr) {
     literal->publish_vhdl(vhdl_out);
-    literal = dynamic_cast<IIRBase_EnumerationLiteral *>(successor(literal));
-    if (literal != NULL) {
+    literal = my_dynamic_pointer_cast<IIRBase_EnumerationLiteral>(successor(literal));
+    if (literal != nullptr) {
       vhdl_out << ", ";
     }
   }

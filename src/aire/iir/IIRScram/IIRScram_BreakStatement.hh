@@ -44,8 +44,8 @@ public:
   void _type_check();
 
   // Help Functions
-  IIRScram_BreakList    *_get_break_list();
-  IIRScram              *_get_condition();
+  IIRScram_BreakListRef _get_break_list();
+  IIRScramRef           _get_condition();
 protected:
 private:
 

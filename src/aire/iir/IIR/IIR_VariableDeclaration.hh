@@ -36,8 +36,8 @@ class IIR_VariableDeclaration : public virtual IIR_ObjectDeclaration{
 public:
   virtual ~IIR_VariableDeclaration() {}
     
-  virtual void set_value(IIR* value) = 0;
-  virtual IIR* get_value() = 0;
+  virtual void set_value(IIRRef value) = 0;
+  virtual IIRRef get_value() = 0;
 };
 
 typedef refcount<IIR_VariableDeclaration> IIR_VariableDeclarationRef;

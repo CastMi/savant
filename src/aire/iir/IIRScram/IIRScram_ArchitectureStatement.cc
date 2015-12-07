@@ -35,29 +35,29 @@ IIRScram_ArchitectureStatement::~IIRScram_ArchitectureStatement() {}
 void 
 IIRScram_ArchitectureStatement::_resolve_guard_signal( symbol_table *sym_tab ){
   // Lookup all signals named "guard"
-  IIRScram_SignalDeclaration            *guard_signal = NULL;
-  savant::set<IIRScram_Declaration*>     *guard_decls = NULL;
+  IIRScram_SignalDeclarationRef         guard_signal;
+  savant::set<IIRScram_DeclarationRef>  guard_decls;
   constraint_functor                    *functor = NULL;
 
-  guard_decls = new savant::set<IIRScram_Declaration*>(*(sym_tab->find_set( "guard" )->convert_set<IIRScram_Declaration*>()));
-  if( guard_decls == NULL ){
+  guard_decls = sym_tab->find_set( "guard" ).convert_set<IIRScram_Declaration>();
+  if( guard_decls.size() == 0 ){
     ostringstream err;
     err << "No signal |guard|, implicit or explicit, has been declared.";
     report_error( this, err.str() );
-    goto finish;
+    return;
   }
   
   functor = new is_signal_functor();
-  guard_decls->reduce_set( functor );
+  guard_decls.reduce_set( functor );
   delete functor;
-  ASSERT( guard_decls->size() == 1 || guard_decls->size() == 0 );
+  ASSERT( guard_decls.size() == 1 || guard_decls.size() == 0 );
 
-  if( guard_decls->size() == 1 ){
+  if( guard_decls.size() == 1 ){
     // Get rid of any that aren't boolean typed.
-    guard_signal = dynamic_cast<IIRScram_SignalDeclaration *>(*(guard_decls->begin()));
+    guard_signal = my_dynamic_pointer_cast<IIRScram_SignalDeclaration>(*(guard_decls.begin()));
     if( guard_signal->_get_subtype() != 
-        dynamic_cast<IIRScram_EnumerationSubtypeDefinition *>(_get_design_file()->get_standard_package()->get_boolean_type())){
-      guard_signal = NULL;
+        my_dynamic_pointer_cast<IIRScram_EnumerationSubtypeDefinition>(_get_design_file()->get_standard_package()->get_boolean_type())){
+      guard_signal = IIRScram_SignalDeclarationRef();
     }
   }
 
@@ -69,7 +69,4 @@ IIRScram_ArchitectureStatement::_resolve_guard_signal( symbol_table *sym_tab ){
   else{
     set_guard_signal( guard_signal );
   }
-
- finish:
-  delete guard_decls;
 }

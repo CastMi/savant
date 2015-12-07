@@ -32,8 +32,8 @@
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
 
+REF_FORWARD_DECL(IIR_DesignatorList);
 class IIR_TypeDefinition;
-class IIR_DesignatorList;
 
 class IIR_DisconnectSpecification : public virtual IIR_Declaration{
 
@@ -41,14 +41,14 @@ public:
   virtual ~IIR_DisconnectSpecification() {}
     
   // List accessor(s)
-  virtual void set_guarded_signal_list(IIR_DesignatorList *) = 0;
-  virtual IIR_DesignatorList *get_guarded_signal_list() = 0;
+  virtual void set_guarded_signal_list(IIR_DesignatorListRef ) = 0;
+  virtual IIR_DesignatorListRef get_guarded_signal_list() = 0;
 
-  virtual void set_type_mark( IIR_TypeDefinition *type_definition ) = 0;
-  virtual IIR_TypeDefinition *get_type_mark() = 0;
+  virtual void set_type_mark( IIR_TypeDefinitionRef type_definition ) = 0;
+  virtual IIR_TypeDefinitionRef get_type_mark() = 0;
 
-  virtual void set_time_expression( IIR* time_expression) = 0;
-  virtual IIR *get_time_expression() = 0;
+  virtual void set_time_expression( IIRRef time_expression) = 0;
+  virtual IIRRef get_time_expression() = 0;
 };
 
 typedef refcount<IIR_DisconnectSpecification> IIR_DisconnectSpecificationRef;

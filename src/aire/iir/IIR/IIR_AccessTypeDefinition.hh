@@ -38,9 +38,9 @@ class IIR_AccessTypeDefinition : public virtual IIR_TypeDefinition{
 public:
   virtual ~IIR_AccessTypeDefinition() {}
 
-  virtual void set_designated_type( IIR_TypeDefinition *designated_type) = 0;
+  virtual void set_designated_type( IIR_TypeDefinitionRef designated_type) = 0;
 
-  virtual IIR_TypeDefinition *get_designated_type() = 0;
+  virtual IIR_TypeDefinitionRef get_designated_type() = 0;
 };
 
 typedef refcount<IIR_AccessTypeDefinition> IIR_AccessTypeDefinitionRef;

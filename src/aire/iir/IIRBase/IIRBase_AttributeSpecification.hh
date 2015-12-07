@@ -33,34 +33,34 @@
 #include "IIRBase_Declaration.hh"
 #include "IIR_AttributeSpecification.hh"
 
+//REF_FORWARD_DECL(IIR_DesignatorList);
 class IIR_Identifier;
-class IIR_DesignatorList;
 class IIR_Declaration;
 
 class IIRBase_AttributeSpecification : public virtual IIRBase_Declaration, public virtual IIR_AttributeSpecification{
 
 public:
   // List Accessor(s)
-  IIR_DesignatorList *get_entity_name_list();
-  void               set_entity_name_list(IIR_DesignatorList *new_entity_name_list);
+  IIR_DesignatorListRef get_entity_name_list();
+  void               set_entity_name_list(IIR_DesignatorListRef new_entity_name_list);
 
-  IIR_Kind get_kind() const {return IIR_ATTRIBUTE_SPECIFICATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_AttributeSpecification";}
+  IIR_Kind get_kind() const override { return IIR_ATTRIBUTE_SPECIFICATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_AttributeSpecification"); }
 
-  void set_value(IIR*);
-  IIR *get_value();
+  void set_value(IIRRef);
+  IIRRef get_value();
 
-  void set_entity_class(IIR_Identifier *);
-  IIR_Identifier *get_entity_class();
+  void set_entity_class(IIR_IdentifierRef );
+  IIR_IdentifierRef get_entity_class();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   /** This holds the declaration of the attribute that is being
       specified... */
-  void set_declaration( IIR_Declaration *);
-  IIR_Declaration *get_declaration();
+  void set_declaration( IIR_DeclarationRef );
+  IIR_DeclarationRef get_declaration();
 
-  IIR_TypeDefinition *get_subtype();
+  IIR_TypeDefinitionRef get_subtype();
 
   declaration_type get_declaration_type();
   void publish_vhdl_decl(ostream &);
@@ -70,11 +70,11 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DesignatorList *entity_name_list;
+  IIR_DesignatorListRef entity_name_list;
 
-  IIR *value;
-  IIR_Identifier *entity_class;
-  IIR_Declaration *attribute_declaration;
+  IIRRef value;
+  IIR_IdentifierRef entity_class;
+  IIR_DeclarationRef attribute_declaration;
 };
 
 typedef refcount<IIRBase_AttributeSpecification> IIRBase_AttributeSpecificationRef;

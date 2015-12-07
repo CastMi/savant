@@ -25,22 +25,18 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
 #include "IIRBase_Expression.hh"
 #include "IIR_TypeDefinition.hh"
 #include "savant.hh"
 
 IIRBase_Expression::IIRBase_Expression(){}
-
 IIRBase_Expression::~IIRBase_Expression(){}
 
-IIR *
-IIRBase_Expression::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_Expression::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_Expression *new_node =
-    dynamic_cast<IIRBase_Expression *>(IIRBase::convert_tree(factory));
+  IIRBase_ExpressionRef new_node =
+    my_dynamic_pointer_cast<IIRBase_Expression>(IIRBase::convert_tree(factory));
 
   return new_node;
 }

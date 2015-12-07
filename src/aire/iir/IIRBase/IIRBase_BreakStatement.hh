@@ -34,21 +34,19 @@ class IIRBase_BreakStatement : public virtual IIR_BreakStatement, public virtual
 
 public:
   // List Accessor(s)
-  IIR_BreakList *get_break_list();
-  void set_break_list(IIR_BreakList  *);
+  IIR_BreakListRef get_break_list();
+  void set_break_list(IIR_BreakListRef );
 
   /** Returns the IIR_Kind of this node. */
-  IIR_Kind get_kind() const {
-    return IIR_BREAK_STATEMENT;
-  }
+  IIR_Kind get_kind() const override { return IIR_BREAK_STATEMENT; }
 
-  const IIR_Char *get_kind_text() const { return "IIR_BreakStatement"; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_BreakStatement"); }
 
   /** For the execution of a Break Statement, the condition, if present, is
       first evaluated. A break is indicated if the value of the condition
       is TRUE or if there is no condition. [ LRM $ 8.14 - 565 ]. */
-  void set_condition(IIR* condition);
-  IIR* get_condition();
+  void   set_condition(IIRRef condition);
+  IIRRef get_condition();
 
   IIR_Boolean is_above_attribute_found();  
 
@@ -56,7 +54,7 @@ public:
       break element the quantity denoted by the quantity name is the "break
       quantity" of the break element. [ LRM $ 8.14 -560 ]. */  
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
  
   void publish_vhdl(ostream &);
 protected:
@@ -65,9 +63,9 @@ protected:
   
 private:
   // List Variable(s)
-  IIR_BreakList *break_list;
+  IIR_BreakListRef break_list;
 
-  IIR* condition;
+  IIRRef condition;
 
 };
 

@@ -38,12 +38,12 @@ class IIR_Designator;
 class IIRBase_DesignatorList : public virtual IIRBase_List, public virtual IIR_DesignatorList{
 
 public:
-  IIR_Kind get_kind() const {return IIR_DESIGNATOR_LIST;}
-  const IIR_Char *get_kind_text() const {return "IIR_DesignatorList";}
+  IIR_Kind get_kind() const override { return IIR_DESIGNATOR_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_DesignatorList"); }
 
-  IIR *first();
-  IIR *successor(IIR_Designator *);
-  void append( IIR_Designator * );
+  IIRRef first();
+  IIRRef successor(IIR_DesignatorRef );
+  void append( IIR_DesignatorRef );
 
   IIR_Boolean is_above_attribute_found();
   void publish_vhdl(ostream &);

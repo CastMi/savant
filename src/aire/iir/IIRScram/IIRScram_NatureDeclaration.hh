@@ -42,7 +42,7 @@ public:
   
   /** Returns the type of declaration - nature in this case */ 
 
-  IIRScram_TypeDefinition *_get_rval();
+  IIRScram_TypeDefinitionRef _get_rval();
 
   /** Returns False if it is not array nature */
   //currently incomplete. until array natures are implemented.
@@ -50,8 +50,8 @@ public:
   void _type_check();
 
   // Wrappers for IIRBase functions
-  IIRScram_AttributeSpecificationList * _get_attributes();
-  IIRScram_NatureDefinition *           _get_nature();
+  IIRScram_AttributeSpecificationListRef  _get_attributes();
+  IIRScram_NatureDefinitionRef            _get_nature();
 
 protected:
 private:

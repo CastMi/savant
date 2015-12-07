@@ -28,23 +28,23 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
+#include "savant.hh"
 #include "IIR_LibraryUnit.hh"
 
-class IIR_PackageBodyDeclaration;
-class IIR_DeclarationList;
+REF_FORWARD_DECL(IIR_PackageBodyDeclaration);
+REF_FORWARD_DECL(IIR_DeclarationList);
 
-class IIR_PackageDeclaration : public virtual IIR_LibraryUnit{
+class IIR_PackageDeclaration : public virtual IIR_LibraryUnit {
 
 public:
   virtual ~IIR_PackageDeclaration() {}
     
   // List accessor(s)
-  virtual IIR_DeclarationList           *get_package_declarative_part() = 0;
-  virtual void                          set_package_declarative_part(IIR_DeclarationList *) = 0;
+  virtual IIR_DeclarationListRef get_package_declarative_part() = 0;
+  virtual void                   set_package_declarative_part(IIR_DeclarationListRef ) = 0;
 
-  virtual IIR_PackageBodyDeclaration *get_package_body() = 0;
-  virtual void set_package_body( IIR_PackageBodyDeclaration * ) = 0;
+  virtual IIR_PackageBodyDeclarationRef get_package_body() = 0;
+  virtual void set_package_body( IIR_PackageBodyDeclarationRef ) = 0;
 };
 
 typedef refcount<IIR_PackageDeclaration> IIR_PackageDeclarationRef;

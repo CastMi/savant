@@ -36,10 +36,10 @@ class IIR_VariableAssignmentStatement : public virtual IIR_SequentialStatement{
 public:
   virtual ~IIR_VariableAssignmentStatement() {}
     
-  virtual void set_target(IIR* target) = 0;
-  virtual IIR* get_target() = 0;
-  virtual void set_expression(IIR* target) = 0;
-  virtual IIR* get_expression() = 0;
+  virtual void set_target(IIRRef target) = 0;
+  virtual IIRRef get_target() = 0;
+  virtual void set_expression(IIRRef target) = 0;
+  virtual IIRRef get_expression() = 0;
 };
 
 typedef refcount<IIR_VariableAssignmentStatement> IIR_VariableAssignmentStatementRef;

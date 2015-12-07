@@ -30,8 +30,9 @@
 
 #include "savant_config.hh"
 #include "IIR_ConfigurationItem.hh"
-class IIR_DeclarationList;
-class IIR_ConfigurationItemList;
+
+REF_FORWARD_DECL(IIR_DeclarationList);
+REF_FORWARD_DECL(IIR_ConfigurationItemList);
 
 class IIR_BlockConfiguration : public virtual IIR_ConfigurationItem{
 
@@ -39,13 +40,13 @@ public:
   virtual ~IIR_BlockConfiguration() {}
     
   // List accessor(s)
-  virtual IIR_DeclarationList           *get_use_clause_list() = 0;
-  virtual IIR_ConfigurationItemList     *get_configuration_item_list() = 0;
-  virtual void                          set_use_clause_list(IIR_DeclarationList *) = 0;
-  virtual void                          set_configuration_item_list(IIR_ConfigurationItemList *) = 0;
+  virtual IIR_DeclarationListRef        get_use_clause_list() = 0;
+  virtual IIR_ConfigurationItemListRef  get_configuration_item_list() = 0;
+  virtual void                          set_use_clause_list( IIR_DeclarationListRef ) = 0;
+  virtual void                          set_configuration_item_list( IIR_ConfigurationItemListRef ) = 0;
 
-  virtual void set_block_specification( IIR *block_specification ) = 0;
-  virtual IIR* get_block_specification() = 0;
+  virtual void set_block_specification( IIRRef block_specification ) = 0;
+  virtual IIRRef get_block_specification() = 0;
 };
 
 typedef refcount<IIR_BlockConfiguration> IIR_BlockConfigurationRef;

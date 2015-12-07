@@ -30,18 +30,19 @@
 
 #include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
-class IIR_SequentialStatementList;
+
+REF_FORWARD_DECL(IIR_SequentialStatementList);
 
 class IIR_WhileLoopStatement : public virtual IIR_SequentialStatement{
 public:
   virtual ~IIR_WhileLoopStatement() {}    
 
   // List accessor(s)
-  virtual IIR_SequentialStatementList   *get_sequence_of_statements() = 0;
-  virtual void                          set_sequence_of_statements(IIR_SequentialStatementList *) = 0;
+  virtual IIR_SequentialStatementListRef get_sequence_of_statements() = 0;
+  virtual void                           set_sequence_of_statements( IIR_SequentialStatementListRef ) = 0;
 
-  virtual void                          set_while_condition( IIR *while_condition) = 0;
-  virtual IIR                           *get_while_condition() = 0;
+  virtual void          set_while_condition( IIRRef while_condition ) = 0;
+  virtual IIRRef        get_while_condition() = 0;
 };
 
 typedef refcount<IIR_WhileLoopStatement> IIR_WhileLoopStatementRef;

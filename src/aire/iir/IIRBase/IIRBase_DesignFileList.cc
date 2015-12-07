@@ -28,52 +28,51 @@
 #include "IIR_DesignFile.hh"
 #include "IIRBase_DesignFileList.hh"
 
-IIRBase_DesignFileList::IIRBase_DesignFileList(){}
+IIRBase_DesignFileList::IIRBase_DesignFileList() {}
+IIRBase_DesignFileList::~IIRBase_DesignFileList() {}
 
-IIRBase_DesignFileList::~IIRBase_DesignFileList(){}
-
-IIR *
-IIRBase_DesignFileList::successor( IIR_DesignFile *to_succeed ){
-  if( to_succeed != NULL ){
+IIRRef
+IIRBase_DesignFileList::successor( IIR_DesignFileRef to_succeed ){
+  if( to_succeed != nullptr ){
     ASSERT( to_succeed->get_kind() == IIR_DESIGN_FILE );
   }
-  IIR *retval = IIR_List::successor( (IIR *)to_succeed );
-  if( retval != NULL ){
+  IIRRef retval = IIR_List::successor( to_succeed );
+  if( retval != nullptr ){
     ASSERT( retval->get_kind() == IIR_DESIGN_FILE ); 
   }
   return retval;
 }
 
-IIR *
-IIRBase_DesignFileList::predecessor( IIR_DesignFile *to_precede ){
-  if( to_precede != NULL ){
+IIRRef
+IIRBase_DesignFileList::predecessor( IIR_DesignFileRef to_precede ){
+  if( to_precede != nullptr ){
     ASSERT( to_precede->get_kind() == IIR_DESIGN_FILE );
   }
-  IIR *retval = IIR_List::predecessor( (IIR *)to_precede );
-  if( retval != NULL ){
+  IIRRef retval = IIR_List::predecessor( to_precede );
+  if( retval != nullptr ){
     ASSERT( retval->get_kind() == IIR_DESIGN_FILE );
   }
   return retval;
 }
 
-IIR *
+IIRRef
 IIRBase_DesignFileList::first( ){
-  IIR *retval = IIR_List::first( );
-  if( retval != NULL ){
+  IIRRef retval = IIR_List::first( );
+  if( retval != nullptr ){
     ASSERT( retval->get_kind() == IIR_DESIGN_FILE );
   }
   return retval;
 }
 
 void 
-IIRBase_DesignFileList::append( IIR_DesignFile *to_append ){
+IIRBase_DesignFileList::append( IIR_DesignFileRef to_append ){
   ASSERT( to_append->get_kind() == IIR_DESIGN_FILE );
-  IIR_List::append( (IIR *)to_append );
+  IIR_List::append( to_append );
 }
 
 void
-IIRBase_DesignFileList::prepend( IIR_DesignFile *to_prepend ){
+IIRBase_DesignFileList::prepend( IIR_DesignFileRef to_prepend ){
   ASSERT( to_prepend->get_kind() == IIR_DESIGN_FILE );
-  IIR_List::prepend( (IIR *)to_prepend );
+  IIR_List::prepend( to_prepend );
 }
 

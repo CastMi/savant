@@ -36,19 +36,19 @@
 class IIRBase_ScalarTypeDefinition : public virtual IIRBase_TypeDefinition, public virtual IIR_ScalarTypeDefinition{
 
 public:
-  void                  set_left( IIR* left);
-  IIR*                  get_left();
-  void                  set_direction( IIR* direction);
-  IIR*                  get_direction();
-  void                  set_right(IIR* right);
-  IIR*                  get_right();
+  void                  set_left( IIRRef left);
+  IIRRef                  get_left();
+  void                  set_direction( IIRRef direction);
+  IIRRef                  get_direction();
+  void                  set_right(IIRRef right);
+  IIRRef                  get_right();
 
-  IIR*                  get_base_type_left();
-  IIR*                  get_base_type_direction();
-  IIR*                  get_base_type_right();
-  IIR_TypeDefinition*   get_resolved_base_type();
+  IIRRef                  get_base_type_left();
+  IIRRef                  get_base_type_direction();
+  IIRRef                  get_base_type_right();
+  IIR_TypeDefinitionRef   get_resolved_base_type();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_ascending_range();
   IIR_Boolean is_scalar_type(){ return TRUE; }
@@ -70,9 +70,9 @@ protected:
     
 private:
   
-  IIR* left;
-  IIR* direction;
-  IIR* right;
+  IIRRef left;
+  IIRRef direction;
+  IIRRef right;
 
 };
 

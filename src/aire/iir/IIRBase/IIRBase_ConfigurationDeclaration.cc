@@ -25,63 +25,54 @@
 #include "IIR_TextLiteral.hh"
 #include "IIRBase_ConfigurationDeclaration.hh"
 
-IIRBase_ConfigurationDeclaration::IIRBase_ConfigurationDeclaration() :
-  configuration_declarative_part(0),
-  entity(0){}
+IIRBase_ConfigurationDeclaration::IIRBase_ConfigurationDeclaration() {}
 
-IIRBase_ConfigurationDeclaration::~IIRBase_ConfigurationDeclaration(){
-  delete configuration_declarative_part;
-  configuration_declarative_part = 0;
-  // Not entity
-}
+IIRBase_ConfigurationDeclaration::~IIRBase_ConfigurationDeclaration() {}
 
 void 
-IIRBase_ConfigurationDeclaration::set_block_configuration(IIR_BlockConfiguration *block_configuration ){
+IIRBase_ConfigurationDeclaration::set_block_configuration(IIR_BlockConfigurationRef block_configuration ){
   this->block_configuration = block_configuration;
 }
 
-IIR_BlockConfiguration *
+IIR_BlockConfigurationRef
 IIRBase_ConfigurationDeclaration::get_block_configuration(){
   return block_configuration;
 }
 
 void 
-IIRBase_ConfigurationDeclaration::set_entity( IIR_EntityDeclaration *entity ){
+IIRBase_ConfigurationDeclaration::set_entity( IIR_EntityDeclarationRef entity ){
   this->entity = entity;
 }
 
-IIR_EntityDeclaration *
+IIR_EntityDeclarationRef
 IIRBase_ConfigurationDeclaration::get_entity(){
   return entity;
 }
 
 
 // List Accessor(s)
-IIR_DeclarationList *
+IIR_DeclarationListRef
 IIRBase_ConfigurationDeclaration::get_configuration_declarative_part() {
-  ASSERT(configuration_declarative_part != NULL);
+  ASSERT(configuration_declarative_part != nullptr);
   return configuration_declarative_part;
 }
 
 
 void
-IIRBase_ConfigurationDeclaration::set_configuration_declarative_part(IIR_DeclarationList *new_configuration_declarative_part) {
-  ASSERT(new_configuration_declarative_part != NULL);
-
-  delete configuration_declarative_part;
-
+IIRBase_ConfigurationDeclaration::set_configuration_declarative_part(IIR_DeclarationListRef new_configuration_declarative_part) {
+  ASSERT(new_configuration_declarative_part != nullptr);
   configuration_declarative_part = new_configuration_declarative_part;
 }
 
-IIR *
-IIRBase_ConfigurationDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ConfigurationDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ConfigurationDeclaration *new_node = dynamic_cast<IIRBase_ConfigurationDeclaration *>(IIRBase_LibraryUnit::convert_tree(factory));
+  IIRBase_ConfigurationDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_ConfigurationDeclaration>(IIRBase_LibraryUnit::convert_tree(factory));
 
   // Process the variables
-  new_node->configuration_declarative_part = dynamic_cast<IIR_DeclarationList *>(configuration_declarative_part->convert_tree(factory));
-  new_node->block_configuration = dynamic_cast<IIR_BlockConfiguration *>(convert_node(block_configuration, factory));
-  new_node->entity = dynamic_cast<IIR_EntityDeclaration *>(convert_node(entity, factory));
+  new_node->configuration_declarative_part = my_dynamic_pointer_cast<IIR_DeclarationList>(configuration_declarative_part->convert_tree(factory));
+  new_node->block_configuration = my_dynamic_pointer_cast<IIR_BlockConfiguration>(convert_node(block_configuration, factory));
+  new_node->entity = my_dynamic_pointer_cast<IIR_EntityDeclaration>(convert_node(entity, factory));
 
   return new_node;
 }
@@ -100,7 +91,7 @@ IIRBase_ConfigurationDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out << " of ";
   get_entity()->get_declarator()->publish_vhdl(vhdl_out);
   vhdl_out << " is\n";
-  dynamic_cast<IIRBase_DeclarationList *>(get_configuration_declarative_part())->publish_vhdl_decl(vhdl_out);
+  my_dynamic_pointer_cast<IIRBase_DeclarationList>(get_configuration_declarative_part())->publish_vhdl_decl(vhdl_out);
   get_block_configuration()->publish_vhdl(vhdl_out);
   vhdl_out << " end configuration ";
   get_declarator()->publish_vhdl(vhdl_out);

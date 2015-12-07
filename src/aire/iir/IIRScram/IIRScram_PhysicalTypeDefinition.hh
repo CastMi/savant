@@ -56,19 +56,19 @@ public:
   IIR_Boolean _is_iir_physical_type_definition() { return TRUE; }
 
   
-  virtual IIRScram_TypeDefinition *_get_new_subtype();
-  virtual IIRScram *_clone();
-  virtual void _clone( IIRScram * );
-  virtual IIRScram_TypeDefinition *_construct_new_subtype( IIRScram_Name *resolution_function,
-                                                           IIRScram_ScalarTypeDefinition *new_constraint);
+  virtual IIRScram_TypeDefinitionRef _get_new_subtype();
+  virtual IIRScramRef _clone();
+  virtual void _clone( IIRScramRef  );
+  virtual IIRScram_TypeDefinitionRef _construct_new_subtype( IIRScram_NameRef resolution_function,
+                                                           IIRScram_ScalarTypeDefinitionRef new_constraint);
 
-  void _set_resolution_function( IIRScram_FunctionDeclaration * );
+  void _set_resolution_function( IIRScram_FunctionDeclarationRef  );
 
   // Wrappers for IIRBase functions
-  IIRScram_UnitList *           _get_units();
-  IIRScram_PhysicalUnit *       _get_primary_unit();
+  IIRScram_UnitListRef            _get_units();
+  IIRScram_PhysicalUnitRef        _get_primary_unit();
 protected: 
-  void _build_implicit_operators( savant::set<IIRScram_Declaration*> * );
+  void _build_implicit_operators( savant::set<IIRScram_DeclarationRef> );
     
 private:
 };

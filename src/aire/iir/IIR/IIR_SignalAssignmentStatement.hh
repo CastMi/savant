@@ -31,22 +31,23 @@
 
 #include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
-class IIR_WaveformList;
+
+REF_FORWARD_DECL(IIR_WaveformList);
 
 class IIR_SignalAssignmentStatement : public virtual IIR_SequentialStatement{
 public:
   virtual ~IIR_SignalAssignmentStatement() {}    
 
   // List accessor(s)
-  virtual IIR_WaveformList      *get_waveform() = 0;
-  virtual void                  set_waveform(IIR_WaveformList *) = 0;
+  virtual IIR_WaveformListRef get_waveform() = 0;
+  virtual void                set_waveform( IIR_WaveformListRef ) = 0;
 
-  virtual void set_target(IIR* target) = 0;
-  virtual IIR* get_target() = 0;
-  virtual void set_delay_mechanism( IIR_DelayMechanism delay_mechanism) = 0;
+  virtual void set_target( IIRRef target ) = 0;
+  virtual IIRRef get_target() = 0;
+  virtual void set_delay_mechanism( IIR_DelayMechanism delay_mechanism ) = 0;
   virtual IIR_DelayMechanism get_delay_mechanism() = 0;
-  virtual void set_reject_time_expression( IIR* reject_time_expression) = 0;
-  virtual IIR* get_reject_time_expression() = 0;
+  virtual void set_reject_time_expression( IIRRef reject_time_expression ) = 0;
+  virtual IIRRef get_reject_time_expression() = 0;
 };
 
 typedef refcount<IIR_SignalAssignmentStatement> IIR_SignalAssignmentStatementRef;

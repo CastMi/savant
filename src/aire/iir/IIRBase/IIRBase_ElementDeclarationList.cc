@@ -33,22 +33,22 @@ IIRBase_ElementDeclarationList::~IIRBase_ElementDeclarationList(){}
 
 
 void 
-IIRBase_ElementDeclarationList::append( IIR_ElementDeclaration *to_append ){
+IIRBase_ElementDeclarationList::append( IIR_ElementDeclarationRef to_append ){
   IIRBase_List::append( to_append );
 }
 
-IIR *
-IIRBase_ElementDeclarationList::successor( IIR_ElementDeclaration *succeed_me ){
+IIRRef
+IIRBase_ElementDeclarationList::successor( IIR_ElementDeclarationRef succeed_me ){
   return IIRBase_List::successor( succeed_me );
 }
 
-IIR *
+IIRRef
 IIRBase_ElementDeclarationList::first(){
   return IIRBase_List::first();
 }
 
 
-IIR *
+IIRRef
 IIRBase_ElementDeclarationList::get_nth_element( int element ){
   return IIRBase_List::get_nth_element( element );
 }

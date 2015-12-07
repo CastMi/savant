@@ -47,7 +47,7 @@ public:
 
   
   // Wrappers for IIRBase functions
-  IIRScram_EntityClassEntryList *       _get_entity_class_entry_list();
+  IIRScram_EntityClassEntryListRef        _get_entity_class_entry_list();
 
 protected:
 private:

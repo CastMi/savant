@@ -49,13 +49,13 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  IIRScram_TypeDefinition *_get_subtype();
-  IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
+  IIRScram_TypeDefinitionRef _get_subtype();
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &, IIRScram_TypeDefinitionRef  );
 
    IIR_Boolean has_suffix(){ return TRUE; }
-  void _set_suffix( IIRScram *new_suffix ){ IIRBase_ReverseRangeAttribute::set_suffix( new_suffix ); }
+  void _set_suffix( IIRScramRef new_suffix ){ IIRBase_ReverseRangeAttribute::set_suffix( new_suffix ); }
 
-  IIRScram* _get_suffix();
+  IIRScramRef _get_suffix();
 
   IIR_Boolean _is_range_attribute(){ return TRUE; }
 
@@ -63,8 +63,8 @@ protected:
   void _resolve_suffix_special();
 
 private:
-  IIRScram_TypeDefinition *_get_prefix_rval();
-  IIRScram_ScalarTypeDefinition *_my_rval;
+  IIRScram_TypeDefinitionRef _get_prefix_rval();
+  IIRScram_ScalarTypeDefinitionRef _my_rval;
 
 };
 

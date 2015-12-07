@@ -34,11 +34,11 @@
 #include "IIRScram_ConcurrentStatement.hh"
 #include "IIRBase_ComponentInstantiationStatement.hh"
 
+REF_FORWARD_DECL(IIRScram_ConfigurationSpecification);
 class IIRScram_AssociationElement;
 class IIRScram_AssociationList;
 class IIRScram_ComponentDeclaration;
 class IIRScram_ComponentInstantiationStatement;
-class IIRScram_ConfigurationSpecification;
 class IIRScram_EntityDeclaration;
 class IIRScram_DeclarationList;
 class IIRScram_Label;
@@ -70,8 +70,8 @@ public:
   // to actually do the type checking for this statement.
   void _type_check_instantiate_statements(){ _type_check(); }
 
-  IIRScram_AssociationList *_get_generic_map_aspect();  
-  IIRScram_TypeDefinition *_get_port_type( int );
+  IIRScram_AssociationListRef _get_generic_map_aspect();  
+  IIRScram_TypeDefinitionRef _get_port_type( int );
 
   /** These methods provide a place for the parser to store what type
       of declaration the semantic routines should be looking for... */
@@ -83,19 +83,19 @@ public:
 			 char*);
 #endif
 
-  IIRScram_Label                *_find_instantiate_label( IIRScram_SimpleName * );
+  IIRScram_LabelRef _find_instantiate_label( IIRScram_SimpleNameRef  );
 
-  IIRScram                      *_get_instantiated_unit();
-  IIRScram_AssociationList      *_get_port_map_aspect();
-  IIRScram                      *_get_configuration();
+  IIRRef                 _get_instantiated_unit();
+  IIRScram_AssociationListRef _get_port_map_aspect();
+  IIRScramRef                 _get_configuration();
 protected:
 
   // Methods used to _transmute()
-  IIRScram_ComponentDeclaration *
-  _build_implicit_component_declaration(IIRScram_EntityDeclaration *, const string &componentName );
+  IIRScram_ComponentDeclarationRef 
+  _build_implicit_component_declaration(IIRScram_EntityDeclarationRef , const string &componentName );
 
-  IIRScram_ConfigurationSpecification *
-  _build_implicit_configuration_specification(IIRScram_LibraryUnit *, IIRScram_ComponentDeclaration *);
+  IIRScram_ConfigurationSpecificationRef 
+  _build_implicit_configuration_specification(IIRScram_LibraryUnitRef , IIRScram_ComponentDeclarationRef );
 
 
 private:
@@ -106,10 +106,10 @@ private:
 
   /** Returns the default entity/architecture if there is one, by the rules
       of 5.2.2 in the '93 LRM.  */
-  IIRScram_ConfigurationSpecification *_get_default_binding_indication();
+  IIRScram_ConfigurationSpecificationRef _get_default_binding_indication();
   /** Does the actual building for _get_default_binding_indication() */
-  IIRScram_ConfigurationSpecification *_build_default_entity_aspect( IIRScram *component_name,
-                                                                     IIRScram_ArchitectureDeclaration *arch);
+  IIRScram_ConfigurationSpecificationRef _build_default_entity_aspect( IIRScramRef component_name,
+                                                                     IIRScram_ArchitectureDeclarationRef arch);
 
   IIR_Kind my_instantiation_type;
 };

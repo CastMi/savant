@@ -22,38 +22,35 @@
 #include "IIRBase_Identifier.hh"
 #include "IIRBase_LTFAttribute.hh"
 #include "savant.hh"
+#include <cstring>
 
-IIRBase_LTFAttribute::IIRBase_LTFAttribute() {
-  set_num(NULL);
-  set_den(NULL);
-}
-
+IIRBase_LTFAttribute::IIRBase_LTFAttribute() {}
 IIRBase_LTFAttribute::~IIRBase_LTFAttribute() {}
 
 void
-IIRBase_LTFAttribute::set_num(IIR* numerator) {
+IIRBase_LTFAttribute::set_num(IIRRef numerator) {
   this->numerator = numerator;
 }
 
-IIR*
+IIRRef
 IIRBase_LTFAttribute::get_num() {
   return numerator;
 }
 
 void
-IIRBase_LTFAttribute::set_den(IIR *denominator) {
+IIRBase_LTFAttribute::set_den(IIRRef denominator) {
   this->denominator = denominator;
 }
 
-IIR*
+IIRRef
 IIRBase_LTFAttribute::get_den() {
   return denominator;
 }
 
-IIR *
-IIRBase_LTFAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_LTFAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_LTFAttribute *new_node = dynamic_cast<IIRBase_LTFAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_LTFAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_LTFAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->numerator = convert_node(numerator, factory);
@@ -62,10 +59,10 @@ IIRBase_LTFAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_LTFAttribute::build_attribute_name() {
-  const char *name = "ltf";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );
+   std::string name("ltf");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory() );
 }
 
 void

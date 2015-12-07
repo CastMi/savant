@@ -22,27 +22,25 @@
 #include "IIRBase_Identifier.hh"
 #include "IIRBase_RightOfAttribute.hh"
 #include "savant.hh"
+#include <cstring>
 
-IIRBase_RightOfAttribute::IIRBase_RightOfAttribute() {
-  set_suffix(NULL);
-}
-
+IIRBase_RightOfAttribute::IIRBase_RightOfAttribute() {}
 IIRBase_RightOfAttribute::~IIRBase_RightOfAttribute() {}
 
 void
-IIRBase_RightOfAttribute::set_suffix( IIR *suffix) {
+IIRBase_RightOfAttribute::set_suffix( IIRRef suffix) {
   my_suffix = suffix;
 }
 
-IIR *
+IIRRef
 IIRBase_RightOfAttribute::get_suffix() {
   return my_suffix;
 }
 
-IIR *
-IIRBase_RightOfAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_RightOfAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_RightOfAttribute *new_node = dynamic_cast<IIRBase_RightOfAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_RightOfAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_RightOfAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->my_suffix = convert_node(my_suffix, factory);
@@ -50,10 +48,10 @@ IIRBase_RightOfAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_RightOfAttribute::build_attribute_name() {
-  const char *name = "rightof";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("rightof");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 

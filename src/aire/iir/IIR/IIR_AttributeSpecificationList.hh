@@ -31,16 +31,16 @@
 #include "savant_config.hh"
 #include "IIR_List.hh"
 
-class IIR_AttributeSpecification;
+REF_FORWARD_DECL(IIR_AttributeSpecification);
 
-class IIR_AttributeSpecificationList : public virtual IIR_List{
+class IIR_AttributeSpecificationList : public virtual IIR_List {
 
 public:
   virtual ~IIR_AttributeSpecificationList() {}
 
-  virtual void append( IIR_AttributeSpecification * ) = 0;
-  virtual IIR_AttributeSpecification *successor( IIR_AttributeSpecification * ) = 0;
-  virtual IIR_AttributeSpecification *first() = 0;
+  virtual void append( IIR_AttributeSpecificationRef  ) = 0;
+  virtual IIR_AttributeSpecificationRef successor( IIR_AttributeSpecificationRef ) = 0;
+  virtual IIR_AttributeSpecificationRef first() = 0;
 };
 
 typedef refcount<IIR_AttributeSpecificationList> IIR_AttributeSpecificationListRef;

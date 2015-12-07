@@ -35,13 +35,14 @@
 #include "IIRScram_ConcurrentStatement.hh"
 #include "IIRBase_BlockStatement.hh"
 
+REF_FORWARD_DECL(IIRScram_SignalDeclaration);
+REF_FORWARD_DECL(IIRScram_DeclarationList);
 class IIRScram_AssociationElement;
 class IIRScram_AssociationList;
 class IIRScram_GenericList;
 class IIRScram_Label;
 class IIRScram_List;
 class IIRScram_Name;
-class IIRScram_SignalDeclaration;
 
 class IIRScram_BlockStatement : public virtual IIRScram_ConcurrentStatement, public virtual IIRBase_BlockStatement {
 
@@ -54,24 +55,24 @@ public:
 
   void _type_check();
 
-  IIRScram_SignalDeclaration            *_get_implicit_guard_signal();
-  IIRScram_List                         *_get_statement_list();
-  IIRScram_GenericList                  *_get_generic_list();
-  IIRScram                              *_get_guard_expression();
-  IIRScram_GenericList                  *_get_generic_clause();
-  IIRScram_PortList                     *_get_port_clause();
-  IIRScram_AssociationList              *_get_port_map_aspect();
-  IIRScram_DeclarationList              *_get_block_declarative_part();
-  IIRScram_ArchitectureStatementList    *_get_block_statement_part();
+  IIRScram_SignalDeclarationRef            _get_implicit_guard_signal();
+  IIRScram_ListRef                         _get_statement_list();
+  IIRScram_GenericListRef                  _get_generic_list();
+  IIRScramRef                              _get_guard_expression();
+  IIRScram_GenericListRef                  _get_generic_clause();
+  IIRScram_PortListRef                     _get_port_clause();
+  IIRScram_AssociationListRef              _get_port_map_aspect();
+  IIRScram_DeclarationListRef              _get_block_declarative_part();
+  IIRScram_ArchitectureStatementListRef    _get_block_statement_part();
 
-  IIRScram_AssociationList *_get_generic_map_aspect();
+  IIRScram_AssociationListRef _get_generic_map_aspect();
 
   void _make_interface_visible(symbol_table *sym_tab );
   void _type_check_instantiate_statements();
 
 protected:    
 private:
-  IIRScram_SignalDeclaration *my_implicit_guard_signal;
+  IIRScram_SignalDeclarationRef my_implicit_guard_signal;
 };
 
 typedef refcount<IIRScram_BlockStatement> IIRScram_BlockStatementRef;

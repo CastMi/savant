@@ -55,17 +55,17 @@ public:
 
 
   // Methods for semantic checking
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0 );
-  IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition*> *context_set );
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0 );
+  IIRScramRef _semantic_transform( savant::set<IIRScram_TypeDefinitionRef> context_set );
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef );
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
   IIR_Boolean _is_readable();
 
   // Helper functions
-  IIRScram *_get_value();
-  IIRScram *_get_time();
+  IIRScramRef _get_value();
+  IIRScramRef _get_time();
 protected:
 private:
 };

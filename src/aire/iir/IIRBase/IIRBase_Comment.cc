@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-2003 The University of Cincinnati.  
 // All rights reserved.
 
@@ -33,12 +32,11 @@ IIRBase_Comment::IIRBase_Comment(){
 }
 
 IIRBase_Comment::~IIRBase_Comment(){
-  delete text;
 }
 
-IIR_Char *
+std::string
 IIRBase_Comment::get_text(){
-  return text;
+  return std::string(text.get());
 }
 
 IIR_Int32 
@@ -49,18 +47,7 @@ IIRBase_Comment::get_text_length(){
 void 
 IIRBase_Comment::set_element( IIR_Int32 subscript, IIR_Char value ){
   _check_bounds( subscript );
-  text[ subscript ] = value;
-}
-
-IIR_Char& 
-IIRBase_Comment::operator[]( IIR_Int32 subscript ){
-  _check_bounds( subscript );
-  return text[ subscript ];
-}
-
-void 
-IIRBase_Comment::release(){
-  delete this;
+  text.get()[ subscript ] = value;
 }
 
 void 
@@ -74,18 +61,18 @@ IIRBase_Comment::_check_bounds( IIR_Int32 subscript ){
 }
 
 void
-IIRBase_Comment::set_text( IIR_Char *txt, IIR_Int32 text_len ){
+IIRBase_Comment::set_text( IIR_CharRef txt, IIR_Int32 text_len ){
   text = txt;
   text_length = text_len;
 }
 
-IIR *
-IIRBase_Comment::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_Comment::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_Comment *new_node = dynamic_cast<IIRBase_Comment *>(IIRBase_Literal::convert_tree(factory));
+  IIRBase_CommentRef new_node = my_dynamic_pointer_cast<IIRBase_Comment>(IIRBase_Literal::convert_tree(factory));
 
   // Process the variables
-  new_node->text = strdup(text);
+  new_node->text = text;
   new_node->text_length = text_length;
 
   return new_node;
@@ -93,9 +80,5 @@ IIRBase_Comment::convert_tree(plugin_class_factory *factory) {
 
 void 
 IIRBase_Comment::publish_vhdl(ostream &vhdl_out) {
-  IIR_Int32 i;
-  IIR_Int32 length = get_text_length();
-  for ( i=0; i < length; i++ ){
-    vhdl_out << this->operator[](i);
-  }
+    vhdl_out << this->get_text();
 }

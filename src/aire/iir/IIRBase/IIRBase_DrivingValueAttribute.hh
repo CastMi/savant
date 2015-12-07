@@ -36,12 +36,12 @@ class IIRBase_DrivingValueAttribute : public virtual IIRBase_Attribute,
 				      public virtual IIR_DrivingValueAttribute{
 
 public:
-  IIR_Kind get_kind() const {return IIR_DRIVING_VALUE_ATTRIBUTE;}
-  const IIR_Char *get_kind_text() const {return "IIR_DrivingValueAttribute";}
+  IIR_Kind get_kind() const override { return IIR_DRIVING_VALUE_ATTRIBUTE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_DrivingValueAttribute"); }
 
   IIR_Boolean is_function_attribute(){ return TRUE; }
 
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
   void publish_vhdl(ostream &);
 protected:
   IIRBase_DrivingValueAttribute();

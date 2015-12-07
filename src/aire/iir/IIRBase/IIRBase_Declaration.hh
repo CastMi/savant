@@ -24,18 +24,19 @@
 #include "savant_config.hh"
 #include "IIRBase.hh"
 #include "IIR_Declaration.hh"
+#include "set.hh"
 
-class IIRBase_Declaration : public virtual IIRBase, public virtual IIR_Declaration{
+class IIRBase_Declaration : public virtual IIRBase, public virtual IIR_Declaration {
 public:
-  void set_declarator( IIR_TextLiteral *identifier );
-  IIR_TextLiteral *get_declarator();
+  void set_declarator( IIR_TextLiteralRef identifier );
+  IIR_TextLiteralRef get_declarator();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   /** These methods are referring to the region that this declaration is
       IN. */
-  IIR *get_declarative_region();
-  void set_declarative_region( IIR * );
+  IIRRef get_declarative_region();
+  void set_declarative_region( IIRRef );
 
   IIR_Boolean contains_body(){ return FALSE; }
 
@@ -72,21 +73,22 @@ public:
   void set_is_implicit( IIR_Boolean new_flag ){ implicit_flag = new_flag; }
   IIR_Boolean is_implicit_declaration(){ return implicit_flag; }
 
-  IIR_TextLiteral *get_prefix_string();
+  IIR_TextLiteralRef get_prefix_string();
 
   declaration_type get_declaration_type();
   
   /** This method looks in the declaration's declarative region for the
       declaration named by "look_for" */
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * ){
-    return NULL;
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef  ){
+     //FIXME: possible bug
+    return savant::set<IIR_DeclarationRef>();
   }
 
   /** This method looks in the declaration's declarative region for the
       declaration named by "look_for". */
-  savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral *){
-    _report_undefined_fn("find_declarations( IIR_TextLiteral *)");
-    return NULL;
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_TextLiteralRef ){
+    _report_undefined_fn("find_declarations( IIR_TextLiteralRef )");
+    return savant::set<IIR_DeclarationRef>();
   }
 
   ostream & print( ostream & );
@@ -94,23 +96,23 @@ public:
   /** Since we can now have implicit declarations due to attributes, we
       need to be able to tell if THIS declaration is the result of an
       attribute. */
-  IIR_Attribute *get_attribute_name();
-  void set_attribute_name( IIR_Attribute * );
+  IIR_AttributeRef get_attribute_name();
+  void set_attribute_name( IIR_AttributeRef  );
 
-  IIR_Declaration *get_prefix_declaration() { return this; }
+  IIR_DeclarationRef get_prefix_declaration() final;
   virtual void publish_vhdl(ostream &);
   virtual void publish_vhdl_declarator_with_colon(ostream &);
 protected:
   IIRBase_Declaration();
   virtual ~IIRBase_Declaration() = 0;
     
-  IIR                   *declarative_region;
+  IIRRef               declarative_region;
 private:
-  IIR_Boolean           implicit_flag;
-  IIR_Boolean           visible_flag;
-  IIR_TextLiteral       *declarator;
+  IIR_Boolean          implicit_flag;
+  IIR_Boolean          visible_flag;
+  IIR_TextLiteralRef   declarator;
 
-  IIR_Attribute         *attribute_name;
+  IIR_AttributeRef     attribute_name;
 
 };
 

@@ -36,15 +36,15 @@
 class IIRBase_FileDeclaration : public virtual IIRBase_ObjectDeclaration, public virtual IIR_FileDeclaration{
 
 public:
-  IIR_Kind get_kind() const {return IIR_FILE_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_FileDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_FILE_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_FileDeclaration"); }
 
-  void set_file_open_expression(IIR* file_open_expression);
-  IIR* get_file_open_expression();
-  void set_file_logical_name(IIR* file_logical_name);
-  IIR* get_file_logical_name();
+  void set_file_open_expression(IIRRef file_open_expression);
+  IIRRef get_file_open_expression();
+  void set_file_logical_name(IIRRef file_logical_name);
+  IIRRef get_file_logical_name();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
   
   declaration_type get_declaration_type();
 
@@ -55,8 +55,8 @@ protected:
   virtual ~IIRBase_FileDeclaration() = 0;
     
 private:
-  IIR* file_open_expression;
-  IIR* file_logical_name;
+  IIRRef file_open_expression;
+  IIRRef file_logical_name;
 };
 
 typedef refcount<IIRBase_FileDeclaration> IIRBase_FileDeclarationRef;

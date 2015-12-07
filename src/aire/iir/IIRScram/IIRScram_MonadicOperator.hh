@@ -47,18 +47,18 @@ class IIRScram_MonadicOperator : public virtual IIRScram_Operator,
 public:
   IIR_Boolean _is_readable();
 
-  virtual IIRScram *_rval_to_decl( IIRScram_TypeDefinition *my_rval );
+  virtual IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef my_rval );
 
-  void _build_generic_parameter_set( savant::set<IIRScram_Declaration*> *);
-  IIRScram *_clone();
+  void _build_generic_parameter_set( savant::set<IIRScram_DeclarationRef> );
+  IIRScramRef _clone();
 
 
-  IIRScram_SubprogramDeclaration *_get_implementation();
-  IIRScram *_get_operand();
+  IIRScram_SubprogramDeclarationRef _get_implementation();
+  IIRScramRef _get_operand();
   
 protected:
   IIR_Int32 _get_num_args(){ return 1; }  
-  IIRScram_AssociationList *_build_argument_list();
+  IIRScram_AssociationListRef _build_argument_list();
 
   const string _get_function_name() const;
 

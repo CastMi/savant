@@ -41,8 +41,8 @@ public:
   void _type_check();
 
   // Helper functions
-  IIRScram *_get_value();
-  void set_value(IIRScram *);
+  IIRScramRef _get_value();
+  void set_value(IIRScramRef );
 
 protected:
   double ATOL;

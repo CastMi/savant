@@ -50,15 +50,15 @@ IIRBase_IntegerLiteral32::set_value( IIR_Int32 v ){
   val = v;
 }
 
-IIR *
-IIRBase_IntegerLiteral32::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_IntegerLiteral32::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_IntegerLiteral32 *new_node = dynamic_cast<IIRBase_IntegerLiteral32 *>(IIRBase_Literal::convert_tree(factory));
+  IIRBase_IntegerLiteral32Ref new_node = my_dynamic_pointer_cast<IIRBase_IntegerLiteral32>(IIRBase_Literal::convert_tree(factory));
 
-  if( !get_design_file() ){
+  if( get_design_file() != nullptr ){
     std::cout << "Here!" << std::endl;
   }
-  if( !new_node->get_design_file() ){
+  if( new_node->get_design_file() != nullptr ){
     std::cout << "Here!!" << std::endl;
   }
 

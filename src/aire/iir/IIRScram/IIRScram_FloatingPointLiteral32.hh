@@ -34,7 +34,7 @@
 
 class IIRScram_FloatingPointLiteral32 : public virtual IIRScram_Literal, public virtual IIRBase_FloatingPointLiteral32{
 public:
-  static IIRScram_FloatingPointLiteral32* get_value(IIR_FP32);
+  static IIRScram_FloatingPointLiteral32Ref get_value(IIR_FP32);
 
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
@@ -42,7 +42,7 @@ public:
 
   IIR_Boolean _is_floating_literal() { return TRUE; }
 
-  IIRScram *_clone() { return this; }
+  IIRScramRef _clone() { return this; }
 
 protected:
 private:

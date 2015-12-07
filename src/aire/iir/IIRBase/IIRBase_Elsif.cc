@@ -32,63 +32,53 @@
 #include "IIR_SequentialStatementList.hh"
 #include "IIR_Elsif.hh"
 
-IIRBase_Elsif::IIRBase_Elsif()  :
-  then_sequence_of_statements(0) {
-  set_condition(NULL);
-  set_else_clause(NULL);
-}
-
-IIRBase_Elsif::~IIRBase_Elsif() {
-  if (condition != NULL) { delete condition;} 
-
-  if (else_clause != NULL) { delete else_clause; }
-}
+IIRBase_Elsif::IIRBase_Elsif() {}
+IIRBase_Elsif::~IIRBase_Elsif() {}
 
 void
-IIRBase_Elsif::set_condition( IIR* condition) {
+IIRBase_Elsif::set_condition( IIRRef condition) {
   this->condition = condition;
 }
 
-IIR*
+IIRRef
 IIRBase_Elsif::get_condition() {
   return condition;
 }
 
 void
-IIRBase_Elsif::set_else_clause( IIR_Elsif* else_clause) {
+IIRBase_Elsif::set_else_clause( IIR_ElsifRef else_clause) {
   this->else_clause = else_clause;
 }
 
-IIR_Elsif*
+IIR_ElsifRef
 IIRBase_Elsif::get_else_clause() {
   return else_clause;
 }
 
 
 // List Accessor(s)
-IIR_SequentialStatementList *
+IIR_SequentialStatementListRef
 IIRBase_Elsif::get_then_sequence_of_statements() {
-  ASSERT(then_sequence_of_statements != NULL);
+  ASSERT(then_sequence_of_statements != nullptr);
   return then_sequence_of_statements;
 }
 
 
 void
-IIRBase_Elsif::set_then_sequence_of_statements(IIR_SequentialStatementList *new_then_sequence_of_statements) {
-  ASSERT(new_then_sequence_of_statements != NULL);
-  delete then_sequence_of_statements;
+IIRBase_Elsif::set_then_sequence_of_statements(IIR_SequentialStatementListRef new_then_sequence_of_statements) {
+  ASSERT(new_then_sequence_of_statements != nullptr);
   then_sequence_of_statements = new_then_sequence_of_statements;
 }
 
-IIR *
-IIRBase_Elsif::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_Elsif::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_Elsif *new_node = dynamic_cast<IIRBase_Elsif *>(IIRBase_Tuple::convert_tree(factory));
+  IIRBase_ElsifRef new_node = my_dynamic_pointer_cast<IIRBase_Elsif>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->then_sequence_of_statements = dynamic_cast<IIR_SequentialStatementList *>(convert_node(then_sequence_of_statements, factory));
+  new_node->then_sequence_of_statements = my_dynamic_pointer_cast<IIR_SequentialStatementList>(convert_node(then_sequence_of_statements, factory));
   new_node->condition = convert_node(condition, factory);
-  new_node->else_clause = dynamic_cast<IIR_Elsif *>(convert_node(else_clause, factory));
+  new_node->else_clause = my_dynamic_pointer_cast<IIR_Elsif>(convert_node(else_clause, factory));
 
   return new_node;
 }

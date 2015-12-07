@@ -46,17 +46,17 @@ public:
   /** @name Method for publishing VHDL code. */
 
   /** This returns the subtype of the quantity to which the attribute is attached. */
-  IIRScram_TypeDefinition * _get_subtype();
+  IIRScram_TypeDefinitionRef  _get_subtype();
 
   /** Returns a pointer to the Quantity created by the build free quantity declaration. */  
-  IIRScram_Declaration * _get_implicit_declaration( const string & , IIRScram_TypeDefinition *  );
+  IIRScram_DeclarationRef  _get_implicit_declaration( const string & , IIRScram_TypeDefinitionRef   );
 
   /** Function for processing the numerator and denominator parts of the attributes's suffix. */
   void _resolve_attribute_parameters();
 
   // Helper functions
-  IIRScram *_get_num();
-  IIRScram *_get_den();
+  IIRScramRef _get_num();
+  IIRScramRef _get_den();
 protected:
 private:
   

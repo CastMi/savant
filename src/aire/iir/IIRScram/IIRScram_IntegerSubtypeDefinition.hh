@@ -45,19 +45,19 @@ public:
   IIRScram_IntegerSubtypeDefinition();
   ~IIRScram_IntegerSubtypeDefinition();
 
-  static IIRScram_IntegerSubtypeDefinition* 
-  get( IIRScram_IntegerTypeDefinition* base_type,
-       IIRScram* left_limit, IIRScram* direction, IIRScram* right_limit);
+  static IIRScram_IntegerSubtypeDefinitionRef 
+  get( IIRScram_IntegerTypeDefinitionRef base_type,
+       IIRScramRef left_limit, IIRScramRef, IIRScramRef right_limit);
 
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
   //  void _publish_cc_parent_type_name( published_file &_cc_out );
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
-  IIRScram_FunctionDeclaration* _get_resolution_function();
-  void _set_resolution_function(IIRScram_FunctionDeclaration *new_function );
-  void set_resolution_function(IIRScram_FunctionDeclaration *new_function );
+  IIRScram_FunctionDeclarationRef _get_resolution_function();
+  void _set_resolution_function(IIRScram_FunctionDeclarationRef new_function );
+  void set_resolution_function(IIRScram_FunctionDeclarationRef new_function );
 
   virtual void _type_check();
 

@@ -30,7 +30,8 @@
 
 #include "savant_config.hh"
 #include "IIR_Tuple.hh"
-class IIR_SequentialStatementList;
+
+REF_FORWARD_DECL(IIR_SequentialStatementList);
 
 /*
  * Choice and implication within a case statement.
@@ -41,7 +42,7 @@ public:
   virtual ~IIR_CaseStatementAlternative() {}
 
   // List accessor(s)
-  virtual IIR_SequentialStatementList *get_sequence_of_statements() = 0;
+  virtual IIR_SequentialStatementListRef get_sequence_of_statements() = 0;
 };
 
 typedef refcount<IIR_CaseStatementAlternative> IIR_CaseStatementAlternativeRef;

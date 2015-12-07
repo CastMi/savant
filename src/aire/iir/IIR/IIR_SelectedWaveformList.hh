@@ -38,9 +38,9 @@ class IIR_SelectedWaveformList : public virtual IIR_List{
 public:
   virtual ~IIR_SelectedWaveformList() {}
     
-  virtual IIR_SelectedWaveform *first() = 0;
-  virtual IIR_SelectedWaveform *last() = 0;
-  virtual IIR_SelectedWaveform *successor( IIR_SelectedWaveform* node ) = 0;
+  virtual IIR_SelectedWaveformRef first() = 0;
+  virtual IIR_SelectedWaveformRef last() = 0;
+  virtual IIR_SelectedWaveformRef successor( IIR_SelectedWaveformRef node ) = 0;
 };
 
 typedef refcount<IIR_SelectedWaveformList> IIR_SelectedWaveformListRef;

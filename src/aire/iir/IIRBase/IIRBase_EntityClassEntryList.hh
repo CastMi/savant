@@ -35,8 +35,8 @@
 class IIRBase_EntityClassEntryList : public virtual IIRBase_List, public virtual IIR_EntityClassEntryList{
 
 public:
-  IIR_Kind get_kind() const {return IIR_ENTITY_CLASS_ENTRY_LIST;}
-  const IIR_Char *get_kind_text() const {return "IIR_EntityClassEntryList";}
+  IIR_Kind get_kind() const override { return IIR_ENTITY_CLASS_ENTRY_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_EntityClassEntryList"); }
 
   void publish_vhdl(ostream &);
 protected:

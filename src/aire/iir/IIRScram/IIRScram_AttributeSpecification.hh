@@ -46,10 +46,10 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  void _type_check( IIRScram_DeclarationList *declarative_region );
+  void _type_check( IIRScram_DeclarationListRef declarative_region );
 
   IIR_Boolean _is_specification(){ return TRUE; }
-  IIR_Boolean _can_be_in_same_region( IIRScram_Declaration * );
+  IIR_Boolean _can_be_in_same_region( IIRScram_DeclarationRef  );
 
   void _set_entity_constraint( constraint_functor *functor ){
     _my_functor = functor;
@@ -60,10 +60,10 @@ public:
   }
 
   IIR_Boolean                   _is_iir_attribute_specification(){ return TRUE; }
-  IIRScram_Identifier           *_get_entity_class();
-  IIRScram_DesignatorList       *_get_entity_name_list();
-  IIRScram                      *_get_value();
-  IIRScram_Declaration          *_get_declaration();
+  IIRScram_IdentifierRef        _get_entity_class();
+  IIRScram_DesignatorListRef    _get_entity_name_list();
+  IIRScramRef                   _get_value();
+  IIRScram_DeclarationRef       _get_declaration();
 
 private:
   constraint_functor            *_my_functor;

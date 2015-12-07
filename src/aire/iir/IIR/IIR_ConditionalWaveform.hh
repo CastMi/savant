@@ -30,7 +30,8 @@
 
 #include "savant_config.hh"
 #include "IIR_Tuple.hh"
-class IIR_WaveformList;
+
+REF_FORWARD_DECL(IIR_WaveformList);
 
 class IIR_ConditionalWaveform : public virtual IIR_Tuple{
 
@@ -38,10 +39,10 @@ public:
   virtual ~IIR_ConditionalWaveform() {}
     
   // List accessor(s)
-  virtual IIR_WaveformList *get_waveform() = 0;
+  virtual IIR_WaveformListRef get_waveform() = 0;
 
-  virtual void set_condition( IIR *condition ) = 0;
-  virtual IIR *get_condition() = 0;
+  virtual void set_condition( IIRRef condition ) = 0;
+  virtual IIRRef get_condition() = 0;
 };
 
 typedef refcount<IIR_ConditionalWaveform> IIR_ConditionalWaveformRef;

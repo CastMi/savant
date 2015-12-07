@@ -33,25 +33,22 @@ public:
   virtual ~IIR_SourceQuantityDeclaration() {};
 
   /** Sets the magnitude expression of the source quantity. */
-  virtual void set_magnitude_expression(IIR* magnitude_expression) = 0;
+  virtual void set_magnitude_expression(IIRRef magnitude_expression) = 0;
 
   /** Returns the magnitude expression of the quantity. */
-  virtual IIR* get_magnitude_expression() = 0;
+  virtual IIRRef get_magnitude_expression() = 0;
   
   /** Sets the phase expression of the source quantity. */
-  virtual void set_phase_expression(IIR* phase_expression) = 0;
+  virtual void set_phase_expression(IIRRef phase_expression) = 0;
 
   /** Returns the phase expression of the quantity. */
-  virtual IIR* get_phase_expression() = 0;
+  virtual IIRRef get_phase_expression() = 0;
 
   /** Sets the noise expression of the source quantity. */
-  virtual void set_noise_expression(IIR* phase_expression) = 0;
+  virtual void set_noise_expression(IIRRef phase_expression) = 0;
 
   /** Returns the noise expression of the quantity. */
-  virtual IIR* get_noise_expression() = 0;
-  
-protected:
-private:
+  virtual IIRRef get_noise_expression() = 0;
 };
 
 typedef refcount<IIR_SourceQuantityDeclaration> IIR_SourceQuantityDeclarationRef;

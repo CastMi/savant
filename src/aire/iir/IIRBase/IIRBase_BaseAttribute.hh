@@ -36,10 +36,10 @@ class IIRBase_BaseAttribute : public virtual IIRBase_Attribute,
 			      public virtual IIR_BaseAttribute{
 
 public:
-  IIR_Kind get_kind() const {return IIR_BASE_ATTRIBUTE;}
-  const IIR_Char *get_kind_text() const {return "IIR_BaseAttribute";}
+  IIR_Kind get_kind() const override { return IIR_BASE_ATTRIBUTE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_BaseAttribute"); }
 
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
 
   IIR_Boolean is_type_attribute(){ return true; }
 

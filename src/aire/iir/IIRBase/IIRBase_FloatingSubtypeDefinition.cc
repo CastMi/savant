@@ -31,38 +31,27 @@
 #include "IIR_FloatingSubtypeDefinition.hh"
 #include "IIR_FunctionDeclaration.hh"
 
-IIRBase_FloatingSubtypeDefinition::IIRBase_FloatingSubtypeDefinition() {
-  my_resolution_function = NULL;
-}
-
-IIRBase_FloatingSubtypeDefinition::~IIRBase_FloatingSubtypeDefinition(){
-  my_resolution_function = NULL;
-}
-
-
-void
-IIRBase_FloatingSubtypeDefinition::release() {
-  delete this;
-}
+IIRBase_FloatingSubtypeDefinition::IIRBase_FloatingSubtypeDefinition() {}
+IIRBase_FloatingSubtypeDefinition::~IIRBase_FloatingSubtypeDefinition(){}
 
 void 
-IIRBase_FloatingSubtypeDefinition::set_resolution_function( IIR_FunctionDeclaration *resolution_function ){
+IIRBase_FloatingSubtypeDefinition::set_resolution_function( IIR_FunctionDeclarationRef resolution_function ){
   my_resolution_function = resolution_function;
 }
 
 
-IIR_FunctionDeclaration *
+IIR_FunctionDeclarationRef
 IIRBase_FloatingSubtypeDefinition::get_resolution_function(){
   return my_resolution_function;
 }
 
-IIR *
-IIRBase_FloatingSubtypeDefinition::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_FloatingSubtypeDefinition::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_FloatingSubtypeDefinition *new_node = dynamic_cast<IIRBase_FloatingSubtypeDefinition *>(IIRBase_FloatingTypeDefinition::convert_tree(factory));
+  IIRBase_FloatingSubtypeDefinitionRef new_node = my_dynamic_pointer_cast<IIRBase_FloatingSubtypeDefinition>(IIRBase_FloatingTypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->my_resolution_function = dynamic_cast<IIR_FunctionDeclaration *>(convert_node(my_resolution_function, factory));
+  new_node->my_resolution_function = my_dynamic_pointer_cast<IIR_FunctionDeclaration>(convert_node(my_resolution_function, factory));
 
   return new_node;
 }

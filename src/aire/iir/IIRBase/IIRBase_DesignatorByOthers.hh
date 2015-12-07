@@ -37,8 +37,8 @@
 class IIRBase_DesignatorByOthers : public virtual IIRBase_Designator, public virtual IIR_DesignatorByOthers{
 
 public:
-  IIR_Kind get_kind() const {return IIR_DESIGNATOR_BY_OTHERS;}
-  const IIR_Char *get_kind_text() const {return "IIR_DesignatorByOthers";}
+  IIR_Kind get_kind() const override { return IIR_DESIGNATOR_BY_OTHERS; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_DesignatorByOthers"); }
 
   void publish_vhdl(ostream &);
   void publish_vhdl_decl(ostream &);

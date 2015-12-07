@@ -33,7 +33,7 @@ IIRBase_QuantityDeclaration::get_declaration_type(){
 }
 
 void
-IIRBase_QuantityDeclaration::set_value(IIR *){
+IIRBase_QuantityDeclaration::set_value(IIRRef ){
   _report_undefined_fn("set_value(IIR *)");
 }
 
@@ -42,6 +42,6 @@ IIRBase_QuantityDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out << " quantity ";
   get_declarator()->publish_vhdl(vhdl_out);
   vhdl_out << " : ";
-  dynamic_cast<IIRBase_TypeDefinition *>(get_subtype())->publish_vhdl_decl(vhdl_out);
+  my_dynamic_pointer_cast<IIRBase_TypeDefinition>(get_subtype())->publish_vhdl_decl(vhdl_out);
   vhdl_out << " ;\n";
 }

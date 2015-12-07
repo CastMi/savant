@@ -52,15 +52,15 @@ public:
   void _type_check();
   void _type_check_target_and_waveforms();
 
-  IIRScram_SignalDeclaration *_get_guard_signal();
+  IIRScram_SignalDeclarationRef _get_guard_signal();
 
-  IIRScram *_get_target();
-  IIRScram *_clone();
+  IIRScramRef _get_target();
+  IIRScramRef _clone();
 
   // Helper Functions
-  IIRScram *                            _get_reject_time_expression();
-  IIR_DelayMechanism                    _get_delay_mechanism();
-  IIRScram_ConditionalWaveformList *    _get_conditional_waveforms();
+  IIRScramRef                             _get_reject_time_expression();
+  IIR_DelayMechanism                      _get_delay_mechanism();
+  IIRScram_ConditionalWaveformListRef     _get_conditional_waveforms();
 
 protected:    
 private:

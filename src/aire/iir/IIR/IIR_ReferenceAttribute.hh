@@ -31,8 +31,6 @@
 class IIR_ReferenceAttribute : public virtual IIR_Attribute {
 public:
   virtual ~IIR_ReferenceAttribute() {};
-protected:
-private:
 };
 
 typedef refcount<IIR_ReferenceAttribute> IIR_ReferenceAttributeRef;

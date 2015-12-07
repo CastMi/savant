@@ -36,12 +36,12 @@
 class IIRBase_AssociationElementByExpression : public virtual IIRBase_AssociationElement, public virtual IIR_AssociationElementByExpression{
 
 public:
-  IIR_Kind get_kind() const {return IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION;}
-  const IIR_Char *get_kind_text() const {return "IIR_AssociationElementByExpression";}
-  void set_actual(IIR*);
-  IIR* get_actual();
+  IIR_Kind get_kind() const override { return IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_AssociationElementByExpression"); }
+  void set_actual(IIRRef);
+  IIRRef get_actual();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_signal();
@@ -57,7 +57,7 @@ protected:
   virtual ~IIRBase_AssociationElementByExpression() = 0;
     
 private:
-  IIR *actual;
+  IIRRef actual;
 
 };
 

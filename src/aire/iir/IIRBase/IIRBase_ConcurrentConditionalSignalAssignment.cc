@@ -30,18 +30,13 @@
 #include "IIR_ConditionalWaveformList.hh"
 #include "IIR_SignalDeclaration.hh"
 
-IIRBase_ConcurrentConditionalSignalAssignment::IIRBase_ConcurrentConditionalSignalAssignment() :
-  conditional_waveforms(0) {
+IIRBase_ConcurrentConditionalSignalAssignment::IIRBase_ConcurrentConditionalSignalAssignment() {
   set_postponed( FALSE );
-  set_target( NULL );
   set_guarded( FALSE );
   set_delay_mechanism( IIR_INERTIAL_DELAY );
-  set_reject_time_expression( NULL );
-  set_guard_signal( NULL );
 }
 
-IIRBase_ConcurrentConditionalSignalAssignment::~IIRBase_ConcurrentConditionalSignalAssignment(){
-}
+IIRBase_ConcurrentConditionalSignalAssignment::~IIRBase_ConcurrentConditionalSignalAssignment() {}
 
 void 
 IIRBase_ConcurrentConditionalSignalAssignment::set_postponed( IIR_Boolean postponed ){
@@ -54,11 +49,11 @@ IIRBase_ConcurrentConditionalSignalAssignment::get_postponed(){
 }
 
 void 
-IIRBase_ConcurrentConditionalSignalAssignment::set_target( IIR *target ){
+IIRBase_ConcurrentConditionalSignalAssignment::set_target( IIRRef target ){
   this->target = target;
 }
 
-IIR *
+IIRRef
 IIRBase_ConcurrentConditionalSignalAssignment::get_target(){
   return target;
 }
@@ -84,38 +79,37 @@ IIRBase_ConcurrentConditionalSignalAssignment::get_delay_mechanism(){
 }
 
 void 
-IIRBase_ConcurrentConditionalSignalAssignment::set_reject_time_expression( IIR *reject_time_expression ){
+IIRBase_ConcurrentConditionalSignalAssignment::set_reject_time_expression( IIRRef reject_time_expression ){
   this->reject_time_expression = reject_time_expression;
 }
 
-IIR *
+IIRRef
 IIRBase_ConcurrentConditionalSignalAssignment::get_reject_time_expression(){
   return reject_time_expression;
 }
 
 // List Accessor(s)
-IIR_ConditionalWaveformList *
+IIR_ConditionalWaveformListRef
 IIRBase_ConcurrentConditionalSignalAssignment::get_conditional_waveforms() {
-  ASSERT(conditional_waveforms != NULL);
+  ASSERT(conditional_waveforms != nullptr);
   return conditional_waveforms;
 }
 
 
 void
-IIRBase_ConcurrentConditionalSignalAssignment::set_conditional_waveforms(IIR_ConditionalWaveformList *new_conditional_waveforms) {
-  ASSERT(new_conditional_waveforms != NULL);
-  delete conditional_waveforms;
+IIRBase_ConcurrentConditionalSignalAssignment::set_conditional_waveforms(IIR_ConditionalWaveformListRef new_conditional_waveforms) {
+  ASSERT(new_conditional_waveforms != nullptr);
   conditional_waveforms = new_conditional_waveforms;
 }
 
-IIR *
-IIRBase_ConcurrentConditionalSignalAssignment::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ConcurrentConditionalSignalAssignment::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ConcurrentConditionalSignalAssignment *new_node = dynamic_cast<IIRBase_ConcurrentConditionalSignalAssignment *>(IIRBase_ConcurrentStatement::convert_tree(factory));
+  IIRBase_ConcurrentConditionalSignalAssignmentRef new_node = my_dynamic_pointer_cast<IIRBase_ConcurrentConditionalSignalAssignment>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->conditional_waveforms = dynamic_cast<IIR_ConditionalWaveformList *>(convert_node(conditional_waveforms, factory));
-  new_node->my_guard_signal = dynamic_cast<IIR_SignalDeclaration *>(convert_node(my_guard_signal, factory));
+  new_node->conditional_waveforms = my_dynamic_pointer_cast<IIR_ConditionalWaveformList>(convert_node(conditional_waveforms, factory));
+  new_node->my_guard_signal = my_dynamic_pointer_cast<IIR_SignalDeclaration>(convert_node(my_guard_signal, factory));
 
   new_node->postponed = postponed;
   new_node->guarded = guarded;

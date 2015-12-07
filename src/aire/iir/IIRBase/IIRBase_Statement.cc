@@ -29,60 +29,60 @@
 #include "IIRBase_Statement.hh"
 #include "savant.hh"
 #include "IIR_Label.hh"
+#include "set.hh"
 
 class IIR_Statement;
 
-IIRBase_Statement::IIRBase_Statement() {
-  set_label(NULL);
-}
+IIRBase_Statement::IIRBase_Statement() {}
 
 IIRBase_Statement::~IIRBase_Statement(){}
 
 void
-IIRBase_Statement::set_label( IIR_Label *label) {
+IIRBase_Statement::set_label( IIR_LabelRef label) {
   my_label = label;
   if( label != NULL ){
-    label->set_statement( (IIR_Statement *) this );
+     //FIXME: this is an error
+    label->set_statement( IIRBase_StatementRef() );
   }
 }
 
-IIR_Label *
+IIR_LabelRef
 IIRBase_Statement::get_label() const {
   return my_label;
 }
 
-IIR *
-IIRBase_Statement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_Statement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_Statement *new_node = dynamic_cast<IIRBase_Statement *>(IIRBase::convert_tree(factory));
+  IIRBase_StatementRef new_node = my_dynamic_pointer_cast<IIRBase_Statement>(IIRBase::convert_tree(factory));
 
   // Process the variables
-  new_node->my_label = dynamic_cast<IIR_Label *>(convert_node(my_label, factory));
+  new_node->my_label = my_dynamic_pointer_cast<IIR_Label>(convert_node(my_label, factory));
 
   return new_node;
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_Statement::find_declarations( IIR_Name * ){
+savant::set<IIR_DeclarationRef>
+IIRBase_Statement::find_declarations( IIR_NameRef ){
   _report_undefined_fn("IIRBase_Statement::_find_declarations( IIR_Name *name )");
 
-  return NULL;
+  return savant::set<IIR_DeclarationRef>();
 }
 
 void 
-IIRBase_Statement::set_assertion_condition( IIR * ){
+IIRBase_Statement::set_assertion_condition( IIRRef ){
   _report_undefined_fn(" set_assertion_condition( IIR * )");
   ASSERT(0);
 }
 
 void 
-IIRBase_Statement::set_report_expression( IIR * ){
+IIRBase_Statement::set_report_expression( IIRRef ){
   _report_undefined_fn(" set_report_expression( IIR * )");
   ASSERT(0);
 }
 
 void 
-IIRBase_Statement::set_severity_expression( IIR * ){
+IIRBase_Statement::set_severity_expression( IIRRef ){
   _report_undefined_fn(":set_severity_expression( IIR * )");
   ASSERT(0);
 }
@@ -99,19 +99,19 @@ IIRBase_Statement::print( ostream &os ){
   return os;
 }
 
-IIR_TextLiteral*
+IIR_TextLiteralRef
 IIRBase_Statement::get_declarator(){
   ASSERT (get_label() != NULL);
   return get_label()->get_declarator();
 }
 
 void 
-IIRBase_Statement::set_reject_time_expression( IIR * ) {
+IIRBase_Statement::set_reject_time_expression( IIRRef ) {
   _report_undefined_fn("set_reject_time_expression(IIR *)");
 }
 
 void 
-IIRBase_Statement::set_target( IIR * ) {
+IIRBase_Statement::set_target( IIRRef ) {
   _report_undefined_fn("set_target(IIR *)");
 }
 
@@ -127,7 +127,7 @@ IIRBase_Statement::publish_vhdl_stmt_label(ostream &vhdl_out) {
 void 
 IIRBase_Statement::publish_vhdl_delay_mechanism( ostream &vhdl_out,
 						 IIR_DelayMechanism delay,
-						 IIR *time_expression ){ 
+						 IIRRef time_expression ){ 
 
   switch(delay) {
   case IIR_TRANSPORT_DELAY:

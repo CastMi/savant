@@ -33,20 +33,20 @@ IIRBase_Choice::IIRBase_Choice() {
 IIRBase_Choice::~IIRBase_Choice() {}
 
 void
-IIRBase_Choice::set_value( IIR *value ) {
+IIRBase_Choice::set_value( IIRRef value ) {
   my_value = value;
 }
 
-IIR*
+IIRRef
 IIRBase_Choice::get_value() {
   return my_value;
 }
 
 
-IIR *
-IIRBase_Choice::convert_tree(plugin_class_factory *factory) {
+IIRRef 
+IIRBase_Choice::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_Choice *new_node = dynamic_cast<IIRBase_Choice *>(IIRBase_Tuple::convert_tree(factory));
+  IIRBase_ChoiceRef new_node = my_dynamic_pointer_cast<IIRBase_Choice>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
   new_node->my_value = convert_node(my_value, factory);

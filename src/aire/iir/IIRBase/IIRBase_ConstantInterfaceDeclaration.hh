@@ -35,8 +35,8 @@
 class IIRBase_ConstantInterfaceDeclaration : public virtual IIRBase_InterfaceDeclaration,
 					     public virtual IIR_ConstantInterfaceDeclaration{
 public:
-  IIR_Kind get_kind() const {return IIR_CONSTANT_INTERFACE_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_ConstantInterfaceDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_CONSTANT_INTERFACE_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ConstantInterfaceDeclaration"); }
 
   IIR_Boolean is_constant() { return TRUE; }
 

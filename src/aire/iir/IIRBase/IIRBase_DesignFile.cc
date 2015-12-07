@@ -32,17 +32,9 @@
 #include "scram.hh"
 
 // Header for convert_tree
-
-
-IIRBase_DesignFile::IIRBase_DesignFile()  :
-  my_std_package(NULL),
-  my_factory(NULL),
-  my_parser(NULL),
-  comments(0),
-  library_units(0),
-  my_file_name(NULL)
-{
-  _my_design_file = this;
+IIRBase_DesignFile::IIRBase_DesignFile() {
+  // FIXME: this is an error
+  _my_design_file = IIRBase_DesignFileRef();
 }
 
 IIRBase_DesignFile::~IIRBase_DesignFile() {}
@@ -53,103 +45,96 @@ IIRBase_DesignFile::~IIRBase_DesignFile() {}
 //   return design_files;
 // }
 
-IIR_Identifier *
+IIR_IdentifierRef
 IIRBase_DesignFile::get_name(){
   return my_file_name;
 }
 
 void 
-IIRBase_DesignFile::set_name( IIR_Identifier *new_file_name ){
+IIRBase_DesignFile::set_name( IIR_IdentifierRef new_file_name ){
   my_file_name = new_file_name;
 }
 
 // List Accessor(s)
-IIR_CommentList *
+IIR_CommentListRef
 IIRBase_DesignFile::get_comments() {
-  ASSERT(comments != NULL);
+  ASSERT(comments != nullptr);
   return comments;
 }
 
-IIR_LibraryUnitList *
+IIR_LibraryUnitListRef
 IIRBase_DesignFile::get_library_units() {
-  ASSERT(library_units != NULL);
+  ASSERT(library_units != nullptr);
   return library_units;
 }
 
 void
-IIRBase_DesignFile::set_comments(IIR_CommentList *new_comments) {
-  ASSERT(new_comments != NULL);
-
-  if (comments != NULL)
-    delete comments;
-
+IIRBase_DesignFile::set_comments(IIR_CommentListRef new_comments) {
+  ASSERT(new_comments != nullptr);
   comments = new_comments;
 }
 
 void
-IIRBase_DesignFile::set_library_units(IIR_LibraryUnitList *new_library_units) {
-  ASSERT(new_library_units != NULL);
-  if (library_units != NULL)
-    delete library_units;
-
+IIRBase_DesignFile::set_library_units(IIR_LibraryUnitListRef new_library_units) {
+  ASSERT(new_library_units != nullptr);
   library_units = new_library_units;
 }
 
-IIR *
-IIRBase_DesignFile::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_DesignFile::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_DesignFile *new_node = dynamic_cast<IIRBase_DesignFile *>(IIRBase::convert_tree(factory));
+  IIRBase_DesignFileRef new_node = my_dynamic_pointer_cast<IIRBase_DesignFile>(IIRBase::convert_tree(factory));
 
   // Process the variables
   new_node->comments =
-    dynamic_cast<IIR_CommentList *>(convert_node(comments, factory));
+    my_dynamic_pointer_cast<IIR_CommentList>(convert_node(comments, factory));
   new_node->library_units =
-    dynamic_cast<IIR_LibraryUnitList *>(convert_node(library_units, factory));
+    my_dynamic_pointer_cast<IIR_LibraryUnitList>(convert_node(library_units, factory));
   new_node->my_file_name =
-    dynamic_cast<IIR_Identifier *>(convert_node(my_file_name, factory));
+    my_dynamic_pointer_cast<IIR_Identifier>(convert_node(my_file_name, factory));
   new_node->my_std_package =
-    dynamic_cast<StandardPackage *>(convert_node(my_std_package, factory));
+    my_dynamic_pointer_cast<StandardPackage>(convert_node(my_std_package, factory));
 
-  if (my_parser != NULL)
+  if (my_parser != nullptr)
     new_node->my_parser = my_parser->convert_node(factory);
   else
-    new_node->my_parser = NULL;
+    new_node->my_parser = my_parser;
 
   new_node->my_factory = factory;
 
   return new_node;
 }
 
-StandardPackage *
+StandardPackageRef
 IIRBase_DesignFile::get_standard_package() {
   return my_std_package;
 }
 
 void                          
-IIRBase_DesignFile::set_standard_package(StandardPackage *pkg) {
-  ASSERT(pkg != NULL);
+IIRBase_DesignFile::set_standard_package(StandardPackageRef pkg) {
+  ASSERT(pkg != nullptr);
   my_std_package = pkg;
 }
 
-plugin_class_factory *
+plugin_class_factoryRef
 IIRBase_DesignFile::get_class_factory() {
   return my_factory;
 }
 
 void 
-IIRBase_DesignFile::set_class_factory(plugin_class_factory *factory) {
-  ASSERT(factory != NULL);
+IIRBase_DesignFile::set_class_factory(plugin_class_factoryRef factory) {
+  ASSERT(factory != nullptr);
   my_factory = factory;
 }
 
 void 
-IIRBase_DesignFile::set_parser( scram *new_parser ){
-  ASSERT( my_parser == NULL || my_parser == new_parser );
+IIRBase_DesignFile::set_parser( scramRef new_parser ){
+  ASSERT( my_parser == nullptr || my_parser == new_parser );
   my_parser = new_parser;
   my_factory = new_parser->get_class_factory();
 }
 
-IIR_LibraryDeclaration *
+IIR_LibraryDeclarationRef
 IIRBase_DesignFile::get_work_library(){
   ASSERT( my_parser != 0 );
   return my_parser->get_work_library();

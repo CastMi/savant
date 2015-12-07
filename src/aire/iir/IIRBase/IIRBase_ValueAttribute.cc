@@ -23,26 +23,23 @@
 #include "IIRBase_ValueAttribute.hh"
 #include "savant.hh"
 
-IIRBase_ValueAttribute::IIRBase_ValueAttribute() {
-  set_suffix( NULL );
-}
-
+IIRBase_ValueAttribute::IIRBase_ValueAttribute() {}
 IIRBase_ValueAttribute::~IIRBase_ValueAttribute() {}
 
 void
-IIRBase_ValueAttribute::set_suffix( IIR *new_suffix ){
+IIRBase_ValueAttribute::set_suffix( IIRRef new_suffix ){
   suffix = new_suffix;
 }
 
-IIR*
+IIRRef
 IIRBase_ValueAttribute::get_suffix() {
   return suffix;
 }
 
-IIR *
-IIRBase_ValueAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ValueAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ValueAttribute *new_node = dynamic_cast<IIRBase_ValueAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_ValueAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_ValueAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
@@ -50,10 +47,10 @@ IIRBase_ValueAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_ValueAttribute::build_attribute_name(){
-  const char *name = "value";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );
+   std::string name("value");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory() );
 }
 
 void 

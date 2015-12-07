@@ -32,18 +32,18 @@
 #include "savant_config.hh"
 #include "IIR_CaseStatementAlternative.hh"
 
-class IIR_Choice;
+REF_FORWARD_DECL(IIR_Choice);
 
 /*
  * A simple_expression
  */
-class IIR_CaseStatementAlternativeByExpression : public virtual IIR_CaseStatementAlternative{
+class IIR_CaseStatementAlternativeByExpression : public virtual IIR_CaseStatementAlternative {
 
 public:
   virtual ~IIR_CaseStatementAlternativeByExpression() {}
     
-  virtual void set_choice(IIR_Choice* c) = 0;
-  virtual IIR_Choice* get_choice() = 0;
+  virtual void set_choice(IIR_ChoiceRef c) = 0;
+  virtual IIR_ChoiceRef get_choice() = 0;
 };
 
 typedef refcount<IIR_CaseStatementAlternativeByExpression> IIR_CaseStatementAlternativeByExpressionRef;

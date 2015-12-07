@@ -36,8 +36,8 @@
 class IIRBase_SelectedNameByAll : public virtual IIRBase_Name, public virtual IIR_SelectedNameByAll{
 public:
 
-  IIR_Kind get_kind() const {return IIR_SELECTED_NAME_BY_ALL;}
-  const IIR_Char *get_kind_text() const {return "IIR_SelectedNameByAll";}
+  IIR_Kind get_kind() const override { return IIR_SELECTED_NAME_BY_ALL; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SelectedNameByAll"); }
 
   ostream &print( ostream &os );
   void publish_vhdl(ostream &);

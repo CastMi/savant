@@ -37,8 +37,8 @@ class IIR_QuietAttribute : public virtual IIR_Attribute{
 public:
   virtual ~IIR_QuietAttribute() {}
     
-  virtual void set_suffix( IIR* suffix) = 0;
-  virtual IIR* get_suffix() = 0;
+  virtual void set_suffix( IIRRef suffix) = 0;
+  virtual IIRRef get_suffix() = 0;
 };
 
 typedef refcount<IIR_QuietAttribute> IIR_QuietAttributeRef;

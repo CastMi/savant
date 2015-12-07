@@ -33,8 +33,8 @@
 #include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
 
-class IIR_Elsif;
-class IIR_SequentialStatementList;
+REF_FORWARD_DECL(IIR_SequentialStatementList);
+REF_FORWARD_DECL(IIR_Elsif);
 
 class IIR_IfStatement : public virtual IIR_SequentialStatement{
 
@@ -42,16 +42,16 @@ public:
   virtual ~IIR_IfStatement() {}
     
   // List accessor(s)
-  virtual IIR_SequentialStatementList   *get_then_sequence() = 0;
-  virtual IIR_SequentialStatementList   *get_else_sequence() = 0;
-  virtual void                          set_then_sequence(IIR_SequentialStatementList *) = 0;
-  virtual void                          set_else_sequence(IIR_SequentialStatementList *) = 0;
+  virtual IIR_SequentialStatementListRef get_then_sequence() = 0;
+  virtual IIR_SequentialStatementListRef get_else_sequence() = 0;
+  virtual void                           set_then_sequence(IIR_SequentialStatementListRef ) = 0;
+  virtual void                           set_else_sequence(IIR_SequentialStatementListRef ) = 0;
 
-  virtual void set_condition( IIR*) = 0;
-  virtual IIR* get_condition() = 0;
+  virtual void set_condition( IIRRef ) = 0;
+  virtual IIRRef get_condition() = 0;
 
-  virtual void set_elsif(IIR_Elsif*) = 0;
-  virtual IIR_Elsif* get_elsif() = 0;
+  virtual void set_elsif( IIR_ElsifRef ) = 0;
+  virtual IIR_ElsifRef get_elsif() = 0;
 };
 
 typedef refcount<IIR_IfStatement> IIR_IfStatementRef;

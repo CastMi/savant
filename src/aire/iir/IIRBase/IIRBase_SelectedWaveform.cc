@@ -26,34 +26,25 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "savant.hh"
 #include "IIRBase_SelectedWaveform.hh"
 #include "IIR_WaveformList.hh"
 
-IIRBase_SelectedWaveform::IIRBase_SelectedWaveform() :
-  waveform(0) {
-  my_choice = NULL;
-}
+IIRBase_SelectedWaveform::IIRBase_SelectedWaveform() {}
+IIRBase_SelectedWaveform::~IIRBase_SelectedWaveform() {}
 
-IIRBase_SelectedWaveform::~IIRBase_SelectedWaveform(){
-}
-
-IIR *
+IIRRef
 IIRBase_SelectedWaveform::get_choice(){
   return my_choice;
 }
 
 void 
-IIRBase_SelectedWaveform::set_choice( IIR *choice ){
+IIRBase_SelectedWaveform::set_choice( IIRRef choice ){
   my_choice = choice;
 }
 
 // List Accessor(s)
-IIR_WaveformList *
+IIR_WaveformListRef
 IIRBase_SelectedWaveform::get_waveform() {
   ASSERT(waveform != NULL);
   return waveform;
@@ -61,19 +52,18 @@ IIRBase_SelectedWaveform::get_waveform() {
 
 
 void
-IIRBase_SelectedWaveform::set_waveform(IIR_WaveformList *new_waveform) {
+IIRBase_SelectedWaveform::set_waveform(IIR_WaveformListRef new_waveform) {
   ASSERT(new_waveform != NULL);
-  delete waveform;
   waveform = new_waveform;
 }
 
-IIR *
-IIRBase_SelectedWaveform::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SelectedWaveform::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SelectedWaveform *new_node = dynamic_cast<IIRBase_SelectedWaveform *>(IIRBase_Tuple::convert_tree(factory));
+  IIRBase_SelectedWaveformRef new_node = my_dynamic_pointer_cast<IIRBase_SelectedWaveform>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->waveform = dynamic_cast<IIR_WaveformList *>(convert_node(waveform, factory));
+  new_node->waveform = my_dynamic_pointer_cast<IIR_WaveformList>(convert_node(waveform, factory));
   new_node->my_choice = convert_node(my_choice, factory);
 
   return new_node;

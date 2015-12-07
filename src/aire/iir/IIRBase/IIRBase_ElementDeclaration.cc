@@ -35,19 +35,16 @@ IIRBase_ElementDeclaration::IIRBase_ElementDeclaration(){}
 
 IIRBase_ElementDeclaration::~IIRBase_ElementDeclaration(){}
 
-savant::set<IIR_Declaration*> *
-IIRBase_ElementDeclaration::find_declarations( IIR_Name *to_find ){
-  savant::set<IIR_Declaration*> *retval = NULL;
+savant::set<IIR_DeclarationRef>
+IIRBase_ElementDeclaration::find_declarations( IIR_NameRef to_find ){
+  savant::set<IIR_DeclarationRef> retval;
 
-  ASSERT( get_subtype() != NULL );
+  ASSERT( get_subtype() != nullptr );
 
   if( get_subtype()->is_record_type() == TRUE ){
-    IIR_RecordTypeDefinition *my_subtype = 
-      dynamic_cast<IIR_RecordTypeDefinition *>(get_subtype());
+    IIR_RecordTypeDefinitionRef my_subtype = 
+      my_dynamic_pointer_cast<IIR_RecordTypeDefinition>(get_subtype());
     retval = my_subtype->get_element_declarations()->find_declarations( to_find );
-  }
-  else{
-    retval = NULL;
   }
 
   return retval;
@@ -65,7 +62,7 @@ IIRBase_ElementDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
    // HACK: Fix ArraySubtypeDefinitions as record elements.
    // ArraySubtypeDefinition does not correctly publish the type of the record element
    // in publish_vhdl
-   dynamic_cast<IIRBase *>(get_subtype())->publish_vhdl_decl(vhdl_out);
+    my_dynamic_pointer_cast<IIRBase>(get_subtype())->publish_vhdl_decl(vhdl_out);
  }
  vhdl_out << ";\n";
 }

@@ -39,18 +39,17 @@ class IIR_FunctionDeclaration;
 class IIRBase_FloatingSubtypeDefinition : public virtual IIRBase_FloatingTypeDefinition, public virtual IIR_FloatingSubtypeDefinition{
   
 public:
-  IIR_Kind get_kind() const {return IIR_FLOATING_SUBTYPE_DEFINITION;}
-  const IIR_Char *get_kind_text() const {return "IIR_FloatingSubtypeDefinition";}
+  IIR_Kind get_kind() const override { return IIR_FLOATING_SUBTYPE_DEFINITION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_FloatingSubtypeDefinition"); }
 
-  static IIR_FloatingSubtypeDefinition* get( IIR_FloatingTypeDefinition* base_type, 
-					     IIR* left_limit,
-					     IIR* direction, IIR* right_limit);
-  void release();
+  static IIR_FloatingSubtypeDefinitionRef get( IIR_FloatingTypeDefinitionRef base_type, 
+					     IIRRef left_limit,
+					     IIRRef direction, IIRRef right_limit);
 					    
-  void set_resolution_function( IIR_FunctionDeclaration * );
-  IIR_FunctionDeclaration *get_resolution_function();
+  void set_resolution_function( IIR_FunctionDeclarationRef );
+  IIR_FunctionDeclarationRef get_resolution_function();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_subtype();
 
@@ -59,7 +58,7 @@ protected:
   virtual ~IIRBase_FloatingSubtypeDefinition() = 0;
     
 private:
-  IIR_FunctionDeclaration *my_resolution_function;
+  IIR_FunctionDeclarationRef my_resolution_function;
 };
 
 typedef refcount<IIRBase_FloatingSubtypeDefinition> IIRBase_FloatingSubtypeDefinitionRef;

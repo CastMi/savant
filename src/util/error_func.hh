@@ -57,14 +57,15 @@
 // usage messages, should start with a capital letter.  But they should not
 // end with a period.
 
-#include "savant_config.hh"
+#include "savant.hh"
 #include <string>
 
-class IIR;
-class IIR_Name;
+REF_FORWARD_DECL(IIR);
+REF_FORWARD_DECL(IIR_Declaration);
+REF_FORWARD_DECL(IIR_Name);
+REF_FORWARD_DECL(IIRScram_TypeDefinition);
+REF_FORWARD_DECL(IIR_TypeDefinition);
 class IIR_Identifier;
-class IIR_TypeDefinition;
-class IIR_Declaration;
 class ANTLRToken;
 class plugin_class_factory;
 
@@ -99,30 +100,30 @@ void
 report_error ( ANTLRToken *tok, const char *msg, severity = FATAL );
 
 void 
-report_error ( IIR *if_node, const string &message, severity = FATAL );
+report_error ( IIR * if_node, const string &message, severity = FATAL );
 
 void 
-report_error ( IIR *if_node, const char *msg, severity = FATAL );
+report_error ( IIR * if_node, const char *msg, severity = FATAL );
 
 void 
-report_undefined_symbol( IIR * );
+report_undefined_symbol( IIRRef );
 
 void 
-report_undefined_symbol( IIR_Declaration *, IIR_Name * );
+report_undefined_symbol( IIR_DeclarationRef , IIR_NameRef );
 
 void 
-report_undefined_symbol( savant::set<IIR_TypeDefinition*> *, IIR * );
+report_undefined_symbol( savant::set<IIRScram_TypeDefinitionRef> , IIRRef );
 
 void 
-report_ambiguous_error( IIR *error_info, savant::set<IIR_Declaration*> *error_set );
+report_ambiguous_error( IIRRef error_info, savant::set<IIR_DeclarationRef> error_set );
 
 void 
-report_ambiguous_error( IIR *error_info, savant::set<IIR_TypeDefinition*> *error_set );
+report_ambiguous_error( IIRRef error_info, savant::set<IIR_TypeDefinitionRef> error_set );
 
 void 
 report_ambiguous_error( IIR_Declaration *prefix,
 			IIR_Name *suffix,
-			savant::set<IIR_Declaration*> *error_set );
+			savant::set<IIR_DeclarationRef> error_set );
 
 void
 report_undefined_function(char *func_name);

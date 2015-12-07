@@ -41,14 +41,14 @@ public:
   IIRScram_BitStringLiteral() {}
   virtual ~IIRScram_BitStringLiteral();
 
-  static IIRScram_BitStringLiteral *get( IIR_Char *value, IIR_Int32 length);
+  static IIRScram_BitStringLiteralRef get( IIR_CharRef value, IIR_Int32 length);
 
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
-  virtual IIRScram *_clone();
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0);
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
+  virtual IIRScramRef _clone();
 
 protected:    
 private:

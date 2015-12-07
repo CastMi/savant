@@ -38,16 +38,16 @@ class IIR_InterfaceList : public virtual IIR_DeclarationList{
 public:
   virtual ~IIR_InterfaceList() {}
     
-  virtual IIR *first() = 0;
-  virtual IIR *last() = 0;
-  virtual IIR *successor( IIR_InterfaceDeclaration * ) = 0;
-  virtual IIR *predecessor( IIR_InterfaceDeclaration * ) = 0;
-  virtual IIR *get_nth_element( IIR_Int32 ) = 0;
-  virtual IIR_Int32 get_position( IIR_InterfaceDeclaration * ) = 0;
+  virtual IIRRef first() = 0;
+  virtual IIRRef last() = 0;
+  virtual IIRRef successor( IIR_InterfaceDeclarationRef ) = 0;
+  virtual IIRRef predecessor( IIR_InterfaceDeclarationRef ) = 0;
+  virtual IIRRef get_nth_element( IIR_Int32 ) = 0;
+  virtual IIR_Int32 get_position( IIR_InterfaceDeclarationRef ) = 0;
 
-  virtual void append( IIR_InterfaceDeclaration * ) = 0;
-  virtual void prepend( IIR_InterfaceDeclaration * ) = 0;
-  virtual void insert_after( IIR_InterfaceDeclaration *, IIR_InterfaceDeclaration * ) = 0;
+  virtual void append( IIR_InterfaceDeclarationRef ) = 0;
+  virtual void prepend( IIR_InterfaceDeclarationRef ) = 0;
+  virtual void insert_after( IIR_InterfaceDeclarationRef , IIR_InterfaceDeclarationRef ) = 0;
 };
 
 typedef refcount<IIR_InterfaceList> IIR_InterfaceListRef;

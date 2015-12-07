@@ -47,17 +47,17 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  IIRScram_TypeDefinition *_get_subtype();
-  IIRScram_Declaration *_get_implicit_declaration( const string &decl_name, 
-					      IIRScram_TypeDefinition *decl_type );
+  IIRScram_TypeDefinitionRef _get_subtype();
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &decl_name, 
+					      IIRScram_TypeDefinitionRef decl_type );
 
-  IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition*> * );
+  IIRScramRef _semantic_transform( savant::set<IIRScram_TypeDefinitionRef> );
 
   IIR_Boolean has_suffix(){ return TRUE; }
-  void _set_suffix( IIRScram *new_suffix ){ IIRBase_UserAttribute::set_suffix( new_suffix ); }
+  void _set_suffix( IIRScramRef new_suffix ){ IIRBase_UserAttribute::set_suffix( new_suffix ); }
   void _resolve_suffix_special();
 
-  IIRScram *_get_suffix();
+  IIRScramRef _get_suffix();
 protected:    
 private:
   IIR_Boolean _is_qualified_expression();

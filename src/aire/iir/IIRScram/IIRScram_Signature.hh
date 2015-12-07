@@ -47,10 +47,10 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  void _set_resolution_function( IIRScram_FunctionDeclaration * ){ abort(); }
+  void _set_resolution_function( IIRScram_FunctionDeclarationRef ){ abort(); }
 
   // Wrappers for IIRBase functions
-  IIRScram_DesignatorList *     _get_argument_type_list();
+  IIRScram_DesignatorListRef     _get_argument_type_list();
 
 protected:    
 private:

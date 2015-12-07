@@ -44,13 +44,13 @@ public:
 
   IIR_Boolean _is_readable();
   
-  IIRScram_Declaration *_get_implicit_declaration( const string &decl_name,
-					      IIRScram_TypeDefinition *decl_type );
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &decl_name,
+					      IIRScram_TypeDefinitionRef decl_type );
   
   IIR_Boolean has_suffix(){ return TRUE; }
-  void _set_suffix( IIRScram *new_suffix ){ IIRBase_QuietAttribute::set_suffix( new_suffix ); }
+  void _set_suffix( IIRScramRef new_suffix ){ IIRBase_QuietAttribute::set_suffix( new_suffix ); }
 
-  IIRScram *_clone();
+  IIRScramRef _clone();
   virtual IIR_Boolean _is_quiet_attribute() { return TRUE; }
   IIR_Boolean _is_signal_attribute(){ return TRUE; }
 

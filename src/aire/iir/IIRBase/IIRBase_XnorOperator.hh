@@ -36,11 +36,11 @@ class IIRBase_XnorOperator : public virtual IIRBase_DyadicOperator,
 			     public virtual IIR_XnorOperator{
 public:
 
-  IIR_Kind get_kind() const {
+  IIR_Kind get_kind() const override {
     return IIR_XNOR_OPERATOR;
   }
-  const IIR_Char *get_kind_text() const {
-    return "IIR_XnorOperator";
+  IIR_CharConstRef get_kind_text() const override {
+    return IIR_CharConstRef("IIR_XnorOperator");
   }
 
   const string &get_operator_string() const;

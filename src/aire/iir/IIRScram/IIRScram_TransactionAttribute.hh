@@ -45,8 +45,8 @@ public:
 
   IIR_Boolean _is_readable();
 
-  IIRScram_Declaration *_get_implicit_declaration( const string &decl_name, 
-					      IIRScram_TypeDefinition *decl_type );
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &decl_name, 
+					      IIRScram_TypeDefinitionRef decl_type );
   
   IIR_Boolean _is_transaction_attribute() { return TRUE; }
   IIR_Boolean _is_signal_attribute(){ return TRUE; }

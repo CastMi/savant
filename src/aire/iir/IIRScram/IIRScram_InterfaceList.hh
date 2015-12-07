@@ -46,7 +46,7 @@ public:
   /** Used by IIRScram_AssociationList#_build_default_map to find formals
       corresponding to the actuals that exist.  Returns null if no matching
       formal is found. */
-  IIRScram_InterfaceDeclaration *_find_declaration( IIRScram_TextLiteral *declarator );
+  IIRScram_InterfaceDeclarationRef _find_declaration( IIRScram_TextLiteralRef declarator );
   
 protected:    
 private:

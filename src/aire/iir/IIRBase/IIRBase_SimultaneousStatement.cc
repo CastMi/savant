@@ -29,6 +29,6 @@ IIRBase_SimultaneousStatement::IIRBase_SimultaneousStatement(){}
 IIRBase_SimultaneousStatement::~IIRBase_SimultaneousStatement(){}
 
 void
-IIRBase_SimultaneousStatement::set_declarative_region( IIR *outerRegion ){
+IIRBase_SimultaneousStatement::set_declarative_region( IIRRef outerRegion ){
   enclosingRegion = outerRegion;
 }

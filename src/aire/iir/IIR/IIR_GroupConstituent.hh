@@ -37,8 +37,8 @@ class IIR_GroupConstituent : public virtual IIR_Tuple{
 public:
   virtual ~IIR_GroupConstituent() {}
     
-  virtual void set_name( IIR* name) = 0;
-  virtual IIR* get_name() = 0;
+  virtual void set_name( IIRRef name) = 0;
+  virtual IIRRef get_name() = 0;
 };
 
 typedef refcount<IIR_GroupConstituent> IIR_GroupConstituentRef;

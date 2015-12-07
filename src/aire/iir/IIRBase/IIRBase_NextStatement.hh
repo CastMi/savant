@@ -39,17 +39,17 @@ class IIRBase_NextStatement : public virtual IIRBase_SequentialStatement, public
 
 public:
 
-  IIR_Kind get_kind() const {return IIR_NEXT_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_NextStatement";}
+  IIR_Kind get_kind() const override { return IIR_NEXT_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_NextStatement"); }
 
-  void set_enclosing_loop( IIR_SequentialStatement* loop);
-  IIR_SequentialStatement* get_enclosing_loop();
-  void set_condition( IIR* condition);
-  IIR* get_condition();
+  void set_enclosing_loop( IIR_SequentialStatementRef loop);
+  IIR_SequentialStatementRef get_enclosing_loop();
+  void set_condition( IIRRef condition);
+  IIRRef get_condition();
 
   IIR_Boolean is_above_attribute_found();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -59,8 +59,8 @@ protected:
     
 private:
   
-  IIR* condition;
-  IIR_SequentialStatement* loop;
+  IIRRef condition;
+  IIR_SequentialStatementRef loop;
 
 };
 

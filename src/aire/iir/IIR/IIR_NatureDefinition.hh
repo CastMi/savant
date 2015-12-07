@@ -34,7 +34,7 @@ class IIR_NatureDefinition : public virtual IIR_TypeDefinition {
 public:
   virtual ~IIR_NatureDefinition() {}
 
-  virtual IIR_TypeDefinition *get_final_subtype() = 0;
+  virtual IIR_TypeDefinitionRef get_final_subtype() = 0;
 };
 
 typedef refcount<IIR_NatureDefinition> IIR_NatureDefinitionRef;

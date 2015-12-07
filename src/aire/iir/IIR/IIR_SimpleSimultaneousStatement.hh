@@ -36,25 +36,25 @@ public:
   virtual ~IIR_SimpleSimultaneousStatement() {}; 
 
   /** Used to set the left expression of a simultaneous equation */
-  virtual void set_left_expression(IIR* left_expression) = 0;
+  virtual void set_left_expression( IIRRef left_expression ) = 0;
   
   /** Used to get the pointer to the left expression of a simultaneous equation */
-  virtual IIR* get_left_expression() = 0;
+  virtual IIRRef get_left_expression() = 0;
   
   /** Used to set the right expression of a simultaneous equation */
-  virtual void set_right_expression(IIR* right_expression) = 0;
+  virtual void set_right_expression( IIRRef right_expression ) = 0;
   
   /** Used to get the pointer to the right expression of a simultaneous equation */
-  virtual IIR* get_right_expression() = 0;
+  virtual IIRRef get_right_expression() = 0;
   
-  virtual void set_pure(IIR_Pure purity) = 0;
+  virtual void set_pure( IIR_Pure purity ) = 0;
   virtual IIR_Pure get_pure() = 0;
 
   /** Sets the tolerance aspect of the simultaneous equation */  
-  virtual void set_tolerance_aspect(IIR* tolerance) = 0;
+  virtual void set_tolerance_aspect(IIRRef tolerance) = 0;
   
   /** Returns a pointer to the tolerance aspect of the simultaneous equation */
-  virtual IIR* get_tolerance_aspect() = 0;  
+  virtual IIRRef get_tolerance_aspect() = 0;  
 };
 
 typedef refcount<IIR_SimpleSimultaneousStatement> IIR_SimpleSimultaneousStatementRef;

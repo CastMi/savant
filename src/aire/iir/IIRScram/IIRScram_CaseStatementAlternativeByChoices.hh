@@ -32,9 +32,9 @@
 #include "IIRScram_CaseStatementAlternative.hh"
 #include "IIRBase_CaseStatementAlternativeByChoices.hh"
 
+REF_FORWARD_DECL(IIRScram_ChoiceList);
 class IIRScram_TypeDefinition;
 class IIRScram_List;
-class IIRScram_ChoiceList;
 
 class IIRScram_CaseStatementAlternativeByChoices : public virtual IIRScram_CaseStatementAlternative, public virtual IIRBase_CaseStatementAlternativeByChoices{
   
@@ -45,12 +45,12 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
   
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor=0); 
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor=0); 
   
   
-  IIRScram              *_clone();
-  IIRScram_ChoiceList   *_get_choices();
+  IIRScramRef             _clone();
+  IIRScram_ChoiceListRef  _get_choices();
 
 protected:
 private:

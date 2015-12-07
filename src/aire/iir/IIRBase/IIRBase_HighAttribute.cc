@@ -22,27 +22,25 @@
 #include "IIRBase_Identifier.hh"
 #include "IIRBase_HighAttribute.hh"
 #include "savant.hh"
+#include <cstring>
 
-IIRBase_HighAttribute::IIRBase_HighAttribute() {
-  my_suffix = NULL;
-}
-
+IIRBase_HighAttribute::IIRBase_HighAttribute() {}
 IIRBase_HighAttribute::~IIRBase_HighAttribute() {}
 
 void 
-IIRBase_HighAttribute::set_suffix( IIR *suffix ){
+IIRBase_HighAttribute::set_suffix( IIRRef suffix ){
   my_suffix = suffix;
 }
 
-IIR *
+IIRRef
 IIRBase_HighAttribute::get_suffix( ){
   return my_suffix;
 }
 
-IIR *
-IIRBase_HighAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_HighAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_HighAttribute *new_node = dynamic_cast<IIRBase_HighAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_HighAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_HighAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->my_suffix = convert_node(my_suffix, factory);
@@ -72,10 +70,10 @@ IIRBase_HighAttribute::is_function_attribute(){
   }
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_HighAttribute::build_attribute_name() {
-  const char *name = "high";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );
+   std::string name("high");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory() );
 }
 
 void 

@@ -25,20 +25,21 @@
 #include "IIR_TypeDefinition.hh"
 #include "savant.hh"
 #include "StandardPackage.hh"
+#include <cstring>
 
 IIRBase_InstanceNameAttribute::IIRBase_InstanceNameAttribute() {}
 
 IIRBase_InstanceNameAttribute::~IIRBase_InstanceNameAttribute() {}
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_InstanceNameAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_string_type();
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_InstanceNameAttribute::build_attribute_name() {
-  const char *name = "instancename";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );
+   std::string name("instancename");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory() );
 }
 
 void 

@@ -29,29 +29,27 @@
 #include "IIRBase_TerminalDeclaration.hh"
 #include "IIR_TextLiteral.hh"
 
-IIRBase_TerminalDeclaration::IIRBase_TerminalDeclaration(){
-  set_nature(NULL);
-}
+IIRBase_TerminalDeclaration::IIRBase_TerminalDeclaration() {}
 
 IIRBase_TerminalDeclaration::~IIRBase_TerminalDeclaration() {}
 
 void
-IIRBase_TerminalDeclaration::set_nature( IIR_NatureDefinition *new_nature ){
+IIRBase_TerminalDeclaration::set_nature( IIR_NatureDefinitionRef new_nature ){
   nature = new_nature;
 }
 
-IIR_NatureDefinition*
+IIR_NatureDefinitionRef
 IIRBase_TerminalDeclaration::get_nature(){
   return nature;
 }
 
-IIR *
-IIRBase_TerminalDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_TerminalDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_TerminalDeclaration *new_node = dynamic_cast<IIRBase_TerminalDeclaration *>(IIRBase_ObjectDeclaration::convert_tree(factory));
+  IIRBase_TerminalDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_TerminalDeclaration>(IIRBase_ObjectDeclaration::convert_tree(factory));
 
   // Process the variables
-  new_node->nature = dynamic_cast<IIR_NatureDefinition *>(convert_node(nature, factory));
+  new_node->nature = my_dynamic_pointer_cast<IIR_NatureDefinition>(convert_node(nature, factory));
 
   return new_node;
 }

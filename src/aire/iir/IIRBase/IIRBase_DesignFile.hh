@@ -34,47 +34,47 @@ class IIR_Identifier;
 class IIR_CommentList;
 class IIR_LibraryUnitList;
 
-class IIRBase_DesignFile : public virtual IIRBase, public virtual IIR_DesignFile{
+class IIRBase_DesignFile : public virtual IIRBase, public virtual IIR_DesignFile {
 
 public:
   // List Accessor(s)
-  IIR_CommentList           *get_comments();
-  IIR_LibraryUnitList       *get_library_units();
-  void                      set_comments(IIR_CommentList *new_comments);
-  void                      set_library_units(IIR_LibraryUnitList *new_library_units);
+  IIR_CommentListRef        get_comments();
+  IIR_LibraryUnitListRef    get_library_units();
+  void                      set_comments(IIR_CommentListRef new_comments);
+  void                      set_library_units(IIR_LibraryUnitListRef new_library_units);
 
-  IIR_Kind get_kind() const {return IIR_DESIGN_FILE;}
-  const IIR_Char *get_kind_text() const {return "IIR_DesignFile";}
+  IIR_Kind get_kind() const override { return IIR_DESIGN_FILE;}
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_DesignFile"); }
 
-  IIR_Identifier *get_name();
-  void set_name( IIR_Identifier * );
+  IIR_IdentifierRef get_name();
+  void set_name( IIR_IdentifierRef );
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
-  StandardPackage               *get_standard_package();
-  void                          set_standard_package(StandardPackage *);
+  StandardPackageRef            get_standard_package();
+  void                          set_standard_package( StandardPackageRef );
 
-  plugin_class_factory          *get_class_factory();
-  void                          set_class_factory(plugin_class_factory *);
+  plugin_class_factoryRef       get_class_factory();
+  void                          set_class_factory( plugin_class_factoryRef );
 
-  void                          set_parser( scram *new_parser );
-  IIR_LibraryDeclaration        *get_work_library();
+  void                          set_parser( scramRef new_parser );
+  IIR_LibraryDeclarationRef     get_work_library();
 
   void publish_vhdl(ostream &);
 protected:
   IIRBase_DesignFile();
   virtual ~IIRBase_DesignFile() = 0;
     
-  StandardPackage               *my_std_package;
-  plugin_class_factory          *my_factory;
+  StandardPackageRef        my_std_package;
+  plugin_class_factoryRef   my_factory;
 
-  scram                         *my_parser;
+  scramRef                  my_parser;
 private:
   // List Variable(s)
-  IIR_CommentList               *comments;
-  IIR_LibraryUnitList           *library_units;
+  IIR_CommentListRef        comments;
+  IIR_LibraryUnitListRef    library_units;
 
-  IIR_Identifier                *my_file_name;
+  IIR_IdentifierRef         my_file_name;
 };
 
 typedef refcount<IIRBase_DesignFile> IIRBase_DesignFileRef;

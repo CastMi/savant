@@ -34,7 +34,7 @@ public:
   IIRScram_ArraySubnatureDefinition(){}
   virtual ~IIRScram_ArraySubnatureDefinition();
 
-  virtual IIRScram *_clone();
+  virtual IIRScramRef _clone();
 
 protected:    
 private: 

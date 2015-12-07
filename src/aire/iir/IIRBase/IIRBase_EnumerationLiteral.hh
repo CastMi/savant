@@ -39,23 +39,23 @@ class IIRBase_EnumerationLiteral : public virtual IIRBase_Declaration,
 				   public virtual IIR_EnumerationLiteral{
 public:
   // List Accessor(s)
-  IIR_AttributeSpecificationList *get_attributes();
-  void                           set_attributes(IIR_AttributeSpecificationList *new_attributes);
+  IIR_AttributeSpecificationListRef get_attributes();
+  void                           set_attributes(IIR_AttributeSpecificationListRef new_attributes);
 
-  IIR_Kind get_kind() const {return IIR_ENUMERATION_LITERAL;}
-  const IIR_Char *get_kind_text() const {return "IIR_EnumerationLiteral";}
+  IIR_Kind get_kind() const override { return IIR_ENUMERATION_LITERAL; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_EnumerationLiteral"); }
 
-  void set_position( IIR *position );
-  IIR *get_position();
+  void set_position( IIRRef position );
+  IIRRef get_position();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_ascending_range();
   IIR_Boolean is_resolved();
   IIR_Boolean is_character_literal();
   IIR_Boolean is_locally_static();
 
-  IIR_TypeDefinition *get_subtype() { return IIRBase::get_subtype();}
+  IIR_TypeDefinitionRef get_subtype() { return IIRBase::get_subtype();}
 
   declaration_type get_declaration_type();
 
@@ -68,9 +68,9 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_AttributeSpecificationList *attributes;
+  IIR_AttributeSpecificationListRef attributes;
 
-  IIR *my_position;
+  IIRRef my_position;
 };
 
 typedef refcount<IIRBase_EnumerationLiteral> IIRBase_EnumerationLiteralRef;

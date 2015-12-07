@@ -31,94 +31,77 @@
 #include "IIR_DesignatorList.hh"
 #include "IIRBase_LibraryUnit.hh"
 
-IIRBase_ConfigurationSpecification::IIRBase_ConfigurationSpecification() :
-  instantiation_list(0),
-  generic_map_aspect(0),
-  port_map_aspect(0),
-  my_component_name(0),
-  my_entity_aspect(0){}
-
-IIRBase_ConfigurationSpecification::~IIRBase_ConfigurationSpecification(){
-  delete instantiation_list;
-  instantiation_list = 0;
-  delete generic_map_aspect;
-  generic_map_aspect = 0;
-  delete port_map_aspect;
-  port_map_aspect = 0;
-  // Not component name or entity aspect
-}
+IIRBase_ConfigurationSpecification::IIRBase_ConfigurationSpecification() {}
+IIRBase_ConfigurationSpecification::~IIRBase_ConfigurationSpecification() {}
 
 void 
-IIRBase_ConfigurationSpecification::set_component_name(IIR *component_name){
+IIRBase_ConfigurationSpecification::set_component_name(IIRRef component_name){
   my_component_name = component_name;
 }
 
-IIR *
+IIRRef
 IIRBase_ConfigurationSpecification::get_component_name(){
   return my_component_name;
 }
 
 void 
-IIRBase_ConfigurationSpecification::set_entity_aspect(IIR_LibraryUnit *entity_aspect){
+IIRBase_ConfigurationSpecification::set_entity_aspect(IIR_LibraryUnitRef entity_aspect){
   my_entity_aspect = entity_aspect;
 }
 
-IIR_LibraryUnit *
+IIR_LibraryUnitRef
 IIRBase_ConfigurationSpecification::get_entity_aspect(){
   return my_entity_aspect;
 }
 
 // List Accessor(s)
-IIR_DesignatorList *
+IIR_DesignatorListRef
 IIRBase_ConfigurationSpecification::get_instantiation_list() {
-  ASSERT(instantiation_list != NULL);
+  ASSERT(instantiation_list != nullptr);
   return instantiation_list;
 }
 
-IIR_AssociationList *
+IIR_AssociationListRef
 IIRBase_ConfigurationSpecification::get_generic_map_aspect() {
-  ASSERT(generic_map_aspect != NULL);
+  ASSERT(generic_map_aspect != nullptr);
   return generic_map_aspect;
 }
 
-IIR_AssociationList *
+IIR_AssociationListRef
 IIRBase_ConfigurationSpecification::get_port_map_aspect() {
-  ASSERT(port_map_aspect != NULL);
+  ASSERT(port_map_aspect != nullptr);
   return port_map_aspect;
 }
 
 void
-IIRBase_ConfigurationSpecification::set_instantiation_list(IIR_DesignatorList *new_instantiation_list) {
-  ASSERT(new_instantiation_list != NULL);
-  delete instantiation_list;
+IIRBase_ConfigurationSpecification::set_instantiation_list(IIR_DesignatorListRef new_instantiation_list) {
+  ASSERT(new_instantiation_list != nullptr);
   instantiation_list = new_instantiation_list;
 }
 
 void
-IIRBase_ConfigurationSpecification::set_generic_map_aspect(IIR_AssociationList *new_generic_map_aspect) {
-  ASSERT(new_generic_map_aspect != NULL);
-  delete generic_map_aspect;
+IIRBase_ConfigurationSpecification::set_generic_map_aspect(IIR_AssociationListRef new_generic_map_aspect) {
+  ASSERT(new_generic_map_aspect != nullptr);
   generic_map_aspect = new_generic_map_aspect;
 }
 
 void
-IIRBase_ConfigurationSpecification::set_port_map_aspect(IIR_AssociationList *new_port_map_aspect) {
-  ASSERT(new_port_map_aspect != NULL);
-  delete port_map_aspect;
+IIRBase_ConfigurationSpecification::set_port_map_aspect(IIR_AssociationListRef new_port_map_aspect) {
+  ASSERT(new_port_map_aspect != nullptr);
   port_map_aspect = new_port_map_aspect;
 }
 
-IIR *
-IIRBase_ConfigurationSpecification::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ConfigurationSpecification::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ConfigurationSpecification *new_node = dynamic_cast<IIRBase_ConfigurationSpecification *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_ConfigurationSpecificationRef new_node = my_dynamic_pointer_cast<IIRBase_ConfigurationSpecification>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->instantiation_list = dynamic_cast<IIR_DesignatorList *>(convert_node(instantiation_list, factory));
-  new_node->generic_map_aspect = dynamic_cast<IIR_AssociationList *>(convert_node(generic_map_aspect, factory));
-  new_node->port_map_aspect = dynamic_cast<IIR_AssociationList *>(convert_node(port_map_aspect, factory));
+  new_node->instantiation_list = my_dynamic_pointer_cast<IIR_DesignatorList>(convert_node(instantiation_list, factory));
+  new_node->generic_map_aspect = my_dynamic_pointer_cast<IIR_AssociationList>(convert_node(generic_map_aspect, factory));
+  new_node->port_map_aspect = my_dynamic_pointer_cast<IIR_AssociationList>(convert_node(port_map_aspect, factory));
   new_node->my_component_name = convert_node(my_component_name, factory);
-  new_node->my_entity_aspect = dynamic_cast<IIR_LibraryUnit *>(convert_node(my_entity_aspect, factory));
+  new_node->my_entity_aspect = my_dynamic_pointer_cast<IIR_LibraryUnit>(convert_node(my_entity_aspect, factory));
 
   return new_node;
 }
@@ -140,7 +123,7 @@ IIRBase_ConfigurationSpecification::publish_vhdl_decl(ostream &vhdl_out) {
   get_component_name()->publish_vhdl(vhdl_out);
   vhdl_out << " use";
   if(get_entity_aspect() != NULL) {
-    dynamic_cast<IIRBase_LibraryUnit *>(get_entity_aspect())->publish_vhdl_with_library_name(vhdl_out);
+     my_dynamic_pointer_cast<IIRBase_LibraryUnit>(get_entity_aspect())->publish_vhdl_with_library_name(vhdl_out);
   }
   else{
     vhdl_out << " open";

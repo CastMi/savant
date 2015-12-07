@@ -36,26 +36,26 @@
 class IIRBase_HighAttribute : public virtual IIRBase_Attribute, public virtual IIR_HighAttribute{
 
 public:
-  IIR_Kind get_kind() const {return IIR_HIGH_ATTRIBUTE;}
-  const IIR_Char *get_kind_text() const {return "IIR_HighAttribute";}
+  IIR_Kind get_kind() const override { return IIR_HIGH_ATTRIBUTE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_HighAttribute"); }
 
-  void set_suffix( IIR * );
-  IIR *get_suffix( );
+  void set_suffix( IIRRef );
+  IIRRef get_suffix( );
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_value_attribute();
   IIR_Boolean is_function_attribute();
   IIR_Boolean has_suffix(){ return TRUE; }
 
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
   void publish_vhdl(ostream &);
 protected:
   IIRBase_HighAttribute();
   virtual ~IIRBase_HighAttribute() = 0;
     
 private:
-  IIR *my_suffix;
+  IIRRef my_suffix;
 };
 
 typedef refcount<IIRBase_HighAttribute> IIRBase_HighAttributeRef;

@@ -31,14 +31,14 @@
 #include "savant_config.hh"
 #include "IIR_List.hh"
 
-class IIR_WaveformElement;
+REF_FORWARD_DECL(IIR_WaveformElement);
 
 class IIR_WaveformList : public virtual IIR_List{
 public:
   virtual ~IIR_WaveformList() {}
     
-  virtual IIR_WaveformElement *first() = 0;
-  virtual IIR_WaveformElement *successor(IIR_WaveformElement *) = 0;
+  virtual IIR_WaveformElementRef first() = 0;
+  virtual IIR_WaveformElementRef successor(IIR_WaveformElementRef ) = 0;
 };
 
 typedef refcount<IIR_WaveformList> IIR_WaveformListRef;

@@ -40,16 +40,14 @@ public:
 
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   
-  
-  IIRScram *_clone();
+  IIRScramRef _clone();
   
 
 protected:    
 private:
   // Removes types that aren't dimensional arrays from the set passed in.
-  void _remove_non_one_d_array_types( savant::set<IIRScram_TypeDefinition> *remove_from );
+  void _remove_non_one_d_array_types( savant::set<IIRScram_TypeDefinition> remove_from );
 };
 
 typedef refcount<IIRScram_ConcatenationOperator> IIRScram_ConcatenationOperatorRef;

@@ -38,10 +38,10 @@ class IIR_EnumerationLiteralList : public virtual IIR_DeclarationList{
 public:
   virtual ~IIR_EnumerationLiteralList() {}
     
-  virtual IIR *first() = 0;
-  virtual IIR *last() = 0;
-  virtual IIR *successor( IIR_EnumerationLiteral * ) = 0;
-  virtual IIR *predecessor( IIR_EnumerationLiteral * ) = 0;
+  virtual IIRRef first() = 0;
+  virtual IIRRef last() = 0;
+  virtual IIRRef successor( IIR_EnumerationLiteralRef  ) = 0;
+  virtual IIRRef predecessor( IIR_EnumerationLiteralRef  ) = 0;
 };
 
 typedef refcount<IIR_EnumerationLiteralList> IIR_EnumerationLiteralListRef;

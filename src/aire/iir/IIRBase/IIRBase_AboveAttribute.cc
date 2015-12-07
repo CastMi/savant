@@ -24,39 +24,40 @@
 #include "IIR_TypeDefinition.hh"
 #include "IIR_EnumerationSubtypeDefinition.hh"
 #include "StandardPackage.hh"
+#include <cstring>
 
 IIRBase_AboveAttribute::IIRBase_AboveAttribute() {}
 IIRBase_AboveAttribute::~IIRBase_AboveAttribute() {};
 
 void
-IIRBase_AboveAttribute::set_suffix(IIR* suffix) {
+IIRBase_AboveAttribute::set_suffix(IIRRef suffix) {
   this->suffix = suffix;
 }
 
-IIR*
+IIRRef
 IIRBase_AboveAttribute::get_suffix() {
   return suffix;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_AboveAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_boolean_type();
 }
 
-IIR *
-IIRBase_AboveAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_AboveAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_AboveAttribute *new_node = dynamic_cast<IIRBase_AboveAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_AboveAttributeRef new_node = dynamic_pointer_cast<IIRBase_AboveAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_AboveAttribute::build_attribute_name(){
-  const char *name = "above";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );
+   std::string name("above");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory() );
 }
 
 void

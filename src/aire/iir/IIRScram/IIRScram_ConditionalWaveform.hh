@@ -48,13 +48,13 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor=0); 
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
-  IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition*> * );
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor=0); 
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef  );
+  IIRScramRef _semantic_transform( savant::set<IIRScram_TypeDefinitionRef> );
 
-  IIRScram *                    _get_condition();
-  IIRScram_WaveformList *       _get_waveform();
+  IIRScramRef                     _get_condition();
+  IIRScram_WaveformListRef        _get_waveform();
 
 protected:  
 private:

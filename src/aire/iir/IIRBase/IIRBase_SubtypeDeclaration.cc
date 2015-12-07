@@ -32,35 +32,29 @@
 #include "IIR_TextLiteral.hh"
 #include "IIRBase_TypeDefinition.hh"
 
-IIRBase_SubtypeDeclaration::IIRBase_SubtypeDeclaration()  :
-  attributes(0){}
-
-IIRBase_SubtypeDeclaration::~IIRBase_SubtypeDeclaration() {
-  delete attributes;
-  attributes = 0;
-}
+IIRBase_SubtypeDeclaration::IIRBase_SubtypeDeclaration() {}
+IIRBase_SubtypeDeclaration::~IIRBase_SubtypeDeclaration() {}
 
 // List Accessor(s)
-IIR_AttributeSpecificationList *
+IIR_AttributeSpecificationListRef
 IIRBase_SubtypeDeclaration::get_attributes() {
   ASSERT(attributes != NULL);
   return attributes;
 }
 
 void
-IIRBase_SubtypeDeclaration::set_attributes(IIR_AttributeSpecificationList *new_attributes) {
+IIRBase_SubtypeDeclaration::set_attributes(IIR_AttributeSpecificationListRef new_attributes) {
   ASSERT(new_attributes != NULL);
-  delete attributes;
   attributes = new_attributes;
 }
 
-IIR *
-IIRBase_SubtypeDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SubtypeDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SubtypeDeclaration *new_node = dynamic_cast<IIRBase_SubtypeDeclaration *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_SubtypeDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_SubtypeDeclaration>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
+  new_node->attributes = my_dynamic_pointer_cast<IIR_AttributeSpecificationList>(convert_node(attributes, factory));
 
   return new_node;
 }
@@ -91,7 +85,7 @@ IIRBase_SubtypeDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   get_declarator()->publish_vhdl(vhdl_out);
   if(get_subtype() != NULL) {
     vhdl_out << " is ";
-    dynamic_cast<IIRBase_TypeDefinition *>(get_subtype())->publish_vhdl_subtype_decl(vhdl_out);
+    my_dynamic_pointer_cast<IIRBase_TypeDefinition>(get_subtype())->publish_vhdl_subtype_decl(vhdl_out);
   }
   vhdl_out << ";\n";
 }

@@ -25,40 +25,34 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "IIRBase_SensitizedProcessStatement.hh"
 #include "IIR_DesignatorList.hh"
 #include "IIRBase_DeclarationList.hh"
 #include "IIR_Label.hh"
 
-IIRBase_SensitizedProcessStatement::IIRBase_SensitizedProcessStatement()  :
-  sensitivity_list(0) { }
-
+IIRBase_SensitizedProcessStatement::IIRBase_SensitizedProcessStatement() {}
 IIRBase_SensitizedProcessStatement::~IIRBase_SensitizedProcessStatement() {}
 
 // List Accessor(s)
-IIR_DesignatorList *
+IIR_DesignatorListRef
 IIRBase_SensitizedProcessStatement::get_sensitivity_list() {
   ASSERT(sensitivity_list != NULL);
   return sensitivity_list;
 }
 
-
 void
-IIRBase_SensitizedProcessStatement::set_sensitivity_list(IIR_DesignatorList *new_sensitivity_list) {
+IIRBase_SensitizedProcessStatement::set_sensitivity_list(IIR_DesignatorListRef new_sensitivity_list) {
   ASSERT(new_sensitivity_list != NULL);
-  delete sensitivity_list;
   sensitivity_list = new_sensitivity_list;
 }
 
-IIR *
-IIRBase_SensitizedProcessStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SensitizedProcessStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SensitizedProcessStatement *new_node = dynamic_cast<IIRBase_SensitizedProcessStatement *>(IIRBase_ProcessStatement::convert_tree(factory));
+  IIRBase_SensitizedProcessStatementRef new_node = my_dynamic_pointer_cast<IIRBase_SensitizedProcessStatement>(IIRBase_ProcessStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->sensitivity_list = dynamic_cast<IIR_DesignatorList *>(convert_node(sensitivity_list, factory));
+  new_node->sensitivity_list = my_dynamic_pointer_cast<IIR_DesignatorList>(convert_node(sensitivity_list, factory));
 
   return new_node;
 }
@@ -80,7 +74,7 @@ IIRBase_SensitizedProcessStatement::publish_vhdl(ostream &vhdl_out) {
     vhdl_out << ")\n";
   }
     
-  dynamic_cast<IIRBase_DeclarationList *>(get_process_declarative_part())->publish_vhdl_decl(vhdl_out);
+  my_dynamic_pointer_cast<IIRBase_DeclarationList>(get_process_declarative_part())->publish_vhdl_decl(vhdl_out);
   vhdl_out << "\nbegin\n";
   get_process_statement_part()->publish_vhdl(vhdl_out);
   vhdl_out << "end";

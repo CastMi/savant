@@ -32,33 +32,33 @@
 #include "IIRBase_List.hh"
 #include "IIR_DeclarationList.hh"
 
-class IIR_Declaration;
+REF_FORWARD_DECL(IIR_Declaration);
 
 class IIRBase_DeclarationList : public virtual IIRBase_List, public virtual IIR_DeclarationList{
 
 public:
-  IIR_Kind get_kind() const { return IIR_DECLARATION_LIST; }
-  const IIR_Char *get_kind_text() const { return "IIR_DeclarationList"; }
+  IIR_Kind get_kind() const override { return IIR_DECLARATION_LIST; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_DeclarationList"); }
 
-  void append( IIR_Declaration * );
-  void prepend( IIR_Declaration * );
+  void append( IIR_DeclarationRef );
+  void prepend( IIR_DeclarationRef );
 
-  IIR *successor( IIR_Declaration * );
-  IIR *predecessor( IIR_Declaration * );
+  IIRRef successor( IIR_DeclarationRef );
+  IIRRef predecessor( IIR_DeclarationRef );
 
-  IIR *first();
-  IIR *last();
+  IIRRef first();
+  IIRRef last();
 
-  IIR *get_nth_element( IIR_Int32 );
+  IIRRef get_nth_element( IIR_Int32 );
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name *  );
-  savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral * );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_TextLiteralRef );
 
   /**
      Makes the declarative region of all of the elements in this list point
      to the new region passed in.
   */
-  void set_declarative_region( IIR * );
+  void set_declarative_region( IIRRef );
 
   void publish_vhdl_decl(ostream&);
   void publish_vhdl(ostream&);

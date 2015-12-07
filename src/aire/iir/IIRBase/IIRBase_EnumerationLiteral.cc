@@ -23,45 +23,40 @@
 #include "IIRBase_TextLiteral.hh"
 #include "IIR_AttributeSpecificationList.hh"
 
-IIRBase_EnumerationLiteral::IIRBase_EnumerationLiteral() :
-  attributes(0),
-  my_position(0){}
-
-IIRBase_EnumerationLiteral::~IIRBase_EnumerationLiteral(){
-}
+IIRBase_EnumerationLiteral::IIRBase_EnumerationLiteral() {}
+IIRBase_EnumerationLiteral::~IIRBase_EnumerationLiteral() {}
 
 void 
-IIRBase_EnumerationLiteral::set_position( IIR *position ){
+IIRBase_EnumerationLiteral::set_position( IIRRef position ){
   my_position = position;
 }
 
-IIR *
+IIRRef
 IIRBase_EnumerationLiteral::get_position(){
   return my_position;
 }
 
 // List Accessor(s)
-IIR_AttributeSpecificationList *
+IIR_AttributeSpecificationListRef
 IIRBase_EnumerationLiteral::get_attributes() {
   ASSERT(attributes != NULL);
   return attributes;
 }
 
 void
-IIRBase_EnumerationLiteral::set_attributes(IIR_AttributeSpecificationList *new_attributes) {
+IIRBase_EnumerationLiteral::set_attributes(IIR_AttributeSpecificationListRef new_attributes) {
   ASSERT(new_attributes != NULL);
-  delete attributes;
   attributes = new_attributes;
 }
 
-IIR *
-IIRBase_EnumerationLiteral::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_EnumerationLiteral::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
 
-  IIRBase_EnumerationLiteral *new_node = dynamic_cast<IIRBase_EnumerationLiteral *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_EnumerationLiteralRef new_node = my_dynamic_pointer_cast<IIRBase_EnumerationLiteral>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
+  new_node->attributes = my_dynamic_pointer_cast<IIR_AttributeSpecificationList>(convert_node(attributes, factory));
   new_node->my_position = convert_node(my_position, factory);
 
   return new_node;
@@ -102,10 +97,10 @@ IIRBase_EnumerationLiteral::get_declaration_type() {
 //   character_literal ::= 'graphic_character'
 IIR_Boolean 
 IIRBase_EnumerationLiteral::is_character_literal() {
-  IIR_TextLiteral *my_text_lit = get_declarator();
+  IIR_TextLiteralRef my_text_lit = get_declarator();
 
   if(my_text_lit->get_text_length() == 3 &&
-     (*my_text_lit)[0] == '\'' && (*my_text_lit)[2] == '\'') {
+     my_text_lit->get_text()[0] == '\'' && my_text_lit->get_text()[2] == '\'') {
     return TRUE;
   }
   return FALSE;

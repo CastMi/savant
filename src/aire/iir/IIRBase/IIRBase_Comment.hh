@@ -31,27 +31,24 @@
 class IIRBase_Comment : public virtual IIRBase_TextLiteral, public virtual IIR_Comment{
 
 public:
-  IIR_Kind get_kind() const {return IIR_COMMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_Comment";}
+  IIR_Kind get_kind() const override { return IIR_COMMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_Comment"); }
 
-  IIR_Char *get_text();
+  std::string get_text();
   IIR_Int32 get_text_length();
 
   void set_element( IIR_Int32 subscript, IIR_Char value );
-  IIR_Char& operator[]( IIR_Int32 subscript );
 
-  void set_text( IIR_Char *txt, IIR_Int32 text_len );
+  void set_text( IIR_CharRef txt, IIR_Int32 text_len );
 
-  void release();
-
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:
   IIRBase_Comment();
   virtual ~IIRBase_Comment() = 0;
     
-  IIR_Char *text;
+  IIR_CharRef text;
   IIR_Int32 text_length;
 
 private:

@@ -29,16 +29,16 @@
 #include "savant_config.hh"
 #include "IIR_List.hh"
 
-class IIR_ArchitectureStatement;
+REF_FORWARD_DECL(IIR_ArchitectureStatement);
 
 class IIR_ArchitectureStatementList : public virtual IIR_List {
 public:    
   IIR_ArchitectureStatementList() {};
   virtual ~IIR_ArchitectureStatementList() {};
 
-  virtual IIR* first() = 0;
-  virtual IIR* successor(IIR_ArchitectureStatement*) = 0;
-  virtual void append_element(IIR_ArchitectureStatement*) = 0;
+  virtual IIRRef first() = 0;
+  virtual IIRRef successor( IIR_ArchitectureStatementRef ) = 0;
+  virtual void append_element( IIR_ArchitectureStatementRef ) = 0;
 };
 
 typedef refcount<IIR_ArchitectureStatementList> IIR_ArchitectureStatementListRef;

@@ -37,13 +37,13 @@ class IIRBase_CaseStatementAlternativeByChoices : public virtual IIRBase_CaseSta
 
 public:
   // List Accessor(s)
-  IIR_ChoiceList *get_choices();
-  void           set_choices(IIR_ChoiceList *new_choices);
+  IIR_ChoiceListRef get_choices();
+  void           set_choices(IIR_ChoiceListRef new_choices);
 
-  IIR_Kind get_kind() const { return IIR_CASE_STATEMENT_ALTERNATIVE_BY_CHOICES; }
-  const IIR_Char *get_kind_text() const { return "IIR_CaseStatementAlternativeByChoices"; }
+  IIR_Kind get_kind() const override { return IIR_CASE_STATEMENT_ALTERNATIVE_BY_CHOICES; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_CaseStatementAlternativeByChoices"); }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
   void publish_vhdl(ostream &);
@@ -53,7 +53,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_ChoiceList *choices;
+  IIR_ChoiceListRef choices;
 
 };
 

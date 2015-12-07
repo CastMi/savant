@@ -39,11 +39,11 @@ class IIR_Allocator : public virtual IIR_Expression{
 public:
   virtual ~IIR_Allocator() {}
     
-  virtual void set_type_mark( IIR_TypeDefinition *) = 0;
-  virtual IIR_TypeDefinition *get_type_mark() = 0;
+  virtual void set_type_mark( IIR_TypeDefinitionRef ) = 0;
+  virtual IIR_TypeDefinitionRef get_type_mark() = 0;
 
-  virtual void set_value( IIR* ) = 0;
-  virtual IIR *get_value() = 0;
+  virtual void set_value( IIRRef ) = 0;
+  virtual IIRRef get_value() = 0;
 };
 
 typedef refcount<IIR_Allocator> IIR_AllocatorRef;

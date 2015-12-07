@@ -39,35 +39,30 @@
 #include <FileManager.h>
 
 IIRBase_LibraryDeclaration::IIRBase_LibraryDeclaration()  :
-  primary_units(0),
   path_to_directory( "" ){}
 
-IIRBase_LibraryDeclaration::~IIRBase_LibraryDeclaration() {
-  delete primary_units;
-  primary_units = 0;
-}
+IIRBase_LibraryDeclaration::~IIRBase_LibraryDeclaration() {}
 
 // List Accessor(s)
-IIR_LibraryUnitList *
+IIR_LibraryUnitListRef
 IIRBase_LibraryDeclaration::get_primary_units() {
-  ASSERT(primary_units != NULL);
+  ASSERT(primary_units != nullptr);
   return primary_units;
 }
 
 void
-IIRBase_LibraryDeclaration::set_primary_units(IIR_LibraryUnitList *new_primary_units) {
-  ASSERT(new_primary_units != NULL);
-  delete primary_units;
+IIRBase_LibraryDeclaration::set_primary_units(IIR_LibraryUnitListRef new_primary_units) {
+  ASSERT(new_primary_units != nullptr);
   primary_units = new_primary_units;
 }
 
-IIR *
-IIRBase_LibraryDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_LibraryDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_LibraryDeclaration *new_node = dynamic_cast<IIRBase_LibraryDeclaration *>(IIRBase_Declaration::convert_tree(factory));
+  IIRBase_LibraryDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_LibraryDeclaration>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->primary_units = dynamic_cast<IIR_LibraryUnitList *>(convert_node(primary_units, factory));
+  new_node->primary_units = my_dynamic_pointer_cast<IIR_LibraryUnitList>(convert_node(primary_units, factory));
   new_node->path_to_directory = path_to_directory;
 
   return new_node;
@@ -86,7 +81,7 @@ IIRBase_LibraryDeclaration::get_path_to_directory(){
 bool
 IIRBase_LibraryDeclaration::is_work_library(){
   ASSERT( get_design_file() != 0 );
-  return get_design_file()->get_work_library() == this;
+  return get_design_file()->get_work_library().get() == this;
 }
 
 
@@ -95,57 +90,51 @@ IIRBase_LibraryDeclaration::get_declaration_type(){
    return LIBRARY;
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_LibraryDeclaration::find_declarations( IIR_Name *to_find){
-  savant::set<IIR_Declaration*> *retval = new savant::set<IIR_Declaration*>;
+savant::set<IIR_DeclarationRef>
+IIRBase_LibraryDeclaration::find_declarations( IIR_NameRef to_find){
+  savant::set<IIR_DeclarationRef> retval;
 
-  IIR_EntityDeclaration *entity_decl = NULL;
-  IIR_PackageDeclaration *package_decl = NULL; 
-  IIR_ConfigurationDeclaration *configuration_decl = NULL;  
+  IIR_EntityDeclarationRef entity_decl;
+  IIR_PackageDeclarationRef package_decl; 
+  IIR_ConfigurationDeclarationRef configuration_decl;  
   
-  savant::set<IIR_Declaration*> *unit_decls = get_primary_units()->find_declarations( to_find );
-  if( unit_decls != NULL ){
-    retval->insert( unit_decls );
-  }
+  savant::set<IIR_DeclarationRef> unit_decls = get_primary_units()->find_declarations( to_find );
+  retval.insert( unit_decls );
 
+  // FIXME: this is an error
   entity_decl = 
-    dynamic_cast<IIR_EntityDeclaration *>(library_manager::instance()->lookup_entity( FALSE,
+    my_dynamic_pointer_cast<IIR_EntityDeclaration>(library_manager::instance()->lookup_entity( FALSE,
                                                                                       to_find,
-                                                                                      dynamic_cast<IIR_LibraryDeclaration *>(this),
+                                                                                      IIRBase_LibraryDeclarationRef(),
                                                                                       get_design_file()->get_standard_package(),
                                                                                       get_design_file()->get_class_factory()));
   
-  if( entity_decl != NULL ){
-    retval->insert( entity_decl );
+  if( entity_decl != nullptr ){
+    retval.insert( entity_decl );
   }
 
   package_decl = 
-    dynamic_cast<IIR_PackageDeclaration *>(library_manager::instance()->lookup_package( FALSE,
+    my_dynamic_pointer_cast<IIR_PackageDeclaration>(library_manager::instance()->lookup_package( FALSE,
                                                                                         to_find,
                                                                                         dynamic_cast<IIR_LibraryDeclaration *>(this),
                                                                                         get_design_file()->get_standard_package(),
                                                                                         get_design_file()->get_class_factory()));
 
-  if( package_decl != NULL ){
-    retval->insert( package_decl );
+  if( package_decl != nullptr ){
+    retval.insert( package_decl );
   }
   
   configuration_decl = 
-    dynamic_cast<IIR_ConfigurationDeclaration *>(library_manager::instance()->lookup_configuration( FALSE, 
+    my_dynamic_pointer_cast<IIR_ConfigurationDeclaration>(library_manager::instance()->lookup_configuration( FALSE, 
                                                                                                     to_find, 
                                                                                                     dynamic_cast<IIR_LibraryDeclaration *>(this),
                                                                                                     get_design_file()->get_standard_package(),
                                                                                                     get_design_file()->get_class_factory()));
 
-  if( configuration_decl != NULL ){
-    retval->insert( configuration_decl );
+  if( configuration_decl != nullptr ){
+    retval.insert( configuration_decl );
   }
 
-  if( retval->size() == 0 ){
-    delete retval;
-    retval = NULL;
-  }
-  
   return retval;
 }
 

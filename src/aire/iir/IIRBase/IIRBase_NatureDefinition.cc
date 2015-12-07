@@ -29,14 +29,12 @@
 #include "IIRBase_NatureDefinition.hh"
 
 IIRBase_NatureDefinition::IIRBase_NatureDefinition() {}
-
 IIRBase_NatureDefinition::~IIRBase_NatureDefinition() {}
 
-
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_NatureDefinition::get_final_subtype() {
   _report_undefined_fn("get_final_subtype()");
-  return  NULL;
+  return  IIR_TypeDefinitionRef();
 }
 
 void

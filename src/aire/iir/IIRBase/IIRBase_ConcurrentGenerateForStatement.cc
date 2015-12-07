@@ -33,66 +33,53 @@
 #include "IIRBase_TypeDefinition.hh"
 #include "IIRBase_ConcurrentGenerateForStatement.hh"
 
-IIRBase_ConcurrentGenerateForStatement::IIRBase_ConcurrentGenerateForStatement() :
-  block_declarative_part(0),
-  concurrent_statement_part(0),
-  parameter(0){}
+IIRBase_ConcurrentGenerateForStatement::IIRBase_ConcurrentGenerateForStatement() {}
 
-IIRBase_ConcurrentGenerateForStatement::~IIRBase_ConcurrentGenerateForStatement(){
-  delete block_declarative_part;
-  block_declarative_part = 0;
-  delete concurrent_statement_part;
-  concurrent_statement_part = 0;
-  delete parameter;
-  parameter = 0;
-}
+IIRBase_ConcurrentGenerateForStatement::~IIRBase_ConcurrentGenerateForStatement() {}
 
 void 
-IIRBase_ConcurrentGenerateForStatement::set_generate_parameter_specification(IIR_ConstantDeclaration *new_parameter){
+IIRBase_ConcurrentGenerateForStatement::set_generate_parameter_specification(IIR_ConstantDeclarationRef new_parameter){
   parameter = new_parameter;
 }
 
-IIR_ConstantDeclaration *
+IIR_ConstantDeclarationRef
 IIRBase_ConcurrentGenerateForStatement::get_generate_parameter_specification(){
   return parameter;
 }
 
 // List Accessor(s)
-IIR_DeclarationList *
-IIRBase_ConcurrentGenerateForStatement::get_block_declarative_part() {
-  ASSERT(block_declarative_part != NULL);
+IIR_DeclarationListRef IIRBase_ConcurrentGenerateForStatement::get_block_declarative_part() {
+  ASSERT(block_declarative_part != nullptr);
   return block_declarative_part;
 }
 
-IIR_ArchitectureStatementList *
-IIRBase_ConcurrentGenerateForStatement::get_concurrent_statement_part() {
-  ASSERT(concurrent_statement_part != NULL);
+IIR_ArchitectureStatementListRef IIRBase_ConcurrentGenerateForStatement::get_concurrent_statement_part() {
+  ASSERT(concurrent_statement_part != nullptr);
   return concurrent_statement_part;
 }
 
 
 void
-IIRBase_ConcurrentGenerateForStatement::set_block_declarative_part(IIR_DeclarationList *new_block_declarative_part) {
-  ASSERT(new_block_declarative_part != NULL);
+IIRBase_ConcurrentGenerateForStatement::set_block_declarative_part(IIR_DeclarationListRef new_block_declarative_part) {
+  ASSERT(new_block_declarative_part != nullptr);
   block_declarative_part = new_block_declarative_part;
 }
 
 void
-IIRBase_ConcurrentGenerateForStatement::set_concurrent_statement_part(IIR_ArchitectureStatementList *new_concurrent_statement_part) {
-  ASSERT(new_concurrent_statement_part != NULL);
-  delete concurrent_statement_part;
+IIRBase_ConcurrentGenerateForStatement::set_concurrent_statement_part(IIR_ArchitectureStatementListRef new_concurrent_statement_part) {
+  ASSERT(new_concurrent_statement_part != nullptr);
   concurrent_statement_part = new_concurrent_statement_part;
 }
 
-IIR *
-IIRBase_ConcurrentGenerateForStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ConcurrentGenerateForStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ConcurrentGenerateForStatement *new_node = dynamic_cast<IIRBase_ConcurrentGenerateForStatement *>(IIRBase_ConcurrentStatement::convert_tree(factory));
+  IIRBase_ConcurrentGenerateForStatementRef new_node = my_dynamic_pointer_cast<IIRBase_ConcurrentGenerateForStatement>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->block_declarative_part = dynamic_cast<IIR_DeclarationList *>(convert_node(block_declarative_part, factory));
-  new_node->concurrent_statement_part = dynamic_cast<IIR_ArchitectureStatementList *>(convert_node(concurrent_statement_part, factory));
-  new_node->parameter = dynamic_cast<IIR_ConstantDeclaration *>(convert_node(parameter, factory));
+  new_node->block_declarative_part = my_dynamic_pointer_cast<IIR_DeclarationList>(convert_node(block_declarative_part, factory));
+  new_node->concurrent_statement_part = my_dynamic_pointer_cast<IIR_ArchitectureStatementList>(convert_node(concurrent_statement_part, factory));
+  new_node->parameter = my_dynamic_pointer_cast<IIR_ConstantDeclaration>(convert_node(parameter, factory));
 
   return new_node;
 }
@@ -105,12 +92,12 @@ IIRBase_ConcurrentGenerateForStatement::publish_vhdl(ostream &vhdl_out) {
   vhdl_out << " for ";
   get_generate_parameter_specification()->publish_vhdl(vhdl_out);
   vhdl_out << " in ";
-  dynamic_cast<IIRBase_TypeDefinition *>
+  my_dynamic_pointer_cast<IIRBase_TypeDefinition>
     (get_generate_parameter_specification()->get_subtype())->publish_vhdl_range(vhdl_out);
   vhdl_out << " generate\n";
 
   if(get_block_declarative_part()->size() != 0) {
-    dynamic_cast<IIRBase_DeclarationList *>
+     my_dynamic_pointer_cast<IIRBase_DeclarationList>
       (get_block_declarative_part())->publish_vhdl_decl(vhdl_out);
   }
 

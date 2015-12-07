@@ -39,20 +39,20 @@ class IIRBase_ProcessStatement : public virtual IIRBase_ConcurrentStatement,
 				 public virtual IIR_ProcessStatement{
 public:
   // List Accessor(s)
-  IIR_DeclarationList         *get_process_declarative_part();
-  IIR_SequentialStatementList *get_process_statement_part();
-  void                        set_process_declarative_part(IIR_DeclarationList *new_process_declarative_part);
-  void                        set_process_statement_part(IIR_SequentialStatementList *new_process_statement_part);
+  IIR_DeclarationListRef          get_process_declarative_part();
+  IIR_SequentialStatementListRef  get_process_statement_part();
+  void                            set_process_declarative_part(IIR_DeclarationListRef new_process_declarative_part);
+  void                            set_process_statement_part(IIR_SequentialStatementListRef new_process_statement_part);
 
-  IIR_Kind get_kind() const {return IIR_PROCESS_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_ProcessStatement";}
+  IIR_Kind get_kind() const override { return IIR_PROCESS_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ProcessStatement"); }
 
   void set_postponed( IIR_Boolean postponed);
   IIR_Boolean get_postponed();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef );
   void publish_vhdl(ostream &);
 protected:
   
@@ -61,8 +61,8 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList *process_declarative_part;
-  IIR_SequentialStatementList *process_statement_part;
+  IIR_DeclarationListRef process_declarative_part;
+  IIR_SequentialStatementListRef process_statement_part;
   
   IIR_Boolean postponed;
 

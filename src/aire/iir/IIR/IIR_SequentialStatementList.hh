@@ -32,14 +32,14 @@
 #include "savant_config.hh"
 #include "IIR_List.hh"
 
-class IIR_SequentialStatement;
+REF_FORWARD_DECL(IIR_SequentialStatement);
 
 class IIR_SequentialStatementList : public virtual IIR_List{
 public:
   virtual ~IIR_SequentialStatementList() {}
     
-  virtual IIR_SequentialStatement* first() = 0;
-  virtual IIR_SequentialStatement* successor(IIR_SequentialStatement*) = 0;
+  virtual IIR_SequentialStatementRef first() = 0;
+  virtual IIR_SequentialStatementRef successor( IIR_SequentialStatementRef ) = 0;
 };
 
 typedef refcount<IIR_SequentialStatementList> IIR_SequentialStatementListRef;

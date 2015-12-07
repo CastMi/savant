@@ -38,30 +38,30 @@ template <class type> class set;
 class IIRBase_ArrayTypeDefinition : public virtual IIRBase_TypeDefinition,
 				    public virtual IIR_ArrayTypeDefinition{
 public:
-  IIR_Kind get_kind() const {return IIR_ARRAY_TYPE_DEFINITION;}
-  const IIR_Char *get_kind_text() const {return "IIR_ArrayTypeDefinition";}
+  IIR_Kind get_kind() const override { return IIR_ARRAY_TYPE_DEFINITION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ArrayTypeDefinition"); }
 
-  void set_index_subtype( IIR_ScalarTypeDefinition *index_subtype );
+  void set_index_subtype( IIR_ScalarTypeDefinitionRef index_subtype );
   IIR_Int32 get_num_indexes(); //DRH - Fix plugin hierarchy errors
-  IIR_ScalarTypeDefinition *get_index_subtype();
-  IIR_ScalarTypeDefinition *get_resolved_index_subtype() { return get_index_subtype(); }
-  IIRBase_TypeDefinition *_get_element_subtype();
-  void set_element_subtype( IIR_TypeDefinition *element_subtype );
-  IIR_TypeDefinition *get_element_subtype();
+  IIR_ScalarTypeDefinitionRef get_index_subtype();
+  IIR_ScalarTypeDefinitionRef get_resolved_index_subtype() { return get_index_subtype(); }
+  IIRBase_TypeDefinitionRef _get_element_subtype();
+  void set_element_subtype( IIR_TypeDefinitionRef element_subtype );
+  IIR_TypeDefinitionRef get_element_subtype();
 
   /** Due to the complexities of the IIR, sometimes
       _get_element_subtype() doesn't actually return the element
       subtype.  This is the case for multidimensional arrays, for
       instance.  _get_final_subtype() _will_ return the _real_ element
       subtype. */
-  IIR_TypeDefinition *get_final_subtype();
+  IIR_TypeDefinitionRef get_final_subtype();
 
   // This method returns TRUE if the element_subtype is REALLY that of the
   // element, or FALSE if it's simply a placeholder for a mutlidimensional array.
   IIR_Boolean is_element();
   void set_is_element( IIR_Boolean );
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_array_type() { return TRUE; }
   IIR_Boolean is_unconstrained_array_type( );
@@ -75,11 +75,11 @@ public:
   IIR_Boolean is_character_type();
   IIR_Boolean is_locally_static();
 
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef  );
 
   ostream &print(ostream &);
 
-  void set_declaration( IIR_Declaration *corresponding_decl );
+  void set_declaration( IIR_DeclarationRef corresponding_decl );
 
   
   void publish_vhdl_subtype_decl(ostream &);
@@ -90,8 +90,8 @@ protected:
   virtual ~IIRBase_ArrayTypeDefinition() = 0;
     
 private:
-  IIR_ScalarTypeDefinition *my_index_subtype;
-  IIR_TypeDefinition *my_element_subtype;
+  IIR_ScalarTypeDefinitionRef my_index_subtype;
+  IIR_TypeDefinitionRef my_element_subtype;
   IIR_Boolean my_is_element;
 };
 

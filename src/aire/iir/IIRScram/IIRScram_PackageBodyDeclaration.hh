@@ -48,7 +48,7 @@ public:
   IIR_Boolean _is_iir_package_body_declaration(){ return TRUE; }
 
   // Wrappers for IIRBase functions
-  IIRScram_DeclarationList *_get_package_declarative_part();
+  IIRScram_DeclarationListRef _get_package_declarative_part();
 
 protected:
 

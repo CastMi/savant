@@ -48,10 +48,10 @@ public:
 
   IIR_Boolean _is_specification(){ return true; }
   void _make_interface_visible( symbol_table * );
-  virtual IIRScram *_clone();
+  virtual IIRScramRef _clone();
 
   // Helper function
-  IIRScram_Name * _get_selected_name();
+  IIRScram_NameRef  _get_selected_name();
 
 protected:
 private:

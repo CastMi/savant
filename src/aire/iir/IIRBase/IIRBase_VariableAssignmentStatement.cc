@@ -26,39 +26,29 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
 #include "savant.hh"
 #include "IIRBase_VariableAssignmentStatement.hh"
 #include "IIR.hh"
 
-IIRBase_VariableAssignmentStatement::IIRBase_VariableAssignmentStatement() {
-  target = NULL;
-  rhsexpression  = NULL;
-}
-
-IIRBase_VariableAssignmentStatement::~IIRBase_VariableAssignmentStatement() {
-  delete get_target();
-  delete get_expression();
-}
+IIRBase_VariableAssignmentStatement::IIRBase_VariableAssignmentStatement() {}
+IIRBase_VariableAssignmentStatement::~IIRBase_VariableAssignmentStatement() {}
 
 void
-IIRBase_VariableAssignmentStatement::set_target( IIR *new_target ){
+IIRBase_VariableAssignmentStatement::set_target( IIRRef new_target ){
   target = new_target;
 }
 
-IIR *
+IIRRef
 IIRBase_VariableAssignmentStatement::get_target() {
   return target;
 }
 
 void
-IIRBase_VariableAssignmentStatement::set_expression( IIR *new_expression ){
+IIRBase_VariableAssignmentStatement::set_expression( IIRRef new_expression ){
   rhsexpression = new_expression;
 }
 
-IIR *
+IIRRef
 IIRBase_VariableAssignmentStatement::get_expression(){
   return rhsexpression;
 }
@@ -69,10 +59,10 @@ IIRBase_VariableAssignmentStatement::is_above_attribute_found() {
   return get_expression()->is_above_attribute_found();
 }
 
-IIR *
-IIRBase_VariableAssignmentStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_VariableAssignmentStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_VariableAssignmentStatement *new_node = dynamic_cast<IIRBase_VariableAssignmentStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_VariableAssignmentStatementRef new_node = my_dynamic_pointer_cast<IIRBase_VariableAssignmentStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
   new_node->target = convert_node(target, factory);

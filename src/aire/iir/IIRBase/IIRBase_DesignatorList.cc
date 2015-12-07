@@ -31,35 +31,32 @@
 #include "IIRBase_Designator.hh"
 #include "IIR_DesignatorExplicit.hh"
 
-IIRBase_DesignatorList::IIRBase_DesignatorList() {
-}
-
-
+IIRBase_DesignatorList::IIRBase_DesignatorList() {}
 IIRBase_DesignatorList::~IIRBase_DesignatorList() {}
 
 
-IIR *
+IIRRef
 IIRBase_DesignatorList::first(){
-  IIR *retval = IIRBase_List::first();
+  IIRRef retval = IIRBase_List::first();
   return retval;
 }
 
 
-IIR *
-IIRBase_DesignatorList::successor(IIR_Designator *to_succeed){
-  IIR *test = to_succeed;
-  ASSERT( test );
+IIRRef
+IIRBase_DesignatorList::successor(IIR_DesignatorRef to_succeed){
+  IIRRef test = to_succeed;
+  ASSERT( test != nullptr );
 
-  IIR *retval;
+  IIRRef retval;
   retval = IIRBase_List::successor(to_succeed);
 
   return retval;
 }
 
 void 
-IIRBase_DesignatorList::append( IIR_Designator *to_append ){
-  IIR *test = to_append;
-  ASSERT( test );
+IIRBase_DesignatorList::append( IIR_DesignatorRef to_append ){
+  IIRRef test = to_append;
+  ASSERT( test != nullptr );
 
   IIRBase_List::append( to_append );
 }
@@ -67,17 +64,17 @@ IIRBase_DesignatorList::append( IIR_Designator *to_append ){
 IIR_Boolean
 IIRBase_DesignatorList::is_above_attribute_found() {
   IIR_Boolean retval = FALSE;
-  IIR_Designator* element = dynamic_cast<IIR_Designator *>(first());
-  IIR *current_name = NULL;
+  IIR_DesignatorRef element = my_dynamic_pointer_cast<IIR_Designator>(first());
+  IIRRef current_name = NULL;
   while(element != NULL) {
     if(element->get_kind() == IIR_DESIGNATOR_EXPLICIT) {
-      current_name = (dynamic_cast<IIR_DesignatorExplicit *>(element))->get_name();
+      current_name =  (my_dynamic_pointer_cast<IIR_DesignatorExplicit>(element))->get_name();
       retval = retval || current_name->is_above_attribute_found();
     }
     else {
       retval = retval || element->is_above_attribute_found();
     }
-    element = dynamic_cast<IIR_Designator *>(successor(element));
+    element = my_dynamic_pointer_cast<IIR_Designator>(successor(element));
   }
   return retval;
 }
@@ -85,18 +82,18 @@ IIRBase_DesignatorList::is_above_attribute_found() {
 
 void 
 IIRBase_DesignatorList::publish_vhdl(ostream &vhdl_out) {
-  IIRBase_Designator* list_element;
+  IIRBase_DesignatorRef list_element;
 
-  list_element = dynamic_cast<IIRBase_Designator *>(first());
+  list_element = my_dynamic_pointer_cast<IIRBase_Designator>(first());
 
-  ASSERT ( list_element != NULL );
+  ASSERT ( list_element != nullptr );
   
   list_element->publish_vhdl(vhdl_out);
 
-  list_element = dynamic_cast<IIRBase_Designator *>(successor(list_element));
-  while (list_element != NULL) {
+  list_element = my_dynamic_pointer_cast<IIRBase_Designator>(successor(list_element));
+  while (list_element != nullptr) {
     vhdl_out << ", ";
     list_element->publish_vhdl(vhdl_out);
-    list_element = dynamic_cast<IIRBase_Designator *>(successor(list_element));
+    list_element = my_dynamic_pointer_cast<IIRBase_Designator>(successor(list_element));
   }
 }

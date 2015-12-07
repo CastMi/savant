@@ -38,25 +38,25 @@ class IIR_ArchitectureStatementList;
 class IIRBase_SimultaneousIfStatement : public virtual IIRBase_SimultaneousStatement, public virtual IIR_SimultaneousIfStatement {
 public:
   // List Accessors
-  IIR_ArchitectureStatementList *get_then_statement_list();
-  IIR_ArchitectureStatementList *get_else_statement_list();
-  void                          set_then_statement_list(IIR_ArchitectureStatementList *);
-  void                          set_else_statement_list(IIR_ArchitectureStatementList *);
+  IIR_ArchitectureStatementListRef get_then_statement_list();
+  IIR_ArchitectureStatementListRef get_else_statement_list();
+  void                          set_then_statement_list(IIR_ArchitectureStatementListRef );
+  void                          set_else_statement_list(IIR_ArchitectureStatementListRef );
 
-  IIR_Kind get_kind() const { return IIR_SIMULTANEOUS_IF_STATEMENT; }
-  const IIR_Char *get_kind_text() const { return "IIR_SimultaneousIfStatement"; }
+  IIR_Kind get_kind() const override { return IIR_SIMULTANEOUS_IF_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SimultaneousIfStatement"); }
   
   /** Sets Elsif condition. */
-  void set_elsif(IIR_SimultaneousElsif* elsif_clause);
-  IIR_SimultaneousElsif* get_elsif();
+  void set_elsif(IIR_SimultaneousElsifRef elsif_clause);
+  IIR_SimultaneousElsifRef get_elsif();
 
   /** The condition specified after if and elsif (if any) are evaluated in
       succession until one evaluates to TRUE or all conditions are
       evaluated and yield FALSE. LRM [ 15.2 - 75 ] */
-  void set_condition(IIR *);
-  IIR* get_condition();
+  void set_condition(IIRRef );
+  IIRRef get_condition();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -66,11 +66,11 @@ protected:
 private:
   /** The simultaneous statement part whose condition evaluates to TRUE is
       evaluated. LRM [ $ 15.2 - 75 ] */
-  IIR_ArchitectureStatementList *then_statement_list;
-  IIR_ArchitectureStatementList *else_statement_list;
+  IIR_ArchitectureStatementListRef then_statement_list;
+  IIR_ArchitectureStatementListRef else_statement_list;
 
-  IIR * condition;
-  IIR_SimultaneousElsif* elsif_clause;
+  IIRRef  condition;
+  IIR_SimultaneousElsifRef elsif_clause;
 
 };
 

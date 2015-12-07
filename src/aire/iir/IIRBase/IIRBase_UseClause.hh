@@ -38,13 +38,13 @@ class IIR_Name;
 
 class IIRBase_UseClause : public virtual IIRBase_Declaration, public virtual IIR_UseClause{
 public:
-  IIR_Kind get_kind() const { return IIR_USE_CLAUSE; }
-  const IIR_Char *get_kind_text() const { return "IIR_UseClause"; }
+  IIR_Kind get_kind() const override { return IIR_USE_CLAUSE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_UseClause"); }
 
-  void set_selected_name(IIR_Name*);
-  IIR_Name* get_selected_name();
+  void set_selected_name(IIR_NameRef);
+  IIR_NameRef get_selected_name();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
   void publish_vhdl_decl(ostream &);
@@ -53,7 +53,7 @@ protected:
   virtual ~IIRBase_UseClause() = 0;
     
 private:
-  IIR_Name* selected_name;
+  IIR_NameRef selected_name;
 };
 typedef refcount<IIRBase_UseClause> IIRBase_UseClauseRef;
 

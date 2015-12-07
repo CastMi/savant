@@ -26,31 +26,19 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "savant.hh"
 #include "IIRBase_SignalAssignmentStatement.hh"
 #include "IIR_WaveformList.hh"
 
-IIRBase_SignalAssignmentStatement::IIRBase_SignalAssignmentStatement()  :
-  waveform(0) {
-   set_target(NULL); 
-   set_reject_time_expression(NULL);
-}
-
-IIRBase_SignalAssignmentStatement::~IIRBase_SignalAssignmentStatement() {
-  delete get_target();
-  delete get_reject_time_expression();
-}
+IIRBase_SignalAssignmentStatement::IIRBase_SignalAssignmentStatement() {}
+IIRBase_SignalAssignmentStatement::~IIRBase_SignalAssignmentStatement() {}
 
 void
-IIRBase_SignalAssignmentStatement::set_target(IIR* target) {
+IIRBase_SignalAssignmentStatement::set_target(IIRRef target) {
   this->target = target;
 }
 
-IIR*
+IIRRef
 IIRBase_SignalAssignmentStatement::get_target() {
   return target;
 }
@@ -66,17 +54,17 @@ IIRBase_SignalAssignmentStatement::get_delay_mechanism() {
 }
 
 void
-IIRBase_SignalAssignmentStatement::set_reject_time_expression( IIR* reject_time_expression) {
-  this->reject_time_expression =  reject_time_expression;
+IIRBase_SignalAssignmentStatement::set_reject_time_expression( IIRRef reject_time_expression) {
+  this->reject_time_expression = reject_time_expression;
 }
 
-IIR*
+IIRRef
 IIRBase_SignalAssignmentStatement::get_reject_time_expression() {
 return  reject_time_expression;
 }
 
 // List Accessor(s)
-IIR_WaveformList *
+IIR_WaveformListRef
 IIRBase_SignalAssignmentStatement::get_waveform() {
   ASSERT(waveform != NULL);
   return waveform;
@@ -84,20 +72,19 @@ IIRBase_SignalAssignmentStatement::get_waveform() {
 
 
 void
-IIRBase_SignalAssignmentStatement::set_waveform(IIR_WaveformList *new_waveform) {
-  ASSERT(new_waveform != NULL);
-  delete waveform;
+IIRBase_SignalAssignmentStatement::set_waveform(IIR_WaveformListRef new_waveform) {
+  ASSERT( new_waveform != nullptr );
   waveform = new_waveform;
 }
 
-IIR *
-IIRBase_SignalAssignmentStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SignalAssignmentStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SignalAssignmentStatement *new_node = dynamic_cast<IIRBase_SignalAssignmentStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_SignalAssignmentStatementRef new_node = my_dynamic_pointer_cast<IIRBase_SignalAssignmentStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
   new_node->delay_mechanism = delay_mechanism;
-  new_node->waveform = dynamic_cast<IIR_WaveformList *>(convert_node(waveform, factory));
+  new_node->waveform = my_dynamic_pointer_cast<IIR_WaveformList>(convert_node(waveform, factory));
   new_node->target = convert_node(target, factory);
   new_node->reject_time_expression = convert_node(reject_time_expression, factory);
 

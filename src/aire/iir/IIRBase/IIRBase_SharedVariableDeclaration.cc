@@ -30,26 +30,23 @@
 #include "IIR_TextLiteral.hh"
 #include "IIR_TypeDefinition.hh"
 
-IIRBase_SharedVariableDeclaration::IIRBase_SharedVariableDeclaration() :
-  value(0){}
-
+IIRBase_SharedVariableDeclaration::IIRBase_SharedVariableDeclaration() {}
 IIRBase_SharedVariableDeclaration::~IIRBase_SharedVariableDeclaration() {}
 
 void
-IIRBase_SharedVariableDeclaration::set_value( IIR *new_value ){
+IIRBase_SharedVariableDeclaration::set_value( IIRRef new_value ){
   value = new_value;
 }
 
-IIR*
+IIRRef
 IIRBase_SharedVariableDeclaration::get_value() {
   return value;
 }
 
-
-IIR *
-IIRBase_SharedVariableDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SharedVariableDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SharedVariableDeclaration *new_node = dynamic_cast<IIRBase_SharedVariableDeclaration *>(IIRBase_ObjectDeclaration::convert_tree(factory));
+  IIRBase_SharedVariableDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_SharedVariableDeclaration>(IIRBase_ObjectDeclaration::convert_tree(factory));
 
   // Process the variables
   new_node->value = convert_node(value, factory);
@@ -70,7 +67,7 @@ IIRBase_SharedVariableDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   get_subtype()->publish_vhdl(vhdl_out);
   if(IIRBase_SharedVariableDeclaration::get_value() != NULL) {
     vhdl_out << " := ";
-    dynamic_cast<IIRBase *>(IIRBase_SharedVariableDeclaration::get_value())->publish_vhdl(vhdl_out);
+    my_dynamic_pointer_cast<IIRBase>(IIRBase_SharedVariableDeclaration::get_value())->publish_vhdl(vhdl_out);
   }
   vhdl_out << ";\n";
 }

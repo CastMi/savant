@@ -47,12 +47,12 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   void _type_check();
-  IIRScram *_resolve_signal_name(IIRScram*);
-  IIRScram *_clone();
+  IIRScramRef _resolve_signal_name(IIRScram*);
+  IIRScramRef _clone();
 
-  IIRScram_DesignatorList *     _get_sensitivity_list();
-  IIRScram *                    _get_condition_clause();
-  IIRScram *                    _get_timeout_clause();
+  IIRScram_DesignatorListRef      _get_sensitivity_list();
+  IIRScramRef                     _get_condition_clause();
+  IIRScramRef                     _get_timeout_clause();
 
 protected:    
 private:

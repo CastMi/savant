@@ -45,18 +45,18 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0);
-  IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition*> * );
-  void _type_check( savant::set<IIRScram_TypeDefinition*> * );
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0);
+  IIRScramRef _semantic_transform( savant::set<IIRScram_TypeDefinitionRef> );
+  void _type_check( savant::set<IIRScram_TypeDefinitionRef> );
 
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
+  IIRScramRef _rval_to_decl( IIRScram_TypeDefinitionRef );
 
-  IIRScram *_get_expression();
+  IIRScramRef _get_expression();
 protected:
 private:
   // This method will build a set of the possible element types of this
   // "others" based off of the context passed in.
-  savant::set<IIRScram_TypeDefinition*> *_build_element_subtype_set( savant::set<IIRScram_TypeDefinition*> *context_set );
+  savant::set<IIRScram_TypeDefinitionRef> _build_element_subtype_set( savant::set<IIRScram_TypeDefinitionRef> context_set );
 };
 
 typedef refcount<IIRScram_OthersInitialization> IIRScram_OthersInitializationRef;

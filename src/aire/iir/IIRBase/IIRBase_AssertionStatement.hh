@@ -36,19 +36,19 @@
 class IIRBase_AssertionStatement : public virtual IIRBase_SequentialStatement, public virtual IIR_AssertionStatement{
 
 public:
-  IIR_Kind get_kind() const {return IIR_ASSERTION_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_AssertionStatement";}
+  IIR_Kind get_kind() const override { return IIR_ASSERTION_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_AssertionStatement"); }
 
-  void set_assertion_condition( IIR* assertion_condition);
-  IIR* get_assertion_condition();
+  void set_assertion_condition( IIRRef assertion_condition);
+  IIRRef get_assertion_condition();
 
-  void set_report_expression( IIR* report_expression);
-  IIR* get_report_expression();
+  void set_report_expression( IIRRef report_expression);
+  IIRRef get_report_expression();
 
-  void set_severity_expression( IIR* expression);
-  IIR* get_severity_expression();
+  void set_severity_expression( IIRRef expression);
+  IIRRef get_severity_expression();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_above_attribute_found();
   
@@ -58,9 +58,9 @@ protected:
   virtual ~IIRBase_AssertionStatement() = 0;
     
 private:
-  IIR* assertion_condition;
-  IIR* report_expression;
-  IIR* expression;
+  IIRRef assertion_condition;
+  IIRRef report_expression;
+  IIRRef expression;
 };
 
 typedef refcount<IIRBase_AssertionStatement> IIRBase_AssertionStatementRef;

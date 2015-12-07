@@ -26,8 +26,6 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "IIRBase_IntegerLiteral64.hh"
 #include "IIR_IntegerLiteral64.hh"
 
@@ -39,22 +37,20 @@ IIRBase_IntegerLiteral64::release() {
   delete this;
 }
 
-
 IIR_Int64
 IIRBase_IntegerLiteral64::value() {
   return val;
 }
-
 
 void 
 IIRBase_IntegerLiteral64::set_value(IIR_Int64 v) {
   val = v;
 }
 
-IIR *
-IIRBase_IntegerLiteral64::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_IntegerLiteral64::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_IntegerLiteral64 *new_node = dynamic_cast<IIRBase_IntegerLiteral64 *>(IIRBase_Literal::convert_tree(factory));
+  IIRBase_IntegerLiteral64Ref new_node = my_dynamic_pointer_cast<IIRBase_IntegerLiteral64>(IIRBase_Literal::convert_tree(factory));
 
   // Process the variables
   new_node->val = val;

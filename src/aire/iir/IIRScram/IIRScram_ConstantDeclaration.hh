@@ -49,9 +49,9 @@ public:
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return FALSE; }
   
-  IIRScram *_clone();
+  IIRScramRef _clone();
 
-  IIRScram* _get_value();
+  IIRScramRef _get_value();
 
 protected:
 

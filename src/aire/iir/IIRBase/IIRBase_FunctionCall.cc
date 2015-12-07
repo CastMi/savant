@@ -28,29 +28,21 @@
 
 #include "savant.hh"
 #include "IIRBase_FunctionCall.hh"
-
 #include "IIRBase_AssociationList.hh"
 #include "IIR_FunctionDeclaration.hh"
 #include "IIR_SubprogramDeclaration.hh"
 #include "IIR_TextLiteral.hh"
 #include "IIR_TypeDefinition.hh"
 
-IIRBase_FunctionCall::IIRBase_FunctionCall()  :
-  parameter_association_list(0),
-  implementation(0){}
-
-IIRBase_FunctionCall::~IIRBase_FunctionCall(){
-  delete parameter_association_list;
-  parameter_association_list = 0;
-  // Not implementation
-}
+IIRBase_FunctionCall::IIRBase_FunctionCall() {}
+IIRBase_FunctionCall::~IIRBase_FunctionCall() {}
 
 void
-IIRBase_FunctionCall::set_implementation( IIR_SubprogramDeclaration* implementation ) {
+IIRBase_FunctionCall::set_implementation( IIR_SubprogramDeclarationRef implementation ) {
   this->implementation = implementation;
 }
 
-IIR_SubprogramDeclaration*
+IIR_SubprogramDeclarationRef
 IIRBase_FunctionCall::get_implementation() {
   return implementation;
 }
@@ -66,7 +58,7 @@ IIRBase_FunctionCall::is_locally_static(){
 }
 
 // List Accessor(s)
-IIR_AssociationList *
+IIR_AssociationListRef
 IIRBase_FunctionCall::get_parameter_association_list() {
   ASSERT(parameter_association_list != NULL);
   return parameter_association_list;
@@ -74,29 +66,28 @@ IIRBase_FunctionCall::get_parameter_association_list() {
 
 
 void
-IIRBase_FunctionCall::set_parameter_association_list(IIR_AssociationList *new_parameter_association_list) {
+IIRBase_FunctionCall::set_parameter_association_list(IIR_AssociationListRef new_parameter_association_list) {
   ASSERT(new_parameter_association_list != NULL);
-  delete parameter_association_list;
   parameter_association_list = new_parameter_association_list;
 }
 
-IIR *
-IIRBase_FunctionCall::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_FunctionCall::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_FunctionCall *new_node = dynamic_cast<IIRBase_FunctionCall *>(IIRBase_Expression::convert_tree(factory));
+  IIRBase_FunctionCallRef new_node = my_dynamic_pointer_cast<IIRBase_FunctionCall>(IIRBase_Expression::convert_tree(factory));
 
   // Process the variables
-  new_node->parameter_association_list = dynamic_cast<IIR_AssociationList *>(convert_node(parameter_association_list, factory));
-  new_node->implementation = dynamic_cast<IIR_SubprogramDeclaration *>(convert_node(implementation, factory));
+  new_node->parameter_association_list = my_dynamic_pointer_cast<IIR_AssociationList>(convert_node(parameter_association_list, factory));
+  new_node->implementation = my_dynamic_pointer_cast<IIR_SubprogramDeclaration>(convert_node(implementation, factory));
 
   return new_node;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_FunctionCall::get_subtype(){
-  ASSERT( get_implementation() != NULL );
+  ASSERT( get_implementation() != nullptr );
   ASSERT( get_implementation()->get_kind() == IIR_FUNCTION_DECLARATION);
-  IIR_FunctionDeclaration* func_decl = dynamic_cast<IIR_FunctionDeclaration*>(get_implementation());
+  IIR_FunctionDeclarationRef func_decl = my_dynamic_pointer_cast<IIR_FunctionDeclaration>(get_implementation());
   return func_decl->get_return_type();  
 }
 
@@ -122,7 +113,7 @@ IIRBase_FunctionCall::publish_vhdl(ostream &vhdl_out) {
   get_implementation()->get_declarator()->publish_vhdl(vhdl_out);
   if(get_parameter_association_list()->size() != 0) {
     vhdl_out << "(";
-    dynamic_cast<IIRBase_AssociationList *>(get_parameter_association_list())->publish_vhdl_without_formals(vhdl_out);
+    my_dynamic_pointer_cast<IIRBase_AssociationList>(get_parameter_association_list())->publish_vhdl_without_formals(vhdl_out);
     vhdl_out << ") ";
   }
 }

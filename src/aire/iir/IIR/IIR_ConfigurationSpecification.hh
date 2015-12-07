@@ -31,9 +31,9 @@
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
 
-class IIR_LibraryUnit;
-class IIR_DesignatorList;
-class IIR_AssociationList;
+REF_FORWARD_DECL(IIR_DesignatorList);
+REF_FORWARD_DECL(IIR_AssociationList);
+REF_FORWARD_DECL(IIR_LibraryUnit);
 
 class IIR_ConfigurationSpecification : public virtual IIR_Declaration{
 
@@ -41,23 +41,23 @@ public:
   virtual ~IIR_ConfigurationSpecification() {}    
 
   // List accessor(s)
-  virtual IIR_DesignatorList    *get_instantiation_list() = 0;
-  virtual IIR_AssociationList   *get_generic_map_aspect() = 0;
-  virtual IIR_AssociationList   *get_port_map_aspect() = 0;
-  virtual void                  set_instantiation_list(IIR_DesignatorList *new_instantiation_list) = 0;
-  virtual void                  set_generic_map_aspect(IIR_AssociationList *new_generic_map_aspect) = 0;
-  virtual void                  set_port_map_aspect(IIR_AssociationList *new_port_map_aspect) = 0;
+  virtual IIR_DesignatorListRef  get_instantiation_list() = 0;
+  virtual IIR_AssociationListRef get_generic_map_aspect() = 0;
+  virtual IIR_AssociationListRef get_port_map_aspect() = 0;
+  virtual void                   set_instantiation_list(IIR_DesignatorListRef new_instantiation_list) = 0;
+  virtual void                   set_generic_map_aspect(IIR_AssociationListRef new_generic_map_aspect) = 0;
+  virtual void                   set_port_map_aspect(IIR_AssociationListRef new_port_map_aspect) = 0;
 
-  virtual void set_component_name(IIR *component_name) = 0;
-  virtual IIR *get_component_name() = 0;
+  virtual void set_component_name(IIRRef component_name) = 0;
+  virtual IIRRef get_component_name() = 0;
 
   /**
      Gets the entity aspect associated with the component specified.  This
      maps to the binding indication as specified by the LRM.  Will return
      NULL for "open" binding.
   */
-  virtual IIR_LibraryUnit *get_entity_aspect() = 0;
-  virtual void set_entity_aspect(IIR_LibraryUnit    *entity_aspect) = 0;
+  virtual IIR_LibraryUnitRef get_entity_aspect() = 0;
+  virtual void set_entity_aspect(IIR_LibraryUnitRef entity_aspect) = 0;
 };
 
 typedef refcount<IIR_ConfigurationSpecification> IIR_ConfigurationSpecificationRef;

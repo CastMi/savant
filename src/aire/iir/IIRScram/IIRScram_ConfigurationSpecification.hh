@@ -53,21 +53,21 @@ public:
   IIR_Boolean _is_specification() { return TRUE; }
   IIR_Boolean _is_iir_configuration_specification() { return TRUE; }
 
-  IIRScram_DesignatorList *_get_instantiation_list();
+  IIRScram_DesignatorListRef _get_instantiation_list();
 
   // The list passed into this type check method contains the statement region
   // of the declarative region this sepcification appears in.  It is used for
   // finding component instantiation statements, so it can resolve ALL and
   // OTHERS.
-  void _type_check( IIRScram_List *statment_list, type_check_mode mode );
+  void _type_check( IIRScram_ListRef statment_list, type_check_mode mode );
 
-  IIRScram *_get_component_name( );
-  void _set_component_name( IIRScram * );
-  IIRScram_LibraryUnit *_get_entity_aspect();
+  IIRScramRef _get_component_name( );
+  void _set_component_name( IIRScramRef );
+  IIRScram_LibraryUnitRef _get_entity_aspect();
 
   // Wrapper Functions
-  IIRScram_AssociationList * _get_generic_map_aspect();
-  IIRScram_AssociationList * _get_port_map_aspect();
+  IIRScram_AssociationListRef _get_generic_map_aspect();
+  IIRScram_AssociationListRef _get_port_map_aspect();
 };
 
 typedef refcount<IIRScram_ConfigurationSpecification> IIRScram_ConfigurationSpecificationRef;

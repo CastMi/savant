@@ -31,28 +31,29 @@
 #include "savant_config.hh"
 #include "IIR_LibraryUnit.hh"
 
-class IIR_ArchitectureStatementList;
+REF_FORWARD_DECL(IIR_GenericList);
+REF_FORWARD_DECL(IIR_PortList);
+REF_FORWARD_DECL(IIR_ArchitectureStatementList);
+REF_FORWARD_DECL(IIR_DesignUnitList);
+
 class IIR_DeclarationList;
-class IIR_DesignUnitList;
-class IIR_GenericList;
-class IIR_PortList;
 
 class IIR_EntityDeclaration : public virtual IIR_LibraryUnit{
 public:
   virtual ~IIR_EntityDeclaration() {}    
 
   // List accessor(s)
-  virtual IIR_GenericList               *get_generic_clause() = 0;
-  virtual IIR_PortList                  *get_port_clause() = 0;
-  virtual IIR_DeclarationList           *get_entity_declarative_part() = 0;
-  virtual IIR_ArchitectureStatementList *get_entity_statement_part() = 0;
-  virtual IIR_DesignUnitList            *get_architectures() = 0;
+  virtual IIR_GenericListRef get_generic_clause() = 0;
+  virtual IIR_PortListRef get_port_clause() = 0;
+  virtual IIR_DeclarationListRef get_entity_declarative_part() = 0;
+  virtual IIR_ArchitectureStatementListRef get_entity_statement_part() = 0;
+  virtual IIR_DesignUnitListRef get_architectures() = 0;
 
-  virtual void                          set_generic_clause(IIR_GenericList *new_generic_clause) = 0;
-  virtual void                          set_port_clause(IIR_PortList *new_port_clause) = 0;
-  virtual void                          set_entity_declarative_part(IIR_DeclarationList *new_entity_declarative_part) = 0;
-  virtual void                          set_entity_statement_part(IIR_ArchitectureStatementList *new_entity_statement_part) = 0;
-  virtual void                          set_architectures(IIR_DesignUnitList *new_architectures) = 0;
+  virtual void                          set_generic_clause(IIR_GenericListRef new_generic_clause) = 0;
+  virtual void                          set_port_clause(IIR_PortListRef new_port_clause) = 0;
+  virtual void                          set_entity_declarative_part(IIR_DeclarationListRef new_entity_declarative_part) = 0;
+  virtual void                          set_entity_statement_part(IIR_ArchitectureStatementListRef new_entity_statement_part) = 0;
+  virtual void                          set_architectures(IIR_DesignUnitListRef new_architectures) = 0;
 };
 
 typedef refcount<IIR_EntityDeclaration> IIR_EntityDeclarationRef;

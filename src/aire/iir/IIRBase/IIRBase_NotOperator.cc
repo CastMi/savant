@@ -31,9 +31,9 @@
 IIRBase_NotOperator::IIRBase_NotOperator() {}
 IIRBase_NotOperator::~IIRBase_NotOperator() {}
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_NotOperator::get_subtype(){
-  ASSERT( get_operand() != NULL );
+  ASSERT( get_operand() != nullptr );
   return get_operand()->get_subtype();
 }
 

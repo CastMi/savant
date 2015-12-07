@@ -29,32 +29,25 @@
 #include "IIRBase_ReportStatement.hh"
 #include "savant.hh"
 
-IIRBase_ReportStatement::IIRBase_ReportStatement() {
-  set_report_expression(NULL);
-  set_severity_expression(NULL);
-}
-
-IIRBase_ReportStatement::~IIRBase_ReportStatement() {
-  delete get_report_expression();
-  delete get_severity_expression();
-}
+IIRBase_ReportStatement::IIRBase_ReportStatement() {}
+IIRBase_ReportStatement::~IIRBase_ReportStatement() {}
 
 void 
-IIRBase_ReportStatement::set_report_expression( IIR* report_expression) {
+IIRBase_ReportStatement::set_report_expression( IIRRef report_expression) {
   this->report_expression  = report_expression;
 }
 
-IIR* 
+IIRRef
 IIRBase_ReportStatement::get_report_expression() {
   return report_expression;
 }
 
 void 
-IIRBase_ReportStatement::set_severity_expression( IIR* severity_expression) {
+IIRBase_ReportStatement::set_severity_expression( IIRRef severity_expression) {
   this->severity_expression = severity_expression;
 }
 
-IIR* 
+IIRRef
 IIRBase_ReportStatement::get_severity_expression() {
   return severity_expression;
 }
@@ -69,10 +62,10 @@ IIRBase_ReportStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
-IIRBase_ReportStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ReportStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ReportStatement *new_node = dynamic_cast<IIRBase_ReportStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_ReportStatementRef new_node = my_dynamic_pointer_cast<IIRBase_ReportStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
   new_node->report_expression = convert_node(report_expression, factory);

@@ -28,26 +28,27 @@
 #include "savant_config.hh"
 #include "IIR_Tuple.hh"
 
-class IIR_ArchitectureStatementList;
+REF_FORWARD_DECL(IIR_ArchitectureStatementList);
+REF_FORWARD_DECL(IIR_SimultaneousElsif);
 
 class IIR_SimultaneousElsif : public virtual IIR_Tuple {
 public:
   IIR_SimultaneousElsif() {}
   virtual ~IIR_SimultaneousElsif() {}
 
-  virtual IIR_ArchitectureStatementList *get_then_sequence_of_statements() = 0;
-  virtual void                          set_then_sequence_of_statements(IIR_ArchitectureStatementList *) = 0;
+  virtual IIR_ArchitectureStatementListRef get_then_sequence_of_statements() = 0;
+  virtual void                             set_then_sequence_of_statements(IIR_ArchitectureStatementListRef ) = 0;
 
   /** The condition specified here is evaluated and if it is TRUE, the
       corresponding simultaneous statement part is evaluated. */
-  virtual void set_condition(IIR* condition) = 0;
-  virtual IIR* get_condition() = 0;
+  virtual void set_condition(IIRRef condition) = 0;
+  virtual IIRRef get_condition() = 0;
 
   /** The condition specified after if and elsif (if any) are evaluated in
       succession until one evaluates to TRUE or all conditions are
       evaluated and yield FALSE. LRM [ 15.2 - 75 ] */
-  virtual void set_else_clause(IIR_SimultaneousElsif* else_clause) = 0;
-  virtual IIR_SimultaneousElsif* get_else_clause() = 0;
+  virtual void set_else_clause(IIR_SimultaneousElsifRef else_clause) = 0;
+  virtual IIR_SimultaneousElsifRef get_else_clause() = 0;
 
 protected:
 private:

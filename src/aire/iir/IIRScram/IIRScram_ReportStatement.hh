@@ -43,8 +43,8 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   
-  IIRScram *_get_report_expression();  
-  IIRScram *_get_severity_expression();
+  IIRScramRef _get_report_expression();  
+  IIRScramRef _get_severity_expression();
 
   void _type_check();
 

@@ -24,8 +24,8 @@
 #include "IIRBase.hh"
 #include "IIRBase_TypeDefinition.hh"
 
+REF_FORWARD_DECL(IIRBase_FunctionDeclaration);
 class IIRBase_ProcedureDeclaration;
-class IIRBase_FunctionDeclaration;
 
 class IIRBase_ProcedureReturnTypeDefinition : public virtual IIRBase_TypeDefinition{
 
@@ -35,14 +35,14 @@ public:
 
   //@{ These should never get called, but they're pure virtual so they
   // have to be overloaded.
-  IIR_Kind get_kind() const { return _IIR_ERROR; }
-  const char *get_kind_text() const { return "IIR_ProcedureReturnTypeDefinition"; }
+  IIR_Kind get_kind() const override { return _IIR_ERROR; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ProcedureReturnTypeDefinition"); }
 
-  void _set_resolution_function( IIRBase_FunctionDeclaration * ){ ASSERT( 0 ); }
+  void _set_resolution_function( IIRBase_FunctionDeclarationRef ){ ASSERT( 0 ); }
   //@}
 
 
-  IIR_FunctionDeclaration *get_resolution_function(){ return 0; }
+  IIR_FunctionDeclarationRef get_resolution_function(){ return 0; }
 
 private:
 };

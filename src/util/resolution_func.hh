@@ -115,12 +115,12 @@ decl_set_to_typedef_set( savant::set<IIRScram_Declaration*> *decl_set,
     hand side.  Both sets are modified - they are reduced to only the
     compatible assignments. */
 void 
-reconcile_sets( savant::set<IIRScram_Declaration*>       *decls, 
-		savant::set<IIRScram_TypeDefinition*>    *rval_set);
+reconcile_sets( savant::set<IIRScram_DeclarationRef>       decls, 
+		savant::set<IIRScram_TypeDefinitionRef>    rval_set);
 
 void 
-reconcile_sets( savant::set<IIRScram_TypeDefinition*>    *lval_set, 
-		savant::set<IIRScram_TypeDefinition*>    *rval_set);
+reconcile_sets( savant::set<IIRScram_TypeDefinitionRef>    lval_set, 
+		savant::set<IIRScram_TypeDefinitionRef>    rval_set);
 
 /** This function takes the set given, and reduces it to the "deepest"
     scoped item that's in it. */
@@ -162,9 +162,9 @@ check_name( IIR_Label *, IIR_Name *, const char *declaration_type );
     component configuration.  Since it is used by several different
     classes, it really belongs in neither.  So, it's just a normal
     function.*/
-void build_default_map( IIRScram_InterfaceList   *formal_list, 
-			IIRScram_InterfaceList   *actual_list, 
-			IIRScram_AssociationList &default_map);
+void build_default_map( IIRScram_InterfaceListRef   formal_list, 
+			IIRScram_InterfaceListRef   actual_list, 
+			IIRScram_AssociationListRef default_map);
 
 
 IIR_TypeDeclaration *

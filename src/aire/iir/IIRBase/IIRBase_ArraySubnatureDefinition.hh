@@ -33,7 +33,7 @@ class IIRBase_ArraySubnatureDefinition : public virtual IIRBase_ArrayNatureDefin
 
 public:
   IIR_Kind get_kind() const { return IIR_ARRAY_SUBNATURE_DEFINITION; }
-  const IIR_Char *get_kind_text() const { return "IIR_ArraySubnatureDefinition"; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ArraySubnatureDefinition"); }
 
   IIR_Boolean is_subtype();
   IIR_Boolean is_array_type() { return TRUE; }

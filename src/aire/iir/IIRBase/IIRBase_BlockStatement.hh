@@ -40,31 +40,31 @@ class IIRBase_BlockStatement : public virtual IIRBase_ConcurrentStatement, publi
 
 public:
   // List Accessor(s)
-  IIR_GenericList               *get_generic_clause();
-  IIR_AssociationList           *get_generic_map_aspect();
-  IIR_PortList                  *get_port_clause();
-  IIR_AssociationList           *get_port_map_aspect();
-  IIR_DeclarationList           *get_block_declarative_part();
-  IIR_ArchitectureStatementList *get_block_statement_part();
-  void                          set_generic_clause(IIR_GenericList *new_generic_clause);
-  void                          set_generic_map_aspect(IIR_AssociationList *new_generic_map_aspect);
-  void                          set_port_clause(IIR_PortList *new_port_clause);
-  void                          set_port_map_aspect(IIR_AssociationList *new_port_map_aspect);
-  void                          set_block_declarative_part(IIR_DeclarationList *new_block_declarative_part);
-  void                          set_block_statement_part(IIR_ArchitectureStatementList *new_block_statement_part);
+  IIR_GenericListRef               get_generic_clause();
+  IIR_AssociationListRef           get_generic_map_aspect();
+  IIR_PortListRef                  get_port_clause();
+  IIR_AssociationListRef           get_port_map_aspect();
+  IIR_DeclarationListRef           get_block_declarative_part();
+  IIR_ArchitectureStatementListRef get_block_statement_part();
+  void                             set_generic_clause(IIR_GenericListRef new_generic_clause);
+  void                             set_generic_map_aspect(IIR_AssociationListRef new_generic_map_aspect);
+  void                             set_port_clause(IIR_PortListRef new_port_clause);
+  void                             set_port_map_aspect(IIR_AssociationListRef new_port_map_aspect);
+  void                             set_block_declarative_part(IIR_DeclarationListRef new_block_declarative_part);
+  void                             set_block_statement_part(IIR_ArchitectureStatementListRef new_block_statement_part);
 
-  IIR_Kind get_kind() const {return IIR_BLOCK_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_BlockStatement";}
+  IIR_Kind get_kind() const override { return IIR_BLOCK_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_BlockStatement"); }
+ 
+  void      set_guard_expression( IIRRef guard_expression );
+  IIRRef    get_guard_expression();
 
-  void                          set_guard_expression( IIR *guard_expression );
-  IIR                           *get_guard_expression();
+  IIR_SignalDeclarationRef get_implicit_guard_signal( );
+  void                     set_implicit_guard_signal( IIR_SignalDeclarationRef );
 
-  IIR_SignalDeclaration         *get_implicit_guard_signal(  );
-  void                          set_implicit_guard_signal( IIR_SignalDeclaration * );
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
-  IIR *convert_tree(plugin_class_factory *factory);
-
-  savant::set<IIR_Declaration*> *find_declarations( IIR_Name * );
+  savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef );
 
   void publish_vhdl(ostream &);
 protected:
@@ -73,15 +73,15 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_GenericList                       *generic_clause;
-  IIR_AssociationList                   *generic_map_aspect;
-  IIR_PortList                          *port_clause;
-  IIR_AssociationList                   *port_map_aspect;
-  IIR_DeclarationList                   *block_declarative_part;
-  IIR_ArchitectureStatementList         *block_statement_part;
+  IIR_GenericListRef               generic_clause;
+  IIR_AssociationListRef           generic_map_aspect;
+  IIR_PortListRef                  port_clause;
+  IIR_AssociationListRef           port_map_aspect;
+  IIR_DeclarationListRef           block_declarative_part;
+  IIR_ArchitectureStatementListRef block_statement_part;
 
-  IIR                                   *guard_expression;
-  IIR_SignalDeclaration                 *implicit_guard_signal;
+  IIRRef                   guard_expression;
+  IIR_SignalDeclarationRef implicit_guard_signal;
 
 };
 

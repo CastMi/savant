@@ -30,31 +30,28 @@ IIRBase_BreakList::IIRBase_BreakList() {}
 IIRBase_BreakList::~IIRBase_BreakList() {}
 
 void
-IIRBase_BreakList::append(IIR_BreakElement* to_append) {
-  dl_list<IIR>::append( to_append );
+IIRBase_BreakList::append(IIR_BreakElementRef to_append) {
+  append( to_append );
 }
 
-IIR_BreakElement *
-IIRBase_BreakList::successor(IIR_BreakElement* succeed_me) {
-  return dynamic_cast<IIR_BreakElement *>(dl_list<IIR>::successor( succeed_me));
+IIR_BreakElementRef
+IIRBase_BreakList::successor(IIR_BreakElementRef succeed_me) {
+  return my_dynamic_pointer_cast<IIR_BreakElement>(successor(succeed_me));
 }
   
-IIR_BreakElement*
+IIR_BreakElementRef
 IIRBase_BreakList::first() {
-  return dynamic_cast<IIR_BreakElement *>(dl_list<IIR>::first());
+  return my_dynamic_pointer_cast<IIR_BreakElement>(first());
 }
 
 void
 IIRBase_BreakList::publish_vhdl(ostream &vhdl_out) {
-  IIRBase_BreakElement *node;
-  IIRBase_BreakElement *temp_node;
-  temp_node = dynamic_cast<IIRBase_BreakElement *>(first());
-  for( node = dynamic_cast<IIRBase_BreakElement *>(first());
-       node != NULL; 
-       node = dynamic_cast<IIRBase_BreakElement *>(successor(node)) ) {
-    if(node != temp_node) {
-      vhdl_out << " , ";
-    }
-    node->publish_vhdl(vhdl_out);
+  IIRBase_BreakElementRef placeholder = my_dynamic_pointer_cast<IIRBase_BreakElement>(first());
+  for( IIRBase_BreakElementRef temp = my_dynamic_pointer_cast<IIRBase_BreakElement>(first());
+        temp != nullptr;
+        temp = my_dynamic_pointer_cast<IIRBase_BreakElement>(successor(temp))) {
+     if(temp != placeholder)
+        vhdl_out << " , ";
+     temp->publish_vhdl(vhdl_out);
   }
 }

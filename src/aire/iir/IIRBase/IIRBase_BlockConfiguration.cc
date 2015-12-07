@@ -39,53 +39,48 @@ IIRBase_BlockConfiguration::IIRBase_BlockConfiguration() :
 IIRBase_BlockConfiguration::~IIRBase_BlockConfiguration(){}
 
 void 
-IIRBase_BlockConfiguration::set_block_specification(IIR *block_specification){
+IIRBase_BlockConfiguration::set_block_specification(IIRRef block_specification){
   this->block_specification = block_specification;
 }
  
-IIR* 
+IIRRef 
 IIRBase_BlockConfiguration::get_block_specification(){
   return block_specification;
 }
 
 // List Accessor(s)
-IIR_DeclarationList *
+IIR_DeclarationListRef
 IIRBase_BlockConfiguration::get_use_clause_list() {
-  ASSERT(use_clause_list != NULL);
+  ASSERT(use_clause_list != nullptr);
   return use_clause_list;
 }
 
-IIR_ConfigurationItemList *
+IIR_ConfigurationItemListRef
 IIRBase_BlockConfiguration::get_configuration_item_list() {
-  ASSERT(configuration_item_list != NULL); 
+  ASSERT(configuration_item_list != nullptr); 
   return configuration_item_list;
 }
 
 void
-IIRBase_BlockConfiguration::set_use_clause_list(IIR_DeclarationList *new_use_clause_list) {
-  ASSERT(new_use_clause_list != NULL);
-  
-  if (use_clause_list != NULL)
-    delete use_clause_list;
-
+IIRBase_BlockConfiguration::set_use_clause_list(IIR_DeclarationListRef new_use_clause_list) {
+  ASSERT(new_use_clause_list != nullptr);
   use_clause_list = new_use_clause_list;
 }
 
 void
-IIRBase_BlockConfiguration::set_configuration_item_list(IIR_ConfigurationItemList *new_configuration_item_list) {
-  ASSERT(new_configuration_item_list != NULL);
-  delete configuration_item_list;
+IIRBase_BlockConfiguration::set_configuration_item_list(IIR_ConfigurationItemListRef new_configuration_item_list) {
+  ASSERT(new_configuration_item_list != nullptr);
   configuration_item_list = new_configuration_item_list;
 }
 
-IIR *
-IIRBase_BlockConfiguration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_BlockConfiguration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_BlockConfiguration *new_node = dynamic_cast<IIRBase_BlockConfiguration *>(IIRBase_ConfigurationItem::convert_tree(factory));
+  IIRBase_BlockConfigurationRef new_node = my_dynamic_pointer_cast<IIRBase_BlockConfiguration>(IIRBase_ConfigurationItem::convert_tree(factory));
 
   // Process the variables
-  new_node->use_clause_list = dynamic_cast<IIR_DeclarationList *>(convert_node(use_clause_list, factory));
-  new_node->configuration_item_list = dynamic_cast<IIR_ConfigurationItemList *>(convert_node(configuration_item_list, factory));
+  new_node->use_clause_list = my_dynamic_pointer_cast<IIR_DeclarationList>(convert_node(use_clause_list, factory));
+  new_node->configuration_item_list = my_dynamic_pointer_cast<IIR_ConfigurationItemList>(convert_node(configuration_item_list, factory));
   new_node->block_specification = convert_node(block_specification, factory);
 
   return new_node;

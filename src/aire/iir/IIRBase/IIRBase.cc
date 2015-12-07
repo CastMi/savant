@@ -56,13 +56,13 @@ IIRBase::get_implementation_class() const {
 }
 
 void 
-IIRBase::set_file_name( IIR_Identifier *file_name, plugin_class_factory *factory ){
-  ASSERT(factory != NULL);
+IIRBase::set_file_name( IIR_IdentifierRef file_name, plugin_class_factoryRef factory ){
+  ASSERT(factory != nullptr);
   _my_design_file = factory->new_IIR_DesignFile();
   _my_design_file->set_name( file_name );
 }
 
-IIR_Identifier *
+IIR_IdentifierRef
 IIRBase::get_file_name(){
   if( _my_design_file == NULL ){
     return NULL;
@@ -75,13 +75,12 @@ IIRBase::get_file_name(){
 
 IIRBase::~IIRBase() {}
 
-IIR *
-IIRBase::get_value() {
+IIRRef IIRBase::get_value() {
   return NULL;
 }
 
 void 
-IIRBase::set_base_info( IIR_DesignFile    *design_file,
+IIRBase::set_base_info( IIR_DesignFileRef design_file,
                         int               line_number,
                         int               column_offset, 
                         int               character_offset ) {
@@ -100,9 +99,9 @@ IIRBase::set_base_info( IIR_DesignFile    *design_file,
 }
 
 void 
-IIRBase::copy_location(const IIR *source, IIR *dest) {
+IIRBase::copy_location(const IIR* source, IIR* dest) {
   ASSERT( source != NULL || parse_error == true  );
-  ASSERT( dest != NULL || parse_error == true );
+  ASSERT( dest != nullptr || parse_error == true );
   ASSERT( source->get_design_file() != NULL || parse_error == true );
   ASSERT( source->get_line_number() != -1 || parse_error == true );
   
@@ -120,23 +119,23 @@ IIRBase::copy_location(const IIR *source, IIR *dest) {
 }
        
 void
-IIRBase::copy_location(IIR *dest) {
+IIRBase::copy_location(IIR* dest) {
   copy_location(this, dest);
 }
 
-IIR* 
-IIRBase::convert_tree(plugin_class_factory *factory) {
+IIRRef 
+IIRBase::convert_tree(plugin_class_factoryRef factory) {
   //   The basic approach is to check for an existing copy.
   // Otherwise we create a new version of whatever we are, 
   // and add it to the reference list
-  IIRBase* new_node = converted_node;
+  IIRBaseRef new_node = converted_node;
   
   if (new_node == NULL) {
     // Special case for Standard Packages, since there is no Standard Package kind
     if( dynamic_cast<StandardPackage *>(this) != NULL ){
-      new_node = dynamic_cast<IIRBase *>(factory->new_StandardPackage());
+      new_node = dynamic_pointer_cast<IIRBase>(factory->new_StandardPackage());
     } else {
-      new_node = dynamic_cast<IIRBase *>(factory->get_new_class(get_kind()));
+      new_node = dynamic_pointer_cast<IIRBase>(factory->get_new_class(get_kind()));
     }
 
     converted_node = new_node;
@@ -144,9 +143,9 @@ IIRBase::convert_tree(plugin_class_factory *factory) {
     // Process the variables
     // Lists don't have a design file or subtype associated with them
     if (_my_design_file != NULL) 
-      new_node->_my_design_file = dynamic_cast<IIR_DesignFile *>(convert_node(_my_design_file, factory));
+      new_node->_my_design_file = dynamic_pointer_cast<IIR_DesignFile>(convert_node(_my_design_file, factory));
     if (subtype != NULL)
-      new_node->subtype = dynamic_cast<IIR_TypeDefinition *>(convert_node(subtype, factory));
+      new_node->subtype = dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(subtype, factory));
 
     new_node->iir_line_number = iir_line_number;
 
@@ -165,15 +164,15 @@ IIRBase::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR*
-IIRBase::convert_node(IIR* node, plugin_class_factory *factory) {
-  IIR   *result = NULL;
+IIRRef
+IIRBase::convert_node(IIRRef node, plugin_class_factoryRef factory) {
+  IIRRef result = NULL;
 
   if (node != NULL) {
-    if (dynamic_cast<IIRBase *>(node)->converted_node == NULL) {
+    if (dynamic_pointer_cast<IIRBase>(node)->converted_node == NULL) {
       result =  node->convert_tree(factory);
     } else {
-      result = dynamic_cast<IIRBase *>(node)->converted_node;
+      result = dynamic_pointer_cast<IIRBase>(node)->converted_node;
     }
   }
 
@@ -192,17 +191,17 @@ IIRBase::is_locally_static(){
   return FALSE;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase::get_subtype() {
   return subtype;
 }
 
 void
-IIRBase::set_subtype(IIR_TypeDefinition *new_type) {
+IIRBase::set_subtype(IIR_TypeDefinitionRef new_type) {
   subtype = new_type;
 }
 
-plugin_class_factory *
+plugin_class_factoryRef
 IIRBase::get_class_factory(){
   ASSERT( get_design_file() != 0 );
   ASSERT( get_design_file()->get_class_factory() != 0 );
@@ -269,7 +268,7 @@ IIRBase::is_scalar_type(){
   return get_subtype()->is_scalar_type();
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase::get_prefix_string( ) {
   _report_undefined_fn("get_prefix_string()");
   return NULL;
@@ -287,14 +286,14 @@ IIRBase::print(ostream& os) {
   return os;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase::get_declarator() {
   ASSERT( dynamic_cast<IIR_Declaration *>(this) != NULL || get_kind() == IIR_SIMPLE_NAME);
   _report_undefined_fn("get_declarator()");
   return NULL;
 }
 
-IIR_Declaration* 
+IIR_DeclarationRef 
 IIRBase::get_prefix_declaration() {
   _report_undefined_fn("get_prefix_declaration()");
   return NULL;

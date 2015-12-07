@@ -35,7 +35,7 @@ class IIRBase_AbsoluteOperator : public virtual IIRBase_MonadicOperator,
 				 public virtual IIR_AbsoluteOperator{
 public:
   IIR_Kind get_kind() const {return IIR_ABSOLUTE_OPERATOR;}
-  const IIR_Char *get_kind_text() const {return "IIR_AbsoluteOperator";}
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_AbsoluteOperator"); }
   const string &get_operator_string() const;
   Precedence get_precedence();
 

@@ -48,8 +48,8 @@ public:
 
 
   // Wrappers for IIRBase functions
-  IIRScram_WaveformList *       _get_waveform();
-  IIRScram *                    _get_choice();
+  IIRScram_WaveformListRef        _get_waveform();
+  IIRScramRef                     _get_choice();
 
 protected:
 private:

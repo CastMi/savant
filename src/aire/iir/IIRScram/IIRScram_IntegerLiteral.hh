@@ -43,23 +43,23 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  static IIRScram_IntegerLiteral *get( IIR_Int32 base, 
-                                       IIR_Char *mantissa,  
+  static IIRScram_IntegerLiteralRef get( IIR_Int32 base, 
+                                       IIR_CharRef mantissa,  
                                        IIR_Int32 mantissa_length,
-                                       IIR_Char *exponent, 
+                                       IIR_CharRef exponent, 
                                        IIR_Int32 exponent_length);
 
 
   /** Overloaded to cause a runtime error if a non-integer type is set on
       an integer literal.  */
-  void set_subtype( IIR_TypeDefinition * );
+  void set_subtype( IIR_TypeDefinitionRef  );
 
-  savant::set<IIRScram_TypeDefinition*> *_get_rval_set(constraint_functor *functor = 0); 
+  savant::set<IIRScram_TypeDefinitionRef> _get_rval_set(constraint_functor *functor = 0); 
   void _type_check(savant::set<IIRScram_TypeDefinition*>*) {}
   IIR_Boolean _is_integer_literal();
-  IIRScram *_clone() { return this; }
+  IIRScramRef _clone() { return this; }
 
-  IIRScram_IntegerLiteral *_get_integer_static_value();
+  IIRScram_IntegerLiteralRef _get_integer_static_value();
 
 protected:    
 private:

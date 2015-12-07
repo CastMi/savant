@@ -38,7 +38,7 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  IIRScram_Label *_find_instantiate_label( IIRScram_SimpleName * );
+  IIRScram_LabelRef _find_instantiate_label( IIRScram_SimpleNameRef );
   void _type_check_instantiate_statements();
 
 protected:

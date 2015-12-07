@@ -23,59 +23,53 @@
 #include "IIRBase_ZTFAttribute.hh"
 #include "savant.hh"
 
-IIRBase_ZTFAttribute::IIRBase_ZTFAttribute() {
-  set_num(NULL);
-  set_den(NULL);
-  set_t(NULL);
-  set_initial_delay(NULL);
-}
-
+IIRBase_ZTFAttribute::IIRBase_ZTFAttribute() {}
 IIRBase_ZTFAttribute::~IIRBase_ZTFAttribute() {}
 
 void
-IIRBase_ZTFAttribute::set_num( IIR *new_numerator ){
+IIRBase_ZTFAttribute::set_num( IIRRef new_numerator ){
   numerator = new_numerator;
 }
 
-IIR * 
+IIRRef
 IIRBase_ZTFAttribute::get_num() {
   return numerator;
 }
 
 void
-IIRBase_ZTFAttribute::set_den( IIR *new_denominator ){
+IIRBase_ZTFAttribute::set_den( IIRRef new_denominator ){
   denominator = new_denominator;
 }
 
-IIR *
+IIRRef
 IIRBase_ZTFAttribute::get_den() {
   return denominator;
 }
 
 void 
-IIRBase_ZTFAttribute::set_t( IIR *new_sampling_period ){
+IIRBase_ZTFAttribute::set_t( IIRRef new_sampling_period ){
   period = new_sampling_period;
 }
 
-IIR *
+IIRRef
 IIRBase_ZTFAttribute::get_t() {
   return period;
 }
 
 void
-IIRBase_ZTFAttribute::set_initial_delay( IIR *new_delay ){
+IIRBase_ZTFAttribute::set_initial_delay( IIRRef new_delay ){
   initial_delay = new_delay;
 }
 
-IIR *
+IIRRef
 IIRBase_ZTFAttribute::get_initial_delay() {
   return initial_delay;
 }
 
-IIR *
-IIRBase_ZTFAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ZTFAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ZTFAttribute *new_node = dynamic_cast<IIRBase_ZTFAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_ZTFAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_ZTFAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->numerator = convert_node(numerator, factory);
@@ -86,10 +80,10 @@ IIRBase_ZTFAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_ZTFAttribute::build_attribute_name() {
-   const char *name = "ztf";
-   return IIRBase_Identifier::get(name, strlen(name), get_design_file()->get_class_factory());
+   std::string name = "ztf";
+   return IIRBase_Identifier::get(name, get_design_file()->get_class_factory());
 }
 
 void

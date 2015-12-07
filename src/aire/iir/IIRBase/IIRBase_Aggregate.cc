@@ -25,42 +25,34 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "IIR_AssociationElement.hh"
 #include "IIRBase_AssociationList.hh"
 #include "IIRBase_Aggregate.hh"
+#include <boost/pointer_cast.hpp>
 
-IIRBase_Aggregate::IIRBase_Aggregate() :
-  element_association_list(0)
- { }
-
-IIRBase_Aggregate::~IIRBase_Aggregate(){
-}
+IIRBase_Aggregate::IIRBase_Aggregate() {}
+IIRBase_Aggregate::~IIRBase_Aggregate(){}
 
 // List Accessor(s)
-IIR_AssociationList *IIRBase_Aggregate::get_element_association_list() {
+IIR_AssociationListRef IIRBase_Aggregate::get_element_association_list() {
   ASSERT(element_association_list != NULL);
   return element_association_list;
 }
 
-
 void
-IIRBase_Aggregate::set_element_association_list(IIR_AssociationList *new_element_association_list) {
+IIRBase_Aggregate::set_element_association_list(IIR_AssociationListRef new_element_association_list) {
   ASSERT(new_element_association_list != NULL);
-  delete element_association_list;
+  element_association_list.reset();
   element_association_list = new_element_association_list;
 }
 
-IIR *
-IIRBase_Aggregate::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_Aggregate::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_Aggregate *new_node = dynamic_cast<IIRBase_Aggregate *>(IIRBase_Expression::convert_tree(factory));
+  IIRBase_AggregateRef new_node = my_dynamic_pointer_cast<IIRBase_Aggregate>(IIRBase_Expression::convert_tree(factory));
 
   // Process the variables
-  new_node->element_association_list = dynamic_cast<IIR_AssociationList *>(convert_node(element_association_list, factory));
+  new_node->element_association_list = my_dynamic_pointer_cast<IIR_AssociationList>(convert_node(element_association_list, factory));
 
   return new_node;
 }
@@ -83,16 +75,16 @@ IIRBase_Aggregate::is_resolved( ){
 IIR_Boolean 
 IIRBase_Aggregate::is_signal( ){
   IIR_Boolean retval = TRUE;
-  IIR_AssociationElement *current_assoc;
-  IIR_AssociationList *list = get_element_association_list();
+  IIR_AssociationElementRef current_assoc; 
+  IIR_AssociationListRef list = get_element_association_list();
 
   ASSERT( is_resolved() == TRUE );
-  current_assoc = dynamic_cast<IIR_AssociationElement *>(list->first());
+  current_assoc = my_dynamic_pointer_cast<IIR_AssociationElement>(list->first());
   while( current_assoc != NULL ){
     if( current_assoc->is_signal() == FALSE ){
       retval = FALSE;
     }
-    current_assoc = dynamic_cast<IIR_AssociationElement *>(list->successor( current_assoc ));
+    current_assoc = my_dynamic_pointer_cast<IIR_AssociationElement>(list->successor( current_assoc ));
   }
 
   return retval;
@@ -101,16 +93,16 @@ IIRBase_Aggregate::is_signal( ){
 IIR_Boolean 
 IIRBase_Aggregate::is_variable( ){
   IIR_Boolean retval = TRUE;
-  IIR_AssociationElement *current_assoc;
-  IIR_AssociationList *list = get_element_association_list();
+  IIR_AssociationElementRef current_assoc;
+  IIR_AssociationListRef list = get_element_association_list();
 
   ASSERT( is_resolved() == TRUE );
-  current_assoc = dynamic_cast<IIR_AssociationElement *>(list->first());
+  current_assoc = my_dynamic_pointer_cast<IIR_AssociationElement>(list->first());
   while( current_assoc != NULL ){
     if( current_assoc->is_variable() == FALSE ){
       retval = FALSE;
     }
-    current_assoc = dynamic_cast<IIR_AssociationElement *>(list->successor( current_assoc ));
+    current_assoc = my_dynamic_pointer_cast<IIR_AssociationElement>(list->successor( current_assoc ));
   }
 
   return retval;
@@ -124,7 +116,7 @@ IIRBase_Aggregate::is_locally_static(){
 ostream &
 IIRBase_Aggregate::print( ostream &os ){
   os << "(";
-  os << dynamic_cast<IIRBase_AssociationList *>(get_element_association_list());
+  os << my_dynamic_pointer_cast<IIRBase_AssociationList>(get_element_association_list());
   os << ")";
 
   return os;
@@ -134,6 +126,6 @@ void
 IIRBase_Aggregate::publish_vhdl(ostream &vhdl_out) {
   ASSERT( is_resolved() == TRUE );
   vhdl_out << " ( ";
-  dynamic_cast<IIRBase_AssociationList *>(get_element_association_list())->publish_vhdl(vhdl_out);
+  my_dynamic_pointer_cast<IIRBase_AssociationList>(get_element_association_list())->publish_vhdl(vhdl_out);
   vhdl_out << " ) ";
 }

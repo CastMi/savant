@@ -37,15 +37,15 @@ class IIRBase_SignalDeclaration : public virtual IIRBase_ObjectDeclaration, publ
 
 public:
 
-  IIR_Kind get_kind() const {return IIR_SIGNAL_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_SignalDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_SIGNAL_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_SignalDeclaration"); }
 
-  void set_value(IIR* value);
-  IIR* get_value();
+  void set_value(IIRRef value);
+  IIRRef get_value();
   void set_signal_kind(IIR_SignalKind signal_kind);
   IIR_SignalKind get_signal_kind();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_guard_signal();
   IIR_Boolean is_signal(){ return TRUE; }
@@ -60,7 +60,7 @@ protected:
     
 private:
   
-  IIR* value;
+  IIRRef value;
   IIR_SignalKind signal_kind;
 
 };

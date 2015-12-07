@@ -45,10 +45,10 @@ IIRBase_SignalInterfaceDeclaration::get_signal_kind() {
   return signal_kind;
 }
 
-IIR *
-IIRBase_SignalInterfaceDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_SignalInterfaceDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_SignalInterfaceDeclaration *new_node = dynamic_cast<IIRBase_SignalInterfaceDeclaration *>(IIRBase_InterfaceDeclaration::convert_tree(factory));
+  IIRBase_SignalInterfaceDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_SignalInterfaceDeclaration>(IIRBase_InterfaceDeclaration::convert_tree(factory));
 
   // Process the variables
   new_node->signal_kind = signal_kind;

@@ -36,8 +36,8 @@ class IIRBase_ModulusOperator : public virtual IIRBase_DyadicOperator,
 				public virtual IIR_ModulusOperator{
 public:
 
-  IIR_Kind get_kind() const {return IIR_MODULUS_OPERATOR;}
-  const IIR_Char *get_kind_text() const {return "IIR_ModulusOperator";}
+  IIR_Kind get_kind() const override { return IIR_MODULUS_OPERATOR; }
+  IIR_CharConstRef get_kind_text() const override {return IIR_CharConstRef("IIR_ModulusOperator"); }
   const string &get_operator_string() const;
 
   Precedence get_precedence();

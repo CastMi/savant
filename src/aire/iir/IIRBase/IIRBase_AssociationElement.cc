@@ -38,20 +38,20 @@ IIRBase_AssociationElement::~IIRBase_AssociationElement() {
 
 
 void
-IIRBase_AssociationElement::set_formal(IIR *f) {
+IIRBase_AssociationElement::set_formal(IIRRef f) {
   formal = f;
 }
 
 
-IIR*
+IIRRef
 IIRBase_AssociationElement::get_formal() {
   return formal;
 }
 
-IIR *
-IIRBase_AssociationElement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_AssociationElement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_AssociationElement *new_node = dynamic_cast<IIRBase_AssociationElement *>(IIRBase_Tuple::convert_tree(factory));
+  IIRBase_AssociationElementRef new_node = my_dynamic_pointer_cast<IIRBase_AssociationElement>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
   new_node->formal = convert_node(formal, factory);

@@ -20,27 +20,22 @@
 #include "IIRBase_DesignFile.hh"
 #include "IIRBase_Identifier.hh"
 #include "IIRBase_TypeDefinition.hh"
-
 #include "IIR_AccessSubtypeDefinition.hh"
 #include "IIR_Declaration.hh"
 #include "IIR_DesignFile.hh"
 #include "IIR_FloatingTypeDefinition.hh"
 #include "IIR_TextLiteral.hh"
 #include "IIR_TypeDefinition.hh"
-
 #include "StandardPackage.hh"
 #include "error_func.hh"
 #include "savant.hh"
+#include "set.hh"
 
-IIRBase_TypeDefinition::IIRBase_TypeDefinition() :
-  my_base_type(0),
-  my_declaration(0),
-  my_type_mark(0){}
-
+IIRBase_TypeDefinition::IIRBase_TypeDefinition() {}
 IIRBase_TypeDefinition::~IIRBase_TypeDefinition(){}
 
 void
-IIRBase_TypeDefinition::set_base_type( IIR_TypeDefinition *base_type ){
+IIRBase_TypeDefinition::set_base_type( IIR_TypeDefinitionRef base_type ){
   //  ASSERT( base_type == NULL);
   ASSERT( my_base_type == 0 || my_base_type == base_type );
   ASSERT( base_type != 0 );
@@ -48,46 +43,46 @@ IIRBase_TypeDefinition::set_base_type( IIR_TypeDefinition *base_type ){
   my_base_type = base_type;
 }
 
-IIR_TypeDefinition*
+IIR_TypeDefinitionRef
 IIRBase_TypeDefinition::get_base_type() {
   return my_base_type;
 }
 
-IIR_TypeDefinition*
+IIR_TypeDefinitionRef
 IIRBase_TypeDefinition::get_resolved_base_type() {
   return get_base_type(); 
 }
 
-IIR_Declaration *
+IIR_DeclarationRef
 IIRBase_TypeDefinition::get_declaration() {
   return my_declaration;
 }
 
 void 
-IIRBase_TypeDefinition::set_declaration( IIR_Declaration *declaration ) {
+IIRBase_TypeDefinition::set_declaration( IIR_DeclarationRef declaration ) {
   my_declaration = declaration;
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_TypeDefinition::get_type_mark() {
   return my_type_mark;
 }
 
 void 
-IIRBase_TypeDefinition::set_type_mark( IIR_TypeDefinition *type_mark ) {
+IIRBase_TypeDefinition::set_type_mark( IIR_TypeDefinitionRef type_mark ) {
   my_type_mark = type_mark;
 }
 
-IIR *
-IIRBase_TypeDefinition::convert_tree(plugin_class_factory *factory) {
-  IIRBase_TypeDefinition *new_node = dynamic_cast<IIRBase_TypeDefinition *>(IIRBase::convert_tree(factory));
+IIRRef
+IIRBase_TypeDefinition::convert_tree(plugin_class_factoryRef factory) {
+  IIRBase_TypeDefinitionRef new_node = my_dynamic_pointer_cast<IIRBase_TypeDefinition>(IIRBase::convert_tree(factory));
 
   // Process the variables
-  new_node->my_base_type = dynamic_cast<IIR_TypeDefinition *>(convert_node(my_base_type, factory));
-  new_node->my_declaration = dynamic_cast<IIR_Declaration *>(convert_node(my_declaration, factory));
+  new_node->my_base_type = my_dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(my_base_type, factory));
+  new_node->my_declaration = my_dynamic_pointer_cast<IIR_Declaration>(convert_node(my_declaration, factory));
 
   if( my_type_mark != 0 ){
-    new_node->set_type_mark( dynamic_cast<IIR_TypeDefinition *>(convert_node(my_type_mark,
+    new_node->set_type_mark( my_dynamic_pointer_cast<IIR_TypeDefinition>(convert_node(my_type_mark,
 									       factory)) );
   }
 
@@ -114,56 +109,58 @@ IIRBase_TypeDefinition::is_element(){
   return FALSE;
 }
 
-IIR_ScalarTypeDefinition *
+IIR_ScalarTypeDefinitionRef
 IIRBase_TypeDefinition::get_resolved_index_subtype(){
   _report_undefined_fn("IIRBase_TypeDefinition::get_resolved_index_subtype()");
-  return NULL;
+  return IIR_ScalarTypeDefinitionRef();
 }
 
 void
-IIRBase_TypeDefinition::set_index_subtype(IIR_ScalarTypeDefinition *) {
+IIRBase_TypeDefinition::set_index_subtype(IIR_ScalarTypeDefinitionRef ) {
   abort();
 }
 //DRH
-IIRBase_TypeDefinition *
+IIRBase_TypeDefinitionRef
 IIRBase_TypeDefinition::_get_element_subtype(){
   _report_undefined_fn("IIRBase_TypeDefinition::_get_element_subtype()");
-  return NULL;
+  return IIRBase_TypeDefinitionRef();
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_TypeDefinition::get_element_subtype(){
   _report_undefined_fn("IIRBase_TypeDefinition::get_element_subtype()");  
-  return NULL;
+  return IIR_TypeDefinitionRef();
 }
 
 void  
-IIRBase_TypeDefinition::set_element_subtype(IIR_TypeDefinition *) {
+IIRBase_TypeDefinition::set_element_subtype(IIR_TypeDefinitionRef ) {
   _report_undefined_fn("IIRBase_TypeDefinition::_set_element_subtype()");  
   abort();
 }
 
-IIR_TypeDefinition *
-IIRBase_TypeDefinition::is_compatible( IIR_TypeDefinition *to_check ){  
+IIR_TypeDefinitionRef
+IIRBase_TypeDefinition::is_compatible( IIR_TypeDefinitionRef to_check ){  
   ASSERT( this != NULL );
 
-  StandardPackage *package = get_design_file()->get_standard_package();
+  StandardPackageRef package = get_design_file()->get_standard_package();
   // Check for NULL types.
-  if( to_check == dynamic_cast<IIR_TypeDefinition*>( package->get_savant_null_type_definition())  ){
-    return dynamic_cast<IIR_TypeDefinition *>(this);
+  if( to_check == my_dynamic_pointer_cast<IIR_TypeDefinition>( package->get_savant_null_type_definition())  ){
+     // FIXME: this is an error
+    return IIR_TypeDefinitionRef();
   }
-  else if( this == dynamic_cast<IIR_TypeDefinition*>( package->get_savant_null_type_definition())  ){
-    return dynamic_cast<IIR_TypeDefinition *>(to_check);
+  else if( this == dynamic_cast<IIR_TypeDefinition*>( package->get_savant_null_type_definition().get() )  ){
+    return my_dynamic_pointer_cast<IIR_TypeDefinition>(to_check);
   }
 
-  IIR_TypeDefinition *base_type_left = 0;
-  IIR_TypeDefinition *base_type_right = 0;
+  IIR_TypeDefinitionRef base_type_left;
+  IIR_TypeDefinitionRef base_type_right;
   // Check for "normal" compatibility.
   if( is_subtype() == TRUE ){
     base_type_left = get_base_type();
   }
   else{
-    base_type_left = dynamic_cast<IIR_TypeDefinition *>(this);
+     // FIXME: this is an error
+    base_type_left = IIR_TypeDefinitionRef();
   }
   
   if( to_check->is_subtype() == TRUE ){
@@ -178,7 +175,8 @@ IIRBase_TypeDefinition::is_compatible( IIR_TypeDefinition *to_check ){
       return to_check;
     }
     else{
-      return dynamic_cast<IIR_TypeDefinition *>(this);
+      // FIXME: this is an error
+      return IIR_TypeDefinitionRef();
     }
   }
 
@@ -187,12 +185,12 @@ IIRBase_TypeDefinition::is_compatible( IIR_TypeDefinition *to_check ){
   return check_special_compatible( to_check );
 }
 
-IIR_TypeDefinition *
-IIRBase_TypeDefinition::check_special_compatible( IIR_TypeDefinition * ){
-  return NULL;
+IIR_TypeDefinitionRef
+IIRBase_TypeDefinition::check_special_compatible( IIR_TypeDefinitionRef ){
+  return IIR_TypeDefinitionRef();
 }
 
-IIR_TypeDefinition *
+IIR_TypeDefinitionRef
 IIRBase_TypeDefinition::get_bottom_base_type(){
   if( is_subtype() ){
     ASSERT( get_base_type() != 0 );
@@ -200,43 +198,44 @@ IIRBase_TypeDefinition::get_bottom_base_type(){
   }
   else{
     ASSERT( get_base_type() == 0 );    
-    return this;
+     // FIXME: this is an error
+    return IIR_TypeDefinitionRef();
   }
 }
 
-IIR*
+IIRRef
 IIRBase_TypeDefinition::get_base_type_left(){
   _report_undefined_fn("IIRBase_TypeDefinition::get_base_type_left()");  
-  return  NULL;
+  return IIRRef();
 }
 
-IIR*
+IIRRef
 IIRBase_TypeDefinition::get_base_type_direction(){
   _report_undefined_fn("IIRBase_TypeDefinition::get_base_type_direction()");  
-  return  NULL;
+  return IIRRef();
 }
 
-IIR*
+IIRRef
 IIRBase_TypeDefinition::get_base_type_right(){
   _report_undefined_fn("IIRBase_TypeDefinition::get_base_type_right()");  
-  return  NULL;
+  return IIRRef();
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_TypeDefinition::find_declarations( IIR_Name * ) {
-  return NULL;
+savant::set<IIR_DeclarationRef>
+IIRBase_TypeDefinition::find_declarations( IIR_NameRef ) {
+  return savant::set<IIR_DeclarationRef>();
 }
 
-savant::set<IIR_Declaration*> *
-IIRBase_TypeDefinition::find_declarations( IIR_TextLiteral * ) {
+savant::set<IIR_DeclarationRef>
+IIRBase_TypeDefinition::find_declarations( IIR_TextLiteralRef ) {
   _report_undefined_fn("IIRBase_TypeDefinition::find_declarations( IIR_TextLiteral * )");  
-  return NULL;
+  return savant::set<IIR_DeclarationRef>();
 }
 
 IIR_Boolean
 IIRBase_TypeDefinition::is_subtype_decl() {
-  IIR_Declaration *type_decl = get_declaration();
-  if(type_decl != NULL) {
+  IIR_DeclarationRef type_decl = get_declaration();
+  if(type_decl != nullptr) {
     return type_decl->is_subtype_decl();
   }
   else {
@@ -250,14 +249,14 @@ IIRBase_TypeDefinition::print( ostream &os ){
   return os;
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_TypeDefinition::get_declarator(){
   if( get_declaration() != NULL ){
     return get_declaration()->get_declarator();
   }
   else{
-    const char *string = "<ANONYMOUS>";
-    return IIRBase_Identifier::get( string, strlen( string ), get_design_file()->get_class_factory() );
+     std::string string = "<ANONYMOUS>";
+    return IIRBase_Identifier::get( string, get_design_file()->get_class_factory() );
   }
 }
 

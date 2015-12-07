@@ -22,27 +22,25 @@
 #include "IIRBase_DesignFile.hh"
 #include "IIRBase_LeftAttribute.hh"
 #include "savant.hh"
+#include <cstring>
 
-IIRBase_LeftAttribute::IIRBase_LeftAttribute() {
-  set_suffix(NULL);
-}
-
+IIRBase_LeftAttribute::IIRBase_LeftAttribute() {}
 IIRBase_LeftAttribute::~IIRBase_LeftAttribute() {}
 
 void
-IIRBase_LeftAttribute::set_suffix( IIR* suffix) {
+IIRBase_LeftAttribute::set_suffix( IIRRef suffix) {
   this->suffix = suffix;
 }
 
-IIR*
+IIRRef
 IIRBase_LeftAttribute::get_suffix() {
   return suffix;
 }
 
-IIR *
-IIRBase_LeftAttribute::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_LeftAttribute::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_LeftAttribute *new_node = dynamic_cast<IIRBase_LeftAttribute *>(IIRBase_Attribute::convert_tree(factory));
+  IIRBase_LeftAttributeRef new_node = my_dynamic_pointer_cast<IIRBase_LeftAttribute>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
   new_node->suffix = convert_node(suffix, factory);
@@ -72,10 +70,10 @@ IIRBase_LeftAttribute::is_function_attribute(){
   }
 }
 
-IIR_TextLiteral *
+IIR_TextLiteralRef
 IIRBase_LeftAttribute::build_attribute_name() {
-  const char *name = "left";
-  return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());
+   std::string name("left");
+  return IIRBase_Identifier::get( name, get_design_file()->get_class_factory());
 }
 
 void 

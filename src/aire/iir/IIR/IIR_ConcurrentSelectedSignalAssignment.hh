@@ -32,8 +32,8 @@
 #include "savant_config.hh"
 #include "IIR_ConcurrentStatement.hh"
 
-class IIR_SelectedWaveformList;
-class IIR_CaseStatementAlternativeList;
+REF_FORWARD_DECL(IIR_SelectedWaveformList);
+REF_FORWARD_DECL(IIR_CaseStatementAlternativeList);
 
 class IIR_ConcurrentSelectedSignalAssignment : public virtual IIR_ConcurrentStatement{
 
@@ -41,17 +41,17 @@ public:
   virtual ~IIR_ConcurrentSelectedSignalAssignment() {}
     
   // List accessor(s)
-  virtual IIR_SelectedWaveformList      *get_selected_waveforms() = 0;
-  virtual void                          set_selected_waveforms(IIR_SelectedWaveformList *) = 0;
+  virtual IIR_SelectedWaveformListRef  get_selected_waveforms() = 0;
+  virtual void                         set_selected_waveforms(IIR_SelectedWaveformListRef ) = 0;
 
   virtual void set_postponed(IIR_Boolean) = 0;
   virtual IIR_Boolean get_postponed() = 0;
 
-  virtual void set_target(IIR *) = 0;
-  virtual IIR* get_target() = 0;
+  virtual void set_target(IIRRef ) = 0;
+  virtual IIRRef get_target() = 0;
 
-  virtual void set_expression(IIR *) = 0;
-  virtual IIR* get_expression() = 0;
+  virtual void set_expression(IIRRef ) = 0;
+  virtual IIRRef get_expression() = 0;
 
   virtual void set_guarded(IIR_Boolean) = 0;
   virtual IIR_Boolean get_guarded() = 0;
@@ -59,13 +59,13 @@ public:
   virtual void  set_delay_mechanism( IIR_DelayMechanism) = 0;
   virtual IIR_DelayMechanism get_delay_mechanism() = 0;
 
-  virtual void set_reject_time_expression( IIR *reject_time_expression ) = 0;
-  virtual IIR *get_reject_time_expression() = 0;
+  virtual void set_reject_time_expression( IIRRef reject_time_expression ) = 0;
+  virtual IIRRef get_reject_time_expression() = 0;
 
-  virtual IIR_SignalDeclaration *get_guard_signal() = 0;
+  virtual IIR_SignalDeclarationRef get_guard_signal() = 0;
 
 protected:
-  virtual IIR_CaseStatementAlternativeList *build_alternative_list(IIR_Boolean) = 0;
+  virtual IIR_CaseStatementAlternativeListRef build_alternative_list(IIR_Boolean) = 0;
 
 };
 

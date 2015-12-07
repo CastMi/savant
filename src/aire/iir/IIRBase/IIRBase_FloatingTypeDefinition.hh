@@ -35,10 +35,10 @@
 class IIRBase_FloatingTypeDefinition : public virtual IIRBase_ScalarTypeDefinition, public virtual IIR_FloatingTypeDefinition{
 
 public:
-  IIR_Kind get_kind() const {return IIR_FLOATING_TYPE_DEFINITION;}
-  const IIR_Char *get_kind_text() const {return "IIR_FloatingTypeDefinition";}
+  IIR_Kind get_kind() const override { return IIR_FLOATING_TYPE_DEFINITION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_FloatingTypeDefinition"); }
 
-  IIR_TypeDefinition *check_special_compatible( IIR_TypeDefinition * );
+  IIR_TypeDefinitionRef check_special_compatible( IIR_TypeDefinitionRef );
 
 protected:
   IIRBase_FloatingTypeDefinition();

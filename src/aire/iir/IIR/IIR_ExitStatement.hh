@@ -38,11 +38,11 @@ class IIR_ExitStatement : public virtual IIR_SequentialStatement{
 public:
   virtual ~IIR_ExitStatement() {}
     
-  virtual void set_enclosing_loop( IIR_SequentialStatement *enclosing_loop ) = 0;
-  virtual IIR_SequentialStatement *get_enclosing_loop() = 0;
+  virtual void set_enclosing_loop( IIR_SequentialStatementRef enclosing_loop ) = 0;
+  virtual IIR_SequentialStatementRef get_enclosing_loop() = 0;
 
-  virtual void set_condition( IIR *condition ) = 0;
-  virtual IIR *get_condition() = 0;
+  virtual void set_condition( IIRRef condition ) = 0;
+  virtual IIRRef get_condition() = 0;
 };
 
 typedef refcount<IIR_ExitStatement> IIR_ExitStatementRef;

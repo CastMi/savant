@@ -35,17 +35,17 @@
 class IIRBase_DotAttribute : public virtual IIR_DotAttribute, public virtual IIRBase_Attribute {
 
 public:
-  IIR_Kind get_kind() const {
+  IIR_Kind get_kind() const override {
     return IIR_DOT_ATTRIBUTE;
   }
 
-  const IIR_Char *get_kind_text() const {
-    return "IIR_DotAttribute";
+  IIR_CharConstRef get_kind_text() const override {
+    return IIR_CharConstRef("IIR_DotAttribute");
   }
 
   /** This returns an IIR_TextLiteral when a Dot attribute is
       instantiated. */
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
   void publish_vhdl(ostream &);
 protected:
   IIRBase_DotAttribute();

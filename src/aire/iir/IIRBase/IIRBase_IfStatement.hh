@@ -41,21 +41,21 @@ class IIRBase_IfStatement : public virtual IIRBase_SequentialStatement, public v
 
 public:
   // List Accessor(s)
-  IIR_SequentialStatementList *get_then_sequence();
-  IIR_SequentialStatementList *get_else_sequence();
-  void                        set_then_sequence(IIR_SequentialStatementList *new_then_sequence);
-  void                        set_else_sequence(IIR_SequentialStatementList *new_else_sequence);
+  IIR_SequentialStatementListRef get_then_sequence();
+  IIR_SequentialStatementListRef get_else_sequence();
+  void                           set_then_sequence(IIR_SequentialStatementListRef new_then_sequence);
+  void                           set_else_sequence(IIR_SequentialStatementListRef new_else_sequence);
 
-  IIR_Kind get_kind() const {return IIR_IF_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_IfStatement";}
+  IIR_Kind get_kind() const override { return IIR_IF_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_IfStatement"); }
 
-  void set_condition( IIR*);
-  IIR* get_condition();
+  void set_condition( IIRRef );
+  IIRRef get_condition();
 
-  void set_elsif(IIR_Elsif*);
-  IIR_Elsif* get_elsif();
+  void set_elsif(IIR_ElsifRef);
+  IIR_ElsifRef get_elsif();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean has_statement_list() { return TRUE; }
   IIR_Boolean is_above_attribute_found();
@@ -67,11 +67,11 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_SequentialStatementList   *then_sequence;
-  IIR_SequentialStatementList   *else_sequence;
+  IIR_SequentialStatementListRef then_sequence;
+  IIR_SequentialStatementListRef else_sequence;
 
-  IIR                           *condition;  
-  IIR_Elsif                     *elsif_clause;
+  IIRRef                         condition;  
+  IIR_ElsifRef                   elsif_clause;
 
 };
 

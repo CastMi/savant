@@ -43,11 +43,11 @@
 
 IIRScram_AliasDeclaration::~IIRScram_AliasDeclaration() {}
 
-IIRScram_AttributeSpecificationList* 
+IIRScram_AttributeSpecificationListRef 
 IIRScram_AliasDeclaration::_get_attribute_specification_list() {
   ASSERT(_get_name() != NULL);
   ASSERT(_is_iir_declaration() == TRUE);
-  return (dynamic_cast<IIRScram_Declaration*>(_get_name())->_get_attribute_specification_list());
+  return (my_dynamic_pointer_cast<IIRScram_Declaration>(_get_name())->_get_attribute_specification_list());
 }
 
 
@@ -69,7 +69,7 @@ IIRScram_AliasDeclaration::_is_writable(){
   return _get_name()->_is_writable();  
 }
 
-IIRScram_TypeDefinition *
+IIRScram_TypeDefinitionRef
 IIRScram_AliasDeclaration::_get_type_of_element( int index ){
   ASSERT( _get_name()->is_resolved() == TRUE );
   return _get_name()->_get_type_of_element( index );
@@ -87,19 +87,18 @@ void
 IIRScram_AliasDeclaration::_type_check(){
   ASSERT( _get_name() != NULL );
   
-  savant::set<IIRScram_TypeDefinition*> *name_rvals = _get_name()->_get_rval_set();
-  if( name_rvals == NULL ){
+  savant::set<IIRScram_TypeDefinitionRef> name_rvals = _get_name()->_get_rval_set();
+  if( name_rvals.size() == 0 ){
     report_undefined_symbol( _get_name() );
     return;
   }
 
   if( _get_subtype() != NULL ){
-    savant::set<IIRScram_TypeDefinition*> *subtype_rvals = new savant::set<IIRScram_TypeDefinition*>( _get_subtype() );
+    savant::set<IIRScram_TypeDefinitionRef> subtype_rvals = _get_subtype();
 
     reconcile_sets( name_rvals, subtype_rvals );
-    delete subtype_rvals;
 
-    if( name_rvals->size() == 0 ){
+    if( name_rvals.size() == 0 ){
       ostringstream err;
       err << "|" << *_get_name() << "| is not of type |" << *_get_subtype() << "| - illegal alias"
 	  << " declaration.";
@@ -109,7 +108,7 @@ IIRScram_AliasDeclaration::_type_check(){
 
   }
 
-  switch( name_rvals->size() ){
+  switch( name_rvals.size() ){
   case 0:{
     ostringstream err;
     err << "Internal error in IIRScram_AliasDeclaration::_type_check - got 0 elements for"
@@ -118,7 +117,7 @@ IIRScram_AliasDeclaration::_type_check(){
     break;
   }
   case 1:{
-    IIRScram_TypeDefinition *my_type = *(name_rvals->begin());
+    IIRScram_TypeDefinitionRef my_type = *(name_rvals.begin());
 
     if( _get_subtype() == NULL ){
       set_subtype( my_type );
@@ -131,7 +130,7 @@ IIRScram_AliasDeclaration::_type_check(){
     break;
   }
   default:{
-    report_ambiguous_error( _get_name(), name_rvals->convert_set<IIR_TypeDefinition*>() );
+    report_ambiguous_error( _get_name(), name_rvals.convert_set<IIR_TypeDefinition>() );
     break;
   }
   }
@@ -144,10 +143,10 @@ IIRScram_AliasDeclaration::_get_mangling_prefix() {
   return "";
 }	  
 
-IIRScram*
+IIRScramRef
 IIRScram_AliasDeclaration::_clone() {
   if (_my_clone == NULL) {
-    _my_clone = new IIRScram_AliasDeclaration();
+    _my_clone.reset(new IIRScram_AliasDeclaration());
     IIRScram_Declaration::_clone(_my_clone);
 
     _my_clone->set_name(_get_name());
@@ -172,7 +171,7 @@ visitor_return_type *IIRScram_AliasDeclaration::_accept_visitor(node_visitor *vi
   return visitor->visit_IIR_AliasDeclaration(this, arg);
 };
 
-IIRScram *
+IIRScramRef
 IIRScram_AliasDeclaration::_get_name() {
-  return dynamic_cast<IIRScram *>(get_name());
+  return my_dynamic_pointer_cast<IIRScram>(get_name());
 }

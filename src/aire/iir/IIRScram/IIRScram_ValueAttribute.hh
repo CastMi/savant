@@ -40,10 +40,10 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  IIRScram_TypeDefinition *_get_subtype();
+  IIRScram_TypeDefinitionRef _get_subtype();
 
   IIR_Boolean has_suffix(){ return TRUE; }
-  void _set_suffix( IIRScram *new_suffix ){ IIRBase_ValueAttribute::set_suffix( new_suffix ); }
+  void _set_suffix( IIRScramRef new_suffix ){ IIRBase_ValueAttribute::set_suffix( new_suffix ); }
 
 protected:
   void _resolve_suffix_special();

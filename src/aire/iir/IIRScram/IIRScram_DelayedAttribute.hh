@@ -47,12 +47,12 @@ public:
   IIR_Boolean is_signal(){ return TRUE; }
 
   IIR_Boolean has_suffix(){ return TRUE; }
-  void _set_suffix( IIRScram *new_suffix );
-  IIRScram *_get_suffix();
+  void _set_suffix( IIRScramRef new_suffix );
+  IIRScramRef _get_suffix();
 
-  IIRScram_TypeDefinition *_get_subtype();
+  IIRScram_TypeDefinitionRef _get_subtype();
 
-  IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
+  IIRScram_DeclarationRef _get_implicit_declaration( const string &, IIRScram_TypeDefinitionRef );
 
   virtual IIR_Boolean _is_delayed_attribute() { return TRUE; }
 

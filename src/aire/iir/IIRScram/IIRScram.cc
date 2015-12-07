@@ -67,7 +67,7 @@ IIRScram::IIRScram(){}
 
 IIRScram::~IIRScram() {}
 
-IIRScram_TypeDefinition* 
+IIRScram_TypeDefinitionRef 
 IIRScram::_get_name_type() {
   _report_undefined_scram_fn("_get_name_type()");
   return NULL;
@@ -97,41 +97,43 @@ IIRScram::_is_terminal() {
 }
 
 void 
-IIRScram::_type_check( IIRScram_TypeDefinition *input_decl ){
-  savant::set<IIRScram_TypeDefinition*> temp_set;
+IIRScram::_type_check( IIRScram_TypeDefinitionRef input_decl ){
+  savant::set<IIRScram_TypeDefinitionRef> temp_set;
   temp_set.insert( input_decl );
-  _type_check( &temp_set );
+  _type_check( temp_set );
 }
 
-IIRScram *
-IIRScram::_semantic_transform( savant::set<IIRScram_TypeDefinition*> * ){
+IIRScramRef
+IIRScram::_semantic_transform( savant::set<IIRScram_TypeDefinitionRef> ){
 #ifdef SEMANTIC_DEBUG
   cout << "Semantic transform called for node " << get_kind_text() <<
     " - returning \"this\". " << endl;
 #endif
-  return (IIRScram *)this;
+  //FIXME: this is an erro
+  return IIRScramRef();
 }
 
-IIRScram *
-IIRScram::_semantic_transform( IIRScram_TypeDefinition *input_decl ){
-  savant::set<IIRScram_TypeDefinition*> temp_set;
+IIRScramRef
+IIRScram::_semantic_transform( IIRScram_TypeDefinitionRef input_decl ){
+  savant::set<IIRScram_TypeDefinitionRef> temp_set;
   temp_set.insert( input_decl );
-  return _semantic_transform( &temp_set );
+  return _semantic_transform( temp_set );
 }
 
-IIRScram *
-IIRScram::_rval_to_decl( IIRScram_TypeDefinition * ){
+IIRScramRef
+IIRScram::_rval_to_decl( IIRScram_TypeDefinitionRef ){
 #ifdef SEMANTIC_DEBUG
   cout << "_rval_to_decl called for node " << get_kind_text() <<
     " - returning \"this\". " << endl;
 #endif
  
-  return (IIRScram *)this;
+  //FIXME: this is an error
+  return IIRScramRef();
 }
 
-IIRScram_DesignFile *
+IIRScram_DesignFileRef
 IIRScram::_get_my_design_file() {
-  IIRScram_DesignFile *file = dynamic_cast<IIRScram_DesignFile *>(_my_design_file);
+  IIRScram_DesignFileRef file = my_dynamic_pointer_cast<IIRScram_DesignFile>(_my_design_file);
   ASSERT( file != NULL);
   return file;
 }
@@ -164,7 +166,7 @@ IIRScram::_is_writable() {
   return FALSE;
 }
 
-IIRScram_GenericList *
+IIRScram_GenericListRef
 IIRScram::_get_generic_list(){
   _report_undefined_scram_fn("_get_generic_list()");
   return NULL;
@@ -176,51 +178,47 @@ IIRScram::_get_mode() {
   return IIR_UNKNOWN_MODE;
 }
 
-savant::set<IIRScram_Declaration*> *
+savant::set<IIRScram_DeclarationRef>
 IIRScram::_symbol_lookup(){
   _report_undefined_scram_fn("_symbol_lookup( )");
-  return NULL;
+  return savant::set<IIRScram_DeclarationRef>();
 }
 
-savant::set<IIRScram_Declaration*> *
-IIRScram::_symbol_lookup( IIRScram_Declaration * ){
+savant::set<IIRScram_DeclarationRef>
+IIRScram::_symbol_lookup( IIRScram_DeclarationRef ){
   _report_undefined_scram_fn("_symbol_lookup( IIRScram_Declaration * )");
-  return NULL;
+  return savant::set<IIRScram_DeclarationRef>();
 }
 
-savant::set<IIRScram_Declaration*> *
-IIRScram::_symbol_lookup( savant::set<IIRScram_Declaration*> * ){
+savant::set<IIRScram_DeclarationRef>
+IIRScram::_symbol_lookup( savant::set<IIRScram_DeclarationRef> ){
   _report_undefined_scram_fn("_symbol_lookup( savant::set<IIRScram_Declaration*> * )");
-  return NULL;
+  return savant::set<IIRScram_DeclarationRef>();
 }
 
-savant::set<IIRScram_Declaration*> *
+savant::set<IIRScram_DeclarationRef>
 IIRScram::_symbol_lookup( constraint_functor *functor ){
-  savant::set<IIRScram_Declaration*> *retval = _symbol_lookup();
-
-  if( retval != NULL ){
-    retval->reduce_set( functor );
-  }
-
+  savant::set<IIRScram_DeclarationRef> retval = _symbol_lookup();
+  retval.reduce_set( functor );
   return retval;
 }
 
-IIRScram_Label *
+IIRScram_LabelRef
 IIRScram::_lookup_label( IIR_Boolean complain_on_error ){
-  IIRScram_Label *retval = NULL;
+  IIRScram_LabelRef retval;
   
   ASSERT( complain_on_error == TRUE ||  complain_on_error == FALSE );
   
   constraint_functor *functor = new is_label_functor;
-  savant::set<IIRScram_Declaration*> *decls = _symbol_lookup( functor );
+  savant::set<IIRScram_DeclarationRef> decls = _symbol_lookup( functor );
   delete functor;
 
-  ASSERT( decls != NULL );
-  if( decls->size() == 0 && complain_on_error == TRUE ){
-    report_undefined_symbol( (IIRScram *)this );
+  if( decls.size() == 0 && complain_on_error == TRUE ){
+    // FIXME: this is an error
+    report_undefined_symbol( IIRScramRef() );
   }
 
-  switch( decls->size() ){
+  switch( decls.size() ){
   case 0:{
     ostringstream err;
     err << "No label |" << *this << "| declared in this scope.";
@@ -228,143 +226,144 @@ IIRScram::_lookup_label( IIR_Boolean complain_on_error ){
     break;
   }
   case 1:{
-    IIRScram_Declaration *temp = *(decls->begin());
+    IIRScram_DeclarationRef temp = *(decls.begin());
     ASSERT( temp->is_label() == TRUE );
-    retval = dynamic_cast<IIRScram_Label *>(temp);
+    retval = my_dynamic_pointer_cast<IIRScram_Label>(temp);
     break;
   }
   default:{
-    report_ambiguous_error( (IIRScram *)this, decls->convert_set<IIR_Declaration*>() );
+    //FIXME: this is an error
+    report_ambiguous_error( IIRScramRef(), decls.convert_set<IIR_Declaration>() );
   }
   }
 
   return retval;
 }
 
-savant::set<IIRScram_TypeDefinition*> *
+savant::set<IIRScram_TypeDefinitionRef>
 IIRScram::_get_rval_set(constraint_functor * ){
   _report_undefined_scram_fn("_get_rval_set(),\nconstraint_functor *functor");
-  return NULL;
+  return savant::set<IIRScram_TypeDefinitionRef>();
 }
 
-savant::set<IIRScram_TypeDefinition*> *
-IIRScram::_get_rval_set( savant::set<IIRScram_TypeDefinition*> *,
+savant::set<IIRScram_TypeDefinitionRef>
+IIRScram::_get_rval_set( savant::set<IIRScram_TypeDefinitionRef>,
 			 constraint_functor * ){
   _report_undefined_scram_fn("_get_rval_set( savant::set<IIRScram_TypeDefinition*> * ),\nconstraint_functor *functor");
-  return NULL;
+  return savant::set<IIRScram_TypeDefinitionRef>();
 }
 
-savant::set<IIRScram_TypeDefinition*> *
-IIRScram::_get_rval_set( savant::set<IIRScram_Declaration*> *, 
+savant::set<IIRScram_TypeDefinitionRef>
+IIRScram::_get_rval_set( savant::set<IIRScram_DeclarationRef>, 
 			 constraint_functor * ){
   _report_undefined_scram_fn("_get_rval_set( savant::set<IIRScram_Declaration*> * ,\nconstraint_functor *functor )");
-  return NULL;
+  return savant::set<IIRScram_TypeDefinitionRef>();
 }
 
-IIRScram_Declaration *
+IIRScram_DeclarationRef
 IIRScram::_find_formal_declaration(){
   _report_undefined_scram_fn("_find_formal_declaration( )");
   return NULL;
 }
 
-IIRScram_TypeDefinition *
-IIRScram::_determine_rval_in_set( savant::set<IIRScram_TypeDefinition*> *,
-				  IIRScram_TypeDefinition * ){
+IIRScram_TypeDefinitionRef
+IIRScram::_determine_rval_in_set( savant::set<IIRScram_TypeDefinitionRef>,
+				  IIRScram_TypeDefinitionRef ){
   _report_undefined_scram_fn("_determine_rval_in_set( savant::set<IIRScram_TypeDefinition*> *, IIRScram_TypeDefinition * )");
-  return NULL;  
+  return IIRScram_TypeDefinitionRef();
 }
 
-IIRScram_Declaration *
-IIRScram::_determine_decl_in_set( savant::set<IIRScram_Declaration*> *, IIRScram_TypeDefinition * ){
+IIRScram_DeclarationRef
+IIRScram::_determine_decl_in_set( savant::set<IIRScram_DeclarationRef>, IIRScram_TypeDefinitionRef ){
   _report_undefined_scram_fn("_determine_decl_in_set( savant::set<IIRScram_Declaration*> *, IIRScram_TypeDefinition *)");
-  return NULL;  
+  return IIRScram_DeclarationRef();
 }
 
-IIRScram_TypeDefinition *
+IIRScram_TypeDefinitionRef
 IIRScram::_get_subtype(){
   if( get_subtype() != 0 ){
-    ASSERT( dynamic_cast<IIRScram_TypeDefinition *>(get_subtype()) != 0 );
+    ASSERT( my_dynamic_pointer_cast<IIRScram_TypeDefinition>(get_subtype()) != 0 );
   }
-  return dynamic_cast<IIRScram_TypeDefinition *>(get_subtype());
+  return my_dynamic_pointer_cast<IIRScram_TypeDefinition>(get_subtype());
 }
 
-IIRScram_TypeDefinition *
+IIRScram_TypeDefinitionRef
 IIRScram::_get_rval_pointed_at(){
-  IIRScram_TypeDefinition *retval = NULL;
+  IIRScram_TypeDefinitionRef retval;
 
   if( _get_subtype()->_is_iir_access_type_definition() == TRUE ){
-    retval = dynamic_cast<IIRScram_TypeDefinition *>((dynamic_cast<IIRScram_AccessTypeDefinition *>(_get_subtype())->get_designated_type()));
+    retval = my_dynamic_pointer_cast<IIRScram_TypeDefinition>((my_dynamic_pointer_cast<IIRScram_AccessTypeDefinition>(_get_subtype())->get_designated_type()));
   }
 
   return retval;
 }
 
-IIRScram_TypeDefinition *
+IIRScram_TypeDefinitionRef
 IIRScram::_get_type_of_element( int ){
   _report_undefined_scram_fn("_get_type_of_element( int )");
-  return NULL;
+  return IIRScram_TypeDefinitionRef();
 }
 
-IIRScram_TypeDefinition *
+IIRScram_TypeDefinitionRef
 IIRScram::_get_port_type( int ){
   _report_undefined_scram_fn("_get_port_type");
   return NULL;
 }
 
 void 
-IIRScram::_type_check( savant::set<IIRScram_TypeDefinition*> * ){
-  _report_undefined_scram_fn("_type_check( savant::set<IIRScram_TypeDefinition*> * )");
+IIRScram::_type_check( savant::set<IIRScram_TypeDefinitionRef> ){
+  _report_undefined_scram_fn("_type_check( savant::set<IIRScram_TypeDefinitionRef> )");
 }
 
-IIRScram *
-IIRScram::_rval_to_decl( IIRScram_TypeDefinition *, IIRScram_TypeDefinition * ){
+IIRScramRef
+IIRScram::_rval_to_decl( IIRScram_TypeDefinitionRef, IIRScram_TypeDefinitionRef ){
   _report_undefined_scram_fn("_rval_to_decl( IIRScram_TypeDefinition *prefix_rval, IIRScram_TypeDefinition *suffix_rval )");  
   return NULL;
 }
 
-IIRScram *
-IIRScram::_rval_to_decl( IIRScram_Declaration *, IIRScram_TypeDefinition * ){
-  _report_undefined_scram_fn("_rval_to_decl( IIRScram_Declaration *prefix_decl, IIRScram_TypeDefinition *suffix_rval )");  
+IIRScramRef
+IIRScram::_rval_to_decl( IIRScram_DeclarationRef , IIRScram_TypeDefinitionRef ){
+  _report_undefined_scram_fn("_rval_to_decl( IIRScram_DeclarationRef prefix_decl, IIRScram_TypeDefinitionRef suffix_rval )");  
   return NULL;
 }
 
-IIRScram *
+IIRScramRef
 IIRScram::_get_component_name( ){
   _report_undefined_scram_fn("_get_component_name()");
   return NULL;
 }
 
 void 
-IIRScram::_set_component_name( IIRScram * ){
+IIRScram::_set_component_name( IIRScramRef ){
   _report_undefined_scram_fn("_set_component_name()");
 }
 
-IIRScram_LibraryUnit *
+IIRScram_LibraryUnitRef
 IIRScram::_get_entity_aspect(){
   _report_undefined_scram_fn("_get_entity_aspect()");
   return NULL;
 }
 
-IIRScram_LibraryUnit *
-IIRScram::_find_default_binding( IIRScram *component_name ){
+IIRScram_LibraryUnitRef
+IIRScram::_find_default_binding( IIRScramRef component_name ){
   ASSERT( component_name->get_kind() == IIR_SIMPLE_NAME ||
 	  component_name->get_kind() == IIR_COMPONENT_DECLARATION );
 
-  IIRScram_LibraryUnit *retval = NULL;
+  IIRScram_LibraryUnitRef retval;
 
-  IIRScram_EntityDeclaration *entity_decl = 
-    dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( FALSE, component_name, _get_work_library(), _get_design_file()->get_standard_package(), _get_design_file()->get_class_factory() ));
-  if( entity_decl != NULL ){
+  IIRScram_EntityDeclarationRef entity_decl = 
+    my_dynamic_pointer_cast<IIRScram_EntityDeclaration>(library_manager::instance()->lookup_entity( FALSE, component_name, _get_work_library(), _get_design_file()->get_standard_package(), _get_design_file()->get_class_factory() ));
+  if( entity_decl != nullptr ){
     // We need to go get the most recently analyzed architecure.
-    retval = dynamic_cast<IIRScram_LibraryUnit *>(library_manager::instance()->lookup_default_architecture( entity_decl ));
+    retval = my_dynamic_pointer_cast<IIRScram_LibraryUnit>(library_manager::instance()->lookup_default_architecture( entity_decl ));
   }
 
   return retval;
 }
 
-IIRScram_Declaration* 
+IIRScram_DeclarationRef 
 IIRScram::_get_prefix_declaration() {
-  return dynamic_cast<IIRScram_Declaration *>(get_prefix_declaration());
+  return my_dynamic_pointer_cast<IIRScram_Declaration>(get_prefix_declaration());
 }
 
 const string 
@@ -383,37 +382,37 @@ IIRScram::_make_interface_visible( ){
   _make_interface_visible( _get_symbol_table() );
 }
 
-IIRScram*
+IIRScramRef
 IIRScram::_clone() {
-  _report_undefined_scram_fn("IIRScram *_clone()");
+  _report_undefined_scram_fn("IIRScramRef _clone()");
   return NULL;
 }
 
 void
-IIRScram::_clone(IIRScram* clone) {
-  copy_location(this, clone);
+IIRScram::_clone(IIRScramRef clone) {
+  copy_location(clone.get());
 }  
 
-IIRScram_IntegerLiteral *
+IIRScram_IntegerLiteralRef
 IIRScram::_get_integer_static_value(){
   _report_undefined_scram_fn("_get_integer_static_value()");
   return NULL;
 }
 
-IIRScram *
-IIRScram::_decl_to_decl( IIRScram_Declaration * ){
-  _report_undefined_scram_fn("_decl_to_decl( IIRScram_Declaration * )");
+IIRScramRef
+IIRScram::_decl_to_decl( IIRScram_DeclarationRef ){
+  _report_undefined_scram_fn("_decl_to_decl( IIRScram_DeclarationRef )");
   return NULL;
 }
 
-IIRScram_FunctionDeclaration*
+IIRScram_FunctionDeclarationRef
 IIRScram::_get_resolution_function(){
   return NULL;
 }
 
 void 
-IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
-				     IIRScram_AssociationList &generic_map_aspect,
+IIRScram::_type_check_configuration( IIRScram_AssociationListRef port_map_aspect,
+				     IIRScram_AssociationListRef generic_map_aspect,
 				     int tmp_mode ){
   
   // Hack to work around #includeing this in the header.
@@ -423,16 +422,11 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
   _get_symbol_table()->open_scope( (IIRScram *)this );
 
   constraint_functor *functor = new is_component_declaration_functor();
-  savant::set<IIRScram_Declaration*> *component_decls = _get_component_name()->_symbol_lookup( functor );
+  savant::set<IIRScram_DeclarationRef> component_decls = _get_component_name()->_symbol_lookup( functor );
   delete functor;
 
-  if( component_decls == NULL ){
-    report_undefined_symbol( _get_component_name() );
-    return;
-  }
-
-  IIRScram_ComponentDeclaration *my_component = 0;
-  switch( component_decls->size() ){
+  IIRScram_ComponentDeclarationRef my_component;
+  switch( component_decls.size() ){
   case 0:{
     ostringstream err;
     err << "|" << *_get_component_name() 
@@ -441,7 +435,7 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
     return;
   }
   case 1:{
-    my_component = dynamic_cast<IIRScram_ComponentDeclaration *>(*(component_decls->begin()));
+    my_component = my_dynamic_pointer_cast<IIRScram_ComponentDeclaration>(*(component_decls.begin()));
     _set_component_name( _get_component_name()->_decl_to_decl( my_component ) );
     if( debug_symbol_table == true ){
       cerr << "Type checking configuration - about to make |" << 
@@ -451,36 +445,36 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
     break;
   }
   default:{
-    report_ambiguous_error( _get_component_name(), component_decls->convert_set<IIR_Declaration*>() );
+    report_ambiguous_error( _get_component_name(), component_decls.convert_set<IIR_Declaration>() );
     break;
   }
   }
 
   // This currently gets resolved by the parser...
-  IIRScram *aspect = _get_entity_aspect();
+  IIRScramRef aspect = _get_entity_aspect();
   if( aspect != NULL ){
     ASSERT( aspect->_is_iir_declaration() == TRUE );
     ASSERT( aspect->is_resolved() == TRUE );
-    IIRScram_Declaration *aspect_decl = dynamic_cast<IIRScram_Declaration *>(aspect);
+    IIRScram_DeclarationRef aspect_decl = my_dynamic_pointer_cast<IIRScram_Declaration>(aspect);
     
     // The formal generics and ports of the entity must be visible here.
     // See section 10.2 of the LRM.  So, now we're deciding what entity
     // we're looking at, and using this info to put those formals back
     // into scope.
-    IIRScram_EntityDeclaration *entity_decl = NULL;
+    IIRScram_EntityDeclarationRef entity_decl;
     switch( aspect_decl->get_kind() ){
       
     case IIR_ARCHITECTURE_DECLARATION:{
-      IIRScram_ArchitectureDeclaration *as_arch = dynamic_cast<IIRScram_ArchitectureDeclaration *>(aspect_decl);
+      IIRScram_ArchitectureDeclarationRef as_arch = my_dynamic_pointer_cast<IIRScram_ArchitectureDeclaration>(aspect_decl);
       entity_decl = as_arch->_get_entity();
       break;
     }
     case IIR_ENTITY_DECLARATION:{
-      entity_decl =  dynamic_cast<IIRScram_EntityDeclaration *>(aspect_decl);
+      entity_decl =  my_dynamic_pointer_cast<IIRScram_EntityDeclaration>(aspect_decl);
       break;
     }
     case IIR_CONFIGURATION_DECLARATION:{
-      entity_decl = dynamic_cast<IIRScram_EntityDeclaration *>((dynamic_cast<IIRScram_ConfigurationDeclaration *>(aspect_decl))->get_entity());
+      entity_decl = my_dynamic_pointer_cast<IIRScram_EntityDeclaration>((my_dynamic_pointer_cast<IIRScram_ConfigurationDeclaration>(aspect_decl))->get_entity());
       break;
     }
     default:{
@@ -506,29 +500,30 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
   _get_symbol_table()->close_scope( (IIR *)this );
   // else it's OPEN
   //  ASSERT( is_resolved() == TRUE );
-  delete component_decls;
 }
 
 void
-IIRScram::_resolve_map( IIRScram_InterfaceList *entity_interface_list,
-			IIRScram_InterfaceList *component_interface_list,
-			IIRScram_AssociationList &map,
+IIRScram::_resolve_map( IIRScram_InterfaceListRef entity_interface_list,
+			IIRScram_InterfaceListRef component_interface_list,
+			IIRScram_AssociationListRef map,
 			int tmp_mode ){
   // Hack to work around #includeing this in the header.
   IIRScram_ConfigurationSpecification::type_check_mode mode = 
     (IIRScram_ConfigurationSpecification::type_check_mode)tmp_mode;
 
-  if( entity_interface_list && map.size() > 0 ){
+  if( entity_interface_list != nullptr && map->size() > 0 ){
     if( mode == IIRScram_ConfigurationSpecification::CONFIG_SPEC ){
-      map._resolve_and_order( entity_interface_list,
+      // FIXME: this is an error
+      map->_resolve_and_order( entity_interface_list,
 			      component_interface_list,
-			      dynamic_cast<IIRScram*>(this) );
+			      IIRScramRef() );
     }
     else{
       ASSERT( mode == IIRScram_ConfigurationSpecification::COMPONENT_INSTANT );
-      map._resolve_and_order( component_interface_list,
+      // FIXME: this is an error
+      map->_resolve_and_order( component_interface_list,
 			      entity_interface_list,
-			      dynamic_cast<IIRScram*>(this) );
+			      IIRScramRef() );
     }
   }
   else{
@@ -546,18 +541,18 @@ IIRScram::_resolve_map( IIRScram_InterfaceList *entity_interface_list,
   }
 }
 
-IIRScram_TypeDefinition *
-IIRScram::_type_check_iteration_scheme( IIRScram_ConstantDeclaration *iteration_scheme ){
-  IIRScram_TypeDefinition *retval = NULL;
+IIRScram_TypeDefinitionRef
+IIRScram::_type_check_iteration_scheme( IIRScram_ConstantDeclarationRef iteration_scheme ){
+  IIRScram_TypeDefinitionRef retval;
 
-  ASSERT( iteration_scheme != NULL );
-  IIRScram_TypeDefinition *range_type = iteration_scheme->_get_subtype();
-  ASSERT( iteration_scheme->_get_subtype() != NULL );
+  ASSERT( iteration_scheme != nullptr );
+  IIRScram_TypeDefinitionRef range_type = iteration_scheme->_get_subtype();
+  ASSERT( iteration_scheme->_get_subtype() != nullptr );
 
   if( range_type->get_kind() == IIR_RANGE_TYPE_DEFINITION ){
-    IIRScram_RangeTypeDefinition *temp = dynamic_cast<IIRScram_RangeTypeDefinition *>(range_type);
-    IIRScram_TypeDefinition *constant_base_type = temp->_determine_discrete_type();
-    if( constant_base_type != NULL ){
+    IIRScram_RangeTypeDefinitionRef temp = my_dynamic_pointer_cast<IIRScram_RangeTypeDefinition>(range_type);
+    IIRScram_TypeDefinitionRef constant_base_type = temp->_determine_discrete_type();
+    if( constant_base_type != nullptr ){
       retval = constant_base_type->_construct_new_subtype( NULL, temp);
     }
   }
@@ -570,21 +565,23 @@ IIRScram::_type_check_iteration_scheme( IIRScram_ConstantDeclaration *iteration_
   return retval;
 }
 
-IIR *
+IIRRef
 IIRScram::_type_check_file_open_information(){
-  IIR *retval = this;
+  // FIXME: this is an error
+  IIRRef retval;
 
-  savant::set<IIRScram_TypeDefinition*> *rvals = _get_rval_set();
-  if( rvals == NULL ){
-    report_undefined_symbol( this );
+  savant::set<IIRScram_TypeDefinitionRef> rvals = _get_rval_set();
+  if( rvals.size() <= 0 ){
+    // FIXME: this is an error
+    report_undefined_symbol( IIRScramRef() );
   }
   else{
-    savant::set<IIRScram_TypeDefinition*> file_open_kind;
-    ASSERT( get_design_file() != NULL );
-    ASSERT( get_design_file()->get_standard_package() != NULL );
-    file_open_kind.insert( dynamic_cast<IIRScram_TypeDefinition *>(get_design_file()->get_standard_package()->get_file_open_kind_type() ));
-    _type_check( &file_open_kind );
-    reconcile_sets( &file_open_kind, rvals );
+    savant::set<IIRScram_TypeDefinitionRef> file_open_kind;
+    ASSERT( get_design_file() != nullptr );
+    ASSERT( get_design_file()->get_standard_package() != nullptr );
+    file_open_kind.insert( my_dynamic_pointer_cast<IIRScram_TypeDefinition>(get_design_file()->get_standard_package()->get_file_open_kind_type() ));
+    _type_check( file_open_kind );
+    reconcile_sets( file_open_kind, rvals );
     switch( file_open_kind.size() ){
     case 0:{
       ostringstream err;
@@ -606,14 +603,13 @@ IIRScram::_type_check_file_open_information(){
     }
     }
   }
-  delete rvals;
 
   return retval;
 }
 
-IIRScram_LibraryDeclaration *
+IIRScram_LibraryDeclarationRef
 IIRScram::_get_work_library(){
-  ASSERT( _my_design_file != 0 );
+  ASSERT( _my_design_file != nullptr );
   return _get_my_design_file()->_get_work_library();
 }
 
@@ -631,14 +627,14 @@ IIRScram::_strdup( const char * const to_copy, unsigned int size ){
   return retval;
 }
 
-IIRScram_AttributeSpecificationList * 
+IIRScram_AttributeSpecificationListRef
 IIRScram::_get_attribute_specification_list( ){
   return NULL;
 }
 
 IIR_Boolean 
-IIRScram::_attach_attribute_specification( IIRScram_AttributeSpecification *to_attach ){
-  IIRScram_AttributeSpecificationList *list = _get_attribute_specification_list();
+IIRScram::_attach_attribute_specification( IIRScram_AttributeSpecificationRef to_attach ){
+  IIRScram_AttributeSpecificationListRef list = _get_attribute_specification_list();
   if( list == NULL ){
     return FALSE;
   }
@@ -648,14 +644,14 @@ IIRScram::_attach_attribute_specification( IIRScram_AttributeSpecification *to_a
   }
 }
 
-IIR_Boolean 
-IIRScram::_attach_disconnection_specification( IIRScram_AttributeSpecification * ){
+IIR_Boolean
+IIRScram::_attach_disconnection_specification( IIRScram_AttributeSpecificationRef ){
   _report_undefined_scram_fn("_attach_disconnection_specification( IIRScram_AttributeSpecification *)");
   abort();
   return FALSE;
 }
 
-IIRScram_DeclarationList*
+IIRScram_DeclarationListRef
 IIRScram::_get_declaration_list() {
   _report_undefined_scram_fn("_get_declaration_list()");
   return NULL;
@@ -669,14 +665,14 @@ IIRScram::get_include_manager(){
   return my_include_manager;
 }
 
-IIRScram_DesignFile *
+IIRScram_DesignFileRef
 IIRScram::_get_design_file() const{
-  return dynamic_cast<IIRScram_DesignFile *>(_my_design_file);
+  return my_dynamic_pointer_cast<IIRScram_DesignFile>(_my_design_file);
 }
 
 void 
-IIRScram::_set_design_file( IIRScram_DesignFile *new_design_file ){
-  _my_design_file = dynamic_cast<IIR_DesignFile *>(new_design_file);
+IIRScram::_set_design_file( IIRScram_DesignFileRef new_design_file ){
+  _my_design_file = my_dynamic_pointer_cast<IIR_DesignFile>(new_design_file);
 }
 
 IIR_Boolean
@@ -685,40 +681,40 @@ IIRScram::_is_branchQ(){
 }
 
 void
-IIRScram::_build_generic_parameter_set( savant::set<IIRScram_Declaration*> * ){
+IIRScram::_build_generic_parameter_set( savant::set<IIRScram_DeclarationRef> ){
   // do nothing
 }
 
 void
-IIRScram::_build_reference_quantity_list( dl_list<IIRScram_ReferenceAttribute> * ){
+IIRScram::_build_reference_quantity_list( dl_list<IIRScram_ReferenceAttribute> ){
   // do nothing
 }
 
-IIRScram_PortList *
+IIRScram_PortListRef
 IIRScram::_get_port_list(){
   _report_undefined_scram_fn("_get_port_list()");
   return NULL;
 }
 
-IIRScram_List *
+IIRScram_ListRef
 IIRScram::_get_statement_list(){
   _report_undefined_scram_fn("_get_statement_list()");
 
   return NULL;
 }
 
-IIRScram_Declaration* 
+IIRScram_DeclarationRef 
 IIRScram::_get_package_declaration() {
   return NULL;
 }
 
-IIRScram_Identifier *
+IIRScram_IdentifierRef
 IIRScram::_get_file_name(){
-  return dynamic_cast<IIRScram_Identifier *>(get_file_name());
+  return my_dynamic_pointer_cast<IIRScram_Identifier>(get_file_name());
 }
 
-IIRScram_TextLiteral *
+IIRScram_TextLiteralRef
 IIRScram::_get_declarator() {
-  return dynamic_cast<IIRScram_TextLiteral *>(get_declarator());
+  return my_dynamic_pointer_cast<IIRScram_TextLiteral>(get_declarator());
 }
 

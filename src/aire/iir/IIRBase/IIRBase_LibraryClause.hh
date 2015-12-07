@@ -40,17 +40,17 @@ class IIRBase_LibraryClause : public virtual IIRBase_Declaration,
 
 public:
 
-  IIR_Kind get_kind() const {return IIR_LIBRARY_CLAUSE;}
-  const IIR_Char *get_kind_text() const {return "IIR_LibraryClause";}
+  IIR_Kind get_kind() const override { return IIR_LIBRARY_CLAUSE; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_LibraryClause"); }
 
-  void set_logical_name(IIR_Identifier* logical_name);
-  IIR_Identifier* get_logical_name();
+  void set_logical_name(IIR_IdentifierRef logical_name);
+  IIR_IdentifierRef get_logical_name();
 
-  void set_library_declaration( IIR_LibraryDeclaration *new_library_declaration );
-  IIR_LibraryDeclaration *get_library_declaration();
+  void set_library_declaration( IIR_LibraryDeclarationRef new_library_declaration );
+  IIR_LibraryDeclarationRef get_library_declaration();
 
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   bool is_work_library();
 
@@ -62,8 +62,8 @@ protected:
   virtual ~IIRBase_LibraryClause() = 0;
     
 private:
-  IIR_Identifier *logical_name;
-  IIR_LibraryDeclaration *library_declaration;
+  IIR_IdentifierRef logical_name;
+  IIR_LibraryDeclarationRef library_declaration;
 };
 
 typedef refcount<IIRBase_LibraryClause> IIRBase_LibraryClauseRef;

@@ -37,14 +37,14 @@
 
 IIRScram_AssociationElement::~IIRScram_AssociationElement() {}
 
-IIRScram_Declaration *
+IIRScram_DeclarationRef
 IIRScram_AssociationElement::_find_formal_declaration(){
   
   // This gets called from _find_formal_declaration in IIRScram_FunctionCall.
   // It gets called directly on the formal originally.  That's why this one
   // has to call it on the actual - NOT the formal.
   
-  IIRScram_Declaration *retval = NULL;
+  IIRScram_DeclarationRef retval;
   if( _get_actual() != NULL ){
     retval = _get_actual()->_find_formal_declaration();
   }
@@ -58,14 +58,14 @@ IIRScram_AssociationElement::_is_positional(){
   return get_formal() == NULL && is_by_others() == FALSE;
 }
 
-IIRScram* 
+IIRScramRef
 IIRScram_AssociationElement::_get_formal() {
-  return dynamic_cast<IIRScram *>(get_formal());
+  return my_dynamic_pointer_cast<IIRScram>(get_formal());
 }
 
-IIRScram* 
+IIRScramRef
 IIRScram_AssociationElement::_get_actual() {
-  return dynamic_cast<IIRScram *>(get_actual());
+  return my_dynamic_pointer_cast<IIRScram>(get_actual());
 }
 
 

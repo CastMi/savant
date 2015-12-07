@@ -32,23 +32,23 @@
 #include <vector>
 #include <fstream>
 
+REF_FORWARD_DECL(IIR);
+REF_FORWARD_DECL(StandardPackage);
+REF_FORWARD_DECL(plugin_class_factory);
+REF_FORWARD_DECL(IIR_EntityDeclaration);
+REF_FORWARD_DECL(IIR_PackageDeclaration);
+REF_FORWARD_DECL(IIR_ConfigurationDeclaration);
+REF_FORWARD_DECL(IIR_LibraryDeclaration);
+REF_FORWARD_DECL(IIR_Name);
+REF_FORWARD_DECL(IIR_ArchitectureDeclaration);
 class symbol_table;
 class symbol_lookup;
-class IIR;
-class IIR_ArchitectureDeclaration;
-class IIR_ConfigurationDeclaration;
 class IIR_Declaration;
-class IIR_EntityDeclaration;
 class IIR_IndexedName;
-class IIR_LibraryDeclaration;
 class IIR_LibraryUnit;
-class IIR_Name;
-class IIR_PackageDeclaration;
 class IIR_SimpleName;
 class IIR_TextLiteral;
 class scram;
-class plugin_class_factory;
-class StandardPackage;
 
 namespace savant {
   template <class type> class set;
@@ -134,7 +134,7 @@ public:
   /** This method looks up the most recently analyzed architecture for this
      entity declaration and returns it.  The library searched is that of
      the entity declaration.  */
-  IIR_ArchitectureDeclaration *lookup_default_architecture( IIR_EntityDeclaration       *entity_decl);
+  IIR_ArchitectureDeclarationRef lookup_default_architecture( IIR_EntityDeclarationRef       entity_decl);
 
   /** This method finds the last declared architecture of the name it's
       called on for the entity passed in.  If complain on error is TRUE.
@@ -161,11 +161,11 @@ public:
   @param work_library If no library is specified in the name, we fall back
   to the work library passed in for our search for this unit.
 */
-  IIR_PackageDeclaration *lookup_package( IIR_Boolean,
-                                          IIR                           *package_name,
+  IIR_PackageDeclarationRef lookup_package( IIR_Boolean,
+                                          IIRRef                        package_name,
                                           IIR_LibraryDeclaration        *work_library,
-                                          StandardPackage               *package,
-                                          plugin_class_factory       *factory);
+                                          StandardPackageRef            package,
+                                          plugin_class_factoryRef       factory);
 
   /** Find the entity specified.  
   
@@ -179,11 +179,11 @@ public:
   @param work_library If no library is specified in the name, we fall back
   to the work library passed in for our search for this unit.
   */
-  IIR_EntityDeclaration *lookup_entity( IIR_Boolean                     complain_on_error,
-                                        IIR                             *entity_name,
-                                        IIR_LibraryDeclaration          *work_library,
-                                        StandardPackage                 *package,
-                                        plugin_class_factory         *factory);
+  IIR_EntityDeclarationRef lookup_entity( IIR_Boolean                     complain_on_error,
+                                        IIRRef                          entity_name,
+                                        IIR_LibraryDeclarationRef       work_library,
+                                        StandardPackageRef              package,
+                                        plugin_class_factoryRef         factory);
 
   /** Find the configuration specified.  
   
@@ -197,11 +197,11 @@ public:
   @param work_library If no library is specified in the name, we fall back
   to the work library passed in for our search for this unit.
   */
-  IIR_ConfigurationDeclaration *lookup_configuration( IIR_Boolean                    complain_on_error,
-							   IIR_Name                       *configuration_name,
-							   IIR_LibraryDeclaration    *work_library,
-							   StandardPackage                *package,
-							   plugin_class_factory           *factory);
+  IIR_ConfigurationDeclarationRef lookup_configuration( IIR_Boolean                    complain_on_error,
+							   IIR_NameRef                       configuration_name,
+							   IIR_LibraryDeclaration            *work_library,
+							   StandardPackageRef                package,
+							   plugin_class_factoryRef           factory);
 
   /** Add this declaration to our list of cached library units. */
   void add_declaration( IIR_LibraryUnit * );

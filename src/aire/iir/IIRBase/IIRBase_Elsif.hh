@@ -38,19 +38,19 @@ class IIRBase_Elsif : public virtual IIRBase_Tuple, public virtual IIR_Elsif{
 
 public:
   // List Accessor(s)
-  IIR_SequentialStatementList *get_then_sequence_of_statements();
-  void                        set_then_sequence_of_statements(IIR_SequentialStatementList *new_then_sequence_of_statements);
+  IIR_SequentialStatementListRef get_then_sequence_of_statements();
+  void                        set_then_sequence_of_statements(IIR_SequentialStatementListRef new_then_sequence_of_statements);
 
-  IIR_Kind get_kind() const {return IIR_ELSIF;}
-  const IIR_Char *get_kind_text() const {return "IIR_Elsif";}
+  IIR_Kind get_kind() const override { return IIR_ELSIF; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_Elsif"); }
 
-  void set_condition(IIR*);
-  IIR* get_condition();
+  void set_condition(IIRRef);
+  IIRRef get_condition();
 
-  void set_else_clause(IIR_Elsif*);
-  IIR_Elsif *get_else_clause();
+  void set_else_clause(IIR_ElsifRef);
+  IIR_ElsifRef get_else_clause();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -59,10 +59,10 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_SequentialStatementList *then_sequence_of_statements;
+  IIR_SequentialStatementListRef then_sequence_of_statements;
 
-  IIR* condition;  
-  IIR_Elsif* else_clause;
+  IIRRef condition;  
+  IIR_ElsifRef else_clause;
 };
 
 typedef refcount<IIRBase_Elsif> IIRBase_ElsifRef;

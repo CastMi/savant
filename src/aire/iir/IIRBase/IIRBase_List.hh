@@ -29,7 +29,7 @@ class IIRBase_List : public virtual IIRBase, public virtual IIR_List {
 public:
   /** This function performs the conversion of one tree into another.  At this 
       level it walks through the list, calling clone_tree on the contents */
-  virtual IIR *convert_tree(plugin_class_factory *factory);
+  virtual IIRRef convert_tree(plugin_class_factoryRef factory);
 
   IIR_Boolean is_resolved();
     

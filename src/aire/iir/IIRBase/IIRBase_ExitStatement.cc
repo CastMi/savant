@@ -29,31 +29,25 @@
 #include "IIR_Label.hh"
 #include "savant.hh"
 
-IIRBase_ExitStatement::IIRBase_ExitStatement(){
-  set_enclosing_loop( NULL );
-  set_condition( NULL );
-}
-
-IIRBase_ExitStatement::~IIRBase_ExitStatement(){
-  
-}
+IIRBase_ExitStatement::IIRBase_ExitStatement() {}
+IIRBase_ExitStatement::~IIRBase_ExitStatement() {}
 
 void 
-IIRBase_ExitStatement::set_enclosing_loop( IIR_SequentialStatement *enclosing_loop ){
+IIRBase_ExitStatement::set_enclosing_loop( IIR_SequentialStatementRef enclosing_loop ){
   this->enclosing_loop = enclosing_loop;
 }
 
-IIR_SequentialStatement *
+IIR_SequentialStatementRef
 IIRBase_ExitStatement::get_enclosing_loop(){
   return enclosing_loop;
 }
 
 void 
-IIRBase_ExitStatement::set_condition( IIR *condition ){
+IIRBase_ExitStatement::set_condition( IIRRef condition ){
   this->condition = condition;
 }
 
-IIR *
+IIRRef
 IIRBase_ExitStatement::get_condition(){
   return condition;
 }
@@ -67,13 +61,13 @@ IIRBase_ExitStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
-IIRBase_ExitStatement::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ExitStatement::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ExitStatement *new_node = dynamic_cast<IIRBase_ExitStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
+  IIRBase_ExitStatementRef new_node = my_dynamic_pointer_cast<IIRBase_ExitStatement>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->enclosing_loop = dynamic_cast<IIR_SequentialStatement *>(convert_node(enclosing_loop, factory));
+  new_node->enclosing_loop = my_dynamic_pointer_cast<IIR_SequentialStatement>(convert_node(enclosing_loop, factory));
   new_node->condition = convert_node(condition, factory);
 
   return new_node;

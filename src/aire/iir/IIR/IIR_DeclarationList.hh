@@ -32,7 +32,7 @@
 #include "IIR_List.hh"
 #include "set.hh"
 
-class IIR_Name;
+REF_FORWARD_DECL(IIR_Name);
 class IIR_Declaration;
 class IIR_TextLiteral;
 
@@ -41,25 +41,25 @@ class IIR_DeclarationList : public virtual IIR_List{
 public:
   virtual ~IIR_DeclarationList() {}
   
-  virtual void append( IIR_Declaration * ) = 0;
-  virtual void prepend( IIR_Declaration * ) = 0;
+  virtual void append( IIR_DeclarationRef ) = 0;
+  virtual void prepend( IIR_DeclarationRef ) = 0;
 
-  virtual IIR *successor( IIR_Declaration * ) = 0;
-  virtual IIR *predecessor( IIR_Declaration * ) = 0;
+  virtual IIRRef successor( IIR_DeclarationRef  ) = 0;
+  virtual IIRRef predecessor( IIR_DeclarationRef  ) = 0;
 
-  virtual IIR *first() = 0;
-  virtual IIR *last() = 0;
+  virtual IIRRef first() = 0;
+  virtual IIRRef last() = 0;
 
-  virtual IIR *get_nth_element( IIR_Int32 ) = 0;
+  virtual IIRRef get_nth_element( IIR_Int32 ) = 0;
 
-  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_Name *  ) { return NULL; }
-  virtual savant::set<IIR_Declaration*> *find_declarations( IIR_TextLiteral * ) { return NULL; }
+  virtual savant::set<IIR_DeclarationRef> find_declarations( IIR_NameRef  ) { return savant::set<IIR_DeclarationRef>(); }
+  virtual savant::set<IIR_DeclarationRef> find_declarations( IIR_TextLiteralRef ) { return savant::set<IIR_DeclarationRef>(); }
 
   /**
      Makes the declarative region of all of the elements in this list point
      to the new region passed in.
   */
-  virtual void set_declarative_region( IIR * ) = 0;
+  virtual void set_declarative_region( IIRRef  ) = 0;
 };
 
 typedef refcount<IIR_DeclarationList> IIR_DeclarationListRef;

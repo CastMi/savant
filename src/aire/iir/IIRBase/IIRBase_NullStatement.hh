@@ -36,8 +36,8 @@ class IIRBase_NullStatement : public virtual IIRBase_SequentialStatement, public
 
 public:
 
-  IIR_Kind get_kind() const {return IIR_NULL_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_NullStatement";}
+  IIR_Kind get_kind() const override { return IIR_NULL_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_NullStatement"); }
 
   void publish_vhdl(ostream &);
 protected:

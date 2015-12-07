@@ -28,23 +28,21 @@
 #include "IIR_Identifier.hh"
 #include "IIRBase_IdentifierList.hh"
 
-IIRBase_IdentifierList::IIRBase_IdentifierList(){
-}
+IIRBase_IdentifierList::IIRBase_IdentifierList() {}
 
-IIRBase_IdentifierList::~IIRBase_IdentifierList(){
-}
+IIRBase_IdentifierList::~IIRBase_IdentifierList() {}
 
-IIR_Identifier *
+IIR_IdentifierRef
 IIRBase_IdentifierList::first(){
-  return dynamic_cast<IIR_Identifier *>(IIRBase_List::first());
+  return my_dynamic_pointer_cast<IIR_Identifier>(IIRBase_List::first());
 }
 
-IIR_Identifier *
-IIRBase_IdentifierList::successor( IIR_Identifier *to_succeed ){
-  return dynamic_cast<IIR_Identifier *>(IIRBase_List::successor( to_succeed ));
+IIR_IdentifierRef
+IIRBase_IdentifierList::successor( IIR_IdentifierRef to_succeed ){
+  return my_dynamic_pointer_cast<IIR_Identifier>(IIRBase_List::successor( to_succeed ));
 }
 
 void 
-IIRBase_IdentifierList::append( IIR_Identifier *to_append ){
+IIRBase_IdentifierList::append( IIR_IdentifierRef to_append ){
   IIRBase_List::append( to_append );
 }

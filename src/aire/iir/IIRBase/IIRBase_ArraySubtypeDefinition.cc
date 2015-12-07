@@ -39,22 +39,22 @@ IIRBase_ArraySubtypeDefinition::IIRBase_ArraySubtypeDefinition() :
 IIRBase_ArraySubtypeDefinition::~IIRBase_ArraySubtypeDefinition(){}
 
 void 
-IIRBase_ArraySubtypeDefinition::set_resolution_function(IIR_FunctionDeclaration *res_func){
+IIRBase_ArraySubtypeDefinition::set_resolution_function(IIR_FunctionDeclarationRef res_func){
   resolution_function = res_func;
 }
 
-IIR_FunctionDeclaration *
+IIR_FunctionDeclarationRef
 IIRBase_ArraySubtypeDefinition::get_resolution_function(){
   return resolution_function;
 }
 
-IIR *
-IIRBase_ArraySubtypeDefinition::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_ArraySubtypeDefinition::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_ArraySubtypeDefinition *new_node = dynamic_cast<IIRBase_ArraySubtypeDefinition *>(IIRBase_ArrayTypeDefinition::convert_tree(factory));
+  IIRBase_ArraySubtypeDefinitionRef new_node = my_dynamic_pointer_cast<IIRBase_ArraySubtypeDefinition>(IIRBase_ArrayTypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->resolution_function = dynamic_cast<IIR_FunctionDeclaration *>(convert_node(resolution_function, factory));
+  new_node->resolution_function = my_dynamic_pointer_cast<IIR_FunctionDeclaration>(convert_node(resolution_function, factory));
 
   return new_node;
 }
@@ -64,9 +64,9 @@ IIRBase_ArraySubtypeDefinition::is_subtype() {
   return TRUE;
 }
 
-IIR_ScalarTypeDefinition *
+IIR_ScalarTypeDefinitionRef
 IIRBase_ArraySubtypeDefinition::get_resolved_index_subtype(){
-  IIR_ScalarTypeDefinition *retval = 0;
+  IIR_ScalarTypeDefinitionRef retval;
   if(get_index_subtype() != NULL) {
     retval = get_index_subtype();
   } 
@@ -99,7 +99,7 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl( ostream &vhdl_out ){
     get_base_type()->publish_vhdl(vhdl_out);
     if (get_index_subtype() != NULL) {
       vhdl_out << "(";
-      dynamic_cast<IIRBase_ScalarTypeDefinition *>(get_index_subtype())->publish_vhdl_range(vhdl_out);
+      my_dynamic_pointer_cast<IIRBase_ScalarTypeDefinition>(get_index_subtype()).get()->publish_vhdl_range(vhdl_out);
       vhdl_out << ")";
     }
   }
@@ -108,8 +108,8 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl( ostream &vhdl_out ){
 void
 IIRBase_ArraySubtypeDefinition::publish_vhdl_type_decl( ostream &vhdl_out ){
   IIRBase_ArrayTypeDefinition *node ;
-  IIRBase_ArrayTypeDefinition *base_type =
-    dynamic_cast<IIRBase_ArrayTypeDefinition *>(get_base_type());
+  IIRBase_ArrayTypeDefinitionRef base_type =
+    my_dynamic_pointer_cast<IIRBase_ArrayTypeDefinition>(get_base_type());
   int index, max_index ;
   
   ASSERT(get_index_subtype() != NULL );
@@ -132,7 +132,7 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl_type_decl( ostream &vhdl_out ){
     max_index = get_num_indexes();
     for( node = this; 
 	 index <= max_index;
-	 index++, node = dynamic_cast<IIRBase_ArrayTypeDefinition *>(node->get_element_subtype())){
+	 index++, node = my_dynamic_pointer_cast<IIRBase_ArrayTypeDefinition>(node->get_element_subtype()).get()){
       ASSERT(node->is_array_type() );
       ASSERT(node->get_index_subtype() != NULL );
       ASSERT(node->get_element_subtype() != NULL );
@@ -142,8 +142,8 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl_type_decl( ostream &vhdl_out ){
       //    ASSERT(node->get_index_subtype()->get_type_mark() != NULL);
 
       if (index > 1) { vhdl_out << ", "; }
-      dynamic_cast<IIRBase_ScalarTypeDefinition *>
-	(node->get_index_subtype())->publish_vhdl_index(vhdl_out);
+      my_dynamic_pointer_cast<IIRBase_ScalarTypeDefinition>
+	(node->get_index_subtype()).get()->publish_vhdl_index(vhdl_out);
     }
     
     vhdl_out << " ) ";
@@ -156,8 +156,8 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl_type_decl( ostream &vhdl_out ){
 void 
 IIRBase_ArraySubtypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
   IIRBase_ArrayTypeDefinition *node ;
-  IIRBase_ArrayTypeDefinition *base_type =
-    dynamic_cast<IIRBase_ArrayTypeDefinition *>(get_base_type());
+  IIRBase_ArrayTypeDefinitionRef base_type =
+    my_dynamic_pointer_cast<IIRBase_ArrayTypeDefinition>(get_base_type());
   int index, max_index ;
   
   ASSERT(get_index_subtype() != NULL );
@@ -181,7 +181,7 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
     index = 1 ;
     max_index = get_num_indexes();
     for (node = this; (index <= max_index); index++, node = 
-	   dynamic_cast<IIRBase_ArrayTypeDefinition *>(node->get_element_subtype()) ){
+	   my_dynamic_pointer_cast<IIRBase_ArrayTypeDefinition>(node->get_element_subtype()).get() ){
       ASSERT(node->is_array_type() == TRUE );
       ASSERT(node->get_index_subtype() != NULL );
       ASSERT(node->get_element_subtype() != NULL );
@@ -194,8 +194,8 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
 	vhdl_out << ", ";
       }
       
-      dynamic_cast<IIRBase_ScalarTypeDefinition *>
-	(node->get_index_subtype())->publish_vhdl_index(vhdl_out);
+      my_dynamic_pointer_cast<IIRBase_ScalarTypeDefinition>
+	(node->get_index_subtype()).get()->publish_vhdl_index(vhdl_out);
     }
     
     vhdl_out << " ) ";

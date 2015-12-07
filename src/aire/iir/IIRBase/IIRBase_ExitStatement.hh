@@ -37,18 +37,18 @@ class IIR_SequentialStatement;
 class IIRBase_ExitStatement : public virtual IIRBase_SequentialStatement, public virtual IIR_ExitStatement{
 
 public:
-  IIR_Kind get_kind() const {return IIR_EXIT_STATEMENT;}
-  const IIR_Char *get_kind_text() const {return "IIR_ExitStatement";}
+  IIR_Kind get_kind() const override { return IIR_EXIT_STATEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_ExitStatement"); }
 
-  void set_enclosing_loop( IIR_SequentialStatement *enclosing_loop );
-  IIR_SequentialStatement *get_enclosing_loop();
+  void set_enclosing_loop( IIR_SequentialStatementRef enclosing_loop );
+  IIR_SequentialStatementRef get_enclosing_loop();
 
-  void set_condition( IIR *condition );
-  IIR *get_condition();
+  void set_condition( IIRRef condition );
+  IIRRef get_condition();
 
   IIR_Boolean is_above_attribute_found();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -56,8 +56,8 @@ protected:
   virtual ~IIRBase_ExitStatement() = 0;
     
 private:
-  IIR_SequentialStatement *enclosing_loop;
-  IIR *condition;
+  IIR_SequentialStatementRef enclosing_loop;
+  IIRRef condition;
 };
 
 typedef refcount<IIRBase_ExitStatement> IIRBase_ExitStatementRef;

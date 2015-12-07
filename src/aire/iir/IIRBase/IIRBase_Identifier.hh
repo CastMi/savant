@@ -37,12 +37,9 @@ class IIRBase_Identifier : public virtual IIRBase_TextLiteral, public virtual II
 
 public:
   IIR_Kind get_kind() const {return IIR_IDENTIFIER;}
-  const IIR_Char *get_kind_text() const {return "IIR_Identifier";}
+  IIR_CharConstRef get_kind_text() const { return IIR_CharConstRef("IIR_Identifier"); }
 
-  static IIR_Identifier *get( const IIR_Char *text, IIR_Int32 text_length, plugin_class_factory *factory );
-  static IIR_Identifier *get( const string &text, plugin_class_factory *factory );
-
-  void release();
+  static IIR_IdentifierRef get( std::string text, plugin_class_factoryRef factory );
 
 protected:
   IIRBase_Identifier();

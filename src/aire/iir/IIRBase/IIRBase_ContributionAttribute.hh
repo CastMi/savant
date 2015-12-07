@@ -39,17 +39,17 @@ class IIRBase_ContributionAttribute : public virtual IIR_ContributionAttribute, 
 
 public:
   /** Returns the IIR_Kind of this node. */
-  IIR_Kind get_kind() const {
+  IIR_Kind get_kind() const override {
     return IIR_CONTRIBUTION_ATTRIBUTE;
   }
 
-  const IIR_Char *get_kind_text() const {
-    return "IIR_ContributionAttribute";
+  IIR_CharConstRef get_kind_text() const override {
+    return IIR_CharConstRef("IIR_ContributionAttribute");
   }
   
   /** This returns an IIR_TextLiteral when a Contribution attribute is
     instantiated. */
-  IIR_TextLiteral *build_attribute_name();
+  IIR_TextLiteralRef build_attribute_name();
   void publish_vhdl(ostream &);
 protected:
   IIRBase_ContributionAttribute();

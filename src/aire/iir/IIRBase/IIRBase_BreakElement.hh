@@ -35,29 +35,27 @@ class IIRBase_BreakElement : public virtual IIR_BreakElement, public virtual IIR
   
 public:
   /** Returns the IIR_Kind of this node. */
-  IIR_Kind get_kind() {
-    return IIR_BREAK_ELEMENT;
-  }
-  const IIR_Char *get_kind_text() const { return "IIR_BreakElement"; }
+  IIR_Kind get_kind() const override { return IIR_BREAK_ELEMENT; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_BreakElement"); }
   
   /** In each Break Element, the quantity denoted by the quantity name is
       the break quantity of the break element. It is set and returned using
       these functions. */
-  void set_quantity_name(IIR_Name* quantity_name);
-  IIR_Name* get_quantity_name();
+  void set_quantity_name(IIR_NameRef quantity_name);
+  IIR_NameRef get_quantity_name();
   
   /** Sets and returns the expression for each break element (break
       quantity).  The expression and the break quantity must have the same
       type. */ 
-  void set_expression(IIR* value);
-  IIR* get_expression();
+  void set_expression(IIRRef value);
+  IIRRef get_expression();
   
   /** Sets and returns the selector quantity, if present. The Selector
       quantity is the quantity name in the break selector clause. */
-  void set_selector_quantity_name(IIR_Name* quantity_name);
-  IIR_Name* get_selector_quantity_name();
+  void set_selector_quantity_name(IIR_NameRef quantity_name);
+  IIR_NameRef get_selector_quantity_name();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRRef convert_tree(plugin_class_factoryRef factory);
 
   void publish_vhdl(ostream &vhdl_out);
 protected:
@@ -65,9 +63,9 @@ protected:
   virtual ~IIRBase_BreakElement()= 0;
  
 private:
-  IIR_Name* quantity_name;
-  IIR_Name* selector_quantity_name;
-  IIR* value;  
+  IIR_NameRef quantity_name;
+  IIR_NameRef selector_quantity_name;
+  IIRRef value;  
 };
 
 typedef refcount<IIRBase_BreakElement> IIRBase_BreakElementRef;

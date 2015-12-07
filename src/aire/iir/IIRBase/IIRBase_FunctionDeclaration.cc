@@ -27,7 +27,6 @@
 
 IIRBase_FunctionDeclaration::IIRBase_FunctionDeclaration() :
   purity(IIR_PURE_FUNCTION){}
-
 IIRBase_FunctionDeclaration::~IIRBase_FunctionDeclaration() {}
 
 void
@@ -46,19 +45,19 @@ IIRBase_FunctionDeclaration::is_locally_static(){
 }
 
 void
-IIRBase_FunctionDeclaration::set_return_type( IIR_TypeDefinition *new_return_type ){
+IIRBase_FunctionDeclaration::set_return_type( IIR_TypeDefinitionRef new_return_type ){
   IIRBase::set_subtype( new_return_type );
 }
 
-IIR_TypeDefinition*
+IIR_TypeDefinitionRef
 IIRBase_FunctionDeclaration::get_return_type() {
   return IIRBase::get_subtype();
 }
 
-IIR *
-IIRBase_FunctionDeclaration::convert_tree(plugin_class_factory *factory) {
+IIRRef
+IIRBase_FunctionDeclaration::convert_tree(plugin_class_factoryRef factory) {
   // Get the node itself
-  IIRBase_FunctionDeclaration *new_node = dynamic_cast<IIRBase_FunctionDeclaration *>(IIRBase_SubprogramDeclaration::convert_tree(factory));
+  IIRBase_FunctionDeclarationRef new_node = my_dynamic_pointer_cast<IIRBase_FunctionDeclaration>(IIRBase_SubprogramDeclaration::convert_tree(factory));
 
   // Process the variables
   new_node->purity = purity;
@@ -84,7 +83,7 @@ IIRBase_FunctionDeclaration::is_operator() {
 				    "\"sla\"", "\"sra\"", "\"rol\"",
 				    "\"ror\"", "\"nor\"", "\"nand\"", 0};
   
-  IIR_TextLiteral *decl = get_declarator();
+  IIR_TextLiteralRef decl = get_declarator();
   
   for(int i = 0; operators[i] != 0; i++) {
     if (IIRBase_TextLiteral::cmp(decl, operators[i]) == 0) {
@@ -106,7 +105,7 @@ IIRBase_FunctionDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   
   if (get_interface_declarations()->size() != 0) {
     vhdl_out << " (";
-    dynamic_cast<IIRBase_InterfaceList *>(get_interface_declarations())->publish_vhdl_decl(vhdl_out);
+    my_dynamic_pointer_cast<IIRBase_InterfaceList>(get_interface_declarations())->publish_vhdl_decl(vhdl_out);
     vhdl_out << ")";
   }
 	
@@ -115,7 +114,7 @@ IIRBase_FunctionDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   
   if (contains_body() == TRUE) {
     vhdl_out << " is " << endl;
-    dynamic_cast<IIRBase_DeclarationList *>
+    my_dynamic_pointer_cast<IIRBase_DeclarationList>
       (get_subprogram_declarations())->publish_vhdl_decl(vhdl_out);
     vhdl_out << "begin" << endl;
     get_subprogram_body()->publish_vhdl(vhdl_out);

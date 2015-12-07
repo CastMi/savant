@@ -35,8 +35,8 @@
 class IIRBase_FileInterfaceDeclaration : public virtual IIRBase_InterfaceDeclaration, public virtual IIR_FileInterfaceDeclaration{
 
 public:
-  IIR_Kind get_kind() const {return IIR_FILE_INTERFACE_DECLARATION;}
-  const IIR_Char *get_kind_text() const {return "IIR_FileInterfaceDeclaration";}
+  IIR_Kind get_kind() const override { return IIR_FILE_INTERFACE_DECLARATION; }
+  IIR_CharConstRef get_kind_text() const override { return IIR_CharConstRef("IIR_FileInterfaceDeclaration"); }
 
   declaration_type get_declaration_type();
 

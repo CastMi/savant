@@ -41,22 +41,22 @@ public:
   virtual ~IIR_ScalarNatureDefinition() {};
  
   /** Set the across type of the nature */
-  virtual void set_across(IIR_TypeDefinition *across) = 0;
+  virtual void set_across(IIR_TypeDefinitionRef across) = 0;
  
   /** Returns the across type of the nature */
-  virtual IIR_TypeDefinition *get_across() = 0;
+  virtual IIR_TypeDefinitionRef get_across() = 0;
  
   /** Set the though type of nature */
-  virtual void set_through(IIR_TypeDefinition *through) = 0;
+  virtual void set_through(IIR_TypeDefinitionRef through) = 0;
  
   /** Returns the through type of nature */
-  virtual IIR_TypeDefinition *get_through() = 0;
+  virtual IIR_TypeDefinitionRef get_through() = 0;
  
   /** Set the reference terminal of the nature */
-  virtual void set_reference_terminal( IIR_TerminalDeclaration *) = 0;
+  virtual void set_reference_terminal( IIR_TerminalDeclarationRef ) = 0;
  
   /** Returns the reference terminal of the nature */
-  virtual IIR_TerminalDeclaration *get_reference_terminal() = 0;
+  virtual IIR_TerminalDeclarationRef get_reference_terminal() = 0;
 };
 
 typedef refcount<IIR_ScalarNatureDefinition> IIR_ScalarNatureDefinitionRef;

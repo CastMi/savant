@@ -37,10 +37,10 @@ class IIR_ElementDeclarationList : public virtual IIR_DeclarationList{
 public:
   virtual ~IIR_ElementDeclarationList() {}
     
-  virtual void append( IIR_ElementDeclaration * ) = 0;
-  virtual IIR *successor( IIR_ElementDeclaration * ) = 0;
-  virtual IIR *first() = 0;
-  virtual IIR *get_nth_element( int ) = 0;
+  virtual void append( IIR_ElementDeclarationRef  ) = 0;
+  virtual IIRRef successor( IIR_ElementDeclarationRef  ) = 0;
+  virtual IIRRef first() = 0;
+  virtual IIRRef get_nth_element( int ) = 0;
 };
 
 typedef refcount<IIR_ElementDeclarationList> IIR_ElementDeclarationListRef;
