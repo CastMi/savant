@@ -101,6 +101,7 @@ IIRScram_ConcurrentBreakStatement::_resolve_signal_name(IIRScram *sig_name) {
   }
   case 1: {
     IIRScram_TypeDefinition *sig_type = *(signal_rvals->begin());
+    ASSERT( sig_type != NULL );
     sig_name = sig_name->_semantic_transform( sig_type );
     sig_name->_type_check( sig_type );
     retval = sig_name->_rval_to_decl( sig_type );

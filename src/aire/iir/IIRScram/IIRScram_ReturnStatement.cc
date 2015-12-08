@@ -84,6 +84,7 @@ IIRScram_ReturnStatement::_type_check( savant::set<IIRScram_TypeDefinition*> *co
                    }
             case 1:{
                       IIRScram_TypeDefinition *my_type = *expression_types->begin() ;
+                      ASSERT( my_type != NULL );
                       set_return_expression( _get_return_expression()->_rval_to_decl( my_type ));
                       break;
                    }

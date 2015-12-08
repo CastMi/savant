@@ -54,6 +54,7 @@ IIRScram_DotAttribute::_get_subtype() {
   }
     break;
   case 1: {
+    ASSERT( *quantity_decl_set->begin() != NULL );
     set_prefix(*(quantity_decl_set->begin()));
   }
     break;

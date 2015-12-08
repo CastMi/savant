@@ -66,7 +66,7 @@ resolve_if_one( savant::set<IIRScram_Declaration*> *set_to_resolve,
              }
       case 1:{
                 retval = *set_to_resolve->begin();
-
+                ASSERT( retval != NULL );
                 break;
              }
       default:{

@@ -137,6 +137,7 @@ IIRScram_WaitStatement::_resolve_signal_name(IIRScram *sig_name) {
   }
   case 1: {
     IIRScram_TypeDefinition *sig_type = *signal_rvals->begin();
+    ASSERT( sig_type != NULL );
 
     IIRScram *sig_name_transformed = sig_name->_semantic_transform( sig_type );
     sig_name_transformed->_type_check( sig_type );

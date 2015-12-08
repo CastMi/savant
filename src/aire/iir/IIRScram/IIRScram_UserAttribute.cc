@@ -71,6 +71,7 @@ IIRScram_UserAttribute::_get_subtype(){
     }
     case 1 :{
       retval = *suffix_rvals->begin();
+      ASSERT( retval != NULL );
       break;
     }
 
@@ -115,6 +116,7 @@ IIRScram_UserAttribute::_get_subtype(){
       }
       case 1:{
 	retval = *prefix_rvals->begin();
+   ASSERT( retval != NULL );
 	break;
       }
       default:{
@@ -163,6 +165,7 @@ IIRScram_UserAttribute::_semantic_transform( savant::set<IIRScram_TypeDefinition
     }
     case 1:{
       IIRScram_TypeDefinition *my_rval = *prefix_rvals->begin();
+      ASSERT( my_rval != NULL );
       IIRScram_QualifiedExpression *new_expr = new IIRScram_QualifiedExpression();
       copy_location( this, new_expr );
       new_expr->set_type_mark( my_rval );
@@ -233,6 +236,7 @@ IIRScram_UserAttribute::_resolve_suffix_special(){
     }
     case 1:{
       IIRScram_TypeDefinition *my_rval = *suffix_rvals->begin();
+      ASSERT( my_rval != NULL );
       
       _set_suffix( _get_suffix()->_semantic_transform( my_rval ) );
       _get_suffix()->_type_check( my_rval );

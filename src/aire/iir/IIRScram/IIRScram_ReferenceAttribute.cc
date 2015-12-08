@@ -60,6 +60,7 @@ IIRScram_ReferenceAttribute::_get_subtype(){
   }
     break;
   case 1: {
+    ASSERT( *terminal_decl_set->begin() != NULL );
     set_prefix(*terminal_decl_set->begin());
   }
     break;

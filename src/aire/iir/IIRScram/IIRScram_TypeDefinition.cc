@@ -200,7 +200,7 @@ IIRScram_TypeDefinition::_determine_type_of_bound( IIRScram *left_or_right ){
 
       case 1:{
                 retval = dynamic_cast<IIRScram_ScalarTypeDefinition *>(*left_or_right_types->begin());
-                ASSERT( retval->is_scalar_type() == TRUE );
+                ASSERT( retval != NULL && retval->is_scalar_type() == TRUE );
                 break;
              }
 
@@ -216,6 +216,7 @@ IIRScram_TypeDefinition::_determine_type_of_bound( IIRScram *left_or_right ){
                  else{
                     report_ambiguous_error( left_or_right, left_or_right_types->convert_set<IIR_TypeDefinition*>() );
                     retval = dynamic_cast<IIRScram_ScalarTypeDefinition *>(*left_or_right_types->begin());
+                    ASSERT( retval != NULL && retval->is_scalar_type() == TRUE );
                  }
 
                  break;
@@ -493,6 +494,7 @@ IIRScram_TypeDefinition::_build_ordering_operators( savant::set<IIRScram_Declara
    // TODO: assert add_to.seze() == 1?
    // Because we use the begin so we should assume that
    // there is one element.
+   ASSERT( *add_to->begin() != NULL );
    StandardPackage *package = (*add_to->begin())->_get_design_file()->get_standard_package();
 
    IIRScram_EnumerationSubtypeDefinition *temp =

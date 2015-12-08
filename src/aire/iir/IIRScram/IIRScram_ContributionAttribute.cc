@@ -62,6 +62,7 @@ IIRScram_ContributionAttribute::_get_subtype(){
   }
     break;
   case 1: {
+    ASSERT(*terminal_decl_set->begin());
     set_prefix(*(terminal_decl_set->begin()));
   }
     break;

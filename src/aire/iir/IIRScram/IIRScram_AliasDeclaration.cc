@@ -119,6 +119,7 @@ IIRScram_AliasDeclaration::_type_check(){
   }
   case 1:{
     IIRScram_TypeDefinition *my_type = *(name_rvals->begin());
+    ASSERT( my_type != NULL );
 
     if( _get_subtype() == NULL ){
       set_subtype( my_type );

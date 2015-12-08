@@ -225,6 +225,7 @@ IIRScram_Attribute::_symbol_lookup(){
    switch ( attached_to->size() ) {
       case 1:{
                 signal_decl = *(attached_to->begin());
+                ASSERT( signal_decl != NULL );
                 break;
              }
       case 0:
@@ -280,6 +281,7 @@ IIRScram_Attribute::_get_prefix_subtype( constraint_functor *functor ){
                 }
          case 1:{
                    retval = *(prefix_types->begin());
+                   ASSERT( retval != NULL );
                    break;
                 }
          default: {
@@ -314,6 +316,7 @@ IIRScram_Attribute::_resolve_prefix(){
    if( prefix_decls != NULL ){
       switch( prefix_decls->size() ){
          case 1:{
+                   ASSERT( _get_prefix()->_decl_to_decl( *(prefix_decls->begin()) ) != NULL );
                    set_prefix( _get_prefix()->_decl_to_decl( *(prefix_decls->begin()) ) );
                    done = true;
                    break;
@@ -604,6 +607,7 @@ IIRScram_Attribute::_get_prefix_rval_range_attributes(){
 
       case 1:{
                 retval = *(prefix_types->begin());
+                ASSERT( retval != NULL );
                 break;
              }
 

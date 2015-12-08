@@ -84,6 +84,7 @@ IIRScram_VariableAssignmentStatement::_type_check(){
   }
   case 1:{
     IIRScram_TypeDefinition *type = *target_lvals->begin(); 
+    ASSERT( type != NULL );
     set_expression( _get_expression()->_rval_to_decl( type ));
     set_target( _get_target()->_rval_to_decl( type ) );
 

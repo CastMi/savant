@@ -581,6 +581,7 @@ library_manager::parse_primary_unit( IIR_LibraryDeclaration     *lib_decl,
                 }
          case 1:{
                    retval = dynamic_cast<IIR_LibraryUnit *>(*decls.begin());
+                   ASSERT( retval != NULL );
                    break;
                 }
          default:{

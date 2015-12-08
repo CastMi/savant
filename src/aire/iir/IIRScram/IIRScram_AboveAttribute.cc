@@ -41,6 +41,7 @@ IIRScram_AboveAttribute::_resolve_suffix_special() {
   }
   case 1:{
     IIRScram_TypeDefinition *my_rval = *(suffix_rvals->begin());
+    ASSERT( my_rval != NULL );
     set_suffix( _get_suffix()->_semantic_transform( my_rval ) );
     _get_suffix()->_type_check( my_rval );
     set_suffix( _get_suffix()->_rval_to_decl( my_rval ) );

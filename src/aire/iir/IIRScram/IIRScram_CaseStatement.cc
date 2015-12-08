@@ -70,6 +70,7 @@ IIRScram_CaseStatement::_handle_reconciliation( savant::set<IIRScram_TypeDefinit
   }
   case 1:{
     IIRScram_TypeDefinition *rval =  *(rval_set->begin());
+    ASSERT( rval != NULL );
     retval = node_in_consideration->_rval_to_decl( rval );
     break;
   }

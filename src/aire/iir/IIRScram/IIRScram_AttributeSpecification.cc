@@ -88,6 +88,7 @@ IIRScram_AttributeSpecification::_type_check( IIRScram_DeclarationList * ){
             ASSERT( IIRBase_TextLiteral::cmp( (*attribute_decls->begin())->_get_declarator(), 
                      _get_declarator() ) == 0  );
             attr_declaration = *(attribute_decls->begin());
+            ASSERT( attr_declaration != NULL );
 
             set_value( _get_value()->_semantic_transform( attr_declaration->_get_subtype() ));
             _get_value()->_type_check( attr_declaration->_get_subtype() );

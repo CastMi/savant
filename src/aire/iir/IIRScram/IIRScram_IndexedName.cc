@@ -64,6 +64,7 @@ IIRScram_IndexedName::_set_my_rval( IIRScram_TypeDefinition *new_rval ){
 
 savant::set<IIRScram_TypeDefinition*> *
 IIRScram_IndexedName::_my_type_given_array_prefix_type( IIRScram_TypeDefinition *prefix_rval ){
+   ASSERT( prefix_rval != NULL );
    savant::set<IIRScram_TypeDefinition*> *retval = new savant::set<IIRScram_TypeDefinition*>;
 
    // This function should only be called on array types - that's it's point..
@@ -687,6 +688,7 @@ IIRScram_IndexedName::_return_type_given_prefix_declaration( IIRScram_Declaratio
                          }
                   case 1:{
                             my_prefix_type = *(prefix_rvals->begin());
+                            ASSERT( my_prefix_type != NULL );
                             break;
                          }
                   default:{
@@ -718,6 +720,7 @@ IIRScram_IndexedName::_return_type_given_prefix_declaration( IIRScram_Declaratio
                                }
                         case 1:{
                                   IIRScram_TypeDefinition *suffix_type = (*suffix_decls->begin())->_get_subtype();
+                                  ASSERT( suffix_type != NULL );
 
                                   set_suffix( _get_suffix()->_semantic_transform( suffix_type ) );
                                   _get_suffix()->_type_check( suffix_type );
@@ -783,6 +786,7 @@ finish:
                   case 1:
                      {
                         IIRScram_TypeDefinition *my_prefix_type = *(prefix_rvals->begin());
+                        ASSERT( my_prefix_type != NULL );
                         int prefix_num_indexes = my_prefix_type->get_num_indexes();
                         ASSERT( prefix_num_indexes == get_num_indexes() );
 
@@ -877,15 +881,17 @@ finish:
                                             // Dale, add this please!
                                             ASSERT( get_num_indexes() == 1 );
 
-                                            IIRScram *suffix_expression;
-                                            suffix_expression =
+                                            ASSERT( *suffix_rvals->begin() != NULL );
+                                            IIRScram *suffix_expression =
                                                original_suffix_element->_semantic_transform( *(suffix_rvals->begin()) );
+                                            ASSERT( suffix_expression != NULL );
                                             suffix_expression->_type_check( *(suffix_rvals->begin()) );
                                             suffix_expression = suffix_expression->_rval_to_decl( *(suffix_rvals->begin()) );
 
                                             // Everything resolved correctly
                                             IIRScram_TypeConversion *type_convert = new IIRScram_TypeConversion();
                                             copy_location( this, type_convert );
+                                            ASSERT( *my_decls->begin() != NULL );
                                             type_convert->set_type_mark( (*my_decls->begin())->_get_subtype() );
 
                                             type_convert->set_expression( suffix_expression );
@@ -1030,6 +1036,7 @@ IIRScram_IndexedName::_semantic_transform( savant::set<IIRScram_TypeDefinition*>
                      ASSERT( return_set == NULL || return_set->size() == 1 );
                      if( return_set != NULL ){
                         IIRScram_TypeDefinition *return_type = *(return_set->begin());
+                        ASSERT( *return_set->begin() != NULL );
                         if( return_type == my_rval ){
                            set_prefix( *it );
                            // The suffix might be a slice or something already resolved...

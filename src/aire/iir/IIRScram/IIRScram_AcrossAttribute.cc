@@ -42,6 +42,7 @@ IIRScram_AcrossAttribute::_get_subtype() {
   IIRScram_TypeDefinition *type_def;
   
   nature_decl_set = _get_prefix()->_symbol_lookup();
+  ASSERT(nature_decl_set != NULL);
   if (nature_decl_set->size() == 0) {
     return NULL;
   }

@@ -75,6 +75,7 @@ IIRScram_ValAttribute::_resolve_suffix_special(){
     }
     case 1:{
       IIRScram_TypeDefinition *suffix_type = *suffix_types->begin();
+      ASSERT( suffix_type != NULL );
 
       _set_suffix( _get_suffix()->_semantic_transform( suffix_type ) );
       _get_suffix()->_type_check( suffix_type );

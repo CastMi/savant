@@ -100,6 +100,7 @@ IIRScram_ProcedureCallStatement::_type_check(){
                    break;
                 }
          case 1:{
+                   ASSERT( *(my_decls->begin()) != NULL );
                    set_procedure_name( _get_procedure_name()->_decl_to_decl( *(my_decls->begin()) ) );
                    IIRScram *temp_name = _get_procedure_name();
                    ASSERT( temp_name->is_subprogram() == TRUE );

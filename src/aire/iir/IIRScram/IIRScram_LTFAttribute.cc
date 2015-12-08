@@ -61,6 +61,7 @@ IIRScram_LTFAttribute::_get_subtype() {
     return NULL;
   }
   case 1: {
+    ASSERT( *(prefix_decls->begin()) != NULL );
     set_prefix( *(prefix_decls->begin()) );
     break;
   }
@@ -88,6 +89,7 @@ IIRScram_LTFAttribute::_resolve_attribute_parameters() {
   }
   case 1: {
     IIRScram_TypeDefinition *my_rval = *(numerator_rvals->begin());
+    ASSERT( my_rval != NULL );
     
     set_num( _get_num()->_semantic_transform( my_rval ) );
     _get_num()->_type_check( my_rval );
@@ -114,6 +116,7 @@ IIRScram_LTFAttribute::_resolve_attribute_parameters() {
   }
   case 1: {
     IIRScram_TypeDefinition *my_rval = *(denominator_rvals->begin());
+    ASSERT( my_rval != NULL );
     
     set_den( _get_den()->_semantic_transform( my_rval ) );
     _get_den()->_type_check( my_rval );

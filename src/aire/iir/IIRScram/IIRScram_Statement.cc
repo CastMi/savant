@@ -90,6 +90,7 @@ IIRScram_Statement::_type_check_and_resolve_boolean_condition( IIRScram *conditi
                 break;
              }
       case 1:{
+                ASSERT( *condition_rvals->begin() != NULL );
                 condition = condition->_rval_to_decl( *condition_rvals->begin() );
                 if( condition->_is_readable() == FALSE ){
                    ostringstream err;
@@ -164,6 +165,7 @@ IIRScram_Statement::_type_check_case_statement_expression( IIRScram_CaseStatemen
              }
       case 1:{
                 correct_rval = *expression_rvals->begin();
+                ASSERT( correct_rval != NULL );
                 _set_case_statement_expression( _get_case_statement_expression()->_semantic_transform( correct_rval ) );
                 _get_case_statement_expression()->_type_check( correct_rval );
                 _set_case_statement_expression( _get_case_statement_expression()->_rval_to_decl( correct_rval ) );
@@ -240,6 +242,7 @@ IIRScram_Statement::_type_check_target_and_waveform( IIRScram_WaveformList *wave
              }
       case 1:{
                 target_lval = *target_lvals->begin();
+                ASSERT( target_lval != NULL );
                 set_target( _get_target()->_rval_to_decl( target_lval ) );
                 if( _get_target()->is_signal() == FALSE ){
                    ostringstream err;
@@ -366,6 +369,7 @@ IIRScram_Statement::_type_check_report_expression(){
                 }
          case 1:{
                    IIRScram_TypeDefinition *my_rval = *expression_rvals->begin();
+                   ASSERT( my_rval != NULL );
                    set_report_expression( _get_report_expression()->_rval_to_decl( my_rval ) );
                    break;
                 }
@@ -407,6 +411,7 @@ IIRScram_Statement::_type_check_severity_expression(){
                 break;
              }
       case 1:{
+                ASSERT( *expression_rvals->begin() != NULL );
                 set_severity_expression( _get_severity_expression()->_rval_to_decl( *expression_rvals->begin() ) );
                 break;
              }

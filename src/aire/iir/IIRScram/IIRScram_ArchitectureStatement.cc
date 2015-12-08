@@ -55,6 +55,7 @@ IIRScram_ArchitectureStatement::_resolve_guard_signal( symbol_table *sym_tab ){
   if( guard_decls->size() == 1 ){
     // Get rid of any that aren't boolean typed.
     guard_signal = dynamic_cast<IIRScram_SignalDeclaration *>(*(guard_decls->begin()));
+    ASSERT( guard_signal != NULL );
     if( guard_signal->_get_subtype() != 
         dynamic_cast<IIRScram_EnumerationSubtypeDefinition *>(_get_design_file()->get_standard_package()->get_boolean_type())){
       guard_signal = NULL;

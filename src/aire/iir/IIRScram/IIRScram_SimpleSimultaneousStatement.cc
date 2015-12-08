@@ -74,6 +74,8 @@ IIRScram_SimpleSimultaneousStatement::_type_check() {
                  break;
               }
       case 1: {
+                 ASSERT( *rexp_rvals->begin() != NULL );
+                 ASSERT( *lexp_lvals->begin() != NULL );
                  set_right_expression( _get_right_expression()->_rval_to_decl(*rexp_rvals->begin() ) );
                  set_left_expression( _get_left_expression()->_rval_to_decl(*lexp_lvals->begin() ) );
                  break;

@@ -483,6 +483,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
             case 1:
                {
                   IIRScram_TypeDefinition *actual_part_type = *(formal_types_to_consider->begin());
+                  ASSERT( actual_part_type != NULL );
                   // Just trying to be efficient with set constructors, here.
                   IIRScram *new_actual = NULL;
 
@@ -559,7 +560,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
                          formal_part = formal_part->_semantic_transform( actual_types_to_consider );
                          formal_part->_type_check( actual_types_to_consider );
                          formal_part = formal_part->_rval_to_decl( *(actual_types_to_consider->begin()) );      
-                         ASSERT( formal_part->is_resolved() == TRUE );
+                         ASSERT( formal_part != NULL && formal_part->is_resolved() == TRUE );
                          current_association->set_formal( formal_part );
                       }
                    }
@@ -602,7 +603,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
                          formal_part = formal_part->_semantic_transform( formal_types_to_consider );
                          formal_part->_type_check( formal_types_to_consider );
                          formal_part = formal_part->_rval_to_decl( *(formal_types_to_consider->begin()) );      
-                         ASSERT( formal_part->is_resolved() == TRUE );
+                         ASSERT( formal_part != NULL && formal_part->is_resolved() == TRUE );
                          current_association->set_formal( formal_part );
                       }
                       // else everything is OK, go to the next association
@@ -780,6 +781,7 @@ IIRScram_AssociationList::_find_declaration( IIRScram_Name *to_find, IIRScram_De
    if( poss_decls != NULL ){
       ASSERT( poss_decls->size() == 1 );
       retval = dynamic_cast<IIRScram_Declaration *>(*(poss_decls->begin()));
+      ASSERT( retval != NULL );
       delete poss_decls;
    }
 

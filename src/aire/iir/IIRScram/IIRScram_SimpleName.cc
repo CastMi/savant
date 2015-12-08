@@ -168,6 +168,7 @@ IIRScram_SimpleName::_rval_to_decl(IIRScram_TypeDefinition *my_rval) {
              }
       case 1:{
                 retval = *(possibilities->begin());
+                ASSERT( retval != NULL );
                 retval = _convert_to_function_call( dynamic_cast<IIRScram_Declaration *>(retval) );
                 break;
              }
@@ -224,6 +225,7 @@ IIRScram_SimpleName::_rval_to_decl( IIRScram_TypeDefinition *prefix, IIRScram_Ty
 
    IIRScram_Declaration *decl = *(decls->begin());
    delete decls;
+   ASSERT( decl != NULL );
 
    ASSERT( decl->_get_subtype()->is_compatible( suffix ) != NULL );
    retval = _convert_to_function_call( decl );
@@ -250,6 +252,7 @@ IIRScram_SimpleName::_rval_to_decl( IIRScram_Declaration *prefix, IIRScram_TypeD
 
    IIRScram_Declaration *decl = *(decls->begin());
    delete decls;
+   ASSERT( decl != NULL );
 
    ASSERT( decl->_get_subtype()->is_compatible( suffix ) != NULL );
    retval = _convert_to_function_call( decl );

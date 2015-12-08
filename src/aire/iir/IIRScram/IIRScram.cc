@@ -229,7 +229,7 @@ IIRScram::_lookup_label( IIR_Boolean complain_on_error ){
   }
   case 1:{
     IIRScram_Declaration *temp = *(decls->begin());
-    ASSERT( temp->is_label() == TRUE );
+    ASSERT( temp != NULL && temp->is_label() == TRUE );
     retval = dynamic_cast<IIRScram_Label *>(temp);
     break;
   }
@@ -442,6 +442,7 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
   }
   case 1:{
     my_component = dynamic_cast<IIRScram_ComponentDeclaration *>(*(component_decls->begin()));
+    ASSERT( my_component != NULL );
     _set_component_name( _get_component_name()->_decl_to_decl( my_component ) );
     if( debug_symbol_table == true ){
       cerr << "Type checking configuration - about to make |" << 
@@ -597,6 +598,7 @@ IIRScram::_type_check_file_open_information(){
     }
     case 1:{
       retval = _rval_to_decl( *(file_open_kind.begin()) );
+      ASSERT(retval != NULL);
       break;
     }
     default:{

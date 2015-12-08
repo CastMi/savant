@@ -116,8 +116,8 @@ IIRScram_ScalarTypeDefinition::_determine_discrete_type( IIRScram_RangeTypeDefin
     IIRScram_TypeDefinition *left_type = *left_set->begin();
     IIRScram_TypeDefinition *right_type = *right_set->begin();
 
-    ASSERT( left_type->is_scalar_type() == TRUE );
-    ASSERT( right_type->is_scalar_type() == TRUE );
+    ASSERT( left_type != NULL && left_type->is_scalar_type() == TRUE );
+    ASSERT( right_type != NULL && right_type->is_scalar_type() == TRUE );
 
 
     if( left_type->get_bottom_base_type() != right_type->get_bottom_base_type() ){

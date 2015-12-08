@@ -81,6 +81,7 @@ IIRScram_DisconnectSpecification::_type_check( IIRScram_DeclarationList * ){
                }
             case 1:
                {
+                  ASSERT(*signal_types->begin() != NULL);
                   IIRScram_TypeDefinition *correct_type = *(signal_types->begin());
                   IIRScram *new_designator = current_designator->_semantic_transform( correct_type );
                   ASSERT( new_designator == current_designator );
@@ -140,6 +141,7 @@ next:
              }
       case 1:{
                 IIRScram_TypeDefinition *time_rval = *(time_expression_types->begin());
+                ASSERT( time_rval != NULL );
 
                 set_time_expression( _get_time_expression()->_semantic_transform( time_rval ) );
                 _get_time_expression()->_type_check( time_rval );

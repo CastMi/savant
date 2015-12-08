@@ -332,7 +332,7 @@ IIRScram_SelectedName::_build_lib( IIRScram_LibraryUnit *new_unit ){
 
          ASSERT( prefix_decls->size() == 1 );
          IIRScram_Declaration *decl = *prefix_decls->begin();
-         ASSERT( decl->get_kind() == IIR_LIBRARY_DECLARATION );
+         ASSERT( decl != NULL && decl->get_kind() == IIR_LIBRARY_DECLARATION );
          IIRScram_LibraryDeclaration *lib_decl = dynamic_cast<IIRScram_LibraryDeclaration *>(decl);
 
          lib_decl->get_primary_units()->append( new_unit );

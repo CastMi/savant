@@ -109,6 +109,7 @@ IIRScram_SensitizedProcessStatement::_resolve_signal_name( IIRScram *signal_name
              }
       case 1:{
                 IIRScram_Declaration *sig_decl = *(signal_decls->begin());
+                ASSERT( sig_decl != NULL );
                 // Everything but signals have been eliminated, meaning, this must be an array
                 // access.
                 IIRScram *signal_name_transformed = NULL;
@@ -122,6 +123,7 @@ IIRScram_SensitizedProcessStatement::_resolve_signal_name( IIRScram *signal_name
                    switch( orig_types->size() ){
                       case 1:{
                                 IIRScram_TypeDefinition *right_type = *(orig_types->begin());
+                                ASSERT( right_type != NULL );
                                 signal_name_transformed = orig_name->_semantic_transform( right_type );
                                 signal_name_transformed->_type_check( right_type );
 

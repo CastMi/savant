@@ -77,6 +77,7 @@ IIRScram_Choice::_type_check( savant::set<IIRScram_TypeDefinition*> *context_set
   }
   case 1:{
     IIRScram_TypeDefinition *my_type = *(context_set->begin());
+    ASSERT( my_type != NULL );
     set_value( _get_value()->_rval_to_decl( my_type ) );
     break;
   }

@@ -176,6 +176,7 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_compone
     }
     case 1:{
       IIRScram_Declaration *instantiated_decl = *(instantiated_unit_decls->begin());
+      ASSERT( instantiated_decl != NULL );
       set_instantiated_unit( _get_instantiated_unit()->_decl_to_decl( instantiated_decl ) );
       break;
     }

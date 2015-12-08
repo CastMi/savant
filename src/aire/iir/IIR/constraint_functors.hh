@@ -29,8 +29,12 @@
 #include "IIR.hh"
 #include <functional>
 
-struct constraint_functor : std::unary_function<IIR*, bool> {
-  virtual bool operator()( IIR *operate_on ) const = 0;
+struct constraint_functor {
+   virtual ~constraint_functor() {}
+   virtual bool operator()( IIR *operate_on ) const = 0;
+
+   protected:
+   constraint_functor() {};
 };
 
 class is_attribute_declaration_functor : public constraint_functor {

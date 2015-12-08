@@ -174,6 +174,7 @@ IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *m
 	else{
 	  ASSERT( element_decls->size() == 1 );
 	  IIRScram_Declaration *element_decl = *(element_decls->begin());
+     ASSERT( element_decl != NULL );
 	  delete element_decls;
 	  
 	  current_association->set_formal( element_decl );

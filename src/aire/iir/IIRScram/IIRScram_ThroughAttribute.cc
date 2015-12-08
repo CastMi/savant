@@ -51,6 +51,7 @@ IIRScram_ThroughAttribute::_get_subtype() {
     return NULL;
   }
   nature_decl = *nature_decl_set->begin();
+  ASSERT(nature_decl != NULL);
   if (nature_decl->get_kind() == IIR_NATURE_DECLARATION ) {
     type_def = dynamic_cast<IIRScram_TypeDefinition *>(dynamic_cast<IIRScram_ScalarNatureDefinition *>
       (dynamic_cast<IIRScram_NatureDeclaration *>(nature_decl)->get_nature())->IIRBase_ScalarNatureDefinition::get_through());
