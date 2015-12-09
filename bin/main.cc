@@ -125,9 +125,6 @@ main (int argc, char *argv[]) {
   verbose_output          = false;
   gen_cc_ref              = false;
 
-  // Name of the plugin to change the parse tree to.
-  string plugins      = "";
-
   // true if command line argument --version is present
   bool print_version      = false;
 
@@ -148,7 +145,6 @@ main (int argc, char *argv[]) {
     {"--echo-library-directory", "show the builtin library path as was specified at build time", &echo_library_dir, ArgumentParser::BOOLEAN},
     {"--publish-vhdl","publish VHDL", &publish_vhdl, ArgumentParser::BOOLEAN},
     {"--publish-cc","publish c++", &publish_cc, ArgumentParser::BOOLEAN},
-    {"--plugins","comma seperated list of plugin(s) to use", &plugins, ArgumentParser::STRING},
     {"--no-file-output", "send publish_cc output to stdout instead of files", &no_file_output, ArgumentParser::BOOLEAN},
     {"--warranty-info", "print information about (lack of) warranty", &print_warranty, ArgumentParser::BOOLEAN},
     {"--vhdl-93", "setup the analyzer to process the VHDL 93 language standard (default)", &vhdl_93, ArgumentParser::BOOLEAN},
@@ -207,8 +203,6 @@ main (int argc, char *argv[]) {
     work_lib_name = design_library_name;
   }  
 
-  char *plugin_dir = getenv( "SAVANT_PLUGIN_PATH" );
-  
   library_manager::instance()->init_std_library(ScramStandardPackage::instance());
 
   scram parser( true, work_lib_name,
@@ -230,6 +224,7 @@ main (int argc, char *argv[]) {
     // Initialize the library module manager to search for the plugin in the plugins directory
     plugin_interface            *plugin = NULL; 
 
+    char *plugin_dir = getenv( "SAVANT_PLUGIN_PATH" );
     if (plugin_dir != NULL)
       PluginManager::instance()->addSearchDir(plugin_dir);
 
@@ -238,17 +233,6 @@ main (int argc, char *argv[]) {
     if (publish_cc == true)
       plugin_names.push_back("libtyvisplugin.la");
     
-    //   Now go through the list, and add all the names to the list
-    // We're forced to use C style strings to avoid bugs in STL's 
-    // substr function
-    char                *tempStr        = strdup(plugins.c_str());
-    char                *curPluginName  = strtok(tempStr, ",");
-    while (curPluginName != NULL) {      
-      plugin_names.push_back(curPluginName);
-      curPluginName = strtok(NULL, ",");
-    }
-    free(tempStr);
-
     // Now we'll walk the list, and process the tree for VHDL
     if (publish_vhdl == true) {
       IIR *to_publish = iir_design_files_processed->first();
