@@ -298,16 +298,20 @@ IIRScram_ScalarTypeDefinition::_init_scalar_type( IIRScram_RangeTypeDefinition  
 						  IIRScram_ScalarTypeDefinition  *subtype,
 						  IIRScram_TypeDeclaration       *type_decl) {
 
-  ASSERT( base_type != 0 );
+  ASSERT( base_type != NULL );
+  ASSERT( subtype != NULL );
+  ASSERT( init_info != NULL );
   ASSERT( !base_type->is_subtype() );
   subtype->set_base_type( base_type );
 
   IIRScram *left = init_info->_get_base_type_left();
+  ASSERT( left != NULL );
   left = left->_semantic_transform( subtype );
   left->_type_check( subtype );
   left = left->_rval_to_decl( subtype );
 
   IIRScram *right = init_info->_get_base_type_right();
+  ASSERT( right != NULL );
   right = right->_semantic_transform( subtype );
   right->_type_check( subtype );
   right = right->_rval_to_decl( subtype );

@@ -168,12 +168,13 @@ IIRScram_Attribute::_symbol_lookup(){
       // Now, if there is no attribute declaration for whatever
       // attribute this is, we'll generate one.
       if( get_kind() != IIR_USER_ATTRIBUTE ){
-         for(auto it = my_decls->begin(); it != my_decls->end(); it++) {
+         for(auto it = my_decls->begin(); it != my_decls->end(); ) {
             IIRScram_AttributeDeclaration *current_attribute_decl = dynamic_cast<IIRScram_AttributeDeclaration *>(*it);
             ASSERT( current_attribute_decl != NULL );
             if( _get_subtype()->is_compatible( dynamic_cast<IIRScram_TypeDefinition *>(current_attribute_decl->IIRBase_AttributeDeclaration::get_subtype()) ) == 0 ){
-               my_decls->erase( current_attribute_decl );
-            }
+               it = my_decls->erase( it );
+            } else
+               it++;
          }
 
          if(my_decls->size() == 0) {

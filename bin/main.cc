@@ -207,9 +207,12 @@ main (int argc, char *argv[]) {
     work_lib_name = design_library_name;
   }  
 
-  char *plugin_dir = getenv( "SAVANT_PLUGIN_PATH" );
   
-  library_manager::instance()->init_std_library(ScramStandardPackage::instance());
+  library_manager *tmp = library_manager::instance();
+  ASSERT( tmp != NULL);
+  StandardPackage *temp = ScramStandardPackage::instance();
+  ASSERT( temp != NULL);
+  tmp->init_std_library(temp);
 
   scram parser( true, work_lib_name,
 		scram_plugin_class_factory::instance(),
@@ -230,6 +233,7 @@ main (int argc, char *argv[]) {
     // Initialize the library module manager to search for the plugin in the plugins directory
     plugin_interface            *plugin = NULL; 
 
+    char *plugin_dir = getenv( "SAVANT_PLUGIN_PATH" );
     if (plugin_dir != NULL)
       PluginManager::instance()->addSearchDir(plugin_dir);
 

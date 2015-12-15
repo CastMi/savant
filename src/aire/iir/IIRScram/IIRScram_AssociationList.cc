@@ -626,42 +626,41 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 
       current_association = dynamic_cast<IIRScram_AssociationElement *>(successor( current_association ));
    }
+   if( resolve == TRUE ){
+      ASSERT( is_resolved() == TRUE );
+      IIRScram_AssociationElement *current = dynamic_cast<IIRScram_AssociationElement *>(first());
+      while( current != NULL ){
+         ASSERT( current->_get_formal() != NULL );
+         // This isn't true if it's OPEN
+         //      ASSERT( current->_get_actual() != NULL );
+         //      ASSERT( current->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION );
+         ASSERT( current->is_resolved() == TRUE );
+         // This is good for debugging, but it's not always true.  (For
+         // example, it's not true for a recursive function call.)
+         //      ASSERT( current->_get_formal() != current->_get_actual() );
+         current = dynamic_cast<IIRScram_AssociationElement *>(successor( current ));
+      }
+   }
 
-  if( resolve == TRUE ){
-    ASSERT( is_resolved() == TRUE );
-    IIRScram_AssociationElement *current = dynamic_cast<IIRScram_AssociationElement *>(first());
-    while( current != NULL ){
-      ASSERT( current->_get_formal() != NULL );
-      // This isn't true if it's OPEN
-      //      ASSERT( current->_get_actual() != NULL );
-      //      ASSERT( current->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION );
-      ASSERT( current->is_resolved() == TRUE );
-      // This is good for debugging, but it's not always true.  (For
-      // example, it's not true for a recursive function call.)
-      //      ASSERT( current->_get_formal() != current->_get_actual() );
-      current = dynamic_cast<IIRScram_AssociationElement *>(successor( current ));
-    }
-  }
-  
-  // OK, now we need to make sure that every required formal has an local
-  // associated with it.  We already know that all locals supplied match
-  // their parameters, or we wouldn't have made it down here.
-  int num_required = 0;
-  IIRScram_InterfaceDeclaration *current_formal = dynamic_cast<IIRScram_InterfaceDeclaration *>(formal_list->first());
-  while( current_formal != NULL ){
-    if( current_formal->_is_optional() == FALSE ){
-      num_required++;
-    }
-    current_formal = dynamic_cast<IIRScram_InterfaceDeclaration *>(formal_list->successor( current_formal ));
-  }
+   // OK, now we need to make sure that every required formal has an local
+   // associated with it.  We already know that all locals supplied match
+   // their parameters, or we wouldn't have made it down here.
+   int num_required = 0;
+   IIRScram_InterfaceDeclaration *current_formal = dynamic_cast<IIRScram_InterfaceDeclaration *>(formal_list->first());
+   while( current_formal != NULL ){
+      if( current_formal->_is_optional() == FALSE ){
+         num_required++;
+      }
+      current_formal = dynamic_cast<IIRScram_InterfaceDeclaration *>(formal_list->successor( current_formal ));
+   }
 
-  if( size() < num_required ){
-    if( resolve == FALSE ){
-      return FALSE;
-    }
-  }
+   if( size() < num_required ){
+      if( resolve == FALSE ){
+         return FALSE;
+      }
+   }
 
-  return TRUE;
+   return TRUE;
 }
 
 IIRScram_InterfaceDeclaration *

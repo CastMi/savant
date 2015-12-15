@@ -66,6 +66,8 @@ IIRScram_IntegerTypeDefinition::_construct_new_type( IIRScram_RangeTypeDefinitio
 
   IIRScram_IntegerSubtypeDefinition *retval = new IIRScram_IntegerSubtypeDefinition();
   IIRScram_IntegerTypeDefinition *base_type = new IIRScram_IntegerTypeDefinition();
+  ASSERT( retval != NULL );
+  ASSERT( base_type != NULL );
   retval->_set_design_file(design_file);
   base_type->_set_design_file(design_file);
 

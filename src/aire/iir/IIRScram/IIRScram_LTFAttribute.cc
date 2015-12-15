@@ -49,10 +49,11 @@ IIRScram_LTFAttribute::_get_subtype() {
     return NULL;
   }
   
-  for(auto it = prefix_decls->begin(); it != prefix_decls->end(); it++) {
+  for(auto it = prefix_decls->begin(); it != prefix_decls->end(); ) {
     if( (*it)->_is_quantity() == FALSE ) {
-      prefix_decls->erase( *it );
-    }
+      it = prefix_decls->erase( it );
+    } else
+     it++;
   }
   switch( prefix_decls->size() ) {
   case 0: {

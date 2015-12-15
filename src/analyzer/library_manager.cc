@@ -120,11 +120,16 @@ library_manager::init_std_library(StandardPackage *package) {
    if (initialized == false) {
       IIR_LibraryDeclaration *std_library = dynamic_cast<IIR_LibraryDeclaration *>(package->get_std_decl());
       ASSERT( std_library != NULL );
+      ASSERT( std_library->get_declarator() != NULL );
       const string std_dir = find_library_directory( std_library->get_declarator(), true );
+      ASSERT( !std_dir.empty() );
       std_library->set_path_to_directory( std_dir );
       libraries->insert( std_library );
+      ASSERT( !libraries->empty() );
       initialized = true;
    }
+   // this condition must be always true
+   ASSERT( initialized );
 }
 
 library_manager::~library_manager(){
@@ -1123,15 +1128,17 @@ library_manager::lookup_architecture( IIR_Boolean               complain_on_erro
       new savant::set<IIR_Declaration*>(*(my_symbol_table->find_set( architecture_declarator )));
 
    if( decls != NULL && decls->size() > 0 ){
-      for(auto it = decls->begin(); it != decls->end(); it++)
+      for(auto it = decls->begin(); it != decls->end(); )
       {
          if( (*it)->is_architecture_declaration() ){
             IIR_ArchitectureDeclaration *current_arch_decl = 
                dynamic_cast<IIR_ArchitectureDeclaration *>( *it );
             if( current_arch_decl->get_entity() != entity ){
-               decls->erase( *it );
-            }
-         }
+               it = decls->erase( it );
+            } else
+               it++;
+         } else
+            it++;
       }
 
       IIR_Declaration *current = NULL;

@@ -52,6 +52,7 @@ ScramStandardPackage::ScramStandardPackage(){
   set_declarator( IIRBase_Identifier::get( id, strlen( id ),
 					   scram_plugin_class_factory::instance() ));
   fake_parser = new scram(false, NULL, scram_plugin_class_factory::instance(), this, false);
+  ASSERT( fake_parser != NULL );
   fill_list( dynamic_cast<IIRScram_DeclarationList *>(get_package_declarative_part()) );
 }
 
@@ -70,7 +71,7 @@ ScramStandardPackage::STD_INT_MIN(){
   // Putting INT_MIN in here causes some problems with default settings
   // on the compiler.  Also note that this should be the same number as
   // found in IntegerTypeInfo.cc in the runtime support.
-  return -INT_MAX;
+  return INT_MIN;
 }
 
 double 
@@ -605,6 +606,7 @@ ScramStandardPackage::init_file_open_status_type(){
 IIRScram_TypeDeclaration *
 ScramStandardPackage::init_integer_decl(){
   IIRScram_TypeDeclaration *retval = init_type_decl( "integer", init_integer_type() );
+  ASSERT( retval != NULL && retval->get_type() != NULL );
 
   retval->get_type()->set_declaration( retval );
   retval->get_type()->get_base_type()->set_declaration( retval );
@@ -826,10 +828,12 @@ ScramStandardPackage::init_integer_type( int left_bound,
   IIRScram_IntegerSubtypeDefinition *retval = 0;
 
   IIRScram_IntegerLiteral32 *left = dynamic_cast<IIRScram_IntegerLiteral32 *>(IIRScram_IntegerLiteral32::get( left_bound ));
+  ASSERT( left != NULL );
   IIRScram_IntegerLiteral32 *right = dynamic_cast<IIRScram_IntegerLiteral32 *>(IIRScram_IntegerLiteral32::get( right_bound ));
+  ASSERT( right != NULL );
 
   IIRScram_RangeTypeDefinition *temp = new IIRScram_RangeTypeDefinition();
-
+  ASSERT( temp != NULL );
 
   temp->set_left( left );
   temp->set_right( right );
@@ -838,6 +842,7 @@ ScramStandardPackage::init_integer_type( int left_bound,
   set_locator_info( temp->get_direction() );
   set_locator_info( temp->get_right() );
   set_locator_info( temp );
+  ASSERT( temp->_get_design_file() != NULL );
   temp->_get_design_file()->set_parser(fake_parser);
   left->_set_design_file( dynamic_cast<IIRScram_DesignFile *>(get_design_file()));
   right->_set_design_file( dynamic_cast<IIRScram_DesignFile *>(get_design_file()) );

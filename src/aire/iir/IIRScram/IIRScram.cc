@@ -98,6 +98,7 @@ IIRScram::_is_terminal() {
 
 void 
 IIRScram::_type_check( IIRScram_TypeDefinition *input_decl ){
+  ASSERT( input_decl != NULL );
   savant::set<IIRScram_TypeDefinition*> temp_set;
   temp_set.insert( input_decl );
   _type_check( &temp_set );

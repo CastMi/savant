@@ -217,13 +217,10 @@ symbol_table::remove_from_scope(IIR_Declaration *decl_ptr){
    }
 }
 
-
 void 
 symbol_table::hide_declaration( IIR_Declaration *to_hide ){
    remove_from_visibility( to_hide );
 }
-
-
 
 bool
 symbol_table::in_scope(IIR_Declaration *decl) {
@@ -483,7 +480,7 @@ symbol_table::incomplete_type_fixup( IIR_TypeDeclaration *old_incomplete_type,
    // need to go through the list of access types that were designating
    // this incomplete type, and point them at this new one.  When we're
    // done, we can remove this incomplete type from our list.
-   for(auto it = designates_incomplete_type.begin(); it != designates_incomplete_type.end(); it++)
+   for(auto it = designates_incomplete_type.begin(); it != designates_incomplete_type.end(); )
    {
       ASSERT(dynamic_cast<IIRScram_TypeDeclaration *>( *it )->_designates_incomplete_type() == TRUE );
       // ASSERT(dynamic_cast<IIRScram_TypeDeclaration *>( *it )->_get_type()->_is_iir_access_type_definition() == TRUE);
@@ -497,8 +494,9 @@ symbol_table::incomplete_type_fixup( IIR_TypeDeclaration *old_incomplete_type,
       if( IIRBase_TextLiteral::cmp( new_complete_type->get_declarator(),
                current_type_definition->get_designated_type_name() ) == 0 ) {
          access_type->set_designated_type( new_complete_type->get_type() );	
-         designates_incomplete_type.erase( *it ); 
-      }
+         it = designates_incomplete_type.erase( it ); 
+      } else
+         it++;
    }
 
    dynamic_cast<IIRScram_TypeDeclaration *>(old_incomplete_type)->_set_fully_defined_type( dynamic_cast<IIRScram_TypeDefinition *>(new_complete_type->get_type()) );

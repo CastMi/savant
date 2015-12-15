@@ -81,10 +81,11 @@ IIRScram_ProcedureCallStatement::_type_check(){
          return;
       }
 
-      for(auto it = my_decls->begin(); it != my_decls->end(); it++) {
+      for(auto it = my_decls->begin(); it != my_decls->end(); ) {
          if( (*it)->get_kind() != IIR_PROCEDURE_DECLARATION ){
-            my_decls->erase( *it );
-         }
+            it = my_decls->erase( it );
+         } else
+            it++;
       }
 
       resolve_subprogram_decls( my_decls, 

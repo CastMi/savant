@@ -54,10 +54,11 @@ IIRScram_Operator::_type_check_user_declared( savant::set<IIRScram_TypeDefinitio
    // resolution.
    IIRScram_AssociationList *argument_list = _build_argument_list();
 
-   for(auto it = function_declarations->begin(); it != function_declarations->end(); it++) {
+   for(auto it = function_declarations->begin(); it != function_declarations->end(); ) {
       if( (*it)->_num_required_args() != argument_list->size() ){
-         function_declarations->erase( *it );
-      }
+         it = function_declarations->erase( it );
+      } else
+         it++;
    }
 
    if( function_declarations != NULL ){
@@ -162,6 +163,7 @@ IIRScram_Operator::_get_rval_set( constraint_functor * ){
       }
    }
 
+   ASSERT( has_been_type_checked == true );
    return retval;
 }
 
@@ -175,9 +177,9 @@ IIRScram_Operator::_get_user_overloaded_rvals(){
    }
    else{
       int num_arguments = _get_num_args();
-      for(auto it = my_decls->begin(); it != my_decls->end(); it++) {
+      for(auto it = my_decls->begin(); it != my_decls->end(); ) {
          if( (*it)->_num_required_args() != num_arguments ){
-            my_decls->erase( *it );
+            it = my_decls->erase( it );
          }
          else{
             ASSERT( (*it)->get_kind() == IIR_FUNCTION_DECLARATION );
@@ -188,8 +190,9 @@ IIRScram_Operator::_get_user_overloaded_rvals(){
                arg_list->_check_valid_arguments( as_function->_get_interface_declarations(), 
                      NULL);
             if( valid_call == FALSE ){
-               my_decls->erase( *it );
-            }
+               it = my_decls->erase( it );
+            } else
+               it++;
             arg_list->_destroy_list();
             delete arg_list;
          }
@@ -204,30 +207,31 @@ IIRScram_Operator::_get_user_overloaded_rvals(){
 
 IIRScram *
 IIRScram_Operator::_semantic_transform( savant::set<IIRScram_TypeDefinition*> *context_set ){
-  IIRScram *retval = this;
+   IIRScram *retval = this;
 
-  if( _type_check_user_declared( context_set ) == TRUE ){
-    ASSERT( _get_implementation() != NULL );
-    ASSERT( _get_implementation()->is_resolved() == TRUE );
-    
-    // Only transform this to a function call if the user _explicitly_
-    // declared this operator.
-    if( _get_implementation()->is_implicit_declaration() == FALSE ){
-      IIRScram_FunctionCall *function_call = new IIRScram_FunctionCall();
-      copy_location( this, function_call );
-      function_call->set_implementation( get_implementation() );
-      function_call->set_parameter_association_list( _build_argument_list() );
-      function_call->_get_parameter_association_list()->_resolve_and_order( _get_implementation()->_get_interface_declarations(), 
-									    NULL,
-									    this );
-      
-      IIRScram_AssociationElement *current =  
-        dynamic_cast<IIRScram_AssociationElement *>(function_call->get_parameter_association_list()->first());
-      while( current != NULL ){
-	ASSERT( current->is_resolved() == TRUE );
-	current =  
-          dynamic_cast<IIRScram_AssociationElement *>(function_call->get_parameter_association_list()->successor( current ));
-      }
+   if( _type_check_user_declared( context_set ) == TRUE ){
+      ASSERT( _get_implementation() != NULL );
+      ASSERT( _get_implementation()->is_resolved() == TRUE );
+
+      // Only transform this to a function call if the user _explicitly_
+      // declared this operator.
+      if( _get_implementation()->is_implicit_declaration() == FALSE ){
+         IIRScram_FunctionCall *function_call = new IIRScram_FunctionCall();
+         copy_location( this, function_call );
+         function_call->set_implementation( get_implementation() );
+         function_call->set_parameter_association_list( _build_argument_list() );
+         function_call->_get_parameter_association_list()->_resolve_and_order( _get_implementation()->_get_interface_declarations(), 
+               NULL,
+               this );
+
+         IIRScram_AssociationElement *current =  
+            dynamic_cast<IIRScram_AssociationElement *>(function_call->get_parameter_association_list()->first());
+         while( current != NULL ){
+            ASSERT( current->is_resolved() == TRUE );
+            current =  
+               dynamic_cast<IIRScram_AssociationElement *>(function_call->get_parameter_association_list()->successor( current ));
+         }
+
          retval = function_call;
       }
       // else retval = this already.

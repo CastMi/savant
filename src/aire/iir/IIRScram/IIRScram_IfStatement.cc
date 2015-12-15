@@ -49,10 +49,11 @@ IIRScram_IfStatement::IIRScram_IfStatement() {
   _full_statement_list = NULL;
 }
 
-IIRScram_IfStatement::~IIRScram_IfStatement(){}
+IIRScram_IfStatement::~IIRScram_IfStatement() {}
 
 void
 IIRScram_IfStatement::_type_check(){
+  ASSERT( _get_condition() != NULL );
   IIRScram *new_condition = _type_check_and_resolve_boolean_condition( _get_condition() );
   ASSERT( new_condition != NULL );
   if( parse_error == FALSE ){

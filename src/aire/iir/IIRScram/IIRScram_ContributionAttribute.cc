@@ -48,10 +48,11 @@ IIRScram_ContributionAttribute::_get_subtype(){
     return NULL;
   }
 
-  for(auto it = terminal_decl_set->begin(); it != terminal_decl_set->end(); it++) {
+  for(auto it = terminal_decl_set->begin(); it != terminal_decl_set->end(); ) {
     if ((*it)->_is_terminal() == FALSE) {
-      terminal_decl_set->erase(*it);
-    }
+      it = terminal_decl_set->erase( it );
+    } else
+       it++;
   }
   
   switch(terminal_decl_set->size()) {

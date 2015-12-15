@@ -48,7 +48,7 @@ public:
   /**
      Do nothing.
    */
-  virtual void _type_check( savant::set<IIRScram_TypeDefinition> * ){}
+  virtual void _type_check( savant::set<IIRScram_TypeDefinition*> * ) override {}
 
 protected:    
 private:

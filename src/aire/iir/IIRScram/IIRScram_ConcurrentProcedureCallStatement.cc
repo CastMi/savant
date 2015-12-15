@@ -76,10 +76,11 @@ IIRScram_ConcurrentProcedureCallStatement::_type_check(){
          report_undefined_symbol( _get_procedure_name() );
       }
 
-      for(auto it = my_decls->begin(); it != my_decls->end(); it++) {
+      for(auto it = my_decls->begin(); it != my_decls->end(); ) {
          if( (*it)->get_kind() != IIR_PROCEDURE_DECLARATION ){
-            my_decls->erase( *it );
-         }
+            it = my_decls->erase( it );
+         } else
+            it++;
       }
 
       resolve_subprogram_decls( my_decls, 

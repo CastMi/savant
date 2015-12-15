@@ -89,11 +89,12 @@ IIRScram_IndexedName::_my_type_given_array_prefix_type( IIRScram_TypeDefinition 
    else if ( _get_suffix()->is_name() == TRUE ){
       savant::set<IIRScram_Declaration*> *suffix_decls = _get_suffix()->_symbol_lookup();
       if( suffix_decls != NULL ){
-         for(auto it = suffix_decls->begin(); it != suffix_decls->end(); it++) {
+         for(auto it = suffix_decls->begin(); it != suffix_decls->end(); ) {
             if( (*it)->is_type() == FALSE ||
                   (*it)->is_scalar_type() == FALSE ){
-               suffix_decls->erase( *it );
-            }
+               it = suffix_decls->erase( it );
+            } else
+               it++;
          }
 
          switch( suffix_decls->size() ){
@@ -563,11 +564,12 @@ IIRScram_IndexedName::_return_type_given_prefix_declaration( IIRScram_Declaratio
                   num_indexes = index_list->size();
                }
 
-               for(auto it = prefix_rvals->begin(); it != prefix_rvals->end(); it++) {
+               for(auto it = prefix_rvals->begin(); it != prefix_rvals->end(); ) {
                   if( (*it)->is_array_type() == FALSE || 
                         (*it)->get_num_indexes() < num_indexes ){
-                     prefix_rvals->erase( *it );
-                  }
+                     it = prefix_rvals->erase( it );
+                  } else
+                     it++;
                }
 
                if( prefix_rvals->size() == 0 ){
@@ -658,7 +660,7 @@ IIRScram_IndexedName::_return_type_given_prefix_declaration( IIRScram_Declaratio
                   goto finish;
                }
 
-               for(auto it_ext = prefix_rvals->begin(); it_ext != prefix_rvals->end(); it_ext++) {
+               for(auto it_ext = prefix_rvals->begin(); it_ext != prefix_rvals->end(); ) {
                   bool one_matched = FALSE;
                   IIRScram_TypeDefinition *to_consider;
                   if( (*it_ext)->is_access_type() == TRUE ){
@@ -677,8 +679,9 @@ IIRScram_IndexedName::_return_type_given_prefix_declaration( IIRScram_Declaratio
                   }
 
                   if( one_matched == FALSE ){
-                     prefix_rvals->erase( *it_ext );
-                  }
+                     it_ext = prefix_rvals->erase( it_ext );
+                  } else
+                     it_ext++;
                }
 
                switch( prefix_rvals->size() ){
@@ -705,11 +708,12 @@ IIRScram_IndexedName::_return_type_given_prefix_declaration( IIRScram_Declaratio
                      goto finish;
                   }
                   else{
-                     for(auto it = suffix_decls->begin(); it != suffix_decls->end(); it++) {
+                     for(auto it = suffix_decls->begin(); it != suffix_decls->end(); ) {
                         if( (*it)->is_type() == FALSE ||
                               (*it)->is_scalar_type() == FALSE ){
-                           suffix_decls->erase( *it );
-                        }
+                           it = suffix_decls->erase( it );
+                        } else
+                           it++;
                      }
 
                      switch( suffix_decls->size() ){
@@ -754,7 +758,7 @@ finish:
                }
 
                // Now, we need to match up possible array types and our context set.
-               for(auto it_ext = prefix_rvals->begin(); it_ext != prefix_rvals->end(); it_ext++) {
+               for(auto it_ext = prefix_rvals->begin(); it_ext != prefix_rvals->end(); ) {
                   IIR_Boolean one_matched = FALSE;
                   for(auto it_in = context_set->begin(); it_in != context_set->end(); it_in++) {
                      if( (*it_ext)->_get_type_of_element( get_num_indexes() )->is_compatible( *it_in ) != NULL ){
@@ -764,8 +768,9 @@ finish:
                   }
 
                   if( one_matched == FALSE ){
-                     prefix_rvals->erase( *it_ext );
-                  }
+                     it_ext = prefix_rvals->erase( it_ext );
+                  } else
+                     it_ext++;
                }
 
                // We should check the type of each index here.  Not doing this yet, which
@@ -918,25 +923,25 @@ finish:
                return retval;
             }
 
-IIRScram *
-IIRScram_IndexedName::_semantic_transform( savant::set<IIRScram_TypeDefinition*> *context_set ){
+         IIRScram *
+            IIRScram_IndexedName::_semantic_transform( savant::set<IIRScram_TypeDefinition*> *context_set ){
 
-  IIRScram *retval = NULL;
-  
-  ASSERT( _get_suffix() != NULL );   
-  // OK, here's the story...  We have an indexed_name, something in
-  // the form of foo(x, y, z)...  Or foo( x(2), y(1,2), z(x(1))) for
-  // that matter.  We need to decide whether "foo" is a function or
-  // procedure, or if it's an array access...  Note too, that we might
-  // have an invalid call at this point - we're the one doing this
-  // checking.  After deciding what "foo" is, we need to transform it
-  // into the right type of "thing" - for instance, if it's a function
-  // call, we need to transform the indexed name into an
-  // IIRScram_FunctionCall, and make the transformations on the paramters.
-  
-  int context_size = context_set->size();
-  IIRScram *orig_prefix = _get_prefix();
-  IIRScram *orig_suffix = _get_suffix();
+               IIRScram *retval = NULL;
+
+               ASSERT( _get_suffix() != NULL );   
+               // OK, here's the story...  We have an indexed_name, something in
+               // the form of foo(x, y, z)...  Or foo( x(2), y(1,2), z(x(1))) for
+               // that matter.  We need to decide whether "foo" is a function or
+               // procedure, or if it's an array access...  Note too, that we might
+               // have an invalid call at this point - we're the one doing this
+               // checking.  After deciding what "foo" is, we need to transform it
+               // into the right type of "thing" - for instance, if it's a function
+               // call, we need to transform the indexed name into an
+               // IIRScram_FunctionCall, and make the transformations on the paramters.
+
+               int context_size = context_set->size();
+               IIRScram *orig_prefix = _get_prefix();
+               IIRScram *orig_suffix = _get_suffix();
 
                // We're going to initially assume it's a function call.  If not,
                // we'll get back a NULL return value and try some other uses.

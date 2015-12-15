@@ -717,6 +717,7 @@ concurrent_procedure_call[ IIRScram_Label *label ] > [IIRScram_ConcurrentStateme
     else{
     for(auto it = procedure_decls->begin(); it != procedure_decls->end(); it++)
     {
+    ASSERT( *it != NULL );
 	if( (*it)->get_kind() == IIR_PROCEDURE_DECLARATION ){
 	  found_procedure = true;
 	}
@@ -1812,7 +1813,7 @@ sequential_signal_assign_stmt[IIRScram *dest, IIRScram_Label *label] > [IIRScram
   <<
     $stmt = new IIRScram_SignalAssignmentStatement();
     $stmt->set_label( label );
-    $stmt->set_target($dest);
+    $stmt->set_target( dest );
   >>
   { delay_mechanism > [d, e] }
   <<
@@ -2107,11 +2108,13 @@ next_statement[ IIRScram_Label *label ] > [IIRScram_NextStatement *stmt]:
 	report_undefined_symbol( goto_label );
       }
       else{
-      for(auto it = label_decls->begin(); it != label_decls->end(); it++)
+      for(auto it = label_decls->begin(); it != label_decls->end(); )
       {
+      ASSERT( *it != NULL);
 	  if( (*it)->get_kind() != IIR_LABEL ){
-	    label_decls->erase( *it );
-	  }
+	    it = label_decls->erase( it );
+	  } else
+      it++;
       }
 	switch( label_decls->size() ){
 	case 0:{
@@ -2126,7 +2129,10 @@ next_statement[ IIRScram_Label *label ] > [IIRScram_NextStatement *stmt]:
 	case 1:{
 	  // We don't need this temporary label any more...
 	  delete goto_label;
+
+	  ASSERT( *label_decls->begin() != NULL );
 	  goto_label = dynamic_cast<IIRScram_Label *>(*label_decls->begin());
+	  ASSERT( goto_label != NULL );
 	  break;
 	}
 	default:{
@@ -2183,11 +2189,13 @@ exit_statement[ IIRScram_Label *label ] > [IIRScram_ExitStatement *stmt]:
 	report_undefined_symbol( exit_label );
       }
       else{
-      for(auto it = label_decls->begin(); it != label_decls->end(); it++)
+      for(auto it = label_decls->begin(); it != label_decls->end(); )
       {
+      ASSERT( *it != NULL );
 	  if( (*it)->get_kind() != IIR_LABEL ){
-	    label_decls->erase( *it );
-	  }
+	    it = label_decls->erase( it );
+	  } else
+      it++;
       }
 	switch( label_decls->size() ){
 	case 0:{
@@ -2202,7 +2210,9 @@ exit_statement[ IIRScram_Label *label ] > [IIRScram_ExitStatement *stmt]:
 	case 1:{
 	  // We don't need this temporary label any more...
 	  delete exit_label;
+     ASSERT( *label_decls->begin() != NULL );
 	  exit_label = dynamic_cast<IIRScram_Label *>(*label_decls->begin());
+     ASSERT( exit_label != NULL );
 	  break;
 	}
 	default:{
@@ -3333,6 +3343,7 @@ physical_literal > [IIRScram_PhysicalLiteral *pl]:
         break;
       }
       case 1:{
+        ASSERT( *unit_decls->begin() != NULL );
         $pl->set_unit_name( dynamic_cast<IIRScram_PhysicalUnit *>(*unit_decls->begin()) );
         break;
       }
@@ -3763,6 +3774,7 @@ type_mark > [IIRScram_TypeDefinition *retval]:
       // Then type_set is non-NULL has one element in it.
       ASSERT( type_set->size() == 1 );
       $retval = *type_set->begin();
+      ASSERT( $retval != NULL );
       if( $retval == NULL ){
         ostringstream err;
         err << "|" << *dynamic_cast<IIRScram_Name *>(type_name) << "| was not declared as a type in this scope";
@@ -4238,9 +4250,7 @@ association > [IIRScram_AssociationElement *new_association]:
         // Then the second association holds the actual part in its 
         // "get_formal" method.
         by_expression->set_actual( actual->get_formal() );
-#ifdef DEVLELOPER_ASSERTIONS
 	ASSERT( actual->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION );
-#endif	
         delete actual;
       }
     }
@@ -4348,6 +4358,7 @@ component_declaration[IIR_DeclarationList *decl_list]:
   for (auto lib = libraries->begin();
        lib != libraries->end();
        lib++) {
+    ASSERT( *lib != NULL );
     entity = library_manager::instance()->lookup_entity(FALSE, 
 							component_name, 
 							*lib, 
@@ -4928,6 +4939,7 @@ allocator > [IIRScram_Allocator *alloc]:
 	}
 	case 1:{
 	  IIRScram_TypeDefinition *allocator_type = *allocator_types->begin();
+     ASSERT( allocator_type != NULL );
 	  $alloc->set_type_mark( allocator_type );
 	  
 	  IIRScram *initializer = dynamic_cast<IIRScram *>(as_attr->get_suffix());
@@ -6026,10 +6038,12 @@ branch_quantity_declaration[IIR_DeclarationList *decl_list]:
     else {
       ASSERT( plus_terminal_decl_set->size() == 1 );
       terminal_plus_decl = *plus_terminal_decl_set->begin();
+      ASSERT( terminal_plus_decl  != NULL );
       new_decl->set_plus_terminal_name(plus_terminal);
     }
     if (minus_terminal == NULL){
       IIRScram_Declaration           *plus_terminal_decl     = *plus_terminal_decl_set->begin();
+      ASSERT( plus_terminal_decl  != NULL );
       IIRScram_TypeDefinition        *terminal_nature        = dynamic_cast<IIRScram_TypeDefinition *>(plus_terminal_decl)->_get_subtype();
       IIRScram_Declaration           *nature_decl            = dynamic_cast<IIRScram_Declaration *>(terminal_nature->get_declaration());
 
@@ -6040,6 +6054,7 @@ branch_quantity_declaration[IIR_DeclarationList *decl_list]:
        minus_terminal_decl_set = dynamic_cast<IIRScram *>(minus_terminal)->_symbol_lookup();
        ASSERT( minus_terminal_decl_set->size() == 1 );
        terminal_minus_decl      = *minus_terminal_decl_set->begin();
+       ASSERT( terminal_minus_decl != NULL );
        new_decl->set_minus_terminal_name(terminal_minus_decl);
     }
     designator = dynamic_cast<IIRScram_Designator *>(new_decl->get_across_aspect_identifier_list()->first());

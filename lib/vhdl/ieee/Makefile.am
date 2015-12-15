@@ -95,4 +95,4 @@ clean-local:
 	rm -rf $(IEEE_OUTPUT_DIR)
 
 $(IEEE_OUTPUT_DIR): $(top_builddir)/bin/scram
-	SAVANTROOT=$(top_srcdir) $(top_builddir)/bin/scram --design-library-name ieee $(IEEE_VHDL_FILES)
+	SAVANTROOT=$(top_srcdir) gdb --args $(top_builddir)/bin/scram --design-library-name ieee $(IEEE_VHDL_FILES)

@@ -43,8 +43,7 @@
 IIRScram_SignalAssignmentStatement::IIRScram_SignalAssignmentStatement() {
   set_waveform(new IIRScram_WaveformList());
 }
-
-IIRScram_SignalAssignmentStatement::~IIRScram_SignalAssignmentStatement(){}
+IIRScram_SignalAssignmentStatement::~IIRScram_SignalAssignmentStatement() {}
 
 void 
 IIRScram_SignalAssignmentStatement::_type_check(){

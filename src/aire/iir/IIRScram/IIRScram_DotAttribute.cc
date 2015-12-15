@@ -41,10 +41,11 @@ IIRScram_DotAttribute::_get_subtype() {
     return NULL;
   }
   
-  for(auto it = quantity_decl_set->begin(); it != quantity_decl_set->end(); it++) {
+  for(auto it = quantity_decl_set->begin(); it != quantity_decl_set->end(); ) {
     if((*it)->_is_quantity() == FALSE) {
-      quantity_decl_set->erase(*it);
-    }
+      it = quantity_decl_set->erase( it );
+    } else
+       it++;
   }
   switch(quantity_decl_set->size()) {
   case 0: {

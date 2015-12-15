@@ -82,10 +82,11 @@ namespace savant {
       void 
       set<type>::reduce_set( constraint_functor *functor ){
          ASSERT( functor != NULL );
-            for( auto it = std::set<type>::begin(); it != std::set<type>::end(); it++ ){
+            for( typename std::set<type>::iterator it = this->begin(); it != this->end(); ){
                if( (*functor)(*it) == FALSE ){
-                  std::set<type>::erase( *it );
-               }
+                  it = std::set<type>::erase( it );
+               } else
+                  it++;
             }
       }
 
@@ -94,10 +95,11 @@ namespace savant {
       void 
       savant::set<type>::intersect( savant::set<type>* theSet ) {
          ASSERT ( theSet != NULL );
-         for( auto it = std::set<type>::begin(); it != std::set<type>::end(); it++ ) {
-            if( !theSet->contains(*it) ) {
-               std::set<type>::erase(*it);
-            }
+         for(auto it = std::set<type>::begin(); it != std::set<type>::end(); ) {
+            if(theSet->find(*it) == theSet->end()) {
+               it = std::set<type>::erase( it );
+            } else
+               it++;
          }
       } 
 

@@ -261,8 +261,9 @@ IIRScram_SimpleName::_rval_to_decl( IIRScram_Declaration *prefix, IIRScram_TypeD
 IIRScram_TypeDefinition *
 IIRScram_SimpleName::_determine_rval_in_set( savant::set<IIRScram_TypeDefinition*> *search_in,
       IIRScram_TypeDefinition *looking_for ){
+   ASSERT( looking_for != NULL);
 
-   for(auto it_ext = search_in->begin(); it_ext != search_in->end(); it_ext++) {
+   for(auto it_ext = search_in->begin(); it_ext != search_in->end() && *it_ext != NULL; it_ext++) {
       savant::set<IIRScram_Declaration*>   *decls = NULL;
       savant::set<IIR_Declaration*>        *temp_set 
          = (*it_ext)->find_declarations( this );
@@ -273,7 +274,7 @@ IIRScram_SimpleName::_determine_rval_in_set( savant::set<IIRScram_TypeDefinition
       }
 
       if( decls != NULL ){
-         for(auto it_in = search_in->begin(); it_in != search_in->end(); it_in++) {
+         for(auto it_in = decls->begin(); it_in != decls->end(); it_in++) {
             if( (*it_in)->_get_subtype()->is_compatible( looking_for ) != NULL ){
                delete decls;
                return *it_ext;

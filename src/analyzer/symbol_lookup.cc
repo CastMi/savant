@@ -261,9 +261,9 @@ symbol_lookup::lookup_add( IIR_Declaration *decl_ptr) {
       ASSERT( hidden_info == NULL );
       update_hidden_symbol_entry( decl_ptr, need_to_hide, decl_chain );
 
-      for(auto it = need_to_hide->begin(); it != need_to_hide->end(); it++)
+      for(auto it = need_to_hide->begin(); it != need_to_hide->end(); )
       {
-         current_declarations->erase( *it );
+         it = current_declarations->erase( it );
       }
    }
 }

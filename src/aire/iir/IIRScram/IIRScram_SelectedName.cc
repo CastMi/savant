@@ -324,10 +324,11 @@ IIRScram_SelectedName::_build_lib( IIRScram_LibraryUnit *new_unit ){
    if( get_prefix()->get_kind() == IIR_SIMPLE_NAME ){
       savant::set<IIRScram_Declaration*> *prefix_decls = _get_prefix()->_symbol_lookup();
       if( prefix_decls != NULL ){
-         for(auto it = prefix_decls->begin(); it != prefix_decls->end(); it++) {
+         for(auto it = prefix_decls->begin(); it != prefix_decls->end(); ) {
             if( (*it)->get_kind() != IIR_LIBRARY_DECLARATION ){
-               prefix_decls->erase( *it );
-            }
+               it = prefix_decls->erase( it );
+            } else
+               it++;
          }
 
          ASSERT( prefix_decls->size() == 1 );
