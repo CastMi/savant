@@ -104,7 +104,7 @@ AC_CONFIG_FILES([Makefile \
 	lib/vhdl/ieee/Makefile \
 	lib/Makefile.common \
 	bin/Makefile \
-	testsuite/Makefile ])
+	test/Makefile])
 AC_OUTPUT
 
 #target os for dejagnu

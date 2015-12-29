@@ -1,4 +1,3 @@
-
 #ifndef SAVANT_HH
 #define SAVANT_HH
 
@@ -29,7 +28,7 @@
 #include "savant_config.hh"
 
 #ifndef NULL
-#define NULL    0
+#define NULL 0
 #endif
 
 extern bool parse_error;

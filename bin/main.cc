@@ -47,7 +47,7 @@
 #include "language_processing_control.hh"
 #include <cctype>
 #include <fstream>
-#include <ArgumentParser.h>
+#include <ArgumentParser.hh>
 #include "StandardPackage.hh"
 
 #include "IIRScram_DesignFile.hh"
@@ -140,7 +140,7 @@ main (int argc, char *argv[]) {
   // Again, DO NOT reference the above named variables for anything more
   // than configuring the language_processing_control object.
   
-  static ArgumentParser::ArgRecord arg_list[] = {
+  std::vector<ArgumentParser::ArgRecord> arg_list = {
     {"--capture-comments","capture comments and store them in the design file IIR node", &capture_comments, ArgumentParser::BOOLEAN},
     {"--debug-symbol-table","print out debugging info relating to symbol table", &debug_symbol_table, ArgumentParser::BOOLEAN},
     {"--debug-gen-cc-ref","make code gen. and VHDL line references in c++ code", &gen_cc_ref, ArgumentParser::BOOLEAN},  
@@ -155,13 +155,11 @@ main (int argc, char *argv[]) {
     {"--vhdl-ams", "setup the analyzer to process the VHDL AMS language standard", &vhdl_ams, ArgumentParser::BOOLEAN},
     {"--vhdl-2001", "setup the analyzer to process the VHDL 2001 language standard", &vhdl_2001, ArgumentParser::BOOLEAN},
     {"--version", "print version number and exit.", &print_version, ArgumentParser::BOOLEAN },
-    {"--verbose", "verbose output", &verbose_output, ArgumentParser::BOOLEAN },
-    {"","", 0}
+    {"--verbose", "verbose output", &verbose_output, ArgumentParser::BOOLEAN }
   };
 
-  ArgumentParser ap( arg_list ); // , help_func );
-  vector<string> argVec = ArgumentParser::vectorifyArguments( argc, argv, true );
-  ap.checkArgs( argVec );
+  ArgumentParser ap( arg_list );
+  ap.vectorifyArguments( argc, argv );
 
   if (print_version) {
     cerr << VERSION << "\n";
@@ -218,7 +216,7 @@ main (int argc, char *argv[]) {
 		ScramStandardPackage::instance() );
 
   if(argc > 1) {
-    iir_design_files_processed = parser.parse_files( argVec );  
+    iir_design_files_processed = parser.parse_files( ap.getVHDLFiles() );  
 
     if( parse_error == FALSE ){
       cerr << "Parse complete - no errors." << endl;
