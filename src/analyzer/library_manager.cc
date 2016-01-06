@@ -384,8 +384,17 @@ library_manager::parse_into_work_dir( IIR_LibraryUnit *unit_to_publish ){
     delete file_handle;
   }
   else {
-    perror( string( "Error trying to publish unit |" +
-		    dynamic_cast<IIRScram_TextLiteral *>(unit_to_publish->get_declarator())->convert_to_string() + "|" ).c_str() );
+    IIR_LibraryDeclaration *work_library = unit_to_publish->get_library();
+    string directory_name;
+    if( unit_to_publish->is_primary_unit() ){
+       directory_name = work_library->get_path_to_directory();
+    }
+    else{
+       ASSERT( unit_to_publish->is_secondary_unit() );
+       directory_name = build_secondary_unit_directory_name( unit_to_publish );
+    }
+    perror( string( "Error trying to publish unit " + directory_name +
+		    dynamic_cast<IIRScram_TextLiteral *>(unit_to_publish->get_declarator())->convert_to_string() ).c_str() );
   }
 }
 			 

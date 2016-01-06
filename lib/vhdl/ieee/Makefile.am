@@ -30,10 +30,10 @@ include $(top_srcdir)/Makefile.am.common
 IEEE_INPUT_DIR = $(top_srcdir)/lib/vhdl/ieee
 IEEE_OUTPUT_DIR = $(top_builddir)/lib/vhdl/ieee/ieee._savant_lib
 
-install-data-local: ieee._savant_lib
+install-data-local: $(IEEE_OUTPUT_DIR)
 	$(INSTALL) -d $(libdir)/savant
 	$(INSTALL) -d $(libdir)/savant/lib
-	$(INSTALL) -d $(libdir)/savant/lib/ieee._savant_lib 
+	$(INSTALL) -d $(libdir)/savant/lib/ieee._savant_lib
 	$(INSTALL_DATA) $(IEEE_OUTPUT_DIR)/numeric_bit_package.vhdl \
                 $(IEEE_OUTPUT_DIR)/numeric_std_package.vhdl \
 		$(IEEE_OUTPUT_DIR)/std_logic_1164_package.vhdl \
@@ -49,8 +49,6 @@ install-data-local: ieee._savant_lib
 		$(IEEE_OUTPUT_DIR)/math_real_package.vhdl \
 		$(IEEE_OUTPUT_DIR)/math_complex_package.vhdl \
 		$(libdir)/savant/lib/ieee._savant_lib
-
-
 	$(INSTALL_DATA) $(IEEE_INPUT_DIR)/std_logic_1164.vhd \
 		$(IEEE_INPUT_DIR)/timing_p.vhd \
 		$(IEEE_INPUT_DIR)/timing_b.vhd \
@@ -88,8 +86,6 @@ IEEE_VHDL_FILES = \
 	$(IEEE_INPUT_DIR)/std_logic_misc.vhd \
 	$(IEEE_INPUT_DIR)/math_real.vhd \
 	$(IEEE_INPUT_DIR)/math_complex.vhd
-
-all-local: $(IEEE_OUTPUT_DIR)
 
 clean-local:
 	rm -rf $(IEEE_OUTPUT_DIR)
