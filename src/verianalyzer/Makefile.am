@@ -1,7 +1,5 @@
 # Process this file with automake to produce Makefile.in
 
-# Copyright (c) 1999-2001 The University of Cincinnati.  
-# All rights reserved.
 
 # UC MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF THE
 # SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
@@ -19,38 +17,37 @@
 # version 2, June 1991. A copy of this license agreement can be found in
 # the file "LGPL", distributed with this archive.
 
-# Authors: Philip A. Wilsey	phil.wilsey@uc.edu
-# 	    Dale E. Martin	dmartin@clifton-labs.com
-#	    Magnus Danielson	cfmd@swipnet.se
+# Authors: Michele Castellana	michele.castellana@cern.ch
 
 #---------------------------------------------------------------------------
 
 include $(top_srcdir)/Makefile.am.common
 
-SUBDIRS = aire analyzer util verianalyzer
+noinst_LTLIBRARIES = lib_verilog_parser.la
 
-AM_CPPFLAGS += -I$(PCCTSROOT)
+lib_verilog_parser_la_CPPFLAGS = \
+	-I$(top_srcdir)/src/verianalizer \
+	-I$(top_srcdir)/src/analyzer \
+	-I$(top_srcdir)/src/aire/iir/IIR \
+	-I$(top_srcdir)/src/aire/iir/visitor \
+	-I$(top_srcdir)/src/aire/iir/IIRScram \
+	-I$(top_srcdir)/src/aire/iir/IIRBase \
+	-I$(top_srcdir)/src \
+	-I$(top_srcdir)/src/util \
+	-I$(top_srcdir)/src/aire
 
-noinst_LTLIBRARIES = libpccts.la
+AM_YFLAGS = -d -l --report=state,lookahead,itemset
+AM_LFLAGS = -L -B -+ -olex.yy.c
 
-BUILT_SOURCES = \
-	ATokenBuffer.cpp \
-	AParser.cpp
+noinst_HEADERS = \
+   verilogLexer.hpp \
+   verilogParserDriver.hpp
 
-# Location for the library installation
-# With this first command I specify the folder that the "library_include"
-# should use for the installation.
-library_includedir = $(includedir)/savant
-# Now, I specify the headers to install.
-library_include_HEADERS =  \
-	savant.hh \
-	savant_config.hh 
+lib_verilog_parser_la_SOURCES = \
+   verilogParser.ypp \
+   verilogLexer.lpp \
+   verilogParserDriver.cpp
 
-libpccts_la_SOURCES = \
-	$(BUILT_SOURCES)
+BUILT_SOURCES = verilogParser.hpp verilogLexer.cpp verilogParser.cpp
 
-ATokenBuffer.cpp: analyzer/vhdl.gg
-	cp $(PCCTSROOT)/ATokenBuffer.cpp $(top_builddir)/src
-
-AParser.cpp: analyzer/vhdl.gg
-	cp $(PCCTSROOT)/AParser.cpp $(top_builddir)/src
+CLEANFILES = $(BUILT_SOURCES) *.output

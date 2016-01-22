@@ -21,7 +21,6 @@
 
 %}
 
-%option yyclass="VHDLLexer"
 %option noyywrap
 
 %s ATTR
@@ -32,8 +31,6 @@
 %s VHDL2001
 
 %{
-#undef yyFlexLexer
-#include <FlexLexer.h>
 #include "VHDLLexer.hh"
 #include "VHDLTokenTypes.hh"
 #include <ctype.h>

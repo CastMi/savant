@@ -1,0 +1,80 @@
+/**
+ * @author Michele Castellana <michele.castellana@mail.polimi.it>
+ */
+
+/* 
+ * Makes the scanner not call `yywrap()' upon an
+ * end-of-file, but simply assume that there are
+ * no more files to scan.
+ */
+%option noyywrap
+
+/* 
+ * Causes the default rule (that unmatched scanner
+ * input is echoed to stdout) to be suppressed.
+ * If the scanner encounters input that does not
+ * match any of its rules, it aborts with an error.
+ * This option is useful for finding holes in a
+ * scanner's rule set.
+ */
+%option nodefault
+
+/*
+ * Instructs flex to generate an 8-bit scanner,
+ * i.e., one which can recognize 8-bit characters.
+ */
+%option 8bit
+
+/*
+ * Instructs flex to generate a batch scanner.
+ * In general, you use it when you are certain that
+ * your scanner will never be used interactively, and
+ * you want to squeeze a little more performance out
+ * of it.
+ */
+%option batch
+
+/*
+ * Instructs flex to generate a scanner which never
+ * considers its input interactive.
+ */
+%option never-interactive
+
+/*
+ * Directs flex to generate a scanner that maintains
+ * the number of the current line read from its input
+ * in the global variable yylineno
+ */
+%option yylineno
+
+%{
+
+#include <iostream>
+#include <fstream>
+#include <stdint.h>
+#include <inttypes.h>
+#include <set>
+#include <string>
+#include <vector>
+#include <list>
+#include "verilogParser.hpp"
+
+%}
+
+/*=========================================================================
+                          TOKEN DEFINITIONS
+=========================================================================*/
+
+ID          [a-z_A-Z][a-zA-Z_0-9]*
+
+%%
+
+"input" { LexerError("Lexical Error"); }
+"output" { LexerError("Lexical Error"); }
+"endmodule" { LexerError("Lexical Error"); }
+"module" { LexerError("Lexical Error"); }
+[ \t\r\n]+      { LexerError("Lexical Error"); }
+{ID}            { LexerError("Lexical Error"); }
+.               { LexerError("Lexical Error"); }
+
+%%

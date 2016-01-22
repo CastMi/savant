@@ -27,7 +27,6 @@
 #include "scram.hh"
 #include "savant.hh"
 #include "symbol_table.hh"
-#include <FlexLexer.h>
 #include "VHDLLexer.hh"
 #include "VHDLParser.h"
 #include "error_func.hh"
