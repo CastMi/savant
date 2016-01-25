@@ -103,7 +103,7 @@ scram::parse_file( const string &filename, IIR_LibraryDeclaration *lib ){
     cerr << "Parse_file parsing " << filename << endl;
   }
 
-  if (yyin == NULL) {
+  if (yyin.bad()) {
     ostringstream err;
     err << "FATAL ERROR, COULD NOT OPEN FILE: " << filename;
     report_error( err.str() );
