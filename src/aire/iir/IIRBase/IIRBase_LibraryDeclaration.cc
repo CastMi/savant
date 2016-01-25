@@ -25,6 +25,7 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 
 //---------------------------------------------------------------------------
+#include <FileManager.h>
 #include "library_manager.hh"
 #include "savant.hh"
 #include "set.hh"
@@ -35,8 +36,6 @@
 #include "IIR_LibraryUnitList.hh"
 #include "IIR_Name.hh"
 #include "IIR_PackageDeclaration.hh"
-
-#include <FileManager.h>
 
 
 

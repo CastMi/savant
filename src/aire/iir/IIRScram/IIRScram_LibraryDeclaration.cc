@@ -28,6 +28,8 @@
 
 //---------------------------------------------------------------------------
 
+#include <FileManager.h>
+
 #include "IIRScram_ConfigurationDeclaration.hh"
 #include "IIRScram_DesignFile.hh"
 #include "IIRScram_EntityDeclaration.hh"
@@ -37,8 +39,6 @@
 #include "IIRScram_LibraryUnitList.hh"
 #include "IIRScram_Name.hh"
 #include "IIRScram_PackageDeclaration.hh"
-
-#include <FileManager.h>
 
 #include "error_func.hh"
 #include "resolution_func.hh"
