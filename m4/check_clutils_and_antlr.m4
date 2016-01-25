@@ -22,10 +22,8 @@ AC_CACHE_CHECK([for location of libclutils], [cl_cv_lib_clutils],
 if test $cl_cv_lib_clutils = no ; then
 AC_MSG_ERROR(The clutils package is required.)
 fi
-if test $cl_cv_lib_clutils != /usr ; then
 LDFLAGS="$LDFLAGS -L$cl_cv_lib_clutils/lib -lclutils -ldl -lltdl"
 CPPFLAGS="$CPPFLAGS -I$cl_cv_lib_clutils/include/clutils-0.0"
-fi
 AC_CHECK_HEADER( [Debug.h], ,
   AC_MSG_ERROR( [Couldn't find clutils-0.0/Debug.h which is required and
     part of the clutils distribution.  You probably need to install it
