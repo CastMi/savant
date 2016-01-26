@@ -70,6 +70,9 @@ int language_to_process;
     BEGIN(VHDL2001); \
   }
 
+int yyFlexLexer::yywrap(){return 1;}
+int yyFlexLexer::yylex(){return 0;}
+
 %}
 
 %%

@@ -30,8 +30,13 @@ struct VerilogFlexLexer : public yyFlexLexer
    {
       return 1;
    }
+
+   int  yylex()
+   {
+      return 1;
+   }
+
    YYSTYPE *lvalp;
-   int  yylex();
 };
 
 #endif // VERILOG_LEXER_HPP

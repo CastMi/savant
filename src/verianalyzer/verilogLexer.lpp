@@ -2,6 +2,8 @@
  * @author Michele Castellana <michele.castellana@mail.polimi.it>
  */
 
+%option prefix="ww"
+
 /* 
  * Makes the scanner not call `yywrap()' upon an
  * end-of-file, but simply assume that there are

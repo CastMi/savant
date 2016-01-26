@@ -39,8 +39,6 @@
 #undef yyFlexLexer
 #define yyFlexLexer xxFlexLexer
 #include <FlexLexer.h>
-int yyFlexLexer::yywrap(){return 1;}
-int yyFlexLexer::yylex(){return 0;}
 
 using std::ifstream;
 
