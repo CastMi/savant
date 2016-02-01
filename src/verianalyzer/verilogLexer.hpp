@@ -7,6 +7,14 @@
 
 #undef yyFlexLexer
 #define yyFlexLexer wwFlexLexer
+#define yyalloc wwyyalloc
+#define yyrealloc wwrealloc
+#define yyfree wwfree
+#define YY_TYPEDEF_YY_SIZE_T
+typedef size_t yy_size_t;
+void yyfree ( void* ptr );
+void *yyrealloc (void *, yy_size_t);
+void *yyalloc (yy_size_t);
 #include <FlexLexer.h>
 
 struct VerilogFlexLexer : public yyFlexLexer
@@ -22,21 +30,14 @@ struct VerilogFlexLexer : public yyFlexLexer
    void LexerError(const char * msg)
    {
       std::cout << msg << " at line number |" << lineno() << "|\t" ;
+      std::cerr << msg << " at line number |" << lineno() << "|\t" ;
       std::cout << "text is |" << YYText() << "|" << std::endl ;
       throw "Parse Error";
    }
-
-   int yywrap()
-   {
-      return 1;
-   }
-
-   int  yylex()
-   {
-      return 1;
-   }
-
    YYSTYPE *lvalp;
+   int yylex();
+   int yywrap() { return 1; }
+
 };
 
 #endif // VERILOG_LEXER_HPP

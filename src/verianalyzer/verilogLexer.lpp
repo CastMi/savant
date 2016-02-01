@@ -2,7 +2,6 @@
  * @author Michele Castellana <michele.castellana@mail.polimi.it>
  */
 
-%option prefix="ww"
 
 /* 
  * Makes the scanner not call `yywrap()' upon an
@@ -41,13 +40,15 @@
  * considers its input interactive.
  */
 %option never-interactive
-
+%option warn
 /*
  * Directs flex to generate a scanner that maintains
  * the number of the current line read from its input
  * in the global variable yylineno
  */
 %option yylineno
+%option debug
+%option prefix="ss"
 
 %{
 
@@ -59,24 +60,32 @@
 #include <string>
 #include <vector>
 #include <list>
-#include "verilogParser.hpp"
 
+#undef YY_DECL
+#define YY_DECL int VerilogFlexLexer::yylex()
+#include "verilogParser.hpp"
+#include "verilogLexer.hpp"
+int yyFlexLexer::yywrap() { return 1; };
+int yyFlexLexer::yylex()
+	{
+	return 0;
+	};
 %}
 
 /*=========================================================================
                           TOKEN DEFINITIONS
 =========================================================================*/
 
-ID          [a-z_A-Z][a-zA-Z_0-9]*
+ID          [a-zA-Z_0-9]*
 
 %%
 
-"input" { LexerError("Lexical Error"); }
-"output" { LexerError("Lexical Error"); }
-"endmodule" { LexerError("Lexical Error"); }
-"module" { LexerError("Lexical Error"); }
-[ \t\r\n]+      { LexerError("Lexical Error"); }
-{ID}            { LexerError("Lexical Error"); }
+%"input" { LexerError("Lex err"); return K_input; }
+%"output" { LexerError("Lex err"); return K_input; }
+%"endmodule" { LexerError("Lex err"); return K_endmodule; }
+%"module" { LexerError("Lex err"); return K_module; }
+[ \t\r\n]+      { LexerError("sdfsfd"); }
+{ID}            { LexerError("Lex err"); lvalp->text = strdup(YYText()); return IDENTIFIER; }
 .               { LexerError("Lexical Error"); }
 
 %%

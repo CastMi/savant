@@ -226,14 +226,16 @@ main (int argc, char *argv[]) {
    if(ap.getVerilogFiles().size() > 0) {
       /* create verilog IR */
       assert( ap.getVHDLFiles().size() == 1);
-      parse_verilog( *ap.getVHDLFiles().begin(), *iir_verilog_design_files_processed, scram_plugin_class_factory::instance() );
+      parse_verilog( *ap.getVerilogFiles().begin(), *iir_verilog_design_files_processed, scram_plugin_class_factory::instance() );
+      cerr << "Verilog parse complete - no errors." << endl;
    }
+   ASSERT(iir_verilog_design_files_processed || iir_vhdl_design_files_processed);
 
-   if(iir_verilog_design_files_processed && iir_vhdl_design_files_processed) {
+   if(iir_verilog_design_files_processed != NULL && iir_vhdl_design_files_processed != NULL) {
       // merge the 2
          iir_merged_design_files_processed = iir_vhdl_design_files_processed;
    } else {
-      if(iir_verilog_design_files_processed) {
+      if(iir_verilog_design_files_processed != NULL) {
          iir_merged_design_files_processed = iir_verilog_design_files_processed;
       } else {
          iir_merged_design_files_processed = iir_vhdl_design_files_processed;

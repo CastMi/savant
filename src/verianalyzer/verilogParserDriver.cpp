@@ -10,7 +10,6 @@ void parse_verilog(const std::string & c_trace_filename, IIR_DesignFileList& res
 {
    try
    {
-      std::cerr << "starting verilog parse." << std::endl;
       verilog_parse(c_trace_filename, res, fac);
       return;
    }

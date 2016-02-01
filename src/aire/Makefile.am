@@ -25,6 +25,8 @@
 
 #---------------------------------------------------------------------------
 
+include $(top_srcdir)/Makefile.am.common
+
 SUBDIRS = iir
 
 lib_LTLIBRARIES = libaire.la

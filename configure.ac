@@ -31,9 +31,11 @@ AC_CONFIG_HEADERS( [src/savant_config.hh:src/savant_config.hh.in] )
 AC_LANG([C++])
 AC_SUBST(SAVANT_VERSION,[2.0-pre040909])
 
+: ${CXXFLAGS=""}
+: ${CFLAGS=""}
 # Checks for programs.
 AC_PROG_CXX
-AC_PROG_CXXCPP
+#AC_PROG_CXXCPP
 AC_PROG_YACC
 AC_C_INLINE
 AM_PROG_LEX

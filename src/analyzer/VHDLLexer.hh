@@ -38,6 +38,14 @@
 #include <fstream>
 #undef yyFlexLexer
 #define yyFlexLexer xxFlexLexer
+#define yyalloc xxyyalloc
+#define yyrealloc xxrealloc
+#define yyfree xxfree
+#define YY_TYPEDEF_YY_SIZE_T
+typedef size_t yy_size_t;
+void yyfree ( void* ptr );
+void *yyrealloc (void *, yy_size_t);
+void *yyalloc (yy_size_t);
 #include <FlexLexer.h>
 
 using std::ifstream;

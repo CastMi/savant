@@ -31,7 +31,6 @@
 %s VHDL2001
 
 %{
-#include "VHDLLexer.hh"
 #include "VHDLTokenTypes.hh"
 #include <ctype.h>
 #include "language_processing_control.hh"
@@ -43,6 +42,12 @@ extern bool parse_error;
 // define type signature and name for scanner
 #undef YY_DECL
 #define YY_DECL ANTLRAbstractToken *VHDLLexer::getToken()
+#include "VHDLLexer.hh"
+int xxFlexLexer::yywrap() { return 1; };
+int xxFlexLexer::yylex()
+	{
+	return 0;
+	};
 
 // external flag to control if we catch comments in the design file or not
 extern bool capture_comments;
@@ -70,11 +75,9 @@ int language_to_process;
     BEGIN(VHDL2001); \
   }
 
-int yyFlexLexer::yywrap(){return 1;}
-int yyFlexLexer::yylex(){return 0;}
-
 %}
-
+%top{
+}
 %%
 
 \-\-[^\n]*	{

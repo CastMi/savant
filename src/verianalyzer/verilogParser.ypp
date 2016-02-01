@@ -1,5 +1,4 @@
 %code requires{
-//#define yylex verilog::yylex
 class VerilogFlexLexer;
 class IIR_DesignFileList;
 // The %union uses the following
@@ -28,7 +27,7 @@ void verilog_parse(const std::string& fname, IIR_DesignFileList& res, plugin_cla
 #include <cstring>
 #include <fstream>
 
-int yylex (VerilogFlexLexer* lexer);
+int yylex (YYSTYPE *lvalp, VerilogFlexLexer* lexer);
 int yyerror (IIR_DesignFileList& ir_verilog, VerilogFlexLexer* lexer, plugin_class_factory* fac, char const *msg);
 
 symbol_table * my_symbol_table;
@@ -37,6 +36,8 @@ IIRScram_LibraryUnit * arc;
 
 %}
 
+%debug
+%define api.pure full
 /*
  * The following lines result in the signatures
  * int yyparse (plugin_class_factory* fac, VerilogFlexLexer* lexer, IIR_DesignFileList& ir_verilog);
@@ -73,26 +74,18 @@ IIRScram_LibraryUnit * arc;
 %token K_endmodule K_module K_input K_output list_of
 
 /* Non end literals with values */
-//%type <strings> list_of_identifiers
-//%type <direction> port_direction
-//%type <portlist> module_item
+%type <strings> list_of_identifiers
+%type <direction> port_direction
+%type <portlist> module_item
 
 %start source_text
 %%
 
-  /* IEEE1800-2005: A.1.2 */
-  /* source_text ::= [ timeunits_declaration ] { description } */
 source_text
    : description_list
    ;
 
-  /* NOTE 1: We pull the "timeunits_declaration" into the description
-     here in order to be a little more flexible with where timeunits
-     statements may go. This may be a bad idea, but it is legacy now. */
-  /* NOTE 2: The "module" rule of the description combines the
-     module_declaration, program_declaration, and interface_declaration
-     rules from the standard description. */
-description /* IEEE1800-2005: A.1.2 */
+description 
   : module
   ;
 
@@ -101,9 +94,6 @@ description_list
   | description_list description
   ;
 
-  /* This is the global structure of a module. A module is a start
-     section, with optional ports, then an optional list of module
-     items, and finally an end marker. */
 module
   : K_module IDENTIFIER
       {
@@ -166,17 +156,19 @@ list_of_identifiers
 void verilog_parse(const std::string & fname, IIR_DesignFileList& res, plugin_class_factory* fac)
 {
    std::ifstream is(fname.c_str());
+   assert(is.is_open() && is.good() && !is.eof() && !is.bad());
    VerilogFlexLexer *lexer = new VerilogFlexLexer(is);
+   std::cerr << "starting verilog parse of the file " << fname << std::endl;
    yyparse (res, lexer, fac);
 }
 
-int yylex (VerilogFlexLexer* lexer)
+int yylex (YYSTYPE *lvalp, VerilogFlexLexer* lexer)
 {
-   //lexer->lvalp = lvalp;
+   lexer->lvalp = lvalp;
    return lexer->yylex();
 }
 
 int yyerror (IIR_DesignFileList& ir_verilog, VerilogFlexLexer* lexer, plugin_class_factory* fac, char const *msg)
 {
-   abort();
+   assert (false);
 }
