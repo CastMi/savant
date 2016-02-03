@@ -1,5 +1,6 @@
 
 // Copyright (c) 1995-2003 The University of Cincinnati.
+// Copyright CERN 2015-2016 Michele Castellana <michele.castellana@cern.ch>.
 // All rights reserved.
 
 // UC MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF THE
@@ -49,6 +50,7 @@
 #include <fstream>
 #include <ArgumentParser.hh>
 #include "StandardPackage.hh"
+#include "verilogParserDriver.hpp"
 
 #include "IIRScram_DesignFile.hh"
 #include "scram_plugin_class_factory.hh"
@@ -150,7 +152,7 @@ main (int argc, char *argv[]) {
       {"--vhdl-93", "setup the analyzer to process the VHDL 93 language standard (default)", &vhdl_93, ArgumentParser::BOOLEAN},
       {"--vhdl-ams", "setup the analyzer to process the VHDL AMS language standard", &vhdl_ams, ArgumentParser::BOOLEAN},
       {"--vhdl-2001", "setup the analyzer to process the VHDL 2001 language standard", &vhdl_2001, ArgumentParser::BOOLEAN},
-      {"--version", "print version number and exit.", &print_version, ArgumentParser::BOOLEAN },
+      {"--version", "print version number and exit", &print_version, ArgumentParser::BOOLEAN },
       {"--verbose", "verbose output", &verbose_output, ArgumentParser::BOOLEAN }
    };
 
@@ -197,7 +199,9 @@ main (int argc, char *argv[]) {
       exit( -1 );
    }
 
-   IIR_DesignFileList *iir_design_files_processed = NULL;    
+   IIR_DesignFileList *iir_verilog_design_files_processed = NULL;
+   IIR_DesignFileList *iir_vhdl_design_files_processed = NULL;
+   IIR_DesignFileList *iir_merged_design_files_processed = NULL;
    string work_lib_name = "work";
    if( design_library_name != "" ){
       work_lib_name = design_library_name;
@@ -205,22 +209,39 @@ main (int argc, char *argv[]) {
 
    library_manager::instance()->init_std_library(ScramStandardPackage::instance());
 
-   scram parser( true, work_lib_name,
-         scram_plugin_class_factory::instance(),
-         ScramStandardPackage::instance() );
-
-   if(argc > 1) {
-      iir_design_files_processed = parser.parse_files( ap.getVHDLFiles() );  
+   if(ap.getVHDLFiles().size() > 0) {
+      /* Create VHDL IR */
+      scram parser( true, work_lib_name,
+            scram_plugin_class_factory::instance(),
+            ScramStandardPackage::instance() );
+      iir_vhdl_design_files_processed = parser.parse_files( ap.getVHDLFiles() );  
 
       if( parse_error == FALSE ){
-         cerr << "Parse complete - no errors." << endl;
+         cerr << "VHDL parse complete - no errors." << endl;
       }
       else{
          exit( -1 );
       }
    }
 
-   if( iir_design_files_processed != NULL ){
+   if(ap.getVerilogFiles().size() > 0) {
+      /* create verilog IR */
+      VeriParser parser( work_lib_name, scram_plugin_class_factory::instance(), ScramStandardPackage::instance() );
+      iir_verilog_design_files_processed = parser.parse_verilog( ap.getVerilogFiles() );
+   }
+
+   if(iir_verilog_design_files_processed && iir_vhdl_design_files_processed) {
+      // merge the 2
+         iir_merged_design_files_processed = iir_vhdl_design_files_processed;
+   } else {
+      if(iir_verilog_design_files_processed) {
+         iir_merged_design_files_processed = iir_verilog_design_files_processed;
+      } else {
+         iir_merged_design_files_processed = iir_vhdl_design_files_processed;
+      }
+   }
+
+   if( iir_merged_design_files_processed != NULL ) {
       // Initialize the library module manager to search for the plugin in the plugins directory
       plugin_interface            *plugin = NULL;
 
@@ -235,13 +256,13 @@ main (int argc, char *argv[]) {
 
       // Now we'll walk the list, and process the tree for VHDL
       if (publish_vhdl == true) {
-         IIR *to_publish = iir_design_files_processed->first();
+         IIR *to_publish = iir_merged_design_files_processed->first();
          while( to_publish != NULL ){
             ASSERT( dynamic_cast<IIR_DesignFile *>( to_publish ) );
             to_publish->publish_vhdl( cout );
             cout.flush();
             to_publish =
-               iir_design_files_processed->successor( dynamic_cast<IIR_DesignFile *>(to_publish) );
+               iir_merged_design_files_processed->successor( dynamic_cast<IIR_DesignFile *>(to_publish) );
          }
       }
 
@@ -256,12 +277,12 @@ main (int argc, char *argv[]) {
          plugin = dynamic_cast<plugin_interface *>(module);
 
          // Now we'll walk the list, and process the tree(s) for plugins
-         IIR_DesignFile *to_publish = dynamic_cast<IIR_DesignFile *>(iir_design_files_processed->first());
+         IIR_DesignFile *to_publish = dynamic_cast<IIR_DesignFile *>(iir_merged_design_files_processed->first());
          while( to_publish != NULL ){
             if ((publish_cc == true) && (iter == plugin_names.begin())){
                cerr << "Starting C++ code generation..." << endl;
                char last_unit = false;
-               if( iir_design_files_processed->successor( to_publish ) == NULL ){
+               if( iir_merged_design_files_processed->successor( to_publish ) == NULL ){
                   last_unit = true;
                }
                char **arg_list = new char *;
@@ -276,7 +297,7 @@ main (int argc, char *argv[]) {
                cerr << "Plugin processing completed." << endl;
             }
 
-            to_publish = dynamic_cast<IIR_DesignFile *>(iir_design_files_processed->successor( to_publish ));
+            to_publish = dynamic_cast<IIR_DesignFile *>(iir_merged_design_files_processed->successor( to_publish ));
          }
 
          PluginManager::instance()->unloadPlugin(*iter);
