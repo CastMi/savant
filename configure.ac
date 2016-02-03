@@ -34,6 +34,8 @@ AC_SUBST(SAVANT_VERSION,[2.0-pre040909])
 # Checks for programs.
 AC_PROG_CXX
 AC_PROG_CXXCPP
+AC_PROG_YACC
+AC_C_INLINE
 AM_PROG_LEX
 AC_PROG_INSTALL
 AC_PROG_LIBTOOL
@@ -98,6 +100,7 @@ AC_CONFIG_FILES([Makefile \
 	src/aire/iir/Makefile \
 	src/aire/iir/visitor/Makefile \
 	src/analyzer/Makefile \
+	src/verianalyzer/Makefile \
 	src/util/Makefile \
 	lib/Makefile \
 	lib/vhdl/Makefile \
