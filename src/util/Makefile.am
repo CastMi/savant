@@ -68,6 +68,7 @@ libsavantutils_la_SOURCES = \
 	stack.hh \
 	string_utils.cc \
 	string_utils.hh \
+	generic_parser.hh \
 	PluginStandardPackage.hh \
 	PluginStandardPackage.cc
 
@@ -94,6 +95,7 @@ library_include_HEADERS =  \
 	signal_set.hh \
 	stack.hh \
 	string_utils.hh \
+	generic_parser.hh \
 	PluginStandardPackage.hh \
 	plugin_class_factory.hh \
 	plugin_interface.hh

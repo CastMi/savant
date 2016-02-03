@@ -26,6 +26,7 @@
 
 #include "savant_config.hh"
 #include "savant.hh"
+#include "generic_parser.hh"
 #include <string>
 #include <vector>
 
@@ -44,7 +45,7 @@ using std::vector;
 
 /** This class encapsulates a VHDL Parser. */
 
-class scram {
+class scram : public generic_parser {
 public:
   /** Constructor - called by main */
   scram( bool init_need_to_write_libraries,
@@ -67,23 +68,23 @@ public:
 
   /** This method returns the IIR_LibraryDeclaration that was used for this
       execution of the parser for the VHDL library "work". */
-  IIR_LibraryDeclaration *get_work_library() const;
+  IIR_LibraryDeclaration *get_work_library() const override;
 
   /** Return the symbol_table associated with this parser. */
-  symbol_table                  *get_symbol_table() const { return my_symbol_table; }
+  symbol_table                  *get_symbol_table() const override { return my_symbol_table; }
 
   /** Return the VHDL Standard Package implementaion associated with this parser */
   StandardPackage               *get_standard_package() const { return my_std_package; }
 
   /** Return the class factory associated with this parser */
-  plugin_class_factory       *get_class_factory() const { return my_class_factory; }
+  plugin_class_factory       *get_class_factory() const override { return my_class_factory; }
 
   /** Does this parser need to write out VHDL libraries? */
   void set_need_to_write_libraries(bool value){
     need_to_write_libraries=value;
   }
 
-  scram                         *convert_node(plugin_class_factory *);
+  scram                         *convert_node(plugin_class_factory *) override;
 
 private:
   symbol_table                  *my_symbol_table;

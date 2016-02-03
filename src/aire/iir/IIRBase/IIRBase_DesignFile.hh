@@ -33,6 +33,7 @@
 class IIR_Identifier;
 class IIR_CommentList;
 class IIR_LibraryUnitList;
+class generic_parser;
 
 class IIRBase_DesignFile : public virtual IIRBase, public virtual IIR_DesignFile{
 
@@ -57,7 +58,7 @@ public:
   plugin_class_factory          *get_class_factory();
   void                          set_class_factory(plugin_class_factory *);
 
-  void                          set_parser( scram *new_parser );
+  void                          set_parser( generic_parser *new_parser );
   IIR_LibraryDeclaration        *get_work_library();
 
   void publish_vhdl(ostream &);
@@ -68,7 +69,7 @@ protected:
   StandardPackage               *my_std_package;
   plugin_class_factory          *my_factory;
 
-  scram                         *my_parser;
+  generic_parser                         *my_parser;
 private:
   // List Variable(s)
   IIR_CommentList               *comments;

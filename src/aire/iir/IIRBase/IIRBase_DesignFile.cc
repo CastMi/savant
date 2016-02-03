@@ -143,7 +143,7 @@ IIRBase_DesignFile::set_class_factory(plugin_class_factory *factory) {
 }
 
 void 
-IIRBase_DesignFile::set_parser( scram *new_parser ){
+IIRBase_DesignFile::set_parser( generic_parser *new_parser ){
   ASSERT( my_parser == NULL || my_parser == new_parser );
   my_parser = new_parser;
   my_factory = new_parser->get_class_factory();
