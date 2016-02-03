@@ -38,7 +38,7 @@ class IIR_CommentList;
 class IIR_LibraryUnitList;
 class IIR_LibraryDeclaration;
 class StandardPackage;
-class scram;
+class generic_parser;
 
 class IIR_DesignFile : public virtual IIR{
 
@@ -60,7 +60,7 @@ public:
   virtual plugin_class_factory   *get_class_factory() = 0;
   virtual void                   set_class_factory(plugin_class_factory *) = 0;
 
-  virtual void                   set_parser( scram *new_parser ) = 0;
+  virtual void                   set_parser( generic_parser *new_parser ) = 0;
 
   /**
      Get the library declaration what was "work" when this file was analyzed.

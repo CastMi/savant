@@ -21,17 +21,33 @@
 #include <string>
 #include <vector>
 #include "StandardPackage.hh"
+#include "generic_parser.hh"
 class IIR_DesignFileList;
+class symbol_table;
 class plugin_class_factory;
 
-class VeriParser {
+class VeriParser : public generic_parser {
    public:
       VeriParser(const std::string &, plugin_class_factory*, StandardPackage* );
+      ~VeriParser() {};
+
       IIR_DesignFileList* parse_verilog(const std::vector<std::string> & c_trace_filename);
+
+      virtual IIR_LibraryDeclaration *get_work_library() const override { return work_library; };
+
+      virtual generic_parser* convert_node(plugin_class_factory *) override { return this; };
+
+      virtual symbol_table* get_symbol_table() const override { return my_sym_table; };
+
+      virtual plugin_class_factory* get_class_factory() const override { return my_factory; };
    private:
-IIR_LibraryDeclaration* work_library;
-plugin_class_factory* my_factory;
-StandardPackage* my_package;
+      IIR_LibraryDeclaration* work_library;
+
+      plugin_class_factory* my_factory;
+
+      StandardPackage* my_package;
+
+      symbol_table* my_sym_table;
 
 };
 

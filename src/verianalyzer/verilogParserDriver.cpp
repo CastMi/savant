@@ -23,10 +23,12 @@
 #include "IIRBase_Identifier.hh"
 #include "IIR_LibraryDeclaration.hh"
 #include "library_manager.hh"
+#include "symbol_table.hh"
 
 VeriParser::VeriParser(const std::string & name, plugin_class_factory* fact, StandardPackage* pack) :
    my_factory(fact),
-   my_package(pack) {
+   my_package(pack),
+   my_sym_table( new symbol_table(my_package) ) {
    work_library = library_manager::instance()->find_or_create_library( name, fact );
    ASSERT(work_library);
    } 
@@ -43,6 +45,7 @@ VeriParser::parse_verilog(const std::vector<std::string> & c_trace_filename)
          verilog_file->set_standard_package( my_package );
          verilog_file->set_class_factory( my_factory );
          verilog_file->set_name( IIRBase_Identifier::get(*it, my_factory ));
+         verilog_file->set_parser( this );
          if(work_library->get_design_file() == 0)
             work_library->set_design_file(verilog_file);
          verilog_parse( *it, verilog_file, my_factory );
