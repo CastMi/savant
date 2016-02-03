@@ -4,6 +4,7 @@ class VerilogFlexLexer;
 #include <vector>
 #include "IRBasicDataTypes.hh"
 #include "plugin_class_factory.hh"
+class symbol_table;
 typedef struct {
    IIR_Mode dir;
    char* name;
@@ -12,15 +13,17 @@ typedef struct {
   * The verilog parser driver will include this header and therefore
   * it needs this declaration.
   */
-void verilog_parse(const std::string & fname, IIR_DesignFile* verilog_file, plugin_class_factory* fac);
+void verilog_parse(const std::string & fname, IIR_LibraryDeclaration* the_lib, symbol_table* sym_tab, IIR_DesignFile* verilog_file, StandardPackage *, plugin_class_factory* fac);
 }
 
 %{
+#include "IIR_LibraryDeclaration.hh"
+#include "StandardPackage.hh"
+#include "IIRScram_DesignFile.hh"
 #include "IIRScram_EntityDeclaration.hh"
 #include "IIRScram_LibraryUnit.hh"
 #include "IIRScram_Identifier.hh"
 #include "symbol_table.hh"
-class IIR_DesignFile;
 
 #include "verilogParser.hpp"
 #include "verilogLexer.hpp"
@@ -35,7 +38,10 @@ int yyFlexLexer::yylex(){return 0;}
 int yylex (YYSTYPE *lvalp, VerilogFlexLexer* lexer);
 int yyerror (IIR_DesignFile* ir_verilog, VerilogFlexLexer* lexer, plugin_class_factory* fac, char const *msg);
 
-IIRScram_LibraryUnit * ent = new IIRScram_EntityDeclaration();
+symbol_table * my_symbol_table;
+StandardPackage* my_package;
+IIRScram_LibraryUnit * ent;
+IIR_LibraryDeclaration * lib_dec;
 IIRScram_LibraryUnit * arc;
 
 %}
@@ -105,10 +111,14 @@ description_list
 module
   : K_module IDENTIFIER
       {
+      my_symbol_table->open_scope( ent );
+      ent = new IIRScram_EntityDeclaration();
       // return value
       IIR_Identifier * ident = IIRBase_Identifier::get( $2, strlen($2), fac );
       // entity_declaration
       ent->set_declarator (ident);
+      // FIXME: all the zeros are the debugging infos
+      ent->set_base_info(ir_verilog, 0,0,0);
       dynamic_cast<IIRScram_EntityDeclaration *>(ent)->_add_declaration_and_open_scope();
       }
     LPAR list_of_identifiers RPAR SEMI
@@ -116,7 +126,9 @@ module
       }
     module_item_list
     K_endmodule
-      {  }
+      {
+      my_symbol_table->close_scope(ent);
+      }
   ;
 
 module_item_list
@@ -175,8 +187,11 @@ list_of_identifiers
 
 %%
 
-void verilog_parse(const std::string & fname, IIR_DesignFile* verilog_file, plugin_class_factory* fac)
+void verilog_parse(const std::string & fname, IIR_LibraryDeclaration* the_lib, symbol_table* sym_tab, IIR_DesignFile* verilog_file, StandardPackage* mypackage, plugin_class_factory* fac)
 {
+   my_symbol_table = sym_tab;
+   my_package = mypackage;
+   lib_dec = the_lib;
    std::istream* is = new std::ifstream(fname.c_str());
    VerilogFlexLexer *lexer = new VerilogFlexLexer(is, 0);
    yydebug=1;

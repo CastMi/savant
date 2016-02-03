@@ -48,7 +48,7 @@ VeriParser::parse_verilog(const std::vector<std::string> & c_trace_filename)
          verilog_file->set_parser( this );
          if(work_library->get_design_file() == 0)
             work_library->set_design_file(verilog_file);
-         verilog_parse( *it, verilog_file, my_factory );
+         verilog_parse( *it, work_library, my_sym_table, verilog_file, my_package, my_factory );
          res->append( verilog_file );
       }
       return res;
