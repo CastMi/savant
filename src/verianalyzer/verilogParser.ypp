@@ -1,0 +1,195 @@
+%code requires{
+class VerilogFlexLexer;
+// The %union uses the following
+#include <vector>
+#include "IRBasicDataTypes.hh"
+#include "plugin_class_factory.hh"
+typedef struct {
+   IIR_Mode dir;
+   char* name;
+} portl;
+/**
+  * The verilog parser driver will include this header and therefore
+  * it needs this declaration.
+  */
+void verilog_parse(const std::string & fname, IIR_DesignFile* verilog_file, plugin_class_factory* fac);
+}
+
+%{
+#include "IIRScram_EntityDeclaration.hh"
+#include "IIRScram_LibraryUnit.hh"
+#include "IIRScram_Identifier.hh"
+#include "symbol_table.hh"
+class IIR_DesignFile;
+
+#include "verilogParser.hpp"
+#include "verilogLexer.hpp"
+int yyFlexLexer::yywrap(){return 1;}
+int yyFlexLexer::yylex(){return 0;}
+
+#include <string>
+#include <list>
+#include <cstring>
+#include <fstream>
+
+int yylex (YYSTYPE *lvalp, VerilogFlexLexer* lexer);
+int yyerror (IIR_DesignFile* ir_verilog, VerilogFlexLexer* lexer, plugin_class_factory* fac, char const *msg);
+
+IIRScram_LibraryUnit * ent = new IIRScram_EntityDeclaration();
+IIRScram_LibraryUnit * arc;
+
+%}
+
+
+/*
+ * The following lines result in the signatures
+ * int yyparse (plugin_class_factory* fac, VerilogFlexLexer* lexer, IIR_DesignFile* ir_verilog);
+ * int yyerror (IIR_DesignFile* ir_verilog, VerilogFlexLexer* lexer, plugin_class_factory* fac, char const *msg);
+ * TODO: add a flag for the lever or warning
+ */
+%parse-param {IIR_DesignFile* ir_verilog}
+%parse-param {VerilogFlexLexer* lexer}
+%parse-param {plugin_class_factory* fac}
+
+/*
+ * The following line results in the signature
+ * int yylex (VerilogFlexLexer* lexer);
+ */
+%lex-param {VerilogFlexLexer* lexer}
+
+%union {
+      bool flag;
+      char letter;
+      int  int_val;
+      char* text;
+      std::vector<char*>* strings;
+      IIR_Mode direction;
+      portl portlist;
+      std::vector<portl*>* params;
+};
+
+%define api.pure full
+%define parse.trace
+%debug
+%expect 0
+
+/* Token with values */
+%token <text> IDENTIFIER
+
+/* Token with no values */
+%token SEMI COMMA LPAR RPAR
+%token K_endmodule K_module K_input K_output list_of
+
+/* Non end literals with values */
+%type <strings> list_of_identifiers
+%type <direction> port_direction
+%type <portlist> module_item
+%type <params> module_item_list
+
+%start source_text
+%%
+
+source_text
+   : description_list
+   ;
+
+description
+  : module
+  ;
+
+description_list
+  : description
+  | description_list description
+  ;
+
+module
+  : K_module IDENTIFIER
+      {
+      // return value
+      IIR_Identifier * ident = IIRBase_Identifier::get( $2, strlen($2), fac );
+      // entity_declaration
+      ent->set_declarator (ident);
+      dynamic_cast<IIRScram_EntityDeclaration *>(ent)->_add_declaration_and_open_scope();
+      }
+    LPAR list_of_identifiers RPAR SEMI
+      {
+      }
+    module_item_list
+    K_endmodule
+      {  }
+  ;
+
+module_item_list
+  : module_item_list module_item
+    {
+    ASSERT($2.name != NULL);
+    $1->push_back(new portl($2));
+    $$ = $1;
+    }
+  | module_item
+    {
+    $$ = new std::vector<portl*>{new portl($1)};
+    }
+  ;
+
+module_item
+  :  port_direction IDENTIFIER SEMI
+      {
+      ASSERT($2 != NULL);
+      $$ = { $1, $2 };
+      }
+	;
+
+port_direction
+  : K_input 
+  {
+  $$ = IIR_IN_MODE; 
+  }
+  | error
+  {
+  // FIXME:
+  // by default is considered input!
+  yyerror(ir_verilog, lexer, fac, "port_direction not recognized. The port is assumed to be input");
+  $$ = IIR_IN_MODE; 
+  }
+  | K_output
+  {
+  $$ = IIR_OUT_MODE;
+  }
+  ;
+
+list_of_identifiers
+	: list_of_identifiers COMMA IDENTIFIER
+                {
+                assert($3);
+                assert($1);
+                $1->push_back($3);
+                $$ = $1;
+                }
+	| IDENTIFIER
+                {
+                assert($1);
+                $$ = new std::vector<char*>{$1};
+                }
+	;
+
+%%
+
+void verilog_parse(const std::string & fname, IIR_DesignFile* verilog_file, plugin_class_factory* fac)
+{
+   std::istream* is = new std::ifstream(fname.c_str());
+   VerilogFlexLexer *lexer = new VerilogFlexLexer(is, 0);
+   yydebug=1;
+   yyparse (verilog_file, lexer, fac);
+}
+
+int yylex (YYSTYPE *lvalp, VerilogFlexLexer* lexer)
+{
+   lexer->lvalp = lvalp;
+   return lexer->yylex();
+}
+
+int yyerror (IIR_DesignFile* , VerilogFlexLexer* lexer, plugin_class_factory* , char const *msg)
+{
+   lexer->yyerror(msg);
+}
