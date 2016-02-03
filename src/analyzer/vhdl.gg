@@ -22,7 +22,6 @@
 #ifndef SCRAM_HEADER_DEFS
 #define SCRAM_HEADER_DEFS
 
-#include <FlexLexer.h>
 #include "vhdl.hh"
 #include "VHDLToken.hh"
 #include "ATokPtr.h"
