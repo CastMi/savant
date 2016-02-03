@@ -32,6 +32,7 @@ bin_PROGRAMS = scram
 scram_CPPFLAGS = \
    -I$(top_srcdir)/src \
    -I$(top_srcdir)/src/analyzer \
+   -I$(top_srcdir)/src/verianalyzer \
    -I$(top_srcdir)/src/aire/iir/IIR \
    -I$(top_srcdir)/src/aire \
    -I$(top_srcdir)/src/aire/iir/IIRScram \
@@ -48,6 +49,7 @@ scram_LDFLAGS = -export-dynamic -static
 scram_LDADD = \
 	$(top_builddir)/src/aire/libaire.la \
 	$(top_builddir)/src/util/libsavantutils.la \
+	$(top_builddir)/src/verianalyzer/lib_verilog_parser.la \
 	$(top_builddir)/src/analyzer/libscram.la \
 	$(top_builddir)/src/libpccts.la \
 	-lclutils \

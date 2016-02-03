@@ -27,11 +27,11 @@
 
 include $(top_srcdir)/Makefile.am.common
 
-SUBDIRS = aire analyzer util
+SUBDIRS = aire analyzer util verianalyzer
 
 noinst_LTLIBRARIES = libpccts.la
 
-libpccts_la_SOURCES = \
+BUILT_SOURCES = \
 	ATokenBuffer.cpp \
 	AParser.cpp
 
@@ -43,6 +43,9 @@ library_includedir = $(includedir)/savant
 library_include_HEADERS =  \
 	savant.hh \
 	savant_config.hh 
+
+libpccts_la_SOURCES = \
+	$(BUILT_SOURCES)
 
 ATokenBuffer.cpp: analyzer/vhdl.gg
 	cp $(PCCTSROOT)/ATokenBuffer.cpp $(top_builddir)/src
