@@ -19,8 +19,8 @@
  * Makes the scanner not call `yywrap()' upon an
  * end-of-file, but simply assume that there are
  * no more files to scan.
+ * %option noyywrap
  */
-%option noyywrap
 
 /* 
  * Causes the default rule (that unmatched scanner

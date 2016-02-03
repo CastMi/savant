@@ -36,6 +36,8 @@
 #include "IIRScram_IntegerLiteral.hh"
 #include "IIRScram_StringLiteral.hh"
 #include <fstream>
+#undef yyFlexLexer
+#define yyFlexLexer xxFlexLexer
 #include <FlexLexer.h>
 
 using std::ifstream;

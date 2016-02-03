@@ -21,8 +21,7 @@
 
 %}
 
-%option yyclass="VHDLLexer"
-%option noyywrap
+/* %option noyywrap */
 
 %s ATTR
 %s AMSATTR
@@ -32,10 +31,10 @@
 %s VHDL2001
 
 %{
-#undef yyFlexLexer
-#include <FlexLexer.h>
 #include "VHDLLexer.hh"
 #include "VHDLTokenTypes.hh"
+int yyFlexLexer::yywrap(){return 1;}
+int yyFlexLexer::yylex(){return 0;}
 #include <ctype.h>
 #include "language_processing_control.hh"
 #include "IIRScram_Comment.hh"

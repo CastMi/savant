@@ -27,7 +27,7 @@
 
 include $(top_srcdir)/Makefile.am.common
 
-IEEE_INPUT_DIR = $(top_srcdir)/lib/vhdl/ieee
+IEEE_INPUT_DIR=$(top_srcdir)/lib/vhdl/ieee
 IEEE_OUTPUT_DIR = $(top_builddir)/lib/vhdl/ieee/ieee._savant_lib
 
 install-data-local: $(IEEE_OUTPUT_DIR)
@@ -49,6 +49,8 @@ install-data-local: $(IEEE_OUTPUT_DIR)
 		$(IEEE_OUTPUT_DIR)/math_real_package.vhdl \
 		$(IEEE_OUTPUT_DIR)/math_complex_package.vhdl \
 		$(libdir)/savant/lib/ieee._savant_lib
+
+
 	$(INSTALL_DATA) $(IEEE_INPUT_DIR)/std_logic_1164.vhd \
 		$(IEEE_INPUT_DIR)/timing_p.vhd \
 		$(IEEE_INPUT_DIR)/timing_b.vhd \

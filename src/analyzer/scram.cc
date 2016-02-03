@@ -27,7 +27,6 @@
 #include "scram.hh"
 #include "savant.hh"
 #include "symbol_table.hh"
-#include <FlexLexer.h>
 #include "VHDLLexer.hh"
 #include "VHDLParser.h"
 #include "error_func.hh"
@@ -84,10 +83,10 @@ scram::~scram(){
 
 IIR_DesignFileList *
 scram::parse_files( const vector<string> &fileList ){
+  // For each file: parse it and add the result to "my_design_files"
   for( vector<string>::const_iterator currentFile = fileList.begin();
        currentFile < fileList.end();
        currentFile++ ){
-    cerr << "Processing file " << *currentFile << endl;
     IIR_DesignFile *parsed_file = parse_file( *currentFile, my_work_library );
     my_design_files->append( parsed_file );
   }
@@ -100,7 +99,7 @@ scram::parse_file( const string &filename, IIR_LibraryDeclaration *lib ){
   ifstream yyin( filename.c_str() );
 
   if( verbose_output == true ){
-    cerr << "Parse_file parsing " << filename << endl;
+    cerr << "Start parsing file " << filename << endl;
   }
 
   if (yyin.fail()) {

@@ -34,10 +34,10 @@ man_MANS = $(top_srcdir)/doc/scram.1
 
 BUILT_SOURCES = \
 	vhdl.cpp			\
-	VHDLLexer.cc			\
 	VHDLParser.cpp			\
 	VHDLParser.h			\
-	VHDLTokenTypes.hh
+	VHDLTokenTypes.hh \
+	VHDLLexer.cc
 
 noinst_LTLIBRARIES = libscram.la
 
