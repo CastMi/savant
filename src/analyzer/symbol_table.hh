@@ -269,7 +269,7 @@ private:
   /** This is a list of filenames that we've been told we've scanned in use
       clauses. */
   savant::set<IIR_Declaration> use_clause_entries;
-
+  
   savant::set<IIR_TypeDeclaration> incomplete_types;
   savant::set<IIR_TypeDeclaration> designates_incomplete_type;
 

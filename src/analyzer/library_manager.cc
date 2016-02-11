@@ -1092,8 +1092,7 @@ library_manager::lookup_default_architecture( IIR_EntityDeclaration *entity_decl
   // So, we want to build a secondary unit path, and then find all of the
   // arches in there and grab the most recent.
   const string secondary_unit_path = build_secondary_unit_directory_name( entity_decl );
-  string filename;
-  filename = FileManager::instance()->findNewestFile( ".*_arch.vhdl",
+  string filename = FileManager::instance()->findNewestFile( ".*_arch.vhdl",
 						      secondary_unit_path);
   if( filename != "" ){
     string full_path;
