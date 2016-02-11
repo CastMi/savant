@@ -33,13 +33,13 @@ class VeriParser : public generic_parser {
 
       IIR_DesignFileList* parse_verilog(const std::vector<std::string> & c_trace_filename);
 
-      virtual IIR_LibraryDeclaration *get_work_library() const override { return work_library; };
+      virtual IIR_LibraryDeclaration *get_work_library() const override { assert(work_library != NULL); return work_library; };
 
-      virtual generic_parser* convert_node(plugin_class_factory *) override { return this; };
+      virtual generic_parser* convert_node(plugin_class_factory *) override;
 
-      virtual symbol_table* get_symbol_table() const override { return my_sym_table; };
+      virtual symbol_table* get_symbol_table() const override { assert(my_sym_table != NULL); return my_sym_table; };
 
-      virtual plugin_class_factory* get_class_factory() const override { return my_factory; };
+      virtual plugin_class_factory* get_class_factory() const override { assert(my_factory != NULL); return my_factory; };
    private:
       IIR_LibraryDeclaration* work_library;
 
@@ -49,6 +49,9 @@ class VeriParser : public generic_parser {
 
       symbol_table* my_sym_table;
 
+      IIR_DesignFileList* my_design_files;
+
+      VeriParser* transmuted_node;
 };
 
 #endif //VERILOG_PARSER_DRIVER_HPP
