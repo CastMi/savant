@@ -2,6 +2,7 @@
 class VerilogFlexLexer;
 // The %union uses the following
 #include <vector>
+#include "IIRScram_IdentifierList.hh"
 #include "IRBasicDataTypes.hh"
 #include "plugin_class_factory.hh"
 class symbol_table;
@@ -23,6 +24,22 @@ void verilog_parse(const std::string & fname, IIR_LibraryDeclaration* the_lib, s
 #include "IIRScram_EntityDeclaration.hh"
 #include "IIRScram_LibraryUnit.hh"
 #include "IIRScram_Identifier.hh"
+#include "IIR_DeclarationList.hh"
+#include "IIRScram_ConcurrentConditionalSignalAssignment.hh"
+#include "IIR_PortList.hh"
+#include "IIR_ArchitectureStatementList.hh"
+#include "IIRScram_InterfaceDeclaration.hh"
+#include "IIRScram_SignalInterfaceDeclaration.hh"
+#include "library_manager.hh"
+#include "IIR_LibraryUnitList.hh"
+#include "IIR_DesignFile.hh"
+#include "IIRScram_SimpleName.hh"
+#include "IIRScram_SelectedName.hh"
+#include "IIRScram_SubprogramDeclaration.hh"
+#include "IIRScram_DeclarationList.hh"
+#include "IIR_IntegerSubtypeDefinition.hh"
+#include "IIRScram_DesignatorByAll.hh"
+#include "IIRScram_EnumerationSubtypeDefinition.hh"
 #include "symbol_table.hh"
 
 #include "verilogParser.hpp"
@@ -71,6 +88,7 @@ IIRScram_LibraryUnit * arc;
       std::vector<char*>* strings;
       IIR_Mode direction;
       portl portlist;
+      IIRScram_IdentifierList* id_list;
       std::vector<portl*>* params;
 };
 
@@ -87,7 +105,7 @@ IIRScram_LibraryUnit * arc;
 %token K_endmodule K_module K_input K_output list_of
 
 /* Non end literals with values */
-%type <strings> list_of_identifiers
+%type <id_list> list_of_identifiers
 %type <direction> port_direction
 %type <portlist> module_item
 %type <params> module_item_list
@@ -111,23 +129,49 @@ description_list
 module
   : K_module IDENTIFIER
       {
-      my_symbol_table->open_scope( ent );
+      lib_dec->set_base_info(ir_verilog, 0, 0, 0);
+      my_symbol_table->open_scope( lib_dec );
       ent = new IIRScram_EntityDeclaration();
       // return value
       IIR_Identifier * ident = IIRBase_Identifier::get( $2, strlen($2), fac );
       // entity_declaration
       ent->set_declarator (ident);
       // FIXME: all the zeros are the debugging infos
-      ent->set_base_info(ir_verilog, 0,0,0);
+      ent->set_base_info(ir_verilog, 0, 0, 0);
       dynamic_cast<IIRScram_EntityDeclaration *>(ent)->_add_declaration_and_open_scope();
       }
     LPAR list_of_identifiers RPAR SEMI
       {
+      dynamic_cast<IIRScram_EntityDeclaration*>(ent)->get_port_clause()->set_base_info(ir_verilog, 0, 0, 0);
+      for( IIRScram_Identifier* id = dynamic_cast<IIRScram_Identifier *>($5->first());
+      id!=NULL;
+      id = dynamic_cast<IIRScram_Identifier *>($5->successor(id)) ){
+        IIRScram_InterfaceDeclaration *new_decl = new IIRScram_SignalInterfaceDeclaration();
+        
+        dynamic_cast<IIRScram_SignalInterfaceDeclaration*>(new_decl)->set_signal_kind(IIR_NO_SIGNAL_KIND);
+        new_decl->set_declarator(id);
+        new_decl->set_mode(IIR_IN_MODE);
+        new_decl->set_base_info(ir_verilog, 0, 0, 0);
+        assert(my_package->get_positive_type() != NULL);
+        new_decl->set_subtype(my_package->get_positive_type());
+        dynamic_cast<IIRScram_EntityDeclaration*>(ent)->get_port_clause()->append(new_decl);
+      }
+      my_symbol_table->add_declaration( dynamic_cast<IIRScram_EntityDeclaration*>(ent)->get_port_clause());
       }
     module_item_list
     K_endmodule
       {
-      my_symbol_table->close_scope(ent);
+      dynamic_cast<IIRScram_EntityDeclaration*>(ent)->get_entity_declarative_part()->set_base_info(ir_verilog, 0,0,0);
+      dynamic_cast<IIRScram_EntityDeclaration*>(ent)->get_entity_statement_part()->set_base_info(ir_verilog, 0,0,0);
+      dynamic_cast<IIRScram_EntityDeclaration *>(ent)->_type_check();
+      if( lib_dec->get_primary_units()->in_list( lib_dec ) == false ){
+         lib_dec->get_primary_units()->append( ent );
+      }
+      //library_manager::instance()->parse_into_work_dir( ent );
+      my_symbol_table->close_scope( ent );
+      my_symbol_table->close_scope( lib_dec );
+      
+      ir_verilog->get_library_units()->append(ent);
       }
   ;
 
@@ -175,13 +219,15 @@ list_of_identifiers
                 {
                 assert($3);
                 assert($1);
-                $1->push_back($3);
+                $1->append(IIRBase_Identifier::get(std::string($3), fac));
                 $$ = $1;
                 }
 	| IDENTIFIER
                 {
                 assert($1);
-                $$ = new std::vector<char*>{$1};
+                IIRScram_IdentifierList * the_list = new IIRScram_IdentifierList();
+                the_list->append(IIRBase_Identifier::get(std::string($1), fac));
+                $$ = the_list;
                 }
 	;
 
