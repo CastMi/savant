@@ -25,10 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "savant.hh"
 #include "IIR_AssociationList.hh"
 #include "IIR_Declaration.hh"

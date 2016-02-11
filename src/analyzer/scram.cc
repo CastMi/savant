@@ -145,7 +145,7 @@ scram::get_work_library() const {
   return my_work_library;
 }
 
-scram *
+generic_parser *
 scram::convert_node(plugin_class_factory *factory) {
   if (transmuted_node != NULL) {
     return transmuted_node;

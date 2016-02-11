@@ -203,7 +203,7 @@ main (int argc, char *argv[]) {
    IIR_DesignFileList *iir_vhdl_design_files_processed = NULL;
    IIR_DesignFileList *iir_merged_design_files_processed = NULL;
    string work_lib_name = "work";
-   if( design_library_name != "" ){
+   if( !design_library_name.empty() ){
       work_lib_name = design_library_name;
    }  
 
