@@ -80,7 +80,7 @@ public:
      argRecordArray( recordPtr ) {};
   ~ArgumentParser() {};
 
-  void vectorifyArguments( int argc, char **argv, bool skipFirst = true );
+  bool vectorifyArguments( int argc, char **argv, bool skipFirst = true );
   
   std::vector<std::string>& getVerilogFiles();
   std::vector<std::string>& getVHDLFiles();
@@ -101,12 +101,12 @@ private:
       @param complainOnError Whether to complain about unrecognized
       arguments or not.
   */
-  void checkArgs( std::vector<std::string> &args, bool = true );
+  bool checkArgs( std::vector<std::string> &args, bool = true );
 
   /** This method checks the arguments passed in to see if there are any in
       the form "-blah" and complains, if the global var
       "complainAndExitOnError" is set to true. */
-  void checkRemaining( std::vector<std::string> &args,
+  bool checkRemaining( std::vector<std::string> &args,
 		       bool complainAndExitOnError);
 };
 

@@ -157,7 +157,8 @@ main (int argc, char *argv[]) {
    };
 
    ArgumentParser ap( arg_list );
-   ap.vectorifyArguments( argc, argv );
+   if( !ap.vectorifyArguments( argc, argv ) )
+      exit( EXIT_FAILURE );
 
    if (print_version) {
       cerr << VERSION << "\n";
