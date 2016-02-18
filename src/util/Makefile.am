@@ -68,6 +68,8 @@ libsavantutils_la_SOURCES = \
 	stack.hh \
 	string_utils.cc \
 	string_utils.hh \
+	consistency.hpp \
+	consistency.cpp \
 	generic_parser.hh \
 	PluginStandardPackage.hh \
 	PluginStandardPackage.cc
@@ -81,6 +83,7 @@ library_include_HEADERS =  \
 	ArgumentParser.hh \
 	ProcessCombiner.hh \
 	break_handler.hh \
+	consistency.hpp \
 	container.hh \
 	dl_list.hh \
 	elaborate_info.hh \
