@@ -53,6 +53,7 @@
 #include "error_func.hh"
 #include "set.hh"
 #include "library_manager.hh"
+#include "consistency.hpp"
 
 #include <sstream>
 
@@ -142,6 +143,7 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_entity(
 void
 IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_component(){
   constraint_functor *functor = new is_component_declaration_functor();
+  assert(_get_instantiated_unit() != NULL);
   savant::set<IIRScram_Declaration> *instantiated_unit_decls =
     _get_instantiated_unit()->_symbol_lookup(functor);
   delete functor;
@@ -177,6 +179,12 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_compone
     case 1:{
       IIRScram_Declaration *instantiated_decl = instantiated_unit_decls->getElement();
       set_instantiated_unit( _get_instantiated_unit()->_decl_to_decl( instantiated_decl ) );
+      if(dynamic_cast<IIRScram_ComponentDeclaration*>(get_instantiated_unit())->_get_entity() == NULL) {
+         // unknown entity fo the component...perhaps a Verilog module?
+         auto tmp = consistency::instance()->get_missing();
+         if(std::find(tmp.begin(), tmp.end(), this) == tmp.end())
+            consistency::instance()->add_missing(this);
+      }
       break;
     }
     default:{
