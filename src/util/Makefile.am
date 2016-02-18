@@ -29,6 +29,8 @@ include $(top_srcdir)/Makefile.am.common
 
 lib_LTLIBRARIES = libsavantutils.la
 
+libsavantutils_la_LIBADD = -lboost_program_options
+
 libsavantutils_la_CPPFLAGS = \
 	-I$(top_builddir)/src/analyzer \
 	-I$(top_srcdir)/src/aire/iir/IIR \
@@ -40,7 +42,7 @@ libsavantutils_la_CPPFLAGS = \
 	-I$(top_srcdir)/src/analyzer
 
 libsavantutils_la_SOURCES = \
-	ArgumentParser.hh \
+	ArgumentParser.hpp \
 	ArgumentParser.cpp \
 	ConePartitioner.cc \
 	Makefile.am \
@@ -80,7 +82,7 @@ libsavantutils_la_SOURCES = \
 library_includedir = $(includedir)/savant
 # Now, I specify the headers to install.
 library_include_HEADERS =  \
-	ArgumentParser.hh \
+	ArgumentParser.hpp \
 	ProcessCombiner.hh \
 	break_handler.hh \
 	consistency.hpp \

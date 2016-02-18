@@ -10,7 +10,9 @@ ArgumentParserTest_SOURCES = \
 	../src/util/ArgumentParser.cpp
 
 ArgumentParserTest_CPPFLAGS = \
-   -I$(top_srcdir)/src/util/
+   -I$(top_srcdir)/src/util/ \
+   -I$(top_srcdir)/src/
    
 ArgumentParserTest_LDADD = \
-	-lboost_unit_test_framework
+	-lboost_unit_test_framework \
+	-lboost_program_options
