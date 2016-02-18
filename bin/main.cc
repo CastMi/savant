@@ -31,10 +31,9 @@
 
 #include "savant_config.hh"
 #include <signal.h>
-#include "version.hh"
 #include "savant.hh"
-#include "savant_config.hh"
 #include "scram.hh"
+#include "version.hh"
 #include "IIR_DesignFile.hh"
 #include "IIRScram_DesignFileList.hh"
 #include "IIR_LibraryUnit.hh"
@@ -50,7 +49,7 @@
 #include "language_processing_control.hh"
 #include <cctype>
 #include <fstream>
-#include <ArgumentParser.hh>
+#include "ArgumentParser.hpp"
 #include "StandardPackage.hh"
 #include "verilogParserDriver.hpp"
 
@@ -65,30 +64,15 @@
 #include "plugin_interface.hh"
 #include "consistency.hpp"
 
-// temporary elaboration info stuff
-#include "elaborate_info.hh"
-elaborate_info elab_info;
-
 // to invoke the library manager
 #include "library_manager.hh"
 
 // These are global flags.
-bool debug_symbol_table;
 bool publish_vhdl;
 bool publish_cc;
-bool no_file_output;
-bool print_warranty;
-bool keep_design_units;
-bool ignore_standard_library;
-bool no_mangling;
-bool verbose_output;
-bool gen_cc_ref;
 
 // for library manager
 string design_library_name;
-bool echo_library_dir;
-
-dl_list<char> lib_list;
 
 // global flag for parse errors.  Parse errors include semantic errors
 // like undefined symbols and such
@@ -97,17 +81,6 @@ bool parse_error = false;
 // This object will record which language the analyzer should be
 // configured to recognize.
 language_processing_control *lang_proc = NULL;
-
-// If the command line switch to capture comments is turned on, this flag
-// will be set to true; otherwise it will be set to false. 
-bool capture_comments = false;
-
-void 
-help_func(){
-   cerr << SAVANT_VERSION << "\n\n";
-   cerr <<"THE UNIVERSITY OF CINCINNATI (UC) MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT\nTHE SUITABILITY OF THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT\nNOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A\nPARTICULAR PURPOSE, OR NON-INFRINGEMENT.  UC SHALL NOT BE LIABLE FOR ANY\nDAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING RESULT OF USING, MODIFYING\nOR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.\n";
-   cerr << "\nReport problems, comments, etc. to the savant mailing list \"savant-users@cliftonlabs.com\".\n\n";
-}
 
 #if defined(__GNUG__)
 #define IOS_BIN ios::bin
@@ -118,103 +91,33 @@ help_func(){
 int 
 main (int argc, char *argv[]) {
    // here are defaults for global argument variables
-   debug_symbol_table      = false;
-   echo_library_dir        = false;
    publish_vhdl            = false;
    publish_cc              = false;
-   no_file_output          = false;
-   print_warranty          = false;
-   keep_design_units       = false;
-   ignore_standard_library = false;
-   no_mangling             = false;
-   verbose_output          = false;
-   gen_cc_ref              = false;
 
-   // true if command line argument --version is present
-   bool print_version      = false;
-
-   // these variables are used by the arg_parser to record command line
-   // arguments.  DO NOT reference them, use the lang_processing object
-   // to discover information for language processing
-   bool vhdl_93  = false;
-   bool vhdl_ams = false;
-   bool vhdl_2001 = false;
-   // Again, DO NOT reference the above named variables for anything more
-   // than configuring the language_processing_control object.
-
-   std::vector<ArgumentParser::ArgRecord> arg_list = {
-      {"--capture-comments","capture comments and store them in the design file IIR node", &capture_comments, ArgumentParser::BOOLEAN},
-      {"--debug-symbol-table","print out debugging info relating to symbol table", &debug_symbol_table, ArgumentParser::BOOLEAN},
-      {"--debug-gen-cc-ref","make code gen. and VHDL line references in c++ code", &gen_cc_ref, ArgumentParser::BOOLEAN},  
-      {"--design-library-name", "design library name", &design_library_name, ArgumentParser::STRING},
-      {"--echo-library-directory", "show the builtin library path as was specified at build time", &echo_library_dir, ArgumentParser::BOOLEAN},
-      {"--publish-vhdl","publish VHDL", &publish_vhdl, ArgumentParser::BOOLEAN},
-      {"--publish-cc","publish c++", &publish_cc, ArgumentParser::BOOLEAN},
-      {"--no-file-output", "send publish_cc output to stdout instead of files", &no_file_output, ArgumentParser::BOOLEAN},
-      {"--warranty-info", "print information about (lack of) warranty", &print_warranty, ArgumentParser::BOOLEAN},
-      {"--vhdl-93", "setup the analyzer to process the VHDL 93 language standard (default)", &vhdl_93, ArgumentParser::BOOLEAN},
-      {"--vhdl-ams", "setup the analyzer to process the VHDL AMS language standard", &vhdl_ams, ArgumentParser::BOOLEAN},
-      {"--vhdl-2001", "setup the analyzer to process the VHDL 2001 language standard", &vhdl_2001, ArgumentParser::BOOLEAN},
-      {"--version", "print version number and exit", &print_version, ArgumentParser::BOOLEAN },
-      {"--verbose", "verbose output", &verbose_output, ArgumentParser::BOOLEAN }
-   };
-
-   ArgumentParser ap( arg_list );
-   if( !ap.vectorifyArguments( argc, argv ) )
-      exit( EXIT_FAILURE );
-
-   if (print_version) {
-      cerr << VERSION << "\n";
-      exit(-1);
+   ArgumentParser ap;
+   switch( ap.vectorifyArguments( argc, argv ) ) {
+      case EXIT_OK:
+         return EXIT_SUCCESS;
+         break;
+      case CONTINUE_OK:
+         break;
+      case ERROR:
+         return EXIT_FAILURE;
+      default:
+         std::cerr << "The argument parser returned a weird value" << std::endl;
+         return EXIT_FAILURE;
    }
 
-   if( argc <= 1 ){
-      ap.printUsage( argv[0], cerr );
-      exit( -1 );
-   }
-
-   if( echo_library_dir ){
-      cout << BUILD_SAVANTROOT << "/savant/lib" << endl;
-      return 0;
-   }
-
-   // Invoke the language processing object.  If no other languages are
-   // selected, then recognize VHDL 93.
-   if (vhdl_ams) {
-      lang_proc = new language_processing_control(language_processing_control::VHDL_AMS);
-   } else if (vhdl_2001) {
-      lang_proc = new language_processing_control(language_processing_control::VHDL_2001);
-   } else {
-      lang_proc = new language_processing_control(language_processing_control::VHDL_93);
-   }
-
-   if (lib_list.size() != 0) {
-      cerr << "Libraries specified: ";
-      char* lib = lib_list.first();
-      while (lib != NULL) {
-         cerr << lib << " ";
-         lib = lib_list.successor(lib);
-      }
-      cerr << "\n";
-   }
-
-   if( print_warranty == true ){
-      help_func();
-      exit( -1 );
-   }
+   lang_proc = new language_processing_control(ap.getLanguage());
 
    IIR_DesignFileList *iir_verilog_design_files_processed = NULL;
    IIR_DesignFileList *iir_vhdl_design_files_processed = NULL;
-   string work_lib_name = "work";
-   if( !design_library_name.empty() ){
-      work_lib_name = design_library_name;
-   }
 
    library_manager::instance()->init_std_library(ScramStandardPackage::instance());
 
    if(ap.getVHDLFiles().size() > 0) {
       /* Create VHDL IR */
-      scram parser( true, work_lib_name,
+      scram parser( true, design_library_name,
             scram_plugin_class_factory::instance(),
             ScramStandardPackage::instance() );
       iir_vhdl_design_files_processed = parser.parse_files( ap.getVHDLFiles() );  
@@ -229,7 +132,7 @@ main (int argc, char *argv[]) {
 
    if(ap.getVerilogFiles().size() > 0) {
       /* create verilog IR */
-      VeriParser parser( work_lib_name, scram_plugin_class_factory::instance(), ScramStandardPackage::instance() );
+      VeriParser parser( design_library_name, scram_plugin_class_factory::instance(), ScramStandardPackage::instance() );
       iir_verilog_design_files_processed = parser.parse_verilog( ap.getVerilogFiles() );
       cerr << "Verilog parse complete - no errors." << endl;
    }
