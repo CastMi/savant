@@ -51,7 +51,6 @@ scram_LDADD = \
 	$(top_builddir)/src/util/libsavantutils.la \
 	$(top_builddir)/src/verianalyzer/lib_verilog_parser.la \
 	$(top_builddir)/src/analyzer/libscram.la \
-	$(top_builddir)/src/libpccts.la \
 	-lclutils \
 	-lltdl
 
