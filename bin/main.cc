@@ -126,7 +126,7 @@ main (int argc, char *argv[]) {
          cerr << "VHDL parse complete - no errors." << endl;
       }
       else{
-         exit( -1 );
+         return EXIT_FAILURE;
       }
    }
 
@@ -158,7 +158,7 @@ main (int argc, char *argv[]) {
       }
    } else if(iir_verilog_design_files_processed == NULL && iir_vhdl_design_files_processed == NULL) {
       cerr << "Something went wrong." << endl;
-      exit (1);
+      return EXIT_FAILURE;
    }
 
    if( iir_vhdl_design_files_processed != NULL ) {
@@ -190,7 +190,7 @@ main (int argc, char *argv[]) {
       for (list<string>::iterator iter = plugin_names.begin(); iter != plugin_names.end(); iter++) {
          if ((module = PluginManager::instance()->loadPlugin(*iter)) == NULL) {
             cout << "Error: " << PluginManager::instance()->getLastError() << endl;
-            exit (1);
+            return EXIT_FAILURE;
          }
 
          // Just got a module pointer, cast it over to our interface
@@ -224,7 +224,7 @@ main (int argc, char *argv[]) {
       }
    } else {
       cerr << "Something went wrong." << endl;
-      exit (1);
+      return EXIT_FAILURE;
    }
 
    return 0;
