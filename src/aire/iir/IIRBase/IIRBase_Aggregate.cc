@@ -25,10 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "IIR_AssociationElement.hh"
 #include "IIRBase_AssociationList.hh"
 #include "IIRBase_Aggregate.hh"
@@ -132,8 +128,8 @@ IIRBase_Aggregate::print( ostream &os ){
 
 void 
 IIRBase_Aggregate::publish_vhdl(ostream &vhdl_out) {
-  ASSERT( is_resolved() == TRUE );
   vhdl_out << " ( ";
   dynamic_cast<IIRBase_AssociationList *>(get_element_association_list())->publish_vhdl(vhdl_out);
   vhdl_out << " ) ";
 }
+
