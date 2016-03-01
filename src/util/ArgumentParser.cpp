@@ -62,26 +62,34 @@ ArgumentParser::vectorifyArguments( int argc, char **argv ){
    namespace po = boost::program_options;
    po::options_description desc("Options");
    desc.add_options()
-      ("capture-comments",       po::value<bool>(&capture_comments)->implicit_value(true)->zero_tokens(),   "Capture comments and store them in the design file IIR node" )
-      ("debug-symbol-table",     po::value<bool>(&debug_symbol_table)->implicit_value(true)->zero_tokens(), "Print out debugging info relating to symbol table" )
-      ("debug-gen-cc-ref",       po::value<bool>(&gen_cc_ref)->implicit_value(true)->zero_tokens(),         "Make code gen. and VHDL line references in c++ code" )
-      ("echo-library-directory", po::value<bool>(&echo_library_dir_)->implicit_value(true)->zero_tokens(),  "Show the builtin library path as was specified at build time" )
-      ("publish-vhdl",           po::value<bool>(&publish_vhdl)->implicit_value(true)->zero_tokens(),       "Publish VHDL" )
-      ("publish-cc",             po::value<bool>(&publish_cc)->implicit_value(true)->zero_tokens(),         "Publish C++" )
-      ("no-file-output",         po::value<bool>(&no_file_output)->implicit_value(true)->zero_tokens(),     "Send publish_cc output to stdout instead of files" )
-      ("help,h",                 po::value<bool>(&print_help_)->implicit_value(true)->zero_tokens(),        "Print the help message" )
-      ("warranty-info",          po::value<bool>(&print_warranty_)->implicit_value(true)->zero_tokens(),    "Print information about (lack of) warranty" )
-      ("vhdl-93",                po::value<bool>(&vhdl_93_)->implicit_value(true)->zero_tokens(),           "Setup the analyzer to process the VHDL 93 language standard (default)" )
-      ("vhdl-ams",               po::value<bool>(&vhdl_ams_)->implicit_value(true)->zero_tokens(),          "Setup the analyzer to process the VHDL AMS language standard" )
-      ("vhdl-2001",              po::value<bool>(&vhdl_2001_)->implicit_value(true)->zero_tokens(),         "Setup the analyzer to process the VHDL 2001 language standard" )
-      ("version",                po::value<bool>(&print_version_)->implicit_value(true)->zero_tokens(),     "Print version number and exit." )
-      ("verbose",                po::value<bool>(&verbose_output)->implicit_value(true)->zero_tokens(),     "Verbose output" )
+      ("capture-comments",       po::value<bool>(&capture_comments)->implicit_value(true)->default_value(false)->zero_tokens(),   "Capture comments and store them in the design file IIR node" )
+#ifdef NDEBUG
+      // In release mode all the output flags are not set by default. They are set if the user select them.
+      ("debug-gen-cc-ref",       po::value<bool>(&gen_cc_ref)->implicit_value(true)->default_value(false)->zero_tokens(),         "Make code gen. and VHDL line references in c++ code" )
+      ("verbose",                po::value<bool>(&verbose_output)->implicit_value(true)->default_value(false)->zero_tokens(),     "Verbose output" )
+      ("debug-symbol-table",     po::value<bool>(&debug_symbol_table)->implicit_value(true)->default_value(false)->zero_tokens(), "Print out debugging info relating to symbol table" )
+#else
+      // In debug mode all the output flags are set by default. They are removed if the user select.
+      ("debug-gen-cc-ref",       po::value<bool>(&gen_cc_ref)->implicit_value(false)->default_value(true)->zero_tokens(),         "Make code gen. and VHDL line references in c++ code" )
+      ("verbose",                po::value<bool>(&verbose_output)->implicit_value(false)->default_value(true)->zero_tokens(),     "Verbose output" )
+      ("debug-symbol-table",     po::value<bool>(&debug_symbol_table)->implicit_value(false)->default_value(true)->zero_tokens(), "Print out debugging info relating to symbol table" )
+#endif
+      ("echo-library-directory", po::value<bool>(&echo_library_dir_)->implicit_value(true)->default_value(false)->zero_tokens(),  "Show the builtin library path as was specified at build time" )
+      ("publish-vhdl",           po::value<bool>(&publish_vhdl)->implicit_value(true)->default_value(false)->zero_tokens(),       "Publish VHDL" )
+      ("publish-cc",             po::value<bool>(&publish_cc)->implicit_value(true)->default_value(false)->zero_tokens(),          "Publish C++" )
+      ("no-file-output",         po::value<bool>(&no_file_output)->implicit_value(true)->default_value(false)->zero_tokens(),     "Send publish_cc output to stdout instead of files" )
+      ("help,h",                 po::value<bool>(&print_help_)->implicit_value(true)->default_value(false)->zero_tokens(),        "Print the help message" )
+      ("warranty-info",          po::value<bool>(&print_warranty_)->implicit_value(true)->default_value(false)->zero_tokens(),    "Print information about (lack of) warranty" )
+      ("vhdl-93",                po::value<bool>(&vhdl_93_)->implicit_value(true)->default_value(false)->zero_tokens(),           "Setup the analyzer to process the VHDL 93 language standard (default)" )
+      ("vhdl-ams",               po::value<bool>(&vhdl_ams_)->implicit_value(true)->default_value(false)->zero_tokens(),          "Setup the analyzer to process the VHDL AMS language standard" )
+      ("vhdl-2001",              po::value<bool>(&vhdl_2001_)->implicit_value(true)->default_value(false)->zero_tokens(),         "Setup the analyzer to process the VHDL 2001 language standard" )
+      ("version",                po::value<bool>(&print_version_)->implicit_value(true)->default_value(false)->zero_tokens(),     "Print version number and exit." )
       // the only option that does take parameters
-      ("design-library-name",    po::value<std::string>(&design_library_name)->default_value("work"),       "Design library name" )
+      ("design-library-name",    po::value<std::string>(&design_library_name)->default_value("work"),                             "Design library name" )
       ;
    po::options_description hidden;
    hidden.add_options()
-      ("files",                  po::value<std::vector<std::string>>(&tmp_file_vec),                        "Files to compile" )
+      ("files",                  po::value<std::vector<std::string>>(&tmp_file_vec),                                              "Design files to compile" )
       ;
 
    po::options_description all_options;
