@@ -779,7 +779,7 @@ architecture_body[ IIR_LibraryDeclaration *library ] > [IIRScram_ArchitectureDec
     if( entity_decl != NULL ){
       new_arch->set_entity( entity_decl );
       if( debug_symbol_table == true ){
-	cerr << "Parsing architecture |" << *dynamic_cast<IIRScram_Name *>(name)
+	cerr << "Parsing architecture |" << *dynamic_cast<IIRScram_Identifier *>(name)
 	     << "| - going to make entity |" << *dynamic_cast<IIRScram_Name *>(entity_name) << "| visible." << endl;
       }
       (dynamic_cast<IIRScram_Declaration *>(entity_decl))->_make_interface_visible( my_symbol_table );
