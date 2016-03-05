@@ -78,6 +78,8 @@ string design_library_name;
 // like undefined symbols and such
 bool parse_error = false;
 
+extern bool verbose_output;
+
 // This object will record which language the analyzer should be
 // configured to recognize.
 language_processing_control *lang_proc = NULL;
@@ -115,6 +117,11 @@ main (int argc, char *argv[]) {
 
    library_manager::instance()->init_std_library(ScramStandardPackage::instance());
 
+   ASSERT( !design_library_name.empty() );
+
+   if( verbose_output )
+      std::cerr << "Start the frontend part" << std::endl;
+
    if(ap.getVHDLFiles().size() > 0) {
       /* Create VHDL IR */
       scram parser( true, design_library_name,
@@ -131,20 +138,28 @@ main (int argc, char *argv[]) {
    }
 
    if(ap.getVerilogFiles().size() > 0) {
+      if( verbose_output )
+         std::cerr << "Finish VHDL frontend and starting Verilog frontend" << std::endl;
+
       /* create verilog IR */
       VeriParser parser( design_library_name, scram_plugin_class_factory::instance(), ScramStandardPackage::instance() );
       iir_verilog_design_files_processed = parser.parse_verilog( ap.getVerilogFiles() );
       cerr << "Verilog parse complete - no errors." << endl;
    }
 
+   if( verbose_output )
+      std::cerr << "Finish the frontend part" << std::endl;
+
    // connect trees
    for(auto it = consistency::instance()->get_missing().begin();
          it != consistency::instance()->get_missing().end();
          it++) {
-      assert(consistency::instance()->size() == 1);
       dynamic_cast<IIRScram_ComponentInstantiationStatement*>(*it)->_type_check_instantiated_unit();
-      assert(dynamic_cast<IIRScram_ComponentDeclaration*>(dynamic_cast<IIRScram_ComponentInstantiationStatement*>(*it)->get_instantiated_unit())->_get_entity() == NULL);
+      ASSERT(dynamic_cast<IIRScram_ComponentDeclaration*>(dynamic_cast<IIRScram_ComponentInstantiationStatement*>(*it)->get_instantiated_unit())->_get_entity() == NULL);
    }
+
+   if( verbose_output )
+      std::cerr << "Finish to connect trees" << std::endl;
 
    if(iir_verilog_design_files_processed != NULL && iir_vhdl_design_files_processed == NULL) {
       iir_vhdl_design_files_processed = iir_verilog_design_files_processed;
