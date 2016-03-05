@@ -173,8 +173,8 @@ module
       }
       //library_manager::instance()->parse_into_work_dir( ent );
       my_symbol_table->close_scope( ent );
-      
       ir_verilog->get_library_units()->append(ent);
+
       my_symbol_table->close_scope( lib_dec );
       my_symbol_table->open_scope( lib_dec );
       dynamic_cast<IIRScram_ArchitectureDeclaration *>(arc)->_add_declaration();
@@ -190,9 +190,10 @@ module
       assert(entity_decl == ent);
       dynamic_cast<IIRScram_ArchitectureDeclaration*>(arc)->set_entity(entity_decl);
       (dynamic_cast<IIRScram_Declaration *>(entity_decl))->_make_interface_visible( my_symbol_table );
-      ir_verilog->get_library_units()->append(arc);
       dynamic_cast<IIRScram_ArchitectureDeclaration *>(arc)->_type_check();
+      //library_manager::instance()->parse_into_work_dir( arc );
       my_symbol_table->close_scope( arc );  
+      ir_verilog->get_library_units()->append(arc);
       my_symbol_table->close_scope( lib_dec );
       }
   ;
