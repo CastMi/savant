@@ -74,7 +74,7 @@ public:
   };
 
   // this is for debug only
-  void dump_usage_stats(char *filename = "usage_stats");
+  void dump_usage_stats(const IIR_Char* filename = "usage_stats");
 
   // Return true if this declaration is currently visible.  False
   // otherwise.

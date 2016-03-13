@@ -273,9 +273,8 @@ symbol_lookup::lookup_add( IIR_Declaration *decl_ptr) {
   }
 }
 
-
-void 
-symbol_lookup::dump_usage_stats(IIR_Char *filename) {
+void
+symbol_lookup::dump_usage_stats(const IIR_Char* filename) {
   ofstream usage_file(filename);
   for(int i = 0; i < ht_size; i++ ){
     usage_file << i << " " << ht[i].size() << endl;
