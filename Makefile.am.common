@@ -21,3 +21,5 @@
 
 # Adds the -p flag
 INSTALL_HEADER = $(INSTALL) -p -m 644
+
+AM_CXXFLAGS = -Wall -Wextra
