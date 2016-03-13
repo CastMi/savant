@@ -132,7 +132,7 @@ ArgumentParser::vectorifyArguments( int argc, char **argv ){
       std::cerr << "No input files" << std::endl;
       return ParsingStatus::ERROR;
    }
-   assert( vhdl_93_ + vhdl_ams_ + vhdl_2001_ <= 1 );
+   ASSERT( vhdl_93_ + vhdl_ams_ + vhdl_2001_ <= 1 );
    return checkFiles(tmp_file_vec);
 }
 

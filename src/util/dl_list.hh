@@ -68,7 +68,7 @@ public:
 
   void insert_after( const type *after_me, type* new_object ) {
     typename list<type *>::iterator found = list_find( after_me );
-    assert( found != my_list.end() );
+    ASSERT( found != my_list.end() );
     found++;
     my_list.insert( found, new_object );
     elementCount++;
@@ -166,7 +166,7 @@ public:
   // of the list.
   void _replace( type *to_replace, type *replace_with ){
     typename list<type *>::iterator found = list_find( to_replace );
-    assert( found != my_list.end() );
+    ASSERT( found != my_list.end() );
     *found = replace_with;
   }
   

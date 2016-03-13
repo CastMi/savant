@@ -143,7 +143,7 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_entity(
 void
 IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_component(){
   constraint_functor *functor = new is_component_declaration_functor();
-  assert(_get_instantiated_unit() != NULL);
+  ASSERT(_get_instantiated_unit() != NULL);
   savant::set<IIRScram_Declaration> *instantiated_unit_decls =
     _get_instantiated_unit()->_symbol_lookup(functor);
   delete functor;
