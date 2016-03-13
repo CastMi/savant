@@ -156,7 +156,7 @@ module
         new_decl->set_declarator(id);
         new_decl->set_mode(IIR_IN_MODE);
         new_decl->set_base_info(ir_verilog, 0, 0, 0);
-        assert(my_package->get_positive_type() != NULL);
+        ASSERT(my_package->get_positive_type() != NULL);
         new_decl->set_subtype(my_package->get_positive_type());
         dynamic_cast<IIRScram_EntityDeclaration*>(ent)->get_port_clause()->append(new_decl);
       }
@@ -186,7 +186,7 @@ module
 											     lib_dec,
 											     my_package,
 											     fac));
-      assert(entity_decl);
+      ASSERT( entity_decl );
       dynamic_cast<IIRScram_ArchitectureDeclaration*>(arc)->set_entity(entity_decl);
       (dynamic_cast<IIRScram_Declaration *>(entity_decl))->_make_interface_visible( my_symbol_table );
       ir_verilog->get_library_units()->append(arc);
@@ -239,14 +239,14 @@ port_direction
 list_of_identifiers
 	: list_of_identifiers COMMA IDENTIFIER
                 {
-                assert($3);
-                assert($1);
+                ASSERT($3);
+                ASSERT($1);
                 $1->append(IIRBase_Identifier::get(std::string($3), fac));
                 $$ = $1;
                 }
 	| IDENTIFIER
                 {
-                assert($1);
+                ASSERT($1);
                 IIRScram_IdentifierList * the_list = new IIRScram_IdentifierList();
                 the_list->append(IIRBase_Identifier::get(std::string($1), fac));
                 $$ = the_list;

@@ -9,14 +9,14 @@ class generic_parser {
 public:
   /** This method returns the IIR_LibraryDeclaration that was used for this
       execution of the parser for the VHDL library "work". */
-  virtual IIR_LibraryDeclaration *get_work_library() const { assert(false); };
+  virtual IIR_LibraryDeclaration *get_work_library() const { ASSERT(false); };
   
-  virtual plugin_class_factory* get_class_factory() const { assert(false); };
+  virtual plugin_class_factory* get_class_factory() const { ASSERT(false); };
 
-  virtual generic_parser* convert_node(plugin_class_factory *) { assert(false); };
+  virtual generic_parser* convert_node(plugin_class_factory *) { ASSERT(false); };
 
   /** Return the symbol_table associated with this parser. */
-  virtual symbol_table* get_symbol_table() const { assert(false); } ;
+  virtual symbol_table* get_symbol_table() const { ASSERT(false); } ;
 
 };
 

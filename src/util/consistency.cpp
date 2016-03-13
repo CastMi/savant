@@ -1,4 +1,5 @@
 #include "consistency.hpp"
+#include "savant.hh"
 #include <cassert>
 
 consistency*
@@ -13,7 +14,7 @@ consistency::consistency() {
 
 consistency::~consistency(){
    // do something
-   assert(missing.size() == 0);
+   ASSERT(missing.size() == 0);
 }
 
 std::vector<IIR*>&

@@ -98,7 +98,7 @@ ID          [a-z_A-Z][a-zA-Z_0-9]*
 "endmodule" { return K_endmodule; }
 "module" { return K_module; }
 [ \t\r\n]+      { }
-{ID}            { lvalp->text = strdup(YYText()); assert(lvalp->text); return IDENTIFIER; }
+{ID}            { lvalp->text = strdup(YYText()); ASSERT(lvalp->text); return IDENTIFIER; }
 .               { LexerError("Lexical Error"); }
 
 %%
