@@ -115,7 +115,7 @@ public:
      Get the size of the hash_table.  This isn't the number of elements in
      the table, it's the number of slots.
   */
-  const int get_size() const {
+  int get_size() const {
     return ht_size;
   }
 

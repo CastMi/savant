@@ -40,7 +40,7 @@
 
 #include "IIRBase_Identifier.hh"
 
-PluginStandardPackage::PluginStandardPackage( plugin_class_factory *factory )
+PluginStandardPackage::PluginStandardPackage( plugin_class_factory * )
   : std_decl(0),
     universal_integer_type(0),
     universal_real_type(0),
