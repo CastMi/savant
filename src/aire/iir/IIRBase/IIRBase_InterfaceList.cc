@@ -75,7 +75,7 @@ IIRBase_InterfaceList::append( IIR_InterfaceDeclaration *element ) {
 }
 
 
-void 
+void
 IIRBase_InterfaceList::insert_after( IIR_InterfaceDeclaration* existing_element,
 				     IIR_InterfaceDeclaration* new_element) {
   IIR *new_element_test = new_element;

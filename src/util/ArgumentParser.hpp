@@ -50,6 +50,8 @@ class ArgumentParser {
 
       std::vector<std::string>& getVerilogFiles();
       std::vector<std::string>& getVHDLFiles();
+      bool getPublishHDL() const;
+      bool getPublishCC() const;
 
    private:
       std::vector<std::string> VHDLFiles;
@@ -65,6 +67,8 @@ class ArgumentParser {
       bool vhdl_93_;
       bool vhdl_ams_;
       bool vhdl_2001_;
+      bool publish_hdl;
+      bool publish_cc;
 
 };
 

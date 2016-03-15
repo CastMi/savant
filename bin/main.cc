@@ -67,22 +67,11 @@
 // to invoke the library manager
 #include "library_manager.hh"
 
-// These are global flags.
-bool publish_vhdl;
-bool publish_cc;
-
 // for library manager
-string design_library_name;
+extern string design_library_name;
 
-// global flag for parse errors.  Parse errors include semantic errors
-// like undefined symbols and such
-bool parse_error = false;
-
+extern bool parse_error;
 extern bool verbose_output;
-
-// This object will record which language the analyzer should be
-// configured to recognize.
-language_processing_control *lang_proc = NULL;
 
 #if defined(__GNUG__)
 #define IOS_BIN ios::bin
@@ -90,12 +79,8 @@ language_processing_control *lang_proc = NULL;
 #define IOS_BIN ios::binary
 #endif
 
-int 
+int
 main (int argc, char *argv[]) {
-   // here are defaults for global argument variables
-   publish_vhdl            = false;
-   publish_cc              = false;
-
    ArgumentParser ap;
    switch( ap.vectorifyArguments( argc, argv ) ) {
       case EXIT_OK:
@@ -109,8 +94,6 @@ main (int argc, char *argv[]) {
          std::cerr << "The argument parser returned a weird value" << std::endl;
          return EXIT_FAILURE;
    }
-
-   lang_proc = new language_processing_control(ap.getLanguage());
 
    IIR_DesignFileList *iir_verilog_design_files_processed = NULL;
    IIR_DesignFileList *iir_vhdl_design_files_processed = NULL;
@@ -186,11 +169,11 @@ main (int argc, char *argv[]) {
 
       // First add the name of the publish cc/tyvis to list as a special case
       list<string>        plugin_names;
-      if (publish_cc == true)
+      if (ap.getPublishCC() == true)
          plugin_names.push_back("libtyvisplugin.la");
 
       // Now we'll walk the list, and process the tree for VHDL
-      if (publish_vhdl == true) {
+      if (ap.getPublishHDL() == true) {
          IIR *to_publish = iir_vhdl_design_files_processed->first();
          while( to_publish != NULL ){
             ASSERT( dynamic_cast<IIR_DesignFile *>( to_publish ) );
@@ -214,7 +197,7 @@ main (int argc, char *argv[]) {
          // Now we'll walk the list, and process the tree(s) for plugins
          IIR_DesignFile *to_publish = dynamic_cast<IIR_DesignFile *>(iir_vhdl_design_files_processed->first());
          while( to_publish != NULL ){
-            if ((publish_cc == true) && (iter == plugin_names.begin())){
+            if ((ap.getPublishCC() == true) && (iter == plugin_names.begin())){
                cerr << "Starting C++ code generation..." << endl;
                char last_unit = false;
                if( iir_vhdl_design_files_processed->successor( to_publish ) == NULL ){
