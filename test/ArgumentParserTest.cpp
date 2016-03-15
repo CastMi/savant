@@ -17,19 +17,12 @@
 #define verilogfile2 "abc.v"
 #define verilogfile3 "name.v"
 
-// The following code comes from the main.cc
-bool publish_vhdl;
-bool publish_cc;
-bool print_warranty;
-std::string design_library_name;
+extern std::string design_library_name;
 
 struct ArgumentParserFixture{
    ArgumentParser ap;
 
    ArgumentParserFixture() {
-      publish_vhdl = false;
-      print_warranty = false;
-      design_library_name.erase();
    }
    ~ArgumentParserFixture() {}
 };

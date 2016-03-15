@@ -32,17 +32,22 @@
 
 #define MAX_INPUT_FILE_NUM -1
 
-extern bool publish_vhdl;
-extern bool publish_cc;
-extern std::string design_library_name;
-extern std::string work_lib_name;
+// global flag for parse errors.  Parse errors include semantic errors
+// like undefined symbols and such
+bool parse_error = false;
 // If the command line switch to capture comments is turned on, this flag
-// will be set to true; otherwise it will be set to false. 
+// will be set to true; otherwise it will be set to false.
 bool capture_comments = false;
+// This object will record which language the analyzer should be
+// configured to recognize.
+language_processing_control *lang_proc;
+
+extern std::string work_lib_name;
 bool debug_symbol_table;
 bool gen_cc_ref;
 bool no_file_output;
 bool verbose_output;
+std::string design_library_name;
 
 ArgumentParser::ArgumentParser(bool complainAndExitOnError)
    : complainAndExitOnError_(complainAndExitOnError),
@@ -52,7 +57,9 @@ ArgumentParser::ArgumentParser(bool complainAndExitOnError)
    print_warranty_(false),
    vhdl_93_(false),
    vhdl_ams_(false),
-   vhdl_2001_(false) {}
+   vhdl_2001_(false),
+   publish_hdl(false),
+   publish_cc(false) {}
 
    ArgumentParser::~ArgumentParser() {};
 
@@ -75,8 +82,8 @@ ArgumentParser::vectorifyArguments( int argc, char **argv ){
       ("debug-symbol-table",     po::value<bool>(&debug_symbol_table)->implicit_value(false)->default_value(true)->zero_tokens(), "Print out debugging info relating to symbol table" )
 #endif
       ("echo-library-directory", po::value<bool>(&echo_library_dir_)->implicit_value(true)->default_value(false)->zero_tokens(),  "Show the builtin library path as was specified at build time" )
-      ("publish-vhdl",           po::value<bool>(&publish_vhdl)->implicit_value(true)->default_value(false)->zero_tokens(),       "Publish VHDL" )
-      ("publish-cc",             po::value<bool>(&publish_cc)->implicit_value(true)->default_value(false)->zero_tokens(),          "Publish C++" )
+      ("publish-hdl",            po::value<bool>(&publish_hdl)->implicit_value(true)->default_value(false)->zero_tokens(),        "Publish VHDL" )
+      ("publish-cc",             po::value<bool>(&publish_cc)->implicit_value(true)->default_value(false)->zero_tokens(),         "Publish C++" )
       ("no-file-output",         po::value<bool>(&no_file_output)->implicit_value(true)->default_value(false)->zero_tokens(),     "Send publish_cc output to stdout instead of files" )
       ("help,h",                 po::value<bool>(&print_help_)->implicit_value(true)->default_value(false)->zero_tokens(),        "Print the help message" )
       ("warranty-info",          po::value<bool>(&print_warranty_)->implicit_value(true)->default_value(false)->zero_tokens(),    "Print information about (lack of) warranty" )
@@ -133,7 +140,18 @@ ArgumentParser::vectorifyArguments( int argc, char **argv ){
       return ParsingStatus::ERROR;
    }
    ASSERT( vhdl_93_ + vhdl_ams_ + vhdl_2001_ <= 1 );
+   lang_proc = new language_processing_control(getLanguage());
    return checkFiles(tmp_file_vec);
+}
+
+bool
+ArgumentParser::getPublishHDL() const {
+   return publish_hdl;
+}
+
+bool
+ArgumentParser::getPublishCC() const {
+   return publish_cc;
 }
 
 language_processing_control::languages
