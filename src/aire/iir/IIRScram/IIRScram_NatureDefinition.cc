@@ -36,7 +36,7 @@ IIRScram_NatureDefinition::get_reference_terminal() {
 
 // got this here temporarily to avoid compilation errors.
 void
-IIRScram_NatureDefinition::_set_resolution_function( IIRScram_FunctionDeclaration *new_function) {
+IIRScram_NatureDefinition::_set_resolution_function( IIRScram_FunctionDeclaration * ) {
   _report_undefined_scram_fn("_set_resolution_function()");
 }
 

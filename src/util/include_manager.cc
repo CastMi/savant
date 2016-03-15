@@ -67,6 +67,6 @@ include_manager::publish_includes( ostream &os ){
 }
 
 void
-include_manager::included_file_record::set_key( const string key,  const int len ){
+include_manager::included_file_record::set_key( const string key,  const int ){
   included_file_name = key;
 }

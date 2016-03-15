@@ -124,19 +124,19 @@ IIRBase_Name::print( ostream &os ){
 }
 
 IIR **
-IIRBase_Name::lookup(IIR_Identifier *identifier,
-		     IIR_Int32      &number_of_matches,
-		     IIR            *&first_match){
+IIRBase_Name::lookup(IIR_Identifier *,
+		     IIR_Int32      &,
+		     IIR            *&){
   ASSERT(0);
   return NULL;
 }
 
 IIR **
-IIRBase_Name::lookup(IIR_Name    *name,
-		     IIR_Int32   &number_of_matches,
-		     IIR         *&first_match){
+IIRBase_Name::lookup(IIR_Name    *,
+		     IIR_Int32   &,
+		     IIR         *&){
   IIR** return_array = NULL;
-  cerr << "IIRBase_Name::lookup(IIR_Name    *name not implemented yet!"<< endl;
+  cerr << "IIRBase_Name::lookup(IIR_Name *,IIR_Int32, IIR) not implemented yet!"<< endl;
   abort();
   return return_array;
 }

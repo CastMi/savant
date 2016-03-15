@@ -47,7 +47,7 @@ IIRScram_PhysicalUnit::~IIRScram_PhysicalUnit(){
 }
 
 savant::set<IIRScram_TypeDefinition> *
-IIRScram_PhysicalUnit::_get_rval_set( constraint_functor *functor ){
+IIRScram_PhysicalUnit::_get_rval_set( constraint_functor * ){
   return new savant::set<IIRScram_TypeDefinition>( _get_subtype() );
 }
 
