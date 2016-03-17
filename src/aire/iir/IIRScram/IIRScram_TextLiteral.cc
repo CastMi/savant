@@ -96,17 +96,14 @@ IIRScram_TextLiteral::_get_rval_set_for_string(){
   // they are enumeration literals, we'll get the enumeration type they
   // belong to, and it it to the return set.  Also, we store the quotes in
   // the string..  So we need to start at 1, and end at length - 1.
-  char delimiter;
 
   int start = 0;
   int i;
   for( i = 0 ; i < my_length; i++ ){
     if ( operator[](i) == '"' ){
-      delimiter = '"';
       break;
     }
     else if (  operator[](i) == '%' ){
-      delimiter = '%';
       break;
     }
   }

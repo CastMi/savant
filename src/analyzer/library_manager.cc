@@ -433,10 +433,10 @@ library_manager::parse_primary_unit( IIR_LibraryDeclaration     *lib_decl,
 IIR_LibraryUnit *
 library_manager::parse_primary_unit( IIR_LibraryDeclaration     *lib_decl,
 				     IIR_Name                   *name,
-				     IIR_Kind                   unitType,
-                                     StandardPackage            *package,
-                                     plugin_class_factory       *factory,
-				     IIR_Boolean                complain_on_error){
+				     IIR_Kind,
+                 StandardPackage            *package,
+                 plugin_class_factory       *factory,
+				     IIR_Boolean ){
   ASSERT( lib_decl != 0 );
   ASSERT( name != 0 );
 
@@ -493,7 +493,7 @@ library_manager::parse_primary_unit( IIR_LibraryDeclaration     *lib_decl,
 				     IIR_Kind                   unitType,
                                      StandardPackage            *package,
                                      plugin_class_factory       *factory,
-				     IIR_Boolean                complain_on_error ){
+				     IIR_Boolean ){
 
   ASSERT( lib_decl != 0 );
   ASSERT( primary_unit_name != 0 );

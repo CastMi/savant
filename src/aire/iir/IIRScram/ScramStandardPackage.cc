@@ -732,7 +732,7 @@ ScramStandardPackage::init_now_decl(){
 }
 
 IIRScram_TypeDeclaration *
-ScramStandardPackage::init_type_decl( char *id, IIRScram_TypeDefinition *subtype ){
+ScramStandardPackage::init_type_decl( const IIR_Char *id, IIRScram_TypeDefinition *subtype ){
   ASSERT( id != NULL );
 
   IIRScram_TypeDeclaration *retval = new IIRScram_TypeDeclaration();
@@ -751,7 +751,7 @@ ScramStandardPackage::init_type_decl( char *id, IIRScram_TypeDefinition *subtype
 }
 
 IIRScram_SubtypeDeclaration *
-ScramStandardPackage::init_subtype_decl( char *id, IIRScram_TypeDefinition *subtype ){
+ScramStandardPackage::init_subtype_decl( const IIR_Char *id, IIRScram_TypeDefinition *subtype ){
   ASSERT( id != NULL );
   ASSERT( subtype != NULL );
 

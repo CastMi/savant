@@ -59,7 +59,7 @@ IIRScram_BitStringLiteral::_accept_visitor( node_visitor *visitor,
 
 
 IIRScram_BitStringLiteral *
-IIRScram_BitStringLiteral::get( IIR_Char *new_text, IIR_Int32 new_length){
+IIRScram_BitStringLiteral::get( const IIR_Char *new_text, IIR_Int32 new_length){
   ASSERT( new_text != NULL);
   ASSERT( new_length > 3 );
 

@@ -311,8 +311,8 @@ symbol_table::close_scope( IIR *declarative_region ){
   current_scope = current_scope->get_previous_scope();
 }
 
-void 
-symbol_table::reopen_scope( IIR *declarative_region ){
+void
+symbol_table::reopen_scope( IIR * ){
 //   bool found_scope_marker = false;
 //   IIR_Declaration *last = NULL;
   
@@ -368,8 +368,8 @@ symbol_table::get_current_declarative_region(){
   return declarative_region_stack.get_top_of_stack();
 }
 
-void 
-symbol_table::add_undefined( IIR_Char *name ){
+void
+symbol_table::add_undefined( IIR_Char * ){
   //	IIR_Declaration *undef_decl = new IIR_UndefinedDeclaration;
   //	undef_decl->name = new IIR_Identifier(); // : text_string(name);
   //	((IIR_Identifier *)undef_decl->name)->text_string = name;
