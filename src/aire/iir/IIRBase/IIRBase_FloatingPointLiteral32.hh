@@ -33,7 +33,6 @@ public:
   IIR_Kind get_kind() const { return IIR_FLOATING_POINT_LITERAL32; }
   const IIR_Char *get_kind_text() const { return "IIR_FloatingPointLiteral32"; }
 
-  static IIR_FloatingPointLiteral32* get_value(IIR_FP32);
   void release();
 
   IIR_FP32 value();

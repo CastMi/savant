@@ -42,7 +42,6 @@ public:
   IIR_Kind get_kind() const { return IIR_FLOATING_POINT_LITERAL64; }
   const IIR_Char *get_kind_text() const { return "IIR_FloatingPointLiteral64"; }
 
-  static IIR_FloatingPointLiteral64* get_value(IIR_FP64);
   void release();
 
   IIR_FP64 value();
