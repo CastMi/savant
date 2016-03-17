@@ -40,9 +40,6 @@ public:
   IIR_Kind get_kind() const {return IIR_BIT_STRING_LITERAL;}
   const IIR_Char *get_kind_text() const {return "IIR_BitStringLiteral";}
 
-  static IIR_BitStringLiteral *get( IIR_Char *value,
-				    IIR_Int32 length);
-  
   void release();
 
   IIR_Boolean is_array_type(){ return TRUE; }

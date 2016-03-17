@@ -40,7 +40,6 @@ public:
   IIR_Kind get_kind() const { return IIR_INTEGER_LITERAL64; }
   const IIR_Char *get_kind_text() const { return "IIR_IntegerLiteral64"; }
 
-  static IIR_IntegerLiteral64* get(IIR_Int64);
   void release();
 
   IIR_Int64 value();

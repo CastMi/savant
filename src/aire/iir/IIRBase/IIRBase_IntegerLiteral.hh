@@ -41,11 +41,6 @@ public:
   IIR_Kind get_kind() const {return IIR_INTEGER_LITERAL;}
   const IIR_Char *get_kind_text() const {return "IIR_IntegerLiteral";}
 
-  static IIR_IntegerLiteral* get(IIR_Int32 base, 
-				 IIR_Char *mantissa,  
-				 IIR_Int32 mantissa_length,
-				 IIR_Char *exponent, 
-				 IIR_Int32 exponent_length);
   void release();
 
   const string print(IIR_Int32);

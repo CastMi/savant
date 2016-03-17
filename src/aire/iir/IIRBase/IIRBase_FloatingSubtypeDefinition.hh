@@ -42,9 +42,6 @@ public:
   IIR_Kind get_kind() const {return IIR_FLOATING_SUBTYPE_DEFINITION;}
   const IIR_Char *get_kind_text() const {return "IIR_FloatingSubtypeDefinition";}
 
-  static IIR_FloatingSubtypeDefinition* get( IIR_FloatingTypeDefinition* base_type, 
-					     IIR* left_limit,
-					     IIR* direction, IIR* right_limit);
   void release();
 					    
   void set_resolution_function( IIR_FunctionDeclaration * );

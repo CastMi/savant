@@ -44,11 +44,6 @@ public:
   IIR_Kind get_kind() const {return IIR_ENUMERATION_SUBTYPE_DEFINITION;}
   const IIR_Char *get_kind_text() const {return "IIR_EnumerationSubtypeDefinition";}
 
-  
-  static IIR_EnumerationSubtypeDefinition *
-  get( IIR_EnumerationTypeDefinition *base_type,
-       IIR_EnumerationLiteral *left_limit,
-        IIR_EnumerationLiteral *right_limit);
   void release();
 
   void set_resolution_function( IIR_FunctionDeclaration * );
