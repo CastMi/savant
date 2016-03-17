@@ -179,8 +179,8 @@ private:
   IIRScram_LibraryDeclaration *init_std_decl();
   IIRScram_AccessSubtypeDefinition *init_null_type();
 
-  IIRScram_TypeDeclaration *init_type_decl( char *, IIRScram_TypeDefinition * );  
-  IIRScram_SubtypeDeclaration *init_subtype_decl( char *, IIRScram_TypeDefinition * );  
+  IIRScram_TypeDeclaration *init_type_decl( const IIR_Char *, IIRScram_TypeDefinition * );
+  IIRScram_SubtypeDeclaration *init_subtype_decl( const IIR_Char *, IIRScram_TypeDefinition * );
 
   IIRScram_EnumerationSubtypeDefinition *init_enumeration_type( const char * const literals[] );
 
@@ -202,9 +202,9 @@ private:
 				    IIRScram_PhysicalSubtypeDefinition *physical_type );
 
   struct unit {
-    char *unit_name;
+    const IIR_Char *unit_name;
     int multiplier;
-    char *base_unit;
+    IIR_Char *base_unit;
   };
 
   IIRScram_PhysicalSubtypeDefinition *

@@ -29,6 +29,6 @@
 #include "savant_config.hh"
 
 #define SAVANT_VERSION  \
-"savant "VERSION"\nCopyright(C) 1993-2004 The University of Cincinnati.\nAll rights reserved."
+   "savant " VERSION"\nCopyright(C) 1993-2004 The University of Cincinnati.\nAll rights reserved."
 
 #endif

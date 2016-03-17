@@ -57,7 +57,7 @@ IIRScram_CharacterLiteral::get( const string new_text ){
 }
 
 IIRScram_CharacterLiteral *
-IIRScram_CharacterLiteral::get( IIR_Char *new_text, IIR_Int32 new_length ){
+IIRScram_CharacterLiteral::get( const IIR_Char *new_text, IIR_Int32 new_length ){
   IIRScram_CharacterLiteral *retval = new IIRScram_CharacterLiteral();
   retval->set_text( new_text, new_length );
 

@@ -222,10 +222,10 @@ IIRScram_Attribute::_symbol_lookup(){
     return NULL;
   }
 	
-  IIRScram_Declaration *signal_decl = NULL;
+  //IIRScram_Declaration *signal_decl = NULL;
   switch ( attached_to->size() ) {
   case 1:{
-    signal_decl = attached_to->getElement();
+    //signal_decl = attached_to->getElement();
     break;
   }
   case 0:

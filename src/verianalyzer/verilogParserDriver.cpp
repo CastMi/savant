@@ -29,9 +29,9 @@
 
 VeriParser::VeriParser(const std::string & name, plugin_class_factory* fact, StandardPackage* pack) :
    my_factory(fact),
-   transmuted_node(NULL),
    my_package(pack),
-   my_sym_table( new symbol_table(my_package) ) {
+   my_sym_table( new symbol_table(my_package) ),
+   transmuted_node(NULL) {
    my_design_files = my_factory->new_IIR_DesignFileList();
    work_library = library_manager::instance()->find_or_create_library( name, fact );
    ASSERT(work_library);

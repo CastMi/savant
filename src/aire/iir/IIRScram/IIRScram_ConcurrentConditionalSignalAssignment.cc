@@ -86,8 +86,11 @@ IIRScram_ConcurrentConditionalSignalAssignment::_type_check_target_and_waveforms
 IIRScram *
 IIRScram_ConcurrentConditionalSignalAssignment::_clone() {
   IIRScram *cstmt;
+  // FIXME: I need to figure out what was supposed to happen here
+  // before committing a meaningful fix
+  ASSERT(false);
   //  cstmt = _transmute();
-  cstmt = cstmt->_clone();
+  // cstmt = cstmt->_clone();
   return cstmt;
 }
 
