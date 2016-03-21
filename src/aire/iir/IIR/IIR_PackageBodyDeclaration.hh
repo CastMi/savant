@@ -1,4 +1,3 @@
-
 #ifndef IIR_PACKAGE_BODY_DECLARATION_HH
 #define IIR_PACKAGE_BODY_DECLARATION_HH
 
@@ -31,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_LibraryUnit.hh"
+
 class IIR_DeclarationList;
 
 class IIR_PackageBodyDeclaration : public virtual IIR_LibraryUnit{

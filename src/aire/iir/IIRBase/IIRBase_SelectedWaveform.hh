@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SELECTED_WAVEFORM_HH
 #define IIRBASE_SELECTED_WAVEFORM_HH
 
@@ -33,9 +32,9 @@
 #include "savant_config.hh"
 #include "IIRBase_Tuple.hh"
 #include "IIR_SelectedWaveform.hh"
-#include "IIR_WaveformList.hh"
 
 class IIR_WaveformList;
+
 class IIRBase_SelectedWaveform : public virtual IIRBase_Tuple, public virtual IIR_SelectedWaveform{
 public:
   // List Accessor(s)

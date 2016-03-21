@@ -1,4 +1,3 @@
-
 #ifndef IIR_RIGHT_ATTRIBUTE_HH
 #define IIR_RIGHT_ATTRIBUTE_HH
 

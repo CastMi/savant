@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_NAND_OPERATOR_HH
 #define IIRBASE_NAND_OPERATOR_HH
 
@@ -29,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_NandOperator.hh"
 #include "IIRBase_DyadicOperator.hh"
+#include "IIR_NandOperator.hh"
 
 class IIRBase_NandOperator : public virtual IIRBase_DyadicOperator,
 			     public virtual IIR_NandOperator{

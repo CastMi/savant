@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ACCESS_SUBTYPE_DEFINITION_HH
 #define IIRBASE_ACCESS_SUBTYPE_DEFINITION_HH
 
@@ -34,7 +33,6 @@
 
 class IIR_TypeDefinition;
 class IIR_FunctionDeclaration;
-class IIR_AccessSubtypeDefinition;
 
 class IIRBase_AccessSubtypeDefinition : public virtual IIRBase_AccessTypeDefinition,
 					public virtual IIR_AccessSubtypeDefinition{

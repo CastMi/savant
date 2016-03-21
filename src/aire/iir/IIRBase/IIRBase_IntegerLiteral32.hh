@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_INTEGER_LITERAL32_HH
 #define IIRBASE_INTEGER_LITERAL32_HH
 
@@ -32,8 +31,6 @@
 #include "savant_config.hh"
 #include "IIRBase_Literal.hh"
 #include "IIR_IntegerLiteral32.hh"
-
-class IIR_IntegerLiteral32;
 
 class IIRBase_IntegerLiteral32 : public virtual IIRBase_Literal, public virtual IIR_IntegerLiteral32{
 

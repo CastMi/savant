@@ -29,7 +29,6 @@
 //---------------------------------------------------------------------------
 #include "savant_config.hh"
 #include <string>
-#include "IRBasicDataTypes.hh"
 
 using std::string;
 

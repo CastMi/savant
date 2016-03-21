@@ -21,6 +21,8 @@
 
 #include "savant_config.hh"
 #include "plugin_class_factory.hh"
+
+class IIR_AboveAttribute;
 /** IIRScram implementation of the plugin class factory.  This isn't strictly
     necessary, but large portions of the code base have been refactored to work
     independent of the type of nodes they generate.  Thus IIRScram has become a

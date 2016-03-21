@@ -30,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_InterfaceDeclaration.hh"
+
 class IIR_FileInterfaceDeclaration : public virtual IIR_InterfaceDeclaration{
 
 public:

@@ -1,4 +1,3 @@
-
 #ifndef IIR_SLICE_NAME_HH
 #define IIR_SLICE_NAME_HH
 

@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SIMULTANEOUS_ELSIF_HH
 #define IIRBASE_SIMULTANEOUS_ELSIF_HH
 
@@ -24,7 +23,6 @@
 #include "savant_config.hh"
 #include "IIRBase_Tuple.hh"
 #include "IIR_SimultaneousElsif.hh"
-#include "IRBasicDataTypes.hh"
 
 /** This class selects for evaluation one of the enclosed simultaneous
     statement parts depending on the value of one or more conditions. */

@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_TYPE_DEFINITION_HH
 #define IIRBASE_TYPE_DEFINITION_HH
 
@@ -30,8 +29,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_TypeDefinition.hh"
 #include "IIRBase.hh"
+#include "IIR_TypeDefinition.hh"
 
 class IIR_Declaration;
 class IIR_ScalarTypeDefinition;

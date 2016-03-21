@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_CONTRIBUTION_ATTRIBUTE_HH
 #define IIRBASE_CONTRIBUTION_ATTRIBUTE_HH
 
@@ -28,7 +27,6 @@
 #include "savant_config.hh"
 #include "IIR_ContributionAttribute.hh"
 #include "IIRBase_Attribute.hh"
-#include "IRBasicDataTypes.hh"
 
 /** The extension base for contribution attribute of terminals
     (T'contribution).  This class describes T'Contribution. For a terminal

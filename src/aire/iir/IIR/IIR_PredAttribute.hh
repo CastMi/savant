@@ -1,4 +1,3 @@
-
 #ifndef IIR_PRED_ATTRIBUTE_HH
 #define IIR_PRED_ATTRIBUTE_HH
 

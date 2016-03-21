@@ -30,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
+
 class IIR_DeclarationList;
 class IIR_AttributeSpecificationList;
 class IIR_LibraryDeclaration;

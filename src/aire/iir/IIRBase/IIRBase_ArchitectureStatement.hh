@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ARCHITECTURE_STATEMENT_HH
 #define IIRBASE_ARCHITECTURE_STATEMENT_HH
 
@@ -26,8 +25,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_ArchitectureStatement.hh"
 #include "IIRBase_Statement.hh"
+#include "IIR_ArchitectureStatement.hh"
 
 class IIRBase_ArchitectureStatement : public virtual IIRBase_Statement,
 				      public virtual IIR_ArchitectureStatement {

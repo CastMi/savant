@@ -1,4 +1,3 @@
-
 // Copyright (c) 2003 The University of Cincinnati.  
 // All rights reserved.
 

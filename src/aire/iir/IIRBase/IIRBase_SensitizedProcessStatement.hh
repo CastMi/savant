@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SENSITIZED_PROCESS_STATEMENT_HH
 #define IIRBASE_SENSITIZED_PROCESS_STATEMENT_HH
 
@@ -34,6 +33,7 @@
 #include "IIR_SensitizedProcessStatement.hh"
 
 class IIR_DesignatorList;
+
 class IIRBase_SensitizedProcessStatement : public virtual IIRBase_ProcessStatement, public virtual IIR_SensitizedProcessStatement{
 public:
   // List Accessor(s)

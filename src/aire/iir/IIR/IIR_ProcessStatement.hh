@@ -1,4 +1,3 @@
-
 #ifndef IIR_PROCESS_STATEMENT_HH
 #define IIR_PROCESS_STATEMENT_HH
 
@@ -31,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_ConcurrentStatement.hh"
+
 class IIR_DeclarationList;
 class IIR_SequentialStatementList;
 

@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_WAIT_STATEMENT_HH
 #define IIRBASE_WAIT_STATEMENT_HH
 
@@ -34,6 +33,7 @@
 #include "IIR_WaitStatement.hh"
 
 class IIR_DesignatorList;
+
 class IIRBase_WaitStatement : public virtual IIRBase_SequentialStatement, public virtual IIR_WaitStatement{
 public:
   // List Accessor(s)

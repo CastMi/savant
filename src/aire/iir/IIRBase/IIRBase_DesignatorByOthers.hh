@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_DESIGNATOR_BY_OTHERS_HH
 #define IIRBASE_DESIGNATOR_BY_OTHERS_HH
 
@@ -32,7 +31,6 @@
 #include "savant_config.hh"
 #include "IIRBase_Designator.hh"
 #include "IIR_DesignatorByOthers.hh"
-
 
 class IIRBase_DesignatorByOthers : public virtual IIRBase_Designator, public virtual IIR_DesignatorByOthers{
 

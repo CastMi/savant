@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_COMPONENT_CONFIGURATION_HH
 #define IIRBASE_COMPONENT_CONFIGURATION_HH
 
@@ -31,13 +30,11 @@
 #include "savant_config.hh"
 #include "IIRBase_ConfigurationItem.hh"
 #include "IIR_ComponentConfiguration.hh"
-#include "IIR_AssociationList.hh"
 
 class IIR_LibraryUnit;
 class IIR_BlockConfiguration;
 class IIR_DesignatorList;
 class IIR_AssociationList;
-class IIR_LibraryUnit;
 
 class IIRBase_ComponentConfiguration : public virtual IIRBase_ConfigurationItem, public virtual IIR_ComponentConfiguration{
 

@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_DESIGNATOR_HH
 #define IIRBASE_DESIGNATOR_HH
 
@@ -33,15 +32,11 @@
 #include "IIRBase_Tuple.hh"
 #include "IIR_Designator.hh"
 
-
 class IIRBase_Designator : public virtual IIRBase_Tuple, public virtual IIR_Designator{
-
-public:
 
 protected:
   IIRBase_Designator();
   virtual ~IIRBase_Designator() = 0;
     
-private:
 };
 #endif

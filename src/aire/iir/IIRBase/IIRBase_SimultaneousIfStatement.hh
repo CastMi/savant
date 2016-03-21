@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SIMULTANEOUS_IF_STATEMENT_HH
 #define IIRBASE_SIMULTANEOUS_IF_STATEMENT_HH
 
@@ -28,7 +27,6 @@
 #include "savant_config.hh"
 #include "IIRBase_SimultaneousStatement.hh"
 #include "IIR_SimultaneousIfStatement.hh"
-#include "IRBasicDataTypes.hh"
 
 class IIR;
 class IIR_ArchitectureStatementList;

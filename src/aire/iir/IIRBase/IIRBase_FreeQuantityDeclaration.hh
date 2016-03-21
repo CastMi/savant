@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_FREE_QUANTITY_DECLARATION_HH
 #define IIRBASE_FREE_QUANTITY_DECLARATION_HH
 
@@ -26,8 +25,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_FreeQuantityDeclaration.hh"
 #include "IIRBase_QuantityDeclaration.hh"
+#include "IIR_FreeQuantityDeclaration.hh"
 
 class IIRBase_FreeQuantityDeclaration : public virtual IIRBase_QuantityDeclaration, public virtual IIR_FreeQuantityDeclaration {
 

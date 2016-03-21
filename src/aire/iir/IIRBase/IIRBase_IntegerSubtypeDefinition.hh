@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_INTEGER_SUBTYPE_DEFINITION_HH
 #define IIRBASE_INTEGER_SUBTYPE_DEFINITION_HH
 
@@ -34,7 +33,6 @@
 #include "IIR_IntegerSubtypeDefinition.hh"
 
 class IIR_FunctionDeclaration;
-class IIR_IntegerSubtypeDefinition;
 
 class IIRBase_IntegerSubtypeDefinition : public virtual IIRBase_IntegerTypeDefinition, public virtual IIR_IntegerSubtypeDefinition{
 

@@ -1,4 +1,3 @@
-
 #ifndef IIR_SUCC_ATTRIBUTE_HH
 #define IIR_SUCC_ATTRIBUTE_HH
 

@@ -1,4 +1,3 @@
-
 #ifndef IIR_NAND_OPERATOR_HH
 #define IIR_NAND_OPERATOR_HH
 

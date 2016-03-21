@@ -30,7 +30,8 @@
 
 #include "savant_config.hh"
 #include "IIR_DeclarationList.hh"
-#include "IIR_ElementDeclaration.hh"
+
+class IIR_ElementDeclaration;
 
 class IIR_ElementDeclarationList : public virtual IIR_DeclarationList{
 

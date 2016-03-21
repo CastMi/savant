@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_THROUGH_ATTRIBUTE_HH
 #define IIRBASE_THROUGH_ATTRIBUTE_HH
 
@@ -28,7 +27,6 @@
 #include "savant_config.hh"
 #include "IIRBase_Attribute.hh"
 #include "IIR_ThroughAttribute.hh"
-#include "IRBasicDataTypes.hh"
 
 /** This class describes N'Through. For a nature N , the attribute
     N'through returns the through type of the nature N. */

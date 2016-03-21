@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ADDITION_OPERATOR_HH
 #define IIRBASE_ADDITION_OPERATOR_HH
 
@@ -29,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_AdditionOperator.hh"
 #include "IIRBase_DyadicOperator.hh"
+#include "IIR_AdditionOperator.hh"
 
 class IIRBase_AdditionOperator : public virtual IIRBase_DyadicOperator, public virtual IIR_AdditionOperator{
 

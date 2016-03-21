@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_STATEMENT_HH
 #define IIRBASE_STATEMENT_HH
 
@@ -28,6 +27,7 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 
 //---------------------------------------------------------------------------
+
 #include "savant_config.hh"
 #include "IIRBase.hh"
 #include "IIR_Statement.hh"

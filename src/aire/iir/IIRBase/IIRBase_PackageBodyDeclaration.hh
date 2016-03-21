@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_PACKAGE_BODY_DECLARATION_HH
 #define IIRBASE_PACKAGE_BODY_DECLARATION_HH
 
@@ -34,6 +33,7 @@
 #include "IIR_PackageBodyDeclaration.hh"
 
 class IIR_DeclarationList;
+
 class IIRBase_PackageBodyDeclaration : public virtual IIRBase_LibraryUnit, public virtual IIR_PackageBodyDeclaration{
 
 public:

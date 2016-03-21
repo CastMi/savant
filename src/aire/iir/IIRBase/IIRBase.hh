@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_HH
 #define IIRBASE_HH
 
@@ -23,7 +22,6 @@
 
 #include "savant_config.hh"
 #include "IIR.hh"
-#include "IRBasicDataTypes.hh"
 
 /** This is the base node definition for the intermediate form.  All nodes
     in IIR are descendants of this node.  */

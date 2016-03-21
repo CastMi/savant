@@ -1,4 +1,3 @@
-
 #ifndef IIR_NEXT_STATEMENT_HH
 #define IIR_NEXT_STATEMENT_HH
 
@@ -31,8 +30,6 @@
 
 #include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
-
-class IIR_SequentialStatement;
 
 class IIR_NextStatement : public virtual IIR_SequentialStatement{
 

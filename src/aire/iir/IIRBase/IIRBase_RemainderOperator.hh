@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_REMAINDER_OPERATOR_HH
 #define IIRBASE_REMAINDER_OPERATOR_HH
 
@@ -29,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_RemainderOperator.hh"
 #include "IIRBase_DyadicOperator.hh"
+#include "IIR_RemainderOperator.hh"
 
 class IIRBase_RemainderOperator : public virtual IIRBase_DyadicOperator, public virtual IIR_RemainderOperator{
 public:

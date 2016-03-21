@@ -21,10 +21,8 @@
 // the file "LGPL", distributed with this archive.
 
 #include "savant_config.hh"
-#include "IIRBase.hh"
 #include "IIRBase_TypeDefinition.hh"
 
-class IIRBase_ProcedureDeclaration;
 class IIRBase_FunctionDeclaration;
 
 class IIRBase_ProcedureReturnTypeDefinition : public virtual IIRBase_TypeDefinition{

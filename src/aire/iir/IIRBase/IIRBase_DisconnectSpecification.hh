@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_DISCONNECT_SPECIFICATION_HH
 #define IIRBASE_DISCONNECT_SPECIFICATION_HH
 
@@ -35,7 +34,6 @@
 
 class IIR_TypeDefinition;
 class IIR_DesignatorList;
-class IIR_TypeDefinition;
 
 class IIRBase_DisconnectSpecification : public virtual IIRBase_Declaration, public virtual IIR_DisconnectSpecification{
 

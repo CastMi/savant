@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ZTF_ATTRIBUTE_HH
 #define IIRBASE_ZTF_ATTRIBUTE_HH
 
@@ -26,9 +25,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_ZTFAttribute.hh"
 #include "IIRBase_Attribute.hh"
-#include "IRBasicDataTypes.hh"
+#include "IIR_ZTFAttribute.hh"
  
 /** This class describes the 'ztf attribute. For a scalar quantity Q, the
     attribute Q'ztf(numerator, denominator, T, initial_delay) yields a

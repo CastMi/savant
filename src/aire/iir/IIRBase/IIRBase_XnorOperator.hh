@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_XNOR_OPERATOR_HH
 #define IIRBASE_XNOR_OPERATOR_HH
 
@@ -29,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_XnorOperator.hh"
 #include "IIRBase_DyadicOperator.hh"
+#include "IIR_XnorOperator.hh"
 
 class IIRBase_XnorOperator : public virtual IIRBase_DyadicOperator,
 			     public virtual IIR_XnorOperator{

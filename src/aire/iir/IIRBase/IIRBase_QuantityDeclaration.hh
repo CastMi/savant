@@ -23,7 +23,6 @@
 #include "savant_config.hh"
 #include "IIRBase_ObjectDeclaration.hh"
 #include "IIR_QuantityDeclaration.hh"
-#include "IRBasicDataTypes.hh"
 
 class IIRBase_QuantityDeclaration : public virtual IIRBase_ObjectDeclaration, public virtual IIR_QuantityDeclaration {
 

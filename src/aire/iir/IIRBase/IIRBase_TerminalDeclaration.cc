@@ -1,4 +1,3 @@
-
 // Copyright (c) 2002 The University of Cincinnati.
 // All rights reserved.
  
@@ -28,6 +27,7 @@
 #include "savant.hh"
 #include "IIRBase_TerminalDeclaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIRBase_NatureDefinition.hh"
 
 IIRBase_TerminalDeclaration::IIRBase_TerminalDeclaration(){
   set_nature(NULL);

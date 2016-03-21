@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_DYADIC_OPERATOR_HH
 #define IIRBASE_DYADIC_OPERATOR_HH
 
@@ -29,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_DyadicOperator.hh"
 #include "IIRBase_Operator.hh"
+#include "IIR_DyadicOperator.hh"
 
 class IIR_SubprogramDeclaration;
 

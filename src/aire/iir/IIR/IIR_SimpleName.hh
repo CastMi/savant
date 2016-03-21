@@ -1,4 +1,3 @@
-
 #ifndef IIR_SIMPLE_NAME_HH
 #define IIR_SIMPLE_NAME_HH
 

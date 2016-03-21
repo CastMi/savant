@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_LTF_ATTRIBUTE_HH
 #define IIRBASE_LTF_ATTRIBUTE_HH
 
@@ -26,9 +25,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIRBase_Attribute.hh"
 #include "IIR_LTFAttribute.hh"
-#include "IRBasicDataTypes.hh"
+#include "IIRBase_Attribute.hh"
 
 /** This class describes the 'ltf attribute.  For a scalar quantity Q, the
     attribute Q'ltf(num, den) yields a quantity whose type is the base type

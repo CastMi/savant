@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SOURCE_QUANTITY_DECLARATION_HH
 #define IIRBASE_SOURCE_QUANTITY_DECLARATION_HH
 
@@ -22,10 +21,8 @@
 // the file "LGPL", distributed with this archive.
 
 #include "savant_config.hh"
-#include "IIRBase_QuantityDeclaration.hh"
 #include "IIR_SourceQuantityDeclaration.hh"
-#include "IRBasicDataTypes.hh"
-#include "IIR_DesignatorList.hh"
+#include "IIRBase_QuantityDeclaration.hh"
 
 /** This class describes the Source quantity declaration. A sinusoidal
     equation can be characterized as v(t) = M cos(wt + p). The frequency w

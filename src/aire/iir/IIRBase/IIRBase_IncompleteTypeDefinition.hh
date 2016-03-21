@@ -33,10 +33,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_IncompleteTypeDefinition.hh"
 #include "IIRBase_TypeDefinition.hh"
-#include <cstdlib>
-using std::abort;
+#include "IIR_IncompleteTypeDefinition.hh"
 
 class IIR_Identifier;
 

@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ACROSS_ATTRIBUTE_HH
 #define IIRBASE_ACROSS_ATTRIBUTE_HH
 
@@ -28,7 +27,6 @@
 #include "savant_config.hh"
 #include "IIR_AcrossAttribute.hh"
 #include "IIRBase_Attribute.hh"
-#include "IRBasicDataTypes.hh"
 
 /** This class describes N'Across. For a nature N , the attribute N'across
     returns the across type of the nature N. */

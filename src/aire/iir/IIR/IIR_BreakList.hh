@@ -27,7 +27,6 @@
 
 #include "savant_config.hh"
 #include "IIR_List.hh"
-#include "IRBasicDataTypes.hh"
   
 class IIR_BreakElement;
 

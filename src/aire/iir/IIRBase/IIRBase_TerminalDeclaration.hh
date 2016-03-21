@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_TERMINAL_DECLARATION_HH
 #define IIRBASE_TERMINAL_DECLARATION_HH
 
@@ -29,12 +28,11 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_TerminalDeclaration.hh"
-#include "IRBasicDataTypes.hh"
-#include "IIR_NatureDefinition.hh"
 #include "IIRBase_ObjectDeclaration.hh"
+#include "IIR_TerminalDeclaration.hh"
 
 class IIR_NatureDefinition;
+
 class IIRBase_TerminalDeclaration : public virtual IIRBase_ObjectDeclaration, public virtual IIR_TerminalDeclaration {
 public: 
   IIR_Kind get_kind() const { return IIR_TERMINAL_DECLARATION; }

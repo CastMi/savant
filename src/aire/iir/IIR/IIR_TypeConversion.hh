@@ -1,4 +1,3 @@
-
 #ifndef IIR_TYPE_CONVERSION_HH
 #define IIR_TYPE_CONVERSION_HH
 

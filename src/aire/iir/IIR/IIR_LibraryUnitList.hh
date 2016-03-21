@@ -31,7 +31,7 @@
 
 #include "savant_config.hh"
 #include "IIR_DeclarationList.hh"
-#include "IIR_LibraryUnit.hh"
+
 class IIR_LibraryUnit;
 
 class IIR_LibraryUnitList : public virtual IIR_DeclarationList{

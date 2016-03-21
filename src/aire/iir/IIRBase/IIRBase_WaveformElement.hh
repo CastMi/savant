@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_WAVEFORM_ELEMENT_HH
 #define IIRBASE_WAVEFORM_ELEMENT_HH
 
@@ -32,8 +31,6 @@
 #include "savant_config.hh"
 #include "IIRBase_Tuple.hh"
 #include "IIR_WaveformElement.hh"
-
-class IIR_WaveformElement;
 
 class IIRBase_WaveformElement : public virtual IIRBase_Tuple, public virtual IIR_WaveformElement{
 public:

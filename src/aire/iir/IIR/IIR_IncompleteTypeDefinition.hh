@@ -33,7 +33,6 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR.hh"
 #include "IIR_TypeDefinition.hh"
 
 class IIR_Identifier;

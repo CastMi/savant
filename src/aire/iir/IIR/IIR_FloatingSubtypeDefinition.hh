@@ -34,8 +34,6 @@
 
 class IIR_FunctionDeclaration;
 
-// class IIR_SubtypeDefinition provides the resolution_function methods.
-
 class IIR_FloatingSubtypeDefinition : public virtual IIR_FloatingTypeDefinition{
   
 public:

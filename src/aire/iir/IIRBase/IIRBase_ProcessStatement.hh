@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_PROCESS_STATEMENT_HH
 #define IIRBASE_PROCESS_STATEMENT_HH
 
@@ -32,9 +31,10 @@
 #include "savant_config.hh"
 #include "IIRBase_ConcurrentStatement.hh"
 #include "IIR_ProcessStatement.hh"
-#include "IIR_SequentialStatementList.hh"
 
+class IIR_SequentialStatementList;
 class IIR_DeclarationList;
+
 class IIRBase_ProcessStatement : public virtual IIRBase_ConcurrentStatement,
 				 public virtual IIR_ProcessStatement{
 public:

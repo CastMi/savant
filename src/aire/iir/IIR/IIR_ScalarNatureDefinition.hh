@@ -1,4 +1,3 @@
-
 #ifndef IIR_SCALAR_NATURE_DEFINITION_HH
 #define IIR_SCALAR_NATURE_DEFINITION_HH
 
@@ -30,8 +29,6 @@
 
 #include "savant_config.hh"
 #include "IIR_NatureDefinition.hh"
-#include "IRBasicDataTypes.hh"
-#include "IIR_TerminalDeclaration.hh"
  
 class IIR_TypeDefinition;
 class IIR_TerminalDeclaration;

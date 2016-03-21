@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_WHILE_LOOP_STATEMENT_HH
 #define IIRBASE_WHILE_LOOP_STATEMENT_HH
 
@@ -33,6 +32,7 @@
 #include "IIR_WhileLoopStatement.hh"
 
 class IIR_SequentialStatementList;
+
 class IIRBase_WhileLoopStatement : public virtual IIRBase_SequentialStatement, public virtual IIR_WhileLoopStatement{
 
 public:

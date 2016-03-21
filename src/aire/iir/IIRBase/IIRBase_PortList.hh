@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_PORT_LIST_HH
 #define IIRBASE_PORT_LIST_HH
 
@@ -30,9 +29,6 @@
 #include "savant_config.hh"
 #include "IIRBase_InterfaceList.hh"
 #include "IIR_PortList.hh"
-
-class IIR_SignalInterfaceDeclaration;
-class IIR_TerminalInterfaceDeclaration;
 
 class IIRBase_PortList : public virtual IIRBase_InterfaceList, public virtual IIR_PortList{
 

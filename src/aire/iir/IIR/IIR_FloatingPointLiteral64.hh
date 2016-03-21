@@ -33,7 +33,6 @@
 #include "savant_config.hh"
 #include "IIR_Literal.hh"
 
-
 class IIR_FloatingPointLiteral64 : public virtual IIR_Literal{
 
 public:

@@ -1,4 +1,3 @@
-
 #ifndef IIR_TEXTLITERAL_HH
 #define IIR_TEXTLITERAL_HH
 

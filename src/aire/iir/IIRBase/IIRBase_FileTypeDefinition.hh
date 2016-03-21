@@ -33,6 +33,7 @@
 #include "IIR_FileTypeDefinition.hh"
 
 class IIR_TypeDefinition;
+
 class IIRBase_FileTypeDefinition : public virtual IIRBase_TypeDefinition, public virtual IIR_FileTypeDefinition{
 
 public:

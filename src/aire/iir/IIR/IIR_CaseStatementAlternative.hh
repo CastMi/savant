@@ -30,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_Tuple.hh"
+
 class IIR_SequentialStatementList;
 
 class IIR_CaseStatementAlternative : public virtual IIR_Tuple{

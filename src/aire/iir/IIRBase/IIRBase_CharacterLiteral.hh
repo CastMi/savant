@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_CHARACTER_LITERAL_HH
 #define IIRBASE_CHARACTER_LITERAL_HH
 
@@ -32,8 +31,6 @@
 #include "savant_config.hh"
 #include "IIRBase_TextLiteral.hh"
 #include "IIR_CharacterLiteral.hh"
-
-class IIR_CharacterLiteral;
 
 class IIRBase_CharacterLiteral : public virtual IIRBase_TextLiteral, public virtual IIR_CharacterLiteral{
   //friend ostream &operator<<( ostream &, IIR_CharacterLiteral & );

@@ -32,9 +32,6 @@
 #include "IIR_EnumerationTypeDefinition.hh"
 
 class IIR_FunctionDeclaration;
-class IIR_EnumerationLiteralList;
-
-// class IIR_SubtypeDefinition provides the resolution_function methods.
 
 class IIR_EnumerationSubtypeDefinition : public virtual IIR_EnumerationTypeDefinition{
 

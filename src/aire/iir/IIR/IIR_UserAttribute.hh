@@ -1,4 +1,3 @@
-
 #ifndef IIR_USER_ATTRIBUTE_HH
 #define IIR_USER_ATTRIBUTE_HH
 

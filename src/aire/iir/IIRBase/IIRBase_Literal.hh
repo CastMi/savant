@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_LITERAL_HH
 #define IIRBASE_LITERAL_HH
 

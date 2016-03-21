@@ -1,4 +1,3 @@
-
 #ifndef IIR_QUIET_ATTRIBUTE_HH
 #define IIR_QUIET_ATTRIBUTE_HH
 

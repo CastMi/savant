@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_BLOCK_STATEMENT_HH
 #define IIRBASE_BLOCK_STATEMENT_HH
 
@@ -25,9 +24,10 @@
 //          Dale E. Martin	dmartin@cliftonlabs.com
 
 //---------------------------------------------------------------------------
+
 #include "savant_config.hh"
-#include "IIR_BlockStatement.hh"
 #include "IIRBase_ConcurrentStatement.hh"
+#include "IIR_BlockStatement.hh"
 
 class IIR_GenericList;
 class IIR_AssociationList;

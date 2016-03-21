@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ACCESS_TYPE_DEFINITION_HH
 #define IIRBASE_ACCESS_TYPE_DEFINITION_HH
 
@@ -33,7 +32,6 @@
 #include "IIR_AccessTypeDefinition.hh"
 
 class IIR_TypeDefinition;
-class IIR_AccessTypeDefinition;
 class IIR_ScalarTypeDefinition;
 
 namespace savant {

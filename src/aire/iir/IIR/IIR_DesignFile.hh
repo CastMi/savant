@@ -31,8 +31,6 @@
 #include "savant_config.hh"
 #include "IIR.hh"
 
-// These are all instantiated, so they really need to be here.
-
 class IIR_Identifier;
 class IIR_CommentList;
 class IIR_LibraryUnitList;

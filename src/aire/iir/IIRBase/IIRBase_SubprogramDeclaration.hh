@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SUBPROGRAM_DECLARATION_HH
 #define IIRBASE_SUBPROGRAM_DECLARATION_HH
 
@@ -32,14 +31,13 @@
 #include "savant_config.hh"
 #include "IIRBase_Declaration.hh"
 #include "IIR_SubprogramDeclaration.hh"
-#include "IIR_DeclarationList.hh"
-#include "IIR_AttributeSpecificationList.hh"
 
 class IIR_InterfaceList;
 class IIR_DeclarationList;
 class IIR_SequentialStatementList;
 class IIR_AttributeSpecificationList;
-class IIRBase_SubprogramDeclaration : public virtual IIRBase_Declaration, public virtual IIR_SubprogramDeclaration{
+
+class IIRBase_SubprogramDeclaration : public virtual IIRBase_Declaration, public virtual IIR_SubprogramDeclaration {
 
 public:
   // List Accessor(s)

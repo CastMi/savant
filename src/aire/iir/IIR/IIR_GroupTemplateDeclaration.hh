@@ -31,6 +31,7 @@
 
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
+
 class IIR_EntityClassEntryList;
 
 class IIR_GroupTemplateDeclaration : public virtual IIR_Declaration{

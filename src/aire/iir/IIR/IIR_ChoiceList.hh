@@ -29,7 +29,6 @@
 
 #include "savant_config.hh"
 #include "IIR_List.hh"
-#include "IRKind.hh"
 
 class IIR_Choice;
 

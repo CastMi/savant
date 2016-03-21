@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SUBTRACTION_OPERATOR_HH
 #define IIRBASE_SUBTRACTION_OPERATOR_HH
 
@@ -29,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_SubtractionOperator.hh"
 #include "IIRBase_DyadicOperator.hh"
+#include "IIR_SubtractionOperator.hh"
 
 class IIRBase_SubtractionOperator : public virtual IIRBase_DyadicOperator,
 				    public virtual IIR_SubtractionOperator{

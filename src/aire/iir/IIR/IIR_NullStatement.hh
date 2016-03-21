@@ -1,4 +1,3 @@
-
 #ifndef IIR_NULL_STATEMENT_HH
 #define IIR_NULL_STATEMENT_HH
 

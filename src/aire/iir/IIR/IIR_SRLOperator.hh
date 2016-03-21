@@ -1,4 +1,3 @@
-
 #ifndef IIR_SRL_OPERATOR_HH
 #define IIR_SRL_OPERATOR_HH
 

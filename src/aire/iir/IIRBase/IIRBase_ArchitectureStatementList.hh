@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ARCHITECTURE_STATEMENT_LIST_HH
 #define IIRBASE_ARCHITECTURE_STATEMENT_LIST_HH
 
@@ -29,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_ArchitectureStatementList.hh"
 #include "IIRBase_List.hh"
+#include "IIR_ArchitectureStatementList.hh"
 
 class IIR_ArchitectureStatement;
 
