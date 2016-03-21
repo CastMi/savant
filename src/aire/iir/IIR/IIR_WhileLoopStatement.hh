@@ -1,4 +1,3 @@
-
 #ifndef IIR_WHILE_LOOP_STATEMENT_HH
 #define IIR_WHILE_LOOP_STATEMENT_HH
 
@@ -30,6 +29,7 @@
 
 #include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
+
 class IIR_SequentialStatementList;
 
 class IIR_WhileLoopStatement : public virtual IIR_SequentialStatement{

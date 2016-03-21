@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ARRAY_NATURE_DEFINITION_HH
 #define IIRBASE_ARRAY_NATURE_DEFINITION_HH
 
@@ -22,11 +21,8 @@
 // the file "LGPL", distributed with this archive.
 
 #include "savant_config.hh"
-#include "IIR_TypeDefinition.hh"
-#include "IIR_ScalarTypeDefinition.hh"
-#include "IIR_ArrayNatureDefinition.hh"
 #include "IIRBase_NatureDefinition.hh"
-#include "IRBasicDataTypes.hh"
+#include "IIR_ArrayNatureDefinition.hh"
 
 class IIRBase_ArrayNatureDefinition : public virtual IIRBase_NatureDefinition, public virtual IIR_ArrayNatureDefinition {
 

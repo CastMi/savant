@@ -1,4 +1,3 @@
-
 #ifndef IIR_SLA_OPERATOR_HH
 #define IIR_SLA_OPERATOR_HH
 

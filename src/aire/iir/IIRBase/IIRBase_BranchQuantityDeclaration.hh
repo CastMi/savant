@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_BRANCH_QUANTITY_DECLARATION_HH
 #define IIRBASE_BRANCH_QUANTITY_DECLARATION_HH
 
@@ -22,9 +21,8 @@
 // the file "LGPL", distributed with this archive.
  
 #include "savant_config.hh"
-#include "IIR_BranchQuantityDeclaration.hh"
 #include "IIRBase_QuantityDeclaration.hh"
-#include "IRBasicDataTypes.hh"
+#include "IIR_BranchQuantityDeclaration.hh"
 
 class IIRBase_BranchQuantityDeclaration : public virtual IIRBase_QuantityDeclaration, public virtual IIR_BranchQuantityDeclaration {
 

@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SIGNAL_ASSIGNMENT_STATEMENT_HH
 #define IIRBASE_SIGNAL_ASSIGNMENT_STATEMENT_HH
 
@@ -34,6 +33,7 @@
 #include "IIR_SignalAssignmentStatement.hh"
 
 class IIR_WaveformList;
+
 class IIRBase_SignalAssignmentStatement : public virtual IIRBase_SequentialStatement, public virtual IIR_SignalAssignmentStatement{
 
 public:

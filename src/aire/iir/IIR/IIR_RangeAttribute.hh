@@ -1,4 +1,3 @@
-
 #ifndef IIR_RANGE_ATTRIBUTE_HH
 #define IIR_RANGE_ATTRIBUTE_HH
 

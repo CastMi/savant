@@ -32,11 +32,6 @@
 #include "IIRBase_Expression.hh"
 #include "IIR_Operator.hh"
 
-class IIRBase_AssociationList;
-class IIRBase_DesignatorList;
-class IIRBase_SubprogramDeclaration;
-class IIRBase_TypeDefinition;
-
 class IIRBase_Operator : public virtual IIRBase_Expression,
 			 public virtual IIR_Operator {
 

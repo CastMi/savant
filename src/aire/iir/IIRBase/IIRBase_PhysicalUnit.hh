@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_PHYSICAL_UNIT_HH
 #define IIRBASE_PHYSICAL_UNIT_HH
 
@@ -34,7 +33,6 @@
 #include "IIRBase_Declaration.hh"
 #include "IIR_PhysicalUnit.hh"
 
-class IIR_PhysicalUnit;
 class IIR_AttributeSpecificationList;
 
 class IIRBase_PhysicalUnit : public virtual IIRBase_Declaration,

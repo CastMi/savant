@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -25,12 +24,11 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "IIRBase_SensitizedProcessStatement.hh"
 #include "IIR_DesignatorList.hh"
 #include "IIRBase_DeclarationList.hh"
 #include "IIR_Label.hh"
+#include "IIRBase_SequentialStatementList.hh"
 
 IIRBase_SensitizedProcessStatement::IIRBase_SensitizedProcessStatement()  :
   sensitivity_list(0) { }

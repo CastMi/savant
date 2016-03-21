@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SLICE_NAME_HH
 #define IIRBASE_SLICE_NAME_HH
 

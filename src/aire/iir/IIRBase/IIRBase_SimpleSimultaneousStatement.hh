@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SIMPLE_SIMULTANEOUS_STATEMENT_HH
 #define IIRBASE_SIMPLE_SIMULTANEOUS_STATEMENT_HH
 
@@ -28,9 +27,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_SimpleSimultaneousStatement.hh"
 #include "IIRBase_SimultaneousStatement.hh"
-#include "IRBasicDataTypes.hh"
+#include "IIR_SimpleSimultaneousStatement.hh"
 
 class IIR;
 

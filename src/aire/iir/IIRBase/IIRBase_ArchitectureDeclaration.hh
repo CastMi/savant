@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ARCHITECTURE_DECLARATION_HH
 #define IIRBASE_ARCHITECTURE_DECLARATION_HH
 
@@ -33,7 +32,6 @@
 class IIR_DeclarationList;
 class IIR_ArchitectureStatementList;
 class IIR_EntityDeclaration;
-class IIR_ArchitectureStatement;
 
 class IIRBase_ArchitectureDeclaration : public virtual IIRBase_LibraryUnit, public virtual IIR_ArchitectureDeclaration{
 

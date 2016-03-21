@@ -31,6 +31,7 @@
 
 #include "savant_config.hh"
 #include "IIR_TypeDefinition.hh"
+
 class IIR_TypeDefinition;
 
 class IIR_FileTypeDefinition : public virtual IIR_TypeDefinition{

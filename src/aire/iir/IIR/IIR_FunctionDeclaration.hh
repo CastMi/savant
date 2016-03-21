@@ -31,6 +31,7 @@
 
 #include "savant_config.hh"
 #include "IIR_SubprogramDeclaration.hh"
+
 class IIR_TypeDefinition;
 
 class IIR_FunctionDeclaration : public virtual IIR_SubprogramDeclaration{

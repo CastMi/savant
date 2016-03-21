@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_CHOICE_LIST_HH
 #define IIRBASE_CHOICE_LIST_HH
 

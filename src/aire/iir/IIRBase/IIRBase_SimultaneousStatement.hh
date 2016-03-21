@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SIMULTANEOUS_STATEMENT_HH
 #define IIRBASE_SIMULTANEOUS_STATEMENT_HH
 
@@ -26,8 +25,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_SimultaneousStatement.hh"
 #include "IIRBase_ArchitectureStatement.hh"
+#include "IIR_SimultaneousStatement.hh"
 
 class IIRBase_SimultaneousStatement : public virtual IIRBase_ArchitectureStatement, public virtual IIR_SimultaneousStatement {
 public:

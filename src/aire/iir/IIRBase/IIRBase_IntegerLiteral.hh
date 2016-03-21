@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_INTEGER_LITERAL_HH
 #define IIRBASE_INTEGER_LITERAL_HH
 
@@ -32,7 +31,6 @@
 #include "savant_config.hh"
 #include "IIRBase_Literal.hh"
 #include "IIR_IntegerLiteral.hh"
-
 
 class IIRBase_IntegerLiteral : public virtual IIRBase_Literal, public virtual IIR_IntegerLiteral{
   friend class VHDLParser;

@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_AGGREGATE_HH
 #define IIRBASE_AGGREGATE_HH
 
@@ -33,6 +32,7 @@
 #include "IIR_Aggregate.hh"
 
 class IIR_AssociationList;
+
 class IIRBase_Aggregate : public virtual IIRBase_Expression,
 			  public virtual IIR_Aggregate{
 public:

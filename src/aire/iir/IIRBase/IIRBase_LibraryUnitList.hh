@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_LIBRARY_UNIT_LIST_HH
 #define IIRBASE_LIBRARY_UNIT_LIST_HH
 
@@ -30,8 +29,9 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_LibraryUnitList.hh"
 #include "IIRBase_DeclarationList.hh"
+#include "IIR_LibraryUnitList.hh"
+
 class IIR_LibraryUnit;
 
 class IIRBase_LibraryUnitList : public virtual IIRBase_DeclarationList, public virtual IIR_LibraryUnitList{

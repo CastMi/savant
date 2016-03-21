@@ -1,4 +1,3 @@
-
 #ifndef IIR_SENSITIZED_PROCESS_STATEMENT_HH
 #define IIR_SENSITIZED_PROCESS_STATEMENT_HH
 
@@ -31,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_ProcessStatement.hh"
+
 class IIR_DesignatorList;
 
 class IIR_SensitizedProcessStatement : public virtual IIR_ProcessStatement{

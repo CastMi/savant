@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_NATURE_DEFINITION_HH
 #define IIRBASE_NATURE_DEFINITION_HH
 
@@ -28,9 +27,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_NatureDefinition.hh"
 #include "IIRBase_TypeDefinition.hh"
-#include "IRBasicDataTypes.hh"
+#include "IIR_NatureDefinition.hh"
 
 class IIRBase_NatureDefinition : public virtual IIRBase_TypeDefinition,
 				 public virtual IIR_NatureDefinition {

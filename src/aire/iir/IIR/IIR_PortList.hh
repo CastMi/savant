@@ -1,4 +1,3 @@
-
 #ifndef IIR_PORT_LIST_HH
 #define IIR_PORT_LIST_HH
 
@@ -31,7 +30,8 @@
 
 #include "savant_config.hh"
 #include "IIR_InterfaceList.hh"
-#include "IIR_InterfaceDeclaration.hh"
+
+class IIR_InterfaceDeclaration;
 
 class IIR_PortList : public virtual IIR_InterfaceList {
 

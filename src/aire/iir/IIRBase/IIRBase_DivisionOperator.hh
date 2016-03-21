@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_DIVISION_OPERATOR_HH
 #define IIRBASE_DIVISION_OPERATOR_HH
 
@@ -29,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_DivisionOperator.hh"
 #include "IIRBase_DyadicOperator.hh"
+#include "IIR_DivisionOperator.hh"
 
 class IIRBase_DivisionOperator : public virtual IIRBase_DyadicOperator,
 				 public virtual IIR_DivisionOperator{

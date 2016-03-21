@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_REFERENCE_ATTRIBUTE_HH
 #define IIRBASE_REFERENCE_ATTRIBUTE_HH
 
@@ -26,9 +25,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_ReferenceAttribute.hh"
 #include "IIRBase_Attribute.hh"
-#include "IRBasicDataTypes.hh"
+#include "IIR_ReferenceAttribute.hh"
 
 /** This class describes T'Reference. For a terminal T, the attribute
     T'Reference yields an across quantity, whose plus terminal is T and
@@ -57,5 +55,3 @@ protected:
 private:
 };
 #endif
-
-

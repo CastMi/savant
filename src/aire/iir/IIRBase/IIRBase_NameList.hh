@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_NAME_LIST_HH
 #define IIRBASE_NAME_LIST_HH
 

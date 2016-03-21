@@ -30,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_Tuple.hh"
+
 class IIR_WaveformList;
 
 class IIR_ConditionalWaveform : public virtual IIR_Tuple{

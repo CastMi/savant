@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SIMPLE_NAME_HH
 #define IIRBASE_SIMPLE_NAME_HH
 
@@ -28,6 +27,7 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 
 //---------------------------------------------------------------------------
+
 #include "savant_config.hh"
 #include "IIRBase_Name.hh"
 #include "IIR_SimpleName.hh"

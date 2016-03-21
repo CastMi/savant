@@ -1,4 +1,3 @@
-
 #ifndef IIR_XNOR_OPERATOR_HH
 #define IIR_XNOR_OPERATOR_HH
 

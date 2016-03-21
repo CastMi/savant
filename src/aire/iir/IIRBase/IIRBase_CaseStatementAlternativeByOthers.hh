@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_CASE_STATEMENT_ALTERNATIVE_BY_OTHERS_HH
 #define IIRBASE_CASE_STATEMENT_ALTERNATIVE_BY_OTHERS_HH
 
@@ -30,7 +29,6 @@
 #include "savant_config.hh"
 #include "IIRBase_CaseStatementAlternative.hh"
 #include "IIR_CaseStatementAlternativeByOthers.hh"
-
 
 class IIRBase_CaseStatementAlternativeByOthers :
   public virtual IIRBase_CaseStatementAlternative,

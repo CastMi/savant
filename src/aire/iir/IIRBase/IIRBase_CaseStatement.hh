@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_CASE_STATEMENT_HH
 #define IIRBASE_CASE_STATEMENT_HH
 
@@ -33,6 +32,7 @@
 #include "IIR_CaseStatement.hh"
 
 class IIR_CaseStatementAlternativeList;
+
 class IIRBase_CaseStatement : public virtual IIRBase_SequentialStatement, public virtual IIR_CaseStatement{
 
 public:

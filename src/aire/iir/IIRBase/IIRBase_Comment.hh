@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_COMMENT_HH
 #define IIRBASE_COMMENT_HH
 
@@ -22,8 +21,8 @@
 // the file "LGPL", distributed with this archive.
 
 #include "savant_config.hh"
-#include "IIR_Comment.hh"
 #include "IIRBase_TextLiteral.hh"
+#include "IIR_Comment.hh"
 
 /* Each VHDL comment line is captured in a separate IIR_Comment node.
    Typically these will be collected into a list and attached to the design

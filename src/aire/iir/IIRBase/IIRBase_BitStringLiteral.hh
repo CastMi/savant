@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_BIT_STRING_LITERAL_HH
 #define IIRBASE_BIT_STRING_LITERAL_HH
 
@@ -31,7 +30,6 @@
 #include "savant_config.hh"
 #include "IIRBase_TextLiteral.hh"
 #include "IIR_BitStringLiteral.hh"
-
 
 class IIRBase_BitStringLiteral : public virtual IIRBase_TextLiteral,
 				 public virtual IIR_BitStringLiteral{

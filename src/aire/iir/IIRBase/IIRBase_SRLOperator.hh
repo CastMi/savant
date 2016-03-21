@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SRL_OPERATOR_HH
 #define IIRBASE_SRL_OPERATOR_HH
 
@@ -29,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_SRLOperator.hh"
 #include "IIRBase_DyadicOperator.hh"
+#include "IIR_SRLOperator.hh"
 
 class IIRBase_SRLOperator : public virtual IIRBase_DyadicOperator, public virtual IIR_SRLOperator{
 public:

@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SIGNATURE_HH
 #define IIRBASE_SIGNATURE_HH
 

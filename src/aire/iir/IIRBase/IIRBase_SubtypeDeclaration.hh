@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_SUBTYPE_DECLARATION_HH
 #define IIRBASE_SUBTYPE_DECLARATION_HH
 
@@ -33,7 +32,6 @@
 #include "IIRBase_Declaration.hh"
 #include "IIR_SubtypeDeclaration.hh"
 
-class IIR_TypeDefinition;
 class IIR_AttributeSpecificationList;
 
 class IIRBase_SubtypeDeclaration : public virtual IIRBase_Declaration,

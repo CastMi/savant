@@ -1,4 +1,3 @@
-
 #ifndef IIR_LTF_ATTRIBUTE_HH
 #define IIR_LTF_ATTRIBUTE_HH
 

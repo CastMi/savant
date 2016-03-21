@@ -30,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
+
 class IIR_CaseStatementAlternativeList;
 
 class IIR_CaseStatement : public virtual IIR_SequentialStatement{

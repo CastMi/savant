@@ -28,6 +28,7 @@
 
 #include "IIRBase_RecordTypeDefinition.hh"
 #include "IIR_ElementDeclarationList.hh"
+#include "IIR_ElementDeclaration.hh"
 #include "IIR_FunctionDeclaration.hh"
 #include "IIR_TextLiteral.hh"
 

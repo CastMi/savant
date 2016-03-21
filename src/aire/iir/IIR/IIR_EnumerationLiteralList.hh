@@ -31,7 +31,8 @@
 
 #include "savant_config.hh"
 #include "IIR_DeclarationList.hh"
-#include "IIR_EnumerationLiteral.hh"
+
+class IIR_EnumerationLiteral;
 
 class IIR_EnumerationLiteralList : public virtual IIR_DeclarationList{
 

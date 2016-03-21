@@ -27,6 +27,7 @@
 //	    Magnus Danielson	
 //---------------------------------------------------------------------------
 
+#include "set.hh"
 #include "IIRScram_FunctionCall.hh"
 #include "IIRScram_AssociationList.hh"
 #include "IIRScram_AssociationElement.hh"

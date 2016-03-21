@@ -1,4 +1,3 @@
-
 #ifndef IIR_ACTIVE_ATTRIBUTE_HH
 #define IIR_ACTIVE_ATTRIBUTE_HH
 
@@ -30,6 +29,7 @@
 
 #include "savant_config.hh"
 #include "IIR_Attribute.hh"
+
 class IIR_TypeDefinition;
 
 class IIR_ActiveAttribute : public virtual IIR_Attribute{

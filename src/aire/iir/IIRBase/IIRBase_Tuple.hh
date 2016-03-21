@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_TUPLE_HH
 #define IIRBASE_TUPLE_HH
 

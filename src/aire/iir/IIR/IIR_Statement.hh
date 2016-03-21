@@ -1,4 +1,3 @@
-
 #ifndef IIR_STATEMENT_HH
 #define IIR_STATEMENT_HH
 

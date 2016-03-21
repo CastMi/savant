@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ALIAS_DECLARATION_HH
 #define IIRBASE_ALIAS_DECLARATION_HH
 
@@ -32,8 +31,6 @@
 #include "savant_config.hh"
 #include "IIRBase_Declaration.hh"
 #include "IIR_AliasDeclaration.hh"
-
-class IIR_TypeDefinition;
 
 class IIRBase_AliasDeclaration : public virtual IIRBase_Declaration,
 				 public virtual IIR_AliasDeclaration{

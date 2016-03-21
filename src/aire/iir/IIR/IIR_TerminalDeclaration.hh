@@ -1,4 +1,3 @@
-
 #ifndef IIR_TERMINAL_DECLARATION_HH
 #define IIR_TERMINAL_DECLARATION_HH
 
@@ -30,8 +29,7 @@
 
 #include "savant_config.hh"
 #include "IIR_ObjectDeclaration.hh"
-#include "IRBasicDataTypes.hh"
-#include "IIR_NatureDefinition.hh"
+
 class IIR_NatureDefinition;
 
 class IIR_TerminalDeclaration : public virtual IIR_ObjectDeclaration {

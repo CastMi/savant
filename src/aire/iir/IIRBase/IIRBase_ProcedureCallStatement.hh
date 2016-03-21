@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_PROCEDURE_CALL_STATEMENT_HH
 #define IIRBASE_PROCEDURE_CALL_STATEMENT_HH
 
@@ -34,6 +33,7 @@
 #include "IIR_ProcedureCallStatement.hh"
 
 class IIR_AssociationList;
+
 class IIRBase_ProcedureCallStatement : public virtual IIRBase_SequentialStatement, public virtual IIR_ProcedureCallStatement{
 
 public:

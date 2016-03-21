@@ -1,4 +1,3 @@
-
 #ifndef IIR_TUPLE_HH
 #define IIR_TUPLE_HH
 

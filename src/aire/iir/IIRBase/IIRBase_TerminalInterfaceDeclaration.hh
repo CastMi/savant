@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_TERMINAL_INTERFACE_DECLARATION_HH
 #define IIRBASE_TERMINAL_INTERFACE_DECLARATION_HH
 
@@ -26,8 +25,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_TerminalInterfaceDeclaration.hh"
 #include "IIRBase_InterfaceDeclaration.hh"
+#include "IIR_TerminalInterfaceDeclaration.hh"
 
 class IIRBase_TerminalInterfaceDeclaration : public virtual IIRBase_InterfaceDeclaration, public virtual IIR_TerminalInterfaceDeclaration {
 public:

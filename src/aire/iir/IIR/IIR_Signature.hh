@@ -1,4 +1,3 @@
-
 #ifndef IIR_SIGNATURE_HH
 #define IIR_SIGNATURE_HH
 

@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_GREATER_THAN_OPERATOR_HH
 #define IIRBASE_GREATER_THAN_OPERATOR_HH
 
@@ -29,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_GreaterThanOperator.hh"
 #include "IIRBase_DyadicOperator.hh"
+#include "IIR_GreaterThanOperator.hh"
 
 class IIRBase_GreaterThanOperator : public virtual IIRBase_DyadicOperator,
 				    public virtual IIR_GreaterThanOperator{

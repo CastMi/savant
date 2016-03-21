@@ -1,4 +1,3 @@
-
 #ifndef IIR_NOR_OPERATOR_HH
 #define IIR_NOR_OPERATOR_HH
 

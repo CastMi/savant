@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ENTITY_CLASS_ENTRY_HH
 #define IIRBASE_ENTITY_CLASS_ENTRY_HH
 
@@ -31,7 +30,6 @@
 #include "savant_config.hh"
 #include "IIRBase_Tuple.hh"
 #include "IIR_EntityClassEntry.hh"
-
 
 class IIRBase_EntityClassEntry : public virtual IIRBase_Tuple, public virtual IIR_EntityClassEntry{
 

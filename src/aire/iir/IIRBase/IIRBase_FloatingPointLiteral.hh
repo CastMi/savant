@@ -24,8 +24,6 @@
 #include "IIRBase_Literal.hh"
 #include "IIR_FloatingPointLiteral.hh"
 
-class IIR_FloatingPointLiteral;
-
 class IIRBase_FloatingPointLiteral : public virtual IIRBase_Literal, public virtual IIR_FloatingPointLiteral{
   friend class VHDLParser;
 

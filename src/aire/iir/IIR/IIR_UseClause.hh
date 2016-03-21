@@ -1,4 +1,3 @@
-
 #ifndef IIR_USE_CLAUSE_HH
 #define IIR_USE_CLAUSE_HH
 

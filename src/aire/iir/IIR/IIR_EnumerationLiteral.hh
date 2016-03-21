@@ -30,7 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
-#include "IIR_EnumerationTypeDefinition.hh"
+
 class IIR_AttributeSpecificationList;
 
 class IIR_EnumerationLiteral : public virtual IIR_Declaration{

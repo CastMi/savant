@@ -1,4 +1,3 @@
-
 #ifndef IIR_POS_ATTRIBUTE_HH
 #define IIR_POS_ATTRIBUTE_HH
 

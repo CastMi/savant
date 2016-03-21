@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_PHYSICAL_SUBTYPE_DEFINITION_HH
 #define IIRBASE_PHYSICAL_SUBTYPE_DEFINITION_HH
 
@@ -33,7 +32,6 @@
 #include "IIRBase_PhysicalTypeDefinition.hh"
 #include "IIR_PhysicalSubtypeDefinition.hh"
 
-class IIR_FunctionDeclaration;
 class IIR_FunctionDeclaration;
 
 // class IIRBase_SubtypeDefinition provides the resolution_function methods.

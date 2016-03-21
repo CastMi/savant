@@ -30,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_ConcurrentStatement.hh"
+
 class IIR_AssociationList;
 class IIR_ArchitectureStatementList;
 

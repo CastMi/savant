@@ -25,14 +25,13 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "IIRBase_SubprogramDeclaration.hh"
 #include "IIR_AttributeSpecificationList.hh"
 #include "IIR_DeclarationList.hh"
 #include "IIR_InterfaceList.hh"
 #include "IIR_SequentialStatementList.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIRBase_InterfaceDeclaration.hh"
 
 IIRBase_SubprogramDeclaration::IIRBase_SubprogramDeclaration()  :
   interface_declarations(0),

@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ARRAY_SUBNATURE_DEFINITION_HH
 #define IIRBASE_ARRAY_SUBNATURE_DEFINITION_HH
 
@@ -26,8 +25,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_ArraySubnatureDefinition.hh"
 #include "IIRBase_ArrayNatureDefinition.hh"
+#include "IIR_ArraySubnatureDefinition.hh"
 
 class IIRBase_ArraySubnatureDefinition : public virtual IIRBase_ArrayNatureDefinition, public virtual IIR_ArraySubnatureDefinition {
 

@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_BREAK_STATEMENT_HH
 #define IIRBASE_BREAK_STATEMENT_HH
 
@@ -22,8 +21,8 @@
 // the file "LGPL", distributed with this archive.
 
 #include "savant_config.hh"
-#include "IIRBase_SequentialStatement.hh"
 #include "IIR_BreakStatement.hh"
+#include "IIRBase_SequentialStatement.hh"
 
 class IIR_BreakList;
 

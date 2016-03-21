@@ -1,4 +1,3 @@
-
 #ifndef IIR_VALUE_ATTRIBUTE_HH
 #define IIR_VALUE_ATTRIBUTE_HH
 

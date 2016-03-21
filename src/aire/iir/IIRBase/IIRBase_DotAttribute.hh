@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_DOT_ATTRIBUTE_HH
 #define IIRBASE_DOT_ATTRIBUTE_HH
 
@@ -28,7 +27,6 @@
 #include "savant_config.hh"
 #include "IIR_DotAttribute.hh"
 #include "IIRBase_Attribute.hh"
-#include "IRBasicDataTypes.hh"
 
 /** The extension base for dot attribute of quantities (Q'Dot).  For a
     Quantity Q, the attribute Q'Dot yields a quantity of type as Q. */

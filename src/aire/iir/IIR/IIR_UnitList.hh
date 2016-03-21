@@ -1,4 +1,3 @@
-
 #ifndef IIR_UNIT_LIST_HH
 #define IIR_UNIT_LIST_HH
 
@@ -32,7 +31,8 @@
 
 #include "savant_config.hh"
 #include "IIR_DeclarationList.hh"
-#include "IIR_PhysicalUnit.hh"
+
+class IIR_PhysicalUnit;
 
 class IIR_UnitList : public virtual IIR_DeclarationList{
 public:

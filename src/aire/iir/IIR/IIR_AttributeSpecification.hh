@@ -31,9 +31,9 @@
 
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
+
 class IIR_Identifier;
 class IIR_DesignatorList;
-class IIR_Declaration;
 
 class IIR_AttributeSpecification : public virtual IIR_Declaration{
 

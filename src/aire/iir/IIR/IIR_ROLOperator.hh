@@ -1,4 +1,3 @@
-
 #ifndef IIR_ROL_OPERATOR_HH
 #define IIR_ROL_OPERATOR_HH
 

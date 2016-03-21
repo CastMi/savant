@@ -1,4 +1,3 @@
-
 #ifndef IIR_RECORD_TYPE_DEFINITION_HH
 #define IIR_RECORD_TYPE_DEFINITION_HH
 
@@ -31,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_TypeDefinition.hh"
+
 class IIR_FunctionDeclaration;
 class IIR_ElementDeclarationList;
 

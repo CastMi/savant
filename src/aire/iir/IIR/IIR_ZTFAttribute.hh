@@ -1,4 +1,3 @@
-
 #ifndef IIR_ZTF_ATTRIBUTE_HH
 #define IIR_ZTF_ATTRIBUTE_HH
 

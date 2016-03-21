@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_BREAK_LIST_HH
 #define IIRBASE_BREAK_LIST_HH
 
@@ -24,7 +23,6 @@
 #include "savant_config.hh"
 #include "IIR_BreakList.hh"
 #include "IIRBase_List.hh"
-#include "IRBasicDataTypes.hh"
   
 class IIR_BreakElement;
 

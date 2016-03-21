@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_CONDITIONAL_WAVEFORM_HH
 #define IIRBASE_CONDITIONAL_WAVEFORM_HH
 
@@ -33,6 +32,7 @@
 #include "IIR_ConditionalWaveform.hh"
 
 class IIR_WaveformList;
+
 class IIRBase_ConditionalWaveform : public virtual IIRBase_Tuple, public virtual IIR_ConditionalWaveform{
 
 public:

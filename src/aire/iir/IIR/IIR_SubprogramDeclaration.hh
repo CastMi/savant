@@ -1,4 +1,3 @@
-
 #ifndef IIR_SUBPROGRAM_DECLARATION_HH
 #define IIR_SUBPROGRAM_DECLARATION_HH
 
@@ -31,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_Declaration.hh"
+
 class IIR_InterfaceList;
 class IIR_DeclarationList;
 class IIR_SequentialStatementList;

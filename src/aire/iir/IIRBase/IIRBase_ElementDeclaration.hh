@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ELEMENT_DECLARATION_HH
 #define IIRBASE_ELEMENT_DECLARATION_HH
 
@@ -31,7 +30,6 @@
 #include "savant_config.hh"
 #include "IIRBase_ObjectDeclaration.hh"
 #include "IIR_ElementDeclaration.hh"
-
 
 class IIRBase_ElementDeclaration : public virtual IIRBase_ObjectDeclaration, public virtual IIR_ElementDeclaration{
 

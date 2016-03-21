@@ -27,6 +27,7 @@
 
 #include "IIRBase_EnumerationTypeDefinition.hh"
 #include "IIRBase_EnumerationLiteralList.hh"
+#include "IIR_EnumerationLiteral.hh"
 
 IIRBase_EnumerationTypeDefinition::IIRBase_EnumerationTypeDefinition() :
   enumeration_literals(0){}

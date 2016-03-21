@@ -1,4 +1,3 @@
-
 #ifndef IIR_LITERAL_HH
 #define IIR_LITERAL_HH
 

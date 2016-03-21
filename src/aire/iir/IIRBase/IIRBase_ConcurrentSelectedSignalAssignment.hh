@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_CONCURRENT_SELECTED_SIGNAL_ASSIGNMENT_HH
 #define IIRBASE_CONCURRENT_SELECTED_SIGNAL_ASSIGNMENT_HH
 
@@ -34,6 +33,7 @@
 #include "IIR_ConcurrentSelectedSignalAssignment.hh"
 
 class IIR_SelectedWaveformList;
+
 class IIRBase_ConcurrentSelectedSignalAssignment : public virtual IIRBase_ConcurrentStatement, public virtual IIR_ConcurrentSelectedSignalAssignment{
 
 public:

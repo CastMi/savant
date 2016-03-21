@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_LIST_HH
 #define IIRBASE_LIST_HH
 
@@ -22,8 +21,8 @@
 // the file "LGPL", distributed with this archive.
 
 #include "savant_config.hh"
-#include "IIR_List.hh"
 #include "IIRBase.hh"
+#include "IIR_List.hh"
 
 class IIRBase_List : public virtual IIRBase, public virtual IIR_List {
 public:

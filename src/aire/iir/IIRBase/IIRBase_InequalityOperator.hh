@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_INEQUALITY_OPERATOR_HH
 #define IIRBASE_INEQUALITY_OPERATOR_HH
 
@@ -29,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_InequalityOperator.hh"
 #include "IIRBase_DyadicOperator.hh"
+#include "IIR_InequalityOperator.hh"
 
 class IIRBase_InequalityOperator : public virtual IIRBase_DyadicOperator,
 				   public virtual IIR_InequalityOperator{

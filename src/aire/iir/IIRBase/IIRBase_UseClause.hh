@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_USE_CLAUSE_HH
 #define IIRBASE_USE_CLAUSE_HH
 

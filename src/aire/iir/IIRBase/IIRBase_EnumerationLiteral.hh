@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ENUMERATION_LITERAL_HH
 #define IIRBASE_ENUMERATION_LITERAL_HH
 
@@ -32,7 +31,6 @@
 #include "IIRBase_Declaration.hh"
 #include "IIR_EnumerationLiteral.hh"
 
-class IIR_EnumerationTypeDefinition;
 class IIR_AttributeSpecificationList;
 
 class IIRBase_EnumerationLiteral : public virtual IIRBase_Declaration,

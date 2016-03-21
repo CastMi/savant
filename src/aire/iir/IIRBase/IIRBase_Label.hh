@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_LABEL_HH
 #define IIRBASE_LABEL_HH
 

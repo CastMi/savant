@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_FLOATING_POINT_LITERAL32_HH
 #define IIRBASE_FLOATING_POINT_LITERAL32_HH
 
@@ -24,8 +23,6 @@
 #include "savant_config.hh"
 #include "IIRBase_Literal.hh"
 #include "IIR_FloatingPointLiteral32.hh"
-
-class  IIR_FloatingPointLiteral32;
 
 class IIRBase_FloatingPointLiteral32 : public virtual IIRBase_Literal, public virtual IIR_FloatingPointLiteral32{
 

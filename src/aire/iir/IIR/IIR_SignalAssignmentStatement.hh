@@ -1,4 +1,3 @@
-
 #ifndef IIR_SIGNAL_ASSIGNMENT_STATEMENT_HH
 #define IIR_SIGNAL_ASSIGNMENT_STATEMENT_HH
 
@@ -31,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
+
 class IIR_WaveformList;
 
 class IIR_SignalAssignmentStatement : public virtual IIR_SequentialStatement{

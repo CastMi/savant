@@ -32,8 +32,6 @@
 #include "IIRBase.hh"
 #include "IIR_Expression.hh"
 
-class IIR_TypeDefinition;
-
 class IIRBase_Expression : public virtual IIRBase,
 			   public virtual IIR_Expression{
 

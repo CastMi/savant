@@ -27,7 +27,6 @@
 
 #include "savant_config.hh"
 #include "IIR_Tuple.hh"
-#include "IRBasicDataTypes.hh"
   
 class IIR_Name;
 

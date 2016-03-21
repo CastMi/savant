@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_GROUP_TEMPLATE_DECLARATION_HH
 #define IIRBASE_GROUP_TEMPLATE_DECLARATION_HH
 
@@ -34,6 +33,7 @@
 #include "IIR_GroupTemplateDeclaration.hh"
 
 class IIR_EntityClassEntryList;
+
 class IIRBase_GroupTemplateDeclaration : public virtual IIRBase_Declaration, public virtual IIR_GroupTemplateDeclaration{
 
 public:

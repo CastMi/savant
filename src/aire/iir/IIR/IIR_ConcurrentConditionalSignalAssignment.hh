@@ -30,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_ConcurrentStatement.hh"
+
 class IIR_ConditionalWaveformList;
 
 class IIR_ConcurrentConditionalSignalAssignment : public virtual IIR_ConcurrentStatement{

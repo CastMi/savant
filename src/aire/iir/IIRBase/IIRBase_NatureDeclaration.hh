@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_NATURE_DECLARATION_HH
 #define IIRBASE_NATURE_DECLARATION_HH
 
@@ -29,9 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_NatureDeclaration.hh"
 #include "IIRBase_Declaration.hh"
-#include "IRBasicDataTypes.hh"
+#include "IIR_NatureDeclaration.hh"
 
 class IIR_AttributeSpecificationList;
 class IIR_NatureDefinition;

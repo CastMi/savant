@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_NOR_OPERATOR_HH
 #define IIRBASE_NOR_OPERATOR_HH
 
@@ -29,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_NorOperator.hh"
 #include "IIRBase_DyadicOperator.hh"
+#include "IIR_NorOperator.hh"
 
 class IIRBase_NorOperator : public virtual IIRBase_DyadicOperator,
 			    public virtual IIR_NorOperator{

@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_LESS_THAN_OPERATOR_HH
 #define IIRBASE_LESS_THAN_OPERATOR_HH
 
@@ -29,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_LessThanOperator.hh"
 #include "IIRBase_DyadicOperator.hh"
+#include "IIR_LessThanOperator.hh"
 
 class IIRBase_LessThanOperator : public virtual IIRBase_DyadicOperator,
 				 public virtual IIR_LessThanOperator{

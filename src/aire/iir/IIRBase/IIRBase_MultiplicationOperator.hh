@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_MULTIPLICATION_OPERATOR_HH
 #define IIRBASE_MULTIPLICATION_OPERATOR_HH
 
@@ -32,8 +31,8 @@
 // class used for type checking.
 
 #include "savant_config.hh"
-#include "IIR_MultiplicationOperator.hh"
 #include "IIRBase_DyadicOperator.hh"
+#include "IIR_MultiplicationOperator.hh"
 
 class IIRBase_MultiplicationOperator : public virtual IIRBase_DyadicOperator,
 				       public virtual IIR_MultiplicationOperator{

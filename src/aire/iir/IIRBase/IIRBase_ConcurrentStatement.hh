@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_CONCURRENT_STATEMENT_HH
 #define IIRBASE_CONCURRENT_STATEMENT_HH
 
@@ -31,14 +30,10 @@
 
 class IIRBase_ConcurrentStatement : public virtual IIRBase_ArchitectureStatement, 
 				    public virtual IIR_ConcurrentStatement{
-
-public:
-
 protected:
   IIRBase_ConcurrentStatement();
   virtual ~IIRBase_ConcurrentStatement() = 0;
     
-private:
-
 };
+
 #endif

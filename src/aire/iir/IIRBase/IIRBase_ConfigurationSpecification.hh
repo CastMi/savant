@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_CONFIGURATION_SPECIFICATION_HH
 #define IIRBASE_CONFIGURATION_SPECIFICATION_HH
 
@@ -31,11 +30,10 @@
 #include "savant_config.hh"
 #include "IIRBase_Declaration.hh"
 #include "IIR_ConfigurationSpecification.hh"
-#include "IIR_AssociationList.hh"
 
+class IIR_AssociationList;
 class IIR_LibraryUnit;
 class IIR_DesignatorList;
-class IIR_AssociationList;
 
 class IIRBase_ConfigurationSpecification : public virtual IIRBase_Declaration, public virtual IIR_ConfigurationSpecification{
 

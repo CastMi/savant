@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ELSIF_HH
 #define IIRBASE_ELSIF_HH
 
@@ -28,6 +27,7 @@
 //          Timothy J. McBrayer tmcbraye@ece.uc.edu 
 
 //---------------------------------------------------------------------------
+
 #include "savant_config.hh"
 #include "IIRBase_Tuple.hh"
 #include "IIR_Elsif.hh"

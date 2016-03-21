@@ -1,4 +1,3 @@
-
 #ifndef IIR_WAIT_STATEMENT_HH
 #define IIR_WAIT_STATEMENT_HH
 
@@ -31,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
+
 class IIR_DesignatorList;
 
 class IIR_WaitStatement : public virtual IIR_SequentialStatement{

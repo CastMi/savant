@@ -29,6 +29,7 @@
 
 #include "savant_config.hh"
 #include "IIR_CaseStatementAlternative.hh"
+
 class IIR_ChoiceList;
 
 class IIR_CaseStatementAlternativeByChoices : public virtual IIR_CaseStatementAlternative{

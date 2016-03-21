@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ENUMERATION_SUBTYPE_DEFINITION_HH
 #define IIRBASE_ENUMERATION_SUBTYPE_DEFINITION_HH
 
@@ -34,7 +33,6 @@
 
 class IIR_EnumerationLiteralList;
 class IIR_FunctionDeclaration;
-class IIR_EnumerationLiteral;
 
 // class IIRBase_SubtypeDefinition provides the resolution_function methods.
 class IIRBase_EnumerationSubtypeDefinition : public virtual IIRBase_EnumerationTypeDefinition,

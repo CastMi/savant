@@ -1,4 +1,3 @@
-
 #ifndef IIR_AGGREGATE_HH
 #define IIR_AGGREGATE_HH
 
@@ -30,6 +29,7 @@
 
 #include "savant_config.hh"
 #include "IIR_Expression.hh"
+
 class IIR_AssociationList;
 
 class IIR_Aggregate : public virtual IIR_Expression{

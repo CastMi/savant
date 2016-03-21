@@ -1,4 +1,3 @@
-
 #ifndef IIRBASE_ABOVE_ATTRIBUTE_HH
 #define IIRBASE_ABOVE_ATTRIBUTE_HH
 
@@ -26,9 +25,8 @@
 //---------------------------------------------------------------------------
 
 #include "savant_config.hh"
-#include "IIR_AboveAttribute.hh"
 #include "IIRBase_Attribute.hh"
-#include "IRBasicDataTypes.hh"
+#include "IIR_AboveAttribute.hh"
 
 class IIR;
 

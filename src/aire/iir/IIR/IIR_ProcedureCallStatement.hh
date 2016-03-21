@@ -1,4 +1,3 @@
-
 #ifndef IIR_PROCEDURE_CALL_STATEMENT_HH
 #define IIR_PROCEDURE_CALL_STATEMENT_HH
 
@@ -31,6 +30,7 @@
 
 #include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
+
 class IIR_AssociationList;
 
 class IIR_ProcedureCallStatement : public virtual IIR_SequentialStatement{
