@@ -24,25 +24,20 @@
 #include "ArgumentParser.hpp"
 #include "savant_config.hh"
 #include "version.hh"
-#include <vector>
-#include <algorithm>
-#include <iterator>
-#include <utility>
 #include <boost/program_options.hpp>
 
 #define MAX_INPUT_FILE_NUM -1
 
 // global flag for parse errors.  Parse errors include semantic errors
 // like undefined symbols and such
-bool parse_error = false;
+bool parse_error;
 // If the command line switch to capture comments is turned on, this flag
 // will be set to true; otherwise it will be set to false.
-bool capture_comments = false;
+bool capture_comments;
 // This object will record which language the analyzer should be
 // configured to recognize.
 language_processing_control *lang_proc;
 
-extern std::string work_lib_name;
 bool debug_symbol_table;
 bool gen_cc_ref;
 bool no_file_output;
@@ -59,9 +54,15 @@ ArgumentParser::ArgumentParser(bool complainAndExitOnError)
    vhdl_ams_(false),
    vhdl_2001_(false),
    publish_hdl(false),
-   publish_cc(false) {}
+   publish_cc(false),
+   vhdlexts_({ std::string(".vhd"), std::string(".vhdl") }),
+   verilogexts_({ std::string(".v") }) {
+   lang_proc = nullptr;
+   parse_error = false;
+}
 
-   ArgumentParser::~ArgumentParser() {};
+ArgumentParser::~ArgumentParser() {
+};
 
 ParsingStatus
 ArgumentParser::vectorifyArguments( int argc, char **argv ){
@@ -140,6 +141,7 @@ ArgumentParser::vectorifyArguments( int argc, char **argv ){
       return ParsingStatus::ERROR;
    }
    ASSERT( vhdl_93_ + vhdl_ams_ + vhdl_2001_ <= 1 );
+   assert(!lang_proc);
    lang_proc = new language_processing_control(getLanguage());
    return checkFiles(tmp_file_vec);
 }
@@ -167,38 +169,38 @@ ArgumentParser::getLanguage() const {
    }
 }
 
-bool isVHDLExtension(const std::string input) {
-   static const std::set<std::string> vhdlexts = { std::string(".vhdl"), std::string(".vhd") };
-   for(auto vhdl = vhdlexts.begin(); vhdl != vhdlexts.end(); vhdl++) {
-      if( input.compare( input.length() - vhdl->length(), vhdl->length(), *vhdl ) == 0 ) {
-         return true;
+bool
+ArgumentParser::isExtension(const std::string& input, const std::set<std::string>& exts) const {
+   for( auto ext = exts.begin(); ext != exts.end(); ++ext ) {
+      try {
+         if( !strcasecmp( input.substr( input.length() - ext->length() ).c_str(), ext->c_str() ) ) {
+            return true;
+         }
+      } catch ( ... ) {
+         break;
       }
-   }
-   return false;
-}
-
-bool isVerilogExtension(const std::string input) {
-   static const std::string verilogext(".v");
-   if( input.compare( input.length() - verilogext.length(), verilogext.length(), verilogext ) == 0 ) {
-      return true;
    }
    return false;
 }
 
 ParsingStatus
 ArgumentParser::checkFiles(std::vector<std::string>& files) {
-   for( auto it = std::find_if(files.begin(), files.end(), isVHDLExtension);
-         it != files.end(); 
-         it = std::find_if(files.begin(), files.end(), isVHDLExtension) ) {
-      VHDLFiles.push_back( std::move(*it) );
-      it = files.erase(it);
+   for( auto it = files.begin(); it != files.end(); /* empty */ ) {
+      if( isExtension( *it, ArgumentParser::vhdlexts_ ) ) {
+         VHDLFiles.push_back( std::move(*it) );
+         it = files.erase(it);
+      } else {
+         ++it;
+      }
    }
 
-   for( auto it = std::find_if(files.begin(), files.end(), isVerilogExtension);
-         it != files.end(); 
-         it = std::find_if(it, files.end(), isVerilogExtension) ) {
-      verilogFiles.push_back( std::move(*it) );
-      files.erase(it);
+   for( auto it = files.begin(); it != files.end(); /* empty */ ) {
+      if( isExtension( *it, ArgumentParser::verilogexts_ ) ) {
+         verilogFiles.push_back( std::move(*it) );
+         it = files.erase(it);
+      } else {
+         ++it;
+      }
    }
 
    if( files.size() > 0 ) {

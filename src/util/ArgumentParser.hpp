@@ -25,11 +25,9 @@
  */
 
 #include "language_processing_control.hh"
-#include <cstdlib>
-#include <iostream>
 #include <string>
-#include <cstring>
 #include <vector>
+#include <set>
 
 /*
  * CONTINUE_OK -> execution can continue
@@ -57,9 +55,10 @@ class ArgumentParser {
       std::vector<std::string> VHDLFiles;
       std::vector<std::string> verilogFiles;
 
+      bool isExtension( const std::string&, const std::set<std::string>&) const;
       ParsingStatus checkFiles(std::vector<std::string>& files);
 
-      bool complainAndExitOnError_;     
+      bool complainAndExitOnError_;
       bool print_version_;
       bool print_help_;
       bool echo_library_dir_;
@@ -69,6 +68,8 @@ class ArgumentParser {
       bool vhdl_2001_;
       bool publish_hdl;
       bool publish_cc;
+      const std::set<std::string> vhdlexts_;
+      const std::set<std::string> verilogexts_;
 
 };
 
