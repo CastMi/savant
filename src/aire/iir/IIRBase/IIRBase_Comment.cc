@@ -29,8 +29,8 @@
 #include <sstream>
 using std::ostringstream;
 
-IIRBase_Comment::IIRBase_Comment(){
-}
+IIRBase_Comment::IIRBase_Comment()
+   : text(nullptr) {}
 
 IIRBase_Comment::~IIRBase_Comment(){
   delete text;

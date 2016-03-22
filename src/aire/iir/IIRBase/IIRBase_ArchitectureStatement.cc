@@ -24,7 +24,8 @@
 
 #include "IIRBase_ArchitectureStatement.hh"
 
-IIRBase_ArchitectureStatement::IIRBase_ArchitectureStatement(){}
+IIRBase_ArchitectureStatement::IIRBase_ArchitectureStatement() :
+   enclosingRegion(nullptr) {}
 
 IIRBase_ArchitectureStatement::~IIRBase_ArchitectureStatement(){}
 

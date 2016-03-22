@@ -32,7 +32,10 @@
 #include "IIR_TextLiteral.hh"
 #include "savant.hh"
 
-IIRBase_NatureDeclaration::IIRBase_NatureDeclaration() {}
+IIRBase_NatureDeclaration::IIRBase_NatureDeclaration()
+   : attributes(nullptr),
+   nature(nullptr),
+   reference_terminal(nullptr) {}
 
 IIRBase_NatureDeclaration::~IIRBase_NatureDeclaration() {}
 

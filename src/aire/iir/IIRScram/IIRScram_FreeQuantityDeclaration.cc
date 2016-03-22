@@ -26,12 +26,13 @@
 #include "IIRScram_Identifier.hh"
 #include "IIRScram_TypeDefinition.hh"
 
-IIRScram_FreeQuantityDeclaration::~IIRScram_FreeQuantityDeclaration() {}
-
-IIRScram_FreeQuantityDeclaration::IIRScram_FreeQuantityDeclaration() {
+IIRScram_FreeQuantityDeclaration::IIRScram_FreeQuantityDeclaration()
+   : ATOL(0),
+   RTOL(0) {
   default_rtol = 1e-3;
   default_atol = 1e-12;
 }
+IIRScram_FreeQuantityDeclaration::~IIRScram_FreeQuantityDeclaration() {}
 
 IIR_Boolean
 IIRScram_FreeQuantityDeclaration::_is_readable() {

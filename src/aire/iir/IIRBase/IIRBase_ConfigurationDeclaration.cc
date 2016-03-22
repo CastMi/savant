@@ -25,9 +25,10 @@
 #include "IIR_TextLiteral.hh"
 #include "IIRBase_ConfigurationDeclaration.hh"
 
-IIRBase_ConfigurationDeclaration::IIRBase_ConfigurationDeclaration() :
-  configuration_declarative_part(0),
-  entity(0){}
+IIRBase_ConfigurationDeclaration::IIRBase_ConfigurationDeclaration()
+   : configuration_declarative_part(nullptr),
+   block_configuration(nullptr),
+   entity(nullptr) {}
 
 IIRBase_ConfigurationDeclaration::~IIRBase_ConfigurationDeclaration(){
   delete configuration_declarative_part;

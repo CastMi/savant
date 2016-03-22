@@ -29,10 +29,12 @@
 #include "IIR_TextLiteral.hh"
 #include "IIR_TerminalDeclaration.hh"
 
-IIRBase_ScalarNatureDefinition::IIRBase_ScalarNatureDefinition() :
-  across(0),
-  through(0),
-  reference_terminal(0){}
+IIRBase_ScalarNatureDefinition::IIRBase_ScalarNatureDefinition()
+   : across(nullptr),
+   through(nullptr),
+   reference_terminal(nullptr),
+   across_tolerance(nullptr),
+   through_tolerance(nullptr) {}
 
 IIRBase_ScalarNatureDefinition::~IIRBase_ScalarNatureDefinition(){
   delete across;

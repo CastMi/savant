@@ -28,18 +28,17 @@
 #include "savant.hh"
 
 
-IIRBase_BranchQuantityDeclaration::IIRBase_BranchQuantityDeclaration() {
+IIRBase_BranchQuantityDeclaration::IIRBase_BranchQuantityDeclaration()
+   : across_aspect_identifier_list(nullptr),
+   through_aspect_designator_list(nullptr),
+   across_aspect_expression(nullptr),
+   through_aspect_expression(nullptr),
+   plus_terminal_name(nullptr),
+   minus_terminal_name(nullptr),
+   across_aspect_tolerance(nullptr),
+   through_aspect_tolerance(nullptr) {}
 
-  set_across_aspect_expression(NULL);
-  set_through_aspect_expression(NULL);
-  set_plus_terminal_name(NULL);
-  set_minus_terminal_name(NULL);
-  across_aspect_identifier_list = NULL;
-  through_aspect_designator_list = NULL;
-}
-
-IIRBase_BranchQuantityDeclaration::~IIRBase_BranchQuantityDeclaration() {
-}
+IIRBase_BranchQuantityDeclaration::~IIRBase_BranchQuantityDeclaration() {}
 
 IIR_DesignatorList *
 IIRBase_BranchQuantityDeclaration::get_across_aspect_identifier_list() {

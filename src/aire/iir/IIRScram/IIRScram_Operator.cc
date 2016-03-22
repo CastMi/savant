@@ -42,6 +42,13 @@
 
 using savant::set;
 
+IIRScram_Operator::IIRScram_Operator()
+   : my_rvals(nullptr),
+    has_been_type_checked(false),
+    my_decl(nullptr) {}
+
+IIRScram_Operator::~IIRScram_Operator() {}
+
 IIR_Boolean 
 IIRScram_Operator::_type_check_user_declared( set<IIRScram_TypeDefinition> *context_set ){
   IIR_Boolean retval = FALSE;

@@ -43,7 +43,8 @@
 using std::ostringstream;
 
 
-IIRScram_AttributeSpecification::IIRScram_AttributeSpecification(){
+IIRScram_AttributeSpecification::IIRScram_AttributeSpecification()
+   : _my_functor(nullptr) {
   set_entity_name_list(new IIRScram_DesignatorList());
 }
 

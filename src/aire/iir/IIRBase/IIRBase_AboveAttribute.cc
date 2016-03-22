@@ -25,7 +25,7 @@
 #include "IIR_EnumerationSubtypeDefinition.hh"
 #include "StandardPackage.hh"
 
-IIRBase_AboveAttribute::IIRBase_AboveAttribute() {}
+IIRBase_AboveAttribute::IIRBase_AboveAttribute() : suffix(nullptr) {}
 IIRBase_AboveAttribute::~IIRBase_AboveAttribute() {};
 
 void
