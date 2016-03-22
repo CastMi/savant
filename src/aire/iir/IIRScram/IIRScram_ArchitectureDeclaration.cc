@@ -124,7 +124,6 @@ IIRScram_ArchitectureDeclaration::_combine() {
   IIRScram_ArchitectureStatementList onewaitlist, uncondwaitlist;
   IIRScram_ArchitectureStatement *next;
   IIRScram_ProcessStatement *to_combine;
-  ProcessCombiner *cproc;
 
   cerr << "The elaborated design has "
        << get_architecture_statement_part()->size() << " processes: ";
@@ -175,7 +174,7 @@ IIRScram_ArchitectureDeclaration::_combine() {
   // OK, this check probably isn't necessary...
   if ( NULL != onewaitlist.first() ) {
     int partition = 0;
-    cproc = new ProcessCombiner[num_partitions];
+    ProcessCombiner *cproc = new ProcessCombiner[num_partitions];
     to_combine = (IIRScram_ProcessStatement*)onewaitlist.first();
 
     while ( NULL != to_combine ) {
@@ -234,7 +233,6 @@ IIRScram_ArchitectureDeclaration::_static_elaborate(IIRScram_ArchitectureDeclara
 						    IIRScram_DeclarationList *cfglist,
 						    char *hier_location) {
   IIRScram_Declaration *decl, *declclone, *impdecl;
-  IIRScram_Identifier *new_signal_id, *old_id;
 
   decl = get_architecture_declarative_part()->first();
   while (decl != NULL) {

@@ -111,10 +111,9 @@ IIRBase_DyadicOperator::is_locally_static(){
 
 IIR_Boolean
 IIRBase_DyadicOperator::is_above_attribute_found() {
-  IIR_Boolean retval = FALSE;
   ASSERT( get_left_operand() );
   ASSERT( get_right_operand() );
-  retval = get_left_operand()->is_above_attribute_found() ||
+  IIR_Boolean retval = get_left_operand()->is_above_attribute_found() ||
     get_right_operand()->is_above_attribute_found();
   return retval;
 }
@@ -140,13 +139,9 @@ void
 IIRBase_DyadicOperator::publish_vhdl(ostream &vhdl_out){
   bool left_bracket = FALSE;
   bool right_bracket = FALSE ;
-  Precedence left_precedence = OTHERS;
-  Precedence right_precedence = OTHERS;
-  Precedence self_precedence = OTHERS;
-  
-  left_precedence  = dynamic_cast<IIRBase *>(get_left_operand())->get_precedence();
-  right_precedence = dynamic_cast<IIRBase *>(get_right_operand())->get_precedence();
-  self_precedence  = get_precedence();
+  Precedence left_precedence = dynamic_cast<IIRBase *>(get_left_operand())->get_precedence();
+  Precedence right_precedence = dynamic_cast<IIRBase *>(get_right_operand())->get_precedence();
+  Precedence self_precedence = get_precedence();
 
   if (( left_precedence < self_precedence ) ||
       (dynamic_cast<IIRBase *>(get_left_operand())->is_relational_operator() )){

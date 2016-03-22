@@ -122,7 +122,6 @@ reconcile_sets( set<IIRScram_TypeDefinition> *lval_set,
 
   bool one_matched = false;
   IIRScram_TypeDefinition *current_lval = lval_set->getElement();
-  current_lval = lval_set->getElement();
   while( current_lval != NULL ){
     IIRScram_TypeDefinition *current_rval = rval_set->getElement();
     one_matched = false;

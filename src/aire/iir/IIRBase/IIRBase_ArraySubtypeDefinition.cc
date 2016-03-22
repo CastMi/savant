@@ -107,10 +107,8 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl( ostream &vhdl_out ){
 
 void
 IIRBase_ArraySubtypeDefinition::publish_vhdl_type_decl( ostream &vhdl_out ){
-  IIRBase_ArrayTypeDefinition *node ;
   IIRBase_ArrayTypeDefinition *base_type =
     dynamic_cast<IIRBase_ArrayTypeDefinition *>(get_base_type());
-  int index, max_index ;
   
   ASSERT(get_index_subtype() != NULL );
   ASSERT(get_element_subtype() != NULL );
@@ -125,6 +123,8 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl_type_decl( ostream &vhdl_out ){
   
   if(( base_type->is_unconstrained_array_type() == TRUE) ||
       (base_type->get_index_subtype()->is_enumeration_type() == TRUE) ){
+     IIRBase_ArrayTypeDefinition *node;
+     int index, max_index;
     
     vhdl_out << " ( ";
     
@@ -155,10 +155,8 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl_type_decl( ostream &vhdl_out ){
 
 void 
 IIRBase_ArraySubtypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
-  IIRBase_ArrayTypeDefinition *node ;
   IIRBase_ArrayTypeDefinition *base_type =
     dynamic_cast<IIRBase_ArrayTypeDefinition *>(get_base_type());
-  int index, max_index ;
   
   ASSERT(get_index_subtype() != NULL );
   ASSERT(get_element_subtype() != NULL );
@@ -172,9 +170,10 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
   ASSERT ( base_type->get_index_subtype() != NULL );
   
   if(( base_type->is_unconstrained_array_type() == TRUE &&
-	is_unconstrained_array_type() == FALSE ) 
-      ||
-      base_type->get_index_subtype()->is_enumeration_type() == TRUE ){
+	    is_unconstrained_array_type() == FALSE ) ||
+       base_type->get_index_subtype()->is_enumeration_type() == TRUE ){
+     IIRBase_ArrayTypeDefinition *node;
+     int index, max_index;
     
     vhdl_out << " ( ";
     

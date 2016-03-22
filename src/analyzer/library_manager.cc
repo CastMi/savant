@@ -184,7 +184,7 @@ library_manager::check_default_directories( bool complain ){
   my_lib_dirs.push_back( BUILD_SAVANTROOT );
   for( vector<string>::iterator current = my_lib_dirs.begin();
        current != my_lib_dirs.end();
-       current++ ){
+       ++current ){
     const string full_path = *current + sep + "savant" + sep;
     if( check_root_dir( full_path, complain ) == true ){
       retval = full_path;
@@ -265,7 +265,7 @@ library_manager::check_environment_variable( bool complain ){
     pwd_entry = getpwuid( uid );
     string name, dir;
     if( pwd_entry == NULL ){
-      name = "johndoe";
+      //name = "johndoe";
       name = "/home/johndoe";
     }
     else{
@@ -907,7 +907,7 @@ library_manager::find_library_directory( IIR_TextLiteral *library_name,
 
   for( vector<string>::const_iterator i = search_dirs.begin();
        i != search_dirs.end();
-       i++ ){
+       ++i ){
     full_path = *i + FileManager::instance()->getDirectorySeparator()
       + physical_lib_name;
 
@@ -1014,14 +1014,14 @@ library_manager::lookup_unit( IIR_Boolean               complain_on_error,
   IIR_LibraryUnit *retval = NULL;
 
   IIR_TextLiteral *unit_declarator = find_unit_declarator( unit_name );
+  if( unit_declarator == NULL ){
+    return NULL;
+  }
   IIR_LibraryDeclaration *target_library = find_library( complain_on_error,
 							 unit_name,
 							 work_library,
 							 factory );
   ASSERT( target_library );
-  if( unit_declarator == NULL ){
-    return NULL;
-  }
 
   // TODO:  Scram
   constraint_functor *functor = NULL;
@@ -1339,7 +1339,7 @@ library_manager::get_search_dirs(){
     const vector<string> &lib_dirs = FileManager::instance()->getLibraryDirectories();
     for( vector<string>::const_iterator i = lib_dirs.begin();
 	 i != lib_dirs.end();
-	 i++ ){
+	 ++i ){
       // We append "savant/lib" onto whatever lib dirs the file manager
       // has.  If the user put their libs somewhere else, they should have
       // specified in VHDL_LIBRARY_PATH.
@@ -1354,7 +1354,7 @@ library_manager::get_search_dirs(){
       cerr << "Searching these subdirectories for libraries:\n";
       for( vector<string>::const_iterator i = retval.begin();
 	   i != retval.end();
-	   i++ ){
+	   ++i ){
 	cerr << "  "  << *i << "\n";
       }
       cerr << endl;

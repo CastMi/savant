@@ -117,9 +117,13 @@ IIRScram_ConcurrentSelectedSignalAssignment::_read_alternative_list( IIRScram_Ca
 
 IIRScram *
 IIRScram_ConcurrentSelectedSignalAssignment::_clone() {
+  // FIXME: I need to figure out what was supposed to happen here
+  // before committing a meaningful fix
+  ASSERT(false);
+
   IIRScram *cstmt;
   //  cstmt = _transmute();
-  cstmt = cstmt->_clone();
+  cstmt = _clone();
   return cstmt;
 }
 

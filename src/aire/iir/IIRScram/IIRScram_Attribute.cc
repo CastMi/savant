@@ -141,14 +141,13 @@ savant::set<IIRScram_Declaration> *
 IIRScram_Attribute::_symbol_lookup(){
   // We have a virtual function, "_get_attribute_name", that returns
   // to us the name of attribute that this instance created...    
-  IIRScram_TypeDefinition       *my_subtype = NULL;
   savant::set<IIRScram_Declaration>     *my_decls;
 
   constraint_functor *functor = new is_attribute_declaration_functor;
   my_decls = _get_attribute_name()->_symbol_lookup(functor);
   delete functor;
   if( my_decls == NULL ){
-    my_subtype = _get_subtype();
+    IIRScram_TypeDefinition *my_subtype = _get_subtype();
     // Then this attribute hasn't been declared.  Now we need to create
     // a declaration for it...
     IIRScram_AttributeDeclaration *attribute_decl = new IIRScram_AttributeDeclaration();

@@ -271,8 +271,6 @@ IIRScram_ArrayTypeDefinition::_come_out_of_scope( symbol_table *sym_tab ){
 
 void 
 IIRScram_ArrayTypeDefinition::_build_implicit_operators( savant::set<IIRScram_Declaration> *add_to ){
-  const char *shift_operators[] = { "\"sll\"", "\"srl\"", "\"sla\"", "\"sra\"",
-				    "\"rol\"", "\"ror\"", NULL };
 
   IIRScram_TypeDefinition::_build_implicit_operators( add_to );
 
@@ -290,6 +288,8 @@ IIRScram_ArrayTypeDefinition::_build_implicit_operators( savant::set<IIRScram_De
     
     if( _get_element_subtype()->is_compatible( boolean_type ) != NULL ||
 	_get_element_subtype()->is_compatible( bit_type ) != NULL ){
+       const char *shift_operators[] = { "\"sll\"", "\"srl\"", "\"sla\"", "\"sra\"",
+                                         "\"rol\"", "\"ror\"", NULL };
       // return this type, left is this type, right is integer
       IIRScram_TypeDefinition::_build_implicit_operators( shift_operators, add_to, this, this, integer_type );      
       IIRScram_TypeDefinition::_build_logical_operators( add_to );
