@@ -71,13 +71,11 @@ IIR_Boolean
 IIRScram_IfStatement::_type_check_return_statements( savant::set<IIRScram_TypeDefinition> *context_set, IIRScram_SubprogramDeclaration *subprogram_decl ){
   IIR_Boolean retval = false;
 
-  IIR_Boolean retval1 = false;
-  retval1 = 
+  IIR_Boolean retval1 =
     IIRScram_SequentialStatement::_type_check_return_statements( context_set, _get_then_sequence(), subprogram_decl );
   
-  IIR_Boolean retval2 = false;
-  retval2 = 
-    IIRScram_SequentialStatement::_type_check_return_statements( context_set, _get_else_sequence(), subprogram_decl );
+  IIR_Boolean retval2 =
+     IIRScram_SequentialStatement::_type_check_return_statements( context_set, _get_else_sequence(), subprogram_decl );
 
   IIR_Boolean retval3 = false;
   if ( _get_elsif() != NULL ){

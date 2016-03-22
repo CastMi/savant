@@ -69,7 +69,7 @@ public:
   void insert_after( const type *after_me, type* new_object ) {
     typename list<type *>::iterator found = list_find( after_me );
     ASSERT( found != my_list.end() );
-    found++;
+    ++found;
     my_list.insert( found, new_object );
     elementCount++;
   }
@@ -92,7 +92,7 @@ public:
     type *retval = 0;
     my_iterator = list_find( to_succeed );
     if( my_iterator != my_list.end() ){
-      my_iterator++;
+      ++my_iterator;
       if( my_iterator != my_list.end() ){
 	retval = *my_iterator;
       }
@@ -104,7 +104,7 @@ public:
     type *retval = 0;
     my_iterator = list_find( to_precede );
     if( my_iterator != my_list.end() ){
-      my_iterator--;
+      --my_iterator;
       if( my_iterator != my_list.end() ){
 	retval = *my_iterator;
       }
@@ -125,7 +125,7 @@ public:
     type *retval = 0;
     if( !my_list.empty() ){
       my_iterator = my_list.end();
-      my_iterator--;
+      --my_iterator;
       retval = *my_iterator;
     }
     return retval;

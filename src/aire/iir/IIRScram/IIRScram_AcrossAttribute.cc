@@ -39,7 +39,6 @@ IIRScram_TypeDefinition*
 IIRScram_AcrossAttribute::_get_subtype() {
   savant::set<IIRScram_Declaration>* nature_decl_set;
   IIRScram_Declaration* nature_decl;
-  IIRScram_TypeDefinition *type_def;
   
   nature_decl_set = _get_prefix()->_symbol_lookup();
   if (nature_decl_set->size() == 0) {
@@ -47,7 +46,7 @@ IIRScram_AcrossAttribute::_get_subtype() {
   }
   nature_decl = nature_decl_set->getElement();
   if (nature_decl->get_kind() == IIR_NATURE_DECLARATION) {
-    type_def = dynamic_cast<IIRScram_TypeDefinition *>((dynamic_cast<IIRScram_ScalarNatureDefinition *>
+     IIRScram_TypeDefinition *type_def = dynamic_cast<IIRScram_TypeDefinition *>((dynamic_cast<IIRScram_ScalarNatureDefinition *>
                (dynamic_cast<IIRScram_NatureDeclaration*>(nature_decl)->get_nature()))->IIRBase_ScalarNatureDefinition::get_across());
     if (type_def != NULL) {
       return type_def;

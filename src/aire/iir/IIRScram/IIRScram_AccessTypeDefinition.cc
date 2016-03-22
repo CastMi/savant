@@ -123,12 +123,10 @@ IIRScram_AccessTypeDefinition::_construct_new_subtype( IIRScram_Name            
 						       IIRScram_ScalarTypeDefinition *new_constraint){
 
   IIRScram_AccessSubtypeDefinition *retval = new IIRScram_AccessSubtypeDefinition();
-  IIRScram_TypeDefinition *new_designated_type = NULL;
   IIRScram_TypeDefinition *old_type = _get_designated_type();
 
   if( old_type != NULL && old_type->is_incomplete_type_definition() == FALSE ){
-    new_designated_type = old_type->_construct_new_subtype( 0, new_constraint);
-    retval->set_designated_subtype( new_designated_type );
+    retval->set_designated_subtype( old_type->_construct_new_subtype( 0, new_constraint) );
   }
   else{
     ASSERT( new_constraint == NULL );

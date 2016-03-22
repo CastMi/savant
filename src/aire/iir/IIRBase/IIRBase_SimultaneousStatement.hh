@@ -35,7 +35,5 @@ protected:
   IIRBase_SimultaneousStatement();
   virtual ~IIRBase_SimultaneousStatement() = 0;
     
-  IIR* enclosingRegion;
-private:
 };
 #endif

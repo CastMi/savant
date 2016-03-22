@@ -1,4 +1,3 @@
-
 // Copyright (c) 1995-2003 The University of Cincinnati.
 // All rights reserved.
 
@@ -30,12 +29,9 @@
 #include "VHDLLexer.hh"
 #include "VHDLParser.h"
 #include "error_func.hh"
-
-
 #include "library_manager.hh"
 #include "ScramStandardPackage.hh"
 #include "plugin_class_factory.hh"
-
 #include "IIRBase_DesignFile.hh"
 #include "IIR_DesignFileList.hh"
 #include "IIRBase_LibraryDeclaration.hh"
@@ -86,7 +82,7 @@ scram::parse_files( const vector<string> &fileList ){
   // For each file: parse it and add the result to "my_design_files"
   for( vector<string>::const_iterator currentFile = fileList.begin();
        currentFile < fileList.end();
-       currentFile++ ){
+       ++currentFile ){
     IIR_DesignFile *parsed_file = parse_file( *currentFile, my_work_library );
     my_design_files->append( parsed_file );
   }

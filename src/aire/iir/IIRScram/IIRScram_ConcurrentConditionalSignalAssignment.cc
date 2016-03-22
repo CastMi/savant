@@ -90,7 +90,7 @@ IIRScram_ConcurrentConditionalSignalAssignment::_clone() {
   // before committing a meaningful fix
   ASSERT(false);
   //  cstmt = _transmute();
-  // cstmt = cstmt->_clone();
+  cstmt = _clone();
   return cstmt;
 }
 

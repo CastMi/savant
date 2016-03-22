@@ -230,7 +230,6 @@ IIRBase_ArrayTypeDefinition::publish_vhdl_subtype_decl(ostream &vhdl_out){
 
 void 
 IIRBase_ArrayTypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
-  IIRBase_TypeDefinition *node = this;
   int max_index = get_num_indexes();
 
   ASSERT(get_element_subtype() != 0);
@@ -238,7 +237,7 @@ IIRBase_ArrayTypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
 
   vhdl_out << "array (";
   
-  node = this;
+  IIRBase_TypeDefinition *node = this;
   while ((node->is_array_type() == TRUE) && (max_index > 0)) {
     dynamic_cast<IIRBase_ScalarTypeDefinition *>
       (node->get_resolved_index_subtype())->publish_vhdl_index(vhdl_out);

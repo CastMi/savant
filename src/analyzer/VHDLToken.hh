@@ -1,4 +1,3 @@
-
 #ifndef VHDLToken_HH
 #define VHDLToken_HH
 

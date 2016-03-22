@@ -160,9 +160,6 @@ main (int argc, char *argv[]) {
    }
 
    if( iir_vhdl_design_files_processed != NULL ) {
-      // Initialize the library module manager to search for the plugin in the plugins directory
-      plugin_interface            *plugin = NULL;
-
       char *plugin_dir = getenv( "SAVANT_PLUGIN_PATH" );
       if (plugin_dir != NULL)
          PluginManager::instance()->addSearchDir(plugin_dir);
@@ -184,15 +181,16 @@ main (int argc, char *argv[]) {
          }
       }
 
-      PluginBase *module = NULL;
-      for (list<string>::iterator iter = plugin_names.begin(); iter != plugin_names.end(); iter++) {
-         if ((module = PluginManager::instance()->loadPlugin(*iter)) == NULL) {
+      for (list<string>::iterator iter = plugin_names.begin(); iter != plugin_names.end(); ++iter) {
+         PluginBase *module = PluginManager::instance()->loadPlugin(*iter);
+         if ( !module ) {
             cout << "Error: " << PluginManager::instance()->getLastError() << endl;
             return EXIT_FAILURE;
          }
 
          // Just got a module pointer, cast it over to our interface
-         plugin = dynamic_cast<plugin_interface *>(module);
+         // Initialize the library module manager to search for the plugin in the plugins directory
+         plugin_interface *plugin = dynamic_cast<plugin_interface *>(module);
 
          // Now we'll walk the list, and process the tree(s) for plugins
          IIR_DesignFile *to_publish = dynamic_cast<IIR_DesignFile *>(iir_vhdl_design_files_processed->first());
