@@ -21,7 +21,7 @@
 #include "IIRBase_CaseStatementAlternativeByExpression.hh"
 #include "IIR_Choice.hh"
 
-IIRBase_CaseStatementAlternativeByExpression::IIRBase_CaseStatementAlternativeByExpression() {}
+IIRBase_CaseStatementAlternativeByExpression::IIRBase_CaseStatementAlternativeByExpression() : choice(nullptr) {}
 IIRBase_CaseStatementAlternativeByExpression::~IIRBase_CaseStatementAlternativeByExpression() {}
 
 

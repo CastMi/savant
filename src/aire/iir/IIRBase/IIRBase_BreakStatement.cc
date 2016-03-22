@@ -22,17 +22,13 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
 #include "IIR_BreakList.hh"
-
 #include "IIRBase_BreakStatement.hh"
 #include "savant.hh"
 
-IIRBase_BreakStatement::IIRBase_BreakStatement(){
-  set_condition(NULL);
-}
+IIRBase_BreakStatement::IIRBase_BreakStatement()
+   : break_list(nullptr),
+   condition(nullptr) {}
 
 IIRBase_BreakStatement::~IIRBase_BreakStatement(){}
 

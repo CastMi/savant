@@ -39,11 +39,8 @@ class IIRScram_TypeDefinition;
 class IIRScram_Operator : public virtual IIRScram_Expression,
 			  public virtual IIRBase_Operator {
 public:
-  IIRScram_Operator(){ 
-    my_rvals = NULL;
-    has_been_type_checked = FALSE;
-  }
-  virtual ~IIRScram_Operator() {};
+  IIRScram_Operator();
+  virtual ~IIRScram_Operator();
     
   virtual IIR_Int32 _get_num_args() = 0;
   virtual IIRScram_AssociationList *_build_argument_list() = 0;

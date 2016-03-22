@@ -45,9 +45,12 @@ using std::ifstream;
 class VHDLLexer : public yyFlexLexer, public ANTLRTokenStream {
 
 public:
-  VHDLLexer( ifstream *input, IIR_CommentList *comment_list_ptr ) : yyFlexLexer( input ) {
-    comment_list = comment_list_ptr;
-  };
+  VHDLLexer( ifstream *input, IIR_CommentList *comment_list_ptr )
+     : yyFlexLexer( input ),
+     _LineNo(0),
+     _LineOffset(0),
+     _FileOffset(0),
+     comment_list(comment_list_ptr) {};
   VHDLLexer(){
     _FileName = "";
     _LineNo = 1;

@@ -36,9 +36,10 @@
 #include "IIRBase_ArchitectureDeclaration.hh"
 #include "IIR_TextLiteral.hh"
 
-IIRBase_ArchitectureDeclaration::IIRBase_ArchitectureDeclaration() :
-  architecture_declarative_part(0),
-  architecture_statement_part(0) { }
+IIRBase_ArchitectureDeclaration::IIRBase_ArchitectureDeclaration()
+   : architecture_declarative_part(nullptr),
+   architecture_statement_part(nullptr),
+   entity(nullptr) { }
 
 
 IIRBase_ArchitectureDeclaration::~IIRBase_ArchitectureDeclaration(){

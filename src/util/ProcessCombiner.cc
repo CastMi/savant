@@ -50,22 +50,19 @@
 #include "IIR_SubprogramDeclaration.hh"
 #include <sstream>
 
-
-ProcessCombiner::ProcessCombiner() {
-  process = NULL;
-  size = 0;
-}
-
+ProcessCombiner::ProcessCombiner()
+   : process(nullptr),
+   init_stmt_list(nullptr),
+   run_stmt_list(nullptr),
+   size(0) {}
 
 ProcessCombiner::ProcessCombiner( ProcessCombiner &pc ) {
   process = pc.process;
   init_stmt_list = pc.init_stmt_list;
   size = pc.size;
 }
-
   
 ProcessCombiner::~ProcessCombiner() {}
-  
 
 ProcessCombiner& 
 ProcessCombiner::operator=( ProcessCombiner& pc ) {

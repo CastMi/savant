@@ -26,7 +26,8 @@
 
 #include "StandardPackage.hh"
 
-IIRBase_AscendingAttribute::IIRBase_AscendingAttribute(){}
+IIRBase_AscendingAttribute::IIRBase_AscendingAttribute()
+   : suffix(nullptr) {}
 IIRBase_AscendingAttribute::~IIRBase_AscendingAttribute(){}
 
 void 

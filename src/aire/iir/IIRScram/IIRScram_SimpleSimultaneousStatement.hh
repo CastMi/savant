@@ -47,7 +47,6 @@ public:
   IIRScram *_get_left_expression();
   IIRScram *_get_right_expression();
   
-protected:
 private:
   IIR_Label * _mangled_stmt_label;
 };

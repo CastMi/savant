@@ -36,7 +36,8 @@ using std::endl;
 #include <sstream>
 using std::ostringstream;
 
-IIRScram_SimpleSimultaneousStatement::IIRScram_SimpleSimultaneousStatement(){}
+IIRScram_SimpleSimultaneousStatement::IIRScram_SimpleSimultaneousStatement()
+   : _mangled_stmt_label(nullptr) {}
 
 IIRScram_SimpleSimultaneousStatement::~IIRScram_SimpleSimultaneousStatement() {}
 
