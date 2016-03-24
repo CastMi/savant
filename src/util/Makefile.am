@@ -73,6 +73,8 @@ libsavantutils_la_SOURCES = \
 	consistency.hpp \
 	consistency.cpp \
 	generic_parser.hh \
+	language_processing_control.cc  \
+	language_processing_control.hh  \
 	PluginStandardPackage.hh \
 	PluginStandardPackage.cc
 

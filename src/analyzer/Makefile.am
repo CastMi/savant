@@ -51,24 +51,26 @@ libscram_la_CPPFLAGS = \
    -I$(top_srcdir)/src/aire/iir/visitor
 
 libscram_la_SOURCES = \
-	VHDLLexer.hh			\
-	VHDLLexerBits.cc		\
-	VHDLToken.hh			\
-	declaration_chain.hh		\
-	library_manager.cc		\
-	library_manager.hh		\
-	scram.cc			\
-	scram.hh			\
-	scram_func.hh			\
-	StandardPackage.cc		\
-	symbol_lookup.cc		\
-	symbol_lookup.hh		\
-	symbol_table.cc			\
-	symbol_table.hh			\
-	vhdl.hh				\
-	language_processing_control.cc	\
-	language_processing_control.hh	\
+	VHDLLexer.hh \
+	VHDLLexerBits.cc \
+	VHDLToken.hh \
+	declaration_chain.hh \
+	library_manager.cc \
+	library_manager.hh \
+	scram.cc	\
+	scram.hh \
+	scram_func.hh \
+	StandardPackage.cc \
+	symbol_lookup.cc \
+	symbol_lookup.hh \
+	symbol_table.cc \
+	symbol_table.hh \
+	vhdl.hh \
+	antlr_error_func.cc \
 	$(BUILT_SOURCES)
+
+libscram_la_LIBADD = \
+	$(top_builddir)/src/util/libsavantutils.la
 
 # Location for the library installation
 # With this first command I specify the folder that the "library_include"
@@ -78,9 +80,7 @@ library_includedir = $(includedir)/savant
 library_include_HEADERS =		\
 	StandardPackage.hh		\
 	library_manager.hh		\
-	scram.hh			\
-	language_processing_control.hh
-
+	scram.hh
 
 DO_ANTLR = $(ANTLR) -gx -k 2 -CC -ft VHDLTokenTypes.hh \
 	 $(VHDL_GG) -o $(SRC_OUTPUT_DIR)
