@@ -65,7 +65,7 @@ public:
   savant::set<IIR_Declaration> *find_set( IIR_TextLiteral * );
   savant::set<IIR_Declaration> *find_set( char * );
   
-  symbol_lookup(int table_size = 4093) : ht_size(table_size) {
+  explicit symbol_lookup(int table_size = 4093) : ht_size(table_size) {
     ht = new dl_list<declaration_chain>[ht_size];
   };
   

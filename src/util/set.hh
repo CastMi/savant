@@ -47,7 +47,7 @@ namespace savant {
     // @EndExternalProseDescription
 
   public:
-    set( int starting_size = 4 );
+    explicit set( int starting_size = 4 );
     set( type *, int starting_size = 4 );
     set( set<type> & );
     

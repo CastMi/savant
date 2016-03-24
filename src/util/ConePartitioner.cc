@@ -18,7 +18,7 @@ extern int num_partitions;
 
 struct bitarray {
   bitarray() { data = NULL; size = 0; }
-  bitarray(const int size) {
+  explicit bitarray(const int size) {
     setsize(size);
   }
   void setsize(const int size) {
