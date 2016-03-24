@@ -77,61 +77,19 @@ IIRBase_TextLiteral::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-int 
+int
 IIRBase_TextLiteral::cmp(IIR_TextLiteral *a, IIR_TextLiteral *b) {
-  int size_a, size_b;
-  
-  ASSERT( a != 0 );
-  ASSERT( b != 0 );
-
-  size_a = a->get_text_length();
-  size_b = b->get_text_length();
-
-  if ( size_a != size_b ){
-    if ( size_a < size_b ){
-      return -1;
-    }
-    else{
-      return 1;
-    }
-  }
-
-  IIR_Char *text_a = a->get_text();
-  IIR_Char *text_b = b->get_text();
-  
-  if( text_a == text_b ){
-    return 0;
-  }
-  else{
-    return memcmp( text_a, text_b, size_a );
-  }
+   ASSERT( a && b );
+   return strcmp(a->get_text(), b->get_text());
 }
 
-int 
+int
 IIRBase_TextLiteral::cmp( IIR_TextLiteral *a, const char *b ) {
-  int size_a, size_b;
-  size_a = a->get_text_length();
-  size_b = strlen(b);
-
-  if( size_a > size_b ){
-    return 1;
-  }
-  if (size_b > size_a) {
-    return -1;
-  }
-
-  char *text_a = a->get_text();
-
-  int i;
-  for( i = 0; i < size_a; i++ ){
-    if( text_a[i] != b[i] ){
-      return text_a[i] - b[i];
-    }
-  }
-  return 0;
+   ASSERT( a && b );
+   return strcmp(a->get_text(), b);
 }
 
-int 
+int
 IIRBase_TextLiteral::cmp(IIR_TextLiteral *a, IIR_Name *b){
   int retval;
 

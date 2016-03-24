@@ -68,14 +68,15 @@ IIRScram_IntegerLiteral::_accept_visitor( node_visitor *visitor,
 }
 
 IIRScram_IntegerLiteral *
-IIRScram_IntegerLiteral::get( IIR_Int32 base, 
-                              IIR_Char *mantissa, 
+IIRScram_IntegerLiteral::get( IIR_Int32 base,
+                              IIR_Char *mantissa,
                               IIR_Int32 mantissa_length,
-                              IIR_Char *exponent, 
+                              IIR_Char *exponent,
                               IIR_Int32 exponent_length) {
-  ASSERT((mantissa != NULL && mantissa_length > 0));
-  ASSERT((exponent != NULL && exponent_length > 0) || 
-	 (exponent == NULL && exponent_length == 0));
+  ASSERT( mantissa != NULL && mantissa_length > 0 && mantissa_length == static_cast<IIR_Int32>(strlen(mantissa)) );
+  ASSERT( (exponent != NULL && exponent_length > 0 &&
+           exponent_length == static_cast<IIR_Int32>(strlen(exponent)) ) ||
+	       (exponent == NULL && exponent_length == 0) );
 
   IIRScram_IntegerLiteral *retval = new IIRScram_IntegerLiteral();
   retval->set_base(base);

@@ -19,6 +19,7 @@
 
 #include "IIRBase_StringLiteral.hh"
 #include "plugin_class_factory.hh"
+#include <climits>
 
 IIRBase_StringLiteral::IIRBase_StringLiteral() {}
 IIRBase_StringLiteral::~IIRBase_StringLiteral() {}
@@ -30,6 +31,8 @@ IIRBase_StringLiteral::release() {
 
 IIR_StringLiteral *
 IIRBase_StringLiteral::get( const IIR_Char *new_text, IIR_Int32 new_length, plugin_class_factory *factory){
+  ASSERT( strlen(new_text) < INT_MAX );
+  ASSERT( new_length == static_cast<IIR_Int32>(strlen(new_text)) );
   IIRBase_StringLiteral *retval = dynamic_cast<IIRBase_StringLiteral *>(factory->new_IIR_StringLiteral());
   retval->set_text( new_text, new_length );
 
