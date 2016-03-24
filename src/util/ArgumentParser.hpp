@@ -39,7 +39,7 @@ enum ParsingStatus { CONTINUE_OK, ERROR, EXIT_OK };
 class ArgumentParser {
    public:
 
-      ArgumentParser(bool complainAndExitOnError = true);
+      explicit ArgumentParser(bool complainAndExitOnError = true);
       ~ArgumentParser();
 
       ParsingStatus vectorifyArguments( int argc, char **argv );

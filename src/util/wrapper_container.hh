@@ -7,7 +7,7 @@
 class wrapper_container : public list_object {
 public:
   wrapper_container(){}
-  wrapper_container( void *new_data ){
+  explicit wrapper_container( void *new_data ){
     data_ptr = new_data;
   }
   

@@ -93,7 +93,7 @@ public:
      @param table_size The initial table size of this hash table.
      Currently it's the final size as well as the table won't grow.
   */
-  hash_table(int table_size = 4093) : ht_size(table_size) {
+  explicit hash_table(int table_size = 4093) : ht_size(table_size) {
     ht = new dl_list<Type>[ht_size];
   }
     

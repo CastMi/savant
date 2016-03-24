@@ -30,7 +30,6 @@
 #include "IIRBase_PackageDeclaration.hh"
 
 class IIR_EnumerationSubtypeDefinition;
-class IIR_EnumerationLiteralList;
 class IIR_EnumerationLiteral;
 class IIR_IntegerSubtypeDefinition;
 class IIR_FloatingSubtypeDefinition;
@@ -40,13 +39,9 @@ class IIR_AttributeDeclaration;
 class IIR_TypeDeclaration;
 class IIR_SubtypeDeclaration;
 class IIR_FunctionDeclaration;
-class IIR_TypeDefinition;
-class IIR_ScalarTypeDefinition;
-class IIR_PhysicalUnit;
 class IIR_LibraryDeclaration;
 class IIR_AccessSubtypeDefinition;
 class plugin_class_factory;
-class scram;
 
 /**  This is the generic implementation of StandardPackage for plugins.  This provides a default
      implementation for any plugin extensions that don't need a custom version of StandardPackage.
@@ -58,7 +53,7 @@ public:
   // Ruda M.: Allocate memory for the use in plugin_class_factory.
   PluginStandardPackage() {};
 
-  PluginStandardPackage(plugin_class_factory *);
+  explicit PluginStandardPackage(plugin_class_factory *);
 
   ~PluginStandardPackage();
 
