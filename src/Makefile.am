@@ -27,4 +27,4 @@
 
 include $(top_srcdir)/Makefile.am.common
 
-SUBDIRS = aire analyzer util verianalyzer
+SUBDIRS = aire util analyzer verianalyzer

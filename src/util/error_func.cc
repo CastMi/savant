@@ -29,7 +29,6 @@
 #include "plugin_class_factory.hh"
 #include "set.hh"
 #include "error_func.hh"
-#include "VHDLToken.hh"
 
 #include <sstream>
 using std::ostringstream;
@@ -79,31 +78,6 @@ report_error( const string &message,
   }
   
   report_error( message.c_str(), line_number, file_name, how_serious );
-}
-
-void 
-report_error (ANTLRToken *tok, const string &message,  severity how_serious ) {
-  if( how_serious == FATAL ){
-    parse_error = true;
-  }
-
-  if (tok->getFileName() != NULL){
-    cerr << tok->getFileName() << ":";
-  }
-
-  report_error(message.c_str(), tok->getLine(), how_serious );
-}
-
-void 
-report_error (ANTLRToken *tok, const char *msg, severity how_serious) {
-  if( how_serious == FATAL ){
-    parse_error = true;
-  }
-
-  if (tok->getFileName() != NULL)
-    cerr << tok->getFileName();
- 
-  report_error(msg, tok->getLine(), how_serious );
 }
 
 void 

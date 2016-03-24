@@ -65,8 +65,6 @@ class IIR_Name;
 class IIR_Identifier;
 class IIR_TypeDefinition;
 class IIR_Declaration;
-class ANTLRToken;
-class plugin_class_factory;
 
 namespace savant {
   template <class type> class set;
@@ -91,12 +89,6 @@ report_error( const string &message,
 	      int line_number = -1,
 	      IIR_Identifier *file_name = NULL,
 	      severity = FATAL );
-
-void 
-report_error ( ANTLRToken *tok, const string &, severity = FATAL );
-
-void 
-report_error ( ANTLRToken *tok, const char *msg, severity = FATAL );
 
 void 
 report_error ( IIR *if_node, const string &message, severity = FATAL );

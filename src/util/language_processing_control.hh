@@ -55,19 +55,6 @@ public:
   bool processing_vhdl_ams();
   /** Returns true if the language to process is VHDL 2001. */
   bool processing_vhdl_2001();
-  
-  /** Report that scram sees VHDL AMS language syntax when it was
-      invoked to process some other language.
-      @param token The token where the VHDL AMS syntax was found.
-  */
-  void report_not_vhdl_ams(ANTLRToken *token);
-  /** Report that scram sees VHDL 2001 language syntax when it was
-      invoked to process some other language.
-      @param token The token where the VHDL 2001 syntax was found.
-  */
-  void report_not_vhdl_2001(ANTLRToken *token);
-
-protected:
 
 private:
 

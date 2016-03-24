@@ -39,14 +39,3 @@ bool
 language_processing_control::processing_vhdl_2001() {
   return (language_being_processed == VHDL_2001);
 }
-
-void
-language_processing_control::report_not_vhdl_ams(ANTLRToken *token) {
-  report_error(token, "Input file appears to have VHDL AMS constructs; invoke analyzer with --vhdl-ams to process.");
-}
-
-void
-language_processing_control::report_not_vhdl_2001(ANTLRToken *token) {
-  report_error(token, "Input file appears to have VHDL 2001 constructs; invoke analyzer with --vhdl-2001 to process.");
-}
-
