@@ -62,6 +62,7 @@ IIRScram_BitStringLiteral *
 IIRScram_BitStringLiteral::get( const IIR_Char *new_text, IIR_Int32 new_length){
   ASSERT( new_text != NULL);
   ASSERT( new_length > 3 );
+  ASSERT( new_length == static_cast<IIR_Int32>(strlen(new_text)) );
 
   IIRScram_BitStringLiteral *retval = new IIRScram_BitStringLiteral();
   retval->set_text( new_text, new_length );

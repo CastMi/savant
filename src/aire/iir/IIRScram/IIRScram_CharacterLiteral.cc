@@ -29,8 +29,8 @@
 
 #include "savant.hh"
 #include "IIRScram_CharacterLiteral.hh"
-
 #include <sstream>
+#include <climits>
 using std::ostringstream;
 
 IIRScram_CharacterLiteral::~IIRScram_CharacterLiteral() {}
@@ -58,6 +58,8 @@ IIRScram_CharacterLiteral::get( const string new_text ){
 
 IIRScram_CharacterLiteral *
 IIRScram_CharacterLiteral::get( const IIR_Char *new_text, IIR_Int32 new_length ){
+  ASSERT( strlen(new_text) < INT_MAX );
+  ASSERT( new_length == static_cast<IIR_Int32>(strlen(new_text)) );
   IIRScram_CharacterLiteral *retval = new IIRScram_CharacterLiteral();
   retval->set_text( new_text, new_length );
 

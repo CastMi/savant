@@ -322,9 +322,9 @@ library_manager::create_design_library( const string &physical_library_name,
 // appropriate name mangling and returns a handle to a ostream.
 ostream *
 library_manager::get_file_handle( IIR_LibraryUnit *lib_unit ){
+  ASSERT( lib_unit );
   IIR_LibraryDeclaration *work_library = lib_unit->get_library();
-  ASSERT( work_library != 0 );
-  ASSERT( lib_unit != 0 );
+  ASSERT( work_library );
   const string library_dir = work_library->get_path_to_directory();
   
   string file_name;
@@ -1007,15 +1007,18 @@ library_manager::lookup_unit( IIR_Boolean               complain_on_error,
                               StandardPackage           *package,
                               plugin_class_factory   *factory){
   
-  ASSERT( unit_name != NULL );
-  ASSERT( work_library != NULL );
+  ASSERT( unit_name );
+  ASSERT( work_library );
+  ASSERT( package );
+  ASSERT( factory );
   IIR_LibraryUnit *retval = NULL;
 
   IIR_TextLiteral *unit_declarator = find_unit_declarator( unit_name );
   IIR_LibraryDeclaration *target_library = find_library( complain_on_error,
-							 unit_name, 
-							 work_library, 
+							 unit_name,
+							 work_library,
 							 factory );
+  ASSERT( target_library );
   if( unit_declarator == NULL ){
     return NULL;
   }
@@ -1043,9 +1046,11 @@ library_manager::lookup_unit( IIR_Boolean               complain_on_error,
     abort();
   }
   }
+  ASSERT( functor );
 
-  savant::set<IIR_Declaration> *decls = 
+  savant::set<IIR_Declaration> *decls =
     new savant::set<IIR_Declaration>(*(my_symbol_table->find_set( unit_declarator )));
+  ASSERT( decls );
   IIR_Declaration *current = dynamic_cast<IIR_Declaration *>(decls->getElement());
   while( current != NULL ){
     ASSERT( dynamic_cast<IIR_LibraryUnit *>(current) );

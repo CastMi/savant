@@ -22,6 +22,7 @@
 #include "IIRBase_Identifier.hh"
 #include "IIR_Identifier.hh"
 #include "plugin_class_factory.hh"
+#include <climits>
 
 IIRBase_Identifier::IIRBase_Identifier(){}
 
@@ -33,10 +34,12 @@ IIRBase_Identifier::release(){
 }
 
 IIR_Identifier *
-IIRBase_Identifier::get( const IIR_Char *new_text, 
+IIRBase_Identifier::get( const IIR_Char *new_text,
 			 IIR_Int32 new_length,
 			 plugin_class_factory *factory ){
-  IIR_Identifier *retval = factory->new_IIR_Identifier();  
+  ASSERT( strlen(new_text) < INT_MAX );
+  ASSERT( new_length == static_cast<IIR_Int32>(strlen(new_text)) );
+  IIR_Identifier *retval = factory->new_IIR_Identifier();
   dynamic_cast<IIRBase_Identifier *>(retval)->set_text( new_text, new_length );
   return retval;
 }
