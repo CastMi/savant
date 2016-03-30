@@ -112,9 +112,8 @@ main (int argc, char *argv[]) {
             ScramStandardPackage::instance() );
       iir_vhdl_design_files_processed = parser.parse_files( ap.getVHDLFiles() );  
 
-      if( parse_error == FALSE ){
+      if( !parse_error && verbose_output )
          cerr << "VHDL parse complete - no errors." << endl;
-      }
       else{
          return EXIT_FAILURE;
       }
@@ -127,7 +126,8 @@ main (int argc, char *argv[]) {
       /* create verilog IR */
       VeriParser parser( design_library_name, scram_plugin_class_factory::instance(), ScramStandardPackage::instance() );
       iir_verilog_design_files_processed = parser.parse_verilog( ap.getVerilogFiles() );
-      cerr << "Verilog parse complete - no errors." << endl;
+      if( verbose_output )
+         cerr << "Verilog parse complete - no errors." << endl;
    }
 
    if( verbose_output )
@@ -196,7 +196,8 @@ main (int argc, char *argv[]) {
          IIR_DesignFile *to_publish = dynamic_cast<IIR_DesignFile *>(iir_vhdl_design_files_processed->first());
          while( to_publish != NULL ){
             if ((ap.getPublishCC() == true) && (iter == plugin_names.begin())){
-               cerr << "Starting C++ code generation..." << endl;
+               if( verbose_output )
+                  cerr << "Starting C++ code generation..." << endl;
                char last_unit = false;
                if( iir_vhdl_design_files_processed->successor( to_publish ) == NULL ){
                   last_unit = true;
@@ -205,12 +206,15 @@ main (int argc, char *argv[]) {
                arg_list[0] = new char[10];
                arg_list[0] = &last_unit;
                plugin->process_tree(to_publish, 1, arg_list);
-               cerr << "Code generation finished." << endl;
+               if( verbose_output )
+                  cerr << "Code generation finished." << endl;
             } else {
                // Normal plugin
-               cerr << "Starting plugin " << *iter << endl;
+               if( verbose_output )
+                  cerr << "Starting plugin " << *iter << endl;
                plugin->process_tree(to_publish, 0, NULL);
-               cerr << "Plugin processing completed." << endl;
+               if( verbose_output )
+                  cerr << "Plugin processing completed." << endl;
             }
 
             to_publish = dynamic_cast<IIR_DesignFile *>(iir_vhdl_design_files_processed->successor( to_publish ));
