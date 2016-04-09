@@ -39,8 +39,6 @@ public:
   IIR_Kind get_kind() const { return IIR_INTEGER_LITERAL32; }
   const IIR_Char *get_kind_text() const { return "IIR_IntegerLiteral32"; }
 
-  void release();
-
   IIR_Int32 value();
   void set_value(IIR_Int32);
 
@@ -55,4 +53,5 @@ protected:
 private:
   IIR_Int32 val;
 };
+
 #endif

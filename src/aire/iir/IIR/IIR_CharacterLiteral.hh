@@ -1,4 +1,3 @@
-
 #ifndef IIR_CHARACTER_LITERAL_HH
 #define IIR_CHARACTER_LITERAL_HH
 
@@ -36,6 +35,6 @@ class IIR_CharacterLiteral : public virtual IIR_TextLiteral{
 public:
   virtual ~IIR_CharacterLiteral() {}
     
-  virtual void release() = 0;
 };
+
 #endif

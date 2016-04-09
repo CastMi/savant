@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -26,18 +25,10 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "IIRBase_IntegerLiteral32.hh"
 
 IIRBase_IntegerLiteral32::IIRBase_IntegerLiteral32() {}
 IIRBase_IntegerLiteral32::~IIRBase_IntegerLiteral32() {}
-
-void
-IIRBase_IntegerLiteral32::release() {
-  delete this;
-}
-
 
 IIR_Int32
 IIRBase_IntegerLiteral32::value() {

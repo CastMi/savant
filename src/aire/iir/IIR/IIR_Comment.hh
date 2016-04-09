@@ -1,4 +1,3 @@
-
 #ifndef IIR_COMMENT_HH
 #define IIR_COMMENT_HH
 
@@ -42,10 +41,6 @@ public:
 
   virtual void set_text( IIR_Char *txt, IIR_Int32 text_len ) = 0;
 
-  virtual void release() = 0;
-
-protected:  
-
-private:
 };
+
 #endif

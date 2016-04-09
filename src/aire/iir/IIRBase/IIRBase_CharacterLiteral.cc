@@ -31,8 +31,3 @@
 IIRBase_CharacterLiteral::IIRBase_CharacterLiteral(){}
 
 IIRBase_CharacterLiteral::~IIRBase_CharacterLiteral(){}
-
-void 
-IIRBase_CharacterLiteral::release(){
-  delete this;
-}

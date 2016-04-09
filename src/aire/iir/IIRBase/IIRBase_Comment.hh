@@ -41,8 +41,6 @@ public:
 
   void set_text( IIR_Char *txt, IIR_Int32 text_len );
 
-  void release();
-
   IIR *convert_tree(plugin_class_factory *factory);
 
   void publish_vhdl(ostream &);
@@ -57,4 +55,5 @@ private:
   void _check_bounds( IIR_Int32 );
 
 };
+
 #endif

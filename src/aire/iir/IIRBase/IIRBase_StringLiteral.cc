@@ -24,11 +24,6 @@
 IIRBase_StringLiteral::IIRBase_StringLiteral() {}
 IIRBase_StringLiteral::~IIRBase_StringLiteral() {}
 
-void 
-IIRBase_StringLiteral::release() {
-  delete this;
-}
-
 IIR_StringLiteral *
 IIRBase_StringLiteral::get( const IIR_Char *new_text, IIR_Int32 new_length, plugin_class_factory *factory){
   ASSERT( strlen(new_text) < INT_MAX );

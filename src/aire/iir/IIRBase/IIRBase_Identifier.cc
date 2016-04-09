@@ -1,4 +1,3 @@
-
 // Copyright (c) The University of Cincinnati.  
 // All rights reserved.
 
@@ -27,11 +26,6 @@
 IIRBase_Identifier::IIRBase_Identifier(){}
 
 IIRBase_Identifier::~IIRBase_Identifier(){}
-
-void 
-IIRBase_Identifier::release(){
-  delete this;
-}
 
 IIR_Identifier *
 IIRBase_Identifier::get( const IIR_Char *new_text,

@@ -38,14 +38,12 @@ public:
   IIR_Kind get_kind() const {return IIR_BIT_STRING_LITERAL;}
   const IIR_Char *get_kind_text() const {return "IIR_BitStringLiteral";}
 
-  void release();
-
   IIR_Boolean is_array_type(){ return TRUE; }
 
 protected:
   IIRBase_BitStringLiteral();
   virtual ~IIRBase_BitStringLiteral() = 0;
     
-private:
 };
+
 #endif

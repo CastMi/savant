@@ -127,7 +127,7 @@ symbol_lookup::find_chain( char *to_find ){
 						   strlen( to_find ),
 						   scram_plugin_class_factory::instance() );
   retval = find_chain( str );
-  str->release();
+  delete str;
   
   return retval;
 }

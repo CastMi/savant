@@ -1,4 +1,3 @@
-
 #ifndef IIR_INTEGER_LITERAL_HH
 #define IIR_INTEGER_LITERAL_HH
 
@@ -28,6 +27,7 @@
 //          Timothy J. McBrayer tmcbraye@ece.uc.edu
 
 //---------------------------------------------------------------------------
+
 #include "savant_config.hh"
 #include "IIR_Literal.hh"
 
@@ -37,8 +37,6 @@ class IIR_IntegerLiteral : public virtual IIR_Literal{
 public:
   virtual ~IIR_IntegerLiteral() {}
     
-  virtual void release() = 0;
-
   virtual const string print_value(IIR_Int32) = 0;
 
   virtual void set_base(IIR_Int32) = 0;
@@ -50,4 +48,5 @@ public:
   virtual IIR_Char* get_exponent() = 0;
   virtual IIR_Int32 get_exponent_length() = 0;
 };
+
 #endif

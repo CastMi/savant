@@ -37,6 +37,5 @@ class IIR_Identifier : public virtual IIR_TextLiteral{
 public:
   virtual ~IIR_Identifier() {}
     
-  virtual void release() = 0;
 };
 #endif

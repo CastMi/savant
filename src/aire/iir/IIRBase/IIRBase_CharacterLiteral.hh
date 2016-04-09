@@ -39,12 +39,10 @@ public:
   IIR_Kind get_kind() const { return IIR_CHARACTER_LITERAL; }
   const IIR_Char *get_kind_text() const { return "IIR_CharacterLiteral"; }
 
-  void release();
-
 protected:
   IIRBase_CharacterLiteral();
   virtual ~IIRBase_CharacterLiteral() = 0;
     
-private:
 };
+
 #endif

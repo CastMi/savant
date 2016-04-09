@@ -1,4 +1,3 @@
-
 #ifndef IIR_INTEGER_SUBTYPE_DEFINITION_HH
 #define IIR_INTEGER_SUBTYPE_DEFINITION_HH
 
@@ -40,8 +39,6 @@ class IIR_IntegerSubtypeDefinition : public virtual IIR_IntegerTypeDefinition{
 public:
   virtual ~IIR_IntegerSubtypeDefinition() {}
     
-  virtual void release() = 0;
-  
   virtual void set_resolution_function( IIR_FunctionDeclaration * ) = 0;
   virtual IIR_FunctionDeclaration *get_resolution_function() = 0;
 };

@@ -40,12 +40,10 @@ public:
   static IIR_Identifier *get( const IIR_Char *text, IIR_Int32 text_length, plugin_class_factory *factory );
   static IIR_Identifier *get( const string &text, plugin_class_factory *factory );
 
-  void release();
-
 protected:
   IIRBase_Identifier();
   virtual ~IIRBase_Identifier() = 0;
     
-private:
 };
+
 #endif
