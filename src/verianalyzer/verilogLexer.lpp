@@ -95,14 +95,29 @@ ID          [a-z_A-Z][a-zA-Z_0-9]*
 
 %%
 
+"=" { return EQ; }
 "," { return COMMA; }
 ";" { return SEMI; }
 "(" { return LPAR; }
 ")" { return RPAR; }
-"input" { return K_input; }
-"output" { return K_output; }
 "endmodule" { return K_endmodule; }
+"inout" { return K_inout; }
+"input" { return K_input; }
 "module" { return K_module; }
+"output" { return K_output; }
+"supply0" { return K_supply0; }
+"supply1" { return K_supply1; }
+"tri" { return K_tri; }
+"tri0" { return K_tri0; }
+"tri1" { return K_tri1; }
+"triand" { return K_triand; }
+"trior" { return K_trior; }
+"uwire" { return K_uwire; }
+"wire" { return K_wire; }
+"wand" { return K_wand; }
+"wor" { return K_wor; }
+"wreal" { return K_wreal; }
+
 [ \t\r\n]+      { }
 {ID}            { lvalp->text = strdup(YYText()); ASSERT(lvalp->text); return IDENTIFIER; }
 .               { LexerError("Lexical Error"); }

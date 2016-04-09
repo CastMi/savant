@@ -1,3 +1,20 @@
+/**
+  * Copyright CERN 2016 Michele Castellana <michele.castellana@cern.ch>
+  * Copyright (C) 2016 Michele Castellana <blacklion727@gmail.com>
+  *
+  * This source code is free software: you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+  * the Free Software Foundation, either version 3 of the License, or
+  * (at your option) any later version.
+  *
+  * This source code is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with this code.  If not, see <http://www.gnu.org/licenses/>.
+  **/
 %code requires{
 struct VerilogFlexLexer;
 // The %union uses the following
@@ -102,11 +119,11 @@ IIRScram_LibraryUnit * arc;
 %token <text> IDENTIFIER
 
 /* Token with no values */
-%token SEMI COMMA LPAR RPAR
-%token K_endmodule K_module K_input K_output list_of
+%token SEMI COMMA LPAR RPAR EQ
+%token list_of K_endmodule K_inout K_input K_module K_output K_wreal K_supply0 K_supply1 K_tri K_tri0 K_tri1 K_triand K_trior K_uwire K_wire K_wand K_wor
 
 /* Non end literals with values */
-%type <id_list> list_of_identifiers
+%type <id_list> list_of_identifiers module_port_list_opt
 %type <direction> port_direction
 %type <portlist> module_item
 %type <params> module_item_list
@@ -122,9 +139,33 @@ description
   : module
   ;
 
+dimensions_opt
+  : {  }
+  | dimensions {  }
+  ;
+dimensions
+  : {}
+  ;
+
 description_list
   : description
   | description_list description
+  ;
+
+module_port_list_opt
+  : LPAR list_of_identifiers RPAR
+    {
+       $$ = $2;
+    }
+  | {
+       $$ = 0;
+    }
+  | LPAR error RPAR
+    {
+        //yyerror(@2, "Errors in port declarations.");
+	     yyerrok;
+	     //$$ = 0;
+     }
   ;
 
 module
@@ -144,12 +185,12 @@ module
       arc->set_base_info(ir_verilog, 0, 0, 0);
       dynamic_cast<IIRScram_EntityDeclaration *>(ent)->_add_declaration_and_open_scope();
       }
-    LPAR list_of_identifiers RPAR SEMI
+    module_port_list_opt SEMI
       {
       dynamic_cast<IIRScram_EntityDeclaration*>(ent)->get_port_clause()->set_base_info(ir_verilog, 0, 0, 0);
-      for( IIRScram_Identifier* id = dynamic_cast<IIRScram_Identifier *>($5->first());
+      for( IIRScram_Identifier* id = dynamic_cast<IIRScram_Identifier *>($4->first());
       id!=NULL;
-      id = dynamic_cast<IIRScram_Identifier *>($5->successor(id)) ){
+      id = dynamic_cast<IIRScram_Identifier *>($4->successor(id)) ){
         IIRScram_InterfaceDeclaration *new_decl = new IIRScram_SignalInterfaceDeclaration();
         
         dynamic_cast<IIRScram_SignalInterfaceDeclaration*>(new_decl)->set_signal_kind(IIR_NO_SIGNAL_KIND);
@@ -218,6 +259,14 @@ module_item
       }
 	;
 
+expression
+  : {}
+  ;
+
+net_type_opt
+  : {}
+  ;
+
 port_direction
   : K_input 
   {
@@ -251,6 +300,51 @@ list_of_identifiers
                 the_list->append(IIRBase_Identifier::get(std::string($1), fac));
                 $$ = the_list;
                 }
+	;
+
+data_type_or_implicit
+  : {}
+  ;
+port_declaration
+	: K_input net_type_opt data_type_or_implicit IDENTIFIER dimensions_opt
+	| K_input K_wreal IDENTIFIER
+	| K_inout net_type_opt data_type_or_implicit IDENTIFIER dimensions_opt
+	| K_inout K_wreal IDENTIFIER
+	| K_output net_type_opt data_type_or_implicit IDENTIFIER dimensions_opt
+	| K_output K_wreal IDENTIFIER
+	| K_output net_type_opt data_type_or_implicit IDENTIFIER EQ expression
+	;
+
+list_of_port_declarations
+	: port_declaration
+		{
+		}
+	| list_of_port_declarations COMMA port_declaration
+	        {
+		}
+	| list_of_port_declarations COMMA IDENTIFIER
+		{
+		}
+	| list_of_port_declarations COMMA
+		{
+		}
+	| list_of_port_declarations COMMA
+		{
+		}
+   ;
+
+net_type
+	: K_wire    {  }
+	| K_tri     {  }
+	| K_tri1    {  }
+	| K_supply0 {  }
+	| K_wand    {  }
+	| K_triand  {  }
+	| K_tri0    {  }
+	| K_supply1 {  }
+	| K_wor     {  }
+	| K_trior   {  }
+	| K_uwire   {  }
 	;
 
 %%
