@@ -26,19 +26,10 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "IIRBase_FloatingPointLiteral64.hh"
 
 IIRBase_FloatingPointLiteral64::IIRBase_FloatingPointLiteral64(){}
 IIRBase_FloatingPointLiteral64::~IIRBase_FloatingPointLiteral64(){}
-
-void
-IIRBase_FloatingPointLiteral64::release() {
-  delete this;
-}
 
 IIR_FP64
 IIRBase_FloatingPointLiteral64::value() {

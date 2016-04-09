@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-2003 The University of Cincinnati.  
 // All rights reserved.
 
@@ -56,11 +55,6 @@ IIR_Char&
 IIRBase_Comment::operator[]( IIR_Int32 subscript ){
   _check_bounds( subscript );
   return text[ subscript ];
-}
-
-void 
-IIRBase_Comment::release(){
-  delete this;
 }
 
 void 

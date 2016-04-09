@@ -37,11 +37,6 @@ IIRBase_FloatingPointLiteral::IIRBase_FloatingPointLiteral()
 
 IIRBase_FloatingPointLiteral::~IIRBase_FloatingPointLiteral() {}
 
-void
-IIRBase_FloatingPointLiteral::release() {
-  delete this;
-}
-
 const string
 IIRBase_FloatingPointLiteral::print_value(IIR_Int32 length) {
   ostringstream retbuf;

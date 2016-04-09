@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -25,10 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "savant.hh"
 #include "IIR_EnumerationSubtypeDefinition.hh"
 #include "IIR_EnumerationLiteral.hh"
@@ -42,11 +37,6 @@ IIRBase_EnumerationSubtypeDefinition::IIRBase_EnumerationSubtypeDefinition() :
 }
 
 IIRBase_EnumerationSubtypeDefinition::~IIRBase_EnumerationSubtypeDefinition(){ 
-}
- 
-void 
-IIRBase_EnumerationSubtypeDefinition::release(){
-  delete this;
 }
 
 void 

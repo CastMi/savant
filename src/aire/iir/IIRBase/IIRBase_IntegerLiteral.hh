@@ -39,8 +39,6 @@ public:
   IIR_Kind get_kind() const {return IIR_INTEGER_LITERAL;}
   const IIR_Char *get_kind_text() const {return "IIR_IntegerLiteral";}
 
-  void release();
-
   const string print(IIR_Int32);
 
   void set_base(IIR_Int32);
@@ -73,4 +71,5 @@ private:
   IIR_Char *exponent;
   IIR_Int32 exponent_length;
 };
+
 #endif

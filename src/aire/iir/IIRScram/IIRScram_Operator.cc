@@ -142,7 +142,7 @@ IIRScram_Operator::_symbol_lookup(){
   // Don't delete decls1, it belongs to the symbol table.
   set<IIR_Declaration> *decls1 = _get_symbol_table()->find_set( to_lookup );
   retval = decls1->convert_set<IIRScram_Declaration>();
-  to_lookup->release();
+  delete to_lookup;
 
   return retval;
 }

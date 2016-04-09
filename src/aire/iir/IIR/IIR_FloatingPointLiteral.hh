@@ -1,4 +1,3 @@
-
 #ifndef IIR_FLOATING_POINT_LITERAL_HH
 #define IIR_FLOATING_POINT_LITERAL_HH
 
@@ -38,8 +37,6 @@ class IIR_FloatingPointLiteral : public virtual IIR_Literal{
 public:
   virtual ~IIR_FloatingPointLiteral() {}
     
-  virtual void release() = 0;
-
   virtual const string print_value(IIR_Int32) = 0;
 
   virtual void set_base(IIR_Int32) = 0;

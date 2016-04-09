@@ -26,18 +26,11 @@
 
 //---------------------------------------------------------------------------
 
-
 #include "IIRBase_FloatingPointLiteral32.hh"
 #include "IIR_FloatingPointLiteral32.hh"
 
 IIRBase_FloatingPointLiteral32::IIRBase_FloatingPointLiteral32() {}
 IIRBase_FloatingPointLiteral32::~IIRBase_FloatingPointLiteral32() {}
-
-void
-IIRBase_FloatingPointLiteral32::release() {
-  delete this;
-}
-
 
 IIR_FP32
 IIRBase_FloatingPointLiteral32::value() {

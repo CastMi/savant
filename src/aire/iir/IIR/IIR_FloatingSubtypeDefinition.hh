@@ -1,4 +1,3 @@
-
 #ifndef IIR_FLOATING_SUBTYPE_DEFINITION_HH
 #define IIR_FLOATING_SUBTYPE_DEFINITION_HH
 
@@ -35,12 +34,9 @@
 class IIR_FunctionDeclaration;
 
 class IIR_FloatingSubtypeDefinition : public virtual IIR_FloatingTypeDefinition{
-  
 public:
   virtual ~IIR_FloatingSubtypeDefinition() {}
     
-  virtual void release() = 0;
-					    
   virtual void set_resolution_function( IIR_FunctionDeclaration * ) = 0;
   virtual IIR_FunctionDeclaration *get_resolution_function() = 0;
 };

@@ -41,8 +41,6 @@ public:
   IIR_Kind get_kind() const {return IIR_INTEGER_SUBTYPE_DEFINITION;}
   const IIR_Char *get_kind_text() const {return "IIR_IntegerSubtypeDefinition";}
 
-  void release();
-  
   void set_resolution_function( IIR_FunctionDeclaration * );
   IIR_FunctionDeclaration *get_resolution_function();
 
@@ -58,4 +56,5 @@ protected:
 private:
   IIR_FunctionDeclaration *my_resolution_function;
 };
+
 #endif

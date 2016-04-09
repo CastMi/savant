@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -29,11 +28,3 @@
 IIRBase_BitStringLiteral::IIRBase_BitStringLiteral(){}
 
 IIRBase_BitStringLiteral::~IIRBase_BitStringLiteral(){}
-  
-void 
-IIRBase_BitStringLiteral::release(){
-  delete this;
-}
-
-
-

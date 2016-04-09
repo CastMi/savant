@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -36,11 +35,6 @@ IIRBase_IntegerSubtypeDefinition::IIRBase_IntegerSubtypeDefinition() {
 }
 
 IIRBase_IntegerSubtypeDefinition::~IIRBase_IntegerSubtypeDefinition() {}
-
-void
-IIRBase_IntegerSubtypeDefinition:: release() {
-  delete this;
-}
 
 void 
 IIRBase_IntegerSubtypeDefinition::set_resolution_function( IIR_FunctionDeclaration *resolution_function ){

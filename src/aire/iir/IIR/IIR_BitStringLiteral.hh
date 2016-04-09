@@ -1,4 +1,3 @@
-
 #ifndef IIR_BIT_STRING_LITERAL_HH
 #define IIR_BIT_STRING_LITERAL_HH
 
@@ -35,6 +34,5 @@ class IIR_BitStringLiteral : public virtual IIR_TextLiteral{
 public:
   virtual ~IIR_BitStringLiteral() {}
 
-  virtual void release() = 0;
 };
 #endif

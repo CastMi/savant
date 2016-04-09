@@ -153,7 +153,7 @@ _static_elaborate(IIRScram_ArchitectureDeclaration *arch,
 #endif
 
   ASSERT(label->get_declarator()->get_kind() == IIR_IDENTIFIER);
-  ((IIRScram_Identifier *)label->get_declarator())->release();
+  delete ((IIRScram_Identifier *)label->get_declarator());
   label->set_declarator(IIRScram_Identifier::get(text, strlen(text)));
 }
 #endif

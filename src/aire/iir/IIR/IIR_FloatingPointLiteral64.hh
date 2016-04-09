@@ -1,4 +1,3 @@
-
 #ifndef IIR_FLOATING_POINT_LITERAL64_HH
 #define IIR_FLOATING_POINT_LITERAL64_HH
 
@@ -34,13 +33,11 @@
 #include "IIR_Literal.hh"
 
 class IIR_FloatingPointLiteral64 : public virtual IIR_Literal{
-
 public:
   virtual ~IIR_FloatingPointLiteral64() {}
     
-  virtual void release() = 0;
-
   virtual IIR_FP64 value() = 0;
   virtual void set_value(IIR_FP64) = 0;
 };
+
 #endif

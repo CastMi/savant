@@ -1,4 +1,3 @@
-
 #ifndef IIR_INTEGER_LITERAL32_HH
 #define IIR_INTEGER_LITERAL32_HH
 
@@ -32,15 +31,13 @@
 #include "savant_config.hh"
 #include "IIR_Literal.hh"
 
-
 class IIR_IntegerLiteral32 : public virtual IIR_Literal{
 
 public:
   virtual ~IIR_IntegerLiteral32() {}
 
-  virtual void release() = 0;
-
   virtual IIR_Int32 value() = 0;
   virtual void set_value(IIR_Int32) = 0;
 };
+
 #endif

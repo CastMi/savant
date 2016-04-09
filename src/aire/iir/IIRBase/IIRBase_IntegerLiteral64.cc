@@ -26,19 +26,11 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "IIRBase_IntegerLiteral64.hh"
 #include "IIR_IntegerLiteral64.hh"
 
 IIRBase_IntegerLiteral64::IIRBase_IntegerLiteral64() {}
 IIRBase_IntegerLiteral64::~IIRBase_IntegerLiteral64() {}
-
-void
-IIRBase_IntegerLiteral64::release() {
-  delete this;
-}
-
 
 IIR_Int64
 IIRBase_IntegerLiteral64::value() {

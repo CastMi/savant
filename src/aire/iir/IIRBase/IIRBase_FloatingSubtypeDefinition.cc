@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -37,12 +36,6 @@ IIRBase_FloatingSubtypeDefinition::IIRBase_FloatingSubtypeDefinition() {
 
 IIRBase_FloatingSubtypeDefinition::~IIRBase_FloatingSubtypeDefinition(){
   my_resolution_function = NULL;
-}
-
-
-void
-IIRBase_FloatingSubtypeDefinition::release() {
-  delete this;
 }
 
 void 

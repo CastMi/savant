@@ -42,12 +42,6 @@ IIRBase_IntegerLiteral::IIRBase_IntegerLiteral() :
 
 IIRBase_IntegerLiteral::~IIRBase_IntegerLiteral() {}
 
-void
-IIRBase_IntegerLiteral::release() {
-  delete this;
-}
-
-
 const string
 IIRBase_IntegerLiteral::print( IIR_Int32 ){
   ostringstream os;

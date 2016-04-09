@@ -34,7 +34,6 @@ class IIR_StringLiteral : public virtual IIR_TextLiteral{
 public:
   virtual ~IIR_StringLiteral() {}
     
-  virtual void release() = 0;
 };
 
 #endif
