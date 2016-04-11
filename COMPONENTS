@@ -4,11 +4,8 @@ COMPONENTS OF THE SAVANT PROJECT
 The Intermediate Form
 ---------------------
 
-
 Savant uses the Advanced Intermediate Representation with Extensibility/Common Enviorment
-(AIRE/CE).  It is defined as an object-oriented data structure, and has been developed
-jointly with FTL Systems.  Documentation for the basic AIRE/CE classes can be found at:
-http://www.ftlsystems.com/reprint.html
+(AIRE/CE).  It is defined as an object-oriented data structure.
 
 SCRAM: A VHDL Analyzer
 ----------------------
@@ -50,8 +47,3 @@ compiled into a library and accessed in other parts of the VHDL description. The
 manager has been designed to take care of this functionality. It allows the user to create
 design libraries and helps the parser locate design libraries that are referenced in other
 VHDL descriptions.
-
-------------------------------------------------------------------------
-
-SAVANT
-The University of Cincinnati
