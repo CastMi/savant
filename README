@@ -1,32 +1,71 @@
 These directories contain the documentation and source code for the SAVANT project.  The
-SAVANT project is an effort to build an extensible, object-oriented intermediate form (IF)
-for the hardware description language VHDL (only the '93 language standard).  The software
-developed under the SAVANT project is freely available under the GNU Public Library
-License.
+SAVANT project is an effort to build an extensible digital mixed-language, object-oriented
+compiler for the hardware description language VHDL (only the '93 language standard) and
+Verilog.  The software developed under the SAVANT project is freely available under the
+GNU Public Library License.
 
 The primary goal of SAVANT is to stimulate research among the VHDL community by providing
 an extensible, object-oriented, well-documented intermediate form (IF) and a freely
-available analyzer (SCRAM) to convert VHDL into the IF.  Because the IF analyzer is
-released in source form, the additional derived classes can be inserted into the C++ class
+available analyzer (SCRAM) to convert VHDL and Verilog into the IF.  Because the IF analyzer
+is released in source form, the additional derived classes can be inserted into the C++ class
 hierarchy.  Thus, user actions can benefit fully from the fact that the IF is
-object-oriented.  Consequently, no procedural interface is provided or needed.
+object-oriented. Consequently, no procedural interface is provided or needed.
 
 The SAVANT project includes several elements of software support (see the file COMPONENTS
 in this directory).  Instructions for installing the software are located in the file
 INSTALL (this directory).  The software is freely available under the terms of the Gnu
 Public Library license, included with this release.
 
-SAVANT has been compiled and tested under Linux.  Efforts have been made to make it
+SAVANT has been compiled and tested under Linux. Efforts have been made to make it
 portable.  If you have patches to allow compilation on other platforms, if you have
 success or failures on other platforms, or if you have any comments at all we'd be
 interested in hearing them.
 
 Currently, we have not ported this system to any version of Windows. 
 
-To install:
+GUIDELINES FOR BUILDING/INSTALLING SAVANT FOR SIMULATION:
+---------------------------------------------------------
 
-autoreconf -i && mkdir obj && cd obj && ../configure --with-clutils=/usr/local && make
+In order to simulate with SAVANT, some additional tools will be
+required. TyVis is a C++ simulation library that works with SAVANT.
+Warped2, developed at the University of Cincinnati, is a discrete event simulation
+kernel.
 
+In order to simulate VHDL with SAVANT, you'll need a compatible
+version of TyVis and Warped2 as well. You can find them in these repository:
+
+	https://github.com/CastMi/clutils
+	https://github.com/CastMi/tyvis
+
+[1] Build clutils as per the installation instructions.
+
+[2] Build savant as per the installation instructions.
+
+[3] Build Warped2 as per the installation instructions.
+
+[4] Build tyvis as per the installation instructions.
+
+If you have problems, feel free to ask.
+
+Installation Instructions
+*************************
+
+Prerequisites:
+
+	sudo apt-get install autoconf automake autotools-dev libtool flex bison
+
+Briefly, the shell commands:
+
+	autoreconf -fi && mkdir obj && cd obj && ../configure --with-clutils=/usr/local && make && sudo make install
+
+should configure, build, and install this package.
 --with-clutils=/usr/local depends on where you installed clutils.
-Savant will look into "/lib" for libraries and into "/include/clutils-0.0" for headers.
-In the example, Savant will look into "/usr/local/lib" for libraries and into "/usr/local/include/clutils-0.0" for headers.
+Savant will look into "/lib" for libraries and into "/include/clutils" for headers.
+In the command provided, Savant will look into the folder "/usr/local/lib" for libraries and into
+the folder "/usr/local/include/clutils" for headers.
+
+Installation Names
+==================
+
+By default, 'make install' installs the package's commands under '/usr/local/bin', include
+files under '/usr/local/include', etc.
