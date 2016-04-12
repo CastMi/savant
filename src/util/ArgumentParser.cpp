@@ -25,6 +25,7 @@
 #include "savant_config.hh"
 #include "version.hh"
 #include <boost/program_options.hpp>
+#include <iostream>
 
 #define MAX_INPUT_FILE_NUM -1
 
