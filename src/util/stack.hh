@@ -1,77 +1,71 @@
 #ifndef STACK_HH
 #define STACK_HH
 
-#include "savant_config.hh"
+/**
+  * Copyright (C) 2016 Michele Castellana <blacklion727@gmail.com>
+  *
+  * This source code is free software: you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+  * the Free Software Foundation, either version 3 of the License, or
+  * (at your option) any later version.
+  *
+  * This source code is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with this code.  If not, see <http://www.gnu.org/licenses/>.
+  **/
 
-template < class element >
+#include <stack>
+#include <type_traits>
+#include "savant.hh"
+
+namespace savant {
+
+template <class element>
 class stack {
-
+   static_assert( std::is_pointer<element>::value, "This stack class must be used with a pointer. Use the std::stack instead." );
 public:
-  inline stack() {
-    handle = NULL;
-  }
+  inline stack() {}
+  inline ~stack() {}
 
-  inline ~stack(){
-    // walk down the list and destroy all of the containers
-    while (handle!=NULL){
-      last = handle;
-      handle = handle->next;
-      delete last;
-    }
-  }
+  inline element pop();
+  inline void push( element );
 
-  inline element *pop( );
-  inline void push( element * );
-
-  element *get_top_of_stack(){
-    if( handle == NULL ){
-      return NULL;
-    }
-    else{
-      return (element *)handle->data;
-    }
+  inline element get_top_of_stack(){
+     if ( realstack.empty() )
+        return nullptr;
+     return realstack.top();
   };
-  
+
+  inline element top(){
+     if ( realstack.empty() )
+        return nullptr;
+     return realstack.top();
+  };
 private:
-  struct container {
-    ~container(){};
-    void *data;
-    container *next;
-    container( void *new_data, container *next_ptr ) : data( new_data ), next( next_ptr ) {};
-  };
-
-  container *last;
-  container *handle;
-  static container *freeList;
+  std::stack<element> realstack;
+  
 };
 
 template < class element >
-element *stack< element >::pop() {
-  if (handle==NULL){
-    return NULL;
-  }
+element stack<element>::pop() {
+  if ( realstack.empty() )
+    return nullptr;
   else {
-    register container  *temp = handle;
-    register element *returnData = (element *)temp->data;
-
-    handle=temp->next;
-    delete temp;
-    return returnData;
+    element tmp = realstack.top();
+    realstack.pop();
+    return tmp;
   }
 }
 
 template < class element >
-void stack< element >::push(element *new_element) {
-  if (handle==NULL){
-    register container  *temp;
-    temp = new container( new_element, NULL ) ;
-    handle = temp;
-  }
-  else {
-    register container  *temp;
-    temp = new container( new_element, handle ) ;
-    handle = temp;
-  }
+void stack<element>::push(element new_element) {
+   ASSERT( new_element );
+   realstack.push(new_element);
 }
 
+}
 #endif
