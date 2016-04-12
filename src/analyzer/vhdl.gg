@@ -82,7 +82,7 @@ IIRScram_CommentList *design_file_comment_list = NULL;
 bool need_to_write_libraries;
 extern bool debug_symbol_table;
 extern language_processing_control *lang_proc;
-stack<IIRScram_SequentialStatement> loop_statements;
+savant::stack<IIRScram_SequentialStatement*> loop_statements;
 >>
 
 /* **********************************************************************

@@ -1,4 +1,3 @@
-
 #ifndef SYMBOL_TABLE_HH
 #define SYMBOL_TABLE_HH
 
@@ -31,7 +30,6 @@
 #include "symbol_lookup.hh"
 #include "stack.hh"
 #include "set.hh"
-#include "stack.hh"
 #include "IIRScram_TypeDeclaration.hh"
 #include "IIRScram_Declaration.hh"
 #include "IIR_Declaration.hh"
@@ -56,7 +54,7 @@ class scope_entry {
    public:
       scope_entry( scope_entry *previous_scope, IIR *scope_owner ){
          belongs_to = scope_owner;
-         declarations = new stack<IIR_Declaration>;
+         declarations = new savant::stack<IIR_Declaration*>;
          scopes = new savant::set<scope_entry>;
          open = TRUE;
          previous = previous_scope;
@@ -83,7 +81,7 @@ class scope_entry {
          return scopes;
       }
 
-      stack<IIR_Declaration> *get_declarations(){
+      savant::stack<IIR_Declaration*> *get_declarations(){
          return declarations;
       }
 
@@ -112,7 +110,7 @@ class scope_entry {
 
    private:
       IIR *belongs_to;
-      stack<IIR_Declaration> *declarations;
+      savant::stack<IIR_Declaration*> *declarations;
       savant::set<scope_entry> *scopes;
       IIR_Boolean open;
       scope_entry *previous;
@@ -278,7 +276,7 @@ class symbol_table {
       savant::set<IIR_ArrayTypeDefinition> in_scope_one_d_array_types;
       savant::set<IIR_RecordTypeDefinition> in_scope_record_types;
 
-      stack<IIR> declarative_region_stack;
+      savant::stack<IIR*> declarative_region_stack;
 
       void load_standard_library();
 };
