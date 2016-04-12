@@ -49,6 +49,30 @@ StackTest_LDADD = \
 	-lboost_unit_test_framework
 
 ####################
+# StaticFunTest
+####################
+check_PROGRAMS += StaticFunTest
+StaticFunTest_SOURCES = \
+	StaticFunTest.cpp
+
+StaticFunTest_CPPFLAGS = \
+   -I$(top_srcdir)/src/analyzer/ \
+   -I$(top_srcdir)/src/aire/iir/visitor \
+   -I$(top_srcdir)/src/aire/iir/IIR \
+   -I$(top_srcdir)/src/aire/iir/IIRScram \
+   -I$(top_srcdir)/src/aire/iir/IIRBase \
+   -I$(top_srcdir)/src/aire \
+   -I$(top_srcdir)/src/util/ \
+   -I$(top_srcdir)/src/
+
+StaticFunTest_LDADD = \
+	-lboost_unit_test_framework \
+	-lboost_program_options \
+	$(top_builddir)/src/util/libsavantutils.la \
+	$(top_builddir)/src/aire/libaire.la \
+	$(top_builddir)/src/analyzer/libscram.la
+
+####################
 # SymbolTableTest
 ####################
 #check_PROGRAMS += SymbolTableTest
