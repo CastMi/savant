@@ -1,5 +1,6 @@
 /**
   * Copyright CERN 2016 Michele Castellana <michele.castellana@cern.ch>
+  * Copyright (C) 2016 Michele Castellana <blacklion727@gmail.com>
   *
   * This source code is free software: you can redistribute it and/or modify
   * it under the terms of the GNU General Public License as published by
