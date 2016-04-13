@@ -181,8 +181,9 @@ main (int argc, char *argv[]) {
          }
       }
 
+      PluginBase *module = nullptr;
       for (list<string>::iterator iter = plugin_names.begin(); iter != plugin_names.end(); ++iter) {
-         PluginBase *module = PluginManager::instance()->loadPlugin(*iter);
+         module = PluginManager::instance()->loadPlugin(*iter);
          if ( !module ) {
             cout << "Error: " << PluginManager::instance()->getLastError() << endl;
             return EXIT_FAILURE;

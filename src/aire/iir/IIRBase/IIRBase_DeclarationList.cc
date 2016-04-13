@@ -121,12 +121,13 @@ IIRBase_DeclarationList::find_declarations( IIR_Name *to_find ){
     else{
       ASSERT( as_selected_name->get_suffix() != NULL );
       ASSERT( dynamic_cast<IIR_Name *>(as_selected_name->get_suffix()) );
+      savant::set<IIR_Declaration> *current_set = nullptr;
       retval = new savant::set<IIR_Declaration>;
 
       IIR_Declaration *current_decl = found->getElement();
       while( current_decl != NULL ){
-      savant::set<IIR_Declaration> *current_set =
-	  current_decl->find_declarations(dynamic_cast<IIR_Name *>(as_selected_name->get_suffix()) );
+       current_set =
+	      current_decl->find_declarations(dynamic_cast<IIR_Name *>(as_selected_name->get_suffix()) );
 	if( current_set != NULL ){
 	  retval->add( current_set );
 	  delete current_set;
