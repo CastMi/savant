@@ -26,11 +26,10 @@
 //          Tim McBrayer                tmcbraye@ece.uc.edu
 //          Dale E. Martin              dmartin@cliftonlabs.com
 
-#include "savant_config.hh"
 #include <list>
 #include <algorithm>
 #include <functional>
-#include <cassert>
+#include "savant.hh"
 
 using std::list;
 using std::distance;

@@ -29,7 +29,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_SequentialStatement.hh"
 #include "IIR_IfStatement.hh"
 

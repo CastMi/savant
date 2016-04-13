@@ -25,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_TextLiteral.hh"
 #include "IIR_Identifier.hh"
 

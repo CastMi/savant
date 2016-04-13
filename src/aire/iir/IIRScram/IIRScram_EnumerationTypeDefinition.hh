@@ -30,7 +30,7 @@
 //          Narayanan Thondugulam nthondug@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_ScalarTypeDefinition.hh"
 #include "IIRBase_EnumerationTypeDefinition.hh"
 

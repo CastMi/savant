@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_DyadicOperator.hh"
 
 class IIR_ModulusOperator : public virtual IIR_DyadicOperator {

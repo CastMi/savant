@@ -27,7 +27,7 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_Tuple.hh"
 #include "IIRBase_GroupConstituent.hh"
 

@@ -30,7 +30,7 @@
 //          Radharamanan Radhakrishnan
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_Literal.hh"
 #include "IIRBase_IntegerLiteral.hh"
 

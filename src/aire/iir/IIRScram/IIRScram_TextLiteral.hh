@@ -29,7 +29,7 @@
 //          Narayanan Thondugulam nthondug@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_Literal.hh"
 #include "IIRBase_TextLiteral.hh"
 #include "IRBasicDataTypes.hh"

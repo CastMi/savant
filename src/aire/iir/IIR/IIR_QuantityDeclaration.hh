@@ -24,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_ObjectDeclaration.hh"
 
 class IIR_QuantityDeclaration : public virtual IIR_ObjectDeclaration {

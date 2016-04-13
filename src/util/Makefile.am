@@ -98,11 +98,13 @@ library_include_HEADERS =  \
 	resolution_func.hh \
 	savant_plugin_base.hh \
 	savant_visitor_plugin.hh \
+	language_processing_control.hh  \
 	set.hh \
 	signal_set.hh \
 	stack.hh \
 	string_utils.hh \
 	generic_parser.hh \
+	../savant_config.hh \
 	PluginStandardPackage.hh \
 	plugin_class_factory.hh \
 	plugin_interface.hh

@@ -1,8 +1,6 @@
 #ifndef FAKE_OSTRING_STREAM_H
 #define FAKE_OSTRING_STREAM_H
 
-#include "savant_config.hh"
-#include <savant-config.h>
 #include <strstream.h>
 #include <string>
 using std::string;

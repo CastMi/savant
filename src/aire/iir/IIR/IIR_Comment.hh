@@ -25,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_TextLiteral.hh"
 
 class IIR_Comment : public virtual IIR_TextLiteral{

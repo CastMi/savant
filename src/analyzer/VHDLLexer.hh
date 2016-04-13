@@ -1,4 +1,3 @@
-
 #ifndef VHDLLexer_HH
 #define VHDLLexer_HH
 
@@ -24,7 +23,6 @@
 // Authors: Philip A. Wilsey	philip.wilsey@ieee.org
 //          Dale E. Martin	dmartin@cliftonlabs.com
 
-#include "savant_config.hh"
 #include "VHDLToken.hh"
 #include "ATokenStream.h"
 #include "savant.hh"

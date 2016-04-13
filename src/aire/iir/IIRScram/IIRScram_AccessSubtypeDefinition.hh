@@ -31,7 +31,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_AccessTypeDefinition.hh"
 #include "IIRBase_AccessSubtypeDefinition.hh"
 

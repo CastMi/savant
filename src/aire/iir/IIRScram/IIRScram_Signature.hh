@@ -28,7 +28,7 @@
 //          Narayanan Thondugulam
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_TypeDefinition.hh"
 #include "IIRBase_Signature.hh"
 #include "savant.hh"

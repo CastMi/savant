@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_FloatingTypeDefinition.hh"
 #include "IIR_FloatingSubtypeDefinition.hh"
 

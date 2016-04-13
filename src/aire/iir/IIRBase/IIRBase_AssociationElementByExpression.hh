@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_AssociationElement.hh"
 #include "IIR_AssociationElementByExpression.hh"
 

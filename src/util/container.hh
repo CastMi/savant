@@ -25,18 +25,12 @@
 // Authors: Philip A. Wilsey            phil.wilsey@uc.edu
 //          Tim McBrayer                tmcbraye@thor.ece.uc.edu
 
-#include "savant_config.hh"
-#ifndef NULL
-#define NULL 0
-#endif
+#include "savant.hh"
 
 // container template class for misc use in lists, queues, and such.
 
 template <class type>
 class container {
-
-
-
 
 public:
   

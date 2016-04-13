@@ -22,7 +22,7 @@
 // "LGPL", distributed with this archive.
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIR_Expression.hh"
 
 class IIR_SubprogramDeclaration;

@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_LogicalOperators.hh"
 #include "IIRBase_XnorOperator.hh"
 

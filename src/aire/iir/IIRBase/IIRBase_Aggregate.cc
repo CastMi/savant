@@ -28,6 +28,7 @@
 #include "IIR_AssociationElement.hh"
 #include "IIRBase_AssociationList.hh"
 #include "IIRBase_Aggregate.hh"
+#include "savant.hh"
 
 IIRBase_Aggregate::IIRBase_Aggregate() :
   element_association_list(0)

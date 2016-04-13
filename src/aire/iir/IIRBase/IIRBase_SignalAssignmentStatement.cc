@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -25,10 +24,6 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 
 //---------------------------------------------------------------------------
-
-
-
-
 
 #include "savant.hh"
 #include "IIRBase_SignalAssignmentStatement.hh"

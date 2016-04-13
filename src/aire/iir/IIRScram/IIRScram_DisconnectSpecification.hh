@@ -30,7 +30,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_Declaration.hh"
 #include "IIRBase_DisconnectSpecification.hh"
 

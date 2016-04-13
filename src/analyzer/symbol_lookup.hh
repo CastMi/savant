@@ -1,4 +1,3 @@
-
 #ifndef SYMBOL_LOOKUP_HH
 #define SYMBOL_LOOKUP_HH
 
@@ -26,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "savant.hh"
 #include <iostream>
 #include "declaration_chain.hh"

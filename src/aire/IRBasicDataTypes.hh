@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant.hh"
 #include <string>
 using std::string;
 #include <iostream>

@@ -29,7 +29,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram.hh"
 #include "IIRBase_List.hh"
 

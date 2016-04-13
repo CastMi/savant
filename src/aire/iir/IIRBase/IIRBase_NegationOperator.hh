@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_MonadicOperator.hh"
 #include "IIR_NegationOperator.hh"
 

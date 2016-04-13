@@ -25,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_BranchQuantityDeclaration.hh"
 #include "IIRScram_QuantityDeclaration.hh"
 #include <vector>

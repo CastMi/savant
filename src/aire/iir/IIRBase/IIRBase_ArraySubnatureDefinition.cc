@@ -25,6 +25,7 @@
 #include "IIRBase_ArraySubnatureDefinition.hh"
 #include "IIRBase_ScalarTypeDefinition.hh"
 #include "IIR_Declaration.hh"
+#include "savant.hh"
 
 IIRBase_ArraySubnatureDefinition::IIRBase_ArraySubnatureDefinition(){}
 

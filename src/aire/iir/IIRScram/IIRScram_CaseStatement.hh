@@ -39,7 +39,7 @@
 //          Umesh Kumar V. Rajasekaran urajasek@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_SequentialStatement.hh"
 #include "IIRBase_CaseStatement.hh"
 

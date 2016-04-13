@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_MultiplicationOperators.hh"
 #include "IIRBase_RemainderOperator.hh"
 

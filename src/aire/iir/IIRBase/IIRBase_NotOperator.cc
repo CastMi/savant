@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -27,6 +26,7 @@
 
 #include "IIRBase_NotOperator.hh"
 #include "IIR_TypeDefinition.hh"
+#include "savant.hh"
 
 IIRBase_NotOperator::IIRBase_NotOperator() {}
 IIRBase_NotOperator::~IIRBase_NotOperator() {}

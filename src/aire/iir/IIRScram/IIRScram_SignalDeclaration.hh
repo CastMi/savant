@@ -31,7 +31,7 @@
 //          Narayanan Thondugulam
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_ObjectDeclaration.hh"
 #include "IIRBase_SignalDeclaration.hh"
 

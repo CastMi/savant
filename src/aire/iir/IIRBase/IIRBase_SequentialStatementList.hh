@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_List.hh"
 #include "IIR_SequentialStatementList.hh"
 

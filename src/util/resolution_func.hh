@@ -1,4 +1,3 @@
-
 #ifndef RESOLUTION_FUNC_HH
 #define RESOLUTION_FUNC_HH
 
@@ -64,7 +63,6 @@ class IIR_TextLiteral;
 class IIR_TypeDeclaration;
 class IIR_TypeDefinition;
 
-#include "savant_config.hh"
 #include "savant.hh"
 #include "IRBasicDataTypes.hh"
 

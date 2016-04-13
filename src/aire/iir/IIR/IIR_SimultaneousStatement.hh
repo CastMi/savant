@@ -24,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_ArchitectureStatement.hh"
 
 class IIR_SimultaneousStatement : public virtual IIR_ArchitectureStatement {

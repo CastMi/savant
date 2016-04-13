@@ -24,7 +24,6 @@
 // Authors: Tim McBrayer                tmcbraye@ece.uc.edu
 //          Dale E. Martin              dmartin@cliftonlabs.com
 
-#include "savant_config.hh"
 class IIR_ProcessStatement;
 class IIR_Declaration;
 

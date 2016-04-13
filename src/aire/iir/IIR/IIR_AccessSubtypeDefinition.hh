@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_AccessTypeDefinition.hh"
 
 class IIR_TypeDefinition;

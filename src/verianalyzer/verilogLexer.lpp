@@ -1,3 +1,4 @@
+%top{
 /**
   * Copyright CERN 2016 Michele Castellana <michele.castellana@cern.ch>
   * Copyright (C) 2016 Michele Castellana <blacklion727@gmail.com>
@@ -15,6 +16,9 @@
   * You should have received a copy of the GNU General Public License
   * along with this code.  If not, see <http://www.gnu.org/licenses/>.
   **/
+
+#include "savant_config.hh"
+}
 
 /* 
  * Makes the scanner not call `yywrap()' upon an

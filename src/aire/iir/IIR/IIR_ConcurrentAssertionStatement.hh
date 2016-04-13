@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_ConcurrentStatement.hh"
 
 class IIR_ConcurrentAssertionStatement : public virtual IIR_ConcurrentStatement{

@@ -25,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_Tuple.hh"
 #include "IIRBase_BreakElement.hh"
 

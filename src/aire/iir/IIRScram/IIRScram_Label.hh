@@ -30,7 +30,6 @@
 //          Timothy J. McBrayer tmcbraye@ececs.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
 #include "IIRScram_Declaration.hh"
 #include "IIRBase_Label.hh"
 

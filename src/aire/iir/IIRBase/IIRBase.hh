@@ -20,7 +20,6 @@
 // version 2, June 1991. A copy of this license agreement can be found in
 // the file "LGPL", distributed with this archive.
 
-#include "savant_config.hh"
 #include "IIR.hh"
 
 /** This is the base node definition for the intermediate form.  All nodes
@@ -61,10 +60,7 @@ public:
 
   /** Get and set the design file */
   virtual IIR_DesignFile *get_design_file() const { return _my_design_file; }
-  virtual void set_design_file(IIR_DesignFile *new_file) {
-    ASSERT(new_file != NULL);
-    _my_design_file = new_file;
-  }
+  virtual void set_design_file(IIR_DesignFile *new_file);
    
   virtual void set_base_info( IIR_DesignFile    *design_file,
                               int               line_number,

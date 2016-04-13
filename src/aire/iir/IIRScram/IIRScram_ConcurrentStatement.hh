@@ -29,7 +29,7 @@
 //          Narayanan Thondugulam
 //          Krishnan Subramani 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_ArchitectureStatement.hh"
 #include "IIRBase_ConcurrentStatement.hh"
 

@@ -1,8 +1,6 @@
 #ifndef SAVANT_VISITOR_PLUGIN
 #define SAVANT_VISITOR_PLUGIN
 
-
-#include "savant_config.hh"
 #include "savant_plugin_base.hh"
 
 class HelloClass;

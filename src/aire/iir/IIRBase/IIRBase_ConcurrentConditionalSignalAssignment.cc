@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -25,10 +24,10 @@
 
 //---------------------------------------------------------------------------
 
-
 #include "IIRBase_ConcurrentConditionalSignalAssignment.hh"
 #include "IIR_ConditionalWaveformList.hh"
 #include "IIR_SignalDeclaration.hh"
+#include "savant.hh"
 
 IIRBase_ConcurrentConditionalSignalAssignment::IIRBase_ConcurrentConditionalSignalAssignment() :
   conditional_waveforms(0) {

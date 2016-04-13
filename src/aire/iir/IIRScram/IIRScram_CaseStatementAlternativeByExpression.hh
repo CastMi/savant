@@ -28,7 +28,7 @@
 //          Narayanan Thondugulam 
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_CaseStatementAlternative.hh"
 #include "IIRBase_CaseStatementAlternativeByExpression.hh"
 

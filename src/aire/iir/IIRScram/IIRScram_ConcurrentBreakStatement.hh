@@ -25,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_ConcurrentBreakStatement.hh"
 #include "IIRScram_SimultaneousStatement.hh"
 

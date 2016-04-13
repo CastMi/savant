@@ -27,7 +27,7 @@
 //          Timothy J. McBrayer tmcbraye@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_DyadicOperator.hh"
 
 class IIRScram_RelationalOperators : public virtual IIRScram_DyadicOperator{

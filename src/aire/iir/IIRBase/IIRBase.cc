@@ -55,6 +55,12 @@ IIRBase::get_implementation_class() const {
   return typeid(*this).name();
 }
 
+void
+IIRBase::set_design_file(IIR_DesignFile *new_file) {
+   ASSERT(new_file != NULL);
+   _my_design_file = new_file;
+}
+
 void 
 IIRBase::set_file_name( IIR_Identifier *file_name, plugin_class_factory *factory ){
   ASSERT(factory != NULL);

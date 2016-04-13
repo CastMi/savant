@@ -24,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "set.hh"
 #include "IIRScram_ArchitectureStatement.hh"
 #include "IIRBase_SimultaneousElsif.hh"

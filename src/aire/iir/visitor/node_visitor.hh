@@ -1,4 +1,3 @@
-
 #ifndef NODE_VISITOR_HH
 #define NODE_VISITOR_HH
 
@@ -24,7 +23,6 @@
 // Authors: Philip A. Wilsey	phil.wilsey@uc.edu
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "visitor_argument_type.hh"
 #include "visitor_return_type.hh"
 

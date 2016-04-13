@@ -26,7 +26,7 @@
 //          Timothy J. McBrayer tmcbraye@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_MultiplicationOperators.hh"
 #include "IIRBase_ModulusOperator.hh"
 

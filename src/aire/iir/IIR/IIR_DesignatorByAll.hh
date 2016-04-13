@@ -29,7 +29,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_Designator.hh"
 
 class IIR_DesignatorByAll : public virtual IIR_Designator{

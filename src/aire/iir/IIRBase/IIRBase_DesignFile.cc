@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-2003 The University of Cincinnati.  
 // All rights reserved.
 
@@ -27,7 +26,6 @@
 #include "IIR_CommentList.hh"
 #include "IIR_Identifier.hh"
 #include "IIR_LibraryUnitList.hh"
-
 #include "StandardPackage.hh"
 #include "scram.hh"
 

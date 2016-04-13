@@ -24,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_ArchitectureStatement.hh"
 #include "IIR_SimultaneousStatement.hh"
 

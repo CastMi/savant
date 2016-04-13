@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_TypeDefinition.hh"
 #include "IIR_RecordTypeDefinition.hh"
 

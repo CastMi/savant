@@ -30,7 +30,7 @@
 //          Narayanan Thondugulam nthondug@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_ArrayTypeDefinition.hh"
 #include "IIRBase_ArraySubtypeDefinition.hh"
 #include "IIRScram_FunctionDeclaration.hh"

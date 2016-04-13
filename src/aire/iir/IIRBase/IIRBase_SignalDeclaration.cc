@@ -26,12 +26,9 @@
 
 //---------------------------------------------------------------------------
 
-
 #include "IIRBase_SignalDeclaration.hh"
 #include "IIRBase_TextLiteral.hh"
-
 #include "IIR_Attribute.hh"
-
 #include "savant.hh"
 
 IIRBase_SignalDeclaration::IIRBase_SignalDeclaration() {

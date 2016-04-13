@@ -1,4 +1,3 @@
-
 #ifndef DEFAULT_VISITOR_HH
 #define DEFAULT_VISITOR_HH
 
@@ -31,7 +30,6 @@
 // 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "node_visitor.hh"
 #include "savant_plugin_base.hh"
 

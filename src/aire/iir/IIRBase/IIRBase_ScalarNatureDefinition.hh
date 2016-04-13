@@ -27,7 +27,6 @@
  
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_NatureDefinition.hh"
 #include "IIR_ScalarNatureDefinition.hh"
  

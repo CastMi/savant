@@ -25,8 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
-
 #ifndef NULL
 #define NULL 0
 #endif

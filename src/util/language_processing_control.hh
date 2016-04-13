@@ -1,4 +1,3 @@
-
 #ifndef LANGUAGE_PROCESSING_CONTROL_HH
 #define LANGUAGE_PROCESSING_CONTROL_HH
 
@@ -25,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "savant.hh"
 class ANTLRToken;
 

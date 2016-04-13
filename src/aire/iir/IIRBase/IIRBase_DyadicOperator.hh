@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_Operator.hh"
 #include "IIR_DyadicOperator.hh"
 

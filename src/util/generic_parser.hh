@@ -1,6 +1,8 @@
 #ifndef GENERIC_PARSER_HH
 #define GENERIC_PARSER_HH
 
+#include "savant.hh"
+
 class IIR_LibraryDeclaration;
 class plugin_class_factory;
 class symbol_table;

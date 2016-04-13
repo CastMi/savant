@@ -29,6 +29,7 @@
 #include "IIR_TypeDefinition.hh"
 #include "IIR_TextLiteral.hh"
 #include "error_func.hh"
+#include "savant.hh"
 #include <sstream>
 
 IIRBase_Attribute::IIRBase_Attribute() {

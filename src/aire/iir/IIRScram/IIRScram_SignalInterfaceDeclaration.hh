@@ -30,7 +30,7 @@
 //          Krishnan Subramani  skrish@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_InterfaceDeclaration.hh"
 #include "IIRBase_SignalInterfaceDeclaration.hh"
 

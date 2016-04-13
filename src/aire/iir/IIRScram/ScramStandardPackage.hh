@@ -30,7 +30,6 @@
 //          Swaminathan Subramanian
 //	    Magnus Danielson	cfmd@swipnet.se
 
-#include "savant_config.hh"
 #include "BaseStandardPackage.hh"
 #include "IIRScram_PackageDeclaration.hh"
 

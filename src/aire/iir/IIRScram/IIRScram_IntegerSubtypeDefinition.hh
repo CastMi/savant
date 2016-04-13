@@ -32,7 +32,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_IntegerTypeDefinition.hh"
 #include "IIRBase_IntegerSubtypeDefinition.hh"
 

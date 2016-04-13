@@ -29,7 +29,7 @@
 //          Umesh Kumar V. Rajasekaran
 //          Narayanan Thondugulam
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_Declaration.hh"
 #include "IIRBase_EnumerationLiteral.hh"
 

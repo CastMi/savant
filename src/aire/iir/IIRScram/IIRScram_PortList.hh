@@ -29,7 +29,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_InterfaceList.hh"
 #include "IIRBase_PortList.hh"
 

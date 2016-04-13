@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR.hh"
 
 class IIR_Tuple : public virtual IIR{
