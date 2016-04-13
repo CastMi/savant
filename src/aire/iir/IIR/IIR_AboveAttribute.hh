@@ -22,7 +22,6 @@
 
 // Authors: Harish Venkataramani venkath@ececs.uc.edu
 
-#include "savant_config.hh"
 #include "IIR_Attribute.hh"
 
 class IIR_AboveAttribute : public virtual IIR_Attribute {

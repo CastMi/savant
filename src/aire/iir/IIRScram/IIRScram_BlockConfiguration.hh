@@ -30,7 +30,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_ConfigurationItem.hh"
 #include "IIRBase_BlockConfiguration.hh"
 

@@ -23,7 +23,7 @@
 // Author:  Timothy J. McBrayer     tmcbraye@ecscs.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "set.hh"
 #include "IIR_IndexedName.hh"
 #include "IIR_IntegerLiteral.hh"

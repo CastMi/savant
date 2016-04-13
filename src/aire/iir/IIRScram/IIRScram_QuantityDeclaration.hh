@@ -24,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_QuantityDeclaration.hh"
 #include "IIRScram_ObjectDeclaration.hh"
 

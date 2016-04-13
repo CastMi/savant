@@ -29,7 +29,7 @@
 //          Krishnan Subramani  skrish@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_Attribute.hh"
 #include "IIRBase_RangeAttribute.hh"
 

@@ -35,8 +35,9 @@ IIRBase_List::convert_tree(plugin_class_factory *factory) {
 
     // Now clone it's contents
     IIRBase       *old_node = dynamic_cast<IIRBase *>(first());
+    IIR           *new_node = nullptr;
     while (old_node != NULL) {
-      IIR* new_node = old_node->converted_node;
+      new_node = old_node->converted_node;
       // Check for circular dependencies
       if ( !new_node ) {
         new_node = old_node->convert_tree(factory);

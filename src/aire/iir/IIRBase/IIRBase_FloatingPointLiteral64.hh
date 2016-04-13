@@ -29,7 +29,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_Literal.hh"
 #include "IIR_FloatingPointLiteral64.hh"
 

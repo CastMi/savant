@@ -24,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_SimultaneousStatement.hh"
 #include "IIR_SimultaneousIfStatement.hh"
 

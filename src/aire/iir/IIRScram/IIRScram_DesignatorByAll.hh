@@ -30,7 +30,7 @@
 //          Krishnan Subramani  skrish@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_Designator.hh"
 #include "IIRBase_DesignatorByAll.hh"
 #include "savant.hh"

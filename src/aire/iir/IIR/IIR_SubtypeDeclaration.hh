@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_Declaration.hh"
 
 class IIR_TypeDefinition;

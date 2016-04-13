@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -25,10 +24,10 @@
 
 //---------------------------------------------------------------------------
 
-
 #include "IIRBase_ConcurrentProcedureCallStatement.hh"
 #include "IIR_ArchitectureStatementList.hh"
 #include "IIRBase_AssociationList.hh"
+#include "savant.hh"
 
 IIRBase_ConcurrentProcedureCallStatement::IIRBase_ConcurrentProcedureCallStatement() :
   actual_parameter_part(0),

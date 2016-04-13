@@ -29,7 +29,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_InterfaceList.hh"
 
 class IIR_ConstantInterfaceDeclaration;

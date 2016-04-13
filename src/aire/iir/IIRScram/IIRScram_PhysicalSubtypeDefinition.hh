@@ -30,7 +30,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_PhysicalTypeDefinition.hh"
 #include "IIRBase_PhysicalSubtypeDefinition.hh"
 

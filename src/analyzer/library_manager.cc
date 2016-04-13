@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-2003 The University of Cincinnati.
 // All rights reserved. 
 
@@ -22,8 +21,8 @@
 //         Dale E. Martin              dmartin@cliftonlabs.com
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "savant.hh"
+#include "savant_config.hh"
 #include <FileManager.h>
 #include "library_manager.hh"
 #include "scram.hh"

@@ -24,7 +24,7 @@
 // Author: Sivakumar Gowrisankar             gowriss@ececs.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRBase_ArraySubnatureDefinition.hh"
 #include "IIRScram_ArrayNatureDefinition.hh"
 

@@ -1,4 +1,3 @@
-
 #ifndef SCRAM_FUNC_HH
 #define SCRAM_FUNC_HH
 
@@ -25,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "error_func.hh"
 #include "IIR_Label.hh"
 #include "IIR_Identifier.hh"

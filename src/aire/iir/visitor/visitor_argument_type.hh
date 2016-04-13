@@ -1,4 +1,3 @@
-
 #ifndef VISITOR_ARGUMENT_TYPE_HH
 #define VISITOR_ARGUMENT_TYPE_HH
 
@@ -30,8 +29,6 @@
 // $Id: visitor_argument_type.hh,v 1.3 2008/06/24 19:21:46 dnshirl Exp $
 // 
 //---------------------------------------------------------------------------
-
-#include "savant_config.hh"
 
 /** This class defines the base type for input arguments to IIR visitors.
     Any visitor needing an input argument should build a class derived from

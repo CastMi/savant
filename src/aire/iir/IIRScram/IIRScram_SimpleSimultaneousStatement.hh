@@ -27,7 +27,7 @@
 //          Venkateswaran Krishna
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_SimultaneousStatement.hh"
 #include "IIRBase_SimpleSimultaneousStatement.hh"
 #include "symbol_table.hh"

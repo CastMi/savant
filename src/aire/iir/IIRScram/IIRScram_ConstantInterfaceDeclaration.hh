@@ -30,7 +30,7 @@
 //          Narayanan Thondugulam 
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_InterfaceDeclaration.hh"
 #include "IIRBase_ConstantInterfaceDeclaration.hh"
 

@@ -24,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_ArrayNatureDefinition.hh"
 
 class IIR_ArraySubnatureDefinition : public virtual IIR_ArrayNatureDefinition {

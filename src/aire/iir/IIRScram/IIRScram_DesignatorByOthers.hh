@@ -31,7 +31,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_Designator.hh"
 #include "IIRBase_DesignatorByOthers.hh"
 

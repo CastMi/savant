@@ -25,7 +25,7 @@
 //          Vasudevan Shanmugasundaram
  
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIR_TypeDefinition.hh"
 
 class IIR_NatureDefinition : public virtual IIR_TypeDefinition {

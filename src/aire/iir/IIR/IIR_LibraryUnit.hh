@@ -1,4 +1,3 @@
-
 #ifndef IIR_LIBRARY_UNIT_HH
 #define IIR_LIBRARY_UNIT_HH
 
@@ -28,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_Declaration.hh"
 
 class IIR_DeclarationList;

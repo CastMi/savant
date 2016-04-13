@@ -28,7 +28,7 @@
 //          Umesh Kumar V. Rajasekaran urajasek@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_Name.hh"
 #include "IIRBase_SimpleName.hh"
 

@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_Name.hh"
 #include "IIR_SelectedName.hh"
 

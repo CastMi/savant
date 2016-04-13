@@ -27,7 +27,7 @@
 //          Kathiresan Nellayappan
  
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_NatureDefinition.hh"
 #include "IIRBase_ScalarNatureDefinition.hh"
 

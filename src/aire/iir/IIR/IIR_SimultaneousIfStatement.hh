@@ -23,7 +23,7 @@
 // Authors: Harish Venkataramani venkath@ececs.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIR_SimultaneousStatement.hh"
 
 class IIR_SimultaneousElsif;

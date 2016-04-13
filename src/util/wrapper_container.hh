@@ -1,7 +1,6 @@
 #ifndef WRAPPER_CONTAINER_HH
 #define WRAPPER_CONTAINER_HH
 
-#include "savant_config.hh"
 #include "list_object.hh"
 
 class wrapper_container : public list_object {

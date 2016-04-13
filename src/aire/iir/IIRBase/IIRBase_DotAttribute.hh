@@ -24,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_DotAttribute.hh"
 #include "IIRBase_Attribute.hh"
 

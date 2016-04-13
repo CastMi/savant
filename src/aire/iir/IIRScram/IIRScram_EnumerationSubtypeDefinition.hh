@@ -28,7 +28,7 @@
 //          Umesh Kumar V. Rajasekaran urajasek@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_EnumerationTypeDefinition.hh"
 #include "IIRBase_EnumerationSubtypeDefinition.hh"
 

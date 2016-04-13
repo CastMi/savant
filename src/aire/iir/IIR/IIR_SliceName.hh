@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_Name.hh"
 
 class IIR_SliceName : public virtual IIR_Name{

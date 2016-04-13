@@ -30,7 +30,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_Literal.hh"
 #include "IIRBase_IntegerLiteral32.hh"
 

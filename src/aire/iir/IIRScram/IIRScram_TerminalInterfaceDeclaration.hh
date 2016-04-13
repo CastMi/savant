@@ -25,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_TerminalInterfaceDeclaration.hh"
 #include "IIRScram_InterfaceDeclaration.hh"
 

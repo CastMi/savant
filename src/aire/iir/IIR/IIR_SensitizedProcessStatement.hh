@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_ProcessStatement.hh"
 
 class IIR_DesignatorList;

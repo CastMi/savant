@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_ScalarTypeDefinition.hh"
 
 class IIR_RangeTypeDefinition : public virtual IIR_ScalarTypeDefinition{

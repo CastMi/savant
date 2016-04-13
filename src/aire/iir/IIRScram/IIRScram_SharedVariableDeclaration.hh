@@ -29,7 +29,7 @@
 //          Narayanan Thondugulam nthondug@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_ObjectDeclaration.hh"
 #include "IIRBase_SharedVariableDeclaration.hh"
 

@@ -29,7 +29,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_Name.hh"
 
 class IIR_IndexedName : public virtual IIR_Name{

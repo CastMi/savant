@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_ConfigurationItem.hh"
 #include "IIR_BlockConfiguration.hh"
 

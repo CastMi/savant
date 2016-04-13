@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_SubprogramDeclaration.hh"
 #include "IIR_ProcedureDeclaration.hh"
 

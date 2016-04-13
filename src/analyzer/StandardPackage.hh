@@ -32,7 +32,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_PackageDeclaration.hh"
 
 class IIR_EnumerationSubtypeDefinition;

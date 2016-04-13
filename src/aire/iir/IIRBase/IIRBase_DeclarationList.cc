@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -27,9 +26,7 @@
 
 #include "savant.hh"
 #include "IIRBase_DeclarationList.hh"
-
 #include "set.hh"
-
 #include "IIR.hh"
 #include "IIR_Declaration.hh"
 #include "IIR_Name.hh"

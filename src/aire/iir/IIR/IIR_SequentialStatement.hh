@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_Statement.hh"
 
 class IIR_SequentialStatement : public virtual IIR_Statement{

@@ -32,6 +32,10 @@ IIRBase_AssociationElement::IIRBase_AssociationElement() {
   set_formal(NULL);
 }
 
+void
+IIRBase_AssociationElement::set_actual( IIR* ) {
+   ASSERT(0);
+}
 
 IIRBase_AssociationElement::~IIRBase_AssociationElement() {
 }

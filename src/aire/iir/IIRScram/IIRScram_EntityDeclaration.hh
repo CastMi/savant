@@ -30,7 +30,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_LibraryUnit.hh"
 #include "IIRBase_EntityDeclaration.hh"
 

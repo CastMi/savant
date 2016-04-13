@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_ScalarTypeDefinition.hh"
 #include "IIR_RangeTypeDefinition.hh"
 

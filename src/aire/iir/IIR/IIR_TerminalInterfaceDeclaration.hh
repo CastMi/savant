@@ -24,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_InterfaceDeclaration.hh"
 
 class IIR_TerminalInterfaceDeclaration : public virtual IIR_InterfaceDeclaration {

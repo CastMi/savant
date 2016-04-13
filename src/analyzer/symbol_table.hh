@@ -25,7 +25,7 @@
 //          Timothy J. McBrayer     tmcbraye@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "dl_list.hh"
 #include "symbol_lookup.hh"
 #include "stack.hh"

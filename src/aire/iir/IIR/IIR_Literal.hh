@@ -26,7 +26,7 @@
 //          Dale E. Martin	dmartin@cliftonlabs.com
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIR.hh"
 
 class IIR_Literal : public virtual IIR{

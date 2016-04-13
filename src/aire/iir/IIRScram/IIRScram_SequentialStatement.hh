@@ -31,7 +31,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_Statement.hh"
 #include "IIRBase_SequentialStatement.hh"
 

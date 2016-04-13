@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_DeclarationList.hh"
 
 class IIR_ElementDeclaration;

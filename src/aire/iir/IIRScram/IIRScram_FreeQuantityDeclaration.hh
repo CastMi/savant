@@ -24,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_FreeQuantityDeclaration.hh"
 #include "IIRScram_QuantityDeclaration.hh"
 #include <vector>

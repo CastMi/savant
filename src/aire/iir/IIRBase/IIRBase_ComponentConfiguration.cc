@@ -30,7 +30,7 @@
 #include "IIR_DesignatorList.hh"
 #include "IIRBase_LibraryUnit.hh"
 #include "IIRBase_ComponentConfiguration.hh"
-
+#include "savant.hh"
 
 IIRBase_ComponentConfiguration::IIRBase_ComponentConfiguration() :
   instantiation_list(0),

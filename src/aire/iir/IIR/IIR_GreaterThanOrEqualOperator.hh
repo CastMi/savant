@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_DyadicOperator.hh"
 
 class IIR_GreaterThanOrEqualOperator : public virtual IIR_DyadicOperator {

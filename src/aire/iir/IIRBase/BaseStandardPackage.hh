@@ -1,7 +1,6 @@
 #ifndef BASE_STANDARD_PACKAGE_HH
 #define BASE_STANDARD_PACKAGE_HH
 
-#include "savant_config.hh"
 #include "StandardPackage.hh"
 #include "IIRBase_PackageDeclaration.hh"
 

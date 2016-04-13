@@ -57,7 +57,6 @@
 // usage messages, should start with a capital letter.  But they should not
 // end with a period.
 
-#include "savant_config.hh"
 #include <string>
 
 class IIR;

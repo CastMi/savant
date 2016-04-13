@@ -29,7 +29,7 @@
 //          Krishnan Subramani
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_LibraryUnit.hh"
 #include "IIRBase_ArchitectureDeclaration.hh"
 #include "symbol_table.hh"

@@ -25,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_ConcurrentStatement.hh"
 #include "IIR_ConcurrentProcedureCallStatement.hh"
 

@@ -24,7 +24,7 @@
 // Author: Timothy J. McBrayer tmcbraye@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "signal_set.hh"
 class IIR_ProcessStatement;
 class IIR_SequentialStatementList;

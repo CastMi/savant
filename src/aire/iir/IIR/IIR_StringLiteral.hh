@@ -27,7 +27,7 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIR_TextLiteral.hh"
 
 class IIR_StringLiteral : public virtual IIR_TextLiteral{

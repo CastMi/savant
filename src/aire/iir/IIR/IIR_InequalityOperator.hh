@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_DyadicOperator.hh"
 
 class IIR_InequalityOperator : public virtual IIR_DyadicOperator {

@@ -27,7 +27,7 @@
 //          Umesh Kumar V. Rajasekaran
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram.hh"
 #include "IIRBase_Statement.hh"
 

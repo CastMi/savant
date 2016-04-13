@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_ArrayTypeDefinition.hh"
 
 class IIR_FunctionDeclaration;

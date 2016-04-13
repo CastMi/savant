@@ -24,7 +24,7 @@
 //          Philip A. Wilsey            philip.wilsey@ieee.org
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "savant.hh"
 #include "IRBasicDataTypes.hh"
 #include "IRKind.hh"

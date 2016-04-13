@@ -26,7 +26,7 @@
 // Authors: Timothy J. McBrayer tmcbraye@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIR_Tuple.hh"
 
 class IIR_Choice : public virtual IIR_Tuple{

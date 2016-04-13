@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_ScalarTypeDefinition.hh"
 
 class IIR_IntegerTypeDefinition : public virtual IIR_ScalarTypeDefinition{

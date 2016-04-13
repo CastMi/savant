@@ -44,7 +44,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_Designator.hh"
 #include "IIRBase_DesignatorExplicit.hh"
 class IIRScram_Declaration;

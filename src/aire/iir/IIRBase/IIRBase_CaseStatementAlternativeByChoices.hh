@@ -26,7 +26,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_CaseStatementAlternative.hh"
 #include "IIR_CaseStatementAlternativeByChoices.hh"
 

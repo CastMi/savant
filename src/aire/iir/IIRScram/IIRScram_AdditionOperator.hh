@@ -26,7 +26,6 @@
 //          Timothy J. McBrayer 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_DyadicOperator.hh"
 #include "IIRBase_AdditionOperator.hh"
 

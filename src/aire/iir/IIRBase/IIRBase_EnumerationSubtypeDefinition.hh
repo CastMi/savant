@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_EnumerationTypeDefinition.hh"
 #include "IIR_EnumerationSubtypeDefinition.hh"
 

@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -25,10 +24,10 @@
 
 //---------------------------------------------------------------------------
 
-
 #include "IIRBase_GroupTemplateDeclaration.hh"
 #include "IIR_EntityClassEntryList.hh"
 #include "IIR_TextLiteral.hh"
+#include "savant.hh"
 
 IIRBase_GroupTemplateDeclaration::IIRBase_GroupTemplateDeclaration()  :
   entity_class_entry_list(0) { }

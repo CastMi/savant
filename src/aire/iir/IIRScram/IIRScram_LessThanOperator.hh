@@ -26,7 +26,7 @@
 //          Timothy J. McBrayer 
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_RelationalOperators.hh"
 #include "IIRBase_LessThanOperator.hh"
 

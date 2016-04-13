@@ -30,7 +30,6 @@
 // Derived from IIR_MultiplyOperators intentionally - utility
 // class used for type checking.
 
-#include "savant_config.hh"
 #include "IIR_DyadicOperator.hh"
 
 class IIR_MultiplicationOperator : public virtual IIR_DyadicOperator {

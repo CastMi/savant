@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_PhysicalTypeDefinition.hh"
 #include "IIR_PhysicalSubtypeDefinition.hh"
 

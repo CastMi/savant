@@ -29,7 +29,6 @@
 //          Narayanan Thondugulam
 //          Magnus Danielson      cfmd@swipnet.se
 
-#include "savant_config.hh"
 #include <signal.h>
 #include "savant.hh"
 #include "scram.hh"

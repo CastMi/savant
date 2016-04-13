@@ -30,7 +30,7 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram.hh"
 #include "IIRBase_Expression.hh"
 

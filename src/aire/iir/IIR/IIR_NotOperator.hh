@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_MonadicOperator.hh"
 
 class IIR_NotOperator : public virtual IIR_MonadicOperator{

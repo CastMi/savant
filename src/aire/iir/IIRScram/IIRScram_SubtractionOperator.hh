@@ -27,7 +27,6 @@
 //          Malolan Chetlur     
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_AdditionOperators.hh"
 #include "IIRBase_SubtractionOperator.hh"
 
