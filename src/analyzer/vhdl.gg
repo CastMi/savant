@@ -4236,9 +4236,7 @@ association > [IIRScram_AssociationElement *new_association]:
         // Then the second association holds the actual part in its 
         // "get_formal" method.
         by_expression->set_actual( actual->get_formal() );
-#ifdef DEVLELOPER_ASSERTIONS
 	ASSERT( actual->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION );
-#endif	
         delete actual;
       }
     }
