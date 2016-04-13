@@ -26,7 +26,7 @@
 //          Dale E. Martin	dmartin@cliftonlabs.com
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRBase_CaseStatementAlternative.hh"
 #include "IIR_CaseStatementAlternativeByOthers.hh"
 

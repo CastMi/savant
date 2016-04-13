@@ -28,7 +28,7 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_DyadicOperator.hh"
 #include "IIRBase_ConcatenationOperator.hh"
 

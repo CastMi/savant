@@ -27,7 +27,7 @@
 //          Umesh Kumar V. Rajasekaran urajasek@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_Literal.hh"
 #include "IIRBase_FloatingPointLiteral64.hh"
 

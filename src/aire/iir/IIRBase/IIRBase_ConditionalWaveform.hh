@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_Tuple.hh"
 #include "IIR_ConditionalWaveform.hh"
 

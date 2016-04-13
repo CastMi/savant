@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_InterfaceDeclaration.hh"
 #include "IIR_SignalInterfaceDeclaration.hh"
 

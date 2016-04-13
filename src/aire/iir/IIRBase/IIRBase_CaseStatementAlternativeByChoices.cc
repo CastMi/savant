@@ -21,6 +21,7 @@
 #include "IIR_Choice.hh"
 #include "IIR_ChoiceList.hh"
 #include "IIRBase_CaseStatementAlternativeByChoices.hh"
+#include "savant.hh"
 
 IIRBase_CaseStatementAlternativeByChoices::IIRBase_CaseStatementAlternativeByChoices()  :
   choices(0) { }

@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -24,9 +23,6 @@
 //          Dale E. Martin	dmartin@cliftonlabs.com
 
 //---------------------------------------------------------------------------
-
-
-
 
 #include "set.hh"
 #include "IIR_ArchitectureStatementList.hh"

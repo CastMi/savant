@@ -1,8 +1,6 @@
 #ifndef SAVANT_MODULE_BASE
 #define SAVANT_MODULE_BASE
 
-
-#include "savant_config.hh"
 #include <PluginBase.h>
 
 class savant_module_base : public PluginBase {

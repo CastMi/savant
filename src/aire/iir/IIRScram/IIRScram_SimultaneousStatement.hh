@@ -24,7 +24,7 @@
 // Authors: Philip A. Wilsey	philip.wilsey@ieee.org
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_ArchitectureStatement.hh"
 #include "IIRBase_SimultaneousStatement.hh"
 

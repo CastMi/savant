@@ -32,7 +32,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_TypeDeclaration.hh"
 #include "IIRScram_Declaration.hh"
 

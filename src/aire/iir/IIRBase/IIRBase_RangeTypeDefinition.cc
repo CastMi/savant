@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -28,6 +27,7 @@
 #include "IIRBase_RangeTypeDefinition.hh"
 #include "IIR_Declaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "savant.hh"
 
 IIRBase_RangeTypeDefinition::IIRBase_RangeTypeDefinition() {}
 IIRBase_RangeTypeDefinition::~IIRBase_RangeTypeDefinition() {}

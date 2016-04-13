@@ -25,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_SimultaneousStatement.hh"
 
 class IIR_BreakList;

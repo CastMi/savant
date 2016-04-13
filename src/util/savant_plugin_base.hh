@@ -25,8 +25,6 @@
 // 
 // --------------------------------------------------------------------------
 
-
-#include "savant_config.hh"
 #include <PluginBase.h>
 
 class savant_plugin_base : public PluginBase {

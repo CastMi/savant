@@ -27,7 +27,7 @@
 //          Timothy J. McBrayer tmcbraye@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_ShiftOperators.hh"
 #include "IIRBase_SLLOperator.hh"
 

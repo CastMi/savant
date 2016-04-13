@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_ConfigurationItem.hh"
 
 class IIR_LibraryUnit;

@@ -23,7 +23,6 @@
 
 // Author: Harish Venkataramani venkath@ececs.uc.edu
 
-#include "savant_config.hh"
 #include "IIRBase_BreakStatement.hh"
 #include "IIRScram_SequentialStatement.hh"
 

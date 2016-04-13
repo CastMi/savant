@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_EnumerationTypeDefinition.hh"
 
 class IIR_FunctionDeclaration;

@@ -29,7 +29,7 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_TextLiteral.hh"
 #include "IIRBase_BitStringLiteral.hh"
 

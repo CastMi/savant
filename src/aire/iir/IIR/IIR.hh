@@ -20,12 +20,10 @@
 // version 2, June 1991. A copy of this license agreement can be found in
 // the file "LGPL", distributed with this archive.
 
-#include "savant_config.hh"
 #include <iostream>
 #include <string>
 #include "IRBasicDataTypes.hh"
 #include "IRKind.hh"
-#include "savant.hh"
 
 using std::string;
 

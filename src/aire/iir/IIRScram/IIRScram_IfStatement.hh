@@ -40,7 +40,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_SequentialStatement.hh"
 #include "IIRBase_IfStatement.hh"
 

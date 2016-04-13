@@ -42,7 +42,6 @@
 #include "scram.hh"
 #include "set.hh"
 
-#include "savant_config.hh"
 #include "language_processing_control.hh"
 #include "library_manager.hh"
 

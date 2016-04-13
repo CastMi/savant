@@ -42,7 +42,7 @@ void verilog_parse(const std::string & fname, IIR_LibraryDeclaration* the_lib, s
 #include "IIRScram_DesignatorByAll.hh"
 #include "IIRScram_EnumerationSubtypeDefinition.hh"
 #include "symbol_table.hh"
-
+#include "savant_config.hh"
 #include "verilogParser.hpp"
 #include "verilogLexer.hpp"
 int yyFlexLexer::yywrap(){return 1;}

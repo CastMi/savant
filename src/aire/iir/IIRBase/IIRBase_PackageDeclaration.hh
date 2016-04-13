@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_LibraryUnit.hh"
 #include "IIR_PackageDeclaration.hh"
 

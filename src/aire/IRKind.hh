@@ -24,7 +24,6 @@
 // Authors: Philip A. Wilsey	philip.wilsey@ieee.org
 //          Dale E. Martin	dmartin@cliftonlabs.com
 
-#include "savant_config.hh"
 #include <cassert>
 #include <cstdlib>
 

@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -26,12 +25,11 @@
 //---------------------------------------------------------------------------
 
 #include "IIRBase_Literal.hh"
-
 #include "IIR_DesignFile.hh"
 #include "IIR_PhysicalSubtypeDefinition.hh"
 #include "IIR_TypeDefinition.hh"
-
 #include "StandardPackage.hh"
+#include "savant.hh"
 
 using std::cerr;
 using std::endl;

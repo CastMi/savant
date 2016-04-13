@@ -24,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_ArrayNatureDefinition.hh"
 #include "IIR_ArraySubnatureDefinition.hh"
 

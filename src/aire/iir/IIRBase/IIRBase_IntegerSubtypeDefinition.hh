@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_IntegerTypeDefinition.hh"
 #include "IIR_IntegerSubtypeDefinition.hh"
 

@@ -42,7 +42,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_SequentialStatement.hh"
 #include "IIRBase_ProcedureCallStatement.hh"
 

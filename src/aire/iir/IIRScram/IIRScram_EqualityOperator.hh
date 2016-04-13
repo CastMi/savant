@@ -29,7 +29,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_RelationalOperators.hh"
 #include "IIRBase_EqualityOperator.hh"
 

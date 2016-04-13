@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -26,9 +25,9 @@
 
 //---------------------------------------------------------------------------
 
-
 #include "IIRBase_WaveformElement.hh"
 #include "IIR.hh"
+#include "savant.hh"
 
 IIRBase_WaveformElement::IIRBase_WaveformElement() :
   value(0),

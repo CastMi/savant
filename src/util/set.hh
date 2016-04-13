@@ -24,7 +24,7 @@
 // Author: Dale E. Martin          dmartin@cliftonlabs.com
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include <Set.h>
 #include "IIRScram_Declaration.hh"
 #include "IIRScram_TypeDefinition.hh"

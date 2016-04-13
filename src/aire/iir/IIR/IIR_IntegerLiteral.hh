@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_Literal.hh"
 
 class IIR_IntegerLiteral : public virtual IIR_Literal{

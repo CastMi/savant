@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_ProcessStatement.hh"
 #include "IIR_SensitizedProcessStatement.hh"
 

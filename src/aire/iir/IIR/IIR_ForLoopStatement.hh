@@ -29,7 +29,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_SequentialStatement.hh"
 
 class IIR_ConstantDeclaration;

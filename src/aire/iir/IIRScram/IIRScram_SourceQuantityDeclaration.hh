@@ -25,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_SourceQuantityDeclaration.hh"
 #include "IIRScram_QuantityDeclaration.hh"
 

@@ -27,7 +27,6 @@
  
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_ObjectDeclaration.hh"
 
 class IIR_NatureDefinition;

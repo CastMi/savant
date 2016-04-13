@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_Designator.hh"
 #include "IIR_DesignatorExplicit.hh"
 

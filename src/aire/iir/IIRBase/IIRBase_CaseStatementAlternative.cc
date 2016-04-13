@@ -20,6 +20,7 @@
 
 #include "IIRBase_CaseStatementAlternative.hh"
 #include "IIR_SequentialStatementList.hh"
+#include "savant.hh"
 
 IIRBase_CaseStatementAlternative::IIRBase_CaseStatementAlternative() :
   sequence_of_statements(0) { }

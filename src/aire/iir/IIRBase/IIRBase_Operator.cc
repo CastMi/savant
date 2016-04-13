@@ -28,6 +28,7 @@
 #include "IIRBase_Operator.hh"
 #include "IIR_DyadicOperator.hh"
 #include "IIR_MonadicOperator.hh"
+#include "savant.hh"
 
 void
 IIRBase_Operator::publish_vhdl_operator( ostream &os ){

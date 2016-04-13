@@ -31,7 +31,7 @@
 //          Swaminathan Subramanian ssubrama@ececs.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_Declaration.hh"
 #include "IIRBase_SubtypeDeclaration.hh"
 

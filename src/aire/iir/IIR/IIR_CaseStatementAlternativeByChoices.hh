@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_CaseStatementAlternative.hh"
 
 class IIR_ChoiceList;

@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_MonadicOperator.hh"
 
 class IIR_IdentityOperator : public virtual IIR_MonadicOperator{

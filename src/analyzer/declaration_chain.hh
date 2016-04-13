@@ -1,4 +1,3 @@
-
 #ifndef DECLARATION_CHAIN_HH
 #define DECLARATION_CHAIN_HH
 
@@ -26,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_Declaration.hh"
 #include "set.hh"
 #include "IIR_TextLiteral.hh"

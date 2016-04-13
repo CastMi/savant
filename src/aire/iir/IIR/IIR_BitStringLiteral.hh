@@ -26,7 +26,7 @@
 //          Dale E. Martin	dmartin@cliftonlabs.com
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIR_TextLiteral.hh"
 
 class IIR_BitStringLiteral : public virtual IIR_TextLiteral{

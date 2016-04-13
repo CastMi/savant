@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_Tuple.hh"
 #include "IIR_AssociationElement.hh"
 
@@ -44,7 +43,7 @@ public:
   // These virtual method must never be called.  It is overloaded for
   // IIRBase_AssociationElementByExpression
   IIR* get_actual() { return NULL; }
-  void set_actual( IIR* ) { ASSERT(0); }
+  void set_actual( IIR* );
 
   // This is overloaded in IIRBase_AssociationElementByExpression.
   IIR_Boolean is_resolved(){ return TRUE; }

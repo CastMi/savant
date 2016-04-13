@@ -30,7 +30,7 @@
 //          Krishnan Subramani
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_Tuple.hh"
 #include "IIRBase_CaseStatementAlternative.hh"
 #include "dl_list.hh"

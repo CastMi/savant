@@ -29,7 +29,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_SubprogramDeclaration.hh"
 
 class IIR_TypeDefinition;

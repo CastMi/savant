@@ -25,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_Attribute.hh"
 
 class IIR_DotAttribute : public virtual IIR_Attribute {

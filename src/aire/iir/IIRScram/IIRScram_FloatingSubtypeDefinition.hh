@@ -30,7 +30,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_FloatingTypeDefinition.hh"
 #include "IIRBase_FloatingSubtypeDefinition.hh"
 #include "IIRScram_FunctionDeclaration.hh"

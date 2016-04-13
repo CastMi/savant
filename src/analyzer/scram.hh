@@ -24,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "savant.hh"
 #include "generic_parser.hh"
 #include <string>

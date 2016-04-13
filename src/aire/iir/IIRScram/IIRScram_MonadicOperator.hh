@@ -28,7 +28,7 @@
 //          Krishnan Subramani  
 //          Timothy J. McBrayer 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_Operator.hh"
 #include "IIRBase_MonadicOperator.hh"
 

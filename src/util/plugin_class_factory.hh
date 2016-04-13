@@ -25,7 +25,6 @@
 // 
 // --------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IRKind.hh"
 
 class IIR_AbsoluteOperator;

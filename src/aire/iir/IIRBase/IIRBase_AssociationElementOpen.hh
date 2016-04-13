@@ -21,7 +21,6 @@
 // the file "LGPL", distributed with this archive.
 
 
-#include "savant_config.hh"
 #include "IIRBase_AssociationElement.hh"
 #include "IIR_AssociationElementOpen.hh"
 

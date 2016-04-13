@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_DyadicOperator.hh"
 #include "IIRBase_ExponentiationOperator.hh"
 

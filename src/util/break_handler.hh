@@ -1,4 +1,3 @@
-
 #ifndef BREAK_HANDLER_HH
 #define BREAK_HANDLER_HH
 
@@ -25,7 +24,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_BreakElement.hh"
 #include "IIR_Designator.hh"
 #include "IIR_BreakList.hh"

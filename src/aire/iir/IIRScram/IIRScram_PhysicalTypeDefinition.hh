@@ -31,7 +31,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_ScalarTypeDefinition.hh"
 #include "IIRBase_PhysicalTypeDefinition.hh"
 

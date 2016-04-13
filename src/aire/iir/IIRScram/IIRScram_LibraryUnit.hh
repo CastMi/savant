@@ -28,7 +28,6 @@
 //          Narayanan Thondugulam nthondug@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
 #include "IIRBase_LibraryUnit.hh"
 #include "IIRScram_Declaration.hh"
 

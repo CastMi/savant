@@ -29,7 +29,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_Name.hh"
 #include "IIRBase_SelectedNameByAll.hh"
 

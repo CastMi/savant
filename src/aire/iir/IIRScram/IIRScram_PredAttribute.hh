@@ -30,7 +30,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_Attribute.hh"
 #include "IIRBase_PredAttribute.hh"
 

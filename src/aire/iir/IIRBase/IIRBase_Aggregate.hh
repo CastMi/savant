@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_Expression.hh"
 #include "IIR_Aggregate.hh"
 

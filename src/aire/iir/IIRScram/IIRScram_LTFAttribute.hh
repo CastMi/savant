@@ -25,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRBase_LTFAttribute.hh"
 #include "IIRScram_Attribute.hh"
 

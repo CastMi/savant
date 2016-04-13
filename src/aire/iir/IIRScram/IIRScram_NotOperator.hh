@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_MonadicOperator.hh"
 #include "IIRBase_NotOperator.hh"
 

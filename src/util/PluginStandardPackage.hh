@@ -25,7 +25,6 @@
 // 
 // --------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "BaseStandardPackage.hh"
 #include "IIRBase_PackageDeclaration.hh"
 

@@ -24,7 +24,7 @@
 // Authors: Harish Venkataramani venkath@ececs.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIR_QuantityDeclaration.hh"
 
 class IIR_Name;

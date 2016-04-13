@@ -1,4 +1,3 @@
-
 #ifndef HASH_TABLE_HH
 #define HASH_TABLE_HH
 
@@ -27,7 +26,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include <iostream>
 #include <cstring>
 #include "savant.hh"

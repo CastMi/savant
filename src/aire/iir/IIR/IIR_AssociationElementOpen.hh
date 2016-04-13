@@ -27,7 +27,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_AssociationElement.hh"
 
 class IIR_AssociationElementOpen : public virtual IIR_AssociationElement{

@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_Attribute.hh"
 
 class IIR_RangeAttribute : public virtual IIR_Attribute{

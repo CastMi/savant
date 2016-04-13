@@ -29,7 +29,7 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 
 //---------------------------------------------------------------------------
-#include "savant_config.hh"
+
 #include "IIRScram_Attribute.hh"
 #include "IIRBase_DrivingAttribute.hh"
 

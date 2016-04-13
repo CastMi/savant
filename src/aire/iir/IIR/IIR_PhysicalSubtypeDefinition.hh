@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIR_PhysicalTypeDefinition.hh"
 
 class IIR_FunctionDeclaration;

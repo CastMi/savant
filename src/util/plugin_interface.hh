@@ -25,7 +25,6 @@
 // 
 // --------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include <PluginBase.h>
 #include "IIR.hh"
 

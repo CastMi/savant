@@ -31,7 +31,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "savant_config.hh"
 #include "IIRScram_SubprogramDeclaration.hh"
 #include "IIRBase_ProcedureDeclaration.hh"
 
