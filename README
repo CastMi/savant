@@ -50,9 +50,13 @@ If you have problems, feel free to ask.
 Installation Instructions
 *************************
 
+Prerequisites:
+
+	sudo apt-get install autoconf automake autotools-dev libtool flex bison
+
 Briefly, the shell commands:
 
-	autoreconf -i && mkdir obj && cd obj && ../configure --with-clutils=/usr/local && make && sudo make install
+	autoreconf -fi && mkdir obj && cd obj && ../configure --with-clutils=/usr/local && make && sudo make install
 
 should configure, build, and install this package.
 --with-clutils=/usr/local depends on where you installed clutils.
