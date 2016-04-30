@@ -51,7 +51,6 @@
 #include "ArgumentParser.hpp"
 #include "StandardPackage.hh"
 #include "verilogParserDriver.hpp"
-
 #include "IIRScram_DesignFile.hh"
 #include "scram_plugin_class_factory.hh"
 #include "ScramStandardPackage.hh"
@@ -106,10 +105,10 @@ main (int argc, char *argv[]) {
 
    if(ap.getVHDLFiles().size() > 0) {
       /* Create VHDL IR */
-      scram parser( true, design_library_name,
+      scram *parser = new scram( true, design_library_name,
             scram_plugin_class_factory::instance(),
             ScramStandardPackage::instance() );
-      iir_vhdl_design_files_processed = parser.parse_files( ap.getVHDLFiles() );  
+      iir_vhdl_design_files_processed = parser->parse_files( ap.getVHDLFiles() );
 
       if( !parse_error && verbose_output )
          cerr << "VHDL parse complete - no errors." << endl;
@@ -123,8 +122,8 @@ main (int argc, char *argv[]) {
          std::cerr << "Finish VHDL frontend and starting Verilog frontend" << std::endl;
 
       /* create verilog IR */
-      VeriParser parser( design_library_name, scram_plugin_class_factory::instance(), ScramStandardPackage::instance() );
-      iir_verilog_design_files_processed = parser.parse_verilog( ap.getVerilogFiles() );
+      VeriParser *parser = new VeriParser( design_library_name, scram_plugin_class_factory::instance(), ScramStandardPackage::instance() );
+      iir_verilog_design_files_processed = parser->parse_verilog( ap.getVerilogFiles() );
       if( verbose_output )
          cerr << "Verilog parse complete - no errors." << endl;
    }
