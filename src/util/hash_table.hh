@@ -23,11 +23,13 @@
 // Authors: Philip A. Wilsey    phil.wilsey@uc.edu
 //          Dale E. Martin      dmartin@cliftonlabs.com
 //          Timothy J. McBrayer tmcbraye@ece.uc.edu
+//          Michele Castellana blacklion727@gmail.com
 
 //---------------------------------------------------------------------------
 
 #include <iostream>
 #include <cstring>
+#include <map>
 #include "savant.hh"
 #include "dl_list.hh"
 #include "savant.hh"
@@ -35,10 +37,9 @@
 /** Template based bucket hashing class.  Hashes on input string.
     The template Type defines the type of the constructed bucket for
     each entry.
-    
+
     Requirements on Type:
     void set_key(char *key): initializes text key in Type
-    int test_key(char *key): returns strcmp(key,x) where x is
     internal pointer to text string
     Type constructor assumed to require no arguments
 */
@@ -55,33 +56,27 @@ public:
   }
 
   /**
-     Look up the non-NULL terminated "text" in the hash table, using
+     Look up the NULL terminated "text" in the hash table, using
      "length" as the length of the key.
   */
   Type *hash_look( const char *const text, const int length ) {
-    int key;
-    int i;
-    Type *wk;
+    assert( strlen(text) == length );
+    return hash_look(std::string(text));
+  }
 
-    key = 0;
-  
-    // calculate a hash value...
-    for (i = 0; i < length; i++) {
-      key = (key << 3) + text[i];
+  /**
+     Look up the NULL terminated "text" in the hash table, using
+     "length" as the length of the key.
+  */
+  Type *hash_look( const std::string text ) {
+    if ( ht.find(text) != ht.end() ) {
+       return ht.find(text)->second;
     }
 
-    key = (key & 0x7fffffff) % ht_size;
-
-    for (wk=ht[key].first();
-	 wk!=NULL && wk->test_key( text, length );
-	 wk=ht[key].successor(wk)) {}
-    
-    if (wk == NULL) {
-      wk = new Type();
-      wk->set_key( text, length );
-      ht[key].append(wk);
-    }
-    
+    Type *wk = new Type();
+    wk->set_key( text.c_str(), text.size() );
+    ht.insert( std::pair<std::string, Type*>(text, wk) );
+    assert( ht.find(text) != ht.end() );
     return wk;
   }
 
@@ -91,40 +86,18 @@ public:
      @param table_size The initial table size of this hash table.
      Currently it's the final size as well as the table won't grow.
   */
-  explicit hash_table(int table_size = 4093) : ht_size(table_size) {
-    ht = new dl_list<Type>[ht_size];
-  }
-    
-  ~hash_table(){
-    delete [] ht;
-  };
+  hash_table() : ht() {}
+  ~hash_table() {};
 
   /**
      Clear the hash table.
   */
   void reset(){
-    int i;
-    for(i = 0 ; i < ht_size; i++){
-      ht[i].destroy_containers();
+    for(unsigned i = 0 ; i < ht.size(); ++i) {
+      //ht[i].destroy_containers();
     }
   }
 
-  /**
-     Get the size of the hash_table.  This isn't the number of elements in
-     the table, it's the number of slots.
-  */
-  int get_size() const {
-    return ht_size;
-  }
-
-  /**
-     Looks up the entry at the index passed in.  If the index isn't within
-     the bounds of the table a runtime error is generated.
-  */
-  dl_list<Type>* get_entry(int entry_number) const {
-    ASSERT ( (entry_number >= 0) && (entry_number <= ht_size) );
-    return (ht + entry_number);
-  }
 
   /**
      This method returns the whole table as a list.  The list needs to be
@@ -133,26 +106,15 @@ public:
   */
   dl_list<Type> *convert_to_list() const {
     dl_list<Type> *retval = new dl_list<Type>;
-    int i;
-    for( i = 0; i < ht_size; i++ ){
-      Type *current = ht[i].first();
-      while( current != NULL ){
-	retval->append( current );
-	current = ht[i].successor( current );
-      }
+    for( auto it = ht.begin(); it != ht.end(); ++it ) {
+      Type *current = it->second;
+      retval->append( current );
     }
     return retval;
   }
 
 private:
-  const int ht_size;
-  dl_list<Type> *ht;
+  std::map<std::string, Type*> ht;
 };
 
-// template <class Type>
-// inline
-// Type *
-// hash_table<Type>::hash_look(){return NULL;}
-
-
-#endif
+#endif // HASH_TABLE_HH

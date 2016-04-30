@@ -26,7 +26,8 @@
 #include <sstream>
 
 IIRBase_TextLiteral::IIRBase_TextLiteral() :
-  text(0){}
+  text(0),
+  our_string_table() {}
 
 IIRBase_TextLiteral::~IIRBase_TextLiteral(){}
 
@@ -106,19 +107,12 @@ IIRBase_TextLiteral::cmp(IIR_TextLiteral *a, IIR_Name *b){
   return retval;
 }
 
-void 
+void
 IIRBase_TextLiteral::set_text( const IIR_Char *const new_text, const IIR_Int32 new_length ){
   ASSERT( new_length > 0 );
-  ASSERT( new_text != NULL);
+  ASSERT( new_text );
 
-  text = get_string_table().hash_look( new_text, new_length );
-}
-
-hash_table<IIRBase_String> &
-IIRBase_TextLiteral::get_string_table(){
-  static hash_table<IIRBase_String> *our_string_table = new hash_table<IIRBase_String>;
-
-  return *our_string_table;
+  text = our_string_table.hash_look( new_text, new_length );
 }
 
 ostream &

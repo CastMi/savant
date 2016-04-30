@@ -65,8 +65,8 @@ protected:
   // This method is intended for use on NEW objects only...  (Otherwise,
   // it will leak - and an assertion will fail)
   void set_text( const IIR_Char *const, const IIR_Int32 );
-private:  
-  static hash_table<IIRBase_String> &get_string_table();
+private:
+  hash_table<IIRBase_String> our_string_table;
 };
 
 #endif

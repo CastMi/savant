@@ -21,8 +21,8 @@
 #include "hash_table.hh"
 #include "IIRScram.hh"
 
-include_manager::include_manager() : 
-  my_included_files( *new hash_table<included_file_record> ){}
+include_manager::include_manager() :
+  my_included_files(){}
 
 include_manager::~include_manager(){}
 
