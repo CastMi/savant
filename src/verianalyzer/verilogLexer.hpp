@@ -36,7 +36,8 @@ void *yyalloc( yy_size_t );
 
 struct VerilogFlexLexer : public yyFlexLexer
 {
-   VerilogFlexLexer(std::istream* argin , std::ostream* argout );
+   VerilogFlexLexer(std::istream* argin , std::ostream* argout = nullptr );
+   VerilogFlexLexer();
    ~VerilogFlexLexer();
 
    void yyerror(const char * msg)
