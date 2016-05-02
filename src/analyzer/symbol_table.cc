@@ -1,4 +1,3 @@
-
 // Copyright (c) 1995-2001 The University of Cincinnati.
 // All rights reserved.
 
@@ -44,7 +43,6 @@
 #include "StandardPackage.hh"
 #include "error_func.hh"
 #include "symbol_table.hh"
-
 #include "library_manager.hh"
 #include "IIRScram_PackageDeclaration.hh"
 #include "IIRScram_SubprogramDeclaration.hh"
@@ -54,13 +52,13 @@
 #include "IIRScram_PhysicalUnit.hh"
 #include "IIRScram_TypeDeclaration.hh"
 #include "IIRScram_Identifier.hh"
-
 #include <cstring>
 #include <sstream>
+
 using std::ostringstream;
 
 symbol_table::symbol_table(StandardPackage *package, bool load_std_library){
-  global_scope = new scope_entry( NULL, NULL );  
+  global_scope = new scope_entry( NULL, NULL );
   current_scope = global_scope;
   std_package = package;
 
@@ -69,13 +67,11 @@ symbol_table::symbol_table(StandardPackage *package, bool load_std_library){
   }
 }
 
-symbol_table::symbol_table( int table_size, StandardPackage *package , bool load_std_library) : 
-  visible_symbols(table_size), hidden_symbols(table_size){
-
-  global_scope = new scope_entry( NULL, NULL ); 
+symbol_table::symbol_table( int table_size, StandardPackage *package , bool load_std_library) :
+  visible_symbols(), hidden_symbols(){
+  global_scope = new scope_entry( NULL, NULL );
   current_scope = global_scope;
   std_package = package;
-
   if( load_std_library == true ){
     load_standard_library();
   }

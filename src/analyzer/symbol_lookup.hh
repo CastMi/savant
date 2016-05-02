@@ -27,6 +27,7 @@
 
 #include "savant.hh"
 #include <iostream>
+#include <map>
 #include "declaration_chain.hh"
 
 class IIR_Declaration;
@@ -54,7 +55,7 @@ public:
   // table.
   void lookup_add( IIR_Declaration * );
   void lookup_remove( IIR_Declaration * );
-  
+
   // This method returns the list of declarations for a given symbol
   // name.  NOTE:  The list returned is a persistent list within
   // the symbol_lookup class.  Don't modify the list it points at! 
@@ -62,22 +63,14 @@ public:
   // _INCLUDING_ find_list can and will modify the list pointed too.
   savant::set<IIR_Declaration> *find_set( IIR_TextLiteral * );
   savant::set<IIR_Declaration> *find_set( char * );
-  
-  explicit symbol_lookup(int table_size = 4093) : ht_size(table_size) {
-    ht = new dl_list<declaration_chain>[ht_size];
-  };
-  
-  virtual ~symbol_lookup() {   
-    delete [] ht;
-  };
 
-  // this is for debug only
-  void dump_usage_stats(const IIR_Char* filename = "usage_stats");
+  explicit symbol_lookup() : ht() {};
+  virtual ~symbol_lookup() {};
 
   // Return true if this declaration is currently visible.  False
   // otherwise.
   IIR_Boolean is_visible( IIR_Declaration * );
-  
+
 private:
 
   // This method either returns NULL, or returns a set of declarations that
@@ -92,7 +85,7 @@ private:
   // then it will return NULL.
   hidden_symbol_entry *find_hidden_symbol_entry( IIR_Declaration *, 
 						 declaration_chain * );
-  
+
   // This method updates the hidden symbol information for the declaration
   // passed in.  The entry is modified to contain the set of hidden
   // declarations.  If the set that is passed in is NULL, then the hidden
@@ -103,15 +96,10 @@ private:
 				   declaration_chain * );
 
   // These methods find the declaration chain for the name passed in.
-  declaration_chain *find_chain( IIR_TextLiteral * );
   declaration_chain *find_chain( char * );
+  declaration_chain *find_chain( IIR_TextLiteral * );
 
+  std::map<std::string, declaration_chain*> ht;
+};
 
-  const int ht_size;
-  dl_list<declaration_chain> *ht;
-  
-  // calculate a hash value for the string passed in
-  int calculate_hash( IIR_TextLiteral * );
-};   
-
-#endif
+#endif // SYMBOL_LOOKUP_HH
