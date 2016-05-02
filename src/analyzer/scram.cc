@@ -142,28 +142,28 @@ scram::get_work_library() const {
 
 generic_parser *
 scram::convert_node(plugin_class_factory *factory) {
-  if (transmuted_node != NULL) {
-    return transmuted_node;
-  } else {
-    // Transmute node
-    scram *result = new scram(*this);
-    
-    result->need_to_write_libraries = need_to_write_libraries;
-    if( my_work_library ){
-      result->my_work_library = dynamic_cast<IIR_LibraryDeclaration *>(dynamic_cast<IIRBase_LibraryDeclaration *>(my_work_library)->convert_node(my_work_library, factory));
-    }
-    if( my_std_package ){
-      result->my_std_package = 
-	dynamic_cast<StandardPackage *>(my_std_package->convert_tree( factory));
-    }
+  ASSERT(factory);
+  if (transmuted_node)
+     return transmuted_node;
+  // Transmute node
+  transmuted_node = new scram(*this);
 
-    if( my_design_files ){
-      result->my_design_files = dynamic_cast<IIR_DesignFileList *>(dynamic_cast<IIRBase_DesignFileList *>(my_design_files)->convert_node(my_design_files, factory));
-    }
-    
-    result->my_class_factory = factory;
-
-    transmuted_node = result;
-    return result;
+  transmuted_node->need_to_write_libraries = need_to_write_libraries;
+  if( my_work_library ){
+     transmuted_node->my_work_library =
+        dynamic_cast<IIR_LibraryDeclaration *>(dynamic_cast<IIRBase_LibraryDeclaration *>(my_work_library)->convert_node(my_work_library, factory));
   }
+  if( my_std_package ){
+     transmuted_node->my_std_package =
+        dynamic_cast<StandardPackage *>(my_std_package->convert_tree( factory));
+  }
+
+  if( my_design_files ){
+     transmuted_node->my_design_files = dynamic_cast<IIR_DesignFileList *>(dynamic_cast<IIRBase_DesignFileList *>(my_design_files)->convert_node(my_design_files, factory));
+  }
+
+  transmuted_node->my_class_factory = factory;
+
+  ASSERT(transmuted_node);
+  return transmuted_node;
 }
