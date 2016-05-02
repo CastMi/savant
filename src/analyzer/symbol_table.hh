@@ -94,18 +94,7 @@ class scope_entry {
       }
 
       IIR_Boolean is_closed(){
-         switch( open ){
-            case TRUE:{
-                         return FALSE;
-                      }
-            case FALSE:{
-                          return TRUE;
-                       }
-            default:{
-                       ASSERT( 0 );
-                    }
-         }
-         return FALSE;
+         return !open;
       }
 
    private:
