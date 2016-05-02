@@ -21,6 +21,7 @@
 
 // Author: Dale E. Martin      dmartin@cliftonlabs.com
 //         Timothy J. McBrayer tmcbraye@ece.uc.edu
+//         Michele Castellana blacklion727@gmail.com
 
 //---------------------------------------------------------------------------
 
@@ -32,8 +33,6 @@
 #include "savant.hh"
 #include "set.hh"
 #include "error_func.hh"
-
-
 #include "IIR_Identifier.hh"
 #include "IIRScram_Declaration.hh"
 #include "IIRScram_DesignFile.hh"
@@ -53,97 +52,37 @@ using std::endl;
 using std::ofstream;
 using std::ostringstream;
 
-int 
-symbol_lookup::calculate_hash( IIR_TextLiteral *string) {
-  int key;
-  
-  key = 0;
-  
-  // calculate a hash value...
-  for (int i = 0; i < string->get_text_length(); i++)
-    key = (key << 3) + string->operator[](i);
-  
-  key = key & 0x7fffffff;
-  
-  return (key % ht_size);
-}
-
 declaration_chain *
-symbol_lookup::find_chain( IIR_TextLiteral *text ){
-
-  ASSERT( text != NULL );
-  
-  declaration_chain *chain_ptr;
-
-  int key;
-  key = calculate_hash( text );
-
-  // key is an index into an array of lists of lists.  The array
-  // holds a list of declaration chains.  A declaration chain holds
-  // a string and a list of declarations.
-  bool done = false;
-  chain_ptr = ht[key].first();
-
-  while (done == false) {
-    // TODO: Remove Scram
-    if (chain_ptr != NULL && IIRBase_TextLiteral::cmp(chain_ptr->name, text) == 0){
-      done = true;
-    }
-    else {
-      if(chain_ptr != NULL) {
-	chain_ptr = ht[key].successor(chain_ptr);
-      } else {
-	done = true;
-      }
-    }
-  }
-	
-  if (chain_ptr == NULL) {
-    // we didn't find that string in things that have been
-    // previously accessed...
-
-    //	cout << "making new entry for " << text << endl;
-    chain_ptr = new declaration_chain();
-
-    // now we need to copy the appropriate name into the new chain...
-    chain_ptr->name =
-      // TODO: Remove Scram
-      IIRScram_Identifier::get( text->get_text(),
-				text->get_text_length(),
-			       scram_plugin_class_factory::instance());
-    ht[key].append(chain_ptr);
-
-  }
-  // else chain_ptr is pointing the correct spot already...
-  
-  return chain_ptr;
+symbol_lookup::find_chain( IIR_TextLiteral *to_find ){
+   ASSERT(to_find);
+   return find_chain(to_find->get_text());
 }
 
 declaration_chain *
 symbol_lookup::find_chain( char *to_find ){
-  declaration_chain *retval = NULL;
-  
-  IIR_Identifier *str =  IIRScram_Identifier::get( to_find,
-						   strlen( to_find ),
-						   scram_plugin_class_factory::instance() );
-  retval = find_chain( str );
-  delete str;
-  
-  return retval;
+   ASSERT( to_find );
+   if( ht.find( std::string(to_find) ) != ht.end()  )
+      return ht.find( std::string(to_find) )->second;
+   declaration_chain *retval = new declaration_chain;
+   retval->name = IIRScram_Identifier::get( to_find,
+                                          strlen(to_find),
+                                          scram_plugin_class_factory::instance());
+   ht.insert( std::pair<std::string, declaration_chain*>(std::string(to_find), retval) );
+   ASSERT( ht.find( std::string(to_find) ) != ht.end()  );
+   return retval;
 }
 
 savant::set<IIR_Declaration> *
 symbol_lookup::find_set( IIR_TextLiteral *text ) {
-  declaration_chain *chain_ptr = find_chain( text );
-  
-  return &chain_ptr->declarations;
+   ASSERT(text);
+   return find_set(text->get_text());
 }
 
 savant::set<IIR_Declaration> *
 symbol_lookup::find_set( char *text ) {
-  declaration_chain *chain_ptr = find_chain( text );
-  
-  return &chain_ptr->declarations;
+   ASSERT(text);
+   declaration_chain *chain_ptr = find_chain( text );
+   return &chain_ptr->declarations;
 }
 
 savant::set<IIR_Declaration> *
@@ -273,14 +212,6 @@ symbol_lookup::lookup_add( IIR_Declaration *decl_ptr) {
   }
 }
 
-void
-symbol_lookup::dump_usage_stats(const IIR_Char* filename) {
-  ofstream usage_file(filename);
-  for(int i = 0; i < ht_size; i++ ){
-    usage_file << i << " " << ht[i].size() << endl;
-  }
-}
-
 IIR_Boolean
 symbol_lookup::is_visible( IIR_Declaration *decl_ptr ){
   ASSERT( decl_ptr != NULL );
@@ -290,10 +221,9 @@ symbol_lookup::is_visible( IIR_Declaration *decl_ptr ){
 
 void 
 symbol_lookup::lookup_remove( IIR_Declaration *decl_ptr ){
-  IIR_TextLiteral *name = decl_ptr->get_declarator();  
-  declaration_chain *decl_chain = find_chain( name );
-  savant::set<IIR_Declaration> *decl_set = &decl_chain->declarations;
-  hidden_symbol_entry *hidden_info = find_hidden_symbol_entry( decl_ptr, decl_chain );
+   declaration_chain *decl_chain = find_chain( decl_ptr->get_declarator() );
+   savant::set<IIR_Declaration> *decl_set = &decl_chain->declarations;
+   hidden_symbol_entry *hidden_info = find_hidden_symbol_entry( decl_ptr, decl_chain );
 
   decl_set->remove( decl_ptr );
 
@@ -314,7 +244,6 @@ symbol_lookup::lookup_remove( IIR_Declaration *decl_ptr ){
     update_hidden_symbol_entry( decl_ptr, NULL, decl_chain );
   }    
 }
-
 
 hidden_symbol_entry *
 symbol_lookup::find_hidden_symbol_entry( IIR_Declaration *to_find, 
