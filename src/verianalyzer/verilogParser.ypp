@@ -1,5 +1,5 @@
 %code requires{
-class VerilogFlexLexer;
+struct VerilogFlexLexer;
 // The %union uses the following
 #include <vector>
 #include "IIRScram_IdentifierList.hh"

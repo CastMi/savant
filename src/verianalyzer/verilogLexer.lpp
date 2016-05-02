@@ -78,11 +78,12 @@
 #include <string>
 #include <vector>
 #include <list>
-class VerilogFlexLexer;
+struct VerilogFlexLexer;
 #include "verilogParser.hpp"
 #include "verilogLexer.hpp"
 
-VerilogFlexLexer::VerilogFlexLexer(std::istream* argin = nullptr, std::ostream* argout = nullptr) : yyFlexLexer(argin, argout) {};
+VerilogFlexLexer::VerilogFlexLexer(std::istream* argin, std::ostream* argout) : yyFlexLexer(argin, argout) {};
+VerilogFlexLexer::VerilogFlexLexer() : yyFlexLexer(nullptr, nullptr) {};
 VerilogFlexLexer::~VerilogFlexLexer() {};
 %}
 
