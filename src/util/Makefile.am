@@ -42,8 +42,6 @@ libsavantutils_la_CPPFLAGS = \
 	-I$(top_srcdir)/src/analyzer
 
 libsavantutils_la_SOURCES = \
-	ArgumentParser.hpp \
-	ArgumentParser.cpp \
 	ConePartitioner.cc \
 	Makefile.am \
 	ProcessCombiner.cc \
@@ -84,7 +82,6 @@ libsavantutils_la_SOURCES = \
 library_includedir = $(includedir)/savant
 # Now, I specify the headers to install.
 library_include_HEADERS =  \
-	ArgumentParser.hpp \
 	ProcessCombiner.hh \
 	break_handler.hh \
 	consistency.hpp \

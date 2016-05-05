@@ -40,7 +40,9 @@ scram_CPPFLAGS = \
    -I$(top_srcdir)/src/aire/iir/visitor \
    -I$(top_srcdir)/src/util
 
-scram_SOURCES = main.cc
+scram_SOURCES = \
+	ArgumentParser.cpp \
+	main.cc
 
 # This will ask libtool to statically link scram, which is convenient
 # during development.  It eases debugging quite a bit.
