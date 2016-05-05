@@ -183,7 +183,7 @@ main (int argc, char *argv[]) {
       for (list<string>::iterator iter = plugin_names.begin(); iter != plugin_names.end(); ++iter) {
          module = PluginManager::instance()->loadPlugin(*iter);
          if ( !module ) {
-            cout << "Error: " << PluginManager::instance()->getLastError() << endl;
+            cout << "Error for " << *iter << ": " << PluginManager::instance()->getLastError() << endl;
             return EXIT_FAILURE;
          }
 
