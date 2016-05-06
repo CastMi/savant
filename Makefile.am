@@ -28,7 +28,6 @@ SUBDIRS = src bin lib test
 IEEE_DIST_DIR = lib/vhdl/ieee
 
 EXTRA_DIST = \
-	Makefile.am.common \
 	doc/BUGS \
 	doc/README \
 	doc/TODO \
@@ -55,14 +54,9 @@ EXTRA_DIST = \
 	$(IEEE_DIST_DIR)/prmtvs_b.vhd \
 	$(IEEE_DIST_DIR)/memory_p.vhd \
 	$(IEEE_DIST_DIR)/memory_b.vhd \
-	lib/Makefile.common \
-	lib/Makefile.common.in \
 	lib/std._savant_lib/textio_package.vhdl \
-	src/savant_config.hh.in \
 	src/savant.hh \
-	src/version.hh \
-	src/analyzer/vhdl.gg \
-	src/analyzer/VHDLLexer.flex
+	src/version.hh
 
 doc++:
 	doc++ --dir doc/html `find -name "*.hh" -print`

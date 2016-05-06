@@ -56,15 +56,11 @@ libscram_la_SOURCES = \
 	VHDLToken.hh \
 	declaration_chain.hh \
 	library_manager.cc \
-	library_manager.hh \
 	scram.cc	\
-	scram.hh \
 	scram_func.hh \
 	StandardPackage.cc \
 	symbol_lookup.cc \
-	symbol_lookup.hh \
 	symbol_table.cc \
-	symbol_table.hh \
 	vhdl.hh \
 	antlr_error_func.cc \
 	$(BUILT_SOURCES)

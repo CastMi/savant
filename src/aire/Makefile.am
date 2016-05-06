@@ -46,7 +46,6 @@ libaire_la_SOURCES = \
 	IRKind.cc \
 	IRKind.hh \
 	iir/IIR/IIR.hh \
-	iir/IIR/IIR.cc \
 	iir/IIR/IIR_AboveAttribute.hh \
 	iir/IIR/IIR_AbsoluteOperator.hh \
 	iir/IIR/IIR_AccessSubtypeDefinition.hh \
@@ -175,7 +174,6 @@ libaire_la_SOURCES = \
 	iir/IIR/IIR_IndexedName.hh \
 	iir/IIR/IIR_IncompleteTypeDefinition.hh \
 	iir/IIR/IIR_InequalityOperator.hh \
-	iir/IIR/IIR_IncompleteTypeDefinition.hh \
 	iir/IIR/IIR_InstanceNameAttribute.hh \
 	iir/IIR/IIR_IntegerLiteral.hh \
 	iir/IIR/IIR_IntegerLiteral32.hh \
@@ -305,1043 +303,525 @@ libaire_la_SOURCES = \
 	iir/IIR/IIR_ZTFAttribute.hh \
 	iir/IIRBase/BaseStandardPackage.cc \
 	iir/IIRBase/IIRBase.cc \
-	iir/IIRBase/IIRBase.hh \
 	iir/IIRBase/IIRBase_AboveAttribute.cc \
-	iir/IIRBase/IIRBase_AboveAttribute.hh \
 	iir/IIRBase/IIRBase_AbsoluteOperator.cc \
-	iir/IIRBase/IIRBase_AbsoluteOperator.hh \
 	iir/IIRBase/IIRBase_AccessSubtypeDefinition.cc \
-	iir/IIRBase/IIRBase_AccessSubtypeDefinition.hh \
 	iir/IIRBase/IIRBase_AccessTypeDefinition.cc \
-	iir/IIRBase/IIRBase_AccessTypeDefinition.hh \
 	iir/IIRBase/IIRBase_AcrossAttribute.cc \
-	iir/IIRBase/IIRBase_AcrossAttribute.hh \
 	iir/IIRBase/IIRBase_ActiveAttribute.cc \
-	iir/IIRBase/IIRBase_ActiveAttribute.hh \
 	iir/IIRBase/IIRBase_AdditionOperator.cc \
-	iir/IIRBase/IIRBase_AdditionOperator.hh \
 	iir/IIRBase/IIRBase_Aggregate.cc \
-	iir/IIRBase/IIRBase_Aggregate.hh \
 	iir/IIRBase/IIRBase_AliasDeclaration.cc \
-	iir/IIRBase/IIRBase_AliasDeclaration.hh \
 	iir/IIRBase/IIRBase_Allocator.cc \
-	iir/IIRBase/IIRBase_Allocator.hh \
 	iir/IIRBase/IIRBase_AndOperator.cc \
-	iir/IIRBase/IIRBase_AndOperator.hh \
 	iir/IIRBase/IIRBase_ArchitectureDeclaration.cc \
-	iir/IIRBase/IIRBase_ArchitectureDeclaration.hh \
 	iir/IIRBase/IIRBase_ArchitectureStatement.cc \
-	iir/IIRBase/IIRBase_ArchitectureStatement.hh \
 	iir/IIRBase/IIRBase_ArchitectureStatementList.cc \
-	iir/IIRBase/IIRBase_ArchitectureStatementList.hh \
 	iir/IIRBase/IIRBase_ArrayNatureDefinition.cc \
-	iir/IIRBase/IIRBase_ArrayNatureDefinition.hh \
 	iir/IIRBase/IIRBase_ArraySubnatureDefinition.cc \
-   iir/IIRBase/IIRBase_ArraySubnatureDefinition.hh \
 	iir/IIRBase/IIRBase_ArraySubtypeDefinition.cc \
-	iir/IIRBase/IIRBase_ArraySubtypeDefinition.hh \
 	iir/IIRBase/IIRBase_ArrayTypeDefinition.cc \
-	iir/IIRBase/IIRBase_ArrayTypeDefinition.hh \
 	iir/IIRBase/IIRBase_AscendingAttribute.cc \
-	iir/IIRBase/IIRBase_AscendingAttribute.hh \
 	iir/IIRBase/IIRBase_AssertionStatement.cc \
-	iir/IIRBase/IIRBase_AssertionStatement.hh \
 	iir/IIRBase/IIRBase_AssociationElement.cc \
-	iir/IIRBase/IIRBase_AssociationElement.hh \
 	iir/IIRBase/IIRBase_AssociationElementByExpression.cc \
-	iir/IIRBase/IIRBase_AssociationElementByExpression.hh \
 	iir/IIRBase/IIRBase_AssociationElementOpen.cc \
-	iir/IIRBase/IIRBase_AssociationElementOpen.hh \
 	iir/IIRBase/IIRBase_AssociationList.cc \
-	iir/IIRBase/IIRBase_AssociationList.hh \
 	iir/IIRBase/IIRBase_Attribute.cc \
-	iir/IIRBase/IIRBase_Attribute.hh \
 	iir/IIRBase/IIRBase_AttributeDeclaration.cc \
-	iir/IIRBase/IIRBase_AttributeDeclaration.hh \
 	iir/IIRBase/IIRBase_AttributeSpecification.cc \
-	iir/IIRBase/IIRBase_AttributeSpecification.hh \
 	iir/IIRBase/IIRBase_AttributeSpecificationList.cc \
-	iir/IIRBase/IIRBase_AttributeSpecificationList.hh \
 	iir/IIRBase/IIRBase_BaseAttribute.cc \
-	iir/IIRBase/IIRBase_BaseAttribute.hh \
-	iir/IIRBase/IIRBase_String.hh \
 	iir/IIRBase/IIRBase_BitStringLiteral.cc \
-	iir/IIRBase/IIRBase_BitStringLiteral.hh \
 	iir/IIRBase/IIRBase_BlockConfiguration.cc \
-	iir/IIRBase/IIRBase_BlockConfiguration.hh \
 	iir/IIRBase/IIRBase_BlockStatement.cc \
-	iir/IIRBase/IIRBase_BlockStatement.hh \
 	iir/IIRBase/IIRBase_BranchQuantityDeclaration.cc \
-   iir/IIRBase/IIRBase_BranchQuantityDeclaration.hh \
 	iir/IIRBase/IIRBase_BreakElement.cc \
-	iir/IIRBase/IIRBase_BreakElement.hh \
 	iir/IIRBase/IIRBase_BreakList.cc \
-	iir/IIRBase/IIRBase_BreakList.hh \
 	iir/IIRBase/IIRBase_BreakStatement.cc \
-	iir/IIRBase/IIRBase_BreakStatement.hh \
 	iir/IIRBase/IIRBase_CaseStatement.cc \
-	iir/IIRBase/IIRBase_CaseStatement.hh \
 	iir/IIRBase/IIRBase_CaseStatementAlternative.cc \
-	iir/IIRBase/IIRBase_CaseStatementAlternative.hh \
 	iir/IIRBase/IIRBase_CaseStatementAlternativeByChoices.cc \
-	iir/IIRBase/IIRBase_CaseStatementAlternativeByChoices.hh \
 	iir/IIRBase/IIRBase_CaseStatementAlternativeByExpression.cc \
-	iir/IIRBase/IIRBase_CaseStatementAlternativeByExpression.hh \
 	iir/IIRBase/IIRBase_CaseStatementAlternativeByOthers.cc \
-	iir/IIRBase/IIRBase_CaseStatementAlternativeByOthers.hh \
 	iir/IIRBase/IIRBase_CaseStatementAlternativeList.cc \
-	iir/IIRBase/IIRBase_CaseStatementAlternativeList.hh \
 	iir/IIRBase/IIRBase_CharacterLiteral.cc \
-	iir/IIRBase/IIRBase_CharacterLiteral.hh \
 	iir/IIRBase/IIRBase_Choice.cc \
-	iir/IIRBase/IIRBase_Choice.hh \
 	iir/IIRBase/IIRBase_ChoiceList.cc \
-	iir/IIRBase/IIRBase_ChoiceList.hh \
 	iir/IIRBase/IIRBase_Comment.cc \
-	iir/IIRBase/IIRBase_Comment.hh \
 	iir/IIRBase/IIRBase_CommentList.cc \
-	iir/IIRBase/IIRBase_CommentList.hh \
 	iir/IIRBase/IIRBase_ComponentConfiguration.cc \
-	iir/IIRBase/IIRBase_ComponentConfiguration.hh \
 	iir/IIRBase/IIRBase_ComponentDeclaration.cc \
-	iir/IIRBase/IIRBase_ComponentDeclaration.hh \
 	iir/IIRBase/IIRBase_ComponentInstantiationStatement.cc \
-	iir/IIRBase/IIRBase_ComponentInstantiationStatement.hh \
 	iir/IIRBase/IIRBase_ConcatenationOperator.cc \
-	iir/IIRBase/IIRBase_ConcatenationOperator.hh \
 	iir/IIRBase/IIRBase_ConcurrentAssertionStatement.cc \
-	iir/IIRBase/IIRBase_ConcurrentAssertionStatement.hh \
-	iir/IIRBase/IIRBase_ConcurrentBreakStatement.hh \
 	iir/IIRBase/IIRBase_ConcurrentBreakStatement.cc \
 	iir/IIRBase/IIRBase_ConcurrentConditionalSignalAssignment.cc \
-	iir/IIRBase/IIRBase_ConcurrentConditionalSignalAssignment.hh \
 	iir/IIRBase/IIRBase_ConcurrentGenerateForStatement.cc \
-	iir/IIRBase/IIRBase_ConcurrentGenerateForStatement.hh \
 	iir/IIRBase/IIRBase_ConcurrentGenerateIfStatement.cc \
-	iir/IIRBase/IIRBase_ConcurrentGenerateIfStatement.hh \
 	iir/IIRBase/IIRBase_ConcurrentProcedureCallStatement.cc \
-	iir/IIRBase/IIRBase_ConcurrentProcedureCallStatement.hh \
 	iir/IIRBase/IIRBase_ConcurrentSelectedSignalAssignment.cc \
-	iir/IIRBase/IIRBase_ConcurrentSelectedSignalAssignment.hh \
 	iir/IIRBase/IIRBase_ConcurrentStatement.cc \
-	iir/IIRBase/IIRBase_ConcurrentStatement.hh \
 	iir/IIRBase/IIRBase_ConditionalWaveform.cc \
-	iir/IIRBase/IIRBase_ConditionalWaveform.hh \
 	iir/IIRBase/IIRBase_ConditionalWaveformList.cc \
-	iir/IIRBase/IIRBase_ConditionalWaveformList.hh \
 	iir/IIRBase/IIRBase_ConfigurationDeclaration.cc \
-	iir/IIRBase/IIRBase_ConfigurationDeclaration.hh \
 	iir/IIRBase/IIRBase_ConfigurationItem.cc \
-	iir/IIRBase/IIRBase_ConfigurationItem.hh \
 	iir/IIRBase/IIRBase_ConfigurationItemList.cc \
-	iir/IIRBase/IIRBase_ConfigurationItemList.hh \
 	iir/IIRBase/IIRBase_ConfigurationSpecification.cc \
-	iir/IIRBase/IIRBase_ConfigurationSpecification.hh \
 	iir/IIRBase/IIRBase_ConstantDeclaration.cc \
-	iir/IIRBase/IIRBase_ConstantDeclaration.hh \
 	iir/IIRBase/IIRBase_ConstantInterfaceDeclaration.cc \
-	iir/IIRBase/IIRBase_ConstantInterfaceDeclaration.hh \
 	iir/IIRBase/IIRBase_ContributionAttribute.cc \
-	iir/IIRBase/IIRBase_ContributionAttribute.hh \
 	iir/IIRBase/IIRBase_Declaration.cc \
-	iir/IIRBase/IIRBase_Declaration.hh \
 	iir/IIRBase/IIRBase_DeclarationList.cc \
-	iir/IIRBase/IIRBase_DeclarationList.hh \
 	iir/IIRBase/IIRBase_DelayedAttribute.cc \
-	iir/IIRBase/IIRBase_DelayedAttribute.hh \
 	iir/IIRBase/IIRBase_DesignFile.cc \
-	iir/IIRBase/IIRBase_DesignFile.hh \
 	iir/IIRBase/IIRBase_DesignFileList.cc \
-	iir/IIRBase/IIRBase_DesignFileList.hh \
 	iir/IIRBase/IIRBase_DesignUnitList.cc \
-	iir/IIRBase/IIRBase_DesignUnitList.hh \
 	iir/IIRBase/IIRBase_Designator.cc \
-	iir/IIRBase/IIRBase_Designator.hh \
 	iir/IIRBase/IIRBase_DesignatorByAll.cc \
-	iir/IIRBase/IIRBase_DesignatorByAll.hh \
 	iir/IIRBase/IIRBase_DesignatorByOthers.cc \
-	iir/IIRBase/IIRBase_DesignatorByOthers.hh \
 	iir/IIRBase/IIRBase_DesignatorExplicit.cc \
-	iir/IIRBase/IIRBase_DesignatorExplicit.hh \
 	iir/IIRBase/IIRBase_DesignatorList.cc \
-	iir/IIRBase/IIRBase_DesignatorList.hh \
 	iir/IIRBase/IIRBase_DisconnectSpecification.cc \
-	iir/IIRBase/IIRBase_DisconnectSpecification.hh \
 	iir/IIRBase/IIRBase_DivisionOperator.cc \
-	iir/IIRBase/IIRBase_DivisionOperator.hh \
 	iir/IIRBase/IIRBase_DotAttribute.cc \
-	iir/IIRBase/IIRBase_DotAttribute.hh \
 	iir/IIRBase/IIRBase_DrivingAttribute.cc \
-	iir/IIRBase/IIRBase_DrivingAttribute.hh \
 	iir/IIRBase/IIRBase_DrivingValueAttribute.cc \
-	iir/IIRBase/IIRBase_DrivingValueAttribute.hh \
 	iir/IIRBase/IIRBase_DyadicOperator.cc \
-	iir/IIRBase/IIRBase_DyadicOperator.hh \
 	iir/IIRBase/IIRBase_ElementDeclaration.cc \
-	iir/IIRBase/IIRBase_ElementDeclaration.hh \
 	iir/IIRBase/IIRBase_ElementDeclarationList.cc \
-	iir/IIRBase/IIRBase_ElementDeclarationList.hh \
 	iir/IIRBase/IIRBase_Elsif.cc \
-	iir/IIRBase/IIRBase_Elsif.hh \
 	iir/IIRBase/IIRBase_EntityClassEntry.cc \
-	iir/IIRBase/IIRBase_EntityClassEntry.hh \
 	iir/IIRBase/IIRBase_EntityClassEntryList.cc \
-	iir/IIRBase/IIRBase_EntityClassEntryList.hh \
 	iir/IIRBase/IIRBase_EntityDeclaration.cc \
-	iir/IIRBase/IIRBase_EntityDeclaration.hh \
 	iir/IIRBase/IIRBase_EntityNameList.cc \
-	iir/IIRBase/IIRBase_EntityNameList.hh \
 	iir/IIRBase/IIRBase_EnumerationLiteral.cc \
-	iir/IIRBase/IIRBase_EnumerationLiteral.hh \
 	iir/IIRBase/IIRBase_EnumerationLiteralList.cc \
-	iir/IIRBase/IIRBase_EnumerationLiteralList.hh \
 	iir/IIRBase/IIRBase_EnumerationSubtypeDefinition.cc \
-	iir/IIRBase/IIRBase_EnumerationSubtypeDefinition.hh \
 	iir/IIRBase/IIRBase_EnumerationTypeDefinition.cc \
-	iir/IIRBase/IIRBase_EnumerationTypeDefinition.hh \
 	iir/IIRBase/IIRBase_EqualityOperator.cc \
-	iir/IIRBase/IIRBase_EqualityOperator.hh \
 	iir/IIRBase/IIRBase_EventAttribute.cc \
-	iir/IIRBase/IIRBase_EventAttribute.hh \
 	iir/IIRBase/IIRBase_ExitStatement.cc \
-	iir/IIRBase/IIRBase_ExitStatement.hh \
 	iir/IIRBase/IIRBase_ExponentiationOperator.cc \
-	iir/IIRBase/IIRBase_ExponentiationOperator.hh \
 	iir/IIRBase/IIRBase_Expression.cc \
-	iir/IIRBase/IIRBase_Expression.hh \
 	iir/IIRBase/IIRBase_FileDeclaration.cc \
-	iir/IIRBase/IIRBase_FileDeclaration.hh \
 	iir/IIRBase/IIRBase_FileInterfaceDeclaration.cc \
-	iir/IIRBase/IIRBase_FileInterfaceDeclaration.hh \
 	iir/IIRBase/IIRBase_FileTypeDefinition.cc \
-	iir/IIRBase/IIRBase_FileTypeDefinition.hh \
 	iir/IIRBase/IIRBase_FloatingPointLiteral.cc \
-	iir/IIRBase/IIRBase_FloatingPointLiteral.hh \
 	iir/IIRBase/IIRBase_FloatingPointLiteral32.cc \
-	iir/IIRBase/IIRBase_FloatingPointLiteral32.hh \
 	iir/IIRBase/IIRBase_FloatingPointLiteral64.cc \
-	iir/IIRBase/IIRBase_FloatingPointLiteral64.hh \
 	iir/IIRBase/IIRBase_FloatingSubtypeDefinition.cc \
-	iir/IIRBase/IIRBase_FloatingSubtypeDefinition.hh \
 	iir/IIRBase/IIRBase_FloatingTypeDefinition.cc \
-	iir/IIRBase/IIRBase_FloatingTypeDefinition.hh \
 	iir/IIRBase/IIRBase_FreeQuantityDeclaration.cc \
-	iir/IIRBase/IIRBase_FreeQuantityDeclaration.hh \
 	iir/IIRBase/IIRBase_ForLoopStatement.cc \
-	iir/IIRBase/IIRBase_ForLoopStatement.hh \
 	iir/IIRBase/IIRBase_FunctionCall.cc \
-	iir/IIRBase/IIRBase_FunctionCall.hh \
 	iir/IIRBase/IIRBase_FunctionDeclaration.cc \
-	iir/IIRBase/IIRBase_FunctionDeclaration.hh \
 	iir/IIRBase/IIRBase_GenericList.cc \
-	iir/IIRBase/IIRBase_GenericList.hh \
 	iir/IIRBase/IIRBase_GreaterThanOperator.cc \
-	iir/IIRBase/IIRBase_GreaterThanOperator.hh \
 	iir/IIRBase/IIRBase_GreaterThanOrEqualOperator.cc \
-	iir/IIRBase/IIRBase_GreaterThanOrEqualOperator.hh \
 	iir/IIRBase/IIRBase_GroupConstituent.cc \
-	iir/IIRBase/IIRBase_GroupConstituent.hh \
 	iir/IIRBase/IIRBase_GroupDeclaration.cc \
-	iir/IIRBase/IIRBase_GroupDeclaration.hh \
 	iir/IIRBase/IIRBase_GroupTemplateDeclaration.cc \
-	iir/IIRBase/IIRBase_GroupTemplateDeclaration.hh \
 	iir/IIRBase/IIRBase_HighAttribute.cc \
-	iir/IIRBase/IIRBase_HighAttribute.hh \
 	iir/IIRBase/IIRBase_Identifier.cc \
-	iir/IIRBase/IIRBase_Identifier.hh \
 	iir/IIRBase/IIRBase_IdentifierList.cc \
-	iir/IIRBase/IIRBase_IdentifierList.hh \
 	iir/IIRBase/IIRBase_IdentityOperator.cc \
-	iir/IIRBase/IIRBase_IdentityOperator.hh \
 	iir/IIRBase/IIRBase_IfStatement.cc \
-	iir/IIRBase/IIRBase_IfStatement.hh \
 	iir/IIRBase/IIRBase_ImageAttribute.cc \
-	iir/IIRBase/IIRBase_ImageAttribute.hh \
 	iir/IIRBase/IIRBase_IncompleteTypeDefinition.hh \
 	iir/IIRBase/IIRBase_IndexedName.cc \
-	iir/IIRBase/IIRBase_IndexedName.hh \
 	iir/IIRBase/IIRBase_InequalityOperator.cc \
-	iir/IIRBase/IIRBase_InequalityOperator.hh \
 	iir/IIRBase/IIRBase_InstanceNameAttribute.cc \
-	iir/IIRBase/IIRBase_InstanceNameAttribute.hh \
 	iir/IIRBase/IIRBase_IntegerLiteral.cc \
-	iir/IIRBase/IIRBase_IntegerLiteral.hh \
 	iir/IIRBase/IIRBase_IntegerLiteral32.cc \
-	iir/IIRBase/IIRBase_IntegerLiteral32.hh \
 	iir/IIRBase/IIRBase_IntegerLiteral64.cc \
-	iir/IIRBase/IIRBase_IntegerLiteral64.hh \
 	iir/IIRBase/IIRBase_IntegerSubtypeDefinition.cc \
-	iir/IIRBase/IIRBase_IntegerSubtypeDefinition.hh \
 	iir/IIRBase/IIRBase_IntegerTypeDefinition.cc \
-	iir/IIRBase/IIRBase_IntegerTypeDefinition.hh \
 	iir/IIRBase/IIRBase_InterfaceDeclaration.cc \
-	iir/IIRBase/IIRBase_InterfaceDeclaration.hh \
 	iir/IIRBase/IIRBase_InterfaceList.cc \
-	iir/IIRBase/IIRBase_InterfaceList.hh \
 	iir/IIRBase/IIRBase_Label.cc \
-	iir/IIRBase/IIRBase_Label.hh \
 	iir/IIRBase/IIRBase_LastActiveAttribute.cc \
-	iir/IIRBase/IIRBase_LastActiveAttribute.hh \
 	iir/IIRBase/IIRBase_LastEventAttribute.cc \
-	iir/IIRBase/IIRBase_LastEventAttribute.hh \
 	iir/IIRBase/IIRBase_LastValueAttribute.cc \
-	iir/IIRBase/IIRBase_LastValueAttribute.hh \
 	iir/IIRBase/IIRBase_LeftAttribute.cc \
-	iir/IIRBase/IIRBase_LeftAttribute.hh \
 	iir/IIRBase/IIRBase_LeftOfAttribute.cc \
-	iir/IIRBase/IIRBase_LeftOfAttribute.hh \
 	iir/IIRBase/IIRBase_LengthAttribute.cc \
-	iir/IIRBase/IIRBase_LengthAttribute.hh \
 	iir/IIRBase/IIRBase_LessThanOperator.cc \
-	iir/IIRBase/IIRBase_LessThanOperator.hh \
 	iir/IIRBase/IIRBase_LessThanOrEqualOperator.cc \
-	iir/IIRBase/IIRBase_LessThanOrEqualOperator.hh \
 	iir/IIRBase/IIRBase_LibraryClause.cc \
-	iir/IIRBase/IIRBase_LibraryClause.hh \
 	iir/IIRBase/IIRBase_LibraryDeclaration.cc \
-	iir/IIRBase/IIRBase_LibraryDeclaration.hh \
 	iir/IIRBase/IIRBase_LibraryUnit.cc \
-	iir/IIRBase/IIRBase_LibraryUnit.hh \
 	iir/IIRBase/IIRBase_LibraryUnitList.cc \
-	iir/IIRBase/IIRBase_LibraryUnitList.hh \
 	iir/IIRBase/IIRBase_List.cc \
-	iir/IIRBase/IIRBase_List.hh \
 	iir/IIRBase/IIRBase_Literal.cc \
-	iir/IIRBase/IIRBase_Literal.hh \
 	iir/IIRBase/IIRBase_LowAttribute.cc \
-	iir/IIRBase/IIRBase_LowAttribute.hh \
 	iir/IIRBase/IIRBase_LTFAttribute.cc \
-	iir/IIRBase/IIRBase_LTFAttribute.hh \
 	iir/IIRBase/IIRBase_ModulusOperator.cc \
-	iir/IIRBase/IIRBase_ModulusOperator.hh \
 	iir/IIRBase/IIRBase_MonadicOperator.cc \
-	iir/IIRBase/IIRBase_MonadicOperator.hh \
 	iir/IIRBase/IIRBase_MultiplicationOperator.cc \
-	iir/IIRBase/IIRBase_MultiplicationOperator.hh \
 	iir/IIRBase/IIRBase_Name.cc \
-	iir/IIRBase/IIRBase_Name.hh \
 	iir/IIRBase/IIRBase_NameList.cc \
-	iir/IIRBase/IIRBase_NameList.hh \
 	iir/IIRBase/IIRBase_NandOperator.cc \
-	iir/IIRBase/IIRBase_NandOperator.hh \
 	iir/IIRBase/IIRBase_NatureDeclaration.cc \
-   iir/IIRBase/IIRBase_NatureDeclaration.hh \
 	iir/IIRBase/IIRBase_NatureDefinition.cc \
-   iir/IIRBase/IIRBase_NatureDefinition.hh \
 	iir/IIRBase/IIRBase_NegationOperator.cc \
-	iir/IIRBase/IIRBase_NegationOperator.hh \
 	iir/IIRBase/IIRBase_NextStatement.cc \
-	iir/IIRBase/IIRBase_NextStatement.hh \
 	iir/IIRBase/IIRBase_NorOperator.cc \
-	iir/IIRBase/IIRBase_NorOperator.hh \
 	iir/IIRBase/IIRBase_NotOperator.cc \
-	iir/IIRBase/IIRBase_NotOperator.hh \
 	iir/IIRBase/IIRBase_NullStatement.cc \
-	iir/IIRBase/IIRBase_NullStatement.hh \
 	iir/IIRBase/IIRBase_ObjectDeclaration.cc \
-	iir/IIRBase/IIRBase_ObjectDeclaration.hh \
 	iir/IIRBase/IIRBase_Operator.cc \
-	iir/IIRBase/IIRBase_Operator.hh \
 	iir/IIRBase/IIRBase_OrOperator.cc \
-	iir/IIRBase/IIRBase_OrOperator.hh \
 	iir/IIRBase/IIRBase_OthersInitialization.cc \
-	iir/IIRBase/IIRBase_OthersInitialization.hh \
 	iir/IIRBase/IIRBase_PackageBodyDeclaration.cc \
-	iir/IIRBase/IIRBase_PackageBodyDeclaration.hh \
 	iir/IIRBase/IIRBase_PackageDeclaration.cc \
-	iir/IIRBase/IIRBase_PackageDeclaration.hh \
 	iir/IIRBase/IIRBase_PathNameAttribute.cc \
-	iir/IIRBase/IIRBase_PathNameAttribute.hh \
 	iir/IIRBase/IIRBase_PhysicalLiteral.cc \
-	iir/IIRBase/IIRBase_PhysicalLiteral.hh \
 	iir/IIRBase/IIRBase_PhysicalSubtypeDefinition.cc \
-	iir/IIRBase/IIRBase_PhysicalSubtypeDefinition.hh \
 	iir/IIRBase/IIRBase_PhysicalTypeDefinition.cc \
-	iir/IIRBase/IIRBase_PhysicalTypeDefinition.hh \
 	iir/IIRBase/IIRBase_PhysicalUnit.cc \
-	iir/IIRBase/IIRBase_PhysicalUnit.hh \
 	iir/IIRBase/IIRBase_PortList.cc \
-	iir/IIRBase/IIRBase_PortList.hh \
 	iir/IIRBase/IIRBase_PosAttribute.cc \
-	iir/IIRBase/IIRBase_PosAttribute.hh \
 	iir/IIRBase/IIRBase_PredAttribute.cc \
-	iir/IIRBase/IIRBase_PredAttribute.hh \
 	iir/IIRBase/IIRBase_ProcedureCallStatement.cc \
-	iir/IIRBase/IIRBase_ProcedureCallStatement.hh \
 	iir/IIRBase/IIRBase_ProcedureDeclaration.cc \
-	iir/IIRBase/IIRBase_ProcedureDeclaration.hh \
 	iir/IIRBase/IIRBase_ProcedureReturnTypeDefinition.hh \
 	iir/IIRBase/IIRBase_ProcessStatement.cc \
-	iir/IIRBase/IIRBase_ProcessStatement.hh \
 	iir/IIRBase/IIRBase_QualifiedExpression.cc \
-	iir/IIRBase/IIRBase_QualifiedExpression.hh \
 	iir/IIRBase/IIRBase_QuantityDeclaration.cc \
-	iir/IIRBase/IIRBase_QuantityDeclaration.hh \
 	iir/IIRBase/IIRBase_QuietAttribute.cc \
-	iir/IIRBase/IIRBase_QuietAttribute.hh \
 	iir/IIRBase/IIRBase_ROLOperator.cc \
-	iir/IIRBase/IIRBase_ROLOperator.hh \
 	iir/IIRBase/IIRBase_ROROperator.cc \
-	iir/IIRBase/IIRBase_ROROperator.hh \
 	iir/IIRBase/IIRBase_RangeAttribute.cc \
-	iir/IIRBase/IIRBase_RangeAttribute.hh \
 	iir/IIRBase/IIRBase_RangeTypeDefinition.cc \
-	iir/IIRBase/IIRBase_RangeTypeDefinition.hh \
 	iir/IIRBase/IIRBase_RecordTypeDefinition.cc \
-	iir/IIRBase/IIRBase_RecordTypeDefinition.hh \
 	iir/IIRBase/IIRBase_ReferenceAttribute.cc \
-	iir/IIRBase/IIRBase_ReferenceAttribute.hh \
 	iir/IIRBase/IIRBase_RemainderOperator.cc \
-	iir/IIRBase/IIRBase_RemainderOperator.hh \
 	iir/IIRBase/IIRBase_ReportStatement.cc \
-	iir/IIRBase/IIRBase_ReportStatement.hh \
 	iir/IIRBase/IIRBase_ReturnStatement.cc \
-	iir/IIRBase/IIRBase_ReturnStatement.hh \
 	iir/IIRBase/IIRBase_ReverseRangeAttribute.cc \
-	iir/IIRBase/IIRBase_ReverseRangeAttribute.hh \
 	iir/IIRBase/IIRBase_RightAttribute.cc \
-	iir/IIRBase/IIRBase_RightAttribute.hh \
 	iir/IIRBase/IIRBase_RightOfAttribute.cc \
-	iir/IIRBase/IIRBase_RightOfAttribute.hh \
 	iir/IIRBase/IIRBase_SLAOperator.cc \
-	iir/IIRBase/IIRBase_SLAOperator.hh \
 	iir/IIRBase/IIRBase_SLLOperator.cc \
-	iir/IIRBase/IIRBase_SLLOperator.hh \
 	iir/IIRBase/IIRBase_SRAOperator.cc \
-	iir/IIRBase/IIRBase_SRAOperator.hh \
 	iir/IIRBase/IIRBase_SRLOperator.cc \
-	iir/IIRBase/IIRBase_SRLOperator.hh \
 	iir/IIRBase/IIRBase_ScalarNatureDefinition.cc \
-   iir/IIRBase/IIRBase_ScalarNatureDefinition.hh \
 	iir/IIRBase/IIRBase_ScalarTypeDefinition.cc \
-	iir/IIRBase/IIRBase_ScalarTypeDefinition.hh \
 	iir/IIRBase/IIRBase_SelectedName.cc \
-	iir/IIRBase/IIRBase_SelectedName.hh \
 	iir/IIRBase/IIRBase_SelectedNameByAll.cc \
-	iir/IIRBase/IIRBase_SelectedNameByAll.hh \
 	iir/IIRBase/IIRBase_SelectedWaveform.cc \
-	iir/IIRBase/IIRBase_SelectedWaveform.hh \
 	iir/IIRBase/IIRBase_SelectedWaveformList.cc \
-	iir/IIRBase/IIRBase_SelectedWaveformList.hh \
 	iir/IIRBase/IIRBase_SensitizedProcessStatement.cc \
-	iir/IIRBase/IIRBase_SensitizedProcessStatement.hh \
 	iir/IIRBase/IIRBase_SequentialStatement.cc \
-	iir/IIRBase/IIRBase_SequentialStatement.hh \
 	iir/IIRBase/IIRBase_SequentialStatementList.cc \
-	iir/IIRBase/IIRBase_SequentialStatementList.hh \
 	iir/IIRBase/IIRBase_SharedVariableDeclaration.cc \
-	iir/IIRBase/IIRBase_SharedVariableDeclaration.hh \
 	iir/IIRBase/IIRBase_SignalAssignmentStatement.cc \
-	iir/IIRBase/IIRBase_SignalAssignmentStatement.hh \
 	iir/IIRBase/IIRBase_SignalDeclaration.cc \
-	iir/IIRBase/IIRBase_SignalDeclaration.hh \
 	iir/IIRBase/IIRBase_SignalInterfaceDeclaration.cc \
-	iir/IIRBase/IIRBase_SignalInterfaceDeclaration.hh \
 	iir/IIRBase/IIRBase_Signature.cc \
-	iir/IIRBase/IIRBase_Signature.hh \
 	iir/IIRBase/IIRBase_SimpleName.cc \
-	iir/IIRBase/IIRBase_SimpleName.hh \
 	iir/IIRBase/IIRBase_SimpleNameAttribute.cc \
-	iir/IIRBase/IIRBase_SimpleNameAttribute.hh \
 	iir/IIRBase/IIRBase_SimpleSimultaneousStatement.cc \
-	iir/IIRBase/IIRBase_SimpleSimultaneousStatement.hh \
 	iir/IIRBase/IIRBase_SimultaneousElsif.cc \
-	iir/IIRBase/IIRBase_SimultaneousElsif.hh \
 	iir/IIRBase/IIRBase_SimultaneousIfStatement.cc \
-	iir/IIRBase/IIRBase_SimultaneousIfStatement.hh \
 	iir/IIRBase/IIRBase_SimultaneousStatement.cc \
-	iir/IIRBase/IIRBase_SimultaneousStatement.hh \
 	iir/IIRBase/IIRBase_SliceName.cc \
-	iir/IIRBase/IIRBase_SliceName.hh \
 	iir/IIRBase/IIRBase_SourceQuantityDeclaration.cc \
-   iir/IIRBase/IIRBase_SourceQuantityDeclaration.hh \
 	iir/IIRBase/IIRBase_StableAttribute.cc \
-	iir/IIRBase/IIRBase_StableAttribute.hh \
 	iir/IIRBase/IIRBase_Statement.cc \
-	iir/IIRBase/IIRBase_Statement.hh \
 	iir/IIRBase/IIRBase_String.hh \
 	iir/IIRBase/IIRBase_StringLiteral.cc \
-	iir/IIRBase/IIRBase_StringLiteral.hh \
 	iir/IIRBase/IIRBase_SubprogramDeclaration.cc \
-	iir/IIRBase/IIRBase_SubprogramDeclaration.hh \
 	iir/IIRBase/IIRBase_SubtractionOperator.cc \
-	iir/IIRBase/IIRBase_SubtractionOperator.hh \
 	iir/IIRBase/IIRBase_SubtypeDeclaration.cc \
-	iir/IIRBase/IIRBase_SubtypeDeclaration.hh \
 	iir/IIRBase/IIRBase_SuccAttribute.cc \
-	iir/IIRBase/IIRBase_SuccAttribute.hh \
 	iir/IIRBase/IIRBase_TerminalDeclaration.cc \
-	iir/IIRBase/IIRBase_TerminalDeclaration.hh \
 	iir/IIRBase/IIRBase_TerminalInterfaceDeclaration.cc \
-	iir/IIRBase/IIRBase_TerminalInterfaceDeclaration.hh \
 	iir/IIRBase/IIRBase_TextLiteral.cc \
-	iir/IIRBase/IIRBase_TextLiteral.hh \
 	iir/IIRBase/IIRBase_ThroughAttribute.cc \
-	iir/IIRBase/IIRBase_ThroughAttribute.hh \
 	iir/IIRBase/IIRBase_TransactionAttribute.cc \
-	iir/IIRBase/IIRBase_TransactionAttribute.hh \
 	iir/IIRBase/IIRBase_Tuple.cc \
-	iir/IIRBase/IIRBase_Tuple.hh \
 	iir/IIRBase/IIRBase_TypeConversion.cc \
-	iir/IIRBase/IIRBase_TypeConversion.hh \
 	iir/IIRBase/IIRBase_TypeDeclaration.cc \
-	iir/IIRBase/IIRBase_TypeDeclaration.hh \
 	iir/IIRBase/IIRBase_TypeDefinition.cc \
-	iir/IIRBase/IIRBase_TypeDefinition.hh \
 	iir/IIRBase/IIRBase_UnitList.cc \
-	iir/IIRBase/IIRBase_UnitList.hh \
 	iir/IIRBase/IIRBase_UseClause.cc \
-	iir/IIRBase/IIRBase_UseClause.hh \
 	iir/IIRBase/IIRBase_UserAttribute.cc \
-	iir/IIRBase/IIRBase_UserAttribute.hh \
 	iir/IIRBase/IIRBase_ValAttribute.cc \
-	iir/IIRBase/IIRBase_ValAttribute.hh \
 	iir/IIRBase/IIRBase_ValueAttribute.cc \
-	iir/IIRBase/IIRBase_ValueAttribute.hh \
 	iir/IIRBase/IIRBase_VariableAssignmentStatement.cc \
-	iir/IIRBase/IIRBase_VariableAssignmentStatement.hh \
 	iir/IIRBase/IIRBase_VariableDeclaration.cc \
-	iir/IIRBase/IIRBase_VariableDeclaration.hh \
 	iir/IIRBase/IIRBase_VariableInterfaceDeclaration.cc \
-	iir/IIRBase/IIRBase_VariableInterfaceDeclaration.hh \
 	iir/IIRBase/IIRBase_WaitStatement.cc \
-	iir/IIRBase/IIRBase_WaitStatement.hh \
 	iir/IIRBase/IIRBase_WaveformElement.cc \
-	iir/IIRBase/IIRBase_WaveformElement.hh \
 	iir/IIRBase/IIRBase_WaveformList.cc \
-	iir/IIRBase/IIRBase_WaveformList.hh \
 	iir/IIRBase/IIRBase_WhileLoopStatement.cc \
-	iir/IIRBase/IIRBase_WhileLoopStatement.hh \
 	iir/IIRBase/IIRBase_XnorOperator.cc \
-	iir/IIRBase/IIRBase_XnorOperator.hh \
 	iir/IIRBase/IIRBase_XorOperator.cc \
-	iir/IIRBase/IIRBase_XorOperator.hh \
 	iir/IIRBase/IIRBase_ZTFAttribute.cc \
-	iir/IIRBase/IIRBase_ZTFAttribute.hh \
 	iir/IIRScram/IIRScram.cc \
-	iir/IIRScram/IIRScram.hh \
 	iir/IIRScram/IIRScram_AboveAttribute.cc \
-	iir/IIRScram/IIRScram_AboveAttribute.hh \
 	iir/IIRScram/IIRScram_AbsoluteOperator.cc \
-	iir/IIRScram/IIRScram_AbsoluteOperator.hh \
 	iir/IIRScram/IIRScram_AccessSubtypeDefinition.cc \
-	iir/IIRScram/IIRScram_AccessSubtypeDefinition.hh \
 	iir/IIRScram/IIRScram_AccessTypeDefinition.cc \
-	iir/IIRScram/IIRScram_AccessTypeDefinition.hh \
 	iir/IIRScram/IIRScram_AcrossAttribute.cc \
-	iir/IIRScram/IIRScram_AcrossAttribute.hh \
 	iir/IIRScram/IIRScram_ActiveAttribute.cc \
-	iir/IIRScram/IIRScram_ActiveAttribute.hh \
 	iir/IIRScram/IIRScram_AdditionOperator.cc \
-	iir/IIRScram/IIRScram_AdditionOperator.hh \
 	iir/IIRScram/IIRScram_AdditionOperators.cc \
-	iir/IIRScram/IIRScram_AdditionOperators.hh \
 	iir/IIRScram/IIRScram_Aggregate.cc \
-	iir/IIRScram/IIRScram_Aggregate.hh \
 	iir/IIRScram/IIRScram_AliasDeclaration.cc \
-	iir/IIRScram/IIRScram_AliasDeclaration.hh \
 	iir/IIRScram/IIRScram_Allocator.cc \
-	iir/IIRScram/IIRScram_Allocator.hh \
 	iir/IIRScram/IIRScram_AndOperator.cc \
-	iir/IIRScram/IIRScram_AndOperator.hh \
 	iir/IIRScram/IIRScram_ArchitectureDeclaration.cc \
-	iir/IIRScram/IIRScram_ArchitectureDeclaration.hh \
 	iir/IIRScram/IIRScram_ArchitectureStatement.cc \
-	iir/IIRScram/IIRScram_ArchitectureStatement.hh \
 	iir/IIRScram/IIRScram_ArchitectureStatementList.cc \
-	iir/IIRScram/IIRScram_ArchitectureStatementList.hh \
 	iir/IIRScram/IIRScram_ArrayNatureDefinition.cc \
-	iir/IIRScram/IIRScram_ArrayNatureDefinition.hh \
 	iir/IIRScram/IIRScram_ArraySubnatureDefinition.cc \
-   iir/IIRScram/IIRScram_ArraySubnatureDefinition.hh \
 	iir/IIRScram/IIRScram_ArraySubtypeDefinition.cc \
-	iir/IIRScram/IIRScram_ArraySubtypeDefinition.hh \
 	iir/IIRScram/IIRScram_ArrayTypeDefinition.cc \
-	iir/IIRScram/IIRScram_ArrayTypeDefinition.hh \
 	iir/IIRScram/IIRScram_AscendingAttribute.cc \
-	iir/IIRScram/IIRScram_AscendingAttribute.hh \
 	iir/IIRScram/IIRScram_AssertionStatement.cc \
-	iir/IIRScram/IIRScram_AssertionStatement.hh \
 	iir/IIRScram/IIRScram_AssociationElement.cc \
-	iir/IIRScram/IIRScram_AssociationElement.hh \
 	iir/IIRScram/IIRScram_AssociationElementByExpression.cc \
-	iir/IIRScram/IIRScram_AssociationElementByExpression.hh \
 	iir/IIRScram/IIRScram_AssociationElementOpen.cc \
-	iir/IIRScram/IIRScram_AssociationElementOpen.hh \
 	iir/IIRScram/IIRScram_AssociationList.cc \
-	iir/IIRScram/IIRScram_AssociationList.hh \
 	iir/IIRScram/IIRScram_Attribute.cc \
-	iir/IIRScram/IIRScram_Attribute.hh \
 	iir/IIRScram/IIRScram_AttributeDeclaration.cc \
-	iir/IIRScram/IIRScram_AttributeDeclaration.hh \
 	iir/IIRScram/IIRScram_AttributeSpecification.cc \
-	iir/IIRScram/IIRScram_AttributeSpecification.hh \
 	iir/IIRScram/IIRScram_AttributeSpecificationList.cc \
-	iir/IIRScram/IIRScram_AttributeSpecificationList.hh \
 	iir/IIRScram/IIRScram_BaseAttribute.cc \
-	iir/IIRScram/IIRScram_BaseAttribute.hh \
 	iir/IIRScram/IIRScram_BitStringLiteral.cc \
-	iir/IIRScram/IIRScram_BitStringLiteral.hh \
 	iir/IIRScram/IIRScram_BlockConfiguration.cc \
-	iir/IIRScram/IIRScram_BlockConfiguration.hh \
 	iir/IIRScram/IIRScram_BlockStatement.cc \
-	iir/IIRScram/IIRScram_BlockStatement.hh \
 	iir/IIRScram/IIRScram_BranchQuantityDeclaration.cc \
-   iir/IIRScram/IIRScram_BranchQuantityDeclaration.hh \
 	iir/IIRScram/IIRScram_BreakElement.cc \
-	iir/IIRScram/IIRScram_BreakElement.hh \
 	iir/IIRScram/IIRScram_BreakList.cc \
-	iir/IIRScram/IIRScram_BreakList.hh \
 	iir/IIRScram/IIRScram_BreakStatement.cc \
-	iir/IIRScram/IIRScram_BreakStatement.hh \
 	iir/IIRScram/IIRScram_CaseStatement.cc \
-	iir/IIRScram/IIRScram_CaseStatement.hh \
 	iir/IIRScram/IIRScram_CaseStatementAlternative.cc \
-	iir/IIRScram/IIRScram_CaseStatementAlternative.hh \
 	iir/IIRScram/IIRScram_CaseStatementAlternativeByChoices.cc \
-	iir/IIRScram/IIRScram_CaseStatementAlternativeByChoices.hh \
 	iir/IIRScram/IIRScram_CaseStatementAlternativeByExpression.cc \
-	iir/IIRScram/IIRScram_CaseStatementAlternativeByExpression.hh \
 	iir/IIRScram/IIRScram_CaseStatementAlternativeByOthers.cc \
-	iir/IIRScram/IIRScram_CaseStatementAlternativeByOthers.hh \
 	iir/IIRScram/IIRScram_CaseStatementAlternativeList.cc \
-	iir/IIRScram/IIRScram_CaseStatementAlternativeList.hh \
 	iir/IIRScram/IIRScram_CharacterLiteral.cc \
-	iir/IIRScram/IIRScram_CharacterLiteral.hh \
 	iir/IIRScram/IIRScram_Choice.cc \
-	iir/IIRScram/IIRScram_Choice.hh \
 	iir/IIRScram/IIRScram_ChoiceList.cc \
-	iir/IIRScram/IIRScram_ChoiceList.hh \
 	iir/IIRScram/IIRScram_Comment.cc \
-	iir/IIRScram/IIRScram_Comment.hh \
 	iir/IIRScram/IIRScram_CommentList.cc \
-	iir/IIRScram/IIRScram_CommentList.hh \
 	iir/IIRScram/IIRScram_ComponentConfiguration.cc \
-	iir/IIRScram/IIRScram_ComponentConfiguration.hh \
 	iir/IIRScram/IIRScram_ComponentDeclaration.cc \
-	iir/IIRScram/IIRScram_ComponentDeclaration.hh \
 	iir/IIRScram/IIRScram_ComponentInstantiationStatement.cc \
-	iir/IIRScram/IIRScram_ComponentInstantiationStatement.hh \
 	iir/IIRScram/IIRScram_ConcatenationOperator.cc \
-	iir/IIRScram/IIRScram_ConcatenationOperator.hh \
 	iir/IIRScram/IIRScram_ConcurrentAssertionStatement.cc \
-	iir/IIRScram/IIRScram_ConcurrentAssertionStatement.hh \
 	iir/IIRScram/IIRScram_ConcurrentBreakStatement.cc \
-	iir/IIRScram/IIRScram_ConcurrentBreakStatement.hh \
 	iir/IIRScram/IIRScram_ConcurrentConditionalSignalAssignment.cc \
-	iir/IIRScram/IIRScram_ConcurrentConditionalSignalAssignment.hh \
 	iir/IIRScram/IIRScram_ConcurrentGenerateForStatement.cc \
-	iir/IIRScram/IIRScram_ConcurrentGenerateForStatement.hh \
 	iir/IIRScram/IIRScram_ConcurrentGenerateIfStatement.cc \
-	iir/IIRScram/IIRScram_ConcurrentGenerateIfStatement.hh \
 	iir/IIRScram/IIRScram_ConcurrentProcedureCallStatement.cc \
-	iir/IIRScram/IIRScram_ConcurrentProcedureCallStatement.hh \
 	iir/IIRScram/IIRScram_ConcurrentSelectedSignalAssignment.cc \
-	iir/IIRScram/IIRScram_ConcurrentSelectedSignalAssignment.hh \
 	iir/IIRScram/IIRScram_ConcurrentStatement.cc \
-	iir/IIRScram/IIRScram_ConcurrentStatement.hh \
 	iir/IIRScram/IIRScram_ConditionalWaveform.cc \
-	iir/IIRScram/IIRScram_ConditionalWaveform.hh \
 	iir/IIRScram/IIRScram_ConditionalWaveformList.cc \
-	iir/IIRScram/IIRScram_ConditionalWaveformList.hh \
 	iir/IIRScram/IIRScram_ConfigurationDeclaration.cc \
-	iir/IIRScram/IIRScram_ConfigurationDeclaration.hh \
 	iir/IIRScram/IIRScram_ConfigurationItem.cc \
-	iir/IIRScram/IIRScram_ConfigurationItem.hh \
 	iir/IIRScram/IIRScram_ConfigurationItemList.cc \
-	iir/IIRScram/IIRScram_ConfigurationItemList.hh \
 	iir/IIRScram/IIRScram_ConfigurationSpecification.cc \
-	iir/IIRScram/IIRScram_ConfigurationSpecification.hh \
 	iir/IIRScram/IIRScram_ConstantDeclaration.cc \
-	iir/IIRScram/IIRScram_ConstantDeclaration.hh \
 	iir/IIRScram/IIRScram_ConstantInterfaceDeclaration.cc \
-	iir/IIRScram/IIRScram_ConstantInterfaceDeclaration.hh \
 	iir/IIRScram/IIRScram_ContributionAttribute.cc \
-	iir/IIRScram/IIRScram_ContributionAttribute.hh \
 	iir/IIRScram/IIRScram_Declaration.cc \
-	iir/IIRScram/IIRScram_Declaration.hh \
 	iir/IIRScram/IIRScram_DeclarationList.cc \
-	iir/IIRScram/IIRScram_DeclarationList.hh \
 	iir/IIRScram/IIRScram_DelayedAttribute.cc \
-	iir/IIRScram/IIRScram_DelayedAttribute.hh \
 	iir/IIRScram/IIRScram_DesignFile.cc \
-	iir/IIRScram/IIRScram_DesignFile.hh \
 	iir/IIRScram/IIRScram_DesignFileList.cc \
-	iir/IIRScram/IIRScram_DesignFileList.hh \
 	iir/IIRScram/IIRScram_DesignUnitList.cc \
-	iir/IIRScram/IIRScram_DesignUnitList.hh \
 	iir/IIRScram/IIRScram_Designator.cc \
-	iir/IIRScram/IIRScram_Designator.hh \
 	iir/IIRScram/IIRScram_DesignatorByAll.cc \
-	iir/IIRScram/IIRScram_DesignatorByAll.hh \
 	iir/IIRScram/IIRScram_DesignatorByOthers.cc \
-	iir/IIRScram/IIRScram_DesignatorByOthers.hh \
 	iir/IIRScram/IIRScram_DesignatorExplicit.cc \
-	iir/IIRScram/IIRScram_DesignatorExplicit.hh \
 	iir/IIRScram/IIRScram_DesignatorList.cc \
-	iir/IIRScram/IIRScram_DesignatorList.hh \
 	iir/IIRScram/IIRScram_DisconnectSpecification.cc \
-	iir/IIRScram/IIRScram_DisconnectSpecification.hh \
 	iir/IIRScram/IIRScram_DivisionOperator.cc \
-	iir/IIRScram/IIRScram_DivisionOperator.hh \
 	iir/IIRScram/IIRScram_DotAttribute.cc \
-	iir/IIRScram/IIRScram_DotAttribute.hh \
 	iir/IIRScram/IIRScram_DrivingAttribute.cc \
-	iir/IIRScram/IIRScram_DrivingAttribute.hh \
 	iir/IIRScram/IIRScram_DrivingValueAttribute.cc \
-	iir/IIRScram/IIRScram_DrivingValueAttribute.hh \
 	iir/IIRScram/IIRScram_DyadicOperator.cc \
-	iir/IIRScram/IIRScram_DyadicOperator.hh \
 	iir/IIRScram/IIRScram_ElementDeclaration.cc \
-	iir/IIRScram/IIRScram_ElementDeclaration.hh \
 	iir/IIRScram/IIRScram_ElementDeclarationList.cc \
-	iir/IIRScram/IIRScram_ElementDeclarationList.hh \
 	iir/IIRScram/IIRScram_Elsif.cc \
-	iir/IIRScram/IIRScram_Elsif.hh \
 	iir/IIRScram/IIRScram_EntityClassEntry.cc \
-	iir/IIRScram/IIRScram_EntityClassEntry.hh \
 	iir/IIRScram/IIRScram_EntityClassEntryList.cc \
-	iir/IIRScram/IIRScram_EntityClassEntryList.hh \
 	iir/IIRScram/IIRScram_EntityDeclaration.cc \
-	iir/IIRScram/IIRScram_EntityDeclaration.hh \
 	iir/IIRScram/IIRScram_EntityNameList.cc \
-	iir/IIRScram/IIRScram_EntityNameList.hh \
 	iir/IIRScram/IIRScram_EnumerationLiteral.cc \
-	iir/IIRScram/IIRScram_EnumerationLiteral.hh \
 	iir/IIRScram/IIRScram_EnumerationLiteralList.cc \
-	iir/IIRScram/IIRScram_EnumerationLiteralList.hh \
 	iir/IIRScram/IIRScram_EnumerationSubtypeDefinition.cc \
-	iir/IIRScram/IIRScram_EnumerationSubtypeDefinition.hh \
 	iir/IIRScram/IIRScram_EnumerationTypeDefinition.cc \
-	iir/IIRScram/IIRScram_EnumerationTypeDefinition.hh \
 	iir/IIRScram/IIRScram_EqualityOperator.cc \
-	iir/IIRScram/IIRScram_EqualityOperator.hh \
 	iir/IIRScram/IIRScram_EventAttribute.cc \
-	iir/IIRScram/IIRScram_EventAttribute.hh \
 	iir/IIRScram/IIRScram_ExitStatement.cc \
-	iir/IIRScram/IIRScram_ExitStatement.hh \
 	iir/IIRScram/IIRScram_ExponentiationOperator.cc \
-	iir/IIRScram/IIRScram_ExponentiationOperator.hh \
 	iir/IIRScram/IIRScram_Expression.cc \
-	iir/IIRScram/IIRScram_Expression.hh \
 	iir/IIRScram/IIRScram_FileDeclaration.cc \
-	iir/IIRScram/IIRScram_FileDeclaration.hh \
 	iir/IIRScram/IIRScram_FileInterfaceDeclaration.cc \
-	iir/IIRScram/IIRScram_FileInterfaceDeclaration.hh \
 	iir/IIRScram/IIRScram_FileTypeDefinition.cc \
-	iir/IIRScram/IIRScram_FileTypeDefinition.hh \
 	iir/IIRScram/IIRScram_FloatingPointLiteral.cc \
-	iir/IIRScram/IIRScram_FloatingPointLiteral.hh \
 	iir/IIRScram/IIRScram_FloatingPointLiteral32.cc \
-	iir/IIRScram/IIRScram_FloatingPointLiteral32.hh \
 	iir/IIRScram/IIRScram_FloatingPointLiteral64.cc \
-	iir/IIRScram/IIRScram_FloatingPointLiteral64.hh \
 	iir/IIRScram/IIRScram_FloatingSubtypeDefinition.cc \
-	iir/IIRScram/IIRScram_FloatingSubtypeDefinition.hh \
 	iir/IIRScram/IIRScram_FloatingTypeDefinition.cc \
-	iir/IIRScram/IIRScram_FloatingTypeDefinition.hh \
 	iir/IIRScram/IIRScram_ForLoopStatement.cc \
-	iir/IIRScram/IIRScram_ForLoopStatement.hh \
 	iir/IIRScram/IIRScram_FreeQuantityDeclaration.cc \
-	iir/IIRScram/IIRScram_FreeQuantityDeclaration.hh \
 	iir/IIRScram/IIRScram_FunctionCall.cc \
-	iir/IIRScram/IIRScram_FunctionCall.hh \
 	iir/IIRScram/IIRScram_FunctionDeclaration.cc \
-	iir/IIRScram/IIRScram_FunctionDeclaration.hh \
 	iir/IIRScram/IIRScram_GenericList.cc \
-	iir/IIRScram/IIRScram_GenericList.hh \
 	iir/IIRScram/IIRScram_GreaterThanOperator.cc \
-	iir/IIRScram/IIRScram_GreaterThanOperator.hh \
 	iir/IIRScram/IIRScram_GreaterThanOrEqualOperator.cc \
-	iir/IIRScram/IIRScram_GreaterThanOrEqualOperator.hh \
 	iir/IIRScram/IIRScram_GroupConstituent.cc \
-	iir/IIRScram/IIRScram_GroupConstituent.hh \
 	iir/IIRScram/IIRScram_GroupDeclaration.cc \
-	iir/IIRScram/IIRScram_GroupDeclaration.hh \
 	iir/IIRScram/IIRScram_GroupTemplateDeclaration.cc \
-	iir/IIRScram/IIRScram_GroupTemplateDeclaration.hh \
 	iir/IIRScram/IIRScram_HighAttribute.cc \
-	iir/IIRScram/IIRScram_HighAttribute.hh \
 	iir/IIRScram/IIRScram_Identifier.cc \
-	iir/IIRScram/IIRScram_Identifier.hh \
 	iir/IIRScram/IIRScram_IdentifierList.cc \
-	iir/IIRScram/IIRScram_IdentifierList.hh \
 	iir/IIRScram/IIRScram_IdentityOperator.cc \
-	iir/IIRScram/IIRScram_IdentityOperator.hh \
 	iir/IIRScram/IIRScram_IfStatement.cc \
-	iir/IIRScram/IIRScram_IfStatement.hh \
 	iir/IIRScram/IIRScram_ImageAttribute.cc \
-	iir/IIRScram/IIRScram_ImageAttribute.hh \
 	iir/IIRScram/IIRScram_IncompleteTypeDefinition.hh \
 	iir/IIRScram/IIRScram_IndexedName.cc \
-	iir/IIRScram/IIRScram_IndexedName.hh \
 	iir/IIRScram/IIRScram_InequalityOperator.cc \
-	iir/IIRScram/IIRScram_InequalityOperator.hh \
 	iir/IIRScram/IIRScram_InstanceNameAttribute.cc \
-	iir/IIRScram/IIRScram_InstanceNameAttribute.hh \
 	iir/IIRScram/IIRScram_IntegerLiteral.cc \
-	iir/IIRScram/IIRScram_IntegerLiteral.hh \
 	iir/IIRScram/IIRScram_IntegerLiteral32.cc \
-	iir/IIRScram/IIRScram_IntegerLiteral32.hh \
 	iir/IIRScram/IIRScram_IntegerLiteral64.cc \
-	iir/IIRScram/IIRScram_IntegerLiteral64.hh \
 	iir/IIRScram/IIRScram_IntegerSubtypeDefinition.cc \
-	iir/IIRScram/IIRScram_IntegerSubtypeDefinition.hh \
 	iir/IIRScram/IIRScram_IntegerTypeDefinition.cc \
-	iir/IIRScram/IIRScram_IntegerTypeDefinition.hh \
 	iir/IIRScram/IIRScram_InterfaceDeclaration.cc \
-	iir/IIRScram/IIRScram_InterfaceDeclaration.hh \
 	iir/IIRScram/IIRScram_InterfaceList.cc \
-	iir/IIRScram/IIRScram_InterfaceList.hh \
 	iir/IIRScram/IIRScram_Label.cc \
-	iir/IIRScram/IIRScram_Label.hh \
 	iir/IIRScram/IIRScram_LastActiveAttribute.cc \
-	iir/IIRScram/IIRScram_LastActiveAttribute.hh \
 	iir/IIRScram/IIRScram_LastEventAttribute.cc \
-	iir/IIRScram/IIRScram_LastEventAttribute.hh \
 	iir/IIRScram/IIRScram_LastValueAttribute.cc \
-	iir/IIRScram/IIRScram_LastValueAttribute.hh \
 	iir/IIRScram/IIRScram_LeftAttribute.cc \
-	iir/IIRScram/IIRScram_LeftAttribute.hh \
 	iir/IIRScram/IIRScram_LeftOfAttribute.cc \
-	iir/IIRScram/IIRScram_LeftOfAttribute.hh \
 	iir/IIRScram/IIRScram_LengthAttribute.cc \
-	iir/IIRScram/IIRScram_LengthAttribute.hh \
 	iir/IIRScram/IIRScram_LessThanOperator.cc \
-	iir/IIRScram/IIRScram_LessThanOperator.hh \
 	iir/IIRScram/IIRScram_LessThanOrEqualOperator.cc \
-	iir/IIRScram/IIRScram_LessThanOrEqualOperator.hh \
 	iir/IIRScram/IIRScram_LibraryClause.cc \
-	iir/IIRScram/IIRScram_LibraryClause.hh \
 	iir/IIRScram/IIRScram_LibraryDeclaration.cc \
-	iir/IIRScram/IIRScram_LibraryDeclaration.hh \
 	iir/IIRScram/IIRScram_LibraryUnit.cc \
-	iir/IIRScram/IIRScram_LibraryUnit.hh \
 	iir/IIRScram/IIRScram_LibraryUnitList.cc \
-	iir/IIRScram/IIRScram_LibraryUnitList.hh \
 	iir/IIRScram/IIRScram_List.cc \
-	iir/IIRScram/IIRScram_List.hh \
 	iir/IIRScram/IIRScram_Literal.cc \
-	iir/IIRScram/IIRScram_Literal.hh \
 	iir/IIRScram/IIRScram_LogicalOperators.cc \
-	iir/IIRScram/IIRScram_LogicalOperators.hh \
 	iir/IIRScram/IIRScram_LowAttribute.cc \
-	iir/IIRScram/IIRScram_LowAttribute.hh \
 	iir/IIRScram/IIRScram_LTFAttribute.cc \
-	iir/IIRScram/IIRScram_LTFAttribute.hh \
 	iir/IIRScram/IIRScram_ModulusOperator.cc \
-	iir/IIRScram/IIRScram_ModulusOperator.hh \
 	iir/IIRScram/IIRScram_MonadicOperator.cc \
-	iir/IIRScram/IIRScram_MonadicOperator.hh \
 	iir/IIRScram/IIRScram_MultiplicationOperator.cc \
-	iir/IIRScram/IIRScram_MultiplicationOperator.hh \
 	iir/IIRScram/IIRScram_MultiplicationOperators.cc \
-	iir/IIRScram/IIRScram_MultiplicationOperators.hh \
 	iir/IIRScram/IIRScram_Name.cc \
-	iir/IIRScram/IIRScram_Name.hh \
 	iir/IIRScram/IIRScram_NameList.cc \
-	iir/IIRScram/IIRScram_NameList.hh \
 	iir/IIRScram/IIRScram_NandOperator.cc \
-	iir/IIRScram/IIRScram_NandOperator.hh \
 	iir/IIRScram/IIRScram_NatureDeclaration.cc \
-   iir/IIRScram/IIRScram_NatureDeclaration.hh \
    iir/IIRScram/IIRScram_NatureDefinition.cc \
-   iir/IIRScram/IIRScram_NatureDefinition.hh \
 	iir/IIRScram/IIRScram_NegationOperator.cc \
-	iir/IIRScram/IIRScram_NegationOperator.hh \
 	iir/IIRScram/IIRScram_NextStatement.cc \
-	iir/IIRScram/IIRScram_NextStatement.hh \
 	iir/IIRScram/IIRScram_NorOperator.cc \
-	iir/IIRScram/IIRScram_NorOperator.hh \
 	iir/IIRScram/IIRScram_NotOperator.cc \
-	iir/IIRScram/IIRScram_NotOperator.hh \
 	iir/IIRScram/IIRScram_NullStatement.cc \
-	iir/IIRScram/IIRScram_NullStatement.hh \
 	iir/IIRScram/IIRScram_ObjectDeclaration.cc \
-	iir/IIRScram/IIRScram_ObjectDeclaration.hh \
 	iir/IIRScram/IIRScram_Operator.cc \
-	iir/IIRScram/IIRScram_Operator.hh \
 	iir/IIRScram/IIRScram_OrOperator.cc \
-	iir/IIRScram/IIRScram_OrOperator.hh \
 	iir/IIRScram/IIRScram_OthersInitialization.cc \
-	iir/IIRScram/IIRScram_OthersInitialization.hh \
 	iir/IIRScram/IIRScram_PackageBodyDeclaration.cc \
-	iir/IIRScram/IIRScram_PackageBodyDeclaration.hh \
 	iir/IIRScram/IIRScram_PackageDeclaration.cc \
-	iir/IIRScram/IIRScram_PackageDeclaration.hh \
 	iir/IIRScram/IIRScram_PathNameAttribute.cc \
-	iir/IIRScram/IIRScram_PathNameAttribute.hh \
 	iir/IIRScram/IIRScram_PhysicalLiteral.cc \
-	iir/IIRScram/IIRScram_PhysicalLiteral.hh \
 	iir/IIRScram/IIRScram_PhysicalSubtypeDefinition.cc \
-	iir/IIRScram/IIRScram_PhysicalSubtypeDefinition.hh \
 	iir/IIRScram/IIRScram_PhysicalTypeDefinition.cc \
-	iir/IIRScram/IIRScram_PhysicalTypeDefinition.hh \
 	iir/IIRScram/IIRScram_PhysicalUnit.cc \
-	iir/IIRScram/IIRScram_PhysicalUnit.hh \
 	iir/IIRScram/IIRScram_PortList.cc \
-	iir/IIRScram/IIRScram_PortList.hh \
 	iir/IIRScram/IIRScram_PosAttribute.cc \
-	iir/IIRScram/IIRScram_PosAttribute.hh \
 	iir/IIRScram/IIRScram_PredAttribute.cc \
-	iir/IIRScram/IIRScram_PredAttribute.hh \
 	iir/IIRScram/IIRScram_ProcedureCallStatement.cc \
-	iir/IIRScram/IIRScram_ProcedureCallStatement.hh \
 	iir/IIRScram/IIRScram_ProcedureDeclaration.cc \
-	iir/IIRScram/IIRScram_ProcedureDeclaration.hh \
 	iir/IIRScram/IIRScram_ProcessStatement.cc \
-	iir/IIRScram/IIRScram_ProcessStatement.hh \
 	iir/IIRScram/IIRScram_QualifiedExpression.cc \
-	iir/IIRScram/IIRScram_QualifiedExpression.hh \
 	iir/IIRScram/IIRScram_QuantityDeclaration.cc \
-	iir/IIRScram/IIRScram_QuantityDeclaration.hh \
 	iir/IIRScram/IIRScram_QuietAttribute.cc \
-	iir/IIRScram/IIRScram_QuietAttribute.hh \
 	iir/IIRScram/IIRScram_ROLOperator.cc \
-	iir/IIRScram/IIRScram_ROLOperator.hh \
 	iir/IIRScram/IIRScram_ROROperator.cc \
-	iir/IIRScram/IIRScram_ROROperator.hh \
 	iir/IIRScram/IIRScram_RangeAttribute.cc \
-	iir/IIRScram/IIRScram_RangeAttribute.hh \
 	iir/IIRScram/IIRScram_RangeTypeDefinition.cc \
-	iir/IIRScram/IIRScram_RangeTypeDefinition.hh \
 	iir/IIRScram/IIRScram_RecordTypeDefinition.cc \
-	iir/IIRScram/IIRScram_RecordTypeDefinition.hh \
 	iir/IIRScram/IIRScram_ReferenceAttribute.cc \
-	iir/IIRScram/IIRScram_ReferenceAttribute.hh \
 	iir/IIRScram/IIRScram_RelationalOperators.cc \
-	iir/IIRScram/IIRScram_RelationalOperators.hh \
 	iir/IIRScram/IIRScram_RemainderOperator.cc \
-	iir/IIRScram/IIRScram_RemainderOperator.hh \
 	iir/IIRScram/IIRScram_ReportStatement.cc \
-	iir/IIRScram/IIRScram_ReportStatement.hh \
 	iir/IIRScram/IIRScram_ReturnStatement.cc \
-	iir/IIRScram/IIRScram_ReturnStatement.hh \
 	iir/IIRScram/IIRScram_ReverseRangeAttribute.cc \
-	iir/IIRScram/IIRScram_ReverseRangeAttribute.hh \
 	iir/IIRScram/IIRScram_RightAttribute.cc \
-	iir/IIRScram/IIRScram_RightAttribute.hh \
 	iir/IIRScram/IIRScram_RightOfAttribute.cc \
-	iir/IIRScram/IIRScram_RightOfAttribute.hh \
 	iir/IIRScram/IIRScram_SLAOperator.cc \
-	iir/IIRScram/IIRScram_SLAOperator.hh \
 	iir/IIRScram/IIRScram_SLLOperator.cc \
-	iir/IIRScram/IIRScram_SLLOperator.hh \
 	iir/IIRScram/IIRScram_SRAOperator.cc \
-	iir/IIRScram/IIRScram_SRAOperator.hh \
 	iir/IIRScram/IIRScram_SRLOperator.cc \
-	iir/IIRScram/IIRScram_SRLOperator.hh \
 	iir/IIRScram/IIRScram_ScalarNatureDefinition.cc \
-   iir/IIRScram/IIRScram_ScalarNatureDefinition.hh \
 	iir/IIRScram/IIRScram_ScalarTypeDefinition.cc \
-	iir/IIRScram/IIRScram_ScalarTypeDefinition.hh \
 	iir/IIRScram/IIRScram_SelectedName.cc \
-	iir/IIRScram/IIRScram_SelectedName.hh \
 	iir/IIRScram/IIRScram_SelectedNameByAll.cc \
-	iir/IIRScram/IIRScram_SelectedNameByAll.hh \
 	iir/IIRScram/IIRScram_SelectedWaveform.cc \
-	iir/IIRScram/IIRScram_SelectedWaveform.hh \
 	iir/IIRScram/IIRScram_SelectedWaveformList.cc \
-	iir/IIRScram/IIRScram_SelectedWaveformList.hh \
 	iir/IIRScram/IIRScram_SensitizedProcessStatement.cc \
-	iir/IIRScram/IIRScram_SensitizedProcessStatement.hh \
 	iir/IIRScram/IIRScram_SequentialStatement.cc \
-	iir/IIRScram/IIRScram_SequentialStatement.hh \
 	iir/IIRScram/IIRScram_SequentialStatementList.cc \
-	iir/IIRScram/IIRScram_SequentialStatementList.hh \
 	iir/IIRScram/IIRScram_SharedVariableDeclaration.cc \
-	iir/IIRScram/IIRScram_SharedVariableDeclaration.hh \
 	iir/IIRScram/IIRScram_ShiftOperators.cc \
-	iir/IIRScram/IIRScram_ShiftOperators.hh \
 	iir/IIRScram/IIRScram_SignalAssignmentStatement.cc \
-	iir/IIRScram/IIRScram_SignalAssignmentStatement.hh \
 	iir/IIRScram/IIRScram_SignalDeclaration.cc \
-	iir/IIRScram/IIRScram_SignalDeclaration.hh \
 	iir/IIRScram/IIRScram_SignalInterfaceDeclaration.cc \
-	iir/IIRScram/IIRScram_SignalInterfaceDeclaration.hh \
 	iir/IIRScram/IIRScram_Signature.cc \
-	iir/IIRScram/IIRScram_Signature.hh \
 	iir/IIRScram/IIRScram_SimpleName.cc \
-	iir/IIRScram/IIRScram_SimpleName.hh \
 	iir/IIRScram/IIRScram_SimpleNameAttribute.cc \
-	iir/IIRScram/IIRScram_SimpleNameAttribute.hh \
 	iir/IIRScram/IIRScram_SimpleSimultaneousStatement.cc \
-	iir/IIRScram/IIRScram_SimpleSimultaneousStatement.hh \
 	iir/IIRScram/IIRScram_SimultaneousElsif.cc \
-	iir/IIRScram/IIRScram_SimultaneousElsif.hh \
 	iir/IIRScram/IIRScram_SimultaneousIfStatement.cc \
-	iir/IIRScram/IIRScram_SimultaneousIfStatement.hh \
 	iir/IIRScram/IIRScram_SimultaneousStatement.cc \
-	iir/IIRScram/IIRScram_SimultaneousStatement.hh \
 	iir/IIRScram/IIRScram_SliceName.cc \
-	iir/IIRScram/IIRScram_SliceName.hh \
 	iir/IIRScram/IIRScram_SourceQuantityDeclaration.cc \
-   iir/IIRScram/IIRScram_SourceQuantityDeclaration.hh \
 	iir/IIRScram/IIRScram_StableAttribute.cc \
-	iir/IIRScram/IIRScram_StableAttribute.hh \
 	iir/IIRScram/IIRScram_Statement.cc \
-	iir/IIRScram/IIRScram_Statement.hh \
 	iir/IIRScram/IIRScram_StringLiteral.cc \
-	iir/IIRScram/IIRScram_StringLiteral.hh \
 	iir/IIRScram/IIRScram_SubprogramDeclaration.cc \
-	iir/IIRScram/IIRScram_SubprogramDeclaration.hh \
 	iir/IIRScram/IIRScram_SubtractionOperator.cc \
-	iir/IIRScram/IIRScram_SubtractionOperator.hh \
 	iir/IIRScram/IIRScram_SubtypeDeclaration.cc \
-	iir/IIRScram/IIRScram_SubtypeDeclaration.hh \
 	iir/IIRScram/IIRScram_SuccAttribute.cc \
-	iir/IIRScram/IIRScram_SuccAttribute.hh \
 	iir/IIRScram/IIRScram_TerminalDeclaration.cc \
-	iir/IIRScram/IIRScram_TerminalDeclaration.hh \
 	iir/IIRScram/IIRScram_TerminalInterfaceDeclaration.cc \
-	iir/IIRScram/IIRScram_TerminalInterfaceDeclaration.hh \
 	iir/IIRScram/IIRScram_TextLiteral.cc \
-	iir/IIRScram/IIRScram_TextLiteral.hh \
 	iir/IIRScram/IIRScram_ThroughAttribute.cc \
-	iir/IIRScram/IIRScram_ThroughAttribute.hh \
 	iir/IIRScram/IIRScram_TransactionAttribute.cc \
-	iir/IIRScram/IIRScram_TransactionAttribute.hh \
 	iir/IIRScram/IIRScram_Tuple.cc \
-	iir/IIRScram/IIRScram_Tuple.hh \
 	iir/IIRScram/IIRScram_TypeConversion.cc \
-	iir/IIRScram/IIRScram_TypeConversion.hh \
 	iir/IIRScram/IIRScram_TypeDeclaration.cc \
-	iir/IIRScram/IIRScram_TypeDeclaration.hh \
 	iir/IIRScram/IIRScram_TypeDefinition.cc \
-	iir/IIRScram/IIRScram_TypeDefinition.hh \
 	iir/IIRScram/IIRScram_UnitList.cc \
-	iir/IIRScram/IIRScram_UnitList.hh \
 	iir/IIRScram/IIRScram_UseClause.cc \
-	iir/IIRScram/IIRScram_UseClause.hh \
 	iir/IIRScram/IIRScram_UserAttribute.cc \
-	iir/IIRScram/IIRScram_UserAttribute.hh \
 	iir/IIRScram/IIRScram_ValAttribute.cc \
-	iir/IIRScram/IIRScram_ValAttribute.hh \
 	iir/IIRScram/IIRScram_ValueAttribute.cc \
-	iir/IIRScram/IIRScram_ValueAttribute.hh \
 	iir/IIRScram/IIRScram_VariableAssignmentStatement.cc \
-	iir/IIRScram/IIRScram_VariableAssignmentStatement.hh \
 	iir/IIRScram/IIRScram_VariableDeclaration.cc \
-	iir/IIRScram/IIRScram_VariableDeclaration.hh \
 	iir/IIRScram/IIRScram_VariableInterfaceDeclaration.cc \
-	iir/IIRScram/IIRScram_VariableInterfaceDeclaration.hh \
 	iir/IIRScram/IIRScram_WaitStatement.cc \
-	iir/IIRScram/IIRScram_WaitStatement.hh \
 	iir/IIRScram/IIRScram_WaveformElement.cc \
-	iir/IIRScram/IIRScram_WaveformElement.hh \
 	iir/IIRScram/IIRScram_WaveformList.cc \
-	iir/IIRScram/IIRScram_WaveformList.hh \
 	iir/IIRScram/IIRScram_WhileLoopStatement.cc \
-	iir/IIRScram/IIRScram_WhileLoopStatement.hh \
 	iir/IIRScram/IIRScram_XnorOperator.cc \
-	iir/IIRScram/IIRScram_XnorOperator.hh \
 	iir/IIRScram/IIRScram_XorOperator.cc \
-	iir/IIRScram/IIRScram_XorOperator.hh \
 	iir/IIRScram/IIRScram_ZTFAttribute.cc \
-	iir/IIRScram/IIRScram_ZTFAttribute.hh \
 	iir/IIRScram/scram_plugin_class_factory.cc \
-	iir/IIRScram/scram_plugin_class_factory.hh \
-	iir/IIRScram/ScramStandardPackage.hh \
 	iir/IIRScram/ScramStandardPackage.cc
 
 # Location for the library installation

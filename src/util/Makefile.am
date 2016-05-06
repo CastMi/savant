@@ -43,37 +43,26 @@ libsavantutils_la_CPPFLAGS = \
 
 libsavantutils_la_SOURCES = \
 	ConePartitioner.cc \
-	Makefile.am \
 	ProcessCombiner.cc \
-	ProcessCombiner.hh \
 	break_handler.hh \
 	container.hh \
 	dl_list.hh \
 	elaborate_info.hh \
 	error_func.cc \
-	error_func.hh \
 	fake_ostringstream.hh \
 	hash_table.hh \
-	include_manager.hh \
 	include_manager.cc \
 	plugin_interface.hh \
 	resolution_func.cc \
-	resolution_func.hh \
 	savant_plugin_base.cc \
-	savant_plugin_base.hh \
 	savant_visitor_plugin.cc \
-	savant_visitor_plugin.hh \
 	set.hh \
 	signal_set.hh \
 	stack.hh \
 	string_utils.cc \
-	string_utils.hh \
-	consistency.hpp \
 	consistency.cpp \
 	generic_parser.hh \
 	language_processing_control.cc  \
-	language_processing_control.hh  \
-	PluginStandardPackage.hh \
 	PluginStandardPackage.cc
 
 # Location for the library installation
@@ -102,6 +91,7 @@ library_include_HEADERS =  \
 	string_utils.hh \
 	generic_parser.hh \
 	../savant_config.hh \
+	../savant.hh \
 	PluginStandardPackage.hh \
 	plugin_class_factory.hh \
 	plugin_interface.hh
