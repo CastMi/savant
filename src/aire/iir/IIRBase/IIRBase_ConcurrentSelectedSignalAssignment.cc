@@ -27,6 +27,7 @@
 #include "IIR_SequentialStatementList.hh"
 #include "IIR_SignalAssignmentStatement.hh"
 #include "IIR_SignalDeclaration.hh"
+#include "IIR_Choice.hh"
 #include "plugin_class_factory.hh"
 #include "IIRBase_SelectedWaveformList.hh"
 
@@ -117,21 +118,21 @@ IIRBase_ConcurrentSelectedSignalAssignment::set_selected_waveforms(IIR_SelectedW
   selected_waveforms = new_selected_waveforms;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ConcurrentSelectedSignalAssignment::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ConcurrentSelectedSignalAssignment *new_node = dynamic_cast<IIRBase_ConcurrentSelectedSignalAssignment *>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
   new_node->selected_waveforms = dynamic_cast<IIR_SelectedWaveformList *>(selected_waveforms->convert_tree(factory));
-  new_node->my_guard_signal = dynamic_cast<IIR_SignalDeclaration *>(convert_node(my_guard_signal, factory));
+  new_node->my_guard_signal = dynamic_cast<IIR_SignalDeclaration *>(my_guard_signal->convert_tree(factory));
 
   new_node->postponed = postponed;
   new_node->guarded = guarded;
   new_node->delay_mechanism = delay_mechanism;
-  new_node->target = convert_node(target, factory);
-  new_node->expression = convert_node(expression, factory);
-  new_node->reject_time_expression = convert_node(reject_time_expression, factory);
+  new_node->target = target->convert_tree(factory);
+  new_node->expression = expression->convert_tree(factory);
+  new_node->reject_time_expression = reject_time_expression->convert_tree(factory);
 
   return new_node;
 }
@@ -159,17 +160,19 @@ IIRBase_ConcurrentSelectedSignalAssignment::is_resolved(){
 IIR_CaseStatementAlternativeList *
 IIRBase_ConcurrentSelectedSignalAssignment::build_alternative_list(IIR_Boolean bPublishingVhdl){
   IIR_SelectedWaveform *current_waveform = NULL;
-  IIR_CaseStatementAlternativeList *retval = get_design_file()->get_class_factory()->new_IIR_CaseStatementAlternativeList();
+  // FIXME
+  IIR_CaseStatementAlternativeList *retval = NULL;//get_design_file()->get_class_factory()->new_IIR_CaseStatementAlternativeList();
   IIR_SignalAssignmentStatement *sastmt = NULL;
   
   //  copy_location( this, retval );
   current_waveform = get_selected_waveforms()->first();
   while( current_waveform != NULL ){
-    IIR *current_choice = current_waveform->get_choice();
-    ASSERT( dynamic_cast<IIR_CaseStatementAlternative *>(current_choice) );
+    ASSERT( dynamic_cast<IIR_CaseStatementAlternative *>(current_waveform->get_choice()) );
+    IIR_CaseStatementAlternative *current_choice = dynamic_cast<IIR_CaseStatementAlternative *>(current_waveform->get_choice());
    
     if (bPublishingVhdl) {
-      sastmt = get_design_file()->get_class_factory()->new_IIR_SignalAssignmentStatement();
+       // FIXME
+      sastmt = NULL; //get_design_file()->get_class_factory()->new_IIR_SignalAssignmentStatement();
       copy_location (this, sastmt);
       ASSERT ( get_target()->is_resolved() == TRUE );
       

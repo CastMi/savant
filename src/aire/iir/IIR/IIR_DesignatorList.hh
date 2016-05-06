@@ -33,13 +33,11 @@
 
 class IIR_Designator;
 
-class IIR_DesignatorList : public virtual IIR_List{
+class IIR_DesignatorList : public virtual IIR_List<IIR_Designator> {
 
 public:
   virtual ~IIR_DesignatorList() {}
+  virtual IIR_DesignatorList* convert_node(plugin_class_factory *factory) = 0;
     
-  virtual IIR *first() = 0;
-  virtual IIR *successor(IIR_Designator *) = 0;
-  virtual void append( IIR_Designator * ) = 0;
 };
 #endif

@@ -37,58 +37,6 @@
 IIRBase_DeclarationList::IIRBase_DeclarationList(){}
 IIRBase_DeclarationList::~IIRBase_DeclarationList(){}
 
-void 
-IIRBase_DeclarationList::append( IIR_Declaration *to_append ){
-  IIRBase_List::append( to_append );
-}
-
-IIR *
-IIRBase_DeclarationList::successor( IIR_Declaration *succeed_me ){
-  IIR *retval = IIRBase_List::successor( succeed_me );
-  return dynamic_cast<IIR_Declaration *>(retval);
-}
-
-IIR *
-IIRBase_DeclarationList::first(){
-  IIR *retval = IIRBase_List::first();
-
-  return dynamic_cast<IIR_Declaration *>(retval);
-}
-
-
-void
-IIRBase_DeclarationList::prepend( IIR_Declaration *element ) {
-  IIRBase_List::prepend( element );
-}
-
-IIR*
-IIRBase_DeclarationList::predecessor( IIR_Declaration *element ){
-  IIR *retval = IIRBase_List::predecessor( element );
-
-  ASSERT( retval != NULL );
-
-  return dynamic_cast<IIR_Declaration*>(retval);
-}
-
-
-IIR *
-IIRBase_DeclarationList::last() {
-  IIR *retval = IIRBase_List::last( );
-
-  ASSERT( retval != NULL );
-
-  return dynamic_cast<IIR_Declaration*>(retval);
-}
-
-IIR *
-IIRBase_DeclarationList::get_nth_element( IIR_Int32 to_get ){
-  IIR *retval = IIRBase_List::get_nth_element( to_get );
-
-  ASSERT( retval != NULL );
-
-  return dynamic_cast<IIR_Declaration *>(retval);
-}
-
 savant::set<IIR_Declaration> *
 IIRBase_DeclarationList::find_declarations( IIR_Name *to_find ){
   ASSERT( to_find != NULL );

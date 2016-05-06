@@ -141,7 +141,7 @@ scram::get_work_library() const {
 }
 
 generic_parser *
-scram::convert_node(plugin_class_factory *factory) {
+scram::convert_tree(plugin_class_factory *factory) {
   ASSERT(factory);
   if (transmuted_node)
      return transmuted_node;

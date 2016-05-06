@@ -33,12 +33,12 @@ IIRBase_AssociationList::~IIRBase_AssociationList() {}
 
 IIR_AssociationElement * 
 IIRBase_AssociationList::first() {
-  return dynamic_cast<IIR_AssociationElement*>(IIRBase_List::first());
+  return dynamic_cast<IIR_AssociationElement*>(IIRBase_AssociationList::first());
 }
 
 IIR_AssociationElement * 
 IIRBase_AssociationList::successor(IIR_AssociationElement* node) {
-  return dynamic_cast<IIR_AssociationElement*>(IIRBase_List::successor( node ));
+  return dynamic_cast<IIR_AssociationElement*>(IIRBase_AssociationList::successor( node ));
 }
 
 IIR_Boolean

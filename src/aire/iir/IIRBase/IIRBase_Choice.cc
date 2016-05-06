@@ -49,7 +49,7 @@ IIRBase_Choice::convert_tree(plugin_class_factory *factory) {
   IIRBase_Choice *new_node = dynamic_cast<IIRBase_Choice *>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->my_value = convert_node(my_value, factory);
+  new_node->my_value = my_value->convert_tree(factory);
 
   return new_node;
 }

@@ -47,7 +47,7 @@ public:
   void set_generate_parameter_specification(IIR_ConstantDeclaration *parameter); 
   IIR_ConstantDeclaration *get_generate_parameter_specification();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   void publish_vhdl(ostream &);
 protected:

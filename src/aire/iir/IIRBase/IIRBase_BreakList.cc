@@ -30,21 +30,6 @@ IIRBase_BreakList::IIRBase_BreakList() {}
 IIRBase_BreakList::~IIRBase_BreakList() {}
 
 void
-IIRBase_BreakList::append(IIR_BreakElement* to_append) {
-  dl_list<IIR>::append( to_append );
-}
-
-IIR_BreakElement *
-IIRBase_BreakList::successor(IIR_BreakElement* succeed_me) {
-  return dynamic_cast<IIR_BreakElement *>(dl_list<IIR>::successor( succeed_me));
-}
-  
-IIR_BreakElement*
-IIRBase_BreakList::first() {
-  return dynamic_cast<IIR_BreakElement *>(dl_list<IIR>::first());
-}
-
-void
 IIRBase_BreakList::publish_vhdl(ostream &vhdl_out) {
   IIRBase_BreakElement *node;
   IIRBase_BreakElement *temp_node;

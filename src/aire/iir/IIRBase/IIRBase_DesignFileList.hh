@@ -31,17 +31,11 @@
 
 class IIR_DesignFile;
 
-class IIRBase_DesignFileList : public virtual IIRBase_List, public virtual IIR_DesignFileList{
+class IIRBase_DesignFileList : public virtual IIRBase_List<IIR_DesignFile> {
 
 public:
   IIR_Kind get_kind() const {return IIR_DESIGN_FILE_LIST;}
   const IIR_Char *get_kind_text() const {return "IIR_DesignFileList";}
-
-  void prepend( IIR_DesignFile *);
-  void append( IIR_DesignFile * );
-  IIR *successor( IIR_DesignFile * );
-  IIR *predecessor( IIR_DesignFile * );
-  IIR *first( );
 
 protected:
   IIRBase_DesignFileList();

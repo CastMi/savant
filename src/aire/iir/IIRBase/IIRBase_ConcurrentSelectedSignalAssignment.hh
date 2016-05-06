@@ -64,7 +64,7 @@ public:
   IIR_SignalDeclaration *get_guard_signal(){ return my_guard_signal; }
   void set_guard_signal( IIR_SignalDeclaration *gs ){ my_guard_signal =  gs; }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_resolved();
 

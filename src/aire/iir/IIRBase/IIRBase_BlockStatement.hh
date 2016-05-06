@@ -55,13 +55,13 @@ public:
   IIR_Kind get_kind() const {return IIR_BLOCK_STATEMENT;}
   const IIR_Char *get_kind_text() const {return "IIR_BlockStatement";}
 
-  void                          set_guard_expression( IIR *guard_expression );
-  IIR                           *get_guard_expression();
+  void                          set_guard_expression( IIR_Statement * );
+  IIR_Statement                 *get_guard_expression();
 
   IIR_SignalDeclaration         *get_implicit_guard_signal(  );
   void                          set_implicit_guard_signal( IIR_SignalDeclaration * );
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
 
@@ -79,7 +79,7 @@ private:
   IIR_DeclarationList                   *block_declarative_part;
   IIR_ArchitectureStatementList         *block_statement_part;
 
-  IIR                                   *guard_expression;
+  IIR_Statement                         *guard_expression;
   IIR_SignalDeclaration                 *implicit_guard_signal;
 
 };

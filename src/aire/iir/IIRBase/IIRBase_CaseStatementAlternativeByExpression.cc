@@ -42,7 +42,7 @@ IIRBase_CaseStatementAlternativeByExpression::convert_tree(plugin_class_factory 
   IIRBase_CaseStatementAlternativeByExpression *new_node = dynamic_cast<IIRBase_CaseStatementAlternativeByExpression *>(IIRBase_CaseStatementAlternative::convert_tree(factory));
 
   // Process the variables
-  new_node->choice = dynamic_cast<IIR_Choice *>(convert_node(choice, factory));
+  new_node->choice = dynamic_cast<IIR_Choice *>(choice->convert_tree(factory));
 
   return new_node;
 }

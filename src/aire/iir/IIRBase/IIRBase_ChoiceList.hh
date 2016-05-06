@@ -32,20 +32,15 @@
 
 class IIR_Choice;
 
-class IIRBase_ChoiceList : public virtual IIRBase_List, public virtual IIR_ChoiceList{
+class IIRBase_ChoiceList : public virtual IIRBase_List<IIR_Choice> {
 
 public:
   IIR_Kind get_kind() const {return IIR_CHOICE_LIST;};
   const IIR_Char *get_kind_text() const {return "IIR_ChoiceList";};
 
-  IIR_Choice* first();
-  IIR_Choice* successor(IIR_Choice*);
-
   void publish_vhdl(ostream &);
 protected:
   IIRBase_ChoiceList();
   virtual ~IIRBase_ChoiceList() = 0;
-    
-private:
 };
 #endif

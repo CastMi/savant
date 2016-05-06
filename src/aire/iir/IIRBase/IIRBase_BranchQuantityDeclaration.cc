@@ -133,14 +133,14 @@ IIRBase_BranchQuantityDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_BranchQuantityDeclaration *new_node = dynamic_cast<IIRBase_BranchQuantityDeclaration *>(IIRBase_QuantityDeclaration::convert_tree(factory));
 
   // Process the variables
-  new_node->across_aspect_identifier_list = dynamic_cast<IIR_DesignatorList *>(convert_node(across_aspect_identifier_list, factory));
-  new_node->through_aspect_designator_list = dynamic_cast<IIR_DesignatorList *>(convert_node(through_aspect_designator_list, factory));
-  new_node->across_aspect_expression = convert_node(across_aspect_expression, factory);
-  new_node->through_aspect_expression = convert_node(through_aspect_expression, factory);
-  new_node->plus_terminal_name = convert_node(plus_terminal_name, factory);
-  new_node->minus_terminal_name = convert_node(minus_terminal_name, factory);
-  new_node->across_aspect_tolerance = convert_node(across_aspect_tolerance, factory);
-  new_node->through_aspect_tolerance = convert_node(through_aspect_tolerance, factory);
+  new_node->across_aspect_identifier_list = dynamic_cast<IIR_DesignatorList *>(across_aspect_identifier_list->convert_node(factory));
+  new_node->through_aspect_designator_list = dynamic_cast<IIR_DesignatorList *>(through_aspect_designator_list->convert_node(factory));
+  new_node->across_aspect_expression = across_aspect_expression->convert_tree(factory);
+  new_node->through_aspect_expression = through_aspect_expression->convert_tree(factory);
+  new_node->plus_terminal_name = plus_terminal_name->convert_tree(factory);
+  new_node->minus_terminal_name = minus_terminal_name->convert_tree(factory);
+  new_node->across_aspect_tolerance = across_aspect_tolerance->convert_tree(factory);
+  new_node->through_aspect_tolerance = through_aspect_tolerance->convert_tree(factory);
 
   return new_node;
 }

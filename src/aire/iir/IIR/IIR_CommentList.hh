@@ -30,13 +30,11 @@
 
 class IIR_Comment;
 
-class IIR_CommentList : public virtual IIR_List{
+class IIR_CommentList : public virtual IIR_List<IIR_Comment> {
 
 public:
   virtual ~IIR_CommentList() {}
 
-  virtual IIR* first() = 0;
-  virtual IIR* successor(IIR_Comment*) = 0;
   virtual void append_element(IIR_Comment*) = 0;
 protected:  
 private:

@@ -29,13 +29,13 @@
 
 class IIR_ArchitectureStatement;
 
-class IIR_ArchitectureStatementList : public virtual IIR_List {
+class IIR_ArchitectureStatementList : public virtual IIR_List<IIR_ArchitectureStatement> {
 public:    
   IIR_ArchitectureStatementList() {};
   virtual ~IIR_ArchitectureStatementList() {};
+  
+  virtual IIR_ArchitectureStatementList* convert_node(plugin_class_factory *factory) = 0;
 
-  virtual IIR* first() = 0;
-  virtual IIR* successor(IIR_ArchitectureStatement*) = 0;
   virtual void append_element(IIR_ArchitectureStatement*) = 0;
 };
 #endif

@@ -31,7 +31,8 @@
 #include "IIR.hh"
 #include "dl_list.hh"
 
-class IIR_List : public virtual IIR, public dl_list<IIR> {
+template <class type>
+class IIR_List : public virtual IIR, public dl_list<type> {
 
 public:
   IIR_List(){}

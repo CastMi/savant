@@ -37,19 +37,9 @@ class IIR_PortList : public virtual IIR_InterfaceList {
 public:
   virtual ~IIR_PortList() {}
     
-  virtual void prepend( IIR_InterfaceDeclaration * ) = 0;
-  virtual void append( IIR_InterfaceDeclaration * ) = 0;
-
-  virtual void insert_after( IIR_InterfaceDeclaration *,
-                             IIR_InterfaceDeclaration * ) = 0;
-
   virtual IIR_Boolean insert_before_element( IIR_InterfaceDeclaration *,
                                              IIR_InterfaceDeclaration * ) = 0;
 
-  virtual IIR *successor( IIR_InterfaceDeclaration * ) = 0;
-  virtual IIR *predecessor( IIR_InterfaceDeclaration * ) = 0;
-  virtual IIR *first( ) = 0;
-  virtual IIR *last() = 0;
-  virtual IIR_Int32 get_position( IIR_InterfaceDeclaration * ) = 0;
+  virtual IIR_PortList* convert_node(plugin_class_factory *factory) = 0;
 };
 #endif

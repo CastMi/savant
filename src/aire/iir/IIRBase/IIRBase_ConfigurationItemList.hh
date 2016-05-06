@@ -30,7 +30,7 @@
 #include "IIRBase_List.hh"
 #include "IIR_ConfigurationItemList.hh"
 
-class IIRBase_ConfigurationItemList : public virtual IIRBase_List, public virtual IIR_ConfigurationItemList{
+class IIRBase_ConfigurationItemList : public virtual IIRBase_List<IIR_ConfigurationItem> {
 
 public:
   IIR_Kind get_kind() const {return IIR_CONFIGURATION_ITEM_LIST;}

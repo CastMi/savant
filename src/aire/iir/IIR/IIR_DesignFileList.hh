@@ -33,15 +33,10 @@
 
 class IIR_DesignFile;
 
-class IIR_DesignFileList : public virtual IIR_List{
+class IIR_DesignFileList : public virtual IIR_List<IIR_DesignFile> {
 
 public:
   virtual ~IIR_DesignFileList() {}
     
-  virtual void prepend( IIR_DesignFile *) = 0;
-  virtual void append( IIR_DesignFile * ) = 0;
-  virtual IIR *successor( IIR_DesignFile * ) = 0;
-  virtual IIR *predecessor( IIR_DesignFile * ) = 0;
-  virtual IIR *first( ) = 0;
 };
 #endif

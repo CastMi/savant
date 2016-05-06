@@ -54,7 +54,7 @@ IIRBase_ArraySubtypeDefinition::convert_tree(plugin_class_factory *factory) {
   IIRBase_ArraySubtypeDefinition *new_node = dynamic_cast<IIRBase_ArraySubtypeDefinition *>(IIRBase_ArrayTypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->resolution_function = dynamic_cast<IIR_FunctionDeclaration *>(convert_node(resolution_function, factory));
+  new_node->resolution_function = dynamic_cast<IIR_FunctionDeclaration *>(resolution_function->convert_tree(factory));
 
   return new_node;
 }

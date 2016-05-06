@@ -32,13 +32,10 @@
 
 class IIR_SelectedWaveform;
 
-class IIR_SelectedWaveformList : public virtual IIR_List{
+class IIR_SelectedWaveformList : public virtual IIR_List<IIR_SelectedWaveform> {
 public:
   virtual ~IIR_SelectedWaveformList() {}
     
-  virtual IIR_SelectedWaveform *first() = 0;
-  virtual IIR_SelectedWaveform *last() = 0;
-  virtual IIR_SelectedWaveform *successor( IIR_SelectedWaveform* node ) = 0;
 };
 
 #endif

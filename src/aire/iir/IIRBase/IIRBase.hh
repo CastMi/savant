@@ -150,8 +150,7 @@ public:
   /** This function performs the conversion of one tree into another.  At this 
       level it creates a copy of the current node using the passed in factory, 
       assuming it hasn't already been created.  */
-  virtual IIR *convert_tree(plugin_class_factory *factory);
-  virtual IIR *convert_node(IIR *node, plugin_class_factory *factory);
+  virtual IIR *convert_tree(plugin_class_factory *factory) = 0;
 
   /** Needed for guard signals */
   IIR_SignalKind get_signal_kind();

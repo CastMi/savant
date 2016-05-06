@@ -173,7 +173,6 @@ class IIR_LibraryClause;
 class IIR_LibraryDeclaration;
 class IIR_LibraryUnit;
 class IIR_LibraryUnitList;
-class IIR_List;
 class IIR_Literal;
 class IIR_LTFAttribute;
 class IIR_LowAttribute;

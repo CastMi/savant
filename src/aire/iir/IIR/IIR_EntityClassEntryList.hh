@@ -29,8 +29,9 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_List.hh"
+#include "IIR_EntityClassEntry.hh"
 
-class IIR_EntityClassEntryList : public virtual IIR_List{
+class IIR_EntityClassEntryList : public virtual IIR_List<IIR_EntityClassEntry> {
 
 public:
   virtual ~IIR_EntityClassEntryList() {}    

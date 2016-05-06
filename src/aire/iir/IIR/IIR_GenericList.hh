@@ -33,27 +33,16 @@
 
 class IIR_ConstantInterfaceDeclaration;
 
-class IIR_GenericList : public virtual IIR_InterfaceList{
+class IIR_GenericList : public virtual IIR_List<IIR_ConstantInterfaceDeclaration> {
 
 public:
   virtual ~IIR_GenericList() {}
     
-  virtual void prepend( IIR_ConstantInterfaceDeclaration* element) = 0;
-
-  virtual void append( IIR_ConstantInterfaceDeclaration* element) = 0;
-
-  virtual IIR_Boolean insert_after( IIR_ConstantInterfaceDeclaration *existing_element,
-				    IIR_ConstantInterfaceDeclaration* new_element) = 0;
-
   virtual IIR_Boolean insert_before_element( IIR_ConstantInterfaceDeclaration *existing_element, 
 				     IIR_ConstantInterfaceDeclaration* new_element) = 0;
-
-  virtual IIR *successor( IIR_ConstantInterfaceDeclaration* existing_element) = 0;
-  virtual IIR *predecessor( IIR_ConstantInterfaceDeclaration* element ) = 0;
-  virtual IIR *first( ) = 0;
-  virtual IIR *get_nth_element( IIR_Int32 ) = 0;
-  virtual IIR *last() = 0;
-
-  virtual IIR_Int32 get_position( IIR_ConstantInterfaceDeclaration* element ) = 0;
+  
+  virtual IIR_GenericList* convert_node(plugin_class_factory *factory) = 0;
+  savant::set<IIR_Declaration> *find_declarations( IIR_Name *  );
+  savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * );
 };
 #endif

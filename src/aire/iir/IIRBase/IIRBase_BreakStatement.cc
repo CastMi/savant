@@ -69,14 +69,14 @@ IIRBase_BreakStatement::is_above_attribute_found() {
 }
 
 
-IIR *
+IIR_Statement *
 IIRBase_BreakStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_BreakStatement *new_node = dynamic_cast<IIRBase_BreakStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->break_list = dynamic_cast<IIR_BreakList *>(convert_node(break_list, factory));
-  new_node->condition = convert_node(condition, factory);
+  new_node->break_list = dynamic_cast<IIR_BreakList *>(break_list->convert_node(factory));
+  new_node->condition = condition->convert_tree(factory);
 
   return new_node;
 }

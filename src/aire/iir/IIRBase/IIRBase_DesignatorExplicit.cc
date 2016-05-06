@@ -64,8 +64,8 @@ IIRBase_DesignatorExplicit::convert_tree(plugin_class_factory *factory) {
   IIRBase_DesignatorExplicit *new_node = dynamic_cast<IIRBase_DesignatorExplicit *>(IIRBase_Designator::convert_tree(factory));
 
   // Process the variables
-  new_node->name = convert_node(name, factory);
-  new_node->signature = dynamic_cast<IIR_Signature *>(convert_node(signature, factory));
+  new_node->name = name->convert_tree(factory);
+  new_node->signature = dynamic_cast<IIR_Signature *>(signature->convert_tree(factory));
 
   return new_node;
 }

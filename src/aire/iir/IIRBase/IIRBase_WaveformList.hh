@@ -33,7 +33,7 @@
 
 class IIR_WaveformElement;
 
-class IIRBase_WaveformList : public virtual IIRBase_List, public virtual IIR_WaveformList{
+class IIRBase_WaveformList : public virtual IIRBase_List<IIR_WaveformElement> {
 public:
   IIR_Kind get_kind() const {
     return IIR_WAVEFORM_LIST;
@@ -41,9 +41,6 @@ public:
   const IIR_Char *get_kind_text() const {
     return "IIR_WaveformList";
   }
-
-  IIR_WaveformElement *first();
-  IIR_WaveformElement *successor(IIR_WaveformElement *);
 
   IIR_Boolean is_above_attribute_found();
   void publish_vhdl(ostream &);

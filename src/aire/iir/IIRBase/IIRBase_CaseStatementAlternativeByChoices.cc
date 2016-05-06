@@ -50,7 +50,7 @@ IIRBase_CaseStatementAlternativeByChoices::convert_tree(plugin_class_factory *fa
   IIRBase_CaseStatementAlternativeByChoices *new_node = dynamic_cast<IIRBase_CaseStatementAlternativeByChoices *>(IIRBase_CaseStatementAlternative::convert_tree(factory));
 
   // Process the variables
-  new_node->choices = dynamic_cast<IIR_ChoiceList *>(convert_node(choices, factory));
+  new_node->choices = dynamic_cast<IIR_ChoiceList *>(choices->convert_tree(factory));
 
   return new_node;
 }

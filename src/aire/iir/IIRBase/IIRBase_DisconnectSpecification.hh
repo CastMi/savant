@@ -32,6 +32,7 @@
 #include "IIR_DisconnectSpecification.hh"
 
 class IIR_TypeDefinition;
+class IIR_Statement;
 class IIR_DesignatorList;
 
 class IIRBase_DisconnectSpecification : public virtual IIRBase_Declaration, public virtual IIR_DisconnectSpecification{
@@ -47,8 +48,8 @@ public:
   void set_type_mark( IIR_TypeDefinition *type_definition );
   IIR_TypeDefinition *get_type_mark();
 
-  void set_time_expression( IIR* time_expression);
-  IIR *get_time_expression();
+  void set_time_expression( IIR_Statement* time_expression);
+  IIR_Statement *get_time_expression();
 
   IIR *convert_tree(plugin_class_factory *factory);
 
@@ -63,6 +64,6 @@ private:
   IIR_DesignatorList *guarded_signal_list;
 
   IIR_TypeDefinition *my_type_mark;
-  IIR *my_time_expression;
+  IIR_Statement *my_time_expression;
 };
 #endif

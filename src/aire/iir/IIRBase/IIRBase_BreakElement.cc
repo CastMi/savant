@@ -22,10 +22,6 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "IIR_Name.hh"
 #include "IIRBase_BreakElement.hh"
 #include "savant.hh"
@@ -73,9 +69,9 @@ IIRBase_BreakElement::convert_tree(plugin_class_factory *factory) {
   IIRBase_BreakElement *new_node = dynamic_cast<IIRBase_BreakElement *>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->quantity_name = dynamic_cast<IIR_Name *>(convert_node(quantity_name, factory));
-  new_node->selector_quantity_name = dynamic_cast<IIR_Name *>(convert_node(selector_quantity_name, factory));
-  new_node->value = convert_node(value, factory);
+  new_node->quantity_name = dynamic_cast<IIR_Name *>(quantity_name->convert_tree(factory));
+  new_node->selector_quantity_name = dynamic_cast<IIR_Name *>(selector_quantity_name->convert_tree(factory));
+  new_node->value = value->convert_tree(factory);
 
   return new_node;
 }

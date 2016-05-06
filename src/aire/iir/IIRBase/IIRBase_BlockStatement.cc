@@ -65,12 +65,13 @@ IIRBase_BlockStatement::~IIRBase_BlockStatement(){
 }
 
 void 
-IIRBase_BlockStatement::set_guard_expression( IIR *new_guard_expression ){
-  delete guard_expression;
+IIRBase_BlockStatement::set_guard_expression( IIR_Statement *new_guard_expression ){
+   if( guard_expression )
+      delete guard_expression;
   guard_expression = new_guard_expression;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_BlockStatement::get_guard_expression(){
   return guard_expression;
 }
@@ -154,28 +155,20 @@ IIRBase_BlockStatement::set_block_statement_part(IIR_ArchitectureStatementList *
   block_statement_part = new_block_statement_part;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_BlockStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_BlockStatement *new_node = dynamic_cast<IIRBase_BlockStatement *>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->generic_clause =
-    dynamic_cast<IIR_GenericList *>(convert_node(generic_clause, factory));
-  new_node->generic_map_aspect =
-    dynamic_cast<IIR_AssociationList *>(convert_node(generic_map_aspect, factory));
-  new_node->port_clause =
-    dynamic_cast<IIR_PortList *>(convert_node(port_clause, factory));
-  new_node->port_map_aspect =
-    dynamic_cast<IIR_AssociationList *>(convert_node(port_map_aspect, factory));
-  new_node->block_declarative_part =
-    dynamic_cast<IIR_DeclarationList *>(convert_node(block_declarative_part, factory));
-  new_node->block_statement_part =
-    dynamic_cast<IIR_ArchitectureStatementList *>(convert_node(block_statement_part, factory));
-  new_node->guard_expression =
-    convert_node(guard_expression, factory);
-  new_node->implicit_guard_signal =
-    dynamic_cast<IIR_SignalDeclaration *>(convert_node(implicit_guard_signal, factory));
+  new_node->generic_clause = generic_clause->convert_node(factory);
+  new_node->generic_map_aspect = generic_map_aspect->convert_node(factory);
+  new_node->port_clause = port_clause->convert_node(factory);
+  new_node->port_map_aspect = port_map_aspect->convert_node(factory);
+  new_node->block_declarative_part = block_declarative_part->convert_node(factory);
+  new_node->block_statement_part = block_statement_part->convert_node(factory);
+  new_node->guard_expression = convert_node(guard_expression, factory);
+  new_node->implicit_guard_signal = dynamic_cast<IIR_SignalDeclaration*>(implicit_guard_signal->convert_tree(factory));
 
   return new_node;
 }

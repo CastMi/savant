@@ -33,8 +33,7 @@
 
 class IIR_AssociationElement;
 
-class IIRBase_AssociationList : public virtual IIRBase_List,
-				public virtual IIR_AssociationList{
+class IIRBase_AssociationList : public virtual IIR_AssociationList {
 public:
   IIR_Kind get_kind() const {return IIR_ASSOCIATION_LIST;}
   const IIR_Char *get_kind_text() const {return "IIR_AssociationList";}

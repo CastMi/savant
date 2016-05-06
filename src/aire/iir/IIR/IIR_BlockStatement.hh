@@ -56,8 +56,8 @@ public:
   virtual void                                  set_block_declarative_part(IIR_DeclarationList *) = 0;
   virtual void                                  set_block_statement_part(IIR_ArchitectureStatementList *) = 0;
 
-  virtual void set_guard_expression( IIR *guard_expression ) = 0;
-  virtual IIR *get_guard_expression() = 0;
+  virtual void set_guard_expression( IIR_Statement * ) = 0;
+  virtual IIR_Statement *get_guard_expression() = 0;
 
   virtual IIR_SignalDeclaration         *get_implicit_guard_signal( ) = 0;
   virtual void                          set_implicit_guard_signal( IIR_SignalDeclaration * ) = 0;

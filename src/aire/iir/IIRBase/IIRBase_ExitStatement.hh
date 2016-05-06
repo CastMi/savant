@@ -41,12 +41,12 @@ public:
   void set_enclosing_loop( IIR_SequentialStatement *enclosing_loop );
   IIR_SequentialStatement *get_enclosing_loop();
 
-  void set_condition( IIR *condition );
-  IIR *get_condition();
+  void set_condition( IIR_Statement *condition );
+  IIR_Statement *get_condition();
 
   IIR_Boolean is_above_attribute_found();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -55,6 +55,6 @@ protected:
     
 private:
   IIR_SequentialStatement *enclosing_loop;
-  IIR *condition;
+  IIR_Statement *condition;
 };
 #endif

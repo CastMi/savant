@@ -28,11 +28,11 @@
 //---------------------------------------------------------------------------
 
 #include "IIRBase_List.hh"
-#include "IIR_AttributeSpecificationList.hh"
+#include "IIR_AttributeSpecification.hh"
 
 class IIR_AttributeSpecification;
 
-class IIRBase_AttributeSpecificationList : public virtual IIRBase_List, public virtual IIR_AttributeSpecificationList{
+class IIRBase_AttributeSpecificationList : public virtual IIRBase_List<IIR_AttributeSpecification> {
 
 public:
   IIR_Kind get_kind() const {return IIR_ATTRIBUTE_SPECIFICATION_LIST;}
@@ -41,15 +41,6 @@ public:
   IIRBase_AttributeSpecificationList();
   virtual ~IIRBase_AttributeSpecificationList() = 0;
 
-  void append( IIR_AttributeSpecification * );
-
-  IIR_AttributeSpecification *successor( IIR_AttributeSpecification * );
-
-  IIR_AttributeSpecification *first();
-
-protected:
-  
-private:
 
 };
 #endif

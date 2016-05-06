@@ -58,9 +58,9 @@ IIRBase_Declaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_Declaration *new_node = dynamic_cast<IIRBase_Declaration *>(IIRBase::convert_tree(factory));
 
   // Process the variables
-  new_node->declarator = dynamic_cast<IIR_TextLiteral *>(convert_node(declarator, factory));
-  new_node->declarative_region = convert_node(declarative_region, factory);
-  new_node->attribute_name = dynamic_cast<IIR_Attribute *>(convert_node(attribute_name, factory));
+  new_node->declarator = dynamic_cast<IIR_TextLiteral *>(declarator->convert_tree(factory));
+  new_node->declarative_region = declarative_region->convert_tree(factory);
+  new_node->attribute_name = dynamic_cast<IIR_Attribute *>(attribute_name->convert_tree(factory));
 
   new_node->implicit_flag = implicit_flag;
   new_node->visible_flag = visible_flag;

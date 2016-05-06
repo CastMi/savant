@@ -58,7 +58,7 @@ IIRBase_AssociationElement::convert_tree(plugin_class_factory *factory) {
   IIRBase_AssociationElement *new_node = dynamic_cast<IIRBase_AssociationElement *>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->formal = convert_node(formal, factory);
+  new_node->formal = formal->convert_tree(factory);
 
   return new_node;
 }

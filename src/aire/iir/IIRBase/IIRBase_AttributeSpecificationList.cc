@@ -31,17 +31,3 @@
 IIRBase_AttributeSpecificationList::IIRBase_AttributeSpecificationList(){}
 IIRBase_AttributeSpecificationList::~IIRBase_AttributeSpecificationList(){}
 
-void 
-IIRBase_AttributeSpecificationList::append( IIR_AttributeSpecification *to_append ){
-    IIRBase_List::append( to_append );
-}
-
-IIR_AttributeSpecification *
-IIRBase_AttributeSpecificationList::successor( IIR_AttributeSpecification *succeed_me ){
-  return dynamic_cast<IIR_AttributeSpecification *>(IIRBase_List::successor( succeed_me ));
-}
-
-IIR_AttributeSpecification *
-IIRBase_AttributeSpecificationList::first(){
-  return dynamic_cast<IIR_AttributeSpecification *>(IIRBase_List::first());
-}

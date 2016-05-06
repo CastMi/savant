@@ -81,15 +81,15 @@ IIRBase_ConcurrentGenerateIfStatement::set_concurrent_statement_part(IIR_Archite
   concurrent_statement_part = new_concurrent_statement_part;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ConcurrentGenerateIfStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ConcurrentGenerateIfStatement *new_node = dynamic_cast<IIRBase_ConcurrentGenerateIfStatement *>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->block_declarative_part = dynamic_cast<IIR_DeclarationList *>(convert_node(block_declarative_part, factory));
-  new_node->concurrent_statement_part = dynamic_cast<IIR_ArchitectureStatementList *>(convert_node(concurrent_statement_part, factory));
-  new_node->condition = convert_node(condition, factory);
+  new_node->block_declarative_part = dynamic_cast<IIR_DeclarationList *>(block_declarative_part->convert_tree(factory));
+  new_node->concurrent_statement_part = dynamic_cast<IIR_ArchitectureStatementList *>(concurrent_statement_part->convert_tree(factory));
+  new_node->condition = condition->convert_tree(factory);
 
   return new_node;
 }

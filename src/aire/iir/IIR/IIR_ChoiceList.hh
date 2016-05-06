@@ -31,12 +31,10 @@
 
 class IIR_Choice;
 
-class IIR_ChoiceList : public virtual IIR_List{
+class IIR_ChoiceList : public virtual IIR_List<IIR_Choice> {
 
 public:
   virtual ~IIR_ChoiceList() {}
 
-  virtual IIR_Choice* first() = 0;
-  virtual IIR_Choice* successor(IIR_Choice*) = 0;
 };
 #endif

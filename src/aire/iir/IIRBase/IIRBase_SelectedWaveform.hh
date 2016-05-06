@@ -43,8 +43,8 @@ public:
   IIR_Kind get_kind() const { return IIR_SELECTED_WAVEFORM; }
   const IIR_Char *get_kind_text() const { return "IIR_SelectedWaveform"; }
 
-  IIR *get_choice();
-  void set_choice( IIR * );
+  IIR_Choice *get_choice();
+  void set_choice( IIR_Choice * );
 
   IIR *convert_tree(plugin_class_factory *factory);
 

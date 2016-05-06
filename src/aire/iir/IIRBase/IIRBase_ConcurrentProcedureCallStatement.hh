@@ -49,7 +49,7 @@ public:
   void set_procedure_name( IIR *procedure_name );
   IIR *get_procedure_name();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   void publish_vhdl(ostream &);
 protected:

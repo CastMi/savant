@@ -83,7 +83,7 @@ public:
     need_to_write_libraries=value;
   }
 
-  generic_parser                         *convert_node(plugin_class_factory *) override;
+  generic_parser                         *convert_tree(plugin_class_factory *) override;
 
 private:
   symbol_table                  *my_symbol_table;

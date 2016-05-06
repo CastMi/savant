@@ -32,7 +32,7 @@
 
 class IIR_Identifier;
 
-class IIR_IdentifierList : public virtual IIR_List{
+class IIR_IdentifierList : public virtual IIR_List<IIR_Identifier> {
 
 public:
   virtual ~IIR_IdentifierList() {}

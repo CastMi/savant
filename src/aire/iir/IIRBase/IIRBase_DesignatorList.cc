@@ -33,37 +33,7 @@
 
 IIRBase_DesignatorList::IIRBase_DesignatorList() {
 }
-
-
 IIRBase_DesignatorList::~IIRBase_DesignatorList() {}
-
-
-IIR *
-IIRBase_DesignatorList::first(){
-  IIR *retval = IIRBase_List::first();
-  return retval;
-}
-
-
-IIR *
-IIRBase_DesignatorList::successor(IIR_Designator *to_succeed){
-  IIR *test = to_succeed;
-  ASSERT( test );
-
-  IIR *retval;
-  retval = IIRBase_List::successor(to_succeed);
-
-  return retval;
-}
-
-void 
-IIRBase_DesignatorList::append( IIR_Designator *to_append ){
-  IIR *test = to_append;
-  ASSERT( test );
-
-  IIRBase_List::append( to_append );
-}
-
 IIR_Boolean
 IIRBase_DesignatorList::is_above_attribute_found() {
   IIR_Boolean retval = FALSE;

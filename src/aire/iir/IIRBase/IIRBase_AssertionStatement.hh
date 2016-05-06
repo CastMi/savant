@@ -37,16 +37,16 @@ public:
   IIR_Kind get_kind() const {return IIR_ASSERTION_STATEMENT;}
   const IIR_Char *get_kind_text() const {return "IIR_AssertionStatement";}
 
-  void set_assertion_condition( IIR* assertion_condition);
-  IIR* get_assertion_condition();
+  void set_assertion_condition( IIR_Statement* assertion_condition);
+  IIR_Statement* get_assertion_condition();
 
-  void set_report_expression( IIR* report_expression);
-  IIR* get_report_expression();
+  void set_report_expression( IIR_Statement* report_expression);
+  IIR_Statement* get_report_expression();
 
-  void set_severity_expression( IIR* expression);
-  IIR* get_severity_expression();
+  void set_severity_expression( IIR_Statement* expression);
+  IIR_Statement* get_severity_expression();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_above_attribute_found();
   
@@ -56,8 +56,8 @@ protected:
   virtual ~IIRBase_AssertionStatement() = 0;
     
 private:
-  IIR* assertion_condition;
-  IIR* report_expression;
-  IIR* expression;
+  IIR_Statement* assertion_condition;
+  IIR_Statement* report_expression;
+  IIR_Statement* expression;
 };
 #endif

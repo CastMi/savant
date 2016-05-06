@@ -39,16 +39,16 @@ public:
   void set_postponed( IIR_Boolean predicate );
   IIR_Boolean get_postponed();
 
-  void set_assertion_condition( IIR *condition );
-  IIR *get_assertion_condition();
+  void set_assertion_condition( IIR_Statement *condition );
+  IIR_Statement *get_assertion_condition();
 
-  void set_report_expression( IIR *expression );
-  IIR *get_report_expression();
+  void set_report_expression( IIR_Statement *expression );
+  IIR_Statement *get_report_expression();
 
-  void set_severity_expression(  IIR *expression );
-  IIR *get_severity_expression();
+  void set_severity_expression(  IIR_Statement *expression );
+  IIR_Statement *get_severity_expression();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -57,8 +57,8 @@ protected:
     
 private:
   IIR_Boolean predicate;
-  IIR *assertion_condition;
-  IIR *report_expression;
-  IIR *severity_expression;
+  IIR_Statement *assertion_condition;
+  IIR_Statement *report_expression;
+  IIR_Statement *severity_expression;
 };
 #endif

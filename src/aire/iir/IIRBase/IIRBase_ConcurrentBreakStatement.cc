@@ -86,15 +86,15 @@ IIRBase_ConcurrentBreakStatement::set_sensitivity_list(IIR_DesignatorList * new_
 }
 
 
-IIR *
+IIR_Statement *
 IIRBase_ConcurrentBreakStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ConcurrentBreakStatement *new_node = dynamic_cast<IIRBase_ConcurrentBreakStatement *>(IIRBase_ConcurrentBreakStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->concurrent_break_list = dynamic_cast<IIR_BreakList *>(convert_node(concurrent_break_list,factory));
-  new_node->sensitivity_list = dynamic_cast<IIR_DesignatorList *>(convert_node(sensitivity_list,factory));
-  new_node->condition = convert_node(condition, factory);
+  new_node->concurrent_break_list = dynamic_cast<IIR_BreakList *>(concurrent_break_list->convert_tree(factory));
+  new_node->sensitivity_list = dynamic_cast<IIR_DesignatorList *>(sensitivity_list->convert_tree(factory));
+  new_node->condition = condition->convert_tree(factory);
 
   return new_node;
 }

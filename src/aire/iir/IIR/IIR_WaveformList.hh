@@ -32,11 +32,9 @@
 
 class IIR_WaveformElement;
 
-class IIR_WaveformList : public virtual IIR_List{
+class IIR_WaveformList : public virtual IIR_List<IIR_WaveformElement> {
 public:
   virtual ~IIR_WaveformList() {}
     
-  virtual IIR_WaveformElement *first() = 0;
-  virtual IIR_WaveformElement *successor(IIR_WaveformElement *) = 0;
 };
 #endif

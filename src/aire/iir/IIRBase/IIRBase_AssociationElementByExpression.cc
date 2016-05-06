@@ -62,7 +62,7 @@ IIRBase_AssociationElementByExpression::convert_tree(plugin_class_factory *facto
   IIRBase_AssociationElementByExpression *new_node = dynamic_cast<IIRBase_AssociationElementByExpression *>(IIRBase_AssociationElement::convert_tree(factory));
 
   // Process the variables
-  new_node->actual = convert_node(actual, factory);
+  new_node->actual = actual->convert_tree(factory);
 
   return new_node;
 }

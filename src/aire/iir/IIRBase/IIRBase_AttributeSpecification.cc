@@ -26,10 +26,6 @@
 //---------------------------------------------------------------------------
 
 #include "IIRBase_AttributeSpecification.hh"
-
-
-
-
 #include "IIR_Declaration.hh"
 #include "IIR_DesignatorList.hh"
 #include "IIR_Identifier.hh"
@@ -86,10 +82,10 @@ IIRBase_AttributeSpecification::convert_tree(plugin_class_factory *factory) {
   IIRBase_AttributeSpecification *new_node = dynamic_cast<IIRBase_AttributeSpecification *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->entity_name_list = dynamic_cast<IIR_DesignatorList *>(convert_node(entity_name_list, factory));
-  new_node->value = convert_node(value, factory);
-  new_node->entity_class = dynamic_cast<IIR_Identifier *>(convert_node(entity_class, factory));
-  new_node->attribute_declaration = dynamic_cast<IIR_Declaration *>(convert_node(attribute_declaration, factory));
+  new_node->entity_name_list = dynamic_cast<IIR_DesignatorList *>(entity_name_list->convert_tree(factory));
+  new_node->value = value->convert_tree(factory);
+  new_node->entity_class = dynamic_cast<IIR_Identifier *>(entity_class->convert_tree(factory));
+  new_node->attribute_declaration = dynamic_cast<IIR_Declaration *>(attribute_declaration->convert_tree(factory));
 
   return new_node;
 }

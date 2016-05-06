@@ -45,7 +45,8 @@ public:
   void set_expression( IIR *expression);
   IIR* get_expression();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement
+     *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_resolved();
   IIR_Boolean has_statement_list() { return TRUE;  }

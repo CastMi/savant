@@ -30,7 +30,7 @@
 
 #include "IIR_List.hh"
 
-class IIR_EntityNameList : public virtual IIR_List{
+class IIR_EntityNameList : public virtual IIR_List<IIR> {
 
 public:
   virtual ~IIR_EntityNameList() {}    

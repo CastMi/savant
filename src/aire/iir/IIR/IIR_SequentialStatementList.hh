@@ -32,11 +32,9 @@
 
 class IIR_SequentialStatement;
 
-class IIR_SequentialStatementList : public virtual IIR_List{
+class IIR_SequentialStatementList : public virtual IIR_List<IIR_SequentialStatement> {
 public:
   virtual ~IIR_SequentialStatementList() {}
     
-  virtual IIR_SequentialStatement* first() = 0;
-  virtual IIR_SequentialStatement* successor(IIR_SequentialStatement*) = 0;
 };
 #endif

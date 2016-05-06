@@ -71,8 +71,8 @@ IIRBase_ArrayNatureDefinition::convert_tree(plugin_class_factory *factory) {
   IIRBase_ArrayNatureDefinition *new_node = dynamic_cast<IIRBase_ArrayNatureDefinition *>(IIRBase_NatureDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->index_subtype = dynamic_cast<IIR_ScalarTypeDefinition *>(convert_node(index_subtype, factory));
-  new_node->element_subtype = dynamic_cast<IIR_NatureDefinition *>(convert_node(element_subtype, factory));
+  new_node->index_subtype = dynamic_cast<IIR_ScalarTypeDefinition *>(index_subtype->convert_tree(factory));
+  new_node->element_subtype = dynamic_cast<IIR_NatureDefinition *>(element_subtype->convert_tree(factory));
   new_node->my_is_element = my_is_element;
 
   return new_node;

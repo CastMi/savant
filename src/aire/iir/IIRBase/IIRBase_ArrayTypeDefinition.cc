@@ -97,8 +97,8 @@ IIRBase_ArrayTypeDefinition::convert_tree(plugin_class_factory *factory) {
   IIRBase_ArrayTypeDefinition *new_node = dynamic_cast<IIRBase_ArrayTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->my_index_subtype = dynamic_cast<IIR_ScalarTypeDefinition *>(convert_node(my_index_subtype, factory));
-  new_node->my_element_subtype = dynamic_cast<IIR_TypeDefinition *>(convert_node(my_element_subtype, factory));  
+  new_node->my_index_subtype = dynamic_cast<IIR_ScalarTypeDefinition *>(my_index_subtype->convert_tree(factory));
+  new_node->my_element_subtype = dynamic_cast<IIR_TypeDefinition *>(my_element_subtype->convert_tree(factory));  
   new_node->my_is_element = my_is_element;
 
   return new_node;

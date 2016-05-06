@@ -67,14 +67,14 @@ IIRBase_CaseStatement::set_case_statement_alternatives(IIR_CaseStatementAlternat
   case_statement_alternatives = new_case_statement_alternatives;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_CaseStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_CaseStatement *new_node = dynamic_cast<IIRBase_CaseStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->case_statement_alternatives = dynamic_cast<IIR_CaseStatementAlternativeList *>(convert_node(case_statement_alternatives, factory));
-  new_node->my_expression = convert_node(my_expression, factory);
+  new_node->case_statement_alternatives = dynamic_cast<IIR_CaseStatementAlternativeList *>(case_statement_alternatives->convert_tree(factory));
+  new_node->my_expression = my_expression->convert_tree(factory);
 
   return new_node;
 }

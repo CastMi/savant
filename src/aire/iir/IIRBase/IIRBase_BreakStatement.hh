@@ -54,7 +54,7 @@ public:
       break element the quantity denoted by the quantity name is the "break
       quantity" of the break element. [ LRM $ 8.14 -560 ]. */  
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
  
   void publish_vhdl(ostream &);
 protected:

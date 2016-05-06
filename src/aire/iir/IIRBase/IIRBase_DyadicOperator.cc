@@ -76,9 +76,9 @@ IIRBase_DyadicOperator::convert_tree(plugin_class_factory *factory) {
   IIRBase_DyadicOperator *new_node = dynamic_cast<IIRBase_DyadicOperator *>(IIRBase_Operator::convert_tree(factory));
 
   // Process the variables
-  new_node->implementation = dynamic_cast<IIR_SubprogramDeclaration *>(convert_node(implementation, factory));
-  new_node->left_operand = convert_node(left_operand, factory);
-  new_node->right_operand = convert_node(right_operand, factory);
+  new_node->implementation = dynamic_cast<IIR_SubprogramDeclaration *>(implementation->convert_tree(factory));
+  new_node->left_operand = left_operand->convert_tree(factory);
+  new_node->right_operand = right_operand->convert_tree(factory);
 
   return new_node;
 }

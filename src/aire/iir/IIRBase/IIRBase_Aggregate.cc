@@ -57,7 +57,7 @@ IIRBase_Aggregate::convert_tree(plugin_class_factory *factory) {
   IIRBase_Aggregate *new_node = dynamic_cast<IIRBase_Aggregate *>(IIRBase_Expression::convert_tree(factory));
 
   // Process the variables
-  new_node->element_association_list = dynamic_cast<IIR_AssociationList *>(convert_node(element_association_list, factory));
+  new_node->element_association_list = dynamic_cast<IIR_AssociationList *>(element_association_list->convert_tree(factory));
 
   return new_node;
 }

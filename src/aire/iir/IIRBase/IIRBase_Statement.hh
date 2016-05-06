@@ -33,26 +33,25 @@
 
 class IIR_Label;
 
-class IIRBase_Statement : public virtual IIRBase, public virtual IIR_Statement{
+class IIRBase_Statement : public virtual IIR_Statement{
 public:
 
   void set_label( IIR_Label *label);
   IIR_Label *get_label() const;
 
-  IIR *convert_tree(plugin_class_factory *factory);
 
   savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
 
   /** For assertion statements this method is overloaded to return the
       assertion condtion.  For anything else it returns 0. */
-  IIR *get_assertion_condition(){ return 0; }
+  IIR_Statement *get_assertion_condition(){ return 0; }
   
   /** For report and assertion statements this method is overloaded to
       return the report expression.  For anything else it returns 0. */
-  IIR *get_report_expression(){ return 0; }
+  IIR_Statement *get_report_expression(){ return 0; }
   /** For report and assertion statements this method is overloaded to
       return the report expression. For anything else it returns 0. */
-  IIR *get_severity_expression(){ return 0; }
+  IIR_Statement *get_severity_expression(){ return 0; }
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
@@ -68,6 +67,8 @@ public:
 
   virtual void set_reject_time_expression( IIR * );
   virtual void set_target( IIR * );
+  
+  virtual IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   ostream &print( ostream & );
 

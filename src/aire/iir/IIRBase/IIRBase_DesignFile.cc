@@ -100,16 +100,16 @@ IIRBase_DesignFile::convert_tree(plugin_class_factory *factory) {
 
   // Process the variables
   new_node->comments =
-    dynamic_cast<IIR_CommentList *>(convert_node(comments, factory));
+    dynamic_cast<IIR_CommentList *>(comments->convert_tree(factory));
   new_node->library_units =
-    dynamic_cast<IIR_LibraryUnitList *>(convert_node(library_units, factory));
+    dynamic_cast<IIR_LibraryUnitList *>(library_units->convert_tree(factory));
   new_node->my_file_name =
-    dynamic_cast<IIR_Identifier *>(convert_node(my_file_name, factory));
+    dynamic_cast<IIR_Identifier *>(my_file_name->convert_tree(factory));
   new_node->my_std_package =
-    dynamic_cast<StandardPackage *>(convert_node(my_std_package, factory));
+    dynamic_cast<StandardPackage *>(my_std_package->convert_tree(factory));
 
   if (my_parser != NULL)
-    new_node->my_parser = my_parser->convert_node(factory);
+    new_node->my_parser = my_parser->convert_tree(factory);
   else
     new_node->my_parser = NULL;
 

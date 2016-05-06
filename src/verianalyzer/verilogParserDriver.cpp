@@ -39,7 +39,7 @@ VeriParser::VeriParser(const std::string & name, plugin_class_factory* fact, Sta
    }
 
 generic_parser *
-VeriParser::convert_node(plugin_class_factory *) {
+VeriParser::convert_tre(plugin_class_factory *) {
   if (transmuted_node != NULL) {
     return transmuted_node;
   } else {

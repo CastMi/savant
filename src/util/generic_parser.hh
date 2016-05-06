@@ -15,7 +15,7 @@ public:
   
   virtual plugin_class_factory* get_class_factory() const { ASSERT(false); };
 
-  virtual generic_parser* convert_node(plugin_class_factory *) { ASSERT(false); };
+  virtual generic_parser* convert_tree(plugin_class_factory *) { ASSERT(false); };
 
   /** Return the symbol_table associated with this parser. */
   virtual symbol_table* get_symbol_table() const { ASSERT(false); } ;

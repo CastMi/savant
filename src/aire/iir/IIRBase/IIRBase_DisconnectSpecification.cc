@@ -29,6 +29,7 @@
 #include "IIRBase_DisconnectSpecification.hh"
 #include "IIR_DesignatorList.hh"
 #include "IIR_TypeDefinition.hh"
+#include "IIR_Statement.hh"
 
 IIRBase_DisconnectSpecification::IIRBase_DisconnectSpecification() :
   guarded_signal_list(0) {
@@ -50,11 +51,11 @@ IIRBase_DisconnectSpecification::get_type_mark(){
 }
 
 void 
-IIRBase_DisconnectSpecification::set_time_expression( IIR *time_expression ){
+IIRBase_DisconnectSpecification::set_time_expression( IIR_Statement *time_expression ){
   my_time_expression = time_expression;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_DisconnectSpecification::get_time_expression(){
   return my_time_expression;
 }
@@ -80,9 +81,9 @@ IIRBase_DisconnectSpecification::convert_tree(plugin_class_factory *factory) {
   IIRBase_DisconnectSpecification *new_node = dynamic_cast<IIRBase_DisconnectSpecification *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->guarded_signal_list = dynamic_cast<IIR_DesignatorList *>(convert_node(guarded_signal_list, factory));
-  new_node->my_type_mark = dynamic_cast<IIR_TypeDefinition *>(convert_node(my_type_mark, factory));
-  new_node->my_time_expression = convert_node(my_time_expression, factory);
+  new_node->guarded_signal_list = guarded_signal_list->convert_node(factory);
+  new_node->my_type_mark = dynamic_cast<IIR_TypeDefinition *>(my_type_mark->convert_tree(factory));
+  new_node->my_time_expression = my_time_expression->convert_tree(factory);
 
   return new_node;
 }

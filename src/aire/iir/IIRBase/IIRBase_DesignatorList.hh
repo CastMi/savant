@@ -33,15 +33,11 @@
 
 class IIR_Designator;
 
-class IIRBase_DesignatorList : public virtual IIRBase_List, public virtual IIR_DesignatorList{
+class IIRBase_DesignatorList : public virtual IIRBase_List<IIR_Designator> {
 
 public:
   IIR_Kind get_kind() const {return IIR_DESIGNATOR_LIST;}
   const IIR_Char *get_kind_text() const {return "IIR_DesignatorList";}
-
-  IIR *first();
-  IIR *successor(IIR_Designator *);
-  void append( IIR_Designator * );
 
   IIR_Boolean is_above_attribute_found();
   void publish_vhdl(ostream &);

@@ -36,26 +36,37 @@ namespace savant {
   template <class type> class set;
 }
 
-class IIR_Statement : public virtual IIR{
+class IIR_Statement {
 public:
   virtual ~IIR_Statement() {}
     
   virtual void set_label( IIR_Label *label) = 0;
   virtual IIR_Label *get_label() const = 0;
 
+  virtual IIR_Boolean is_above_attribute_found() = 0;
   virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name * ) = 0;
 
   /** For assertion statements this method is overloaded to return the
       assertion condtion.  For anything else it returns 0. */
-  virtual IIR *get_assertion_condition() = 0;
+  virtual IIR_Statement *get_assertion_condition() = 0;
+  /**
+     Republish the VHDL that this node represents.  Called on a expression,
+     it would republish just the expression.  Called on a design file, the whole
+     file worth of vhdl would be republished.     
+  */
+  virtual void publish_vhdl( ostream &os ) = 0;
+  virtual IIR_Boolean is_resolved() = 0;
   
+  virtual IIR_Statement *convert_tree(plugin_class_factory *factory);
+  virtual IIR_Statement *convert_node(IIR_Statement *node, plugin_class_factory *factory);
   /** For report and assertion statements this method is overloaded to
       return the report expression.  For anything else it returns 0. */
-  virtual IIR *get_report_expression() = 0;
+  virtual IIR_Statement *get_report_expression() = 0;
 
+  virtual void copy_location( const IIR_Statement *, IIR_Statement *) = 0;
   /** For report and assertion statements this method is overloaded to
       return the report expression. For anything else it returns 0. */
-  virtual IIR *get_severity_expression() = 0;
+  virtual IIR_Statement *get_severity_expression() = 0;
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */

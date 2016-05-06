@@ -31,7 +31,7 @@ IIRBase_ArchitectureStatement::~IIRBase_ArchitectureStatement(){}
 
 void 
 IIRBase_ArchitectureStatement::set_guard_signal( IIR_SignalDeclaration * ){
-  _report_undefined_fn("set_guard_signal( IIR_Declaration * )");
+  abort();
 }
 
 void

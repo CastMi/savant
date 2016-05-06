@@ -38,7 +38,7 @@ public:
   virtual void set_enclosing_loop( IIR_SequentialStatement *enclosing_loop ) = 0;
   virtual IIR_SequentialStatement *get_enclosing_loop() = 0;
 
-  virtual void set_condition( IIR *condition ) = 0;
-  virtual IIR *get_condition() = 0;
+  virtual void set_condition( IIR_Statement *condition ) = 0;
+  virtual IIR_Statement *get_condition() = 0;
 };
 #endif

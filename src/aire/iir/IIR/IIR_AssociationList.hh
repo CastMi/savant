@@ -32,7 +32,7 @@
 
 class IIR_AssociationElement;
 
-class IIR_AssociationList : public virtual IIR_List{
+class IIR_AssociationList : public virtual IIR_List<IIR_AssociationElement> {
 
 public:
   virtual ~IIR_AssociationList() {}
@@ -41,5 +41,6 @@ public:
   virtual IIR_AssociationElement *successor(IIR_AssociationElement*) = 0;
 
   virtual IIR_Boolean is_locally_static() = 0;
+  virtual IIR_AssociationList* convert_node(plugin_class_factory *factory) = 0;
 };
 #endif

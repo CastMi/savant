@@ -66,7 +66,7 @@ IIRBase_AccessTypeDefinition::convert_tree(plugin_class_factory *factory) {
   IIRBase_AccessTypeDefinition *new_node = dynamic_cast<IIRBase_AccessTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->access_for_type = dynamic_cast<IIR_TypeDefinition *>(convert_node(access_for_type, factory));
+  new_node->access_for_type = dynamic_cast<IIR_TypeDefinition *>(access_for_type->convert_tree(factory));
 
   return new_node;
 }

@@ -35,7 +35,7 @@ class VeriParser : public generic_parser {
 
       virtual IIR_LibraryDeclaration *get_work_library() const override { ASSERT(work_library != NULL); return work_library; };
 
-      virtual generic_parser* convert_node(plugin_class_factory *) override;
+      virtual generic_parser* convert_tree(plugin_class_factory *) override;
 
       virtual symbol_table* get_symbol_table() const override { ASSERT(my_sym_table != NULL); return my_sym_table; };
 

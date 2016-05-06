@@ -137,7 +137,7 @@ IIRBase_Attribute::convert_tree(plugin_class_factory *factory) {
   IIRBase_Attribute *new_node = dynamic_cast<IIRBase_Attribute *>(IIRBase_Name::convert_tree(factory));
 
   // Process the variables
-  new_node->my_attribute_name = dynamic_cast<IIR_TextLiteral *>(convert_node(my_attribute_name, factory));
+  new_node->my_attribute_name = dynamic_cast<IIR_TextLiteral *>(my_attribute_name->convert_tree(factory));
 
   return new_node;
 }

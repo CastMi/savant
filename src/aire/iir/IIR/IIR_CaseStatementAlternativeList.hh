@@ -33,13 +33,11 @@
 
 class IIR_CaseStatementAlternative;
 
-class IIR_CaseStatementAlternativeList : public virtual IIR_List{
+class IIR_CaseStatementAlternativeList : public virtual IIR_List<IIR_CaseStatementAlternative> {
 
 public:
   virtual ~IIR_CaseStatementAlternativeList() {}
     
-  virtual IIR_CaseStatementAlternative* first() = 0;
-  virtual IIR_CaseStatementAlternative* successor(IIR_CaseStatementAlternative*) = 0;
 };
 
 #endif

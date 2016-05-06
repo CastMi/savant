@@ -30,16 +30,6 @@
 IIRBase_ArchitectureStatementList::IIRBase_ArchitectureStatementList() {}
 IIRBase_ArchitectureStatementList::~IIRBase_ArchitectureStatementList() {}
 
-IIR* 
-IIRBase_ArchitectureStatementList::first() {
-  return IIR_List::first();
-}
-
-IIR*
-IIRBase_ArchitectureStatementList::successor(IIR_ArchitectureStatement* node) {
-  return IIR_List::successor((IIR*)node);
-}
-
 void
 IIRBase_ArchitectureStatementList::append_element(IIR_ArchitectureStatement* to_append) {
   append( to_append );

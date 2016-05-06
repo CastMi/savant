@@ -34,15 +34,11 @@
 
 class IIR_ConditionalWaveform;
 
-class IIRBase_ConditionalWaveformList : public virtual IIRBase_List, public virtual IIR_ConditionalWaveformList{
+class IIRBase_ConditionalWaveformList : public virtual IIRBase_List<IIR_ConditionalWaveform> {
 
 public:
   IIR_Kind get_kind() const { return IIR_CONDITIONAL_WAVEFORM_LIST; }
   const IIR_Char *get_kind_text() const { return "IIR_ConditionalWaveformList"; }
-
-  IIR_ConditionalWaveform* first();
-  IIR_ConditionalWaveform* last();
-  IIR_ConditionalWaveform* successor(IIR_ConditionalWaveform* node);
 
   void publish_vhdl(ostream &);
 protected:

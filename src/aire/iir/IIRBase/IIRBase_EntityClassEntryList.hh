@@ -30,7 +30,7 @@
 #include "IIRBase_List.hh"
 #include "IIR_EntityClassEntryList.hh"
 
-class IIRBase_EntityClassEntryList : public virtual IIRBase_List, public virtual IIR_EntityClassEntryList{
+class IIRBase_EntityClassEntryList : public virtual IIRBase_List<IIR_EntityClassEntry> {
 
 public:
   IIR_Kind get_kind() const {return IIR_ENTITY_CLASS_ENTRY_LIST;}

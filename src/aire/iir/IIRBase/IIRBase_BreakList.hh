@@ -20,14 +20,13 @@
 // version 2, June 1991. A copy of this license agreement can be found in
 // the file "LGPL", distributed with this archive.
 
-#include "IIR_BreakList.hh"
 #include "IIRBase_List.hh"
   
 class IIR_BreakElement;
 
 /** The extension base for BreakList. This is a list of all Break Elements
     present in a break statement. */
-class IIRBase_BreakList : public virtual IIR_BreakList, public virtual IIRBase_List {
+class IIRBase_BreakList : public virtual IIRBase_List<IIR_BreakElement> {
 
 public:
   /** Returns the IIR_Kind of this node. */
@@ -40,15 +39,6 @@ public:
   IIRBase_BreakList();
   virtual ~IIRBase_BreakList()= 0;
   
-  /** Append the BreakElement to the break list. */
-  void append( IIR_BreakElement* );
-  
-  /** Returns the first Break Element in the break list. */
-  IIR_BreakElement* first();
-
-  /** Returns the next break element from the break list. */
-  IIR_BreakElement* successor( IIR_BreakElement* );
- 
   void publish_vhdl(ostream &);
 protected:
 

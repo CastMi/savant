@@ -53,7 +53,7 @@ IIRBase_AliasDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_AliasDeclaration *new_node = dynamic_cast<IIRBase_AliasDeclaration *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->name = convert_node(name, factory);
+  new_node->name = name->convert_tree(factory);
   
   return new_node;
 }

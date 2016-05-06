@@ -23,7 +23,8 @@
 #include "IIRBase.hh"
 #include "IIR_List.hh"
 
-class IIRBase_List : public virtual IIRBase, public virtual IIR_List {
+template <class type>
+class IIRBase_List : public virtual IIR_List<type> {
 public:
   /** This function performs the conversion of one tree into another.  At this 
       level it walks through the list, calling clone_tree on the contents */

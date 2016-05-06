@@ -32,23 +32,6 @@
 IIRBase_ConditionalWaveformList::IIRBase_ConditionalWaveformList() {}
 IIRBase_ConditionalWaveformList::~IIRBase_ConditionalWaveformList() {}
 
-IIR_ConditionalWaveform*
-IIRBase_ConditionalWaveformList::first() {
-  return dynamic_cast<IIR_ConditionalWaveform*>(IIRBase_List::first());
-}
-
-
-IIR_ConditionalWaveform*
-IIRBase_ConditionalWaveformList::last() {
-  return dynamic_cast<IIR_ConditionalWaveform*>(IIRBase_List::last());
-}
-
-
-IIR_ConditionalWaveform*
-IIRBase_ConditionalWaveformList::successor(IIR_ConditionalWaveform* node) {
-  return dynamic_cast<IIR_ConditionalWaveform*>(IIRBase_List::successor((IIR*)node));
-}
-
 void 
 IIRBase_ConditionalWaveformList::publish_vhdl(ostream &vhdl_out) {
   IIRBase_ConditionalWaveform* waveform_condition = NULL;

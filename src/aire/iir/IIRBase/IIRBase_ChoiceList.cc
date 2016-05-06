@@ -29,19 +29,6 @@
 IIRBase_ChoiceList::IIRBase_ChoiceList() {}
 IIRBase_ChoiceList::~IIRBase_ChoiceList() {}
 
-
-IIR_Choice* 
-IIRBase_ChoiceList::first() {
-  return dynamic_cast<IIR_Choice*>(IIRBase_List::first());
-}
-
-
-IIR_Choice*
-IIRBase_ChoiceList::successor(IIR_Choice* node) {
-  return dynamic_cast<IIR_Choice*>(IIRBase_List::successor((IIR*)node));
-}
-
-
 void 
 IIRBase_ChoiceList::publish_vhdl(ostream &vhdl_out) {
   register int numberOfChoices = 1;

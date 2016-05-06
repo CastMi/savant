@@ -34,14 +34,11 @@
 
 class IIR_ConditionalWaveform;
 
-class IIR_ConditionalWaveformList : public virtual IIR_List{
+class IIR_ConditionalWaveformList : public virtual IIR_List<IIR_ConditionalWaveform> {
 
 public:
   virtual ~IIR_ConditionalWaveformList() {}
     
-  virtual IIR_ConditionalWaveform* first() = 0;
-  virtual IIR_ConditionalWaveform* last() = 0;
-  virtual IIR_ConditionalWaveform* successor(IIR_ConditionalWaveform* node) = 0;
 
 };
 #endif

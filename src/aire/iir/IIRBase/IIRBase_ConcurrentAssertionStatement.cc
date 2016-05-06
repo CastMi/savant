@@ -48,36 +48,36 @@ IIRBase_ConcurrentAssertionStatement::get_postponed(){
 }
 
 void 
-IIRBase_ConcurrentAssertionStatement::set_assertion_condition( IIR *condition){
+IIRBase_ConcurrentAssertionStatement::set_assertion_condition( IIR_Statement *condition){
   assertion_condition = condition;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ConcurrentAssertionStatement::get_assertion_condition(){
   return assertion_condition;
 }
 
 void 
-IIRBase_ConcurrentAssertionStatement::set_report_expression( IIR *expression ){
+IIRBase_ConcurrentAssertionStatement::set_report_expression( IIR_Statement *expression ){
   report_expression = expression;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ConcurrentAssertionStatement::get_report_expression(){
   return report_expression;
 }
 
 void 
-IIRBase_ConcurrentAssertionStatement::set_severity_expression(  IIR *expression ){
+IIRBase_ConcurrentAssertionStatement::set_severity_expression(  IIR_Statement *expression ){
   severity_expression = expression;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ConcurrentAssertionStatement::get_severity_expression(){
   return severity_expression;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ConcurrentAssertionStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ConcurrentAssertionStatement *new_node = dynamic_cast<IIRBase_ConcurrentAssertionStatement *>(IIRBase_ConcurrentStatement::convert_tree(factory));

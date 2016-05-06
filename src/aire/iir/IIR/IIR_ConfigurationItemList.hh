@@ -29,8 +29,9 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_List.hh"
+#include "IIR_ConfigurationItem.hh"
 
-class IIR_ConfigurationItemList : public virtual IIR_List{
+class IIR_ConfigurationItemList : public virtual IIR_List<IIR_ConfigurationItem> {
 
 public:
   virtual ~IIR_ConfigurationItemList() {}   

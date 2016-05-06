@@ -31,19 +31,8 @@ class IIR_BreakElement;
 
 /** The extension base for BreakList. This is a list of all Break Elements
     present in a break statement. */
-class IIR_BreakList : public virtual IIR_List {
-
-public:
-  /** Append the BreakElement to the break list. */
-  virtual void append( IIR_BreakElement* ) = 0;
-  
-  /** Returns the first Break Element in the break list. */
-  virtual IIR_BreakElement* first() = 0;
-
-  /** Returns the next break element from the break list. */
-  virtual IIR_BreakElement* successor( IIR_BreakElement* ) = 0;
- 
-private:
-  
+class IIR_BreakList : public virtual IIR_List<IIR_BreakElement> {
+   public:
+  virtual IIR_BreakList* convert_node(plugin_class_factory *factory) = 0;
 };
 #endif

@@ -32,13 +32,10 @@
 
 class IIR_AttributeSpecification;
 
-class IIR_AttributeSpecificationList : public virtual IIR_List{
+class IIR_AttributeSpecificationList : public virtual IIR_List<IIR_AttributeSpecification> {
 
 public:
   virtual ~IIR_AttributeSpecificationList() {}
 
-  virtual void append( IIR_AttributeSpecification * ) = 0;
-  virtual IIR_AttributeSpecification *successor( IIR_AttributeSpecification * ) = 0;
-  virtual IIR_AttributeSpecification *first() = 0;
 };
 #endif

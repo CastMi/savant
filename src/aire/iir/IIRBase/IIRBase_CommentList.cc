@@ -28,33 +28,11 @@
 IIRBase_CommentList::IIRBase_CommentList() {}
 IIRBase_CommentList::~IIRBase_CommentList() {}
 
-IIR *
-IIRBase_CommentList::first( ){
-  IIR *retval = IIR_List::first( );
-  if( retval != NULL ){
-    ASSERT( retval->get_kind() == IIR_COMMENT );
-  }
-  return retval;
-}
-
-IIR *
-IIRBase_CommentList::successor( IIR_Comment *to_succeed ){
-  if( to_succeed != NULL ){
-    ASSERT( to_succeed->get_kind() == IIR_COMMENT );
-  }
-  IIR *retval = IIR_List::successor( (IIR *)to_succeed );
-  if( retval != NULL ){
-    ASSERT( retval->get_kind() == IIR_COMMENT ); 
-  }
-  return retval;
-}
-
 void
 IIRBase_CommentList::append_element(IIR_Comment* to_append) {
   ASSERT( to_append->get_kind() == IIR_COMMENT );
-  IIR_List::append( to_append );
+  IIRBase_List<IIR_Comment>::append( to_append );
 }
-
 
 void 
 IIRBase_CommentList::publish_vhdl(ostream &vhdl_out) {

@@ -130,58 +130,6 @@ IIRBase::copy_location(IIR *dest) {
   copy_location(this, dest);
 }
 
-IIR*
-IIRBase::convert_tree(plugin_class_factory *factory) {
-  //   The basic approach is to check for an existing copy.
-  // Otherwise we create a new version of whatever we are,
-  // and add it to the reference list
-  if ( !converted_node ) {
-    // Special case for Standard Packages, since there is no Standard Package kind
-    if( dynamic_cast<StandardPackage *>(this) != NULL ){
-      converted_node = dynamic_cast<IIRBase *>(factory->new_StandardPackage());
-    } else {
-      converted_node = dynamic_cast<IIRBase *>(factory->get_new_class(get_kind()));
-    }
-
-    // Process the variables
-    // Lists don't have a design file or subtype associated with them
-    if ( _my_design_file )
-      converted_node->_my_design_file = dynamic_cast<IIR_DesignFile *>(convert_node(_my_design_file, factory));
-    if ( subtype )
-      converted_node->subtype = dynamic_cast<IIR_TypeDefinition *>(convert_node(subtype, factory));
-
-    converted_node->iir_line_number = iir_line_number;
-
-#ifdef SCHEMATIC_INFO
-    converted_node->iir_x_coordinate = iir_x_coordinate;
-    converted_node->iir_y_coordinate = iir_y_coordinate;
-    converted_node->iir_sheet_name = dynamic_cast<IIR_Identifier *>(iir_sheet_name->convert_node(factory));
-#endif
-
-#ifdef EXTRA_LOCATERS
-    converted_node->iir_column_offset = iir_column_offset;
-    converted_node->iir_character_offset = iir_character_offset;
-#endif
-  }
-
-  return converted_node;
-}
-
-IIR*
-IIRBase::convert_node(IIR* node, plugin_class_factory *factory) {
-  IIR   *result = NULL;
-
-  if (node != NULL) {
-    if (dynamic_cast<IIRBase *>(node)->converted_node == NULL) {
-      result =  node->convert_tree(factory);
-    } else {
-      result = dynamic_cast<IIRBase *>(node)->converted_node;
-    }
-  }
-
-  return result;
-}
-
 IIR_Boolean
 IIRBase::is_ascending_range() {
   ASSERT(0);

@@ -47,7 +47,7 @@ public:
   void set_instantiated_unit( IIR *instantiated_unit );
   IIR *get_instantiated_unit();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   /** This returns the configuration for this component.  It can be an
       IIR_ConfigurationSpecification, or an IIR_ComponentConfiguration. */

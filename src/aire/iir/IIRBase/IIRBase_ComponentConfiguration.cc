@@ -133,12 +133,12 @@ IIRBase_ComponentConfiguration::convert_tree(plugin_class_factory *factory) {
   IIRBase_ComponentConfiguration *new_node = dynamic_cast<IIRBase_ComponentConfiguration *>(IIRBase_ConfigurationItem::convert_tree(factory));
 
   // Process the variables
-  new_node->instantiation_list = dynamic_cast<IIR_DesignatorList *>(convert_node(instantiation_list, factory));
-  new_node->generic_map_aspect = dynamic_cast<IIR_AssociationList *>(convert_node(generic_map_aspect, factory));
-  new_node->port_map_aspect = dynamic_cast<IIR_AssociationList *>(convert_node(port_map_aspect, factory));
-  new_node->my_component_name = convert_node(my_component_name, factory);
-  new_node->my_entity_aspect = dynamic_cast<IIR_LibraryUnit *>(convert_node(my_entity_aspect, factory));
-  new_node->my_block_configuration = dynamic_cast<IIR_BlockConfiguration *>(convert_node(my_block_configuration, factory));
+  new_node->instantiation_list = dynamic_cast<IIR_DesignatorList *>(instantiation_list->convert_tree(factory));
+  new_node->generic_map_aspect = dynamic_cast<IIR_AssociationList *>(generic_map_aspect->convert_tree(factory));
+  new_node->port_map_aspect = dynamic_cast<IIR_AssociationList *>(port_map_aspect->convert_node(factory));
+  new_node->my_component_name = my_component_name->convert_tree(factory);
+  new_node->my_entity_aspect = dynamic_cast<IIR_LibraryUnit *>(my_entity_aspect->convert_tree(factory));
+  new_node->my_block_configuration = dynamic_cast<IIR_BlockConfiguration *>(my_block_configuration->convert_tree(factory));
 
   return new_node;
 }

@@ -68,7 +68,7 @@ IIRBase_ConditionalWaveform::convert_tree(plugin_class_factory *factory) {
 
   // Process the variables
   new_node->waveform = dynamic_cast<IIR_WaveformList *>(waveform->convert_tree(factory));
-  new_node->condition = convert_node(condition, factory);
+  new_node->condition = condition->convert_tree(factory);
 
   return new_node;
 }

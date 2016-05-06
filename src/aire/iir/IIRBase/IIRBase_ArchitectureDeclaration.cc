@@ -96,9 +96,9 @@ IIRBase_ArchitectureDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_ArchitectureDeclaration *new_node = dynamic_cast<IIRBase_ArchitectureDeclaration *>(IIRBase_LibraryUnit::convert_tree(factory));
 
   // Process the variables
-  new_node->architecture_declarative_part = dynamic_cast<IIR_DeclarationList *>(convert_node(architecture_declarative_part, factory));
-  new_node->architecture_statement_part = dynamic_cast<IIR_ArchitectureStatementList *>(convert_node(architecture_statement_part, factory));
-  new_node->entity = dynamic_cast<IIR_EntityDeclaration *>(convert_node(entity, factory));
+  new_node->architecture_declarative_part = dynamic_cast<IIR_DeclarationList *>(architecture_declarative_part->convert_tree(factory));
+  new_node->architecture_statement_part = dynamic_cast<IIR_ArchitectureStatementList *>(architecture_statement_part->convert_tree(factory));
+  new_node->entity = dynamic_cast<IIR_EntityDeclaration *>(entity->convert_tree(factory));
 
   return new_node;
 }

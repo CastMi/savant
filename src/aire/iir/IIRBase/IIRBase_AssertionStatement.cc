@@ -39,28 +39,29 @@ IIRBase_AssertionStatement::~IIRBase_AssertionStatement() {
 }
 
 void
-IIRBase_AssertionStatement::set_assertion_condition( IIR* assertion_condition) {
+IIRBase_AssertionStatement::set_assertion_condition( IIR_Statement* assertion_condition) {
   this->assertion_condition = assertion_condition;
 }
-IIR*
+IIR_Statement*
 IIRBase_AssertionStatement::get_assertion_condition() {
   return assertion_condition;
 }
 
 void
-IIRBase_AssertionStatement::set_report_expression( IIR* report_expression) {
+IIRBase_AssertionStatement::set_report_expression( IIR_Statement* report_expression) {
   this->report_expression = report_expression;
 }
-IIR*
+IIR_Statement*
 IIRBase_AssertionStatement::get_report_expression() {
   return report_expression;
 }
 
 void
-IIRBase_AssertionStatement::set_severity_expression( IIR* expression) {
+IIRBase_AssertionStatement::set_severity_expression( IIR_Statement* expression) {
   this->expression = expression;
 }
-IIR*
+
+IIR_Statement*
 IIRBase_AssertionStatement::get_severity_expression() {
   return expression;
 }
@@ -77,7 +78,7 @@ IIRBase_AssertionStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_AssertionStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_AssertionStatement *new_node = dynamic_cast<IIRBase_AssertionStatement *>(IIRBase_SequentialStatement::convert_tree(factory));

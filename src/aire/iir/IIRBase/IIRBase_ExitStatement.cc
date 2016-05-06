@@ -49,11 +49,11 @@ IIRBase_ExitStatement::get_enclosing_loop(){
 }
 
 void 
-IIRBase_ExitStatement::set_condition( IIR *condition ){
+IIRBase_ExitStatement::set_condition( IIR_Statement *condition ){
   this->condition = condition;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ExitStatement::get_condition(){
   return condition;
 }
@@ -67,7 +67,7 @@ IIRBase_ExitStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ExitStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ExitStatement *new_node = dynamic_cast<IIRBase_ExitStatement *>(IIRBase_SequentialStatement::convert_tree(factory));

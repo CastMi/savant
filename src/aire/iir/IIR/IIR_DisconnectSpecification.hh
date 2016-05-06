@@ -33,6 +33,7 @@
 
 class IIR_TypeDefinition;
 class IIR_DesignatorList;
+class IIR_Statement;
 
 class IIR_DisconnectSpecification : public virtual IIR_Declaration{
 
@@ -46,7 +47,7 @@ public:
   virtual void set_type_mark( IIR_TypeDefinition *type_definition ) = 0;
   virtual IIR_TypeDefinition *get_type_mark() = 0;
 
-  virtual void set_time_expression( IIR* time_expression) = 0;
-  virtual IIR *get_time_expression() = 0;
+  virtual void set_time_expression( IIR_Statement* time_expression) = 0;
+  virtual IIR_Statement *get_time_expression() = 0;
 };
 #endif
