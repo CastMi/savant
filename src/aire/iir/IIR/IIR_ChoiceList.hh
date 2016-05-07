@@ -35,6 +35,7 @@ class IIR_ChoiceList : public virtual IIR_List<IIR_Choice> {
 
 public:
   virtual ~IIR_ChoiceList() {}
+  virtual IIR_ChoiceList* convert_node(plugin_class_factory *factory) = 0;
 
 };
 #endif

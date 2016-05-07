@@ -33,14 +33,13 @@
 
 class IIR_LibraryUnit;
 
-class IIR_LibraryUnitList : public virtual IIR_DeclarationList{
+class IIR_LibraryUnitList : public virtual IIR_List<IIR_LibraryUnit> {
 
 public:
   virtual ~IIR_LibraryUnitList() {}
+  virtual IIR_LibraryUnitList* convert_node(plugin_class_factory *factory) = 0;
+  virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name *  ) { return NULL; }
+  virtual savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * ) { return NULL; }
 
-  virtual void append( IIR_LibraryUnit * ) = 0;  
-  virtual IIR *first() = 0;
-  virtual IIR *last() = 0;
-  virtual IIR *successor( IIR_LibraryUnit * ) = 0;
 };
 #endif

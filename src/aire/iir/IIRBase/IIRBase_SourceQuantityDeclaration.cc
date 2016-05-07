@@ -77,9 +77,9 @@ IIRBase_SourceQuantityDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_SourceQuantityDeclaration *new_node = dynamic_cast<IIRBase_SourceQuantityDeclaration *>(IIRBase_QuantityDeclaration::convert_tree(factory));
 
   // Process the variables
-  new_node->magnitude_expression = convert_node(magnitude_expression, factory);
-  new_node->phase_expression = convert_node(phase_expression, factory);
-  new_node->noise_expression = convert_node(noise_expression, factory);
+  new_node->magnitude_expression = magnitude_expression->convert_tree(factory);
+  new_node->phase_expression = phase_expression->convert_tree(factory);
+  new_node->noise_expression = noise_expression->convert_tree(factory);
 
   return new_node;
 }

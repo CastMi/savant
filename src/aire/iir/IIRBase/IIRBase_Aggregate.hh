@@ -56,7 +56,7 @@ public:
   void publish_vhdl(ostream &);
 protected:
   IIRBase_Aggregate();
-  virtual ~IIRBase_Aggregate() = 0;    
+  virtual ~IIRBase_Aggregate() = 0;
 
 private:
   // List Variable(s)

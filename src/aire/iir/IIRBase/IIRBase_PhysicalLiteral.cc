@@ -70,8 +70,8 @@ IIRBase_PhysicalLiteral::convert_tree(plugin_class_factory *factory) {
   IIRBase_PhysicalLiteral *new_node = dynamic_cast<IIRBase_PhysicalLiteral *>(IIRBase_Expression::convert_tree(factory));
 
   // Process the variables
-  new_node->abstract_literal = convert_node(abstract_literal, factory);
-  new_node->unit_name = dynamic_cast<IIR_PhysicalUnit *>(convert_node(unit_name, factory));
+  new_node->abstract_literal = abstract_literal->convert_tree(factory);
+  new_node->unit_name = dynamic_cast<IIR_PhysicalUnit *>(unit_name->convert_tree(factory));
 
   return new_node;
 }

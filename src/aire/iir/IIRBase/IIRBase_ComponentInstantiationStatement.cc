@@ -84,8 +84,8 @@ IIRBase_ComponentInstantiationStatement::convert_tree(plugin_class_factory *fact
   IIRBase_ComponentInstantiationStatement *new_node = dynamic_cast<IIRBase_ComponentInstantiationStatement *>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->generic_map_aspect = dynamic_cast<IIR_AssociationList *>(generic_map_aspect->convert_tree(factory));
-  new_node->port_map_aspect = dynamic_cast<IIR_AssociationList *>(port_map_aspect->convert_tree(factory));
+  new_node->generic_map_aspect = generic_map_aspect->convert_node(factory);
+  new_node->port_map_aspect = port_map_aspect->convert_node(factory);
   new_node->my_instantiated_unit = my_instantiated_unit->convert_tree(factory);
   new_node->my_configuration = my_configuration->convert_tree(factory);
 

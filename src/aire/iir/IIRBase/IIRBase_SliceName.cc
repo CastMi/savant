@@ -52,7 +52,7 @@ IIRBase_SliceName::convert_tree(plugin_class_factory *factory) {
   IIRBase_SliceName *new_node = dynamic_cast<IIRBase_SliceName *>(IIRBase_Name::convert_tree(factory));
 
   // Process the variables
-  new_node->suffix = convert_node(suffix, factory);
+  new_node->suffix = suffix->convert_tree(factory);
 
   return new_node;
 }

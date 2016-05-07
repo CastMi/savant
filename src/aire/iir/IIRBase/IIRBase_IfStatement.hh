@@ -53,7 +53,7 @@ public:
   void set_elsif(IIR_Elsif*);
   IIR_Elsif* get_elsif();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean has_statement_list() { return TRUE; }
   IIR_Boolean is_above_attribute_found();

@@ -85,16 +85,16 @@ IIRBase_SignalAssignmentStatement::set_waveform(IIR_WaveformList *new_waveform) 
   waveform = new_waveform;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_SignalAssignmentStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_SignalAssignmentStatement *new_node = dynamic_cast<IIRBase_SignalAssignmentStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
   new_node->delay_mechanism = delay_mechanism;
-  new_node->waveform = dynamic_cast<IIR_WaveformList *>(convert_node(waveform, factory));
-  new_node->target = convert_node(target, factory);
-  new_node->reject_time_expression = convert_node(reject_time_expression, factory);
+  new_node->waveform = waveform->convert_node(factory);
+  new_node->target = target->convert_tree(factory);
+  new_node->reject_time_expression = reject_time_expression->convert_tree(factory);
 
   return new_node;
 }

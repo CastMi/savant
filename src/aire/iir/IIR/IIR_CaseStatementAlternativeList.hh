@@ -38,6 +38,9 @@ class IIR_CaseStatementAlternativeList : public virtual IIR_List<IIR_CaseStateme
 public:
   virtual ~IIR_CaseStatementAlternativeList() {}
     
+  virtual IIR_Boolean is_resolved() = 0;
+  virtual IIR_Boolean is_above_attribute_found() = 0;
+  virtual IIR_CaseStatementAlternativeList* convert_node(plugin_class_factory *factory) = 0;
 };
 
 #endif

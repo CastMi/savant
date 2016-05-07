@@ -28,8 +28,9 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_List.hh"
+#include "IIR_Name.hh"
 
-class IIR_NameList : public virtual IIR_List{
+class IIR_NameList : public virtual IIR_List<IIR_Name> {
 
 public:
   virtual ~IIR_NameList() {}    

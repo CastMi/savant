@@ -82,9 +82,9 @@ IIRBase_ScalarTypeDefinition::convert_tree(plugin_class_factory *factory) {
   IIRBase_ScalarTypeDefinition *new_node = dynamic_cast<IIRBase_ScalarTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->left = convert_node(left, factory);
-  new_node->direction = convert_node(direction, factory);
-  new_node->right = convert_node(right, factory);
+  new_node->left = left->convert_tree(factory);
+  new_node->direction = direction->convert_tree(factory);
+  new_node->right = right->convert_tree(factory);
 
   return new_node;
 }

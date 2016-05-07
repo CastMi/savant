@@ -65,7 +65,7 @@ IIRBase_SignalDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_SignalDeclaration *new_node = dynamic_cast<IIRBase_SignalDeclaration *>(IIRBase_ObjectDeclaration::convert_tree(factory));
 
   // Process the variables
-  new_node->value = convert_node(value, factory);
+  new_node->value = value->convert_tree(factory);
   new_node->signal_kind = signal_kind;
 
   return new_node;

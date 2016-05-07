@@ -67,7 +67,7 @@ IIRBase_ConditionalWaveform::convert_tree(plugin_class_factory *factory) {
   IIRBase_ConditionalWaveform *new_node = dynamic_cast<IIRBase_ConditionalWaveform *>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->waveform = dynamic_cast<IIR_WaveformList *>(waveform->convert_tree(factory));
+  new_node->waveform = waveform->convert_node(factory);
   new_node->condition = condition->convert_tree(factory);
 
   return new_node;
@@ -89,7 +89,8 @@ IIRBase_ConditionalWaveform::is_resolved(){
 
 ostream &
 IIRBase_ConditionalWaveform::print( ostream &os ){
-  os << *get_waveform();
+   // FIXME need to overload the operator<<
+  //os << *get_waveform();
 
   if( get_condition() != NULL ){
     os << "when ";

@@ -71,8 +71,7 @@ IIRBase_EnumerationTypeDefinition::convert_tree(plugin_class_factory *factory) {
     ASSERT( !new_node->is_subtype() );
     ASSERT( new_node->enumeration_literals == 0 );
     ASSERT( enumeration_literals != 0 );
-    new_node->enumeration_literals =
-      dynamic_cast<IIR_EnumerationLiteralList *>(convert_node(enumeration_literals, factory));
+    new_node->enumeration_literals = enumeration_literals->convert_node(factory);
     ASSERT( new_node->enumeration_literals != 0 );
     ASSERT( new_node->enumeration_literals->num_elements() == enumeration_literals->num_elements() );
   }
@@ -120,7 +119,8 @@ IIRBase_EnumerationTypeDefinition::is_character_type() {
 ostream&
 IIRBase_EnumerationTypeDefinition::print(ostream& os) {
   if( get_enumeration_literals()->num_elements() > 0 ){
-    get_enumeration_literals()->print(os);
+     // FIXME: overload the operator
+    //get_enumeration_literals()->print(os);
   }
   else{
     IIRBase_ScalarTypeDefinition::print( os );

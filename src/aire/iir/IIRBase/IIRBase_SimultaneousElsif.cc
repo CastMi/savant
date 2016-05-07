@@ -82,10 +82,10 @@ IIRBase_SimultaneousElsif::convert_tree(plugin_class_factory *factory) {
   IIRBase_SimultaneousElsif *new_node = dynamic_cast<IIRBase_SimultaneousElsif *>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->condition = convert_node(condition, factory);
-  new_node->else_clause = dynamic_cast<IIR_SimultaneousElsif *>(convert_node(else_clause, factory));
+  new_node->condition = condition->convert_tree(factory);
+  new_node->else_clause = dynamic_cast<IIR_SimultaneousElsif *>(else_clause->convert_tree(factory));
 
-  new_node->then_sequence_of_statements = dynamic_cast<IIR_ArchitectureStatementList *>(then_sequence_of_statements->convert_tree(factory));
+  new_node->then_sequence_of_statements = then_sequence_of_statements->convert_node(factory);
 
   return new_node;
 }

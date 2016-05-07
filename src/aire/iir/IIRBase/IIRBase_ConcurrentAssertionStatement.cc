@@ -84,9 +84,9 @@ IIRBase_ConcurrentAssertionStatement::convert_tree(plugin_class_factory *factory
 
   // Process the variables
   new_node->predicate = predicate;
-  new_node->assertion_condition = convert_node(assertion_condition, factory);
-  new_node->report_expression = convert_node(report_expression, factory);
-  new_node->severity_expression = convert_node(severity_expression, factory);
+  new_node->assertion_condition = assertion_condition->convert_tree(factory);
+  new_node->report_expression = report_expression->convert_tree(factory);
+  new_node->severity_expression = severity_expression->convert_tree(factory);
 
   return new_node;
 }

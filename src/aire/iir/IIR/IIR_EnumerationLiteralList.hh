@@ -33,14 +33,13 @@
 
 class IIR_EnumerationLiteral;
 
-class IIR_EnumerationLiteralList : public virtual IIR_DeclarationList{
+class IIR_EnumerationLiteralList :  public virtual IIR_List<IIR_EnumerationLiteral> {
 
 public:
   virtual ~IIR_EnumerationLiteralList() {}
+  virtual IIR_EnumerationLiteralList* convert_node(plugin_class_factory *factory) = 0;
+  virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name *  ) { return NULL; }
+  virtual savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * ) { return NULL; }
     
-  virtual IIR *first() = 0;
-  virtual IIR *last() = 0;
-  virtual IIR *successor( IIR_EnumerationLiteral * ) = 0;
-  virtual IIR *predecessor( IIR_EnumerationLiteral * ) = 0;
 };
 #endif

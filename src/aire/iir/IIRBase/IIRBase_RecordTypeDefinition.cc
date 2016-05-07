@@ -73,10 +73,10 @@ IIRBase_RecordTypeDefinition::convert_tree(plugin_class_factory *factory) {
   IIRBase_RecordTypeDefinition *new_node = dynamic_cast<IIRBase_RecordTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->element_declarations = dynamic_cast<IIR_ElementDeclarationList *>(convert_node(element_declarations, factory));
+  new_node->element_declarations = element_declarations->convert_node(factory);
 
   if (my_resolution_function != NULL)
-    new_node->my_resolution_function = dynamic_cast<IIR_FunctionDeclaration *>(convert_node(my_resolution_function, factory));
+    new_node->my_resolution_function = dynamic_cast<IIR_FunctionDeclaration *>(my_resolution_function->convert_tree(factory));
   else
     new_node->my_resolution_function = NULL;
 

@@ -48,7 +48,7 @@ IIRBase_QuietAttribute::convert_tree(plugin_class_factory *factory) {
   IIRBase_QuietAttribute *new_node = dynamic_cast<IIRBase_QuietAttribute *>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
-  new_node->suffix = convert_node(suffix, factory);
+  new_node->suffix = suffix->convert_tree(factory);
 
   return new_node;
 }

@@ -84,8 +84,8 @@ IIRBase_BlockConfiguration::convert_tree(plugin_class_factory *factory) {
   IIRBase_BlockConfiguration *new_node = dynamic_cast<IIRBase_BlockConfiguration *>(IIRBase_ConfigurationItem::convert_tree(factory));
 
   // Process the variables
-  new_node->use_clause_list = dynamic_cast<IIR_DeclarationList *>(use_clause_list->convert_tree(factory));
-  new_node->configuration_item_list = dynamic_cast<IIR_ConfigurationItemList *>(configuration_item_list->convert_tree(factory));
+  new_node->use_clause_list = use_clause_list->convert_node(factory);
+  new_node->configuration_item_list = configuration_item_list->convert_node(factory);
   new_node->block_specification = block_specification->convert_tree(factory);
 
   return new_node;

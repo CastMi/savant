@@ -73,14 +73,14 @@ IIRBase_ForLoopStatement::set_sequence_of_statements(IIR_SequentialStatementList
   sequence_of_statements = new_sequence_of_statements;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ForLoopStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ForLoopStatement *new_node = dynamic_cast<IIRBase_ForLoopStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->sequence_of_statements = dynamic_cast<IIR_SequentialStatementList *>(convert_node(sequence_of_statements, factory));
-  new_node->iterator = dynamic_cast<IIR_ConstantDeclaration *>(convert_node(iterator, factory));
+  new_node->sequence_of_statements = sequence_of_statements->convert_node(factory);
+  new_node->iterator = dynamic_cast<IIR_ConstantDeclaration *>(iterator->convert_tree(factory));
 
   return new_node;
 }

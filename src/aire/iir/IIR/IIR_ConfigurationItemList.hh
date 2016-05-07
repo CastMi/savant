@@ -35,5 +35,6 @@ class IIR_ConfigurationItemList : public virtual IIR_List<IIR_ConfigurationItem>
 
 public:
   virtual ~IIR_ConfigurationItemList() {}   
+  virtual IIR_ConfigurationItemList* convert_node(plugin_class_factory *factory) = 0;
 };
 #endif

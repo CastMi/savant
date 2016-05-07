@@ -74,14 +74,14 @@ IIRBase_ProcedureCallStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ProcedureCallStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ProcedureCallStatement *new_node = dynamic_cast<IIRBase_ProcedureCallStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->actual_parameter_part = dynamic_cast<IIR_AssociationList *>(convert_node(actual_parameter_part, factory));
-  new_node->procedure_name = convert_node(procedure_name, factory);
+  new_node->actual_parameter_part = actual_parameter_part->convert_node(factory);
+  new_node->procedure_name = procedure_name->convert_tree(factory);
 
   return new_node;
 }

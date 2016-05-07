@@ -113,7 +113,7 @@ IIRBase_ConcurrentConditionalSignalAssignment::convert_tree(plugin_class_factory
   IIRBase_ConcurrentConditionalSignalAssignment *new_node = dynamic_cast<IIRBase_ConcurrentConditionalSignalAssignment *>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->conditional_waveforms = dynamic_cast<IIR_ConditionalWaveformList *>(conditional_waveforms->convert_tree(factory));
+  new_node->conditional_waveforms = conditional_waveforms->convert_node(factory);
   new_node->my_guard_signal = dynamic_cast<IIR_SignalDeclaration *>(my_guard_signal->convert_tree(factory));
 
   new_node->postponed = postponed;

@@ -56,7 +56,7 @@ IIRBase_OthersInitialization::convert_tree(plugin_class_factory *factory) {
   IIRBase_OthersInitialization *new_node = dynamic_cast<IIRBase_OthersInitialization *>(IIRBase_Expression::convert_tree(factory));
 
   // Process the variables
-  new_node->expression = convert_node(expression, factory);
+  new_node->expression = expression->convert_tree(factory);
 
   return new_node;
 }

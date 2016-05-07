@@ -95,8 +95,8 @@ IIRBase_PhysicalTypeDefinition::convert_tree(plugin_class_factory *factory) {
     (IIRBase_ScalarTypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->units = dynamic_cast<IIR_UnitList *>(convert_node(units, factory));
-  new_node->primary_unit = dynamic_cast<IIR_PhysicalUnit *>(convert_node(primary_unit, factory));
+  new_node->units = units->convert_node(factory);
+  new_node->primary_unit = dynamic_cast<IIR_PhysicalUnit *>(primary_unit->convert_tree(factory));
 
   return new_node;
 }

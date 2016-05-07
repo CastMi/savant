@@ -91,9 +91,9 @@ IIRBase_ComponentDeclaration::convert_tree(plugin_class_factory *factory) {
 
   // Process the variables
   new_node->entity = dynamic_cast<IIR_EntityDeclaration *>(entity->convert_tree(factory));
-  new_node->local_generic_clause = dynamic_cast<IIR_GenericList *>(local_generic_clause->convert_tree(factory));
-  new_node->local_port_clause = dynamic_cast<IIR_PortList *>(local_port_clause->convert_tree(factory));
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(attributes->convert_tree(factory));
+  new_node->local_generic_clause = local_generic_clause->convert_node(factory);
+  new_node->local_port_clause = local_port_clause->convert_node(factory);
+  new_node->attributes = attributes->convert_node(factory);
 
   return new_node;
 }

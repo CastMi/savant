@@ -50,7 +50,7 @@ IIRBase_CaseStatementAlternativeByChoices::convert_tree(plugin_class_factory *fa
   IIRBase_CaseStatementAlternativeByChoices *new_node = dynamic_cast<IIRBase_CaseStatementAlternativeByChoices *>(IIRBase_CaseStatementAlternative::convert_tree(factory));
 
   // Process the variables
-  new_node->choices = dynamic_cast<IIR_ChoiceList *>(choices->convert_tree(factory));
+  new_node->choices = choices->convert_node(factory);
 
   return new_node;
 }
@@ -71,5 +71,6 @@ IIRBase_CaseStatementAlternativeByChoices::is_resolved(){
 
 void
 IIRBase_CaseStatementAlternativeByChoices::publish_vhdl(ostream &vhdl_out){
-  publish_vhdl_alternative(vhdl_out, get_choices());  
+   // FIXME: for each choice, publish_vhdl_alternative(vhdl_out, single_choice);  
+  //publish_vhdl_alternative(vhdl_out, get_choices());  
 }

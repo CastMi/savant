@@ -28,7 +28,7 @@ class IIRBase_List : public virtual IIR_List<type> {
 public:
   /** This function performs the conversion of one tree into another.  At this 
       level it walks through the list, calling clone_tree on the contents */
-  virtual IIR *convert_tree(plugin_class_factory *factory);
+  virtual IIRBase_List<type *> convert_node(plugin_class_factory *factory);
 
   IIR_Boolean is_resolved();
     
@@ -37,6 +37,8 @@ public:
   void publish_vhdl_decl( ostream &os ){
     publish_vhdl_decl( os, NULL );
   }
+  
+  virtual IIR_Kind get_kind() const = 0;
 
   void publish_vhdl_decl(ostream &, const char *separator );
 

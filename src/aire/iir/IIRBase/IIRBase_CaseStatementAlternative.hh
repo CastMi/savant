@@ -31,6 +31,7 @@
 #include "IIR_CaseStatementAlternative.hh"
 
 class IIR_SequentialStatementList;
+class IIR_Choice;
 
 class IIRBase_CaseStatementAlternative : public virtual IIRBase_Tuple, public virtual IIR_CaseStatementAlternative{
 
@@ -41,7 +42,7 @@ public:
 
   IIR *convert_tree(plugin_class_factory *factory);
 
-  void publish_vhdl_alternative(ostream &, IIR *);
+  void publish_vhdl_alternative(ostream &, IIR_Choice *);
 protected:
   IIRBase_CaseStatementAlternative();
   virtual ~IIRBase_CaseStatementAlternative() = 0;

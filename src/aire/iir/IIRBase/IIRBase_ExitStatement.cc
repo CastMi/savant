@@ -73,8 +73,8 @@ IIRBase_ExitStatement::convert_tree(plugin_class_factory *factory) {
   IIRBase_ExitStatement *new_node = dynamic_cast<IIRBase_ExitStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->enclosing_loop = dynamic_cast<IIR_SequentialStatement *>(convert_node(enclosing_loop, factory));
-  new_node->condition = convert_node(condition, factory);
+  new_node->enclosing_loop = dynamic_cast<IIR_SequentialStatement *>(enclosing_loop->convert_tree(factory));
+  new_node->condition = condition->convert_tree(factory);
 
   return new_node;
 }

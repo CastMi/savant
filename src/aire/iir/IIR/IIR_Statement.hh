@@ -42,7 +42,10 @@ public:
     
   virtual void set_label( IIR_Label *label) = 0;
   virtual IIR_Label *get_label() const = 0;
+  virtual const IIR_Char *get_kind_text() const = 0;
 
+  virtual void _report_undefined_fn(const char *) = 0;
+  virtual plugin_class_factory *get_class_factory();
   virtual IIR_Boolean is_above_attribute_found() = 0;
   virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name * ) = 0;
 

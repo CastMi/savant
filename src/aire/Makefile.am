@@ -452,7 +452,6 @@ libaire_la_SOURCES = \
 	iir/IIRBase/IIRBase_LibraryDeclaration.cc \
 	iir/IIRBase/IIRBase_LibraryUnit.cc \
 	iir/IIRBase/IIRBase_LibraryUnitList.cc \
-	iir/IIRBase/IIRBase_List.cc \
 	iir/IIRBase/IIRBase_Literal.cc \
 	iir/IIRBase/IIRBase_LowAttribute.cc \
 	iir/IIRBase/IIRBase_LTFAttribute.cc \
@@ -1238,7 +1237,6 @@ library_include_HEADERS = \
 	iir/IIRBase/IIRBase_LibraryDeclaration.hh \
 	iir/IIRBase/IIRBase_LibraryUnit.hh \
 	iir/IIRBase/IIRBase_LibraryUnitList.hh \
-	iir/IIRBase/IIRBase_List.hh \
 	iir/IIRBase/IIRBase_Literal.hh \
 	iir/IIRBase/IIRBase_LowAttribute.hh \
 	iir/IIRBase/IIRBase_LTFAttribute.hh \

@@ -68,7 +68,7 @@ IIRBase_InterfaceDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_InterfaceDeclaration *new_node = dynamic_cast<IIRBase_InterfaceDeclaration *>(IIRBase_ObjectDeclaration::convert_tree(factory));
 
   // Process the variables
-  new_node->value = convert_node(value, factory);
+  new_node->value = value->convert_tree(factory);
 
   new_node->mode = mode;
 

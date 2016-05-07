@@ -32,15 +32,11 @@
 
 class IIR_Identifier;
 
-class IIRBase_IdentifierList : public virtual IIRBase_List, public virtual IIR_IdentifierList{
+class IIRBase_IdentifierList : public virtual IIR_IdentifierList{
 
 public:
   IIR_Kind get_kind() const {return IIR_IDENTIFIER_LIST;}
   const IIR_Char *get_kind_text() const {return "IIR_IdentifierList";}
-
-  IIR_Identifier *first();
-  IIR_Identifier *successor( IIR_Identifier * );
-  void append( IIR_Identifier * );
 
 protected:
   IIRBase_IdentifierList();

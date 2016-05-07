@@ -27,8 +27,10 @@
 //---------------------------------------------------------------------------
 
 #include "IIRBase_Statement.hh"
+#include "plugin_class_factory.hh"
 #include "savant.hh"
 #include "IIR_Label.hh"
+#include <sstream>
 
 class IIR_Statement;
 
@@ -51,15 +53,12 @@ IIRBase_Statement::get_label() const {
   return my_label;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_Statement::convert_tree(plugin_class_factory *factory) {
-  // Get the node itself
-  IIRBase_Statement *new_node = dynamic_cast<IIRBase_Statement *>(IIRBase::convert_tree(factory));
-
   // Process the variables
-  new_node->my_label = dynamic_cast<IIR_Label *>(convert_node(my_label, factory));
+  convert_node->my_label = dynamic_cast<IIR_Label *>(my_label->convert_tree(factory));
 
-  return new_node;
+  return convert_node;
 }
 
 savant::set<IIR_Declaration> *
@@ -67,6 +66,14 @@ IIRBase_Statement::find_declarations( IIR_Name * ){
   _report_undefined_fn("IIRBase_Statement::_find_declarations( IIR_Name *name )");
 
   return NULL;
+}
+
+void 
+IIRBase_Statement::_report_undefined_fn(const char *fn_name) {
+   std::ostringstream os;
+  os << fn_name << " not defined for node: " << get_kind_text();
+  report_error( this, os.str() );
+  abort();
 }
 
 void 

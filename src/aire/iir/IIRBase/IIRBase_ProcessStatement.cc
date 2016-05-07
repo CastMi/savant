@@ -90,14 +90,14 @@ IIRBase_ProcessStatement::set_process_statement_part(IIR_SequentialStatementList
   process_statement_part = new_process_statement_part;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ProcessStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ProcessStatement *new_node = dynamic_cast<IIRBase_ProcessStatement *>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->process_declarative_part = dynamic_cast<IIR_DeclarationList *>(convert_node(process_declarative_part, factory));
-  new_node->process_statement_part = dynamic_cast<IIR_SequentialStatementList *>(convert_node(process_statement_part, factory));
+  new_node->process_declarative_part = process_declarative_part->convert_node(factory);
+  new_node->process_statement_part = process_statement_part->convert_node(factory);
   new_node->postponed = postponed;
 
   return new_node;

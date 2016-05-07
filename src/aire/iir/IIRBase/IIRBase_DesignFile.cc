@@ -99,10 +99,8 @@ IIRBase_DesignFile::convert_tree(plugin_class_factory *factory) {
   IIRBase_DesignFile *new_node = dynamic_cast<IIRBase_DesignFile *>(IIRBase::convert_tree(factory));
 
   // Process the variables
-  new_node->comments =
-    dynamic_cast<IIR_CommentList *>(comments->convert_tree(factory));
-  new_node->library_units =
-    dynamic_cast<IIR_LibraryUnitList *>(library_units->convert_tree(factory));
+  new_node->comments = comments->convert_node(factory);
+  new_node->library_units = library_units->convert_node(factory);
   new_node->my_file_name =
     dynamic_cast<IIR_Identifier *>(my_file_name->convert_tree(factory));
   new_node->my_std_package =

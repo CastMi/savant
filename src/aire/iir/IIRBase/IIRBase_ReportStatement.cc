@@ -40,21 +40,21 @@ IIRBase_ReportStatement::~IIRBase_ReportStatement() {
 }
 
 void 
-IIRBase_ReportStatement::set_report_expression( IIR* report_expression) {
+IIRBase_ReportStatement::set_report_expression( IIR_Statement* report_expression) {
   this->report_expression  = report_expression;
 }
 
-IIR* 
+IIR_Statement*
 IIRBase_ReportStatement::get_report_expression() {
   return report_expression;
 }
 
 void 
-IIRBase_ReportStatement::set_severity_expression( IIR* severity_expression) {
+IIRBase_ReportStatement::set_severity_expression( IIR_Statement* severity_expression) {
   this->severity_expression = severity_expression;
 }
 
-IIR* 
+IIR_Statement*
 IIRBase_ReportStatement::get_severity_expression() {
   return severity_expression;
 }
@@ -69,14 +69,14 @@ IIRBase_ReportStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ReportStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ReportStatement *new_node = dynamic_cast<IIRBase_ReportStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->report_expression = convert_node(report_expression, factory);
-  new_node->severity_expression = convert_node(severity_expression, factory);
+  new_node->report_expression = report_expression->convert_tree(factory);
+  new_node->severity_expression = severity_expression->convert_tree(factory);
 
   return new_node;
 }

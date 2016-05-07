@@ -35,5 +35,6 @@ class IIR_EntityClassEntryList : public virtual IIR_List<IIR_EntityClassEntry> {
 
 public:
   virtual ~IIR_EntityClassEntryList() {}    
+  virtual IIR_EntityClassEntryList* convert_node(plugin_class_factory *factory) = 0;
 };
 #endif

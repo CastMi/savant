@@ -56,8 +56,8 @@ IIRBase_LTFAttribute::convert_tree(plugin_class_factory *factory) {
   IIRBase_LTFAttribute *new_node = dynamic_cast<IIRBase_LTFAttribute *>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
-  new_node->numerator = convert_node(numerator, factory);
-  new_node->denominator = convert_node(denominator, factory);
+  new_node->numerator = numerator->convert_tree(factory);
+  new_node->denominator = denominator->convert_tree( factory);
 
   return new_node;
 }

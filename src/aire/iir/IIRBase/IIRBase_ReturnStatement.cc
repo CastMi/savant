@@ -50,23 +50,23 @@ IIRBase_ReturnStatement::get_enclosing_subprogram() {
   return enclosing_subprogram;
 }
 
-void IIRBase_ReturnStatement::set_return_expression( IIR* return_expression) {
+void IIRBase_ReturnStatement::set_return_expression( IIR_Statement* return_expression) {
   this->return_expression =  return_expression;
 }
 
-IIR*
+IIR_Statement*
 IIRBase_ReturnStatement::get_return_expression() {
   return  return_expression;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ReturnStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ReturnStatement *new_node = dynamic_cast<IIRBase_ReturnStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->enclosing_subprogram = dynamic_cast<IIR_SubprogramDeclaration *>(convert_node(enclosing_subprogram, factory));
-  new_node->return_expression = convert_node(return_expression, factory);
+  new_node->enclosing_subprogram = dynamic_cast<IIR_SubprogramDeclaration *>(enclosing_subprogram->convert_tree(factory));
+  new_node->return_expression = return_expression->convert_tree(factory);
     
   return new_node;
 }

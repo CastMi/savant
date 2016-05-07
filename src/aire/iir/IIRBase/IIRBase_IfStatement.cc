@@ -124,16 +124,16 @@ IIRBase_IfStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_IfStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_IfStatement *new_node = dynamic_cast<IIRBase_IfStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->then_sequence = dynamic_cast<IIR_SequentialStatementList *>(convert_node(then_sequence, factory));
-  new_node->else_sequence = dynamic_cast<IIR_SequentialStatementList *>(convert_node(else_sequence, factory));
-  new_node->condition = convert_node(condition, factory);
-  new_node->elsif_clause = dynamic_cast<IIR_Elsif *>(convert_node(elsif_clause, factory));
+  new_node->then_sequence = then_sequence->convert_node(factory);
+  new_node->else_sequence = else_sequence->convert_node(factory);
+  new_node->condition = condition->convert_tree(factory);
+  new_node->elsif_clause = dynamic_cast<IIR_Elsif *>(elsif_clause->convert_tree(factory));
 
   return new_node;
 }

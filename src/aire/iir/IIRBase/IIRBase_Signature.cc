@@ -66,8 +66,8 @@ IIRBase_Signature::convert_tree(plugin_class_factory *factory) {
   IIRBase_Signature *new_node = dynamic_cast<IIRBase_Signature *>(IIRBase_TypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->argument_type_list = dynamic_cast<IIR_DesignatorList *>(convert_node(argument_type_list, factory));
-  new_node->return_type = dynamic_cast<IIR_TypeDefinition *>(convert_node(return_type, factory));
+  new_node->argument_type_list = argument_type_list->convert_node(factory);
+  new_node->return_type = dynamic_cast<IIR_TypeDefinition *>(return_type->convert_tree(factory));
 
   return new_node;
 }

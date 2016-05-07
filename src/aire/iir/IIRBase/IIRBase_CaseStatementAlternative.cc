@@ -20,6 +20,7 @@
 
 #include "IIRBase_CaseStatementAlternative.hh"
 #include "IIR_SequentialStatementList.hh"
+#include "IIR_Choice.hh"
 #include "savant.hh"
 
 IIRBase_CaseStatementAlternative::IIRBase_CaseStatementAlternative() :
@@ -49,13 +50,13 @@ IIRBase_CaseStatementAlternative::convert_tree(plugin_class_factory *factory) {
   IIRBase_CaseStatementAlternative *new_node = dynamic_cast<IIRBase_CaseStatementAlternative *>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->sequence_of_statements = dynamic_cast<IIR_SequentialStatementList *>(sequence_of_statements->convert_tree(factory));
+  new_node->sequence_of_statements = dynamic_cast<IIR_SequentialStatementList *>(sequence_of_statements->convert_node(factory));
 
   return new_node;
 }
 
 void
-IIRBase_CaseStatementAlternative::publish_vhdl_alternative(ostream &vhdl_out, IIR *choice) {
+IIRBase_CaseStatementAlternative::publish_vhdl_alternative(ostream &vhdl_out, IIR_Choice *choice) {
 
   vhdl_out << "when ";
   choice->publish_vhdl(vhdl_out);

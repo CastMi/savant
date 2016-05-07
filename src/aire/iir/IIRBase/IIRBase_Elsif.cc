@@ -86,9 +86,9 @@ IIRBase_Elsif::convert_tree(plugin_class_factory *factory) {
   IIRBase_Elsif *new_node = dynamic_cast<IIRBase_Elsif *>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->then_sequence_of_statements = dynamic_cast<IIR_SequentialStatementList *>(convert_node(then_sequence_of_statements, factory));
-  new_node->condition = convert_node(condition, factory);
-  new_node->else_clause = dynamic_cast<IIR_Elsif *>(convert_node(else_clause, factory));
+  new_node->then_sequence_of_statements = then_sequence_of_statements->convert_node(factory);
+  new_node->condition = condition->convert_tree(factory);
+  new_node->else_clause = dynamic_cast<IIR_Elsif *>(else_clause->convert_tree(factory));
 
   return new_node;
 }

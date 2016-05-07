@@ -39,6 +39,8 @@ class IIR_ConditionalWaveformList : public virtual IIR_List<IIR_ConditionalWavef
 public:
   virtual ~IIR_ConditionalWaveformList() {}
     
+  virtual IIR_ConditionalWaveformList* convert_node(plugin_class_factory *factory) = 0;
+  virtual IIR_Boolean is_resolved() = 0;
 
 };
 #endif

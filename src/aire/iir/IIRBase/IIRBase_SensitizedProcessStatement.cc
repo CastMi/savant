@@ -50,13 +50,13 @@ IIRBase_SensitizedProcessStatement::set_sensitivity_list(IIR_DesignatorList *new
   sensitivity_list = new_sensitivity_list;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_SensitizedProcessStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_SensitizedProcessStatement *new_node = dynamic_cast<IIRBase_SensitizedProcessStatement *>(IIRBase_ProcessStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->sensitivity_list = dynamic_cast<IIR_DesignatorList *>(convert_node(sensitivity_list, factory));
+  new_node->sensitivity_list = sensitivity_list->convert_node(factory);
 
   return new_node;
 }

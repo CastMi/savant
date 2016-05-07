@@ -56,7 +56,7 @@ IIRBase_GroupTemplateDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_GroupTemplateDeclaration *new_node = dynamic_cast<IIRBase_GroupTemplateDeclaration *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->entity_class_entry_list = dynamic_cast<IIR_EntityClassEntryList *>(convert_node(entity_class_entry_list, factory));
+  new_node->entity_class_entry_list = dynamic_cast<IIR_EntityClassEntryList *>(entity_class_entry_list->convert_node(factory));
 
   return new_node;
 }

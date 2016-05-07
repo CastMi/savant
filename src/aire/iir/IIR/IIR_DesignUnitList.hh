@@ -34,5 +34,6 @@ class IIR_DesignUnitList : public virtual IIR_List<IIR> {
 
 public:
   virtual ~IIR_DesignUnitList() {}     
+  virtual IIR_DesignUnitList* convert_node(plugin_class_factory *factory) = 0;
 };
 #endif

@@ -88,9 +88,9 @@ IIRBase_PhysicalUnit::convert_tree(plugin_class_factory *factory) {
   IIRBase_PhysicalUnit *new_node = dynamic_cast<IIRBase_PhysicalUnit *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
-  new_node->multiplier = convert_node(multiplier, factory);
-  new_node->unit_name = dynamic_cast<IIR_PhysicalUnit *>(convert_node(unit_name, factory));
+  new_node->attributes = attributes->convert_node(factory);
+  new_node->multiplier = multiplier->convert_tree(factory);
+  new_node->unit_name = dynamic_cast<IIR_PhysicalUnit *>(unit_name->convert_tree(factory));
 
   return new_node;
 }

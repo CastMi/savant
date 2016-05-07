@@ -33,12 +33,10 @@
 
 class IIR_PhysicalUnit;
 
-class IIR_UnitList : public virtual IIR_DeclarationList{
+class IIR_UnitList : public virtual IIR_List<IIR_PhysicalUnit> {
 public:
   virtual ~IIR_UnitList() {}
+  virtual IIR_UnitList* convert_node(plugin_class_factory *factory) = 0;
     
-  virtual IIR *first() = 0;
-  virtual IIR *successor(IIR_PhysicalUnit*) = 0;
-  virtual IIR *predecessor(IIR_PhysicalUnit*) = 0;
 };
 #endif

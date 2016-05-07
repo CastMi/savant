@@ -36,6 +36,7 @@ class IIR_AttributeSpecificationList : public virtual IIR_List<IIR_AttributeSpec
 
 public:
   virtual ~IIR_AttributeSpecificationList() {}
+  virtual IIR_AttributeSpecificationList* convert_node(plugin_class_factory *factory) = 0;
 
 };
 #endif

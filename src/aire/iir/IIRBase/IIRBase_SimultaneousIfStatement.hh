@@ -53,7 +53,7 @@ public:
   void set_condition(IIR *);
   IIR* get_condition();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   void publish_vhdl(ostream &);
 protected:

@@ -61,8 +61,8 @@ IIRBase_FileDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_FileDeclaration *new_node = dynamic_cast<IIRBase_FileDeclaration *>(IIRBase_ObjectDeclaration::convert_tree(factory));
 
   // Process the variables
-  new_node->file_open_expression = convert_node(file_open_expression, factory);
-  new_node->file_logical_name = convert_node(file_logical_name, factory);
+  new_node->file_open_expression = file_open_expression->convert_tree(factory);
+  new_node->file_logical_name = file_logical_name->convert_tree(factory);
 
   return new_node;
 }

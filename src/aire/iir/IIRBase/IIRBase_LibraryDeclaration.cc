@@ -70,7 +70,7 @@ IIRBase_LibraryDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_LibraryDeclaration *new_node = dynamic_cast<IIRBase_LibraryDeclaration *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->primary_units = dynamic_cast<IIR_LibraryUnitList *>(convert_node(primary_units, factory));
+  new_node->primary_units = primary_units->convert_node(factory);
   new_node->path_to_directory = path_to_directory;
 
   return new_node;

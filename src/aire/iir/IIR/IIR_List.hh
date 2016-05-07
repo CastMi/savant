@@ -32,10 +32,12 @@
 #include "dl_list.hh"
 
 template <class type>
-class IIR_List : public virtual IIR, public dl_list<type> {
+class IIR_List : public dl_list<type> {
 
 public:
   IIR_List(){}
   virtual ~IIR_List() {}
+  virtual IIR_Kind get_kind() const = 0;
+  virtual void publish_vhdl( ostream &os ) = 0;
 };
 #endif

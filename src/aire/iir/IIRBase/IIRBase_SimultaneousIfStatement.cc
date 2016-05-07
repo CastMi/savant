@@ -22,9 +22,6 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
 #include "IIRBase_SimultaneousIfStatement.hh"
 #include "savant.hh"
 #include "IIR_ArchitectureStatementList.hh"
@@ -94,16 +91,16 @@ IIRBase_SimultaneousIfStatement::set_else_statement_list(IIR_ArchitectureStateme
   else_statement_list = new_list;
 }
 
-IIR *
+IIR_Statement*
 IIRBase_SimultaneousIfStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_SimultaneousIfStatement *new_node = dynamic_cast<IIRBase_SimultaneousIfStatement *>(IIRBase_SimultaneousStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->then_statement_list = dynamic_cast<IIR_ArchitectureStatementList *>(convert_node(then_statement_list, factory));
-  new_node->else_statement_list = dynamic_cast<IIR_ArchitectureStatementList *>(convert_node(else_statement_list, factory));
-  new_node->condition = convert_node(condition, factory);
-  new_node->elsif_clause = dynamic_cast<IIR_SimultaneousElsif *>(convert_node(elsif_clause, factory));
+  new_node->then_statement_list = then_statement_list->convert_node(factory);
+  new_node->else_statement_list = else_statement_list->convert_node(factory);
+  new_node->condition = condition->convert_tree(factory);
+  new_node->elsif_clause = dynamic_cast<IIR_SimultaneousElsif *>(elsif_clause->convert_tree(factory));
 
   return new_node;
 }

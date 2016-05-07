@@ -26,13 +26,10 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
-
 #include "savant.hh"
 #include "IIRBase_SelectedWaveform.hh"
 #include "IIR_WaveformList.hh"
+#include "IIR_Choice.hh"
 
 IIRBase_SelectedWaveform::IIRBase_SelectedWaveform() :
   waveform(0) {
@@ -42,13 +39,13 @@ IIRBase_SelectedWaveform::IIRBase_SelectedWaveform() :
 IIRBase_SelectedWaveform::~IIRBase_SelectedWaveform(){
 }
 
-IIR *
+IIR_Choice *
 IIRBase_SelectedWaveform::get_choice(){
   return my_choice;
 }
 
 void 
-IIRBase_SelectedWaveform::set_choice( IIR *choice ){
+IIRBase_SelectedWaveform::set_choice( IIR_Choice *choice ){
   my_choice = choice;
 }
 
@@ -73,8 +70,8 @@ IIRBase_SelectedWaveform::convert_tree(plugin_class_factory *factory) {
   IIRBase_SelectedWaveform *new_node = dynamic_cast<IIRBase_SelectedWaveform *>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->waveform = dynamic_cast<IIR_WaveformList *>(convert_node(waveform, factory));
-  new_node->my_choice = convert_node(my_choice, factory);
+  new_node->waveform = waveform->convert_node(factory);
+  new_node->my_choice = reinterpret_cast<IIR_Choice*>(my_choice->convert_tree(factory));
 
   return new_node;
 }

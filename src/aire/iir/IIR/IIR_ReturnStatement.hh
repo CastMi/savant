@@ -39,7 +39,7 @@ public:
   virtual void set_enclosing_subprogram( IIR_SubprogramDeclaration *enclosing_subprogram) = 0;
   virtual IIR_SubprogramDeclaration* get_enclosing_subprogram() = 0;
 
-  virtual void set_return_expression( IIR *return_expression ) = 0;
-  virtual IIR* get_return_expression() = 0;
+  virtual void set_return_expression( IIR_Statement *return_expression ) = 0;
+  virtual IIR_Statement* get_return_expression() = 0;
 };
 #endif

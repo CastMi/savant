@@ -63,7 +63,7 @@ public:
   /** Returns a pointer to the tolerance aspect of the simultaneous equation */
   IIR* get_tolerance_aspect();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
   
   void publish_vhdl(ostream &);
 protected:

@@ -167,7 +167,7 @@ IIRBase_BlockStatement::convert_tree(plugin_class_factory *factory) {
   new_node->port_map_aspect = port_map_aspect->convert_node(factory);
   new_node->block_declarative_part = block_declarative_part->convert_node(factory);
   new_node->block_statement_part = block_statement_part->convert_node(factory);
-  new_node->guard_expression = convert_node(guard_expression, factory);
+  new_node->guard_expression = guard_expression->convert_tree(factory);
   new_node->implicit_guard_signal = dynamic_cast<IIR_SignalDeclaration*>(implicit_guard_signal->convert_tree(factory));
 
   return new_node;

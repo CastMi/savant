@@ -81,11 +81,11 @@ IIRBase_ScalarNatureDefinition::convert_tree(plugin_class_factory *factory) {
   IIRBase_ScalarNatureDefinition *new_node = dynamic_cast<IIRBase_ScalarNatureDefinition *>(IIRBase_NatureDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->across = dynamic_cast<IIR_TypeDefinition *>(convert_node(across, factory));
-  new_node->through = dynamic_cast<IIR_TypeDefinition *>(convert_node(through, factory));
-  new_node->reference_terminal = dynamic_cast<IIR_TerminalDeclaration *>(convert_node(reference_terminal, factory));
-  new_node->across_tolerance = convert_node(across_tolerance, factory);
-  new_node->through_tolerance = convert_node(through_tolerance, factory);
+  new_node->across = dynamic_cast<IIR_TypeDefinition *>(across->convert_tree(factory));
+  new_node->through = dynamic_cast<IIR_TypeDefinition *>(through->convert_tree(factory));
+  new_node->reference_terminal = dynamic_cast<IIR_TerminalDeclaration *>(reference_terminal->convert_tree(factory));
+  new_node->across_tolerance = across_tolerance->convert_tree(factory);
+  new_node->through_tolerance = through_tolerance->convert_tree(factory);
 
   return new_node;
 }

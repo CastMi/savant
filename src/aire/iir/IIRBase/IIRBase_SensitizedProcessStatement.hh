@@ -42,7 +42,7 @@ public:
   IIR_Kind get_kind() const {return IIR_SENSITIZED_PROCESS_STATEMENT;}
   const IIR_Char *get_kind_text() const {return "IIR_SensitizedProcessStatement";}
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   void publish_vhdl(ostream &);
 protected:

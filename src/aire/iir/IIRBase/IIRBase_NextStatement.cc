@@ -70,14 +70,14 @@ IIRBase_NextStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_NextStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_NextStatement *new_node = dynamic_cast<IIRBase_NextStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->condition = convert_node(condition, factory);
-  new_node->loop = dynamic_cast<IIR_SequentialStatement *>(convert_node(loop, factory));
+  new_node->condition = condition->convert_tree(factory);
+  new_node->loop = dynamic_cast<IIR_SequentialStatement *>(loop->convert_tree(factory));
 
   return new_node;
 }

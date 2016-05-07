@@ -71,8 +71,8 @@ IIRBase_PackageDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_PackageDeclaration *new_node = dynamic_cast<IIRBase_PackageDeclaration *>(IIRBase_LibraryUnit::convert_tree(factory));
 
   // Process the variables
-  new_node->package_declarative_part = dynamic_cast<IIR_DeclarationList *>(convert_node(package_declarative_part, factory));
-  new_node->my_package_body = dynamic_cast<IIR_PackageBodyDeclaration *>(convert_node(my_package_body, factory));
+  new_node->package_declarative_part = package_declarative_part->convert_node(factory);
+  new_node->my_package_body = dynamic_cast<IIR_PackageBodyDeclaration *>(my_package_body->convert_tree(factory));
 
   return new_node;
 }

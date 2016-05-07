@@ -59,7 +59,7 @@ IIRBase_EnumerationSubtypeDefinition::convert_tree(plugin_class_factory *factory
     (IIRBase_EnumerationTypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->my_resolution_function = dynamic_cast<IIR_FunctionDeclaration *>(convert_node(my_resolution_function, factory));
+  new_node->my_resolution_function = dynamic_cast<IIR_FunctionDeclaration *>(my_resolution_function->convert_tree(factory));
 
   return new_node;
 }

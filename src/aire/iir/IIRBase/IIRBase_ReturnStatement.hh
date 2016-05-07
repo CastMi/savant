@@ -44,10 +44,10 @@ public:
 				 enclosing_subprogram);
   IIR_SubprogramDeclaration* get_enclosing_subprogram();
 
-  void set_return_expression( IIR* return_expression);
-  IIR* get_return_expression();
+  void set_return_expression( IIR_Statement* return_expression);
+  IIR_Statement* get_return_expression();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_resolved();
 
@@ -60,7 +60,7 @@ protected:
 private:
   
   IIR_SubprogramDeclaration* enclosing_subprogram;
-  IIR* return_expression;
+  IIR_Statement* return_expression;
 
 };
 #endif

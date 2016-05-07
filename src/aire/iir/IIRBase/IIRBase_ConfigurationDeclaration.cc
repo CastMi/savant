@@ -80,7 +80,7 @@ IIRBase_ConfigurationDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_ConfigurationDeclaration *new_node = dynamic_cast<IIRBase_ConfigurationDeclaration *>(IIRBase_LibraryUnit::convert_tree(factory));
 
   // Process the variables
-  new_node->configuration_declarative_part = dynamic_cast<IIR_DeclarationList *>(configuration_declarative_part->convert_tree(factory));
+  new_node->configuration_declarative_part = configuration_declarative_part->convert_node(factory);
   new_node->block_configuration = dynamic_cast<IIR_BlockConfiguration *>(block_configuration->convert_tree(factory));
   new_node->entity = dynamic_cast<IIR_EntityDeclaration *>(entity->convert_tree(factory));
 

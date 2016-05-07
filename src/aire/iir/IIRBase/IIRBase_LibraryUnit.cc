@@ -77,10 +77,8 @@ IIRBase_LibraryUnit::convert_tree(plugin_class_factory *factory) {
   IIRBase_LibraryUnit *new_node =
     dynamic_cast<IIRBase_LibraryUnit *>(IIRBase_Declaration::convert_tree(factory));
   // Process the variables
-  new_node->context_items =
-    dynamic_cast<IIR_DeclarationList *>(convert_node(context_items, factory));
-  new_node->attributes =
-    dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
+  new_node->context_items = context_items->convert_node(factory);
+  new_node->attributes = attributes->convert_node(factory);
 
   return new_node;
 }

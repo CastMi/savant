@@ -86,8 +86,8 @@ IIRBase_FunctionCall::convert_tree(plugin_class_factory *factory) {
   IIRBase_FunctionCall *new_node = dynamic_cast<IIRBase_FunctionCall *>(IIRBase_Expression::convert_tree(factory));
 
   // Process the variables
-  new_node->parameter_association_list = dynamic_cast<IIR_AssociationList *>(convert_node(parameter_association_list, factory));
-  new_node->implementation = dynamic_cast<IIR_SubprogramDeclaration *>(convert_node(implementation, factory));
+  new_node->parameter_association_list = parameter_association_list->convert_node(factory);
+  new_node->implementation = dynamic_cast<IIR_SubprogramDeclaration *>(implementation->convert_tree(factory));
 
   return new_node;
 }

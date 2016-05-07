@@ -60,7 +60,7 @@ IIRBase_FileTypeDefinition::convert_tree(plugin_class_factory *factory) {
   IIRBase_FileTypeDefinition *new_node = dynamic_cast<IIRBase_FileTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));
 
   // Process the variables
-  new_node->type_mark = dynamic_cast<IIR_TypeDefinition *>(convert_node(type_mark, factory));
+  new_node->type_mark = dynamic_cast<IIR_TypeDefinition *>(type_mark->convert_tree(factory));
     
   return new_node;
 }

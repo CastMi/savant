@@ -34,9 +34,8 @@ class IIR_CommentList : public virtual IIR_List<IIR_Comment> {
 
 public:
   virtual ~IIR_CommentList() {}
+  virtual IIR_CommentList* convert_node(plugin_class_factory *factory) = 0;
 
   virtual void append_element(IIR_Comment*) = 0;
-protected:  
-private:
 };
 #endif

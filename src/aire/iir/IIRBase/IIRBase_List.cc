@@ -19,19 +19,23 @@
 // the file "LGPL", distributed with this archive.
 
 #include "IIRBase_List.hh"
+#include "plugin_class_factory.hh"
 
-IIRBase_List::IIRBase_List() {}
-IIRBase_List::~IIRBase_List() {}
+template <class type>
+IIRBase_List<type>::IIRBase_List() {}
+template <class type>
+IIRBase_List<type>::~IIRBase_List() {}
 
-IIR *
-IIRBase_List::convert_tree(plugin_class_factory *factory) {
-  IIR_List *new_list = dynamic_cast<IIR_List *>(converted_node);
+template <class type>
+IIRBase_List<type *>
+IIRBase_List<type>::convert_node(plugin_class_factory *factory) {
+  static IIRBase_List<type*> *new_list;
 
   //   If we didn't find it in the existing element list, 
   // then it must be a new element
   if (new_list == NULL) {
     // Clone the list itself
-    new_list = dynamic_cast<IIR_List *>(IIRBase::convert_tree(factory));
+    new_list = factory->get_new_class(get_kind());
 
     // Now clone it's contents
     IIRBase       *old_node = dynamic_cast<IIRBase *>(first());

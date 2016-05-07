@@ -48,7 +48,7 @@ IIRBase_FreeQuantityDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_FreeQuantityDeclaration *new_node = dynamic_cast<IIRBase_FreeQuantityDeclaration *>(IIRBase_QuantityDeclaration::convert_tree(factory));
 
   // Process the variables
-  new_node->value = convert_node(value, factory);
+  new_node->value = value->convert_tree(factory);
 
   return new_node;
 }

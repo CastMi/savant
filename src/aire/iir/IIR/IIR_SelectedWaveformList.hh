@@ -35,6 +35,8 @@ class IIR_SelectedWaveform;
 class IIR_SelectedWaveformList : public virtual IIR_List<IIR_SelectedWaveform> {
 public:
   virtual ~IIR_SelectedWaveformList() {}
+  virtual IIR_SelectedWaveformList* convert_node(plugin_class_factory *factory) = 0;
+  virtual IIR_Boolean is_resolved() = 0;
     
 };
 

@@ -38,7 +38,7 @@ public:
 
   void set_label( IIR_Label *label);
   IIR_Label *get_label() const;
-
+  virtual IIR_Kind get_kind() const = 0;
 
   savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
 
@@ -68,10 +68,12 @@ public:
   virtual void set_reject_time_expression( IIR * );
   virtual void set_target( IIR * );
   
-  virtual IIR_Statement *convert_tree(plugin_class_factory *factory);
+  virtual IIR_Statement *convert_tree(plugin_class_factory *) = 0;
 
   ostream &print( ostream & );
-
+  
+  void _report_undefined_fn(const char *);
+  
   /** This method overloads the generic access method
       IIRBase::get_declarator() to return an declarator associated with the
       IIR hierarchy derived from "this" class.  The declarator associated with a
@@ -91,9 +93,8 @@ protected:
   IIRBase_Statement();
   virtual ~IIRBase_Statement() = 0;
     
-private:
-  
   IIR_Label *my_label;
+  IIRBase_Statement * convert_node;
 };
 
 #endif

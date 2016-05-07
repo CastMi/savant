@@ -38,6 +38,7 @@ class IIR_DesignatorList : public virtual IIR_List<IIR_Designator> {
 public:
   virtual ~IIR_DesignatorList() {}
   virtual IIR_DesignatorList* convert_node(plugin_class_factory *factory) = 0;
+  virtual IIR_Boolean is_resolved() = 0;
     
 };
 #endif

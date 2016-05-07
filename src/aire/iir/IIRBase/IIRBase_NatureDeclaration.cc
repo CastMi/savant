@@ -71,9 +71,9 @@ IIRBase_NatureDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_NatureDeclaration *new_node = dynamic_cast<IIRBase_NatureDeclaration *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
-  new_node->nature = dynamic_cast<IIR_NatureDefinition *>(convert_node(nature, factory));
-  new_node->reference_terminal = dynamic_cast<IIR_TerminalDeclaration *>(convert_node(reference_terminal, factory));
+  new_node->attributes = attributes->convert_node(factory);
+  new_node->nature = dynamic_cast<IIR_NatureDefinition *>(nature->convert_tree(factory));
+  new_node->reference_terminal = dynamic_cast<IIR_TerminalDeclaration *>(reference_terminal->convert_tree(factory));
 
   return new_node;
 }

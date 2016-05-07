@@ -71,7 +71,7 @@ IIRBase_Name::convert_tree(plugin_class_factory *factory) {
   IIRBase_Name *new_node = dynamic_cast<IIRBase_Name *>(IIRBase::convert_tree(factory));
 
   // Process the variables
-  new_node->prefix = convert_node(prefix, factory);
+  new_node->prefix = prefix->convert_tree(factory);
 
   return new_node;
 }

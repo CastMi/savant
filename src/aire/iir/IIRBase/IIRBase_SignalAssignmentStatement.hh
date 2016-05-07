@@ -50,7 +50,7 @@ public:
   void set_reject_time_expression( IIR* reject_time_expression);
   IIR* get_reject_time_expression();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean                   is_resolved();
   IIR_Boolean                   is_above_attribute_found();

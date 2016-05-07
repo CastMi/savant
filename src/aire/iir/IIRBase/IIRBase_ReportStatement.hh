@@ -37,14 +37,14 @@ public:
   IIR_Kind get_kind() const {return IIR_REPORT_STATEMENT;}
   const IIR_Char *get_kind_text() const {return "IIR_ReportStatement";}
 
-  void set_report_expression( IIR* report_expression);
-  IIR* get_report_expression();
-  void set_severity_expression( IIR* severity_expression);
-  IIR* get_severity_expression();
+  void set_report_expression( IIR_Statement* report_expression);
+  IIR_Statement* get_report_expression();
+  void set_severity_expression( IIR_Statement* severity_expression);
+  IIR_Statement* get_severity_expression();
 
   IIR_Boolean is_above_attribute_found();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   void publish_vhdl(ostream &);
 protected:
@@ -54,8 +54,8 @@ protected:
     
 private:
   
-  IIR* report_expression;
-  IIR* severity_expression;
+  IIR_Statement* report_expression;
+  IIR_Statement* severity_expression;
 
 };
 #endif

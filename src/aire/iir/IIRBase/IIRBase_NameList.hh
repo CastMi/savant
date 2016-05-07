@@ -30,7 +30,7 @@
 #include "IIRBase_List.hh"
 #include "IIR_NameList.hh"
 
-class IIRBase_NameList : public virtual IIRBase_List, public virtual IIR_NameList{
+class IIRBase_NameList : public virtual IIR_NameList{
 
 public:
 
@@ -42,6 +42,5 @@ protected:
   IIRBase_NameList();
   virtual ~IIRBase_NameList() = 0;
     
-private:
 };
 #endif

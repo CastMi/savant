@@ -32,14 +32,13 @@
 
 class IIR_ElementDeclaration;
 
-class IIR_ElementDeclarationList : public virtual IIR_DeclarationList{
+class IIR_ElementDeclarationList : public virtual IIR_List<IIR_ElementDeclaration>{
 
 public:
   virtual ~IIR_ElementDeclarationList() {}
+  virtual IIR_ElementDeclarationList* convert_node(plugin_class_factory *factory) = 0;
+  virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name *  ) { return NULL; }
+  virtual savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * ) { return NULL; }
     
-  virtual void append( IIR_ElementDeclaration * ) = 0;
-  virtual IIR *successor( IIR_ElementDeclaration * ) = 0;
-  virtual IIR *first() = 0;
-  virtual IIR *get_nth_element( int ) = 0;
 };
 #endif

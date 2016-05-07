@@ -83,16 +83,16 @@ IIRBase_SimpleSimultaneousStatement::get_tolerance_aspect() {
   return tolerance_aspect;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_SimpleSimultaneousStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_SimpleSimultaneousStatement *new_node = dynamic_cast<IIRBase_SimpleSimultaneousStatement *>(IIRBase_SimultaneousStatement::convert_tree(factory));
 
   // Process the variables
   new_node->purity = purity;
-  new_node->left_expression = convert_node(left_expression, factory);
-  new_node->right_expression = convert_node(right_expression, factory);
-  new_node->tolerance_aspect = convert_node(tolerance_aspect, factory);
+  new_node->left_expression = left_expression->convert_tree(factory);
+  new_node->right_expression = right_expression->convert_tree(factory);
+  new_node->tolerance_aspect = tolerance_aspect->convert_tree(factory);
 
   return new_node;
 }

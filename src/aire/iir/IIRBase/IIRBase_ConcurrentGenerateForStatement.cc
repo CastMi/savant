@@ -89,8 +89,8 @@ IIRBase_ConcurrentGenerateForStatement::convert_tree(plugin_class_factory *facto
   IIRBase_ConcurrentGenerateForStatement *new_node = dynamic_cast<IIRBase_ConcurrentGenerateForStatement *>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->block_declarative_part = dynamic_cast<IIR_DeclarationList *>(block_declarative_part->convert_tree(factory));
-  new_node->concurrent_statement_part = dynamic_cast<IIR_ArchitectureStatementList *>(concurrent_statement_part->convert_tree(factory));
+  new_node->block_declarative_part = block_declarative_part->convert_node(factory);
+  new_node->concurrent_statement_part = concurrent_statement_part->convert_node(factory);
   new_node->parameter = dynamic_cast<IIR_ConstantDeclaration *>(parameter->convert_tree(factory));
 
   return new_node;

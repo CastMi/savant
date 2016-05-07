@@ -59,6 +59,6 @@ private:
   // List Variable(s)
   IIR_WaveformList *waveform;
 
-  IIR *my_choice;
+  IIR_Choice *my_choice;
 };
 #endif

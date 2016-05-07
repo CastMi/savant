@@ -37,8 +37,5 @@ class IIR_IdentifierList : public virtual IIR_List<IIR_Identifier> {
 public:
   virtual ~IIR_IdentifierList() {}
 
-  virtual IIR_Identifier *first() = 0;
-  virtual IIR_Identifier *successor( IIR_Identifier * ) = 0;
-  virtual void append( IIR_Identifier * ) = 0;
 };
 #endif

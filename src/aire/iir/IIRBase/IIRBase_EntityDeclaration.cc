@@ -125,11 +125,11 @@ IIRBase_EntityDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_EntityDeclaration *new_node = dynamic_cast<IIRBase_EntityDeclaration *>(IIRBase_LibraryUnit::convert_tree(factory));
 
   // Process the variables
-  new_node->generic_clause = dynamic_cast<IIR_GenericList *>(convert_node(generic_clause, factory));
-  new_node->port_clause = dynamic_cast<IIR_PortList *>(convert_node(port_clause, factory));
-  new_node->entity_declarative_part = dynamic_cast<IIR_DeclarationList *>(convert_node(entity_declarative_part, factory));
-  new_node->entity_statement_part = dynamic_cast<IIR_ArchitectureStatementList *>(convert_node(entity_statement_part, factory));
-  new_node->architectures = dynamic_cast<IIR_DesignUnitList *>(convert_node(architectures, factory));
+  new_node->generic_clause = generic_clause->convert_node(factory);
+  new_node->port_clause = port_clause->convert_node(factory);
+  new_node->entity_declarative_part = entity_declarative_part->convert_node(factory);
+  new_node->entity_statement_part = entity_statement_part->convert_node(factory);
+  new_node->architectures = architectures->convert_node(factory);
 
   return new_node;
 }

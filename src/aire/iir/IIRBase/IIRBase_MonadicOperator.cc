@@ -65,8 +65,8 @@ IIRBase_MonadicOperator::convert_tree(plugin_class_factory *factory) {
     dynamic_cast<IIRBase_MonadicOperator *>(IIRBase_Operator::convert_tree(factory));
 
   // Process the variables
-  new_node->operand = convert_node(operand, factory);
-  new_node->implementation = dynamic_cast<IIR_SubprogramDeclaration *>(convert_node(implementation, factory));
+  new_node->operand = operand->convert_tree(factory);
+  new_node->implementation = dynamic_cast<IIR_SubprogramDeclaration *>(implementation->convert_tree(factory));
 
   return new_node;
 }

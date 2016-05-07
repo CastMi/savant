@@ -49,7 +49,7 @@ public:
   void set_postponed( IIR_Boolean postponed);
   IIR_Boolean get_postponed();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
   void publish_vhdl(ostream &);

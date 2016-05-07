@@ -73,8 +73,8 @@ IIRBase_Label::convert_tree(plugin_class_factory *factory) {
   IIRBase_Label *new_node = dynamic_cast<IIRBase_Label *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
-  new_node->my_statement = dynamic_cast<IIR_Statement *>(convert_node(my_statement, factory));
+  new_node->attributes = attributes->convert_node(factory);
+  new_node->my_statement = dynamic_cast<IIR_Statement *>(my_statement->convert_tree(factory));
 
   return new_node;
 }

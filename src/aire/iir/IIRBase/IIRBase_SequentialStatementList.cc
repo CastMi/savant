@@ -31,18 +31,6 @@
 IIRBase_SequentialStatementList::IIRBase_SequentialStatementList() {}
 IIRBase_SequentialStatementList::~IIRBase_SequentialStatementList() {}
 
-
-IIR_SequentialStatement* 
-IIRBase_SequentialStatementList::first() {
-  return dynamic_cast<IIR_SequentialStatement*>(IIR_List::first());
-}
-
-
-IIR_SequentialStatement*
-IIRBase_SequentialStatementList::successor(IIR_SequentialStatement* node) {
-  return dynamic_cast<IIR_SequentialStatement*>(IIR_List::successor((IIR*)node));
-}
-
 IIR_Boolean
 IIRBase_SequentialStatementList::is_above_attribute_found() {
   IIR_Boolean retval = FALSE;
@@ -54,8 +42,6 @@ IIRBase_SequentialStatementList::is_above_attribute_found() {
   }
   return retval;
 }
-
-
 
 void 
 IIRBase_SequentialStatementList::publish_vhdl(ostream &vhdl_out) {

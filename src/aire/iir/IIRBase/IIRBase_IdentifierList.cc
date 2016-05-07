@@ -33,18 +33,3 @@ IIRBase_IdentifierList::IIRBase_IdentifierList(){
 
 IIRBase_IdentifierList::~IIRBase_IdentifierList(){
 }
-
-IIR_Identifier *
-IIRBase_IdentifierList::first(){
-  return dynamic_cast<IIR_Identifier *>(IIRBase_List::first());
-}
-
-IIR_Identifier *
-IIRBase_IdentifierList::successor( IIR_Identifier *to_succeed ){
-  return dynamic_cast<IIR_Identifier *>(IIRBase_List::successor( to_succeed ));
-}
-
-void 
-IIRBase_IdentifierList::append( IIR_Identifier *to_append ){
-  IIRBase_List::append( to_append );
-}

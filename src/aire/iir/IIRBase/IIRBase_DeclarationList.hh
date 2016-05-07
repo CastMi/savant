@@ -38,17 +38,6 @@ public:
   IIR_Kind get_kind() const { return IIR_DECLARATION_LIST; }
   const IIR_Char *get_kind_text() const { return "IIR_DeclarationList"; }
 
-  void append( IIR_Declaration * );
-  void prepend( IIR_Declaration * );
-
-  IIR *successor( IIR_Declaration * );
-  IIR *predecessor( IIR_Declaration * );
-
-  IIR *first();
-  IIR *last();
-
-  IIR *get_nth_element( IIR_Int32 );
-
   savant::set<IIR_Declaration> *find_declarations( IIR_Name *  );
   savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * );
 

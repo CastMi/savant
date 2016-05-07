@@ -61,8 +61,8 @@ IIRBase_EnumerationLiteral::convert_tree(plugin_class_factory *factory) {
   IIRBase_EnumerationLiteral *new_node = dynamic_cast<IIRBase_EnumerationLiteral *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
-  new_node->my_position = convert_node(my_position, factory);
+  new_node->attributes = attributes->convert_node(factory);
+  new_node->my_position = my_position->convert_tree(factory);
 
   return new_node;
 }

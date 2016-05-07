@@ -93,9 +93,9 @@ IIRBase_GroupDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_GroupDeclaration *new_node = dynamic_cast<IIRBase_GroupDeclaration *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->group_constituent_list = dynamic_cast<IIR_DesignatorList *>(convert_node(group_constituent_list, factory));
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
-  new_node->group_template_name = dynamic_cast<IIR_Name *>(convert_node(group_template_name, factory));
+  new_node->group_constituent_list = group_constituent_list->convert_node(factory);
+  new_node->attributes = attributes->convert_node(factory);
+  new_node->group_template_name = dynamic_cast<IIR_Name *>(group_template_name->convert_tree(factory));
 
   return new_node;
 }

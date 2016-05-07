@@ -68,10 +68,10 @@ IIRBase_LibraryClause::convert_tree(plugin_class_factory *factory) {
     dynamic_cast<IIRBase_LibraryClause *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->logical_name = dynamic_cast<IIR_Identifier *>(convert_node(logical_name, factory));
+  new_node->logical_name = dynamic_cast<IIR_Identifier *>(logical_name->convert_tree(factory));
 
   new_node->library_declaration =
-    dynamic_cast<IIR_LibraryDeclaration *>(convert_node(library_declaration, factory));
+    dynamic_cast<IIR_LibraryDeclaration *>(library_declaration->convert_tree(factory));
   
   return new_node;
 }

@@ -35,6 +35,8 @@ class IIR_SequentialStatement;
 class IIR_SequentialStatementList : public virtual IIR_List<IIR_SequentialStatement> {
 public:
   virtual ~IIR_SequentialStatementList() {}
+  virtual IIR_SequentialStatementList* convert_node(plugin_class_factory *factory) = 0;
+  virtual IIR_Boolean is_above_attribute_found() = 0;
     
 };
 #endif

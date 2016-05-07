@@ -45,7 +45,7 @@ IIRBase_RightAttribute::convert_tree(plugin_class_factory *factory) {
   IIRBase_RightAttribute *new_node = dynamic_cast<IIRBase_RightAttribute *>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
-  new_node->my_suffix = convert_node(my_suffix, factory);
+  new_node->my_suffix = my_suffix->convert_tree(factory);
 
   return new_node;
 }

@@ -96,8 +96,8 @@ IIRBase_ConcurrentProcedureCallStatement::convert_tree(plugin_class_factory *fac
   IIRBase_ConcurrentProcedureCallStatement *new_node = dynamic_cast<IIRBase_ConcurrentProcedureCallStatement *>(IIRBase_ConcurrentStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->actual_parameter_part = dynamic_cast<IIR_AssociationList *>(actual_parameter_part->convert_tree(factory));
-  new_node->process_statement_part = dynamic_cast<IIR_ArchitectureStatementList *>(process_statement_part->convert_tree(factory));
+  new_node->actual_parameter_part = actual_parameter_part->convert_node(factory);
+  new_node->process_statement_part = process_statement_part->convert_node(factory);
   new_node->postponed = postponed;
   new_node->procedure_name = procedure_name->convert_tree(factory);
 
