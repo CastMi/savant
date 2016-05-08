@@ -33,6 +33,7 @@
 #include "IIRScram_Allocator.hh"
 #include "IIRScram_TypeDefinition.hh"
 #include "IIRScram_AccessTypeDefinition.hh"
+#include "IIRScram_Statement.hh"
 #include "symbol_table.hh"
 #include "set.hh"
 
@@ -66,9 +67,9 @@ IIRScram_Allocator::_accept_visitor( node_visitor *visitor,
   return visitor->visit_IIR_Allocator(this, arg);
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_Allocator::_get_value() {
-  return dynamic_cast<IIRScram *>(IIRBase_Allocator::get_value());
+  return dynamic_cast<IIRScram_Statement *>(IIRBase_Allocator::get_value());
 }
 
 IIRScram_TypeDefinition *

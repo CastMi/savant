@@ -32,8 +32,6 @@
 #include "IIRScram_SequentialStatement.hh"
 #include "IIRBase_AssertionStatement.hh"
 
-class IIRScram_List;
-
 class IIRScram_AssertionStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_AssertionStatement{
 
 public:
@@ -45,13 +43,11 @@ public:
 
   
   void _type_check();
-  IIRScram *_clone();
+  IIRScram_Statement *_clone();
 
-  IIRScram *_get_assertion_condition();  
-  IIRScram *_get_report_expression();  
-  IIRScram *_get_severity_expression();
+  IIRScram_Statement *_get_assertion_condition();  
+  IIRScram_Statement *_get_report_expression();  
+  IIRScram_Statement *_get_severity_expression();
 
-protected:      
-private:
 };
 #endif

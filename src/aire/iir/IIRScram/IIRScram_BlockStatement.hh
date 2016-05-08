@@ -35,10 +35,8 @@
 #include "IIRBase_BlockStatement.hh"
 
 class IIRScram_AssociationElement;
-class IIRScram_AssociationList;
 class IIRScram_GenericList;
 class IIRScram_Label;
-class IIRScram_List;
 class IIRScram_Name;
 class IIRScram_SignalDeclaration;
 
@@ -54,9 +52,9 @@ public:
   void _type_check();
 
   IIRScram_SignalDeclaration            *_get_implicit_guard_signal();
-  IIRScram_List                         *_get_statement_list();
+  IIRScram_List<IIR_Statement>         *_get_statement_list();
   IIRScram_GenericList                  *_get_generic_list();
-  IIRScram                              *_get_guard_expression();
+  IIRScram_Statement                    *_get_guard_expression();
   IIRScram_GenericList                  *_get_generic_clause();
   IIRScram_PortList                     *_get_port_clause();
   IIRScram_AssociationList              *_get_port_map_aspect();
@@ -68,7 +66,6 @@ public:
   void _make_interface_visible(symbol_table *sym_tab );
   void _type_check_instantiate_statements();
 
-protected:    
 private:
   IIRScram_SignalDeclaration *my_implicit_guard_signal;
 };

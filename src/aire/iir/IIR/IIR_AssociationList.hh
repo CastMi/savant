@@ -29,13 +29,20 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_List.hh"
+#include "set.hh"
 
+class IIR_Name;
+class IIR_Declaration;
+class IIR_TextLiteral;
 class IIR_AssociationElement;
 
 class IIR_AssociationList : public virtual IIR_List<IIR_AssociationElement> {
 
 public:
   virtual ~IIR_AssociationList() {}
+
+  virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name *  ) { return NULL; }
+  virtual savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * ) { return NULL; }
 
   virtual IIR_Boolean is_locally_static() = 0;
   virtual IIR_Boolean is_resolved() = 0;

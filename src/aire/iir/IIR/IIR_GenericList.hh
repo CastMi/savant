@@ -1,4 +1,3 @@
-
 #ifndef IIR_GENERIC_LIST_HH
 #define IIR_GENERIC_LIST_HH
 
@@ -33,16 +32,14 @@
 
 class IIR_ConstantInterfaceDeclaration;
 
-class IIR_GenericList : public virtual IIR_List<IIR_ConstantInterfaceDeclaration> {
+class IIR_GenericList : public virtual IIR_InterfaceList{
 
 public:
   virtual ~IIR_GenericList() {}
     
   virtual IIR_Boolean insert_before_element( IIR_ConstantInterfaceDeclaration *existing_element, 
 				     IIR_ConstantInterfaceDeclaration* new_element) = 0;
-  
-  virtual IIR_GenericList* convert_node(plugin_class_factory *factory) = 0;
-  savant::set<IIR_Declaration> *find_declarations( IIR_Name *  );
-  savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * );
+
+  virtual IIR_GenericList* convert_node(plugin_class_factory *) = 0;
 };
 #endif

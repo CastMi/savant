@@ -30,6 +30,7 @@ using std::string;
 class IIR_Identifier;
 class IIR_Declaration;
 class IIR_DesignFile;
+class IIR_Statement;
 class IIR_TextLiteral;
 class IIR_TypeDefinition;
 class plugin_class_factory;
@@ -151,7 +152,7 @@ public:
       casting.  If this method is overridden, it will call the derived
       method.  If not it simply returns NULL.
   */
-  virtual IIR* get_value() = 0;
+  virtual IIR_Statement* get_value() = 0;
 
   virtual ~IIR() {}
 

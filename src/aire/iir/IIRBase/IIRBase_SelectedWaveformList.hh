@@ -33,14 +33,12 @@
 
 class IIR_SelectedWaveform;
 
-class IIRBase_SelectedWaveformList : public virtual IIRBase_List<IIR_SelectedWaveform> {
+class IIRBase_SelectedWaveformList : public virtual IIRBase_List<IIR_SelectedWaveform>, IIR_SelectedWaveformList {
 public:
-
   IIR_Kind get_kind() const {return IIR_SELECTED_WAVEFORM_LIST;}
   const IIR_Char *get_kind_text() const {return "IIR_SelectedWaveformList";}
 
 protected:
-  
   IIRBase_SelectedWaveformList();
   virtual ~IIRBase_SelectedWaveformList() = 0;
     

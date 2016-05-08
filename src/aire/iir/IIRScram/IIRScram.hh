@@ -23,6 +23,7 @@
 #include <iostream>
 #include <string>
 #include "IIRBase.hh"
+#include "IIRScram_List.hh"
 #include "node_visitor.hh"
 #include "dl_list.hh"
 
@@ -64,7 +65,6 @@ class IIRScram_InterfaceList;
 class IIRScram_Label;
 class IIRScram_LibraryDeclaration;
 class IIRScram_LibraryUnit;
-class IIRScram_List;
 class IIRScram_NatureDeclaration;
 class IIRScram_NatureDefinition;
 class IIRScram_PackageDeclaration;
@@ -76,6 +76,7 @@ class IIRScram_Statement;
 class IIRScram_TypeDeclaration;
 class IIRScram_TypeDefinition;
 class IIRScram_TextLiteral;
+class IIR_Statement;
 
 /** This class is the base of the SAVANT extensions to the IIR.  Due to the
     design of the IIR, lots of things have been put in here that seem like
@@ -113,7 +114,7 @@ public:
   //@}
 
   /** This method returns any statement region found in the node. */
-  virtual IIRScram_List *_get_statement_list();
+  virtual IIRScram_List<IIR_Statement> *_get_statement_list();
 
   /** This method has been introduced to remove unneccessary type
       castings. */

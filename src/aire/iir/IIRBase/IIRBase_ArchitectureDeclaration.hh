@@ -40,8 +40,8 @@ public:
   IIR_DeclarationList           *get_architecture_declarative_part();
   IIR_ArchitectureStatementList *get_architecture_statement_part();
 
-  void                          set_architecture_declarative_part(IIR_DeclarationList *new_architecture_declarative_part);
-  void                          set_architecture_statement_part(IIR_ArchitectureStatementList *new_architecture_statement_part);
+  void set_architecture_declarative_part(IIR_DeclarationList *);
+  void set_architecture_statement_part(IIR_ArchitectureStatementList *);
 
   IIR_Kind get_kind() const {return IIR_ARCHITECTURE_DECLARATION;}
   const IIR_Char *get_kind_text() const {return "IIR_ArchitectureDeclaration";}

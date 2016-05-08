@@ -83,12 +83,11 @@ IIRBase_TypeDefinition::convert_tree(plugin_class_factory *factory) {
   IIRBase_TypeDefinition *new_node = dynamic_cast<IIRBase_TypeDefinition *>(IIRBase::convert_tree(factory));
 
   // Process the variables
-  new_node->my_base_type = dynamic_cast<IIR_TypeDefinition *>(convert_node(my_base_type, factory));
-  new_node->my_declaration = dynamic_cast<IIR_Declaration *>(convert_node(my_declaration, factory));
+  new_node->my_base_type = dynamic_cast<IIR_TypeDefinition *>(my_base_type->convert_tree(factory));
+  new_node->my_declaration = dynamic_cast<IIR_Declaration *>(my_declaration->convert_tree(factory));
 
   if( my_type_mark != 0 ){
-    new_node->set_type_mark( dynamic_cast<IIR_TypeDefinition *>(convert_node(my_type_mark,
-									       factory)) );
+    new_node->set_type_mark( dynamic_cast<IIR_TypeDefinition *>(my_type_mark->convert_tree(factory)) );
   }
 
   return new_node;

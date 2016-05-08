@@ -35,7 +35,7 @@
 class IIRScram_InterfaceDeclaration;
 class IIRScram_TextLiteral;
 
-class IIRScram_InterfaceList : public virtual IIRScram_DeclarationList, public virtual IIRBase_InterfaceList {
+class IIRScram_InterfaceList : public virtual IIRScram_List<IIR_InterfaceDeclaration>, public virtual IIRBase_InterfaceList {
 
 public:
   /// Accept visitations \Ref{_accept_visitor}.

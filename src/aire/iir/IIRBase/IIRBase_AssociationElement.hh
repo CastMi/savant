@@ -42,8 +42,8 @@ public:
 
   // These virtual method must never be called.  It is overloaded for
   // IIRBase_AssociationElementByExpression
-  IIR* get_actual() { return NULL; }
-  void set_actual( IIR* );
+  IIR_Statement* get_actual() { return NULL; }
+  void set_actual( IIR_Statement* );
 
   // This is overloaded in IIRBase_AssociationElementByExpression.
   IIR_Boolean is_resolved(){ return TRUE; }

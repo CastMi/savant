@@ -60,7 +60,7 @@ IIRBase_UseClause::convert_tree(plugin_class_factory *factory) {
   IIRBase_UseClause *new_node = dynamic_cast<IIRBase_UseClause *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->selected_name = dynamic_cast<IIR_Name *>(convert_node(selected_name, factory));
+  new_node->selected_name = dynamic_cast<IIR_Name *>(selected_name->convert_tree(factory));
 
   return new_node;
 }

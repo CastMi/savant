@@ -25,9 +25,6 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 //---------------------------------------------------------------------------
 
-
-
-
 #include "savant.hh"
 #include "IIRBase_WhileLoopStatement.hh"
 #include "IIR_SequentialStatementList.hh"
@@ -74,14 +71,14 @@ IIRBase_WhileLoopStatement::set_sequence_of_statements(IIR_SequentialStatementLi
   sequence_of_statements = new_sequence_of_statements;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_WhileLoopStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_WhileLoopStatement *new_node = dynamic_cast<IIRBase_WhileLoopStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->sequence_of_statements = dynamic_cast<IIR_SequentialStatementList *>(convert_node(sequence_of_statements, factory));
-  new_node->while_condition = convert_node(while_condition, factory);
+  new_node->sequence_of_statements = sequence_of_statements->convert_node(factory);
+  new_node->while_condition = while_condition->convert_tree(factory);
 
   return new_node;
 }

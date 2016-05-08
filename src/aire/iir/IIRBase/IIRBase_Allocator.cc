@@ -25,12 +25,10 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "IIRBase_Allocator.hh"
 #include "savant.hh"
 #include "IIR_TypeDefinition.hh"
-
+#include "IIR_Statement.hh"
 
 IIRBase_Allocator::IIRBase_Allocator(){
   set_type_mark( NULL );
@@ -54,12 +52,12 @@ IIRBase_Allocator::get_type_mark(){
 }
 
 void 
-IIRBase_Allocator::set_value( IIR *new_value ) {
+IIRBase_Allocator::set_value( IIR_Statement *new_value ) {
   value = new_value;
 }
 
 
-IIR*
+IIR_Statement*
 IIRBase_Allocator::get_value() {
   return value;
 }

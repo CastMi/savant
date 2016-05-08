@@ -30,32 +30,19 @@
 #include "IIR_PortList.hh"
 
 class IIRBase_PortList : public virtual IIRBase_InterfaceList, public virtual IIR_PortList{
-
 public:
   IIR_Kind get_kind() const { return IIR_PORT_LIST; }
   const IIR_Char *get_kind_text() const { return "IIR_PortList"; }
 
-  void prepend( IIR_InterfaceDeclaration * );
-  void append( IIR_InterfaceDeclaration * );
-
-  void insert_after( IIR_InterfaceDeclaration *,
-                     IIR_InterfaceDeclaration * );
-
   IIR_Boolean insert_before_element( IIR_InterfaceDeclaration *,
 				     IIR_InterfaceDeclaration * );
-
-  IIR *successor( IIR_InterfaceDeclaration * );
-  IIR *predecessor( IIR_InterfaceDeclaration * );
-  IIR *first( );
-  IIR *last();
-  IIR_Int32 get_position( IIR_InterfaceDeclaration * );
+  virtual IIR_PortList* convert_node(plugin_class_factory *) { return nullptr; } ;
 
   void publish_vhdl(ostream &);
+
 protected:
   IIRBase_PortList();
   virtual ~IIRBase_PortList() = 0;
     
-private:
-
 };
 #endif

@@ -32,7 +32,7 @@
 
 class IIRScram_DesignatorList;
 
-class IIRScram_ChoiceList : public virtual IIRScram_List, public virtual IIRBase_ChoiceList{
+class IIRScram_ChoiceList : public virtual IIRScram_List<IIR_Choice>, public virtual IIRBase_ChoiceList {
 
 public:
   IIRScram_ChoiceList() {}
@@ -41,8 +41,5 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-
-protected:
-private:
 };
 #endif

@@ -31,13 +31,15 @@
 #include "IIRBase_AssociationElement.hh"
 #include "IIR_AssociationElementByExpression.hh"
 
+class IIR_Statement;
+
 class IIRBase_AssociationElementByExpression : public virtual IIRBase_AssociationElement, public virtual IIR_AssociationElementByExpression{
 
 public:
   IIR_Kind get_kind() const {return IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION;}
   const IIR_Char *get_kind_text() const {return "IIR_AssociationElementByExpression";}
-  void set_actual(IIR*);
-  IIR* get_actual();
+  void set_actual(IIR_Statement*);
+  IIR_Statement* get_actual();
 
   IIR *convert_tree(plugin_class_factory *factory);
 
@@ -55,7 +57,7 @@ protected:
   virtual ~IIRBase_AssociationElementByExpression() = 0;
     
 private:
-  IIR *actual;
+  IIR_Statement *actual;
 
 };
 #endif

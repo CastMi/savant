@@ -43,6 +43,7 @@ public:
   virtual void set_label( IIR_Label *label) = 0;
   virtual IIR_Label *get_label() const = 0;
   virtual const IIR_Char *get_kind_text() const = 0;
+  virtual IIR_Kind get_kind() const = 0;
 
   virtual void _report_undefined_fn(const char *) = 0;
   virtual plugin_class_factory *get_class_factory();
@@ -52,6 +53,9 @@ public:
   /** For assertion statements this method is overloaded to return the
       assertion condtion.  For anything else it returns 0. */
   virtual IIR_Statement *get_assertion_condition() = 0;
+  virtual IIR_Boolean is_locally_static() = 0;
+  virtual IIR_Boolean is_signal() = 0;
+  virtual IIR_Boolean is_variable() = 0;
   /**
      Republish the VHDL that this node represents.  Called on a expression,
      it would republish just the expression.  Called on a design file, the whole

@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_ASSOCIATION_LIST_HH
 #define IIRSCRAM_ASSOCIATION_LIST_HH
 
@@ -29,20 +28,26 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIRScram_List.hh"
 #include "IIRBase_AssociationList.hh"
+#include "IIRScram_List.hh"
+#include "visitor_return_type.hh"
+#include "node_visitor.hh"
 
 class IIRScram_AssociationElement;
 class IIRScram_ComponentInstantiationStatement;
 class IIRScram_Declaration;
 class IIRScram_DeclarationList;
-class IIRScram_DesignatorList;
 class IIRScram_IndexedName;
 class IIRScram_InterfaceDeclaration;
 class IIRScram_InterfaceList;
 class IIRScram_Name;
+class IIRScram;
+class IIRScram_TypeDefinition;
+namespace savant {
+  template <class type> class set;
+}
 
-class IIRScram_AssociationList : public virtual IIRScram_List, public virtual IIRBase_AssociationList{
+class IIRScram_AssociationList : public virtual IIRScram_List<IIR_AssociationElement>, public virtual IIRBase_AssociationList {
 
 public:
   IIRScram_AssociationList() {}
@@ -50,10 +55,6 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  void append( IIRScram_AssociationElement * );
-  void prepend( IIRScram_AssociationElement * );
-
-  IIR *get_nth_element( int );
   void _replace( IIRScram_AssociationElement *to_replace, IIRScram_AssociationElement *replace_with );
 
   void _resolve_and_order( IIRScram_InterfaceList *formal_list,
@@ -77,7 +78,10 @@ public:
 			   IIRScram_InterfaceList *formal_list,
 			   IIRScram_InterfaceList *actual_list );
   
-  IIRScram *_clone();
+  IIRScram_AssociationList *_clone();
+  IIRScram_Declaration * _find_declaration( IIRScram_Name *to_find, IIRScram_DeclarationList *list );
+  void copy_location( IIRScram_Statement* , IIRScram* );
+  void copy_location( IIRScram* , IIRScram* );
   
   virtual ~IIRScram_AssociationList();
     
@@ -96,7 +100,7 @@ private:
   IIR_Int32 _process_positional_part( IIRScram_InterfaceList *, IIR_Boolean resolve = TRUE );
 
   IIRScram_InterfaceDeclaration *_find_declaration_in_formal( IIRScram_AssociationElement * );
-  IIRScram_Declaration *_find_declaration( IIRScram_Name *to_find, IIRScram_DeclarationList *list );
+  IIRScram_Declaration *_find_declaration( IIRScram_Name *to_find, IIRScram_InterfaceList *list );
   IIRScram *_find_formal_designator( IIRScram *formal_part );
   IIRScram_Declaration *_find_formal_declaration( IIRScram *formal_designator,
                                                   IIRScram_InterfaceList *formal_list  );

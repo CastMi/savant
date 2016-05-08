@@ -67,8 +67,8 @@ IIRBase_TypeConversion::convert_tree(plugin_class_factory *factory) {
   IIRBase_TypeConversion *new_node = dynamic_cast<IIRBase_TypeConversion *>(IIRBase_Expression::convert_tree(factory));
 
   // Process the variables
-  new_node->type_mark = dynamic_cast<IIR_TypeDefinition *>(convert_node(type_mark, factory));
-  new_node->expression = convert_node(expression, factory);
+  new_node->type_mark = dynamic_cast<IIR_TypeDefinition *>(type_mark->convert_tree(factory));
+  new_node->expression = expression->convert_tree(factory);
 
   return new_node;
 }

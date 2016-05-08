@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-1999 The University of Cincinnati.  
 // All rights reserved.
 
@@ -29,6 +28,7 @@
 #include "IIR_Declaration.hh"
 #include "IIR_DesignatorList.hh"
 #include "IIR_Identifier.hh"
+#include "IIR_Statement.hh"
 #include "savant.hh"
 
 IIRBase_AttributeSpecification::IIRBase_AttributeSpecification() :
@@ -43,11 +43,11 @@ IIRBase_AttributeSpecification::~IIRBase_AttributeSpecification(){
 }
 
 void 
-IIRBase_AttributeSpecification::set_value( IIR *new_value ){
+IIRBase_AttributeSpecification::set_value( IIR_Statement *new_value ){
   value = new_value;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_AttributeSpecification::get_value(){
   return value;
 }

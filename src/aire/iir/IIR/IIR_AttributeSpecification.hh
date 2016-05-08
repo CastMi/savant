@@ -1,4 +1,3 @@
-
 #ifndef IIR_ATTRIBUTE_SPECIFICATION_HH
 #define IIR_ATTRIBUTE_SPECIFICATION_HH
 
@@ -42,8 +41,8 @@ public:
   // List accessor(s)
   virtual IIR_DesignatorList *get_entity_name_list() = 0;
 
-  virtual void set_value(IIR*) = 0;
-  virtual IIR *get_value() = 0;
+  virtual void set_value( IIR_Statement* ) = 0;
+  virtual IIR_Statement *get_value() = 0;
 
   virtual void set_entity_class(IIR_Identifier *) = 0;
   virtual IIR_Identifier *get_entity_class() = 0;

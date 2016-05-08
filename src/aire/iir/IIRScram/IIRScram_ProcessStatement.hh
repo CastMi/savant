@@ -51,7 +51,7 @@ public:
   void _add_declarations_in_initializations();
 
   virtual void _type_check();
-  IIRScram *_clone();
+  IIRScram_Statement *_clone();
 
   IIRScram_SequentialStatementList *    _get_process_statement_part();
   // Wrappers for IIRBase functions

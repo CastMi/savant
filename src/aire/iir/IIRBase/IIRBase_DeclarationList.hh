@@ -32,7 +32,7 @@
 
 class IIR_Declaration;
 
-class IIRBase_DeclarationList : public virtual IIR_DeclarationList {
+class IIRBase_DeclarationList : public virtual IIRBase_List<IIR_Declaration>, public virtual IIR_DeclarationList {
 
 public:
   IIR_Kind get_kind() const { return IIR_DECLARATION_LIST; }
@@ -46,6 +46,7 @@ public:
      to the new region passed in.
   */
   void set_declarative_region( IIR * );
+  virtual IIR_DeclarationList* convert_node(plugin_class_factory *) { return nullptr;};
 
   void publish_vhdl_decl(ostream&);
   void publish_vhdl(ostream&);

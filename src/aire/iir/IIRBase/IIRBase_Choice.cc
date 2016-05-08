@@ -24,6 +24,7 @@
 //---------------------------------------------------------------------------
 
 #include "IIRBase_Choice.hh"
+#include "IIR_Statement.hh"
 #include "savant.hh"
 
 IIRBase_Choice::IIRBase_Choice() {
@@ -33,11 +34,11 @@ IIRBase_Choice::IIRBase_Choice() {
 IIRBase_Choice::~IIRBase_Choice() {}
 
 void
-IIRBase_Choice::set_value( IIR *value ) {
+IIRBase_Choice::set_value( IIR_Statement *value ) {
   my_value = value;
 }
 
-IIR*
+IIR_Statement*
 IIRBase_Choice::get_value() {
   return my_value;
 }
@@ -61,7 +62,8 @@ IIRBase_Choice::is_resolved(){
 
 ostream &
 IIRBase_Choice::print( ostream &os ){
-  os << *get_value();
+  // FIXME: need to overload the operator<<
+  // os << *get_value();
   return os;
 }
 

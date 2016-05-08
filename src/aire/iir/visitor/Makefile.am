@@ -30,7 +30,6 @@ include $(top_srcdir)/Makefile.am.common
 noinst_LIBRARIES = libiirVisitor.a
 
 libiirVisitor_a_SOURCES = \
-	node_visitor.cc\
 	node_visitor.hh\
 	visitor_argument_type.cc\
 	visitor_argument_type.hh\

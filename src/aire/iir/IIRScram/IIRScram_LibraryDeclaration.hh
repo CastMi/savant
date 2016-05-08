@@ -34,7 +34,6 @@
 #include "IIRBase_LibraryDeclaration.hh"
 
 class IIRScram_LibraryUnitList;
-class IIRScram_List;
 class IIRScram_Name;
 class IIRScram_TypeDefinition;
 

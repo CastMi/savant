@@ -26,9 +26,9 @@
 
 //---------------------------------------------------------------------------
 
-
 #include "IIRBase_UserAttribute.hh"
 #include "IIR_Declaration.hh"
+#include "IIR_Statement.hh"
 #include "IIR_ConstantDeclaration.hh"
 #include "IIR_TextLiteral.hh"
 
@@ -57,7 +57,7 @@ IIRBase_UserAttribute::convert_tree(plugin_class_factory *factory) {
   IIRBase_UserAttribute *new_node = dynamic_cast<IIRBase_UserAttribute *>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
-  new_node->suffix = convert_node(suffix, factory);
+  new_node->suffix = suffix->convert_tree(factory);
 
   return new_node;
 }

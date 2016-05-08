@@ -33,7 +33,6 @@
 
 class IIR_Identifier;
 class IIR_DesignatorList;
-class IIR_Declaration;
 
 class IIRBase_AttributeSpecification : public virtual IIRBase_Declaration, public virtual IIR_AttributeSpecification{
 
@@ -45,8 +44,8 @@ public:
   IIR_Kind get_kind() const {return IIR_ATTRIBUTE_SPECIFICATION;}
   const IIR_Char *get_kind_text() const {return "IIR_AttributeSpecification";}
 
-  void set_value(IIR*);
-  IIR *get_value();
+  void set_value( IIR_Statement* );
+  IIR_Statement *get_value();
 
   void set_entity_class(IIR_Identifier *);
   IIR_Identifier *get_entity_class();
@@ -70,7 +69,7 @@ private:
   // List Variable(s)
   IIR_DesignatorList *entity_name_list;
 
-  IIR *value;
+  IIR_Statement *value;
   IIR_Identifier *entity_class;
   IIR_Declaration *attribute_declaration;
 };

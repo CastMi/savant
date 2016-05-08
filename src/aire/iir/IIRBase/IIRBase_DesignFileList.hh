@@ -31,7 +31,7 @@
 
 class IIR_DesignFile;
 
-class IIRBase_DesignFileList : public virtual IIRBase_List<IIR_DesignFile> {
+class IIRBase_DesignFileList : public virtual IIRBase_List<IIR_DesignFile>, public virtual IIR_DesignFileList {
 
 public:
   IIR_Kind get_kind() const {return IIR_DESIGN_FILE_LIST;}

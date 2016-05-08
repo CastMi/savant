@@ -37,7 +37,6 @@
 
 class IIRScram_Attribute;
 class IIRScram_Declaration;
-class IIRScram_List;
 class IIRScram_Name;
 class IIRScram_TypeDefinition;
 

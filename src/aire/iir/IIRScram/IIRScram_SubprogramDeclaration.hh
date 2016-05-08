@@ -94,7 +94,7 @@ public:
 
   IIR_Int32 _num_required_args();
 
-  IIRScram_List *_get_statement_list();
+  IIRScram_List<IIR_Statement> *_get_statement_list();
 
   // Wrappers for IIRBase functions
   IIRScram_InterfaceList *              _get_interface_declarations();

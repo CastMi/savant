@@ -29,6 +29,7 @@
 #include "IIRBase_SignalDeclaration.hh"
 #include "IIRBase_TextLiteral.hh"
 #include "IIR_Attribute.hh"
+#include "IIR_Statement.hh"
 #include "savant.hh"
 
 IIRBase_SignalDeclaration::IIRBase_SignalDeclaration() {
@@ -39,11 +40,11 @@ IIRBase_SignalDeclaration::IIRBase_SignalDeclaration() {
 IIRBase_SignalDeclaration::~IIRBase_SignalDeclaration() {}
 
 void
-IIRBase_SignalDeclaration::set_value( IIR *new_value ){
+IIRBase_SignalDeclaration::set_value( IIR_Statement *new_value ){
   value = new_value;
 }
 
-IIR*
+IIR_Statement*
 IIRBase_SignalDeclaration::get_value() {
   return value;
 }

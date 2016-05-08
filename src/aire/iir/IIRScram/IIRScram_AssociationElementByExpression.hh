@@ -36,7 +36,6 @@
 
 class IIRScram_TypeDefinition;
 class IIRScram_DesignatorList;
-class IIRScram_List;
 
 class IIRScram_AssociationElementByExpression : public virtual IIRScram_AssociationElement, public virtual IIRBase_AssociationElementByExpression{
 

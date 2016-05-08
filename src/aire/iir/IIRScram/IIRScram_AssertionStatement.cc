@@ -50,7 +50,7 @@ IIRScram_AssertionStatement::_type_check(){
   }
 }
 
-IIRScram*
+IIRScram_Statement*
 IIRScram_AssertionStatement::_clone() {
   IIRScram_AssertionStatement *clone = new IIRScram_AssertionStatement();
   IIRScram_SequentialStatement::_clone( clone );
@@ -68,17 +68,17 @@ IIRScram_AssertionStatement::_accept_visitor(node_visitor *visitor, visitor_argu
   return visitor->visit_IIR_AssertionStatement(this, arg);
 };
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_AssertionStatement::_get_assertion_condition(){ 
-  return dynamic_cast<IIRScram *>(get_assertion_condition()); 
+  return dynamic_cast<IIRScram_Statement *>(get_assertion_condition()); 
 }
   
-IIRScram *
+IIRScram_Statement *
 IIRScram_AssertionStatement::_get_report_expression(){ 
-  return dynamic_cast<IIRScram *>(get_report_expression()); 
+  return dynamic_cast<IIRScram_Statement *>(get_report_expression()); 
 }
   
-IIRScram *
+IIRScram_Statement *
 IIRScram_AssertionStatement::_get_severity_expression(){ 
-  return dynamic_cast<IIRScram *>(get_severity_expression()); 
+  return dynamic_cast<IIRScram_Statement *>(get_severity_expression()); 
 }

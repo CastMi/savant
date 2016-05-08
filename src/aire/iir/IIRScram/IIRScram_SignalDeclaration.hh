@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_SIGNAL_DECLARATION_HH
 #define IIRSCRAM_SIGNAL_DECLARATION_HH
 
@@ -37,7 +36,6 @@
 
 class IIRScram_Declaration;
 class IIRScram_DesigantorList;
-class IIRScram_List;
 class IIRScram_SignalDeclaration;
 class IIRScram_TypeDefinition;
 

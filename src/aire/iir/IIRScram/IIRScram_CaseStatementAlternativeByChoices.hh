@@ -33,7 +33,6 @@
 #include "IIRBase_CaseStatementAlternativeByChoices.hh"
 
 class IIRScram_TypeDefinition;
-class IIRScram_List;
 class IIRScram_ChoiceList;
 
 class IIRScram_CaseStatementAlternativeByChoices : public virtual IIRScram_CaseStatementAlternative, public virtual IIRBase_CaseStatementAlternativeByChoices{

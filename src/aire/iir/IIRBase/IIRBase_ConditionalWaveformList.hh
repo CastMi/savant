@@ -34,7 +34,7 @@
 
 class IIR_ConditionalWaveform;
 
-class IIRBase_ConditionalWaveformList : public virtual IIRBase_List<IIR_ConditionalWaveform> {
+class IIRBase_ConditionalWaveformList : public virtual IIRBase_List<IIR_ConditionalWaveform>, public virtual IIR_ConditionalWaveformList {
 
 public:
   IIR_Kind get_kind() const { return IIR_CONDITIONAL_WAVEFORM_LIST; }

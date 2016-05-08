@@ -52,7 +52,7 @@ public:
   void set_subtype(IIR_TypeDefinition *type) { IIRBase::set_subtype(type); }
 
   IIR *get_index( int index_num );
-  void set_index( int index_num, IIR *new_index );
+  void set_index( int index_num, IIR_Statement *new_index );
 
   IIR_Int32 get_num_indexes();
 

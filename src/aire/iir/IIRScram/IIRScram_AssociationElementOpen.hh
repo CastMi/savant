@@ -33,8 +33,6 @@
 #include "IIRScram_AssociationElement.hh"
 #include "IIRBase_AssociationElementOpen.hh"
 
-class IIRScram_List;
-
 class IIRScram_AssociationElementOpen : public virtual IIRScram_AssociationElement, public virtual IIRBase_AssociationElementOpen{
 
 public:

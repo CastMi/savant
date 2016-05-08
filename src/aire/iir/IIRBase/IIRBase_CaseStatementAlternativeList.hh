@@ -33,12 +33,11 @@
 
 class IIR_CaseStatementAlternative;
 
-class IIRBase_CaseStatementAlternativeList : public virtual IIRBase_List<IIR_CaseStatementAlternative> {
+class IIRBase_CaseStatementAlternativeList : public virtual IIRBase_List<IIR_CaseStatementAlternative>, public virtual IIR_CaseStatementAlternativeList {
 
 public:
   IIR_Kind get_kind() const { return IIR_CASE_STATEMENT_ALTERNATIVE_LIST; }
   const IIR_Char *get_kind_text() const { return "IIR_CaseStatementAlternativeList"; }
-
 
 protected:
   IIRBase_CaseStatementAlternativeList();

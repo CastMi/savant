@@ -29,10 +29,9 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIRScram_List.hh"
 #include "IIRBase_AttributeSpecificationList.hh"
 
-class IIRScram_AttributeSpecificationList : public virtual IIRScram_List, public virtual IIRBase_AttributeSpecificationList{
+class IIRScram_AttributeSpecificationList : public virtual IIRBase_AttributeSpecificationList{
 public:
   IIRScram_AttributeSpecificationList() {}
   virtual ~IIRScram_AttributeSpecificationList();

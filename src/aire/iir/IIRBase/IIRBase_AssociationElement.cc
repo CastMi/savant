@@ -27,13 +27,14 @@
 
 #include "savant.hh"
 #include "IIRBase_AssociationElement.hh"
+#include "IIR_Statement.hh"
 
 IIRBase_AssociationElement::IIRBase_AssociationElement() {
   set_formal(NULL);
 }
 
 void
-IIRBase_AssociationElement::set_actual( IIR* ) {
+IIRBase_AssociationElement::set_actual( IIR_Statement* ) {
    ASSERT(0);
 }
 

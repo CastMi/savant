@@ -34,8 +34,8 @@ class IIR_SignalDeclaration : public virtual IIR_ObjectDeclaration{
 public:
   virtual ~IIR_SignalDeclaration() {}
     
-  virtual void set_value(IIR* value) = 0;
-  virtual IIR* get_value() = 0;
+  virtual void set_value(IIR_Statement* value) = 0;
+  virtual IIR_Statement* get_value() = 0;
   virtual void set_signal_kind(IIR_SignalKind signal_kind) = 0;
   virtual IIR_SignalKind get_signal_kind() = 0;
 };

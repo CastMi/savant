@@ -38,8 +38,8 @@ public:
   virtual void set_formal(IIR*) = 0;
   virtual IIR* get_formal() = 0;
 
-  virtual IIR* get_actual() = 0;
-  virtual void set_actual( IIR* ) = 0;
+  virtual IIR_Statement* get_actual() = 0;
+  virtual void set_actual( IIR_Statement* ) = 0;
 
   virtual IIR_Boolean is_resolved() = 0;
   virtual IIR_Boolean is_locally_static() = 0;

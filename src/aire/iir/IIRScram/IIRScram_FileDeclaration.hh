@@ -30,8 +30,6 @@
 #include "IIRScram_ObjectDeclaration.hh"
 #include "IIRBase_FileDeclaration.hh"
 
-class IIRScram_List;
-
 class IIRScram_FileDeclaration : public virtual IIRScram_ObjectDeclaration, public virtual IIRBase_FileDeclaration{
 
 public:

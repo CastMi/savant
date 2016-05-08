@@ -30,15 +30,12 @@
 #include "IIRBase_List.hh"
 #include "IIR_NameList.hh"
 
-class IIRBase_NameList : public virtual IIR_NameList{
-
+class IIRBase_NameList : public virtual IIRBase_List<IIR_Name>, public virtual IIR_NameList {
 public:
-
   IIR_Kind get_kind() const {return IIR_NAME_LIST;}
   const IIR_Char *get_kind_text() const {return "IIR_NameList";}
 
 protected:
-  
   IIRBase_NameList();
   virtual ~IIRBase_NameList() = 0;
     

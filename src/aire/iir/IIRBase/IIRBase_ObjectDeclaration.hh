@@ -43,8 +43,8 @@ public:
   IIR_AttributeSpecificationList        *get_attributes();
   void                                  set_attributes(IIR_AttributeSpecificationList *new_attributes);
 
-  IIR *get_value() { return NULL; }
-  void set_value(IIR *);
+  IIR_Statement *get_value() { return NULL; }
+  void set_value(IIR_Statement *);
   /**
      Sets the subtype for this object.  If the subtype's declaration is 0,
      then the subtype will be modified to point to this declaration as it's

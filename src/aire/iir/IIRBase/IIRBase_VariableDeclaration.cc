@@ -26,6 +26,7 @@
 
 //---------------------------------------------------------------------------
 
+#include "IIR_Statement.hh"
 #include "IIRBase_VariableDeclaration.hh"
 
 IIRBase_VariableDeclaration::IIRBase_VariableDeclaration() : value(0) {}
@@ -35,11 +36,11 @@ IIRBase_VariableDeclaration::~IIRBase_VariableDeclaration() {
 }
 
 void
-IIRBase_VariableDeclaration::set_value( IIR *new_value ){
+IIRBase_VariableDeclaration::set_value( IIR_Statement *new_value ){
   value = new_value;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_VariableDeclaration::get_value() {
   return value;
 }
@@ -50,7 +51,7 @@ IIRBase_VariableDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_VariableDeclaration *new_node = dynamic_cast<IIRBase_VariableDeclaration *>(IIRBase_ObjectDeclaration::convert_tree(factory));
 
   // Process the variables
-  new_node->value = convert_node(value, factory);
+  new_node->value = value->convert_tree(factory);
 
   return new_node;
 }

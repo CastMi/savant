@@ -83,9 +83,9 @@ IIRScram_ArchitectureDeclaration::~IIRScram_ArchitectureDeclaration() {
 
 void 
 IIRScram_ArchitectureDeclaration::_type_check( ){
-  _get_architecture_declarative_part()->_type_check_configuration_specifications( dynamic_cast<IIRScram_List *>(get_architecture_statement_part()) );
+  _get_architecture_declarative_part()->_type_check_configuration_specifications( dynamic_cast<IIRScram_List<IIR_Statement>*>(get_architecture_statement_part()) );
   _get_architecture_declarative_part()->_type_check_disconnection_specifications(  );
-  _get_architecture_declarative_part()->_type_check_attribute_specifications( dynamic_cast<IIRScram_List *>(get_architecture_statement_part()) );
+  _get_architecture_declarative_part()->_type_check_attribute_specifications( dynamic_cast<IIRScram_List<IIR_Statement> *>(get_architecture_statement_part()) );
   _get_architecture_statement_part()->_type_check_instantiate_statements();
 }
 
@@ -333,9 +333,9 @@ IIRScram_ArchitectureDeclaration::_get_architecture_statement_part() {
   return dynamic_cast<IIRScram_ArchitectureStatementList *>(get_architecture_statement_part());
 }
 
-IIRScram_List *
+IIRScram_List<IIR_Statement> *
 IIRScram_ArchitectureDeclaration::_get_statement_list(){
-  return dynamic_cast<IIRScram_List *>(get_architecture_statement_part());
+  return dynamic_cast<IIRScram_List<IIR_Statement> *>(get_architecture_statement_part());
 }
 
 IIRScram_EntityDeclaration*

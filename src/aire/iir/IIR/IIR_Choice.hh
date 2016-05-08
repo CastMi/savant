@@ -34,7 +34,7 @@ class IIR_Choice : public virtual IIR_Tuple{
 public:
   virtual ~IIR_Choice() {}
 
-  virtual void set_value(IIR*) = 0;
-  virtual IIR* get_value() = 0;
+  virtual void set_value(IIR_Statement*) = 0;
+  virtual IIR_Statement* get_value() = 0;
 };
 #endif

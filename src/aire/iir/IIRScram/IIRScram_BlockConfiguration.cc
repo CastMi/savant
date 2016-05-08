@@ -61,7 +61,7 @@ IIRScram_BlockConfiguration::IIRScram_BlockConfiguration() {
 IIRScram_BlockConfiguration::~IIRScram_BlockConfiguration(){}
 
 void 
-IIRScram_BlockConfiguration::_type_check_configuration_item( IIRScram_List *statement_list, 
+IIRScram_BlockConfiguration::_type_check_configuration_item( IIRScram_List<IIR_Statement> *statement_list, 
 							     IIRScram *enclosing_region ){
   _get_symbol_table()->open_scope( this );
   _type_check_block_specification( statement_list, enclosing_region );
@@ -79,7 +79,7 @@ IIRScram_BlockConfiguration::_type_check_configuration_item( IIRScram_List *stat
 }
 
 void 
-IIRScram_BlockConfiguration::_type_check_block_specification( IIRScram_List *statement_list,
+IIRScram_BlockConfiguration::_type_check_block_specification( IIRScram_List<IIR_Statement> *statement_list,
 							      IIRScram *enclosing_region ){
   // This method implements the type checking described in 1.3.1 of the '93 LRM.
   ASSERT( enclosing_region != NULL );
@@ -185,7 +185,7 @@ IIRScram_BlockConfiguration::_resolve_specification_inside_component_configurati
 }
 
 void 
-IIRScram_BlockConfiguration::_resolve_specification_inside_block_configuration( IIRScram_List *,
+IIRScram_BlockConfiguration::_resolve_specification_inside_block_configuration( IIRScram_List<IIR_Statement> *,
 										IIRScram_BlockConfiguration * ){
   IIRScram_IndexedName *original_indexed_name = NULL;
   IIRScram_Name *to_lookup = NULL;

@@ -40,7 +40,7 @@ public:
   virtual void set_type_mark( IIR_TypeDefinition *) = 0;
   virtual IIR_TypeDefinition *get_type_mark() = 0;
 
-  virtual void set_value( IIR* ) = 0;
-  virtual IIR *get_value() = 0;
+  virtual void set_value( IIR_Statement* ) = 0;
+  virtual IIR_Statement *get_value() = 0;
 };
 #endif

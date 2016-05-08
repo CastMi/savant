@@ -21,12 +21,13 @@
 // the file "LGPL", distributed with this archive.
 
 #include "IIRBase_List.hh"
+#include "IIR_BreakList.hh"
   
 class IIR_BreakElement;
 
 /** The extension base for BreakList. This is a list of all Break Elements
     present in a break statement. */
-class IIRBase_BreakList : public virtual IIRBase_List<IIR_BreakElement> {
+class IIRBase_BreakList : public virtual IIRBase_List<IIR_BreakElement>, public virtual IIR_BreakList {
 
 public:
   /** Returns the IIR_Kind of this node. */

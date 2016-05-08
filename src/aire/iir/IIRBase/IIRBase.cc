@@ -81,7 +81,7 @@ IIRBase::get_file_name(){
 
 IIRBase::~IIRBase() {}
 
-IIR *
+IIR_Statement *
 IIRBase::get_value() {
   return NULL;
 }

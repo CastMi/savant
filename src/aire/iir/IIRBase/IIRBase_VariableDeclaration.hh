@@ -36,8 +36,8 @@ public:
   IIR_Kind get_kind() const {    return IIR_VARIABLE_DECLARATION;  }
   const IIR_Char *get_kind_text() const {    return "IIR_VariableDeclaration";  }
 
-  void set_value(IIR* value);
-  IIR* get_value();
+  void set_value(IIR_Statement* value);
+  IIR_Statement* get_value();
 
   IIR *convert_tree(plugin_class_factory *factory);
 
@@ -46,13 +46,11 @@ public:
   IIR_Boolean is_variable(){ return TRUE; }
   void publish_vhdl_decl(ostream &);
 protected:
-  
   IIRBase_VariableDeclaration();
   virtual ~IIRBase_VariableDeclaration() = 0;
     
 private:
-  
-  IIR* value;
+  IIR_Statement* value;
 
 };
 

@@ -32,7 +32,7 @@
 
 class IIR_Choice;
 
-class IIRBase_ChoiceList : public virtual IIRBase_List<IIR_Choice> {
+class IIRBase_ChoiceList : public virtual IIRBase_List<IIR_Choice>, public virtual IIR_ChoiceList {
 
 public:
   IIR_Kind get_kind() const {return IIR_CHOICE_LIST;};

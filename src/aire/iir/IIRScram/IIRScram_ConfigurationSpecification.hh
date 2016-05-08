@@ -36,7 +36,6 @@ class IIRScram_ComponentInstantiationStatement;
 class IIRScram_DeclarationList;
 class IIRScram_DesignatorList;
 class IIRScram_LibraryUnit;
-class IIRScram_List;
 class IIRScram_StatementList;
 
 class IIRScram_ConfigurationSpecification : public virtual IIRScram_Declaration, public virtual IIRBase_ConfigurationSpecification{
@@ -59,7 +58,7 @@ public:
   // of the declarative region this sepcification appears in.  It is used for
   // finding component instantiation statements, so it can resolve ALL and
   // OTHERS.
-  void _type_check( IIRScram_List *statment_list, type_check_mode mode );
+  void _type_check( IIRScram_List<IIR_Statement*> *statment_list, type_check_mode mode );
 
   IIRScram *_get_component_name( );
   void _set_component_name( IIRScram * );

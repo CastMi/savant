@@ -100,10 +100,10 @@ IIRBase_SubprogramDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_SubprogramDeclaration *new_node = dynamic_cast<IIRBase_SubprogramDeclaration *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->interface_declarations = dynamic_cast<IIR_InterfaceList *>(convert_node(interface_declarations, factory));
-  new_node->subprogram_declarations = dynamic_cast<IIR_DeclarationList *>(convert_node(subprogram_declarations, factory));
-  new_node->subprogram_body = dynamic_cast<IIR_SequentialStatementList *>(convert_node(subprogram_body, factory));
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
+  new_node->interface_declarations = interface_declarations->convert_node(factory);
+  new_node->subprogram_declarations = subprogram_declarations->convert_node(factory);
+  new_node->subprogram_body = subprogram_body->convert_node(factory);
+  new_node->attributes = attributes->convert_node(factory);
   new_node->my_contains_body = my_contains_body;
 
   return new_node;

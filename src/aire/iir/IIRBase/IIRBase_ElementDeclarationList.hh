@@ -32,7 +32,7 @@
 
 class IIR_ElementDeclaration;
 
-class IIRBase_ElementDeclarationList : public virtual IIRBase_DeclarationList, public virtual IIR_ElementDeclarationList{
+class IIRBase_ElementDeclarationList : public virtual IIRBase_List<IIR_ElementDeclaration>, public virtual IIR_ElementDeclarationList{
 
 public:
   IIR_Kind get_kind() const {return IIR_ELEMENT_DECLARATION_LIST;}

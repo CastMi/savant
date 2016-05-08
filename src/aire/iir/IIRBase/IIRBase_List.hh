@@ -20,41 +20,24 @@
 // version 2, June 1991. A copy of this license agreement can be found in
 // the file "LGPL", distributed with this archive.
 
-#include "IIRBase.hh"
 #include "IIR_List.hh"
 
 template <class type>
 class IIRBase_List : public virtual IIR_List<type> {
 public:
-  /** This function performs the conversion of one tree into another.  At this 
-      level it walks through the list, calling clone_tree on the contents */
-  virtual IIRBase_List<type *> convert_node(plugin_class_factory *factory);
-
   IIR_Boolean is_resolved();
     
   ostream &print( ostream &os );
 
-  void publish_vhdl_decl( ostream &os ){
-    publish_vhdl_decl( os, NULL );
+  void publish_vhdl_decl(ostream & os, const char* = nullptr) {
+    publish_vhdl_decl( os );
   }
   
-  virtual IIR_Kind get_kind() const = 0;
-
-  void publish_vhdl_decl(ostream &, const char *separator );
-
-  void publish_vhdl(ostream &, const char *separator );
-
-  void publish_vhdl( ostream & );
+  void publish_vhdl( ostream &os, const char* = nullptr );
 
 protected:
   IIRBase_List();
   virtual ~IIRBase_List() = 0;
 
-//   IIRBase_List &operator=( IIRBase_List &toCopy ){
-//     dl_list<IIR>::operator=( toCopy );
-//     return *this;
-//   }
-
-private:
 };
 #endif

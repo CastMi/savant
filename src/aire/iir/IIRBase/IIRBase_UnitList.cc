@@ -33,30 +33,6 @@
 IIRBase_UnitList::IIRBase_UnitList() {}
 IIRBase_UnitList::~IIRBase_UnitList() {}
 
-
-IIR * 
-IIRBase_UnitList::first() {
-  IIR *retval = IIRBase_DeclarationList::first();
-
-  return retval;
-}
-
-
-IIR*
-IIRBase_UnitList::successor(IIR_PhysicalUnit *node) {
-  IIR *retval = IIRBase_DeclarationList::successor( node );
-  return retval;
-}
-
-IIR*
-IIRBase_UnitList::predecessor(IIR_PhysicalUnit* node) {
-  IIR *retval = IIRBase_DeclarationList::successor( node );
-  ASSERT( retval != NULL );
-
-  return retval;
-}
-
-
 void 
 IIRBase_UnitList::publish_vhdl(ostream &vhdl_out) {
   publish_vhdl_decl( vhdl_out );

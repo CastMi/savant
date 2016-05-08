@@ -51,7 +51,7 @@ public:
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return FALSE; }
 
-  IIRScram                      *_get_value();
+  IIRScram_Statement                      *_get_value();
   IIRScram_TypeDefinition       *_get_type_mark();
 protected:
     

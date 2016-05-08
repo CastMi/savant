@@ -26,10 +26,8 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
 #include "IIR_TypeDefinition.hh"
+#include "IIR_Statement.hh"
 #include "IIRBase_InterfaceDeclaration.hh"
 #include "IIR_TextLiteral.hh"
 #include "savant.hh"
@@ -53,11 +51,11 @@ IIRBase_InterfaceDeclaration::get_mode() {
 
 
 void
-IIRBase_InterfaceDeclaration::set_value( IIR *new_value ){
+IIRBase_InterfaceDeclaration::set_value( IIR_Statement *new_value ){
   value = new_value;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_InterfaceDeclaration::get_value() {
   return value;
 }

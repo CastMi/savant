@@ -31,16 +31,6 @@
 IIRBase_AssociationList::IIRBase_AssociationList() {}
 IIRBase_AssociationList::~IIRBase_AssociationList() {}
 
-IIR_AssociationElement * 
-IIRBase_AssociationList::first() {
-  return dynamic_cast<IIR_AssociationElement*>(IIRBase_AssociationList::first());
-}
-
-IIR_AssociationElement * 
-IIRBase_AssociationList::successor(IIR_AssociationElement* node) {
-  return dynamic_cast<IIR_AssociationElement*>(IIRBase_AssociationList::successor( node ));
-}
-
 IIR_Boolean
 IIRBase_AssociationList::is_resolved(){
   IIR_Boolean retval = TRUE;

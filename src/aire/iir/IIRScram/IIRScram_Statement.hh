@@ -36,7 +36,6 @@ template <class type> class dl_list;
 class IIRScram_CaseStatementAlternativeList;
 class IIRScram_Label;
 class IIR_LibraryUnit;
-class IIRScram_List;
 class IIRScram_Name;
 class IIRScram_SimpleName;
 class IIRScram_Statement;
@@ -47,12 +46,16 @@ class IIRScram_TypeDefinition;
 class IIRScram_WaitStatement;
 class IIRScram_WaveformList;
 
-class IIRScram_Statement : public virtual IIRScram, public virtual IIRBase_Statement{
+class IIRScram_Statement : public virtual IIRBase_Statement {
 
 public:
   IIR_Boolean _is_iir_statement(){ return TRUE; }
   
+  virtual IIRScram_Statement *_clone();
+  virtual void _clone( IIRScram_Statement *);
   virtual void _type_check();
+  void _report_undefined_scram_fn(const char *);
+  IIRScram_DesignFile *_get_design_file() const;
 				
   // This method does the type checking and resolution for a boolean
   // condition.  Pass in a conditional, and it will return it
@@ -60,7 +63,7 @@ public:
   // not being boolean).  This method is called by IIR_IfStatement,
   // IIR_ElsifStatement, and IIR_WhileLoopStatement...  (For it to be called 
   // from IIR_Elsif, this must be public!
-  static IIRScram *_type_check_and_resolve_boolean_condition( IIRScram *condition );
+  static IIRScram_Statement *_type_check_and_resolve_boolean_condition( IIRScram_Statement * );
 	
   // These virtual methods are needed to support the type checking functions in the
   // protected section
@@ -75,15 +78,15 @@ public:
 
   /** For assertion statements this method is overloaded to return the
       assertion condtion.  For anything else it returns 0. */
-  virtual IIRScram *_get_assertion_condition(){ return 0; }
+  virtual IIRScram_Statement *_get_assertion_condition(){ return 0; }
   
   /** For report and assertion statements this method is overloaded to
       return the report expression.  For anything else it returns 0. */
-  virtual IIRScram *_get_report_expression(){ return 0; }
+  virtual IIRScram_Statement *_get_report_expression(){ return 0; }
 
   /** For report and assertion statements this method is overloaded to
       return the report expression. For anything else it returns 0. */
-  virtual IIRScram *_get_severity_expression(){ return 0; }
+  virtual IIRScram_Statement *_get_severity_expression(){ return 0; }
 
   virtual IIRScram_Label *_find_instantiate_label( IIRScram_SimpleName * );
 

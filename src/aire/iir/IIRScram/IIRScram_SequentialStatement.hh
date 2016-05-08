@@ -37,7 +37,6 @@
 template <class type> class dl_list;
 
 class IIRScram_AboveAttribute;
-class IIRScram_List;
 class IIRScram_Name;
 class IIRScram_ProcedureCallStatement;
 class IIRScram_SequentialStatement;
@@ -70,8 +69,8 @@ public:
 
   virtual IIR_Boolean _is_iir_sequential_statement(){ return TRUE; }
 
-  virtual IIRScram *_clone();
-  virtual void _clone( IIRScram * );
+  virtual IIRScram_Statement *_clone();
+  virtual void _clone( IIRScram_Statement * );
 
   virtual void _set_process_stmt_label(IIR_Label *);
   virtual IIR_Label* _get_process_stmt_label();

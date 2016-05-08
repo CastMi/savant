@@ -31,6 +31,8 @@
 #include "IIRBase_ObjectDeclaration.hh"
 #include "IIR_SignalDeclaration.hh"
 
+class IIR_Statement;
+
 class IIRBase_SignalDeclaration : public virtual IIRBase_ObjectDeclaration, public virtual IIR_SignalDeclaration{
 
 public:
@@ -38,8 +40,8 @@ public:
   IIR_Kind get_kind() const {return IIR_SIGNAL_DECLARATION;}
   const IIR_Char *get_kind_text() const {return "IIR_SignalDeclaration";}
 
-  void set_value(IIR* value);
-  IIR* get_value();
+  void set_value(IIR_Statement* value);
+  IIR_Statement* get_value();
   void set_signal_kind(IIR_SignalKind signal_kind);
   IIR_SignalKind get_signal_kind();
 
@@ -58,7 +60,7 @@ protected:
     
 private:
   
-  IIR* value;
+  IIR_Statement* value;
   IIR_SignalKind signal_kind;
 
 };

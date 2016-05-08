@@ -33,18 +33,16 @@
 
 class IIR_AssociationElement;
 
-class IIRBase_AssociationList : public virtual IIR_AssociationList {
+class IIRBase_AssociationList : public virtual IIRBase_List<IIR_AssociationElement>, public virtual IIR_AssociationList {
 public:
   IIR_Kind get_kind() const {return IIR_ASSOCIATION_LIST;}
   const IIR_Char *get_kind_text() const {return "IIR_AssociationList";}
-
-  IIR_AssociationElement *first();
-  IIR_AssociationElement *successor(IIR_AssociationElement*);
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_above_attribute_found();
 
   IIR_Boolean is_locally_static();
+  virtual IIR_AssociationList* convert_node(plugin_class_factory *) { return nullptr;};
 
   ostream &print( ostream & );  
   void publish_vhdl(ostream &);

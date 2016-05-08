@@ -29,10 +29,11 @@
 
 #include "IIRBase_List.hh"
 #include "IIR_AttributeSpecification.hh"
+#include "IIR_AttributeSpecificationList.hh"
 
 class IIR_AttributeSpecification;
 
-class IIRBase_AttributeSpecificationList : public virtual IIRBase_List<IIR_AttributeSpecification> {
+class IIRBase_AttributeSpecificationList : public virtual IIRBase_List<IIR_AttributeSpecification>, public virtual IIR_AttributeSpecificationList {
 
 public:
   IIR_Kind get_kind() const {return IIR_ATTRIBUTE_SPECIFICATION_LIST;}

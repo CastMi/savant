@@ -39,6 +39,7 @@ public:
   virtual ~IIR_DesignatorList() {}
   virtual IIR_DesignatorList* convert_node(plugin_class_factory *factory) = 0;
   virtual IIR_Boolean is_resolved() = 0;
+  virtual IIR_Boolean is_above_attribute_found() = 0;
     
 };
 #endif

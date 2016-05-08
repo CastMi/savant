@@ -35,21 +35,19 @@
 #include "IIRBase_SliceName.hh"
 
 class IIRScram_Declaration;
-class IIRScram_List;
 class IIRScram_TypeDefinition;
 
-class IIRScram_SliceName : public virtual IIRScram_Name, public virtual IIRBase_SliceName{
+class IIRScram_SliceName : public virtual IIRScram_Name, public virtual IIRBase_SliceName {
 
 public:
-  IIRScram_SliceName(){ }
-  virtual ~IIRScram_SliceName();    
+  IIRScram_SliceName(){}
+  virtual ~IIRScram_SliceName();
 
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0 );
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
-
 
   IIR_Mode _get_mode();
 
@@ -63,7 +61,7 @@ public:
   // the parser builds a slice to represent this.
   void _make_interface_visible( symbol_table * );
 
-  IIRScram_List *_get_statement_list();
+  IIRScram_List<IIR_Statement> *_get_statement_list();
 
   IIRScram *_clone();
 
@@ -74,10 +72,6 @@ public:
 
   // Override the undefined definition in IIRScram_Name
   void set_subtype(IIR_TypeDefinition *type) { IIRBase::set_subtype(type); }
-protected:  
-private:
-
 };
 
 #endif
-

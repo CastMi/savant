@@ -29,6 +29,7 @@
 #include "IIRBase_Statement.hh"
 #include "plugin_class_factory.hh"
 #include "savant.hh"
+#include "error_func.hh"
 #include "IIR_Label.hh"
 #include <sstream>
 

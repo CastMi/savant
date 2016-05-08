@@ -37,8 +37,8 @@ public:
   void set_mode(IIR_Mode mode);
   IIR_Mode get_mode();
 
-  void set_value(IIR* value);
-  IIR* get_value();
+  void set_value(IIR_Statement* value);
+  IIR_Statement* get_value();
 
   IIR *convert_tree(plugin_class_factory *factory);
   IIR_Boolean is_interface() { return TRUE; };
@@ -53,7 +53,7 @@ protected:
     
 private:
 
-  IIR* value;
+  IIR_Statement* value;
   IIR_Mode mode;
 
 };

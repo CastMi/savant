@@ -30,6 +30,7 @@
 #include "IIRBase_ObjectDeclaration.hh"
 #include "IIRBase_AccessTypeDefinition.hh"
 #include "IIR_AttributeSpecificationList.hh"
+#include "IIR_Statement.hh"
 #include "IIR_Name.hh"
 
 #include <iostream>
@@ -85,7 +86,7 @@ IIRBase_ObjectDeclaration::get_signal_kind(){
 }
 
 void
-IIRBase_ObjectDeclaration::set_value(IIR *){
+IIRBase_ObjectDeclaration::set_value(IIR_Statement *){
   _report_undefined_fn("set_value(IIR *)");
 }
 
@@ -136,7 +137,7 @@ IIRBase_ObjectDeclaration::publish_vhdl_subtype_indication(ostream &vhdl_out){
 
 void
 IIRBase_ObjectDeclaration::publish_vhdl_expression(ostream &vhdl_out){
-  IIRBase *val = dynamic_cast<IIRBase *>(get_value());
+  IIR_Statement *val = get_value();
   if (val != NULL) {
     vhdl_out << " := ";
     val->publish_vhdl(vhdl_out);

@@ -34,7 +34,6 @@
 #include "IIRBase_UseClause.hh"
 
 class IIRScram_Declaration;
-class IIRScram_List;
 
 class IIRScram_UseClause : public virtual IIRScram_Declaration, public virtual IIRBase_UseClause{
 public:

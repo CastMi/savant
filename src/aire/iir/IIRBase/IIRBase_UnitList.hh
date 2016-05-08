@@ -32,15 +32,11 @@
 #include "IIRBase_DeclarationList.hh"
 #include "IIR_UnitList.hh"
 
-class IIRBase_UnitList : public virtual IIRBase_DeclarationList, public virtual IIR_UnitList{
+class IIRBase_UnitList : public virtual IIRBase_List<IIR_PhysicalUnit>, public virtual IIR_UnitList {
 
 public:
   IIR_Kind get_kind() const { return IIR_UNIT_LIST; }
   const IIR_Char *get_kind_text() const { return "IIR_UnitList"; }
-
-  IIR *first();
-  IIR *successor(IIR_PhysicalUnit*);
-  IIR *predecessor(IIR_PhysicalUnit*);
 
   void publish_vhdl(ostream &);
 protected:

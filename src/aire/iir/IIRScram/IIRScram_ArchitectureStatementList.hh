@@ -30,10 +30,8 @@
 //---------------------------------------------------------------------------
 
 #include "IIRBase_ArchitectureStatementList.hh"
-#include "IIRScram_List.hh"
 
-class IIRScram_ArchitectureStatementList : public virtual IIRScram_List, public virtual IIRBase_ArchitectureStatementList {
-
+class IIRScram_ArchitectureStatementList : public virtual IIRScram_List<IIR_ArchitectureStatement>, public virtual IIRBase_ArchitectureStatementList {
 public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
@@ -41,7 +39,5 @@ public:
   IIRScram_Label *_find_instantiate_label( IIRScram_SimpleName * );
   void _type_check_instantiate_statements();
 
-protected:
-private:
 };
 #endif

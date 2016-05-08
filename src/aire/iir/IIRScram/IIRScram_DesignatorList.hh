@@ -30,7 +30,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIRScram_List.hh"
 #include "IIRBase_DesignatorList.hh"
 
 class IIRScram_DesignatorList;
@@ -38,7 +37,7 @@ class IIRScram_Label;
 class IIRScram_StatementList;
 class IIRScram_TextLiteral;
 
-class IIRScram_DesignatorList : public virtual IIRScram_List, public virtual IIRBase_DesignatorList{
+class IIRScram_DesignatorList : public virtual IIRBase_DesignatorList{
 public:
   IIRScram_DesignatorList() {}
   virtual ~IIRScram_DesignatorList();
@@ -48,7 +47,7 @@ public:
   
 
   void _type_check_as_instantiation_list( IIRScram *instantiated_unit, 
-					  IIRScram_List *,
+					  IIRScram_List<IIRScram> *,
 					  IIRScram *configuration );
 
   // This method walks the designator list, looking for a label for an
@@ -57,15 +56,14 @@ public:
   IIRScram_Label *_process_instantiate_statement( IIRScram_Declaration *instantiated_unit,
                                                   IIRScram *statement );
 
-protected:
 private:
   void _process_by_all_or_others( IIRScram_Declaration *instantiated_unit,
-				  IIRScram_List *,
+				  IIRScram_List<IIRScram> *,
 				  IIR_Boolean by_all,
 				  IIRScram *configuration );
 
   void _process_explicit_list( IIRScram_Declaration *instantiated_unit, 
-			       IIRScram_List *,
+			       IIRScram_List<IIRScram> *,
 			       IIRScram *configuration );    
 };
 #endif

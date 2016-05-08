@@ -33,8 +33,9 @@
 
 class IIR_TypeDefinition;
 class IIR_AttributeSpecificationList;
+class IIR_Statement;
 
-class IIR_ObjectDeclaration : public virtual IIR_Declaration{
+class IIR_ObjectDeclaration : public virtual IIR_Declaration {
 
 public:
   virtual ~IIR_ObjectDeclaration() {}
@@ -45,7 +46,7 @@ public:
 
   /** Make this virtual.  The only object declaration that doesn't have a
       value is a file type declaration... */
-  virtual IIR *get_value() = 0;
-  virtual void set_value(IIR *) = 0;
+  void set_value(IIR_Statement* value);
+  IIR_Statement* get_value();
 };
 #endif

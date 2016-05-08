@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_ARCHITECTURE_DECLARATION_HH
 #define IIRSCRAM_ARCHITECTURE_DECLARATION_HH
 
@@ -34,7 +33,6 @@
 #include "IIRBase_ArchitectureDeclaration.hh"
 #include "symbol_table.hh"
 
-
 class IIRScram_ArchitectureDeclaration : public virtual IIRScram_LibraryUnit,
 					 public virtual IIRBase_ArchitectureDeclaration {
 
@@ -60,7 +58,7 @@ public:
   void _type_check();
   IIRScram_PortList *_get_port_list();
   IIRScram_GenericList *_get_generic_list();
-  IIRScram_List *_get_statement_list();
+  IIRScram_List<IIR_Statement> *_get_statement_list();
 
   /** This list holds the component declarations in this architectures
       declarative region.  It will be used to post process configuration
@@ -74,9 +72,6 @@ public:
   IIRScram_DeclarationList *_get_configuration_specifications();
 
   IIRScram_DeclarationList* _get_declaration_list();
-
-protected:
-private:
 
 };
 #endif

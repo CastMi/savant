@@ -25,10 +25,10 @@
 
 //---------------------------------------------------------------------------
 
-
 #include "savant.hh"
 #include "IIRBase_ConstantDeclaration.hh"
 #include "IIRBase_TypeDefinition.hh"
+#include "IIR_Statement.hh"
 
 IIRBase_ConstantDeclaration::IIRBase_ConstantDeclaration() :
   value(0){}
@@ -38,11 +38,11 @@ IIRBase_ConstantDeclaration::~IIRBase_ConstantDeclaration(){
 }
 
 void 
-IIRBase_ConstantDeclaration::set_value( IIR *new_value ){
+IIRBase_ConstantDeclaration::set_value( IIR_Statement *new_value ){
   value = new_value;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ConstantDeclaration::get_value(){
   return value;
 }

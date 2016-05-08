@@ -27,6 +27,7 @@
 
 #include "IIRBase_WaveformElement.hh"
 #include "IIR.hh"
+#include "IIR_Statement.hh"
 #include "savant.hh"
 
 IIRBase_WaveformElement::IIRBase_WaveformElement() :
@@ -40,11 +41,11 @@ IIRBase_WaveformElement::~IIRBase_WaveformElement() {
 }
 
 void
-IIRBase_WaveformElement::set_value( IIR *new_value ){
+IIRBase_WaveformElement::set_value( IIR_Statement *new_value ){
   value = new_value;
 }
 
-IIR*
+IIR_Statement*
 IIRBase_WaveformElement::get_value() {
   return value;
 }
@@ -81,9 +82,9 @@ IIRBase_WaveformElement::convert_tree(plugin_class_factory *factory) {
   IIRBase_WaveformElement *new_node = dynamic_cast<IIRBase_WaveformElement *>(IIRBase_Tuple::convert_tree(factory));
 
   // Process the variables
-  new_node->value = convert_node(value, factory);
-  new_node->time = convert_node(time, factory);
-  new_node->next = dynamic_cast<IIR_WaveformElement *>(convert_node(next, factory));
+  new_node->value = value->convert_tree(factory);
+  new_node->time = time->convert_tree(factory);
+  new_node->next = dynamic_cast<IIR_WaveformElement *>(next->convert_tree(factory));
 
   return new_node;
 }
@@ -105,7 +106,8 @@ IIRBase_WaveformElement::is_resolved(){
 
 ostream &
 IIRBase_WaveformElement::print( ostream &os ) {
-  os << *get_value();
+   // FIXME: need to overload the operator<<
+  //os << *get_value();
 
   if (get_time() != NULL) {
     os << " after ";

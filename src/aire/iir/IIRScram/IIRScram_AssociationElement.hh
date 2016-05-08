@@ -34,10 +34,9 @@
 #include "IIRScram_Tuple.hh"
 #include "IIRBase_AssociationElement.hh"
 
-class IIRScram_List;
 class IIRScram_Declaration;
 
-class IIRScram_AssociationElement : public virtual IIRScram_Tuple, public virtual IIRBase_AssociationElement{
+class IIRScram_AssociationElement : public virtual IIRScram_Tuple, public virtual IIRBase_AssociationElement {
 
 public:
   IIRScram_AssociationElement() {}

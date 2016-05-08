@@ -38,6 +38,7 @@ public:
   IIR_List(){}
   virtual ~IIR_List() {}
   virtual IIR_Kind get_kind() const = 0;
-  virtual void publish_vhdl( ostream &os ) = 0;
+  virtual void publish_vhdl( ostream &os, const char* = nullptr ) = 0;
+  virtual void publish_vhdl_decl(ostream &, const char* = nullptr) = 0;
 };
 #endif

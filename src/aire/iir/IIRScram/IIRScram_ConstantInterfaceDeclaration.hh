@@ -34,8 +34,6 @@
 #include "IIRScram_InterfaceDeclaration.hh"
 #include "IIRBase_ConstantInterfaceDeclaration.hh"
 
-class IIRScram_List;
-
 class IIRScram_ConstantInterfaceDeclaration : public virtual IIRScram_InterfaceDeclaration, public virtual IIRBase_ConstantInterfaceDeclaration{
 
 public:

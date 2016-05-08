@@ -34,7 +34,6 @@
 #include "IIRScram_SubprogramDeclaration.hh"
 #include "IIRBase_ProcedureDeclaration.hh"
 
-class IIRScram_List;
 class IIRScram_ProcedureReturnTypeDefinition;
 class IIRScram_TypeDefinition;
 class IIRScram_WaitStatement;

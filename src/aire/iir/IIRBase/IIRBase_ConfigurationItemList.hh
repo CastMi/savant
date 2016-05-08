@@ -30,16 +30,15 @@
 #include "IIRBase_List.hh"
 #include "IIR_ConfigurationItemList.hh"
 
-class IIRBase_ConfigurationItemList : public virtual IIRBase_List<IIR_ConfigurationItem> {
-
+class IIRBase_ConfigurationItemList : public virtual IIRBase_List<IIR_ConfigurationItem>, public virtual IIR_ConfigurationItemList {
 public:
   IIR_Kind get_kind() const {return IIR_CONFIGURATION_ITEM_LIST;}
   const IIR_Char *get_kind_text() const {return "IIR_ConfigurationItemList";}
+  virtual IIR_ConfigurationItemList* convert_node(plugin_class_factory *) { return nullptr; };
 
 protected:
   IIRBase_ConfigurationItemList();
   virtual ~IIRBase_ConfigurationItemList() = 0;
     
-private:
 };
 #endif

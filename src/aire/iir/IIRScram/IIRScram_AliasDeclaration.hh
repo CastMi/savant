@@ -36,7 +36,6 @@
 #include "IIRBase_AliasDeclaration.hh"
 
 class IIRScram_TypeDefinition;
-class IIRScram_List;
 class IIRScram_DesignatorList;
 class IIRScram_AliasDeclaration;
 class IIRScram_AttributeSpecificationList;

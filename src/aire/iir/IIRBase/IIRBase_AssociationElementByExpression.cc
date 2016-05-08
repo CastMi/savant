@@ -25,8 +25,8 @@
 //          Timothy J. McBrayer tmcbraye@ece.uc.edu
 //---------------------------------------------------------------------------
 
-
 #include "IIRBase_AssociationElementByExpression.hh"
+#include "IIR_Statement.hh"
 
 IIRBase_AssociationElementByExpression::IIRBase_AssociationElementByExpression() {
   set_actual(NULL);
@@ -37,7 +37,7 @@ IIRBase_AssociationElementByExpression::~IIRBase_AssociationElementByExpression(
 
 
 void
-IIRBase_AssociationElementByExpression::set_actual(IIR *a) {
+IIRBase_AssociationElementByExpression::set_actual(IIR_Statement *a) {
   actual = a;
 }
 
@@ -51,7 +51,7 @@ IIRBase_AssociationElementByExpression::set_actual(IIR *a) {
 //     "var" by _publish_cc_subprogram_arguments( _cc_out ).
 // Assumption: get_actual() returns one of IIR_Declaration (any), IIR_Literal
 // or IIR_IndexedName 
-IIR*
+IIR_Statement*
 IIRBase_AssociationElementByExpression::get_actual() {
   return actual;
 }
@@ -132,7 +132,8 @@ IIRBase_AssociationElementByExpression::print( ostream &os ){
   }
 
   if( get_actual() != NULL ){
-    os << *(get_actual());
+     //FIXME: need to overload the operator<<
+     //os << *(get_actual());
   }
 
   return os;

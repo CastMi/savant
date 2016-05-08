@@ -24,6 +24,7 @@
 
 #include "IIRBase_FreeQuantityDeclaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Statement.hh"
 #include "IIRBase_TypeDefinition.hh"
 #include "savant.hh"
 
@@ -33,11 +34,11 @@ IIRBase_FreeQuantityDeclaration::IIRBase_FreeQuantityDeclaration() :
 IIRBase_FreeQuantityDeclaration::~IIRBase_FreeQuantityDeclaration() {}
 
 void
-IIRBase_FreeQuantityDeclaration::set_value(IIR* value) {
+IIRBase_FreeQuantityDeclaration::set_value(IIR_Statement* value) {
   this->value = value;
 }
 
-IIR*
+IIR_Statement *
 IIRBase_FreeQuantityDeclaration::get_value() {
   return value;
 }

@@ -49,7 +49,7 @@ public:
   void set_while_condition( IIR *while_condition);
   IIR *get_while_condition();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean has_statement_list() { return TRUE; }
   IIR_Boolean is_above_attribute_found();

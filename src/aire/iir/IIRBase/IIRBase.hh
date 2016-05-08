@@ -145,7 +145,7 @@ public:
   /** This method has been introduced to remove unneccessary type
       casting.  If this method is overridden, it will call the derived
       method.  If not it simply returns NULL. */
-  virtual IIR *get_value();
+  virtual IIR_Statement *get_value();
 
   /** This function performs the conversion of one tree into another.  At this 
       level it creates a copy of the current node using the passed in factory, 

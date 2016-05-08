@@ -37,7 +37,6 @@ class IIRScram_ConfigurationDeclaration;
 class IIRScram_ConfigurationItemList;
 class IIRScram_ComponentConfiguration;
 class IIRScram_DeclarationList;
-class IIRScram_List;
 
 class IIRScram_BlockConfiguration : public virtual IIRScram_ConfigurationItem, public virtual IIRBase_BlockConfiguration {
 public:
@@ -47,19 +46,17 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-
-  void _type_check_configuration_item( IIRScram_List *, IIRScram * );
+  void _type_check_configuration_item( IIRScram_List<IIR_Statement> *statement_list, IIRScram *enclosing_region );
 
   IIRScram                              *_get_block_specification();
   IIRScram_DeclarationList              *_get_use_clause_list();
   IIRScram_ConfigurationItemList        *_get_configuration_item_list();
 
-protected:
 private:
-  void _type_check_block_specification( IIRScram_List *, IIRScram * );
+  void _type_check_block_specification( IIRScram_List<IIR_Statement> *, IIRScram * );
   void _resolve_specification_inside_configuration_declaration( IIRScram_ConfigurationDeclaration * );
   void _resolve_specification_inside_component_configuration( IIRScram_ComponentConfiguration * );
-  void _resolve_specification_inside_block_configuration(  IIRScram_List *, IIRScram_BlockConfiguration * );
+  void _resolve_specification_inside_block_configuration(  IIRScram_List<IIR_Statement> *, IIRScram_BlockConfiguration * );
 };
 
 #endif

@@ -29,29 +29,29 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIRScram.hh"
 #include "IIRBase_List.hh"
 
 class IIRScram_Label;
-class IIRScram_List;
 class IIRScram_SimpleName;
+class symbol_table;
 
-class IIRScram_List : public virtual IIRScram, public virtual IIRBase_List{
+template <class type>
+class IIRScram_List : public virtual IIRBase_List<type> {
 
 public:
-  IIRScram_List() {};
+  IIRScram_List<type>() {};
 
-  static IIRScram_List *_listcopy( IIRScram_List *source, plugin_class_factory *factory );
+  static IIRScram_List<type> *_listcopy( IIRScram_List<type> *source, plugin_class_factory *factory );
   
   IIR_Boolean _is_iir_list(){ return TRUE; }
 
-  virtual IIRScram *_clone(  );
-  virtual void _clone( IIRScram * );
+  //virtual IIRScram *_clone(  );
+  //virtual void _clone( IIRScram * );
 
   virtual IIRScram_Label *_find_instantiate_label( IIRScram_SimpleName * );
   
   /** Append all elements in this non-NULL list. */
-  virtual void _append( IIR_List * );
+  //virtual void _append( IIR_List * );
   
   void _make_interface_visible( symbol_table * );
 

@@ -25,7 +25,6 @@
 #include "IIRBase_ComponentDeclaration.hh"
 
 class IIRScram_GenericList;
-class IIRScram_List;
 class IIRScram_Name;
 class IIRScram_PortList;
 class IIRScram_TypeDefinition;
@@ -38,7 +37,7 @@ public:
     
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-  IIRScram_PortList *_get_port_list();
+  virtual IIRScram_PortList *_get_port_list();
   IIRScram_GenericList *_get_generic_list();
 
   void _make_interface_visible( symbol_table * );
@@ -55,7 +54,5 @@ public:
   IIRScram_PortList			*_get_local_port_clause();
   IIRScram_EntityDeclaration		*_get_entity();
   
-protected:
-private:
 };
 #endif

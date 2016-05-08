@@ -710,7 +710,6 @@ libaire_la_SOURCES = \
 	iir/IIRScram/IIRScram_LibraryDeclaration.cc \
 	iir/IIRScram/IIRScram_LibraryUnit.cc \
 	iir/IIRScram/IIRScram_LibraryUnitList.cc \
-	iir/IIRScram/IIRScram_List.cc \
 	iir/IIRScram/IIRScram_Literal.cc \
 	iir/IIRScram/IIRScram_LogicalOperators.cc \
 	iir/IIRScram/IIRScram_LowAttribute.cc \

@@ -36,7 +36,6 @@
 #include "IIRBase_InterfaceDeclaration.hh"
 
 class IIRScram_AttributeSpecification;
-class IIRScram_List;
 class IIRScram_TypeDefinition;
 
 class IIRScram_InterfaceDeclaration : public virtual IIRScram_ObjectDeclaration, public virtual IIRBase_InterfaceDeclaration{

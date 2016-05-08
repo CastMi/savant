@@ -23,7 +23,7 @@
 #include "IIRBase.hh"
 #include "IIR_Declaration.hh"
 
-class IIRBase_Declaration : public virtual IIRBase, public virtual IIR_Declaration{
+class IIRBase_Declaration : public virtual IIRBase, public virtual IIR_Declaration {
 public:
   void set_declarator( IIR_TextLiteral *identifier );
   IIR_TextLiteral *get_declarator();

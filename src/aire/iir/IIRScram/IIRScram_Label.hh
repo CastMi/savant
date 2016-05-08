@@ -33,7 +33,6 @@
 #include "IIRScram_Declaration.hh"
 #include "IIRBase_Label.hh"
 
-class IIRScram_List;
 class IIRScram_Name;
 class IIRScram_TypeDefinition;
 
@@ -50,7 +49,7 @@ public:
   void _make_interface_visible( symbol_table * );
 
   IIRScram_Statement* _get_statement();
-  IIRScram_List *_get_statement_list();
+  IIRScram_List<IIR_Statement> *_get_statement_list();
 
   IIRScram *_clone();
 

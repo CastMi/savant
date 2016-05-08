@@ -33,7 +33,7 @@
 
 class IIRScram_ConfigurationItem;
 
-class IIRScram_ConfigurationItemList : public virtual IIRScram_List, public virtual IIRBase_ConfigurationItemList{
+class IIRScram_ConfigurationItemList : public virtual IIRScram_List<IIR_ConfigurationItem>, public virtual IIRBase_ConfigurationItemList {
 
 public:
   IIRScram_ConfigurationItemList() {};
@@ -42,15 +42,11 @@ public:
   /// Accept visitations \Ref{_accept_visitor}.
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
-  void _type_check_configuration_item( IIRScram_List *statement_list, IIRScram *enclosing_region );
+  void _type_check_configuration_item( IIRScram_List<IIR_Statement> *statement_list, IIRScram *enclosing_region );
 
   IIRScram_ConfigurationItem *first();
   IIRScram_ConfigurationItem *successor( IIRScram_ConfigurationItem * );
   void append( IIRScram_ConfigurationItem * );
-
-protected:
-private:
-  
 
 };
 

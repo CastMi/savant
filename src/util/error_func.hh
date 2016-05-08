@@ -58,12 +58,14 @@
 // end with a period.
 
 #include <string>
+#include <IIR_List.hh>
 
 class IIR;
 class IIR_Name;
 class IIR_Identifier;
 class IIR_TypeDefinition;
 class IIR_Declaration;
+class IIR_Statement;
 
 namespace savant {
   template <class type> class set;
@@ -90,10 +92,14 @@ report_error( const string &message,
 	      severity = FATAL );
 
 void 
-report_error ( IIR *if_node, const string &message, severity = FATAL );
+report_error( IIR *if_node, const string &message, severity = FATAL );
 
 void 
-report_error ( IIR *if_node, const char *msg, severity = FATAL );
+report_error( IIR_Statement *if_node, const string msg, severity = FATAL );
+
+template<class type>
+void 
+report_error( IIR_List<type> *if_node, const string msg, severity = FATAL );
 
 void 
 report_undefined_symbol( IIR * );

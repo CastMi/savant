@@ -36,8 +36,8 @@ public:
   IIR_Kind get_kind() const {return IIR_CONSTANT_DECLARATION;}
   const IIR_Char *get_kind_text() const {return "IIR_ConstantDeclaration";}
   
-  void set_value(IIR *value);
-  IIR *get_value();
+  void set_value(IIR_Statement *value);
+  IIR_Statement *get_value();
 
   IIR *convert_tree(plugin_class_factory *factory);
 
@@ -55,6 +55,6 @@ protected:
   virtual ~IIRBase_ConstantDeclaration() = 0;
     
 private:
-  IIR *value;
+  IIR_Statement *value;
 };
 #endif

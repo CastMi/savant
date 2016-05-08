@@ -33,7 +33,7 @@
 
 class IIR_SequentialStatement;
 
-class IIRBase_SequentialStatementList : public virtual IIR_SequentialStatementList{
+class IIRBase_SequentialStatementList : public virtual IIRBase_List<IIR_SequentialStatement>, public virtual IIR_SequentialStatementList {
 public:
   IIR_Kind get_kind() const {return IIR_SEQUENTIAL_STATEMENT_LIST;}
   const IIR_Char *get_kind_text() const {return "IIR_SequentialStatementList";}

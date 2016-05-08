@@ -26,8 +26,6 @@
 
 //---------------------------------------------------------------------------
 
-
-
 #include "IIRBase_WaitStatement.hh"
 #include "IIR_DesignatorList.hh"
 
@@ -88,15 +86,15 @@ IIRBase_WaitStatement::is_above_attribute_found() {
   return retval;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_WaitStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_WaitStatement *new_node = dynamic_cast<IIRBase_WaitStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->sensitivity_list = dynamic_cast<IIR_DesignatorList *>(convert_node(sensitivity_list, factory));
-  new_node->condition_clause = convert_node(condition_clause, factory);
-  new_node->timeout_clause = convert_node(timeout_clause, factory);
+  new_node->sensitivity_list = sensitivity_list->convert_node(factory);
+  new_node->condition_clause = condition_clause->convert_tree(factory);
+  new_node->timeout_clause = timeout_clause->convert_tree(factory);
 
   return new_node;
 }

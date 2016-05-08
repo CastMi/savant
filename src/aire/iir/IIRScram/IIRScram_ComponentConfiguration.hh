@@ -35,7 +35,6 @@
 
 class IIRScram_BlockConfiguration;
 class IIRScram_DesignatorList;
-class IIRScram_List;
 class IIRScram_LibraryUnit;
 
 class IIRScram_ComponentConfiguration : public virtual IIRScram_ConfigurationItem, public virtual IIRBase_ComponentConfiguration{
@@ -48,7 +47,7 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
-  void _type_check_configuration_item( IIRScram_List *, IIRScram * );
+  void _type_check_configuration_item( IIRScram_List<IIRScram_Statement> *, IIRScram * );
 
   IIRScram *_get_component_name( );
   void _set_component_name( IIRScram * );

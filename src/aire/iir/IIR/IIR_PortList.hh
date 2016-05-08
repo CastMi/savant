@@ -40,6 +40,6 @@ public:
   virtual IIR_Boolean insert_before_element( IIR_InterfaceDeclaration *,
                                              IIR_InterfaceDeclaration * ) = 0;
 
-  virtual IIR_PortList* convert_node(plugin_class_factory *factory) = 0;
+  virtual IIR_PortList* convert_node(plugin_class_factory *) = 0;
 };
 #endif

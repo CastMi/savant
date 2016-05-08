@@ -30,7 +30,7 @@
 
 /** Captures a set of VHDL comments.  Typically these comments are
     collected by the lexer and placed with each design unit. */
-class IIRBase_CommentList : public virtual IIRBase_List<IIR_Comment> {
+class IIRBase_CommentList : public virtual IIRBase_List<IIR_Comment>, public virtual IIR_CommentList {
 
 public:
   IIR_Kind get_kind() const {return IIR_COMMENT_LIST;}

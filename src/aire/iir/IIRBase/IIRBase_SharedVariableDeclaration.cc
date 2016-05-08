@@ -28,6 +28,7 @@
 #include "savant.hh"
 #include "IIRBase_SharedVariableDeclaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Statement.hh"
 #include "IIR_TypeDefinition.hh"
 
 IIRBase_SharedVariableDeclaration::IIRBase_SharedVariableDeclaration() :
@@ -36,11 +37,11 @@ IIRBase_SharedVariableDeclaration::IIRBase_SharedVariableDeclaration() :
 IIRBase_SharedVariableDeclaration::~IIRBase_SharedVariableDeclaration() {}
 
 void
-IIRBase_SharedVariableDeclaration::set_value( IIR *new_value ){
+IIRBase_SharedVariableDeclaration::set_value( IIR_Statement *new_value ){
   value = new_value;
 }
 
-IIR*
+IIR_Statement*
 IIRBase_SharedVariableDeclaration::get_value() {
   return value;
 }

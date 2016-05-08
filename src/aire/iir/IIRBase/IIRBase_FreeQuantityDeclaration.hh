@@ -45,9 +45,9 @@ public:
   Postcondition: Initializes the free quantity to the value specified in 
 		 the Initial Value Expression.                          */
 
-  void set_value(IIR* value);
+  void set_value(IIR_Statement* value);
 
-  IIR* get_value();
+  IIR_Statement* get_value();
 
   IIR *convert_tree(plugin_class_factory *factory);
 
@@ -57,7 +57,7 @@ protected:
   virtual ~IIRBase_FreeQuantityDeclaration() = 0;
 
 private:
-  IIR* value;
+  IIR_Statement* value;
 
 };
 

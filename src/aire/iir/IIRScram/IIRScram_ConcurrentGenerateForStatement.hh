@@ -49,7 +49,7 @@ public:
 
   void _type_check_instantiate_statements();
 
-  IIRScram_List *_get_statement_list();
+  IIRScram_List<IIR_Statement> *_get_statement_list();
   virtual IIRScram_AssociationList *_get_generic_map_aspect(){ return NULL; }
 
   IIRScram_DeclarationList* _get_declaration_list();

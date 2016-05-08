@@ -33,7 +33,6 @@
 
 class IIRScram_TypeDefinition;
 class IIRScram_DesignatorList;
-class IIRScram_List;
 
 class IIRScram_Choice : public virtual IIRScram_Tuple, public virtual IIRBase_Choice{
 

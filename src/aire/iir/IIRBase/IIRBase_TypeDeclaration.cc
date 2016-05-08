@@ -78,8 +78,8 @@ IIRBase_TypeDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_TypeDeclaration *new_node = dynamic_cast<IIRBase_TypeDeclaration *>(IIRBase_Declaration::convert_tree(factory));
 
   // Process the variables
-  new_node->attributes = dynamic_cast<IIR_AttributeSpecificationList *>(convert_node(attributes, factory));
-  new_node->type = dynamic_cast<IIR_TypeDefinition *>(convert_node(type, factory));
+  new_node->attributes = attributes->convert_node(factory);
+  new_node->type = dynamic_cast<IIR_TypeDefinition *>(type->convert_tree(factory));
 
   return new_node;
 }

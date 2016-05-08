@@ -53,6 +53,8 @@ public:
       return the report expression. For anything else it returns 0. */
   IIR_Statement *get_severity_expression(){ return 0; }
 
+  virtual IIR_Boolean is_locally_static() { return false; };
+
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
   void set_assertion_condition( IIR * );
@@ -60,6 +62,7 @@ public:
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
   void set_report_expression( IIR * );
+  void copy_location( const IIR_Statement *, IIR_Statement *) {};
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
@@ -71,6 +74,7 @@ public:
   virtual IIR_Statement *convert_tree(plugin_class_factory *) = 0;
 
   ostream &print( ostream & );
+  IIR_Boolean is_resolved() { return false; }
   
   void _report_undefined_fn(const char *);
   

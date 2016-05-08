@@ -37,7 +37,7 @@ namespace savant {
 
 class IIR_Attribute;
 
-class IIR_Declaration : public virtual IIR{
+class IIR_Declaration : public virtual IIR {
 
 public:
   virtual ~IIR_Declaration() {};

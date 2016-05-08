@@ -35,7 +35,6 @@
 #include "IIRBase_SignalInterfaceDeclaration.hh"
 
 class IIRScram_DesigantorList;
-class IIRScram_List;
 
 class IIRScram_SignalInterfaceDeclaration : public virtual IIRScram_InterfaceDeclaration, public virtual IIRBase_SignalInterfaceDeclaration{
 public:

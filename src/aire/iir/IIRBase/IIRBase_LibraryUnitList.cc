@@ -30,33 +30,7 @@
 #include "library_manager.hh"
 
 IIRBase_LibraryUnitList::IIRBase_LibraryUnitList() {}
-
-
 IIRBase_LibraryUnitList::~IIRBase_LibraryUnitList() {}
-
-
-void
-IIRBase_LibraryUnitList::append( IIR_LibraryUnit *to_append ){
-  IIRBase_DeclarationList::append( to_append );
-}
-
-
-IIR * 
-IIRBase_LibraryUnitList::first() {
-  return IIRBase_DeclarationList::first();
-}
-
-IIR * 
-IIRBase_LibraryUnitList::last() {
-  return IIRBase_DeclarationList::last();
-}
-
-
-IIR*
-IIRBase_LibraryUnitList::successor( IIR_LibraryUnit *node ){
-  return IIRBase_DeclarationList::successor(node);
-}
-
 
 void 
 IIRBase_LibraryUnitList::publish_vhdl_in_design_library(){

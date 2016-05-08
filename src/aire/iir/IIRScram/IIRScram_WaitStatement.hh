@@ -47,7 +47,7 @@ public:
 
   void _type_check();
   IIRScram *_resolve_signal_name(IIRScram*);
-  IIRScram *_clone();
+  IIRScram_Statement *_clone();
 
   IIRScram_DesignatorList *     _get_sensitivity_list();
   IIRScram *                    _get_condition_clause();

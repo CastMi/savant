@@ -42,8 +42,8 @@ public:
   void set_type_mark( IIR_TypeDefinition *);
   IIR_TypeDefinition *get_type_mark();
 
-  void set_value( IIR* );
-  IIR *get_value();
+  void set_value( IIR_Statement* );
+  IIR_Statement *get_value();
 
   IIR *convert_tree(plugin_class_factory *factory);
 
@@ -57,6 +57,6 @@ protected:
     
 private:
   IIR_TypeDefinition *type_mark;
-  IIR *value;
+  IIR_Statement *value;
 };
 #endif

@@ -46,8 +46,8 @@
 
 #include "IIRScram_Designator.hh"
 #include "IIRBase_DesignatorExplicit.hh"
+
 class IIRScram_Declaration;
-class IIRScram_List;
 class IIRScram_TypeDefinition;
 
 class IIRScram_DesignatorExplicit : public virtual IIRScram_Designator, public virtual IIRBase_DesignatorExplicit{

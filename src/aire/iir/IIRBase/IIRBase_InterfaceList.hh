@@ -33,22 +33,11 @@
 
 class IIR_InterfaceDeclaration;
 
-class IIRBase_InterfaceList : public virtual IIRBase_DeclarationList, public virtual IIR_InterfaceList{
+class IIRBase_InterfaceList : public virtual IIRBase_List<IIR_InterfaceDeclaration>, public virtual IIR_InterfaceList {
 
 public:
   IIR_Kind get_kind() const { return IIR_INTERFACE_LIST; }
   const IIR_Char *get_kind_text() const { return "IIR_InterfaceList"; }
-
-  IIR *first();
-  IIR *last();
-  IIR *successor( IIR_InterfaceDeclaration * );
-  IIR *predecessor( IIR_InterfaceDeclaration * );
-  IIR *get_nth_element( IIR_Int32 );
-  IIR_Int32 get_position( IIR_InterfaceDeclaration * );
-
-  void append( IIR_InterfaceDeclaration * );
-  void prepend( IIR_InterfaceDeclaration * );
-  void insert_after( IIR_InterfaceDeclaration *, IIR_InterfaceDeclaration * );
 
   void publish_vhdl(ostream &);
   void publish_vhdl_decl(ostream &);

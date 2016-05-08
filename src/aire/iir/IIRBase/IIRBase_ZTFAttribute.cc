@@ -78,10 +78,10 @@ IIRBase_ZTFAttribute::convert_tree(plugin_class_factory *factory) {
   IIRBase_ZTFAttribute *new_node = dynamic_cast<IIRBase_ZTFAttribute *>(IIRBase_Attribute::convert_tree(factory));
 
   // Process the variables
-  new_node->numerator = convert_node(numerator, factory);
-  new_node->denominator = convert_node(denominator, factory);
-  new_node->period = convert_node(period, factory);
-  new_node->initial_delay = convert_node(initial_delay, factory);
+  new_node->numerator = numerator->convert_tree(factory);
+  new_node->denominator = denominator->convert_tree(factory);
+  new_node->period = period->convert_tree(factory);
+  new_node->initial_delay = initial_delay->convert_tree(factory);
 
   return new_node;
 }

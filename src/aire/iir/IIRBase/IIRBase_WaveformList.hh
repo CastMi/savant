@@ -33,7 +33,7 @@
 
 class IIR_WaveformElement;
 
-class IIRBase_WaveformList : public virtual IIRBase_List<IIR_WaveformElement> {
+class IIRBase_WaveformList : public virtual IIRBase_List<IIR_WaveformElement>, public virtual IIR_WaveformList {
 public:
   IIR_Kind get_kind() const {
     return IIR_WAVEFORM_LIST;

@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_ENUMERATION_LITERAL_HH
 #define IIRSCRAM_ENUMERATION_LITERAL_HH
 
@@ -33,7 +32,6 @@
 #include "IIRScram_Declaration.hh"
 #include "IIRBase_EnumerationLiteral.hh"
 
-class IIRScram_List;
 class IIRScram_TypeDefinition;
 
 class IIRScram_EnumerationLiteral : public virtual IIRScram_Declaration, public virtual IIRBase_EnumerationLiteral{

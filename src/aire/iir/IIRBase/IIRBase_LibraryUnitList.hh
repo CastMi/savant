@@ -33,17 +33,12 @@
 
 class IIR_LibraryUnit;
 
-class IIRBase_LibraryUnitList : public virtual IIRBase_DeclarationList, public virtual IIR_LibraryUnitList{
+class IIRBase_LibraryUnitList : public virtual IIRBase_List<IIR_LibraryUnit>, public virtual IIR_LibraryUnitList {
 
 public:
   IIR_Kind get_kind() const { return IIR_LIBRARY_UNIT_LIST; }
   const IIR_Char *get_kind_text() const { return "IIR_LibraryUnitList"; }
-  void append( IIR_LibraryUnit * );
   
-  IIR *first();
-  IIR *last();
-  IIR *successor( IIR_LibraryUnit * );
-
   void publish_vhdl(ostream &);
   void publish_vhdl_in_design_library();
 protected:

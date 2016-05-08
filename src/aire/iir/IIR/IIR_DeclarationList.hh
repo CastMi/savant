@@ -1,4 +1,3 @@
-
 #ifndef IIR_DECLARATION_LIST_HH
 #define IIR_DECLARATION_LIST_HH
 
@@ -43,11 +42,11 @@ public:
   virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name *  ) { return NULL; }
   virtual savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * ) { return NULL; }
 
-  virtual IIR_DeclarationList* convert_node(plugin_class_factory *factory) = 0;
   /**
      Makes the declarative region of all of the elements in this list point
      to the new region passed in.
   */
   virtual void set_declarative_region( IIR * ) = 0;
+  virtual IIR_DeclarationList* convert_node(plugin_class_factory *);
 };
 #endif

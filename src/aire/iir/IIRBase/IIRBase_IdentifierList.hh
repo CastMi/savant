@@ -32,7 +32,7 @@
 
 class IIR_Identifier;
 
-class IIRBase_IdentifierList : public virtual IIR_IdentifierList{
+class IIRBase_IdentifierList : public virtual IIRBase_List<IIR_Identifier>, public virtual IIR_IdentifierList{
 
 public:
   IIR_Kind get_kind() const {return IIR_IDENTIFIER_LIST;}

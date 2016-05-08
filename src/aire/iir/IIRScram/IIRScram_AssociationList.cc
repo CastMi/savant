@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-2003 The University of Cincinnati.  
 // All rights reserved.
 
@@ -53,34 +52,6 @@
 #include <sstream>
 
 IIRScram_AssociationList::~IIRScram_AssociationList() {}
-
-void 
-IIRScram_AssociationList::append( IIRScram_AssociationElement *to_append ){
-  if( to_append != NULL ){
-    ASSERT( to_append->_is_association() == TRUE );
-  }
-
-  IIRBase_AssociationList::append( to_append );
-}
-
-void 
-IIRScram_AssociationList::prepend( IIRScram_AssociationElement *to_prepend ){
-  if( to_prepend != NULL ){
-    ASSERT( to_prepend->_is_association() == TRUE );
-  }
-
-  IIRBase_AssociationList::prepend( to_prepend );
-}
-
-IIR *
-IIRScram_AssociationList::get_nth_element( int to_get ){
-  IIRScram *retval = dynamic_cast<IIRScram *>(IIRBase_AssociationList::get_nth_element( to_get ));
-  if( retval != NULL ){
-    ASSERT( retval->_is_association() == TRUE );
-  }
-  
-  return retval;
-}
 
 void 
 IIRScram_AssociationList::_replace( IIRScram_AssociationElement *to_replace,
@@ -765,10 +736,11 @@ IIRScram_AssociationList::_fill_in_defaults( IIRScram *line_info,
   }
 }
 
-IIRScram *
+IIRScram_AssociationList *
 IIRScram_AssociationList::_clone(){
   IIRScram_AssociationList *retval = new IIRScram_AssociationList();
-  IIRScram_List::_clone( retval );
+  // FIXME implmeneation missing here
+  // IIRScram_List::_clone( retval );
   
   return retval;
 }

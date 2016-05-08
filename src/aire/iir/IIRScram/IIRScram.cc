@@ -700,7 +700,7 @@ IIRScram::_get_port_list(){
   return NULL;
 }
 
-IIRScram_List *
+IIRScram_List<IIR_Statement> *
 IIRScram::_get_statement_list(){
   _report_undefined_scram_fn("_get_statement_list()");
 

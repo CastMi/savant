@@ -41,8 +41,8 @@ public:
     return "IIR_WaveformElement";
   }
 
-  void set_value( IIR* value);
-  IIR* get_value();
+  void set_value( IIR_Statement* value);
+  IIR_Statement* get_value();
   void set_time( IIR* time);
   IIR* get_time();
   void set_next( IIR_WaveformElement* next);
@@ -57,13 +57,11 @@ public:
 
   void publish_vhdl(ostream &);
 protected:
-  
   IIRBase_WaveformElement();
   virtual ~IIRBase_WaveformElement() = 0;
     
 private:
-  
-  IIR* value;
+  IIR_Statement* value;
   IIR* time;
   IIR_WaveformElement* next;
 

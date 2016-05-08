@@ -32,13 +32,15 @@
 
 class IIR_ArchitectureStatement;
 
-class IIRBase_ArchitectureStatementList : public virtual IIRBase_List<IIR_ArchitectureStatement> {
+class IIRBase_ArchitectureStatementList : public virtual IIRBase_List<IIR_ArchitectureStatement>, public virtual IIR_ArchitectureStatementList {
 
 public:
   IIR_Kind get_kind() const { return IIR_ARCHITECTURE_STATEMENT_LIST; }
   const IIR_Char *get_kind_text() const { return "IIR_ArchitectureStatementList"; }
 
   void append_element(IIR_ArchitectureStatement*);
+  virtual void publish_vhdl( ostream & ) {};
+  virtual IIR_ArchitectureStatementList* convert_node(plugin_class_factory *) { return nullptr; };
 
 protected:
   IIRBase_ArchitectureStatementList();

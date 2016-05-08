@@ -33,13 +33,15 @@
 
 class IIR_Designator;
 
-class IIRBase_DesignatorList : public virtual IIRBase_List<IIR_Designator> {
+class IIRBase_DesignatorList : public virtual IIRBase_List<IIR_Designator>, public virtual IIR_DesignatorList {
 
 public:
   IIR_Kind get_kind() const {return IIR_DESIGNATOR_LIST;}
   const IIR_Char *get_kind_text() const {return "IIR_DesignatorList";}
 
+  virtual IIR_DesignatorList* convert_node(plugin_class_factory *)  { return nullptr; };
   IIR_Boolean is_above_attribute_found();
+  virtual IIR_Boolean is_resolved() { return false; };
   void publish_vhdl(ostream &);
 protected:
   IIRBase_DesignatorList();

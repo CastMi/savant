@@ -31,18 +31,6 @@
 IIRBase_WaveformList::IIRBase_WaveformList() {}
 IIRBase_WaveformList::~IIRBase_WaveformList() {}
 
-
-IIR_WaveformElement*
-IIRBase_WaveformList::first() {
-  return dynamic_cast<IIR_WaveformElement*>(IIR_List::first());
-}
-
-
-IIR_WaveformElement*
-IIRBase_WaveformList::successor(IIR_WaveformElement* node) {
-  return dynamic_cast<IIR_WaveformElement*>(IIR_List::successor((IIR*)node));
-}
-
 IIR_Boolean
 IIRBase_WaveformList::is_above_attribute_found() {
   IIR_Boolean retval = FALSE;

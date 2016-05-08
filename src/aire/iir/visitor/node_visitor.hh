@@ -27,6 +27,10 @@
 #include "visitor_return_type.hh"
 
 class IIR;
+class IIR_ArchitectureStatementList;
+class IIR_AssociationList;
+class IIR_AttributeSpecificationList;
+class IIR_Statement;
 
 /** This class contains the interface definition for visitors to the IIR
     intermediate form package \Ref{IIR}.  All visitor methods in this
@@ -144,7 +148,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  virtual visitor_return_type *visit_IIR_ArchitectureStatementList(IIR *node, visitor_argument_type *arg) = 0;
+  virtual visitor_return_type *visit_IIR_ArchitectureStatementList(IIR_ArchitectureStatementList *node, visitor_argument_type *arg) = 0;
 
 
   /** Visitor method for objects of type IIR_ArraySubtypeDefinition.
@@ -180,7 +184,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  virtual visitor_return_type *visit_IIR_AssertionStatement(IIR *node, visitor_argument_type *arg) = 0;
+  virtual visitor_return_type *visit_IIR_AssertionStatement(IIR_Statement *node, visitor_argument_type *arg) = 0;
 
 
   /** Visitor method for objects of type IIR_AssociationElementByExpression.
@@ -207,7 +211,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  virtual visitor_return_type *visit_IIR_AssociationList(IIR *node, visitor_argument_type *arg) = 0;
+  virtual visitor_return_type *visit_IIR_AssociationList(IIR_AssociationList *node, visitor_argument_type *arg) = 0;
 
 
   /** Visitor method for objects of type IIR_AttributeDeclaration.
@@ -234,7 +238,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  virtual visitor_return_type *visit_IIR_AttributeSpecificationList(IIR *node, visitor_argument_type *arg) = 0;
+  virtual visitor_return_type *visit_IIR_AttributeSpecificationList(IIR_AttributeSpecificationList *node, visitor_argument_type *arg) = 0;
 
 
   /** Visitor method for objects of type IIR_BaseAttribute.
@@ -1913,11 +1917,7 @@ public:
 
   /// Constructor.
   node_visitor() {};
-
-  /** The destructor is pure virtual to define this as an abstract and to
-      prevent direct instantiation. 
-  */
-  virtual ~node_visitor() = 0;
+  virtual ~node_visitor() {};
 
 };
 

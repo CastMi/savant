@@ -26,9 +26,6 @@
 
 //---------------------------------------------------------------------------
 
-
-
-
 #include "savant.hh"
 #include "IIRBase_VariableAssignmentStatement.hh"
 #include "IIR.hh"
@@ -69,14 +66,14 @@ IIRBase_VariableAssignmentStatement::is_above_attribute_found() {
   return get_expression()->is_above_attribute_found();
 }
 
-IIR *
+IIR_Statement *
 IIRBase_VariableAssignmentStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_VariableAssignmentStatement *new_node = dynamic_cast<IIRBase_VariableAssignmentStatement *>(IIRBase_SequentialStatement::convert_tree(factory));
 
   // Process the variables
-  new_node->target = convert_node(target, factory);
-  new_node->rhsexpression = convert_node(rhsexpression, factory);
+  new_node->target = target->convert_tree(factory);
+  new_node->rhsexpression = rhsexpression->convert_tree(factory);
 
   return new_node;
 }

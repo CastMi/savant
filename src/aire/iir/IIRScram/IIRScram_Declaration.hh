@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_DECLARATION_HH
 #define IIRSCRAM_DECLARATION_HH
 
@@ -24,6 +23,7 @@
 #include "IIRScram.hh"
 #include "IIRBase_Declaration.hh"
 #include "IRBasicDataTypes.hh"
+#include "IIRScram_List.hh"
 #include "savant.hh"
 
 class IIRScram_Attribute;
@@ -33,7 +33,6 @@ class IIRScram_DeclarationList;
 class IIRScram_DesignatorList;
 class IIRScram_GenericList;
 class IIRScram_Identifier;
-class IIRScram_List;
 class IIRScram_PortList;
 class IIRScram_Name;
 class IIRScram_TypeDefinition;

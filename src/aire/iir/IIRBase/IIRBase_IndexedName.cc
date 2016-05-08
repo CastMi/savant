@@ -31,6 +31,7 @@
 #include "IIR_DesignFile.hh"
 #include "IIR_Declaration.hh"
 #include "IIR_AssociationElement.hh"
+#include "IIR_Statement.hh"
 #include "IIR_AssociationElementByExpression.hh"
 #include "plugin_class_factory.hh"
 
@@ -103,7 +104,7 @@ IIRBase_IndexedName::get_index( int index_num ){
 }
 
 void 
-IIRBase_IndexedName::set_index( int index_num, IIR *new_index ){
+IIRBase_IndexedName::set_index( int index_num, IIR_Statement *new_index ){
   ASSERT( get_suffix()->get_kind() == IIR_ASSOCIATION_LIST );
   
   IIR_AssociationList *as_list = dynamic_cast<IIR_AssociationList *>(get_suffix());
