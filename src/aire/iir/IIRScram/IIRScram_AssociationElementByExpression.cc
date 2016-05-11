@@ -45,8 +45,6 @@
 #include "resolution_func.hh"
 #include "symbol_table.hh"
 
-
-
 IIRScram_AssociationElementByExpression::~IIRScram_AssociationElementByExpression() {}
 
 IIR_Boolean 
@@ -133,7 +131,7 @@ IIRScram_AssociationElementByExpression::_get_rval_set(constraint_functor *funct
 
 void 
 IIRScram_AssociationElementByExpression::_type_check( savant::set<IIRScram_TypeDefinition> *context_set ){
-  IIRScram *expr = _get_actual();
+  IIRScram_Statement *expr = _get_actual();
 
   ASSERT( expr != NULL );
 
@@ -142,7 +140,7 @@ IIRScram_AssociationElementByExpression::_type_check( savant::set<IIRScram_TypeD
 
 IIRScram *
 IIRScram_AssociationElementByExpression::_semantic_transform( savant::set<IIRScram_TypeDefinition> *context_set ){
-  IIRScram *expr = _get_actual();
+  IIRScram_Statement *expr = _get_actual();
 
   ASSERT( expr != NULL );
 
@@ -172,18 +170,15 @@ IIRScram_AssociationElementByExpression::_rval_to_decl( IIRScram_TypeDefinition 
 
 IIRScram *
 IIRScram_AssociationElementByExpression::_clone() {
-  IIRScram *elem;
   IIRScram_AssociationElementByExpression *assoc;
 
   assoc = new IIRScram_AssociationElementByExpression();
   IIRScram::_clone( assoc );
 
   if (_get_formal() != NULL) {
-    elem = _get_formal()->_clone();
-    assoc->set_formal(elem);
+    assoc->set_formal( _get_formal()->_clone());
   }
-  elem = _get_actual()->_clone();
-  assoc->set_actual(elem);
+  assoc->set_actual(_get_actual()->_clone());
 
   return assoc;
 }

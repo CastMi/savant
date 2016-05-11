@@ -47,15 +47,21 @@ class IIRScram_WaitStatement;
 class IIRScram_WaveformList;
 
 class IIRScram_Statement : public virtual IIRBase_Statement {
-
 public:
-  IIR_Boolean _is_iir_statement(){ return TRUE; }
-  
   virtual IIRScram_Statement *_clone();
   virtual void _clone( IIRScram_Statement *);
   virtual void _type_check();
+  virtual void _type_check( IIRScram_TypeDefinition * );
+  virtual void _type_check( savant::set<IIRScram_TypeDefinition> * );
   void _report_undefined_scram_fn(const char *);
   IIRScram_DesignFile *_get_design_file() const;
+  virtual IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition * );
+  virtual IIR_Boolean _is_readable();
+  virtual IIR_Boolean _is_writable();
+  virtual IIR_Boolean _is_iir_name(){ return FALSE; }
+  virtual savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
+
+  virtual IIRScram_TypeDefinition *_get_subtype();
 				
   // This method does the type checking and resolution for a boolean
   // condition.  Pass in a conditional, and it will return it
@@ -94,6 +100,9 @@ public:
 
   IIRScram_Label *_get_label() const;
 
+  virtual IIRScram_Statement *_semantic_transform( IIRScram_TypeDefinition * );
+  virtual IIRScram_Statement *_semantic_transform( savant::set<IIRScram_TypeDefinition> * );
+  
   /**
      Returns the library unit that contains this statement.
   */
@@ -127,8 +136,6 @@ protected:
 
   // This method prints the delay mechanism
   // (transport/reject...inertial) for all statements. 
-
-  
-private:
 };
+
 #endif

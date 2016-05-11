@@ -35,6 +35,7 @@
 #include "IIRBase_AssociationElement.hh"
 
 class IIRScram_Declaration;
+class IIRScram_Statement;
 
 class IIRScram_AssociationElement : public virtual IIRScram_Tuple, public virtual IIRBase_AssociationElement {
 
@@ -46,7 +47,7 @@ public:
   IIR_Boolean _is_positional();
 
   IIRScram* _get_formal();
-  IIRScram* _get_actual();
+  IIRScram_Statement* _get_actual();
 
   IIRScram_Declaration *_find_formal_declaration();
 

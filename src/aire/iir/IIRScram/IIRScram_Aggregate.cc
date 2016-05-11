@@ -41,6 +41,7 @@
 #include "IIRScram_RecordTypeDefinition.hh"
 #include "IIRScram_ScalarTypeDefinition.hh"
 #include "IIRScram_TextLiteral.hh"
+#include "IIRScram_Statement.hh"
 
 #include "error_func.hh"
 #include "symbol_table.hh"

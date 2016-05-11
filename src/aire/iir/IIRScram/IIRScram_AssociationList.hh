@@ -104,17 +104,17 @@ private:
   IIRScram *_find_formal_designator( IIRScram *formal_part );
   IIRScram_Declaration *_find_formal_declaration( IIRScram *formal_designator,
                                                   IIRScram_InterfaceList *formal_list  );
-  IIRScram *_find_actual_designator( IIRScram *actual_part );
+  IIRScram_Statement *_find_actual_designator( IIRScram_Statement *actual_part );
 
   bool _find_formal_types( IIRScram_AssociationElement *current_association,		  
-			   IIRScram *actual_part, 
-			   IIRScram *actual_designator,
-			   IIRScram *formal_part,
-			   IIRScram *formal_designator,
+			   IIRScram_Statement   *actual_part, 
+			   IIRScram_Statement   *actual_designator,
+			   IIRScram             *formal_part,
+			   IIRScram             *formal_designator,
 			   IIRScram_Declaration *formal_declaration,
 			   savant::set<IIRScram_TypeDefinition> *add_types_to_me );
 
   IIRScram_Name *_get_formal_designator_from_indexed_name( IIRScram_IndexedName * );
-  IIRScram *_get_actual_designator_from_indexed_name( IIRScram_IndexedName * );
+  IIRScram_Statement *_get_actual_designator_from_indexed_name( IIRScram_IndexedName * );
 };
 #endif

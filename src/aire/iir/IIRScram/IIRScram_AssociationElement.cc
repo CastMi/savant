@@ -30,6 +30,7 @@
 
 //---------------------------------------------------------------------------
 
+#include "IIRScram_Statement.hh"
 #include "IIRScram.hh"
 #include "IIRScram_AssociationElement.hh"
 #include "IIRScram_AssociationElementByExpression.hh"
@@ -63,9 +64,9 @@ IIRScram_AssociationElement::_get_formal() {
   return dynamic_cast<IIRScram *>(get_formal());
 }
 
-IIRScram* 
+IIRScram_Statement* 
 IIRScram_AssociationElement::_get_actual() {
-  return dynamic_cast<IIRScram *>(get_actual());
+  return dynamic_cast<IIRScram_Statement *>(get_actual());
 }
 
 

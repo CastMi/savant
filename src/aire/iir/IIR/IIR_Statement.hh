@@ -31,6 +31,7 @@
 #include "IIR.hh"
 
 class IIR_Name;
+class IIRScram_Declaration;
 class IIR_Label;
 namespace savant {
   template <class type> class set;
@@ -54,8 +55,9 @@ public:
       assertion condtion.  For anything else it returns 0. */
   virtual IIR_Statement *get_assertion_condition() = 0;
   virtual IIR_Boolean is_locally_static() = 0;
-  virtual IIR_Boolean is_signal() = 0;
-  virtual IIR_Boolean is_variable() = 0;
+  virtual IIR_Boolean is_signal() { return false; }
+  virtual IIR_Boolean is_variable() { return false; };
+  virtual IIRScram_Declaration *_find_formal_declaration();
   /**
      Republish the VHDL that this node represents.  Called on a expression,
      it would republish just the expression.  Called on a design file, the whole

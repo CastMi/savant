@@ -102,6 +102,9 @@ void
 report_error( IIR_List<type> *if_node, const string msg, severity = FATAL );
 
 void 
+report_undefined_symbol( IIR_Statement * );
+
+void 
 report_undefined_symbol( IIR * );
 
 void 

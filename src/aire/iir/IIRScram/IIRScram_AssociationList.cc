@@ -109,8 +109,7 @@ IIRScram_AssociationList::_process_positional_part( IIRScram_InterfaceList *form
 	if( found_match == TRUE ){
 	  if( resolve == TRUE ){
 	    current_local->set_formal( current_formal );      
-	    IIRScram *new_actual;
-	    new_actual = current_local->_get_actual()->_semantic_transform( current_local_type );
+	    IIRScram_Statement *new_actual = current_local->_get_actual()->_semantic_transform( current_local_type );
 	    new_actual->_type_check( current_local_type );
 	    current_local->set_actual( new_actual->_rval_to_decl( current_local_type ) );
 	  }
@@ -234,9 +233,9 @@ IIRScram_AssociationList::_get_formal_designator_from_indexed_name( IIRScram_Ind
   return retval;
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_AssociationList::_get_actual_designator_from_indexed_name( IIRScram_IndexedName *name ){
-  IIRScram *retval = name;
+  IIRScram_Statement *retval = name;
   IIRScram *prefix = name->_get_prefix();
   IIRScram *suffix = name->_get_suffix();
 
@@ -316,9 +315,9 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
   current_association = first_to_look_at;
   while( current_association != NULL){
     IIRScram *formal_designator = NULL;
-    IIRScram *actual_designator = NULL;
+    IIRScram_Statement *actual_designator = NULL;
     IIRScram *formal_part = NULL;
-    IIRScram *actual_part = NULL;
+    IIRScram_Statement *actual_part = NULL;
     // These are declarations that were found through selection, and
     // MADE VISIBLE.  This means that if they are non-NULL, that we
     // need to make them not visible at the end.
@@ -446,10 +445,12 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
       switch( formal_types_to_consider->size() ){
       case 0:{
 	if( resolve == TRUE ){
-	  ostringstream err;
-	  err << "Type of formal designator |" << *formal_designator << "| and actual part |"
-	      << *actual_part << "| aren't compatible, as they must in this context.";
-	  report_error( formal_designator, err.str() );
+      //FIXME
+	  //ostringstream err;
+	  //err << "Type of formal designator |" << *formal_designator << "| and actual part |"
+	  //    << *actual_part << "| aren't compatible, as they must in this context.";
+	  //report_error( formal_designator, err.str() );
+	  report_error( formal_designator, "NEEDFIXHERE" );
 	}
 	return FALSE;
 	break;
@@ -457,7 +458,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
       case 1:{
 	IIRScram_TypeDefinition *actual_part_type = formal_types_to_consider->getElement();
 	// Just trying to be efficient with set constructors, here.
-	IIRScram *new_actual = NULL;
+	IIRScram_Statement *new_actual = NULL;
 
 	// We have to do this this way, because "actual_part" needs to
 	// be resolved no matter what.  But, we don't want it resolved
@@ -836,9 +837,9 @@ IIRScram_AssociationList::_find_formal_declaration( IIRScram                    
   return retval;
 }
 
-IIRScram *
-IIRScram_AssociationList::_find_actual_designator( IIRScram *actual_part ){
-  IIRScram *retval = NULL;
+IIRScram_Statement *
+IIRScram_AssociationList::_find_actual_designator( IIRScram_Statement *actual_part ){
+  IIRScram_Statement *retval = NULL;
 
   if( actual_part->get_kind() == IIR_INDEXED_NAME ){
     retval = _get_actual_designator_from_indexed_name( dynamic_cast<IIRScram_IndexedName *>(actual_part) );
@@ -852,8 +853,8 @@ IIRScram_AssociationList::_find_actual_designator( IIRScram *actual_part ){
 
 bool 
 IIRScram_AssociationList::_find_formal_types(IIRScram_AssociationElement      *current_association,
-					     IIRScram                         *actual_part, 
-					     IIRScram                         *actual_designator,
+					     IIRScram_Statement               *actual_part, 
+					     IIRScram_Statement               *actual_designator,
 					     IIRScram                         *formal_part,
 					     IIRScram                         *formal_designator,
 					     IIRScram_Declaration             *formal_declaration,
