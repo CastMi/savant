@@ -30,13 +30,13 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIRScram.hh"
+#include "IIRScram_Statement.hh"
 #include "IIRBase_Literal.hh"
 
 class IIRScram_DesignatorList;
 class IIRScram_TypeDefinition;
 
-class IIRScram_Literal : public virtual IIRScram, public virtual IIRBase_Literal{
+class IIRScram_Literal : public virtual IIRBase_Literal, public virtual IIRScram_Statement {
 
 public:
   IIRScram_Literal(){ }
@@ -47,7 +47,7 @@ public:
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return FALSE; }
   
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
+  IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition * );
 
 protected:
 private:

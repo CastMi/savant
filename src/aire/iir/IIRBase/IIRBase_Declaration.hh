@@ -25,8 +25,8 @@
 
 class IIRBase_Declaration : public virtual IIRBase, public virtual IIR_Declaration {
 public:
-  void set_declarator( IIR_TextLiteral *identifier );
-  IIR_TextLiteral *get_declarator();
+  void set_declarator( IIR_Identifier *identifier );
+  IIR_Identifier* get_declarator();
 
   IIR *convert_tree(plugin_class_factory *factory);
 
@@ -106,7 +106,7 @@ protected:
 private:
   IIR_Boolean           implicit_flag;
   IIR_Boolean           visible_flag;
-  IIR_TextLiteral       *declarator;
+  IIR_Identifier       *declarator;
 
   IIR_Attribute         *attribute_name;
 

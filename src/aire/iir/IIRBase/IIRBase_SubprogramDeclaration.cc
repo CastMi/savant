@@ -31,6 +31,7 @@
 #include "IIR_InterfaceList.hh"
 #include "IIR_SequentialStatementList.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "IIRBase_InterfaceDeclaration.hh"
 
 IIRBase_SubprogramDeclaration::IIRBase_SubprogramDeclaration()  :
@@ -136,7 +137,8 @@ IIRBase_SubprogramDeclaration::is_operator(){
 
 ostream &
 IIRBase_SubprogramDeclaration::print( ostream &os ){
-  os << *get_declarator();
+  //FIXME: overload operator<<
+  //os << *get_declarator();
   os << "(";
 
   IIR_InterfaceDeclaration *current_param = 

@@ -37,7 +37,7 @@ IIRBase_GreaterThanOperator::get_operator_string() const {
 }
 
 
-IIRBase_Operator::Precedence
+Precedence
 IIRBase_GreaterThanOperator::get_precedence(){
-  return RELATIONAL_OPERATOR;
+  return Precedence::RELATIONAL_OPERATOR;
 }

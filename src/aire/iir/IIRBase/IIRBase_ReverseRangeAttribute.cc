@@ -30,16 +30,16 @@ IIRBase_ReverseRangeAttribute::IIRBase_ReverseRangeAttribute() {
 IIRBase_ReverseRangeAttribute::~IIRBase_ReverseRangeAttribute() {}
 
 void 
-IIRBase_ReverseRangeAttribute::set_suffix( IIR* suffix) {
+IIRBase_ReverseRangeAttribute::set_suffix( IIR_Statement* suffix) {
   this->suffix = suffix;
 }
 
-IIR* 
+IIR_Statement * 
 IIRBase_ReverseRangeAttribute::get_suffix() {
   return suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ReverseRangeAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ReverseRangeAttribute *new_node = dynamic_cast<IIRBase_ReverseRangeAttribute *>(IIRBase_Attribute::convert_tree(factory));

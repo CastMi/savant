@@ -27,6 +27,7 @@
 
 #include "IIRBase_AssociationElementByExpression.hh"
 #include "IIR_Statement.hh"
+#include "IIRBase_Declaration.hh"
 
 IIRBase_AssociationElementByExpression::IIRBase_AssociationElementByExpression() {
   set_actual(NULL);
@@ -127,7 +128,8 @@ IIRBase_AssociationElementByExpression::is_locally_static(){
 ostream &
 IIRBase_AssociationElementByExpression::print( ostream &os ){
   if( get_formal() != NULL ){
-    os << *(get_formal());
+     // FIXME: overload operator<<
+    //os << *(get_formal());
     os << " => ";
   }
 

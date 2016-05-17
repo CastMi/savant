@@ -45,7 +45,7 @@ public:
   const string convert_to_string();
   const string convert_to_library_name();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *);
  
   IIR_Boolean is_text_literal() { return TRUE; }
 

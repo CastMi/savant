@@ -50,7 +50,7 @@ public:
   IIR_Int32 get_exponent_length();
   IIR_Int32 get_integer_value();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   ostream &print( ostream & );
   const string print_value(IIR_Int32);

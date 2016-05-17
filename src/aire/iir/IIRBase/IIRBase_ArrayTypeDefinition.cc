@@ -28,7 +28,7 @@
 #include "savant.hh"
 #include "IIRBase_ArrayTypeDefinition.hh"
 #include "IIRBase_ScalarTypeDefinition.hh"
-#include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 
 #include "set.hh"
 
@@ -182,7 +182,8 @@ IIRBase_ArrayTypeDefinition::print(ostream &os) {
     element_type = element_type->get_element_subtype();
   }
   
-  os << " ) of " << *(element_type->get_declarator());
+  // FIXME: overload operator<<
+  //os << " ) of " << *(element_type->get_declarator());
 
   return os;
 }

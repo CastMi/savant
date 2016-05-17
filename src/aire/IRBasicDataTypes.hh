@@ -49,13 +49,24 @@ typedef int64_t   IIR_Int64;
 typedef float     IIR_FP32;
 typedef double    IIR_FP64;
 
-enum IIR_SignalKind {
+enum class Precedence {
+   LOGICAL_OPERATOR,
+   RELATIONAL_OPERATOR,
+   SHIFT_OPERATOR,
+   ADDING_OPERATOR,
+   SIGN_OPERATOR,
+   MULTIPLYING_OPERATOR,
+   MISCELLANEOUS_OPERATOR,
+   OTHERS
+};
+
+enum class IIR_SignalKind {
   IIR_NO_SIGNAL_KIND,
   IIR_REGISTER_KIND,
   IIR_BUS_KIND
 };
 
-enum IIR_Mode {
+enum class IIR_Mode {
   IIR_UNKNOWN_MODE,
   IIR_IN_MODE,
   IIR_OUT_MODE,
@@ -70,24 +81,24 @@ get_iir_mode_string( IIR_Mode mode ){
   string retval;
 
   switch( mode ){
-  case IIR_IN_MODE:
-    retval = "IIR_IN_MODE";
-    break;
-  case IIR_OUT_MODE:
-    retval = "IIR_OUT_MODE";
-    break;
-  case IIR_INOUT_MODE:
-    retval = "IIR_INOUT_MODE";
-    break;
-  case IIR_BUFFER_MODE:
-    retval = "IIR_BUFFER_MODE";
-    break;
-  case IIR_LINKAGE_MODE:
-    retval = "IIR_LINKAGE_MODE";
-    break;
-  case IIR_UNKNOWN_MODE:
-  default:
-    retval = "IIR_UNKNOWN_MODE";
+     case IIR_Mode::IIR_IN_MODE:
+        retval = "IIR_IN_MODE";
+        break;
+     case IIR_Mode::IIR_OUT_MODE:
+        retval = "IIR_OUT_MODE";
+        break;
+     case IIR_Mode::IIR_INOUT_MODE:
+        retval = "IIR_INOUT_MODE";
+        break;
+     case IIR_Mode::IIR_BUFFER_MODE:
+        retval = "IIR_BUFFER_MODE";
+        break;
+     case IIR_Mode::IIR_LINKAGE_MODE:
+        retval = "IIR_LINKAGE_MODE";
+        break;
+     case IIR_Mode::IIR_UNKNOWN_MODE:
+     default:
+        retval = "IIR_UNKNOWN_MODE";
   }
 
   return retval;

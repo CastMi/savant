@@ -34,8 +34,8 @@ class IIR_SuccAttribute : public virtual IIR_Attribute{
 public:
   virtual ~IIR_SuccAttribute() {}
     
-  virtual void set_suffix( IIR *suffix ) = 0;
-  virtual IIR *get_suffix() = 0;
+  virtual void set_suffix( IIR_Statement *suffix ) = 0;
+  virtual IIR_Statement *get_suffix() = 0;
 };
 
 #endif

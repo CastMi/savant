@@ -33,6 +33,7 @@
 #include "IIR_DesignatorList.hh"
 #include "IIRBase_Name.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 
 IIRBase_GroupDeclaration::IIRBase_GroupDeclaration()  :
   group_constituent_list(0),

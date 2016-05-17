@@ -30,16 +30,16 @@ IIRBase_PredAttribute::IIRBase_PredAttribute() {
 IIRBase_PredAttribute::~IIRBase_PredAttribute() {}
 
 void 
-IIRBase_PredAttribute::set_suffix( IIR *suffix) {
+IIRBase_PredAttribute::set_suffix( IIR_Statement *suffix) {
   my_suffix =  suffix;
 }
 
-IIR * 
+IIR_Statement * 
 IIRBase_PredAttribute::get_suffix() {
   return my_suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_PredAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_PredAttribute *new_node = dynamic_cast<IIRBase_PredAttribute *>(IIRBase_Attribute::convert_tree(factory));

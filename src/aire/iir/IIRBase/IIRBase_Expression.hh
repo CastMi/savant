@@ -28,14 +28,14 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIRBase.hh"
+#include "IIRBase_Statement.hh"
 #include "IIR_Expression.hh"
 
-class IIRBase_Expression : public virtual IIRBase,
+class IIRBase_Expression : public virtual IIRBase_Statement,
 			   public virtual IIR_Expression{
 
 public:
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
 protected:
   IIRBase_Expression();

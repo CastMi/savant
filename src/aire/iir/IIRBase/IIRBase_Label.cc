@@ -31,6 +31,7 @@
 #include "IIR_AttributeSpecificationList.hh"
 #include "IIR_Statement.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 
 IIRBase_Label::IIRBase_Label()  :
   attributes(0),

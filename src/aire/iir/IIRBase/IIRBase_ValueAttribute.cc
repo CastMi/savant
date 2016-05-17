@@ -30,16 +30,16 @@ IIRBase_ValueAttribute::IIRBase_ValueAttribute() {
 IIRBase_ValueAttribute::~IIRBase_ValueAttribute() {}
 
 void
-IIRBase_ValueAttribute::set_suffix( IIR *new_suffix ){
+IIRBase_ValueAttribute::set_suffix( IIR_Statement *new_suffix ){
   suffix = new_suffix;
 }
 
-IIR*
+IIR_Statement*
 IIRBase_ValueAttribute::get_suffix() {
   return suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ValueAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ValueAttribute *new_node = dynamic_cast<IIRBase_ValueAttribute *>(IIRBase_Attribute::convert_tree(factory));

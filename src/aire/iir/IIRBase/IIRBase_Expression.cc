@@ -36,11 +36,11 @@ IIRBase_Expression::IIRBase_Expression(){}
 
 IIRBase_Expression::~IIRBase_Expression(){}
 
-IIR *
+IIR_Statement *
 IIRBase_Expression::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_Expression *new_node =
-    dynamic_cast<IIRBase_Expression *>(IIRBase::convert_tree(factory));
+    dynamic_cast<IIRBase_Expression *>(IIRBase_Statement::convert_tree(factory));
 
   return new_node;
 }

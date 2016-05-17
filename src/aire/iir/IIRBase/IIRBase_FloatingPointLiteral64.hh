@@ -41,7 +41,7 @@ public:
   IIR_FP64 value();
   void set_value(IIR_FP64);
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   void publish_vhdl(ostream &);
 protected:

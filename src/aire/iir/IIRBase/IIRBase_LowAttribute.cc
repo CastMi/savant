@@ -30,16 +30,16 @@ IIRBase_LowAttribute::IIRBase_LowAttribute(){
 IIRBase_LowAttribute::~IIRBase_LowAttribute() {}
 
 void 
-IIRBase_LowAttribute::set_suffix( IIR *suffix ){
+IIRBase_LowAttribute::set_suffix( IIR_Statement *suffix ){
   my_suffix = suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_LowAttribute::get_suffix( ){
   return my_suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_LowAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_LowAttribute *new_node = dynamic_cast<IIRBase_LowAttribute *>(IIRBase_Attribute::convert_tree(factory));

@@ -34,6 +34,7 @@
 #include "IIR_Declaration.hh"
 #include "IIRBase_TypeDefinition.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 
 #include <iostream>
 using std::cerr;

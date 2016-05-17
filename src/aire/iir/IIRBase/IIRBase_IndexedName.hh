@@ -37,10 +37,10 @@ public:
   IIR_Kind get_kind() const {return IIR_INDEXED_NAME;}
   const IIR_Char *get_kind_text() const {return "IIR_IndexedName";}
 
-  void set_suffix( IIR* suffix);
-  IIR* get_suffix();
+  void set_suffix( IIR_Statement* );
+  IIR_Statement* get_suffix();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_signal();
@@ -49,9 +49,9 @@ public:
   IIR_Boolean is_variable();
 
   // Override the IIR_Name default
-  void set_subtype(IIR_TypeDefinition *type) { IIRBase::set_subtype(type); }
+  void set_subtype(IIR_TypeDefinition *type) { IIRBase_Statement::set_subtype(type); }
 
-  IIR *get_index( int index_num );
+  IIR_Statement *get_index( int index_num );
   void set_index( int index_num, IIR_Statement *new_index );
 
   IIR_Int32 get_num_indexes();
@@ -70,7 +70,7 @@ protected:
   virtual ~IIRBase_IndexedName() = 0;
     
 private:
-  IIR* suffix;  
+  IIR_Statement* suffix;  
 
 };
 #endif

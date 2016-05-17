@@ -55,7 +55,7 @@ public:
 
   /** If this operator is a call to one that's user overloaded, this method
       transforms it into an IIRScram_FunctionCall. */
-  IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition> * );
+  IIRScram_Statement *_semantic_transform( savant::set<IIRScram_TypeDefinition> * );
 
   /** This method looks for a user overloaded version of an operator and
       returns true if a valid user overloading of the operator is found.
@@ -63,7 +63,7 @@ public:
       the operator is being used.  See next method. */
   IIR_Boolean _type_check_user_declared( savant::set<IIRScram_TypeDefinition> * );    
   
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
+  IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition * );
 
   // Helper Functions
   IIRScram_SubprogramDeclaration *_get_implementation();

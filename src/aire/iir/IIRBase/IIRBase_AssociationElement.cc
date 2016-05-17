@@ -28,27 +28,37 @@
 #include "savant.hh"
 #include "IIRBase_AssociationElement.hh"
 #include "IIR_Statement.hh"
+#include "IIRBase_Declaration.hh"
 
-IIRBase_AssociationElement::IIRBase_AssociationElement() {
-  set_formal(NULL);
-}
+IIRBase_AssociationElement::IIRBase_AssociationElement()
+   : formal(nullptr),
+     decl(nullptr) {}
 
 void
 IIRBase_AssociationElement::set_actual( IIR_Statement* ) {
    ASSERT(0);
 }
 
-IIRBase_AssociationElement::~IIRBase_AssociationElement() {
+void
+IIRBase_AssociationElement::set_decl( IIR_Declaration* ) {
+   ASSERT(0);
 }
+
+IIR_Declaration*
+IIRBase_AssociationElement::get_decl() {
+   return decl;
+}
+
+IIRBase_AssociationElement::~IIRBase_AssociationElement() {}
 
 
 void
-IIRBase_AssociationElement::set_formal(IIR *f) {
+IIRBase_AssociationElement::set_formal(IIR_Statement *f) {
   formal = f;
 }
 
 
-IIR*
+IIR_Statement*
 IIRBase_AssociationElement::get_formal() {
   return formal;
 }
@@ -60,6 +70,7 @@ IIRBase_AssociationElement::convert_tree(plugin_class_factory *factory) {
 
   // Process the variables
   new_node->formal = formal->convert_tree(factory);
+  ASSERT( new_node->formal );
 
   return new_node;
 }

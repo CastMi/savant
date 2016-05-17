@@ -275,7 +275,7 @@ public:
       method of it's direct decendent. */
   ostream &print( ostream & );
 
-  virtual IIR_TextLiteral *get_declarator();
+  virtual IIR_Identifier* get_declarator();
 
   /** This method returns the declaration of an indexed name.  If the
       prefix is a declaration, returns it, or else, gets the declaration of
@@ -303,17 +303,6 @@ public:
   virtual void publish_vhdl_operator(ostream &);
   //@}
 
-  enum Precedence {LOGICAL_OPERATOR, RELATIONAL_OPERATOR, SHIFT_OPERATOR,
-		   ADDING_OPERATOR, SIGN_OPERATOR, MULTIPLYING_OPERATOR,
-		   MISCELLANEOUS_OPERATOR, OTHERS};
-  /** This method will return precedence levels for any operator and
-      literals.  The precedence levels are given in the LRM.  There are 8
-      levels of precedence level 8 are the integer literals and all
-      function calls which return value. All others take precedence values
-      according to LRM. The higher the number , the higher the
-      precedence. 
-  */
-  virtual Precedence get_precedence();
 
 protected:
   IIRBase();

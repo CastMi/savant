@@ -34,16 +34,16 @@ IIRBase_StableAttribute::IIRBase_StableAttribute() {
 IIRBase_StableAttribute::~IIRBase_StableAttribute() {}
 
 void
-IIRBase_StableAttribute:: set_suffix( IIR *new_suffix ) {
+IIRBase_StableAttribute:: set_suffix( IIR_Statement *new_suffix ) {
   suffix = new_suffix;
 }
 
-IIR*
+IIR_Statement*
 IIRBase_StableAttribute:: get_suffix() {
   return suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_StableAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_StableAttribute *new_node = dynamic_cast<IIRBase_StableAttribute *>(IIRBase_Attribute::convert_tree(factory));

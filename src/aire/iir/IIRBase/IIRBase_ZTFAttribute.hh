@@ -68,7 +68,7 @@ public:
   /** Return the initial_delay specifying the time of the first sampling. */
   IIR* get_initial_delay();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   /** This returns an IIR_TextLiteral when the ZTF attribute is  instantiated. */
   IIR_TextLiteral *build_attribute_name();

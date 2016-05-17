@@ -37,10 +37,10 @@ public:
   IIR_Kind get_kind() const {return IIR_HIGH_ATTRIBUTE;}
   const IIR_Char *get_kind_text() const {return "IIR_HighAttribute";}
 
-  void set_suffix( IIR * );
-  IIR *get_suffix( );
+  void set_suffix( IIR_Statement * );
+  IIR_Statement *get_suffix( );
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_value_attribute();
   IIR_Boolean is_function_attribute();
@@ -53,6 +53,6 @@ protected:
   virtual ~IIRBase_HighAttribute() = 0;
     
 private:
-  IIR *my_suffix;
+  IIR_Statement *my_suffix;
 };
 #endif

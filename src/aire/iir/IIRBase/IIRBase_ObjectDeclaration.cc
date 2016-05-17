@@ -82,7 +82,7 @@ IIR_SignalKind
 IIRBase_ObjectDeclaration::get_signal_kind(){
   _report_undefined_fn("get_signal_kind()");
 
-  return IIR_NO_SIGNAL_KIND;
+  return IIR_SignalKind::IIR_NO_SIGNAL_KIND;
 }
 
 void
@@ -154,13 +154,13 @@ IIRBase_ObjectDeclaration::publish_vhdl_subtype_indication_with_expression(ostre
 void
 IIRBase_ObjectDeclaration::publish_vhdl_signal_kind(ostream &vhdl_out){
   switch(get_signal_kind()) {
-  case IIR_REGISTER_KIND:
+     case IIR_SignalKind::IIR_REGISTER_KIND:
     vhdl_out << " register ";
     break;
-  case IIR_BUS_KIND:
+  case IIR_SignalKind::IIR_BUS_KIND:
     vhdl_out << " bus ";
     break;
-  case IIR_NO_SIGNAL_KIND:
+  case IIR_SignalKind::IIR_NO_SIGNAL_KIND:
     break;
   default:
     cerr << " ERROR!!! undefined Signal Kind in node " << get_kind_text();

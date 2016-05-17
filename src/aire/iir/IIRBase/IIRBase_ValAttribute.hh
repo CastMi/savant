@@ -41,10 +41,10 @@ public:
     return "IIR_ValAttribute";
   }
 
-  void set_suffix( IIR *suffix );
-  IIR *get_suffix();
+  void set_suffix( IIR_Statement *suffix );
+  IIR_Statement *get_suffix();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_function_attribute(){ return TRUE; }
   IIR_Boolean has_suffix(){ return TRUE; }
@@ -56,7 +56,7 @@ protected:
   virtual ~IIRBase_ValAttribute() = 0;
     
 private:  
-  IIR *my_suffix;
+  IIR_Statement *my_suffix;
 };
 
 #endif

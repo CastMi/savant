@@ -52,7 +52,7 @@ public:
   /* Return the denominator coefficients.  */
   IIR* get_den();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   /** This returns an IIR_TextLiteral when the LTF attribute is  instantiated. */
   IIR_TextLiteral *build_attribute_name();

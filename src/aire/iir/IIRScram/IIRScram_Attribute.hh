@@ -65,14 +65,14 @@ public:
   virtual IIRScram_TypeDefinition *_get_subtype_high_low_left_right();
 
   virtual void _type_check( savant::set<IIRScram_TypeDefinition> * );
-  void set_subtype(IIR_TypeDefinition *type) {IIRBase::set_subtype(type);}
+  void set_subtype(IIR_TypeDefinition *type) {IIRBase_Statement::set_subtype(type);}
 
   IIRScram *_decl_to_decl( IIRScram_Declaration * );
 
-  virtual void _set_suffix( IIRScram * );
-  virtual IIRScram *_get_suffix( );
+  virtual void _set_suffix( IIRScram_Statement * );
+  virtual IIRScram_Statement *_get_suffix( );
 
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
+  IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition * );
   /** This method takes a 'range or 'reverse_range attribute, and builds an
       IIRScram_RangeTypeDefinition in the form of prefix'left to
       prefix'right.  */
@@ -96,8 +96,8 @@ public:
   virtual IIR_Boolean _is_delayed_attribute() { return FALSE; }
 
   /** If you hit this, an attribute has an unimplemented clone(). */
-  virtual IIRScram *_clone();
-  virtual void _clone( IIRScram * );
+  virtual IIRScram_Statement *_clone();
+  virtual void _clone( IIRScram_Attribute * );
 
   IIRScram_TextLiteral *_get_attribute_name();
   IIRScram_TextLiteral *_build_attribute_name();

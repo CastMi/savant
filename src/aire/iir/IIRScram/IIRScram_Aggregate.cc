@@ -42,6 +42,7 @@
 #include "IIRScram_ScalarTypeDefinition.hh"
 #include "IIRScram_TextLiteral.hh"
 #include "IIRScram_Statement.hh"
+#include "IIRScram_Declaration.hh"
 
 #include "error_func.hh"
 #include "symbol_table.hh"
@@ -178,7 +179,7 @@ IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *m
 	  IIRScram_Declaration *element_decl = element_decls->getElement();
 	  delete element_decls;
 	  
-	  current_association->set_formal( element_decl );
+	  current_association->set_decl( element_decl );
 	  IIRScram_TypeDefinition *actual_type = element_decl->_get_subtype();
 	  
 	  ASSERT( current_association->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION );	
@@ -239,7 +240,7 @@ IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *m
   }
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
   ASSERT( my_type->is_array_type() == TRUE || my_type->is_record_type() );
   
@@ -283,13 +284,15 @@ IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
 
     if( current_association->get_formal() != NULL ){
       if( processing_mode == ARRAY ){
-	IIRScram *old_formal = dynamic_cast<IIRScram *>(current_association->get_formal());
+	IIRScram_Declaration *old_formal = dynamic_cast<IIRScram_Declaration*>(current_association->get_decl());
+   ASSERT( old_formal );
 
 	IIRScram *new_formal = old_formal->_semantic_transform( formal_type );
+   ASSERT( new_formal );
 	new_formal->_type_check( formal_type );
-	new_formal = new_formal->_rval_to_decl( formal_type );
+	IIRScram_Declaration *result = dynamic_cast<IIRScram_Declaration*>( new_formal->_rval_to_decl( formal_type ) );
 
-	current_association->set_formal( new_formal );
+	current_association->set_decl( result );
       }
       else{
 	_rval_to_decl_process_named_part( my_type, current_association );
@@ -315,7 +318,7 @@ IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
 // This method publishes a default range to the aggregate.  The default range
 // is not specified in the LRM.  I used (1, to, n) -- SK.
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_Aggregate::_clone(){
   IIRScram_Aggregate *retval = new IIRScram_Aggregate();
   IIRScram_Expression::_clone( retval );

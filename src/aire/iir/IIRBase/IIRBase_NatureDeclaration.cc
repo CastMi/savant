@@ -30,6 +30,7 @@
 #include "IIR_AttributeSpecificationList.hh"
 #include "IIR_TerminalDeclaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 #include "savant.hh"
 
 IIRBase_NatureDeclaration::IIRBase_NatureDeclaration()

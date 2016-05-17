@@ -26,6 +26,7 @@
 #include "IIRBase_SourceQuantityDeclaration.hh"
 #include "IIRBase_TextLiteral.hh"
 #include "IIR_TypeDefinition.hh"
+#include "IIR_Identifier.hh"
 
 IIRBase_SourceQuantityDeclaration::IIRBase_SourceQuantityDeclaration() :
   magnitude_expression(0),

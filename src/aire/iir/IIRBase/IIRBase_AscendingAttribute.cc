@@ -31,16 +31,16 @@ IIRBase_AscendingAttribute::IIRBase_AscendingAttribute()
 IIRBase_AscendingAttribute::~IIRBase_AscendingAttribute(){}
 
 void 
-IIRBase_AscendingAttribute::set_suffix( IIR *suffix ){
+IIRBase_AscendingAttribute::set_suffix( IIR_Statement *suffix ){
   this->suffix = suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_AscendingAttribute::get_suffix(){
   return suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_AscendingAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_AscendingAttribute *new_node = dynamic_cast<IIRBase_AscendingAttribute *>(IIRBase_Attribute::convert_tree(factory));

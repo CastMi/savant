@@ -37,7 +37,7 @@ IIRBase_SRAOperator::get_operator_string() const {
 }
 
 
-IIRBase_Operator::Precedence
+Precedence
 IIRBase_SRAOperator::get_precedence(){
-  return SHIFT_OPERATOR;
+  return Precedence::SHIFT_OPERATOR;
 }

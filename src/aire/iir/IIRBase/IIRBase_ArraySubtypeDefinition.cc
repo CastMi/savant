@@ -30,7 +30,7 @@
 #include "IIRBase_ArraySubtypeDefinition.hh"
 #include "IIR_FunctionDeclaration.hh"
 #include "IIRBase_ScalarTypeDefinition.hh"
-#include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "IIR_TypeDefinition.hh"
 
 IIRBase_ArraySubtypeDefinition::IIRBase_ArraySubtypeDefinition() :
@@ -80,7 +80,8 @@ IIRBase_ArraySubtypeDefinition::get_resolved_index_subtype(){
 ostream&
 IIRBase_ArraySubtypeDefinition::print(ostream &os) {
   if( get_base_type()->get_declaration() != NULL ){
-    os << *(get_base_type()->get_declaration()->get_declarator());
+    // FIXME: overload operator<<
+     //os << *(get_base_type()->get_declaration()->get_declarator());
   }
   else{
     os << "ANONYMOUS";

@@ -31,6 +31,7 @@
 #include "savant.hh"
 #include "error_func.hh"
 #include "IIR_Label.hh"
+#include "IIR_Operator.hh"
 #include <sstream>
 
 class IIR_Statement;
@@ -47,6 +48,11 @@ IIRBase_Statement::set_label( IIR_Label *label) {
   if( label != NULL ){
     label->set_statement( (IIR_Statement *) this );
   }
+}
+
+void
+IIRBase::set_subtype(IIR_TypeDefinition *new_type) {
+  subtype = new_type;
 }
 
 IIR_Label *
@@ -149,4 +155,9 @@ IIRBase_Statement::publish_vhdl_delay_mechanism( ostream &vhdl_out,
     }
     break;
   }
+}
+
+Precedence
+IIRBase_Statement::get_precedence(){
+  return Precedence::OTHERS;
 }

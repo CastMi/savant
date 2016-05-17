@@ -65,7 +65,7 @@ IIRBase_QualifiedExpression::get_expression() {
 }
 
 
-IIR *
+IIR_Statement *
 IIRBase_QualifiedExpression::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_QualifiedExpression *new_node = dynamic_cast<IIRBase_QualifiedExpression *>(IIRBase_Expression::convert_tree(factory));

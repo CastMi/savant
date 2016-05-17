@@ -31,6 +31,7 @@
 #include "IIR_SequentialStatementList.hh"
 #include "IIR_TypeDefinition.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 
 IIRBase_ProcedureDeclaration::IIRBase_ProcedureDeclaration() {}
 IIRBase_ProcedureDeclaration::~IIRBase_ProcedureDeclaration() {}
@@ -60,7 +61,8 @@ IIRBase_ProcedureDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
     }
     vhdl_out << "begin\n";
     get_subprogram_body()->publish_vhdl(vhdl_out);
-    vhdl_out << "end procedure " << *get_declarator();
+    // FIXME: overload operator<<
+    //vhdl_out << "end procedure " << *get_declarator();
   }
   vhdl_out << ";\n";
 }

@@ -29,6 +29,7 @@
 #include "IIRBase_PhysicalLiteral.hh"
 #include "IIR_PhysicalUnit.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 
 #include "savant.hh"
 
@@ -64,7 +65,7 @@ IIRBase_PhysicalLiteral::is_locally_static(){
   return TRUE;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_PhysicalLiteral::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_PhysicalLiteral *new_node = dynamic_cast<IIRBase_PhysicalLiteral *>(IIRBase_Expression::convert_tree(factory));
@@ -98,7 +99,8 @@ IIRBase_PhysicalLiteral::print( ostream &os ) {
     os << *get_abstract_literal();
   }
   os << " ";
-  os << *(get_unit_name()->get_declarator());
+  // FIXME: overload operator<<
+  //os << *(get_unit_name()->get_declarator());
 
   return os;
 }

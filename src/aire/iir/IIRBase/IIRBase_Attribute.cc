@@ -39,7 +39,7 @@ IIRBase_Attribute::IIRBase_Attribute() {
 IIRBase_Attribute::~IIRBase_Attribute(){}
 
 void
-IIRBase_Attribute::set_suffix(IIR *) {
+IIRBase_Attribute::set_suffix(IIR_Statement *) {
   ostringstream err;
   err << "Internal error - IIRBase_Attribute::set_suffix called."
       << "The instantiated node"
@@ -104,12 +104,14 @@ IIRBase_Attribute::print( ostream &os ){
   os << "'";
   IIR_TextLiteral *attribute_name = build_attribute_name();
   if( attribute_name != 0 ){
-    os << *attribute_name;
+     // FIXME: overload operator<<
+    //os << *attribute_name;
     delete attribute_name;
   }
 
   if( get_suffix() != 0 ){
-    os << "(" << *get_suffix() << ")";
+    // FIXME: overload operator<<
+    //os << "(" << *get_suffix() << ")";
   }
 
   return os;
@@ -131,7 +133,7 @@ IIRBase_Attribute::get_attribute_name(){
   return my_attribute_name;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_Attribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_Attribute *new_node = dynamic_cast<IIRBase_Attribute *>(IIRBase_Name::convert_tree(factory));

@@ -58,7 +58,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  virtual visitor_return_type *visit_IIR_AbsoluteOperator(IIR *node, visitor_argument_type *arg) = 0;
+  virtual visitor_return_type *visit_IIR_AbsoluteOperator(IIR_Statement *node, visitor_argument_type *arg) = 0;
 
 
   /** Visitor method for objects of type IIR_AccessSubtypeDefinition.
@@ -85,7 +85,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  virtual visitor_return_type *visit_IIR_ActiveAttribute(IIR *node, visitor_argument_type *arg) = 0;
+  virtual visitor_return_type *visit_IIR_ActiveAttribute(IIR_Statement *node, visitor_argument_type *arg) = 0;
 
 
   /** Visitor method for objects of type IIR_AdditionOperator.
@@ -94,7 +94,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  virtual visitor_return_type *visit_IIR_AdditionOperator(IIR *node, visitor_argument_type *arg) = 0;
+  virtual visitor_return_type *visit_IIR_AdditionOperator(IIR_Statement *node, visitor_argument_type *arg) = 0;
 
 
   /** Visitor method for objects of type IIR_Aggregate.
@@ -103,7 +103,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  virtual visitor_return_type *visit_IIR_Aggregate(IIR *node, visitor_argument_type *arg) = 0;
+  virtual visitor_return_type *visit_IIR_Aggregate(IIR_Statement *node, visitor_argument_type *arg) = 0;
 
 
   /** Visitor method for objects of type IIR_AliasDeclaration.
@@ -121,7 +121,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  virtual visitor_return_type *visit_IIR_Allocator(IIR *node, visitor_argument_type *arg) = 0;
+  virtual visitor_return_type *visit_IIR_Allocator(IIR_Statement *node, visitor_argument_type *arg) = 0;
 
 
   /** Visitor method for objects of type IIR_AndOperator.
@@ -130,7 +130,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  virtual visitor_return_type *visit_IIR_AndOperator(IIR *node, visitor_argument_type *arg) = 0;
+  virtual visitor_return_type *visit_IIR_AndOperator(IIR_Statement *node, visitor_argument_type *arg) = 0;
 
 
   /** Visitor method for objects of type IIR_ArchitectureDeclaration.
@@ -175,7 +175,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  virtual visitor_return_type *visit_IIR_AscendingAttribute(IIR *node, visitor_argument_type *arg) = 0;
+  virtual visitor_return_type *visit_IIR_AscendingAttribute(IIR_Statement *node, visitor_argument_type *arg) = 0;
 
 
   /** Visitor method for objects of type IIR_AssertionStatement.

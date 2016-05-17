@@ -35,6 +35,7 @@
 #include "IIR_IntegerSubtypeDefinition.hh"
 #include "IIR_SubtypeDeclaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "IIRBase_ScalarTypeDefinition.hh"
 #include <sstream>
 
@@ -203,10 +204,12 @@ IIRBase_ScalarTypeDefinition::print( ostream &os ){
   if( get_left() == NULL && get_right() == NULL && get_direction() == NULL ){
     // This is an unconstrained type.
     if( get_base_type() != NULL ){
-      os << *(get_base_type()->get_declarator()) << " range <> ";
+     //FIXME: overload operator<<
+      //os << *(get_base_type()->get_declarator()) << " range <> ";
     }
     else{
-      os << *get_declarator() << " range <> ";
+     //FIXME: overload operator<<
+     // os << *get_declarator() << " range <> ";
     }
   }
   else{

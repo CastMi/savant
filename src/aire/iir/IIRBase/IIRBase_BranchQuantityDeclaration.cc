@@ -23,7 +23,7 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_DesignatorList.hh"
-#include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 #include "IIRBase_BranchQuantityDeclaration.hh"
 #include "savant.hh"
 

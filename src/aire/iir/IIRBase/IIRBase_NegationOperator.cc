@@ -36,7 +36,7 @@ IIRBase_NegationOperator::get_operator_string() const {
   return retval;
 }
 
-IIRBase_Operator::Precedence
+Precedence
 IIRBase_NegationOperator::get_precedence(){
-  return SIGN_OPERATOR;
+  return Precedence::SIGN_OPERATOR;
 }

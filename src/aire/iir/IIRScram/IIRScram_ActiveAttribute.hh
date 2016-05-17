@@ -52,7 +52,7 @@ public:
   
   virtual IIR_Boolean _is_active_attribute() { return TRUE; }
   IIR_Boolean _is_signal_attribute(){ return TRUE; }
-  virtual IIRScram* _clone();
+  virtual IIRScram_Statement* _clone();
 
 protected:
   virtual ~IIRScram_ActiveAttribute();

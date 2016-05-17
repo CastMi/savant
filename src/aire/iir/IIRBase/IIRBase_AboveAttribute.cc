@@ -29,11 +29,11 @@ IIRBase_AboveAttribute::IIRBase_AboveAttribute() : suffix(nullptr) {}
 IIRBase_AboveAttribute::~IIRBase_AboveAttribute() {};
 
 void
-IIRBase_AboveAttribute::set_suffix(IIR* suffix) {
+IIRBase_AboveAttribute::set_suffix(IIR_Statement* suffix) {
   this->suffix = suffix;
 }
 
-IIR*
+IIR_Statement *
 IIRBase_AboveAttribute::get_suffix() {
   return suffix;
 }
@@ -43,7 +43,7 @@ IIRBase_AboveAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_boolean_type();
 }
 
-IIR *
+IIR_Statement *
 IIRBase_AboveAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_AboveAttribute *new_node = dynamic_cast<IIRBase_AboveAttribute *>(IIRBase_Attribute::convert_tree(factory));

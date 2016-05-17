@@ -31,20 +31,20 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIRScram.hh"
+#include "IIRScram_Statement.hh"
 #include "IIRBase_Expression.hh"
 
 class IIRScram_DesignatorList;
 class IIRScram_Expression;
 class IIRScram_TypeDefinition;
 
-class IIRScram_Expression : public virtual IIRScram, public virtual IIRBase_Expression{
+class IIRScram_Expression : public virtual IIRScram_Statement, public virtual IIRBase_Expression{
 
 public:
   IIRScram_Expression() {};
   
-  virtual IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
-  void _clone( IIRScram * );
+  virtual IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition * );
+  void _clone( IIRScram_Statement * );
 
   IIR_Boolean _is_iir_expression(){ return TRUE; }
 

@@ -27,6 +27,7 @@
 #include "IIRBase_GroupTemplateDeclaration.hh"
 #include "IIR_EntityClassEntryList.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 #include "savant.hh"
 
 IIRBase_GroupTemplateDeclaration::IIRBase_GroupTemplateDeclaration()  :

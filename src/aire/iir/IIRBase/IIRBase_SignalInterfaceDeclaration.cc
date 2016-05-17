@@ -30,7 +30,7 @@
 #include "IIRBase_SignalInterfaceDeclaration.hh"
 
 IIRBase_SignalInterfaceDeclaration::IIRBase_SignalInterfaceDeclaration() {
-  set_signal_kind(IIR_NO_SIGNAL_KIND);
+  set_signal_kind(IIR_SignalKind::IIR_NO_SIGNAL_KIND);
 }
 
 IIRBase_SignalInterfaceDeclaration::~IIRBase_SignalInterfaceDeclaration() {}

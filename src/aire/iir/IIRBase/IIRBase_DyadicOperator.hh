@@ -43,13 +43,13 @@ public:
   void set_implementation( IIR_SubprogramDeclaration *implementation );
   IIR_SubprogramDeclaration *get_implementation();
   
-  void set_left_operand( IIR *left_operand );
-  IIR *get_left_operand();
+  void set_left_operand( IIR_Expression *left_operand );
+  IIR_Expression *get_left_operand();
   
-  void set_right_operand( IIR *right_operand );
-  IIR *get_right_operand();
+  void set_right_operand( IIR_Expression *right_operand );
+  IIR_Expression *get_right_operand();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_DyadicOperator *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_locally_static();
@@ -67,7 +67,7 @@ protected:
   
 private:
   IIR_SubprogramDeclaration *implementation;
-  IIR *left_operand;
-  IIR *right_operand;
+  IIR_Expression *left_operand;
+  IIR_Expression *right_operand;
 };
 #endif

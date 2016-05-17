@@ -33,16 +33,16 @@ IIRBase_ImageAttribute::IIRBase_ImageAttribute() {
 IIRBase_ImageAttribute::~IIRBase_ImageAttribute() {}
 
 void
-IIRBase_ImageAttribute::set_suffix( IIR *suffix ){
+IIRBase_ImageAttribute::set_suffix( IIR_Statement *suffix ){
   my_suffix = suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ImageAttribute::get_suffix() {
   return my_suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ImageAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ImageAttribute *new_node = dynamic_cast<IIRBase_ImageAttribute *>(IIRBase_Attribute::convert_tree(factory));

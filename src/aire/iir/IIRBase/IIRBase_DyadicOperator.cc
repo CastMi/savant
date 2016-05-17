@@ -51,34 +51,34 @@ IIRBase_DyadicOperator::get_implementation(){
 }
 
 void 
-IIRBase_DyadicOperator::set_left_operand( IIR *left_operand ){
+IIRBase_DyadicOperator::set_left_operand( IIR_Expression *left_operand ){
   this->left_operand = left_operand;
 }
 
-IIR *
+IIR_Expression *
 IIRBase_DyadicOperator::get_left_operand(){
   return left_operand;
 }
 
 void 
-IIRBase_DyadicOperator::set_right_operand( IIR *right_operand ){
+IIRBase_DyadicOperator::set_right_operand( IIR_Expression *right_operand ){
   this->right_operand = right_operand;
 }
 
-IIR *
+IIR_Expression *
 IIRBase_DyadicOperator::get_right_operand(){
   return right_operand;
 }
 
-IIR *
+IIR_DyadicOperator *
 IIRBase_DyadicOperator::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_DyadicOperator *new_node = dynamic_cast<IIRBase_DyadicOperator *>(IIRBase_Operator::convert_tree(factory));
 
   // Process the variables
   new_node->implementation = dynamic_cast<IIR_SubprogramDeclaration *>(implementation->convert_tree(factory));
-  new_node->left_operand = left_operand->convert_tree(factory);
-  new_node->right_operand = right_operand->convert_tree(factory);
+  new_node->left_operand = dynamic_cast<IIR_Expression*>(left_operand->convert_tree(factory));
+  new_node->right_operand = dynamic_cast<IIR_Expression*>(right_operand->convert_tree(factory));
 
   return new_node;
 }
@@ -126,11 +126,13 @@ IIRBase_DyadicOperator::is_associative( IIR_Kind ){
 ostream &
 IIRBase_DyadicOperator::print( ostream &os ){
   if( get_left_operand() ){
-    get_left_operand()->print( os );
+     // FIXME implement print() in IIR_Statement
+    //get_left_operand()->print( os );
   }
   os << get_operator_string();
   if( get_right_operand() ){
-    get_right_operand()->print( os );
+     // FIXME implement print() in IIR_Statement
+    //get_right_operand()->print( os );
   }
   return os;
 }
@@ -139,8 +141,8 @@ void
 IIRBase_DyadicOperator::publish_vhdl(ostream &vhdl_out){
   bool left_bracket = FALSE;
   bool right_bracket = FALSE ;
-  Precedence left_precedence = dynamic_cast<IIRBase *>(get_left_operand())->get_precedence();
-  Precedence right_precedence = dynamic_cast<IIRBase *>(get_right_operand())->get_precedence();
+  Precedence left_precedence = get_left_operand()->get_precedence();
+  Precedence right_precedence = get_right_operand()->get_precedence();
   Precedence self_precedence = get_precedence();
 
   if (( left_precedence < self_precedence ) ||

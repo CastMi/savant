@@ -27,13 +27,13 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIRBase.hh"
+#include "IIRBase_Statement.hh"
 #include "IIR_Name.hh"
 
 class IIR_Identifier;
 class IIR_LibraryDeclaration;
 
-class IIRBase_Name : public virtual IIRBase, public virtual IIR_Name{
+class IIRBase_Name : public virtual IIRBase_Statement, public virtual IIR_Name{
 public:
   IIR_Kind get_kind() const {return IIR_NAME;}
   const IIR_Char *get_kind_text() const {return "IIR_Name";}
@@ -49,10 +49,10 @@ public:
   void set_prefix( IIR *prefix );
   IIR *get_prefix();
 
-  void set_suffix( IIR *suffix );
-  IIR *get_suffix();
+  void set_suffix( IIR_Statement *suffix );
+  IIR_Statement *get_suffix();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
   
   IIR_Boolean is_name() { return TRUE; };
   IIR_Boolean is_signal();

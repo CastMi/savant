@@ -413,10 +413,9 @@ public:
   /** This method implements the rules found in section 5.2.2 of the '93
       LRM.  It looks for an entity with the same simple name as the
       component passed in.  Nodes that can be passed into this method
-      include IIR_SimpleName, and IIR_ComponentDeclaration.  Anything else
-      will generate an error.  If no matching entity is found, NULL is
-      returned. */
-  IIRScram_LibraryUnit *_find_default_binding( IIRScram *component_name );
+      include IIR_SimpleName.  Anything else will generate an error.
+      If no matching entity is found, NULL is returned. */
+  IIRScram_LibraryUnit *_find_default_binding( IIRScram_SimpleName *component_name );
 
   /** This virtual method allows semantic transformations to be made as
       part of type_checking.  These transformations include things like the
@@ -476,8 +475,8 @@ public:
   virtual ~IIRScram();
 
   // IIRScram level wrapper functions
-  IIRScram_Identifier *_get_file_name();
-  IIRScram_TextLiteral *_get_declarator();
+  IIRScram_Identifier* _get_file_name();
+  IIRScram_Identifier* _get_declarator();
 protected:
   // Return a cast pointer to the design file
   IIRScram_DesignFile *_get_my_design_file(); 

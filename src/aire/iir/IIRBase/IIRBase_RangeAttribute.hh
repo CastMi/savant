@@ -38,10 +38,10 @@ public:
   IIR_Kind get_kind() const {return IIR_RANGE_ATTRIBUTE;}
   const IIR_Char *get_kind_text() const {return "IIR_RangeAttribute";}
 
-  void set_suffix( IIR* suffix);
-  IIR* get_suffix();
+  void set_suffix( IIR_Statement* suffix);
+  IIR_Statement* get_suffix();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
   
   IIR_Boolean is_range_attribute(){ return true; }
 
@@ -58,7 +58,7 @@ protected:
     
 private:
   
-  IIR* suffix;
+  IIR_Statement* suffix;
 
 };
 #endif

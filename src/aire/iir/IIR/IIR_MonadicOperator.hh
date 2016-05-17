@@ -39,7 +39,7 @@ public:
     
   virtual void set_implementation( IIR_SubprogramDeclaration* implementation) = 0;
   virtual IIR_SubprogramDeclaration* get_implementation() = 0;
-  virtual void set_operand( IIR* operand) = 0;
-  virtual IIR* get_operand() = 0;
+  virtual void set_operand( IIR_Statement* operand) = 0;
+  virtual IIR_Statement* get_operand() = 0;
 };
 #endif

@@ -31,6 +31,7 @@
 #include "IIR_ElementDeclaration.hh"
 #include "IIR_FunctionDeclaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 
 IIRBase_RecordTypeDefinition::IIRBase_RecordTypeDefinition() :
   element_declarations(0),
@@ -142,11 +143,13 @@ IIRBase_RecordTypeDefinition::print( ostream &os ){
   IIR_ElementDeclaration *current_decl = dynamic_cast<IIR_ElementDeclaration *>(get_element_declarations()->first());
 
   if( current_decl != NULL ){
-    os << current_decl << " : " << *(current_decl->get_subtype()->get_declarator());
+     //FIXME: overload operator<<
+    //os << current_decl << " : " << *(current_decl->get_subtype()->get_declarator());
 
     current_decl = dynamic_cast<IIR_ElementDeclaration *>(get_element_declarations()->successor( current_decl ));
     while( current_decl != NULL ){
-      os << ", " << current_decl << " : " << *(current_decl->get_subtype()->get_declarator());
+     //FIXME: overload operator<<
+      //os << ", " << current_decl << " : " << *(current_decl->get_subtype()->get_declarator());
       current_decl = dynamic_cast<IIR_ElementDeclaration *>(get_element_declarations()->successor( current_decl ));
     }
   }

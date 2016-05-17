@@ -27,7 +27,7 @@
 
 #include "IIR_Attribute.hh"
 #include "IIR_TypeDefinition.hh"
-#include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 #include "IIRBase_AttributeDeclaration.hh"
 #include "savant.hh"
 

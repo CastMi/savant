@@ -33,6 +33,7 @@
 #include "IIR_FunctionDeclaration.hh"
 #include "IIR_SubprogramDeclaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 #include "IIR_TypeDefinition.hh"
 
 IIRBase_FunctionCall::IIRBase_FunctionCall()  :
@@ -80,7 +81,7 @@ IIRBase_FunctionCall::set_parameter_association_list(IIR_AssociationList *new_pa
   parameter_association_list = new_parameter_association_list;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_FunctionCall::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_FunctionCall *new_node = dynamic_cast<IIRBase_FunctionCall *>(IIRBase_Expression::convert_tree(factory));
@@ -104,7 +105,8 @@ ostream &
 IIRBase_FunctionCall::print( ostream &os ){
   ASSERT(get_implementation() != NULL);
 
-  os << *(get_implementation()->get_declarator());
+  // FIXME overload operator<<
+  //os << *(get_implementation()->get_declarator());
   if (get_parameter_association_list()->num_elements() != 0) {
     os << "(";
     os << get_parameter_association_list();

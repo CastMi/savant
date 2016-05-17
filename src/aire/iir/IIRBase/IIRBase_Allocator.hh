@@ -45,7 +45,7 @@ public:
   void set_value( IIR_Statement* );
   IIR_Statement *get_value();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   virtual IIR_Boolean is_resolved();
 

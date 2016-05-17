@@ -337,14 +337,14 @@ IIRScram_SimpleName::_determine_decl_in_set( set<IIRScram_Declaration> *search_i
 }
 
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_SimpleName::_clone(){
   IIRScram_SimpleName *retval = new IIRScram_SimpleName();
   IIRScram_Name::_clone( retval );
   return retval;
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_SimpleName::_convert_to_function_call( IIRScram_Declaration *my_decl ){
   ASSERT( my_decl != NULL );
   IIRScram *retval = my_decl;

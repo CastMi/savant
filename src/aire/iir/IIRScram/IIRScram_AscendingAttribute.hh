@@ -45,7 +45,7 @@ public:
 
 
   IIR_Boolean has_suffix(){ return TRUE; }
-  void _set_suffix( IIRScram *new_suffix ){ IIRBase_AscendingAttribute::set_suffix( new_suffix ); }
+  void _set_suffix( IIRScram_Statement *new_suffix ){ IIRBase_AscendingAttribute::set_suffix( new_suffix ); }
 
   IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
 

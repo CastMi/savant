@@ -35,8 +35,8 @@ class IIRBase_Attribute : public virtual IIRBase_Name,
 
 public:
 
-  virtual void set_suffix(IIR *);
-  virtual IIR* get_suffix() {return NULL;}
+  virtual void set_suffix(IIR_Statement *);
+  virtual IIR_Statement* get_suffix() {return NULL;}
 
   IIR_Boolean is_locally_static();
   IIR_Boolean is_resolved();
@@ -46,7 +46,7 @@ public:
   IIR_Boolean is_above_attribute() { return FALSE; }
   IIR_Boolean has_suffix() { return FALSE; }
 
-  void set_subtype(IIR_TypeDefinition *type) {IIRBase::set_subtype(type);}
+  void set_subtype(IIR_TypeDefinition *type) {IIRBase_Statement::set_subtype(type);}
   
   ostream &print( ostream &os );
 
@@ -56,7 +56,7 @@ public:
   IIR_TextLiteral *get_attribute_name();
   IIR_TextLiteral *build_attribute_name();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 protected:
   IIRBase_Attribute();
   virtual ~IIRBase_Attribute() = 0;

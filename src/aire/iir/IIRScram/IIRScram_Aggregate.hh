@@ -51,12 +51,12 @@ public:
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
 
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition *);
+  IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition *);
 
   IIR_Boolean _is_readable( );
   IIR_Boolean _is_writable( );
 
-  IIRScram *_clone();
+  IIRScram_Statement *_clone();
 
   // Helper Functions
   IIRScram_AssociationList *_get_element_association_list();

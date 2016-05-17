@@ -41,10 +41,10 @@ public:
 
   void set_implementation( IIR_SubprogramDeclaration* implementation);
   IIR_SubprogramDeclaration* get_implementation();
-  void set_operand( IIR* operand);
-  IIR* get_operand();
+  void set_operand( IIR_Statement* operand);
+  IIR_Statement* get_operand();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_operator() { return TRUE; }
@@ -58,7 +58,7 @@ protected:
     
 private:
   
-  IIR* operand;
+  IIR_Statement* operand;
   IIR_SubprogramDeclaration* implementation;
 
 };

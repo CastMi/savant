@@ -30,6 +30,7 @@
 #include "IIRBase_SubtypeDeclaration.hh"
 #include "IIR_AttributeSpecificationList.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "IIRBase_TypeDefinition.hh"
 
 IIRBase_SubtypeDeclaration::IIRBase_SubtypeDeclaration()  :

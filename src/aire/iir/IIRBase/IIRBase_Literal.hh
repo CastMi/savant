@@ -27,10 +27,10 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIRBase.hh"
+#include "IIRBase_Statement.hh"
 #include "IIR_Literal.hh"
 
-class IIRBase_Literal : public virtual IIRBase, public virtual IIR_Literal{
+class IIRBase_Literal : public virtual IIRBase_Statement, public virtual IIR_Literal{
 
 public:
 

@@ -56,6 +56,14 @@ IIRScram_Statement::_type_check( ) {
   _report_undefined_scram_fn("_type_check()");
 }
 
+symbol_table *
+IIRScram_Statement::_get_symbol_table( ){
+  ASSERT( _my_design_file != NULL );
+  ASSERT( _get_my_design_file()->_get_symbol_table() != NULL );
+
+  return _get_my_design_file()->_get_symbol_table();
+}
+
 IIRScram *
 IIRScram_Statement::_type_check_and_resolve_boolean_condition( IIRScram *condition ){
   ASSERT( condition != NULL );

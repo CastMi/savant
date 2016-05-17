@@ -41,16 +41,16 @@ IIRBase_SelectedName::IIRBase_SelectedName(){
 IIRBase_SelectedName::~IIRBase_SelectedName() {}
 
 void 
-IIRBase_SelectedName::set_suffix( IIR *suffix ){
+IIRBase_SelectedName::set_suffix( IIR_Statement *suffix ){
   this->suffix = suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_SelectedName::get_suffix(){
   return suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_SelectedName::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_SelectedName *new_node = dynamic_cast<IIRBase_SelectedName *>(IIRBase_Name::convert_tree(factory));
@@ -131,7 +131,7 @@ IIRBase_SelectedName::get_signal_kind(){
     return get_suffix()->get_signal_kind();
   }
   else{
-    return IIR_NO_SIGNAL_KIND;
+    return IIR_SignalKind::IIR_NO_SIGNAL_KIND;
   }
 }
 
@@ -156,7 +156,8 @@ ostream &
 IIRBase_SelectedName::print( ostream &os ){
   os << *get_prefix();
   os << ".";
-  os << *get_suffix();
+  // FIXME overload operator<<
+  // os << *get_suffix();
   
   return os;
 }

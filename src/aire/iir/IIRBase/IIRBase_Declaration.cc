@@ -42,12 +42,12 @@ IIRBase_Declaration::~IIRBase_Declaration(){
 }
 
 void 
-IIRBase_Declaration::set_declarator( IIR_TextLiteral *new_declarator ){
+IIRBase_Declaration::set_declarator( IIR_Identifier *new_declarator ){
   ASSERT ( new_declarator != NULL );
   declarator = new_declarator;  
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_Declaration::get_declarator(){
   return declarator;
 }
@@ -58,7 +58,7 @@ IIRBase_Declaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_Declaration *new_node = dynamic_cast<IIRBase_Declaration *>(IIRBase::convert_tree(factory));
 
   // Process the variables
-  new_node->declarator = dynamic_cast<IIR_TextLiteral *>(declarator->convert_tree(factory));
+  new_node->declarator = dynamic_cast<IIR_Identifier *>(declarator->convert_tree(factory));
   new_node->declarative_region = declarative_region->convert_tree(factory);
   new_node->attribute_name = dynamic_cast<IIR_Attribute *>(attribute_name->convert_tree(factory));
 
@@ -91,7 +91,8 @@ IIRBase_Declaration::get_prefix_string(){
 ostream & 
 IIRBase_Declaration::print( ostream &os ){
   if( get_declarator() != NULL ){
-    os << *get_declarator();
+     // FIXME: overload operator<<
+    // os << *get_declarator();
   }
   else{
     os << "<ANONYMOUS>";

@@ -47,6 +47,7 @@
 #include "IIRScram_RangeTypeDefinition.hh"
 #include "IIRScram_SignalDeclaration.hh"
 #include "IIRScram_SignalInterfaceDeclaration.hh"
+#include "IIRScram_SimpleName.hh"
 #include "error_func.hh"
 #include "include_manager.hh"
 #include "library_manager.hh"
@@ -173,7 +174,7 @@ IIRScram::_get_generic_list(){
 IIR_Mode
 IIRScram::_get_mode() {
   _report_undefined_scram_fn("_get_mode()");
-  return IIR_UNKNOWN_MODE;
+  return IIR_Mode::IIR_UNKNOWN_MODE;
 }
 
 savant::set<IIRScram_Declaration> *
@@ -346,7 +347,7 @@ IIRScram::_get_entity_aspect(){
 }
 
 IIRScram_LibraryUnit *
-IIRScram::_find_default_binding( IIRScram *component_name ){
+IIRScram::_find_default_binding( IIRScram_SimpleName *component_name ){
   ASSERT( component_name->get_kind() == IIR_SIMPLE_NAME ||
 	  component_name->get_kind() == IIR_COMPONENT_DECLARATION );
 
@@ -717,8 +718,8 @@ IIRScram::_get_file_name(){
   return dynamic_cast<IIRScram_Identifier *>(get_file_name());
 }
 
-IIRScram_TextLiteral *
+IIRScram_Identifier *
 IIRScram::_get_declarator() {
-  return dynamic_cast<IIRScram_TextLiteral *>(get_declarator());
+  return dynamic_cast<IIRScram_Identifier *>(get_declarator());
 }
 

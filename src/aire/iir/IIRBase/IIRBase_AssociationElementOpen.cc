@@ -18,6 +18,8 @@
 // the file "LGPL", distributed with this archive.
 
 #include "IIRBase_AssociationElementOpen.hh"
+#include "IIR_Statement.hh"
+#include "IIRBase_Declaration.hh"
 
 IIRBase_AssociationElementOpen::IIRBase_AssociationElementOpen(){}
 IIRBase_AssociationElementOpen::~IIRBase_AssociationElementOpen(){}
@@ -25,7 +27,8 @@ IIRBase_AssociationElementOpen::~IIRBase_AssociationElementOpen(){}
 ostream&
 IIRBase_AssociationElementOpen::print(ostream& os) {
   if (get_formal() != NULL) {
-    os << *get_formal();
+     // FIXME: overload operator<<
+    //os << *get_formal();
     os << " => ";
   }
   

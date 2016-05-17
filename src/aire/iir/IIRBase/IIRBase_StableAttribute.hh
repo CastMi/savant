@@ -37,10 +37,10 @@ public:
   IIR_Kind get_kind() const {return IIR_STABLE_ATTRIBUTE;}
   const IIR_Char *get_kind_text() const {return "IIR_StableAttribute";}
 
-  void set_suffix( IIR* suffix);
-  IIR* get_suffix();
+  void set_suffix( IIR_Statement* suffix);
+  IIR_Statement* get_suffix();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_signal(){ return TRUE; }  
   IIR_Boolean has_suffix(){ return TRUE; }
@@ -55,7 +55,7 @@ protected:
   virtual ~IIRBase_StableAttribute() = 0;
     
 private:
-  IIR*    suffix;
+  IIR_Statement*    suffix;
 };
 
 #endif

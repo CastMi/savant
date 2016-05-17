@@ -27,9 +27,9 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIR.hh"
+#include "IIR_Name.hh"
 
-class IIR_Literal : public virtual IIR{
+class IIR_Literal : public virtual IIR_Name {
 public:
   virtual ~IIR_Literal() {}    
 };

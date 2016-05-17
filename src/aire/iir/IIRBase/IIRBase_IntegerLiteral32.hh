@@ -41,7 +41,7 @@ public:
   IIR_Int32 value();
   void set_value(IIR_Int32);
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   ostream &print(ostream &os);
   void publish_vhdl(ostream &);

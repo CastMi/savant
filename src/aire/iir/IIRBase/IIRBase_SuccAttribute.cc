@@ -30,16 +30,16 @@ IIRBase_SuccAttribute::IIRBase_SuccAttribute() {
 IIRBase_SuccAttribute::~IIRBase_SuccAttribute() {}
 
 void
-IIRBase_SuccAttribute::set_suffix( IIR *suffix) {
+IIRBase_SuccAttribute::set_suffix( IIR_Statement *suffix) {
   my_suffix = suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_SuccAttribute::get_suffix() {
   return my_suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_SuccAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_SuccAttribute *new_node = dynamic_cast<IIRBase_SuccAttribute *>(IIRBase_Attribute::convert_tree(factory));

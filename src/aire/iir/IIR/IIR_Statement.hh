@@ -45,19 +45,30 @@ public:
   virtual IIR_Label *get_label() const = 0;
   virtual const IIR_Char *get_kind_text() const = 0;
   virtual IIR_Kind get_kind() const = 0;
+  virtual IIR_DesignFile *get_design_file() const = 0;
 
   virtual void _report_undefined_fn(const char *) = 0;
   virtual plugin_class_factory *get_class_factory();
   virtual IIR_Boolean is_above_attribute_found() = 0;
   virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name * ) = 0;
 
+  virtual IIR_TypeDefinition *get_subtype() = 0;
   /** For assertion statements this method is overloaded to return the
       assertion condtion.  For anything else it returns 0. */
   virtual IIR_Statement *get_assertion_condition() = 0;
   virtual IIR_Boolean is_locally_static() = 0;
-  virtual IIR_Boolean is_signal() { return false; }
-  virtual IIR_Boolean is_variable() { return false; };
+  virtual IIR_Boolean is_signal() = 0;
+  virtual IIR_Boolean is_variable() = 0;
+  virtual IIR_Boolean is_object() = 0;
+  virtual IIR_Boolean is_logical_operator() = 0;
+  virtual IIR_Boolean is_relational_operator() = 0;
+  virtual IIR_Boolean is_entity_declaration() = 0;
+  virtual IIR_Boolean is_type() = 0;
+  virtual IIR_Boolean is_name() = 0;
   virtual IIRScram_Declaration *_find_formal_declaration();
+  virtual IIR_SignalKind get_signal_kind() = 0;
+  virtual IIR_TextLiteral *get_declarator() = 0;
+  
   /**
      Republish the VHDL that this node represents.  Called on a expression,
      it would republish just the expression.  Called on a design file, the whole
@@ -76,6 +87,15 @@ public:
   /** For report and assertion statements this method is overloaded to
       return the report expression. For anything else it returns 0. */
   virtual IIR_Statement *get_severity_expression() = 0;
+  
+  /** This method will return precedence levels for any operator and
+      literals.  The precedence levels are given in the LRM.  There are 8
+      levels of precedence level 8 are the integer literals and all
+      function calls which return value. All others take precedence values
+      according to LRM. The higher the number , the higher the
+      precedence. 
+  */
+  virtual Precedence get_precedence() = 0;
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */

@@ -40,7 +40,7 @@ public:
   visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   IIR_Boolean _is_integer_literal();
-  IIRScram *_clone() { return this; }
+  IIRScram_Statement *_clone() { return this; }
 
   static IIRScram_IntegerLiteral32 *get( IIR_Int32 );
 

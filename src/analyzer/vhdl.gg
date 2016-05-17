@@ -3897,7 +3897,7 @@ constant_declaration[IIR_DeclarationList *list]:
   >>
 ;
 
-identifier_list[IIR_IdentifierList *list]:
+identifier_list[IIRScram_IdentifierList *list]:
   <<IIRScram_Identifier *id = NULL;>>
   identifier > [id] <<$list->append(id);>>
   ( COMMA identifier > [id] <<$list->append(id);>> )*
@@ -4211,7 +4211,7 @@ interface_list[IIRScram_InterfaceDeclaration::_InterfaceListType ilt, IIR_List *
   (SEMI_COLON interface_declaration[$ilt, list])*
 ;
 
-association_list_in[IIR_AssociationList *alist]:
+association_list_in[IIRScram_AssociationList *alist]:
   <<IIRScram_AssociationElement *elem = NULL;>>
   association > [elem] <<$alist->append(elem);>>
   ( COMMA association > [elem] <<$alist->append(elem);>> )*

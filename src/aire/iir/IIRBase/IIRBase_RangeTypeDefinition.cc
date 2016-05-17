@@ -27,6 +27,7 @@
 #include "IIRBase_RangeTypeDefinition.hh"
 #include "IIR_Declaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "savant.hh"
 
 IIRBase_RangeTypeDefinition::IIRBase_RangeTypeDefinition() {}

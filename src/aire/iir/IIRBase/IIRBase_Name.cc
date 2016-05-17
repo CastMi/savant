@@ -53,22 +53,22 @@ IIRBase_Name::set_prefix( IIR *new_prefix ){
 }
 
 void
-IIRBase_Name::set_suffix( IIR * ){
+IIRBase_Name::set_suffix( IIR_Statement * ){
   cerr << "IIRBase_Name::set_suffix called - node type is " << get_kind_text() 
        << " - aborting!" << endl;
   abort();
 }
 
-IIR *
+IIR_Statement *
 IIRBase_Name::get_suffix(){
   return 0;
 }
 
 
-IIR *
+IIR_Statement *
 IIRBase_Name::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
-  IIRBase_Name *new_node = dynamic_cast<IIRBase_Name *>(IIRBase::convert_tree(factory));
+  IIRBase_Name *new_node = dynamic_cast<IIRBase_Name *>(IIRBase_Statement::convert_tree(factory));
 
   // Process the variables
   new_node->prefix = prefix->convert_tree(factory);

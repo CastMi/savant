@@ -25,7 +25,7 @@
 #include "IIRBase_ArrayNatureDefinition.hh"
 #include "IIRBase_ScalarTypeDefinition.hh"
 #include "IIR_Declaration.hh"
-#include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 #include "savant.hh"
 
 IIRBase_ArrayNatureDefinition::IIRBase_ArrayNatureDefinition() :

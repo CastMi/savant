@@ -36,9 +36,9 @@ IIRBase_RemainderOperator::get_operator_string() const {
   return retval;
 }
 
-IIRBase_Operator::Precedence
+Precedence
 IIRBase_RemainderOperator::get_precedence(){
-  return MULTIPLYING_OPERATOR;
+  return Precedence::MULTIPLYING_OPERATOR;
 }
 
 bool

@@ -30,7 +30,7 @@
 #include "IIR_PortList.hh"
 #include "IIRBase_DeclarationList.hh"
 #include "IIR_DesignUnitList.hh"
-#include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "IIRBase_EntityDeclaration.hh"
 
 IIRBase_EntityDeclaration::IIRBase_EntityDeclaration() :

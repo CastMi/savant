@@ -11,7 +11,7 @@ BaseStandardPackage::convert_tree( plugin_class_factory *factory ){
   StandardPackage *new_node =
     dynamic_cast<StandardPackage *>(IIRBase_PackageDeclaration::convert_tree(factory));
 
-  new_node->set_declarator( dynamic_cast<IIR_TextLiteral*>(get_declarator()->convert_tree(factory) ));
+  new_node->set_declarator( get_declarator() );
   
   new_node->set_std_decl( 
     dynamic_cast<IIR_LibraryDeclaration *>( get_std_decl()->convert_tree(factory)));

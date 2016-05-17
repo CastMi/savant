@@ -32,6 +32,8 @@
 
 #include "IIRScram_Statement.hh"
 #include "IIRScram.hh"
+#include "IIRScram_Identifier.hh"
+#include "IIRScram_Declaration.hh"
 #include "IIRScram_AssociationElement.hh"
 #include "IIRScram_AssociationElementByExpression.hh"
 #include "IIRScram_List.hh"
@@ -59,9 +61,9 @@ IIRScram_AssociationElement::_is_positional(){
   return get_formal() == NULL && is_by_others() == FALSE;
 }
 
-IIRScram* 
+IIRScram_Identifier* 
 IIRScram_AssociationElement::_get_formal() {
-  return dynamic_cast<IIRScram *>(get_formal());
+  return dynamic_cast<IIRScram_Identifier*>(get_formal());
 }
 
 IIRScram_Statement* 

@@ -51,7 +51,7 @@ IIRBase_Aggregate::set_element_association_list(IIR_AssociationList *new_element
   element_association_list = new_element_association_list;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_Aggregate::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_Aggregate *new_node = dynamic_cast<IIRBase_Aggregate *>(IIRBase_Expression::convert_tree(factory));

@@ -22,6 +22,7 @@
 #include "IIRBase_FunctionDeclaration.hh"
 #include "IIR_SequentialStatementList.hh"
 #include "IIRBase_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "IIR_TypeDefinition.hh"
 #include "IIRBase_InterfaceList.hh"
 
@@ -119,8 +120,9 @@ IIRBase_FunctionDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
       (get_subprogram_declarations())->publish_vhdl_decl(vhdl_out);
     vhdl_out << "begin" << endl;
     get_subprogram_body()->publish_vhdl(vhdl_out);
-    vhdl_out << "end function " << *get_declarator()
-              << ";" << endl;
+    // FIXME: overload operator<<
+    //vhdl_out << "end function " << *get_declarator()
+              //<< ";" << endl;
   }
   else {
     vhdl_out << ";\n";

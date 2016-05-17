@@ -31,7 +31,7 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIRScram.hh"
+#include "IIRScram_Statement.hh"
 #include "IIRBase_Name.hh"
 #include "savant.hh"
 
@@ -43,7 +43,7 @@ class IIRScram_Name;
 class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
-class IIRScram_Name : public virtual IIRScram, public virtual IIRBase_Name{
+class IIRScram_Name : public virtual IIRScram_Statement, public virtual IIRBase_Name{
 
 public:
   static IIRScram **lookup( IIRScram_Identifier *identifier,
@@ -70,10 +70,7 @@ public:
 
   IIRScram_TextLiteral *_get_string();
 
-  savant::set<IIRScram_TypeDefinition> *
-  _get_rval_set(constraint_functor *functor = 0){ 
-    return IIRScram::_get_rval_set( functor );
-  }
+  savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
 
   savant::set<IIRScram_TypeDefinition> *_get_rval_set( savant::set<IIRScram_TypeDefinition> *search_in,
                                                        constraint_functor *functor = 0 );
@@ -82,7 +79,7 @@ public:
 
   IIRScram *_get_prefix();
 
-  virtual IIRScram *_get_suffix() { return NULL; }
+  virtual IIRScram_Statement *_get_suffix() { return NULL; }
 
   virtual void _set_suffix(IIRScram *suffix);
 

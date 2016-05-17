@@ -31,6 +31,7 @@
 #include "IIRBase_FileTypeDefinition.hh"
 #include "IIR_Declaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 
 IIRBase_FileTypeDefinition::IIRBase_FileTypeDefinition() :
   type_mark(0){}

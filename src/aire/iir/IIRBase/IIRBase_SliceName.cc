@@ -36,17 +36,17 @@ IIRBase_SliceName::IIRBase_SliceName() {
 IIRBase_SliceName::~IIRBase_SliceName() {}
 
 void
-IIRBase_SliceName::set_suffix( IIR *new_suffix ){
+IIRBase_SliceName::set_suffix( IIR_Statement *new_suffix ){
   suffix = new_suffix;
 }
 
-IIR*
+IIR_Statement *
 IIRBase_SliceName::get_suffix() {
   return suffix;
 }
 
 
-IIR *
+IIR_Statement *
 IIRBase_SliceName::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_SliceName *new_node = dynamic_cast<IIRBase_SliceName *>(IIRBase_Name::convert_tree(factory));
@@ -76,7 +76,8 @@ ostream &
 IIRBase_SliceName::print( ostream &os ){
   os << *get_prefix();
   os << "(";
-  os << *get_suffix();
+  // FIXME overload operator<<
+  // os << *get_suffix();
   os << ")";
 
   return os;

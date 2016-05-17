@@ -30,6 +30,7 @@
 #include "plugin_class_factory.hh"
 #include "IIRBase_PhysicalTypeDefinition.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "IIR_UnitList.hh"
 #include "IIR_PhysicalUnit.hh"
 

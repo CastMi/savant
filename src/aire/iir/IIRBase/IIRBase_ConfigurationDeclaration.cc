@@ -22,7 +22,7 @@
 #include "IIR_BlockConfiguration.hh"
 #include "IIRBase_DeclarationList.hh"
 #include "IIR_EntityDeclaration.hh"
-#include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 #include "IIRBase_ConfigurationDeclaration.hh"
 
 IIRBase_ConfigurationDeclaration::IIRBase_ConfigurationDeclaration()

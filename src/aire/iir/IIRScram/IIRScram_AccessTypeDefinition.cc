@@ -76,7 +76,7 @@ IIRScram_AccessTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     
     new_interface_declaration->set_declarator(  IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
     new_interface_declaration->set_subtype( this );
-    new_interface_declaration->set_mode( IIR_INOUT_MODE );
+    new_interface_declaration->set_mode( IIR_Mode::IIR_INOUT_MODE );
     
     new_procedure_declaration->_add_declaration();
     

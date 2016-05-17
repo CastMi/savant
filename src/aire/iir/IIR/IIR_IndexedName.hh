@@ -36,11 +36,11 @@ class IIR_IndexedName : public virtual IIR_Name{
 public:
   virtual ~IIR_IndexedName() {}
     
-  virtual void set_suffix( IIR* suffix) = 0;
-  virtual IIR* get_suffix() = 0;
+  virtual void set_suffix( IIR_Statement* ) = 0;
+  virtual IIR_Statement* get_suffix() = 0;
 
-  virtual IIR *get_index( int index_num ) = 0;
-  virtual void set_index( int index_num, IIR *new_index ) = 0;
+  virtual IIR_Statement *get_index( int ) = 0;
+  virtual void set_index( int, IIR_Statement * ) = 0;
 
   virtual IIR *get_declarative_region() = 0;
 protected:

@@ -49,16 +49,16 @@ IIRBase_MonadicOperator::get_implementation() {
 }
 
 void
-IIRBase_MonadicOperator::set_operand( IIR* operand) {
+IIRBase_MonadicOperator::set_operand( IIR_Statement* operand) {
   this->operand = operand;
 }
 
-IIR*
+IIR_Statement*
 IIRBase_MonadicOperator::get_operand() {
   return operand;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_MonadicOperator::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_MonadicOperator *new_node =

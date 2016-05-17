@@ -35,8 +35,11 @@ class IIRBase_AssociationElement : public virtual IIRBase_Tuple,
 				   public virtual IIR_AssociationElement{
 
 public:
-  void set_formal(IIR*);
-  IIR* get_formal();
+  void set_formal( IIR_Statement* );
+  IIR_Statement* get_formal();
+
+  virtual void set_decl( IIR_Declaration* );
+  virtual IIR_Declaration* get_decl();
 
   IIR *convert_tree(plugin_class_factory *factory);
 
@@ -58,6 +61,7 @@ protected:
   virtual ~IIRBase_AssociationElement() = 0;
     
 private:
-  IIR *formal;
+  IIR_Statement *formal;
+  IIR_Declaration *decl;
 };
 #endif

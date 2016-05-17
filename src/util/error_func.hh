@@ -64,6 +64,7 @@ class IIR;
 class IIR_Name;
 class IIR_Identifier;
 class IIR_TypeDefinition;
+class IIR_AssociationList;
 class IIR_Declaration;
 class IIR_Statement;
 
@@ -118,6 +119,9 @@ report_ambiguous_error( IIR *error_info, savant::set<IIR_Declaration> *error_set
 
 void 
 report_ambiguous_error( IIR *error_info, savant::set<IIR_TypeDefinition> *error_set );
+
+void 
+report_ambiguous_error( IIR_Statement *error_info, savant::set<IIR_TypeDefinition> *error_set );
 
 void 
 report_ambiguous_error( IIR_Declaration *prefix,

@@ -30,6 +30,7 @@
 #include "IIRBase_DeclarationList.hh"
 #include "IIR_PackageBodyDeclaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 
 IIRBase_PackageDeclaration::IIRBase_PackageDeclaration() :
   package_declarative_part(0),

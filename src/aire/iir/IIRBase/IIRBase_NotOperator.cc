@@ -43,7 +43,7 @@ IIRBase_NotOperator::get_operator_string() const {
   return retval;
 }
 
-IIRBase_Operator::Precedence
+Precedence
 IIRBase_NotOperator::get_precedence(){
-  return MISCELLANEOUS_OPERATOR;
+  return Precedence::MISCELLANEOUS_OPERATOR;
 }

@@ -28,6 +28,7 @@
 #include "savant.hh"
 #include "IIRBase_SharedVariableDeclaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "IIR_Statement.hh"
 #include "IIR_TypeDefinition.hh"
 

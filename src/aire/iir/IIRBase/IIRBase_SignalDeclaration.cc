@@ -28,13 +28,14 @@
 
 #include "IIRBase_SignalDeclaration.hh"
 #include "IIRBase_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "IIR_Attribute.hh"
 #include "IIR_Statement.hh"
 #include "savant.hh"
 
 IIRBase_SignalDeclaration::IIRBase_SignalDeclaration() {
   set_value(NULL);
-  set_signal_kind(IIR_NO_SIGNAL_KIND);
+  set_signal_kind(IIR_SignalKind::IIR_NO_SIGNAL_KIND);
 }
 
 IIRBase_SignalDeclaration::~IIRBase_SignalDeclaration() {}

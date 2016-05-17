@@ -30,16 +30,16 @@ IIRBase_LeftAttribute::IIRBase_LeftAttribute() {
 IIRBase_LeftAttribute::~IIRBase_LeftAttribute() {}
 
 void
-IIRBase_LeftAttribute::set_suffix( IIR* suffix) {
+IIRBase_LeftAttribute::set_suffix( IIR_Statement* suffix) {
   this->suffix = suffix;
 }
 
-IIR*
+IIR_Statement *
 IIRBase_LeftAttribute::get_suffix() {
   return suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_LeftAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_LeftAttribute *new_node = dynamic_cast<IIRBase_LeftAttribute *>(IIRBase_Attribute::convert_tree(factory));

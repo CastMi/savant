@@ -50,7 +50,7 @@ IIRBase_OthersInitialization::get_expression() {
 
 
 
-IIR *
+IIR_Statement *
 IIRBase_OthersInitialization::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_OthersInitialization *new_node = dynamic_cast<IIRBase_OthersInitialization *>(IIRBase_Expression::convert_tree(factory));

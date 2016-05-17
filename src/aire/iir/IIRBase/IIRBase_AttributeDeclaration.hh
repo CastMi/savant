@@ -48,7 +48,7 @@ public:
   IIR_Attribute *get_attribute();
   void set_attribute(  IIR_Attribute *);
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR* convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_signal();
 

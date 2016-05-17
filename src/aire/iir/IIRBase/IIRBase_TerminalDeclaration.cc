@@ -27,6 +27,7 @@
 #include "savant.hh"
 #include "IIRBase_TerminalDeclaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "IIRBase_NatureDefinition.hh"
 
 IIRBase_TerminalDeclaration::IIRBase_TerminalDeclaration(){

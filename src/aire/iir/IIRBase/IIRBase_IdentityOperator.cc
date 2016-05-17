@@ -44,7 +44,7 @@ IIRBase_IdentityOperator::get_operator_string() const {
 }
 
 
-IIRBase_Operator::Precedence
+Precedence
 IIRBase_IdentityOperator::get_precedence(){
-  return SIGN_OPERATOR;
+  return Precedence::SIGN_OPERATOR;
 }

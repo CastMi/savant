@@ -940,7 +940,7 @@ IIRScram_IndexedName::_process_as_type_conversion( savant::set<IIRScram_TypeDefi
 }
 
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_IndexedName::_semantic_transform( savant::set<IIRScram_TypeDefinition> *context_set ){
 
   IIRScram *retval = NULL;

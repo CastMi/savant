@@ -32,7 +32,7 @@
 
 IIRScram_AndOperator::~IIRScram_AndOperator() {}
 
-IIRScram*
+IIRScram_Statement *
 IIRScram_AndOperator::_clone() {
   IIRScram_AndOperator *clone = new IIRScram_AndOperator();
   IIRScram_DyadicOperator::_clone(clone);

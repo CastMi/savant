@@ -25,6 +25,7 @@
 #include "IIRBase_FreeQuantityDeclaration.hh"
 #include "IIR_TextLiteral.hh"
 #include "IIR_Statement.hh"
+#include "IIR_Identifier.hh"
 #include "IIRBase_TypeDefinition.hh"
 #include "savant.hh"
 

@@ -36,7 +36,7 @@ IIRBase_EqualityOperator::get_operator_string() const {
   return retval;
 }
 
-IIRBase_Operator::Precedence
+Precedence
 IIRBase_EqualityOperator::get_precedence(){
-  return RELATIONAL_OPERATOR;
+  return Precedence::RELATIONAL_OPERATOR;
 }

@@ -30,7 +30,7 @@
 #include "IIR_DesignUnitList.hh"
 #include "IIR_EntityDeclaration.hh"
 #include "IIRBase_ArchitectureDeclaration.hh"
-#include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 
 IIRBase_ArchitectureDeclaration::IIRBase_ArchitectureDeclaration()
    : architecture_declarative_part(nullptr),

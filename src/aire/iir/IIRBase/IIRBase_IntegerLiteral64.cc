@@ -43,7 +43,7 @@ IIRBase_IntegerLiteral64::set_value(IIR_Int64 v) {
   val = v;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_IntegerLiteral64::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_IntegerLiteral64 *new_node = dynamic_cast<IIRBase_IntegerLiteral64 *>(IIRBase_Literal::convert_tree(factory));

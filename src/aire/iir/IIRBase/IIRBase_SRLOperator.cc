@@ -36,7 +36,7 @@ IIRBase_SRLOperator::get_operator_string() const {
   return retval;
 }
 
-IIRBase_Operator::Precedence
+Precedence
 IIRBase_SRLOperator::get_precedence(){
-  return SHIFT_OPERATOR;
+  return Precedence::SHIFT_OPERATOR;
 }

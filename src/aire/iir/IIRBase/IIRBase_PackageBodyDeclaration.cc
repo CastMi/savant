@@ -28,6 +28,7 @@
 #include "IIRBase_PackageBodyDeclaration.hh"
 #include "IIRBase_DeclarationList.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 
 IIRBase_PackageBodyDeclaration::IIRBase_PackageBodyDeclaration()  :
   package_declarative_part(0){}

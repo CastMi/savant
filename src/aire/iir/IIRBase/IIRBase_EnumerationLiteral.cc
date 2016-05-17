@@ -22,6 +22,7 @@
 #include "IIRBase_EnumerationLiteral.hh"
 #include "IIRBase_TextLiteral.hh"
 #include "IIR_AttributeSpecificationList.hh"
+#include "IIRBase_Identifier.hh"
 
 IIRBase_EnumerationLiteral::IIRBase_EnumerationLiteral() :
   attributes(0),
@@ -75,9 +76,10 @@ IIRBase_EnumerationLiteral::is_ascending_range() {
   else if(IIRBase_TextLiteral::cmp(get_declarator(), "false") == 0) {
     return FALSE;
   } else {
-    cerr << "Unknown enumeration literal " << *get_declarator() 
-	 << " in IIRBase_EnumerationLiteral::"
-	 << "_is_ascending_range()" << endl;
+     // FIXME: overload operator<<
+    //cerr << "Unknown enumeration literal " << *get_declarator() 
+	 //<< " in IIRBase_EnumerationLiteral::"
+	 //<< "_is_ascending_range()" << endl;
     abort();
     return FALSE;
   }
@@ -118,7 +120,8 @@ IIRBase_EnumerationLiteral::is_locally_static(){
 
 ostream &
 IIRBase_EnumerationLiteral::print( ostream &os ){
-  os << *get_declarator();
+   // FIXME: overload operator<<
+  //os << *get_declarator();
 
   return os;
 }

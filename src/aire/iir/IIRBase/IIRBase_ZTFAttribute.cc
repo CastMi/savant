@@ -72,7 +72,7 @@ IIRBase_ZTFAttribute::get_initial_delay() {
   return initial_delay;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ZTFAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ZTFAttribute *new_node = dynamic_cast<IIRBase_ZTFAttribute *>(IIRBase_Attribute::convert_tree(factory));

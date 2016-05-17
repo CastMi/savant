@@ -34,6 +34,7 @@
 #include "IIRBase_TextLiteral.hh"
 #include "IIR_SequentialStatementList.hh"
 #include "IIR_ConstantDeclaration.hh"
+#include "IIRBase_Identifier.hh"
 
 
 IIRBase_ForLoopStatement::IIRBase_ForLoopStatement()  :

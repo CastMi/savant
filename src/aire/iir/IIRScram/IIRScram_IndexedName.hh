@@ -75,19 +75,19 @@ public:
       array access (returns TRUE) or a slice? */
   IIR_Boolean _is_array_access();
 
-  IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition> *context_set );
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
-  IIRScram *_rval_to_decl( IIRScram_Declaration *, IIRScram_TypeDefinition * );
+  IIRScram_Statement *_semantic_transform( savant::set<IIRScram_TypeDefinition> *context_set );
+  IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition * );
+  IIRScram_Statement *_rval_to_decl( IIRScram_Declaration *, IIRScram_TypeDefinition * );
   IIRScram_Declaration *_determine_decl_in_set( savant::set<IIRScram_Declaration> *, IIRScram_TypeDefinition * );
 
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
 
   // Override the IIR_Name default
-  void set_subtype(IIR_TypeDefinition *type) { IIRBase::set_subtype(type); }
+  void set_subtype(IIR_TypeDefinition *type) { IIRBase_Statement::set_subtype(type); }
 
-  IIRScram *_get_suffix();
-  IIRScram *_get_prefix();
-  IIRScram *_clone();
+  IIRScram_Statement *_get_suffix();
+  IIRScram_Statement *_get_prefix();
+  IIRScram_Statement *_clone();
 
   // This is for type checking.  Assume this indexed name is a
   // function call, and create an IIRScram_FunctionCall if it really is.

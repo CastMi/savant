@@ -29,7 +29,7 @@
 #include "savant.hh"
 
 
-IIRScram*
+IIRScram_Statement *
 IIRScram_AdditionOperator::_clone() {
   //  IIRScram_AdditionOperator *clone = new IIRScram_AdditionOperator();
   //  IIRScram_DyadicOperator::_clone(clone);

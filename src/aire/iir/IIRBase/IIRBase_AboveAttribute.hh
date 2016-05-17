@@ -49,10 +49,10 @@ public:
 
   /** Sets the value of the expression whose type 
       is the same as that of Q. */
-  void set_suffix(IIR* suffix);
+  void set_suffix(IIR_Statement* suffix);
   
   /** Returns the value of the expression. */
-  IIR* get_suffix();
+  IIR_Statement* get_suffix();
   
   /** Returns the type of the signal created. */
   IIR_TypeDefinition *get_subtype();
@@ -60,7 +60,7 @@ public:
   IIR_Boolean is_signal() { return TRUE; }
   IIR_Boolean has_suffix(){ return TRUE; }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   /** Returns TRUE if above attribute is found. */
   IIR_Boolean is_above_attribute_found() { return TRUE; }
@@ -71,7 +71,7 @@ protected:
   virtual ~IIRBase_AboveAttribute() = 0;
   
 private:
-  IIR* suffix;
+  IIR_Statement* suffix;
 
 };
 #endif

@@ -34,15 +34,16 @@ IIRBase_LengthAttribute::IIRBase_LengthAttribute() {
 IIRBase_LengthAttribute::~IIRBase_LengthAttribute() {}
 
 void 
-IIRBase_LengthAttribute::set_suffix( IIR* suffix) {
+IIRBase_LengthAttribute::set_suffix( IIR_Statement* suffix) {
   this->suffix = suffix;
 }
 
-IIR* IIRBase_LengthAttribute::get_suffix() {
+IIR_Statement *
+IIRBase_LengthAttribute::get_suffix() {
   return suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_LengthAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_LengthAttribute *new_node = dynamic_cast<IIRBase_LengthAttribute *>(IIRBase_Attribute::convert_tree(factory));

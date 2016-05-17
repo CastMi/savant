@@ -34,15 +34,16 @@ IIRBase_QuietAttribute::IIRBase_QuietAttribute() {
 IIRBase_QuietAttribute::~IIRBase_QuietAttribute() {}
 
 void 
-IIRBase_QuietAttribute::set_suffix( IIR* suffix) {
+IIRBase_QuietAttribute::set_suffix( IIR_Statement* suffix) {
   this->suffix = suffix;
 }
 
-IIR* IIRBase_QuietAttribute::get_suffix() {
+IIR_Statement *
+IIRBase_QuietAttribute::get_suffix() {
   return suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_QuietAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_QuietAttribute *new_node = dynamic_cast<IIRBase_QuietAttribute *>(IIRBase_Attribute::convert_tree(factory));

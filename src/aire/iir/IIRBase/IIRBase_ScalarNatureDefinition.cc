@@ -27,6 +27,7 @@
 #include "savant.hh"
 #include "IIRBase_ScalarNatureDefinition.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "IIR_TerminalDeclaration.hh"
 
 IIRBase_ScalarNatureDefinition::IIRBase_ScalarNatureDefinition()

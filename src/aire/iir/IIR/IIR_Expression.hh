@@ -28,9 +28,9 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIR.hh"
+#include "IIR_Statement.hh"
 
-class IIR_Expression : public virtual IIR{
+class IIR_Expression : public virtual IIR_Statement{
 
 public:
   virtual ~IIR_Expression() {}

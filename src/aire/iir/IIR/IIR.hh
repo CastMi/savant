@@ -300,7 +300,7 @@ public:
       method of it's direct decendent. */
   virtual ostream &print( ostream & ) = 0;
 
-  virtual IIR_TextLiteral *get_declarator() = 0;
+  virtual IIR_Identifier* get_declarator() = 0;
 
   /** This method returns the declaration of an indexed name.  If the
       prefix is a declaration, returns it, or else, gets the declaration of

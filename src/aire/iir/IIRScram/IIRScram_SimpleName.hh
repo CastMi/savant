@@ -58,7 +58,7 @@ public:
   IIRScram_Declaration *_determine_decl_in_set( savant::set<IIRScram_Declaration> *search_in,
                                                 IIRScram_TypeDefinition *looking_for );
 
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition *);
+  IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition *);
   IIRScram *_decl_to_decl( IIRScram_Declaration * );
 
   IIRScram *_rval_to_decl( IIRScram_TypeDefinition *, IIRScram_TypeDefinition * );
@@ -69,7 +69,7 @@ public:
 
   const string convert_to_library_name();
 
-  IIRScram *_clone();
+  IIRScram_Statement *_clone();
 
 protected:
 private:

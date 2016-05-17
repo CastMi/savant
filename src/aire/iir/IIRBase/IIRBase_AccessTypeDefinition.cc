@@ -28,7 +28,7 @@
 #include "set.hh"
 #include "IIRBase_AccessTypeDefinition.hh"
 #include "IIR_TypeDefinition.hh"
-#include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 #include "savant.hh"
 #include <iostream>
 

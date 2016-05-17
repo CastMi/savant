@@ -36,7 +36,7 @@ IIRBase_AdditionOperator::get_operator_string() const {
   return retval;
 }
 
-IIRBase_Operator::Precedence
+Precedence
 IIRBase_AdditionOperator::get_precedence(){
-  return ADDING_OPERATOR;
+  return Precedence::ADDING_OPERATOR;
 }

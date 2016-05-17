@@ -73,7 +73,7 @@ IIRBase_Comment::set_text( IIR_Char *txt, IIR_Int32 text_len ){
   text_length = text_len;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_Comment::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_Comment *new_node = dynamic_cast<IIRBase_Comment *>(IIRBase_Literal::convert_tree(factory));

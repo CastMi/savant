@@ -31,6 +31,7 @@
 #include "IIR_Expression.hh"
 
 class IIR_SubprogramDeclaration;
+class IIR_Statement;
 
 class IIR_DyadicOperator : public virtual IIR_Expression {
 
@@ -40,10 +41,10 @@ public:
   virtual void set_implementation( IIR_SubprogramDeclaration *implementation ) = 0;
   virtual IIR_SubprogramDeclaration *get_implementation() = 0;
 
-  virtual void set_left_operand( IIR *left_operand ) = 0;
-  virtual IIR *get_left_operand() = 0;
+  virtual void set_left_operand( IIR_Expression *left_operand ) = 0;
+  virtual IIR_Expression *get_left_operand() = 0;
 
-  virtual void set_right_operand( IIR *right_operand ) = 0;
-  virtual IIR *get_right_operand() = 0;
+  virtual void set_right_operand( IIR_Expression *right_operand ) = 0;
+  virtual IIR_Expression *get_right_operand() = 0;
 };
 #endif

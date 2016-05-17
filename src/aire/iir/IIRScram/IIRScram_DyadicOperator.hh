@@ -63,9 +63,9 @@ public:
 			 void (IIRScram_DyadicOperator::*set_method)( IIRScram *),
 			 IIRScram_TypeDefinition *operand_type );
 
-  virtual void _clone( IIRScram * );
+  virtual void _clone( IIRScram_Statement * );
 
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition *my_rval );
+  IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition *my_rval );
 
   // Wrappers
   IIRScram *_get_left_operand();

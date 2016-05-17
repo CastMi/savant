@@ -170,12 +170,12 @@ IIRBase::_report_undefined_fn(const char *fn_name) {
 IIR_SignalKind
 IIRBase::get_signal_kind() {
   _report_undefined_fn("get_signal_kind()");
-  return IIR_NO_SIGNAL_KIND;
+  return IIR_SignalKind::IIR_NO_SIGNAL_KIND;
 }
 
 IIR_Boolean
 IIRBase::is_guard_signal() {
-  if( is_signal() == TRUE && get_signal_kind() != IIR_NO_SIGNAL_KIND ){
+  if( is_signal() == TRUE && get_signal_kind() != IIR_SignalKind::IIR_NO_SIGNAL_KIND ){
     return TRUE;
   }
   else{
@@ -237,7 +237,7 @@ IIRBase::print(ostream& os) {
   return os;
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase::get_declarator() {
   ASSERT( dynamic_cast<IIR_Declaration *>(this) != NULL || get_kind() == IIR_SIMPLE_NAME);
   _report_undefined_fn("get_declarator()");
@@ -280,7 +280,3 @@ IIRBase::publish_vhdl_operator( ostream & ){
   _report_undefined_fn("publish_vhdl_operator(ostream &)");
 }
 
-IIRBase_Operator::Precedence
-IIRBase::get_precedence(){
-  return IIRBase_Operator::OTHERS;
-}

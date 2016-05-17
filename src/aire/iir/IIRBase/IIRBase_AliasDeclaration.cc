@@ -28,7 +28,7 @@
 #include "IIRBase_AliasDeclaration.hh"
 #include "savant.hh"
 #include "IIR_TypeDefinition.hh"
-#include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 
 IIRBase_AliasDeclaration::IIRBase_AliasDeclaration() :
   name(0){}

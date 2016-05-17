@@ -25,6 +25,7 @@
 #include "savant.hh"
 #include "IIRBase_QuantityDeclaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "IIRBase_TypeDefinition.hh"
 
 IIR_Declaration::declaration_type

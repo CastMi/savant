@@ -42,7 +42,7 @@ public:
   IIR_Int32 get_exponent_length();
   IIR_FP64 get_floating_point_value();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   ostream &print( ostream & );
   void publish_vhdl(ostream &);

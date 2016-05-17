@@ -30,16 +30,16 @@ IIRBase_RangeAttribute::IIRBase_RangeAttribute() {
 IIRBase_RangeAttribute::~IIRBase_RangeAttribute() {}
 
 void 
-IIRBase_RangeAttribute::set_suffix( IIR* suffix) {
+IIRBase_RangeAttribute::set_suffix( IIR_Statement* suffix) {
   this->suffix = suffix;
 }
 
-IIR* 
+IIR_Statement * 
 IIRBase_RangeAttribute::get_suffix() {
   return suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_RangeAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_RangeAttribute *new_node = dynamic_cast<IIRBase_RangeAttribute *>(IIRBase_Attribute::convert_tree(factory));

@@ -50,7 +50,7 @@ IIRBase_LTFAttribute::get_den() {
   return denominator;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_LTFAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_LTFAttribute *new_node = dynamic_cast<IIRBase_LTFAttribute *>(IIRBase_Attribute::convert_tree(factory));

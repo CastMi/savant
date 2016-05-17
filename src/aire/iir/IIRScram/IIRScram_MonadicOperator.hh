@@ -44,10 +44,10 @@ class IIRScram_MonadicOperator : public virtual IIRScram_Operator,
 public:
   IIR_Boolean _is_readable();
 
-  virtual IIRScram *_rval_to_decl( IIRScram_TypeDefinition *my_rval );
+  virtual IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition *my_rval );
 
   void _build_generic_parameter_set( savant::set<IIRScram_Declaration> *);
-  IIRScram *_clone();
+  IIRScram_Statement *_clone();
 
 
   IIRScram_SubprogramDeclaration *_get_implementation();

@@ -108,7 +108,7 @@ IIRScram_AssociationList::_process_positional_part( IIRScram_InterfaceList *form
 
 	if( found_match == TRUE ){
 	  if( resolve == TRUE ){
-	    current_local->set_formal( current_formal );      
+	    current_local->set_decl( current_formal );      
 	    IIRScram_Statement *new_actual = current_local->_get_actual()->_semantic_transform( current_local_type );
 	    new_actual->_type_check( current_local_type );
 	    current_local->set_actual( new_actual->_rval_to_decl( current_local_type ) );
@@ -138,7 +138,7 @@ IIRScram_AssociationList::_process_positional_part( IIRScram_InterfaceList *form
       ASSERT( current_local->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_OPEN);
       num_resolved++;
       if( resolve == TRUE ){
-	current_local->set_formal( current_formal );            
+	current_local->set_decl( current_formal );            
       }
     }
   
@@ -221,7 +221,7 @@ IIRScram_AssociationList::_get_formal_designator_from_indexed_name( IIRScram_Ind
 
   if( suffix_is_formal_designator == TRUE ){
     // If the suffix isn't a name, we're in trouble!
-    IIRScram *temp = name->_get_suffix();  
+    IIRScram_Statement *temp = name->_get_suffix();  
     if( temp->_is_iir_name() == FALSE ){
       retval = NULL;
     }
@@ -236,8 +236,8 @@ IIRScram_AssociationList::_get_formal_designator_from_indexed_name( IIRScram_Ind
 IIRScram_Statement *
 IIRScram_AssociationList::_get_actual_designator_from_indexed_name( IIRScram_IndexedName *name ){
   IIRScram_Statement *retval = name;
-  IIRScram *prefix = name->_get_prefix();
-  IIRScram *suffix = name->_get_suffix();
+  IIRScram_Statement *prefix = name->_get_prefix();
+  IIRScram_Statement *suffix = name->_get_suffix();
 
   if( suffix->get_kind() != IIR_ASSOCIATION_LIST ||
       (dynamic_cast<IIRScram_AssociationList *>(suffix))->size() != 1 ){
@@ -316,7 +316,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
   while( current_association != NULL){
     IIRScram *formal_designator = NULL;
     IIRScram_Statement *actual_designator = NULL;
-    IIRScram *formal_part = NULL;
+    IIRScram_Identifier *formal_part = NULL;
     IIRScram_Statement *actual_part = NULL;
     // These are declarations that were found through selection, and
     // MADE VISIBLE.  This means that if they are non-NULL, that we

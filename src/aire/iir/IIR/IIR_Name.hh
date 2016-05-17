@@ -27,9 +27,9 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIR.hh"
+#include "IIR_Statement.hh"
 
-class IIR_Name : public virtual IIR{
+class IIR_Name : public virtual IIR_Statement {
 
 public:
   virtual ~IIR_Name() {}
@@ -38,12 +38,13 @@ public:
   /// All names have a prefix.
   virtual void set_prefix( IIR *prefix ) = 0;
   virtual IIR *get_prefix() = 0;
+  virtual IIR_TextLiteral *get_prefix_string() = 0;
   //@}
 
   //@{
   // Selected names and indexed names can have a suffix.
-  virtual void set_suffix( IIR *suffix ) = 0;
-  virtual IIR *get_suffix() = 0;
+  virtual void set_suffix( IIR_Statement *suffix ) = 0;
+  virtual IIR_Statement *get_suffix() = 0;
   //@}
 };
 #endif

@@ -86,7 +86,7 @@ IIRBase_FloatingPointLiteral::get_exponent_length() {
   return exponent_length;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_FloatingPointLiteral::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_FloatingPointLiteral *new_node = dynamic_cast<IIRBase_FloatingPointLiteral *>(IIRBase_Literal::convert_tree(factory));

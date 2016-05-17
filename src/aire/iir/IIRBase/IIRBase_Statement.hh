@@ -30,6 +30,7 @@
 
 #include "IIRBase.hh"
 #include "IIR_Statement.hh"
+#include "IIR_Identifier.hh"
 
 class IIR_Label;
 
@@ -39,13 +40,20 @@ public:
   void set_label( IIR_Label *label);
   IIR_Label *get_label() const;
   virtual IIR_Kind get_kind() const = 0;
+  
+  virtual IIR_TypeDefinition *get_subtype() { return nullptr; };
+  void set_subtype(IIR_TypeDefinition *);
+  
+  virtual IIR_DesignFile *get_design_file() const;
 
   savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
-
+  
+  virtual Precedence get_precedence();
   /** For assertion statements this method is overloaded to return the
       assertion condtion.  For anything else it returns 0. */
   IIR_Statement *get_assertion_condition(){ return 0; }
   
+  virtual IIR_Boolean is_above_attribute_found() { return false; };
   /** For report and assertion statements this method is overloaded to
       return the report expression.  For anything else it returns 0. */
   IIR_Statement *get_report_expression(){ return 0; }
@@ -54,6 +62,16 @@ public:
   IIR_Statement *get_severity_expression(){ return 0; }
 
   virtual IIR_Boolean is_locally_static() { return false; };
+  virtual IIR_Boolean is_signal() { return false; }
+  virtual IIR_Boolean is_name() { return false; };
+  virtual IIR_Boolean is_variable() { return false; };
+  virtual IIR_Boolean is_logical_operator() { return false; };
+  virtual IIR_Boolean is_relational_operator() { return false; };
+  virtual IIR_Boolean is_entity_declaration() { return false; };
+  virtual IIR_Boolean is_type() { return false; };
+  virtual IIR_Boolean is_object() { return false; };
+
+  virtual IIR_SignalKind get_signal_kind() { return IIR_SignalKind::IIR_NO_SIGNAL_KIND; };
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
@@ -63,6 +81,7 @@ public:
       runtime error for anything else.  */
   void set_report_expression( IIR * );
   void copy_location( const IIR_Statement *, IIR_Statement *) {};
+  void copy_location( const IIR_Statement *, IIR *) {};
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */

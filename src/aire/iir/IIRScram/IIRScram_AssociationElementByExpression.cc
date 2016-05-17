@@ -39,6 +39,7 @@
 #include "IIRScram_DesignFile.hh"
 #include "IIRScram_InterfaceDeclaration.hh"
 #include "IIRScram_Label.hh"
+#include "IIRScram_Identifier.hh"
 #include "IIRScram_RangeAttribute.hh"
 #include "IIRScram_TextLiteral.hh"
 #include "error_func.hh"
@@ -175,8 +176,8 @@ IIRScram_AssociationElementByExpression::_clone() {
   assoc = new IIRScram_AssociationElementByExpression();
   IIRScram::_clone( assoc );
 
-  if (_get_formal() != NULL) {
-    assoc->set_formal( _get_formal()->_clone());
+  if ( get_formal() != NULL ) {
+    assoc->set_formal( dynamic_cast<IIRScram_Statement*>(get_formal())->_clone());
   }
   assoc->set_actual(_get_actual()->_clone());
 

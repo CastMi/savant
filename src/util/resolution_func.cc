@@ -366,17 +366,16 @@ resolve_subprogram_decls( set<IIRScram_Declaration>     *possible_subprogram_dec
 			    &return_set );
 }
 
-IIRScram *
+IIRScram_Statement *
 reduce_aggregate( IIRScram_Aggregate *aggregate ){
-  IIRScram *retval = aggregate;
+  IIRScram_Statement *retval = aggregate;
 
   // If the aggregate only has one element, there's a good chance we can
   // optimize it down to it's one element, or at least the association.
   if( aggregate->get_element_association_list()->size() == 1 ){
     IIRScram_AssociationElement *first_element = dynamic_cast<IIRScram_AssociationElement *>(aggregate->get_element_association_list()->first());
     if( first_element->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION ){
-      IIRScram_AssociationElementByExpression *by_expression;
-      by_expression = dynamic_cast<IIRScram_AssociationElementByExpression *>(first_element);
+      IIRScram_AssociationElementByExpression *by_expression = dynamic_cast<IIRScram_AssociationElementByExpression *>(first_element);
       if( by_expression->get_formal() == NULL &&
 	  ( by_expression->get_actual() != NULL && 
 	    by_expression->get_actual()->get_kind() != IIR_OTHERS_INITIALIZATION ) ){

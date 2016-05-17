@@ -36,9 +36,9 @@ IIRBase_ExponentiationOperator::get_operator_string() const {
   return retval;
 }
 
-IIRBase_Operator::Precedence
+Precedence
 IIRBase_ExponentiationOperator::get_precedence(){
-  return MISCELLANEOUS_OPERATOR;
+  return Precedence::MISCELLANEOUS_OPERATOR;
 }
 
 bool

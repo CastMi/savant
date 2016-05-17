@@ -62,7 +62,7 @@ IIRBase_Allocator::get_value() {
   return value;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_Allocator::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_Allocator *new_node = dynamic_cast<IIRBase_Allocator *>(IIRBase_Expression::convert_tree(factory));

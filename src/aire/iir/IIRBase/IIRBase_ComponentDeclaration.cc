@@ -23,7 +23,7 @@
 #include "IIR_EntityDeclaration.hh"
 #include "IIR_GenericList.hh"
 #include "IIR_PortList.hh"
-#include "IIR_TextLiteral.hh"
+#include "IIRBase_Identifier.hh"
 #include "IIRBase_ComponentDeclaration.hh"
 
 using savant::set;

@@ -42,11 +42,11 @@ IIRBase_IndexedName::IIRBase_IndexedName() {
 IIRBase_IndexedName::~IIRBase_IndexedName() {}
 
 void
-IIRBase_IndexedName::set_suffix( IIR* suffix) {
+IIRBase_IndexedName::set_suffix( IIR_Statement* suffix) {
   this->suffix = suffix;
 }
 
-IIR*
+IIR_Statement *
 IIRBase_IndexedName::get_suffix() {
   return suffix;
 }
@@ -57,7 +57,7 @@ IIRBase_IndexedName::get_declarative_region(){
   return get_prefix_declaration()->get_declarative_region();
 }
 
-IIR *
+IIR_Statement *
 IIRBase_IndexedName::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_IndexedName *new_node = dynamic_cast<IIRBase_IndexedName *>(IIRBase_Name::convert_tree(factory));
@@ -91,11 +91,13 @@ IIRBase_IndexedName::is_interface() {
   return get_prefix()->is_interface();
 }
 
-IIR *
+IIR_Statement *
 IIRBase_IndexedName::get_index( int index_num ){
   if( get_suffix()->get_kind() == IIR_ASSOCIATION_LIST ){
-    IIR_AssociationList *as_list = dynamic_cast<IIR_AssociationList *>(get_suffix());
-    return dynamic_cast<IIR *>(as_list->get_nth_element( index_num - 1 ));
+     // Actually, it should never happen but I leave and assert false just to be sure
+    //IIR_AssociationList *as_list = dynamic_cast<IIR_AssociationList *>(get_suffix());
+    //return dynamic_cast<IIR *>(as_list->get_nth_element( index_num - 1 ));
+    ASSERT(false);
   }
   else{
     ASSERT( index_num == 1 );
@@ -142,7 +144,8 @@ ostream &
 IIRBase_IndexedName::print( ostream &os ){
   os << *get_prefix();
   os << "(";
-  os << *get_suffix();
+  // FIXME: overload the operator<<
+  // os << *get_suffix();
   os << ")";
 
   return os;

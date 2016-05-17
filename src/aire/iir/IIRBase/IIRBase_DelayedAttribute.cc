@@ -30,16 +30,16 @@ IIRBase_DelayedAttribute::IIRBase_DelayedAttribute(){
 IIRBase_DelayedAttribute::~IIRBase_DelayedAttribute(){}
 
 void 
-IIRBase_DelayedAttribute::set_suffix( IIR *suffix ){
+IIRBase_DelayedAttribute::set_suffix( IIR_Statement *suffix ){
   this->suffix = suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_DelayedAttribute::get_suffix(){
   return suffix;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_DelayedAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_DelayedAttribute *new_node = dynamic_cast<IIRBase_DelayedAttribute *>(IIRBase_Attribute::convert_tree(factory));

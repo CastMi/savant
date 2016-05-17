@@ -30,10 +30,11 @@
 #include "IIR_Statement.hh"
 #include "IIRBase_InterfaceDeclaration.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 #include "savant.hh"
 
 IIRBase_InterfaceDeclaration::IIRBase_InterfaceDeclaration() {
-  set_mode(IIR_UNKNOWN_MODE);
+  set_mode(IIR_Mode::IIR_UNKNOWN_MODE);
   set_value(NULL);
 }
 
@@ -75,29 +76,30 @@ IIRBase_InterfaceDeclaration::convert_tree(plugin_class_factory *factory) {
 
 ostream &
 IIRBase_InterfaceDeclaration::print( ostream &os ){
-  os << *get_declarator();
+   //FIXME overload operator<<
+  //os << *get_declarator();
   return os;
 }
 
 void
 IIRBase_InterfaceDeclaration::publish_vhdl_mode(ostream &vhdl_out){
   switch( get_mode() ) {
-  case IIR_IN_MODE:
+     case IIR_Mode::IIR_IN_MODE:
     vhdl_out << "in";
     break;
-  case IIR_OUT_MODE:
+     case IIR_Mode::IIR_OUT_MODE:
     vhdl_out << "out";
     break;
-  case IIR_INOUT_MODE:
+     case IIR_Mode::IIR_INOUT_MODE:
     vhdl_out << "inout";
     break;
-  case  IIR_BUFFER_MODE:
+     case IIR_Mode::IIR_BUFFER_MODE:
     vhdl_out << "buffer";
     break;
-  case  IIR_LINKAGE_MODE:
+     case IIR_Mode::IIR_LINKAGE_MODE:
     vhdl_out << "linkage";
     break;
-  case  IIR_UNKNOWN_MODE:
+     case IIR_Mode::IIR_UNKNOWN_MODE:
     break;
   default:
     cerr << "Wrong mode specification in" << get_kind_text() << endl;

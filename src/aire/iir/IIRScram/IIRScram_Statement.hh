@@ -61,6 +61,8 @@ public:
   virtual IIR_Boolean _is_iir_name(){ return FALSE; }
   virtual savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
 
+  virtual savant::set<IIRScram_Declaration> *_symbol_lookup();
+  symbol_table *_get_symbol_table( );
   virtual IIRScram_TypeDefinition *_get_subtype();
 				
   // This method does the type checking and resolution for a boolean

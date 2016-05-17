@@ -45,6 +45,7 @@ class IIR_LibraryUnit;
 class IIR_Name;
 class IIR_PackageDeclaration;
 class IIR_SimpleName;
+class IIR_Statement;
 class IIR_TextLiteral;
 class scram;
 class plugin_class_factory;
@@ -162,7 +163,7 @@ public:
   to the work library passed in for our search for this unit.
 */
   IIR_PackageDeclaration *lookup_package( IIR_Boolean,
-                                          IIR                           *package_name,
+                                          IIR_Name                      *package_name,
                                           IIR_LibraryDeclaration        *work_library,
                                           StandardPackage               *package,
                                           plugin_class_factory       *factory);
@@ -180,7 +181,7 @@ public:
   to the work library passed in for our search for this unit.
   */
   IIR_EntityDeclaration *lookup_entity( IIR_Boolean                     complain_on_error,
-                                        IIR                             *entity_name,
+                                        IIR_Name                       *entity_name,
                                         IIR_LibraryDeclaration          *work_library,
                                         StandardPackage                 *package,
                                         plugin_class_factory         *factory);

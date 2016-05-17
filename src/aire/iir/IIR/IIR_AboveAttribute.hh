@@ -24,6 +24,8 @@
 
 #include "IIR_Attribute.hh"
 
+class IIR_Statement;
+
 class IIR_AboveAttribute : public virtual IIR_Attribute {
 
 public:
@@ -32,10 +34,10 @@ public:
   
   /** Sets the value of the expression whose type 
       is the same as that of Q. */
-  virtual void set_suffix(IIR* suffix) = 0;
+  virtual void set_suffix(IIR_Statement* suffix) = 0;
   
   /** Returns the value of the expression. */
-  virtual IIR* get_suffix() = 0;
+  virtual IIR_Statement* get_suffix() = 0;
 protected:
 
 private:

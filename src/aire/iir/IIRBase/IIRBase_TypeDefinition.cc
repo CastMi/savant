@@ -245,11 +245,12 @@ IIRBase_TypeDefinition::is_subtype_decl() {
 
 ostream &
 IIRBase_TypeDefinition::print( ostream &os ){
-  os << *get_declarator();
+   //FIXME:: overload operator<<
+  //os << *get_declarator();
   return os;
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_TypeDefinition::get_declarator(){
   if( get_declaration() != NULL ){
     return get_declaration()->get_declarator();

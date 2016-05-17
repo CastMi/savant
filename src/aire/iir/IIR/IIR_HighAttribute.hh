@@ -36,7 +36,7 @@ class IIR_HighAttribute : public virtual IIR_Attribute{
 public:
   virtual ~IIR_HighAttribute() {}
     
-  virtual void set_suffix( IIR * ) = 0;
-  virtual IIR *get_suffix( ) = 0;
+  void set_suffix( IIR_Statement * );
+  IIR_Statement *get_suffix( );
 };
 #endif

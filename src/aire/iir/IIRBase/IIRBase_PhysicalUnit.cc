@@ -31,6 +31,7 @@
 #include "IIR_PhysicalUnit.hh"
 #include "IIR_AttributeSpecificationList.hh"
 #include "IIR_TextLiteral.hh"
+#include "IIR_Identifier.hh"
 
 IIRBase_PhysicalUnit::IIRBase_PhysicalUnit()  :
   attributes(0),
