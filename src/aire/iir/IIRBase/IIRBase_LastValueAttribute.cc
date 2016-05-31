@@ -27,7 +27,7 @@ IIRBase_LastValueAttribute::IIRBase_LastValueAttribute() {}
 
 IIRBase_LastValueAttribute::~IIRBase_LastValueAttribute() {}
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_LastValueAttribute::build_attribute_name() {
   const char *name = "last_value";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());

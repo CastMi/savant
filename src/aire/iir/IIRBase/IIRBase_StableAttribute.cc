@@ -43,7 +43,7 @@ IIRBase_StableAttribute:: get_suffix() {
   return suffix;
 }
 
-IIR_Statement *
+IIR_StableAttribute *
 IIRBase_StableAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_StableAttribute *new_node = dynamic_cast<IIRBase_StableAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -59,7 +59,7 @@ IIRBase_StableAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_boolean_type();
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_StableAttribute::build_attribute_name(){
   const char *name = "stable";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());

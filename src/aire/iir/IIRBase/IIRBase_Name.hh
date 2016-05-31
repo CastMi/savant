@@ -46,8 +46,8 @@ public:
                        IIR_Int32   &number_of_matches,
                        IIR         *&first_match);
   
-  void set_prefix( IIR *prefix );
-  IIR *get_prefix();
+  void set_prefix( IIR_Statement *prefix );
+  IIR_Statement *get_prefix();
 
   void set_suffix( IIR_Statement *suffix );
   IIR_Statement *get_suffix();
@@ -78,7 +78,7 @@ protected:
   virtual ~IIRBase_Name() = 0;
     
 private:
-  IIR *prefix;
+  IIR_Statement *prefix;
 
 };
 #endif

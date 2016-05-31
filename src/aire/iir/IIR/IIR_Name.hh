@@ -36,8 +36,8 @@ public:
 
   //@{
   /// All names have a prefix.
-  virtual void set_prefix( IIR *prefix ) = 0;
-  virtual IIR *get_prefix() = 0;
+  virtual void set_prefix( IIR_Statement *prefix ) = 0;
+  virtual IIR_Statement *get_prefix() = 0;
   virtual IIR_TextLiteral *get_prefix_string() = 0;
   //@}
 

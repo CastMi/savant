@@ -52,7 +52,7 @@ public:
   /** Returns true if the calling object is of element type */
   IIR_Boolean is_element();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRBase_ArrayNatureDefinition *convert_tree(plugin_class_factory *factory);
 
   /** Used to check if the its an unconstrained array type */
   IIR_Boolean is_unconstrained_array_type();

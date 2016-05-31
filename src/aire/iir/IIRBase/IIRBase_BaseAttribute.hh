@@ -37,7 +37,7 @@ public:
   IIR_Kind get_kind() const {return IIR_BASE_ATTRIBUTE;}
   const IIR_Char *get_kind_text() const {return "IIR_BaseAttribute";}
 
-  IIR_TextLiteral *build_attribute_name();
+  IIR_Identifier *build_attribute_name();
 
   IIR_Boolean is_type_attribute(){ return true; }
 

@@ -58,7 +58,7 @@ public:
   /** Returns the reference terminal of the nature */
   IIR_TerminalDeclaration *get_reference_terminal();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRBase_ScalarNatureDefinition *convert_tree(plugin_class_factory *factory);
  
   void publish_vhdl_decl(ostream &);
 protected:

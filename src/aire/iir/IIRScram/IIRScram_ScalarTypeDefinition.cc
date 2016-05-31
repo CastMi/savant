@@ -51,7 +51,8 @@
 #include <sstream>
 using std::ostringstream;
 
-IIRScram_ScalarTypeDefinition::IIRScram_ScalarTypeDefinition(){}
+IIRScram_ScalarTypeDefinition::IIRScram_ScalarTypeDefinition( IIR_TypeDefinition* right )
+   : IIRBase_ScalarTypeDefinition(right) {}
 
 IIRScram_ScalarTypeDefinition::~IIRScram_ScalarTypeDefinition() {}
 

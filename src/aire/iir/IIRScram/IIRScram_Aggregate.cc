@@ -179,7 +179,7 @@ IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *m
 	  IIRScram_Declaration *element_decl = element_decls->getElement();
 	  delete element_decls;
 	  
-	  current_association->set_decl( element_decl );
+	  current_association->set_formal_decl( element_decl );
 	  IIRScram_TypeDefinition *actual_type = element_decl->_get_subtype();
 	  
 	  ASSERT( current_association->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION );	
@@ -284,7 +284,7 @@ IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
 
     if( current_association->get_formal() != NULL ){
       if( processing_mode == ARRAY ){
-	IIRScram_Declaration *old_formal = dynamic_cast<IIRScram_Declaration*>(current_association->get_decl());
+	IIRScram_Declaration *old_formal = dynamic_cast<IIRScram_Declaration*>(current_association->get_formal_decl());
    ASSERT( old_formal );
 
 	IIRScram *new_formal = old_formal->_semantic_transform( formal_type );
@@ -292,7 +292,7 @@ IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
 	new_formal->_type_check( formal_type );
 	IIRScram_Declaration *result = dynamic_cast<IIRScram_Declaration*>( new_formal->_rval_to_decl( formal_type ) );
 
-	current_association->set_decl( result );
+	current_association->set_formal_decl( result );
       }
       else{
 	_rval_to_decl_process_named_part( my_type, current_association );

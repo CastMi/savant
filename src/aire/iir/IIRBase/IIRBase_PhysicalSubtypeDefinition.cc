@@ -49,7 +49,7 @@ IIRBase_PhysicalSubtypeDefinition::get_resolution_function(){
   return my_resolution_function;
 }
 
-IIR *
+IIRBase_PhysicalSubtypeDefinition *
 IIRBase_PhysicalSubtypeDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_PhysicalSubtypeDefinition *new_node = dynamic_cast<IIRBase_PhysicalSubtypeDefinition *>(IIRBase_PhysicalTypeDefinition::convert_tree(factory));

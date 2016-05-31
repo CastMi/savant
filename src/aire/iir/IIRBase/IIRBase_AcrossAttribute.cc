@@ -27,7 +27,7 @@
 IIRBase_AcrossAttribute::IIRBase_AcrossAttribute(){}
 IIRBase_AcrossAttribute::~IIRBase_AcrossAttribute(){}
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_AcrossAttribute::build_attribute_name(){
   const char *name = "across";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );

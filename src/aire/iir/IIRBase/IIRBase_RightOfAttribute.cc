@@ -39,7 +39,7 @@ IIRBase_RightOfAttribute::get_suffix() {
   return my_suffix;
 }
 
-IIR_Statement *
+IIR_RightOfAttribute *
 IIRBase_RightOfAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_RightOfAttribute *new_node = dynamic_cast<IIRBase_RightOfAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -50,7 +50,7 @@ IIRBase_RightOfAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_RightOfAttribute::build_attribute_name() {
   const char *name = "rightof";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());

@@ -266,10 +266,9 @@ IIRScram_Declaration::_get_rval_set( constraint_functor *functor ){
 }
 
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_Declaration::_decl_to_decl( IIRScram_Declaration *new_decl ){
-  ASSERT( new_decl == (IIRScram_Declaration *)this );
-  return this;
+  return nullptr;
 }
 
 // Helper functions

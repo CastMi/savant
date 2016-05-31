@@ -44,7 +44,7 @@ public:
   void set_return_type( IIR_TypeDefinition* return_type);
   IIR_TypeDefinition* get_return_type();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRBase_Signature *convert_tree(plugin_class_factory *factory);
 
   void publish_vhdl(ostream &);
 protected:

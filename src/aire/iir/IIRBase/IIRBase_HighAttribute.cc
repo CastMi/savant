@@ -39,7 +39,7 @@ IIRBase_HighAttribute::get_suffix( ){
   return my_suffix;
 }
 
-IIR_Statement *
+IIR_HighAttribute *
 IIRBase_HighAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_HighAttribute *new_node = dynamic_cast<IIRBase_HighAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -72,7 +72,7 @@ IIRBase_HighAttribute::is_function_attribute(){
   }
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_HighAttribute::build_attribute_name() {
   const char *name = "high";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );

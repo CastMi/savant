@@ -27,7 +27,7 @@ IIRBase_DrivingValueAttribute::IIRBase_DrivingValueAttribute(){}
 
 IIRBase_DrivingValueAttribute::~IIRBase_DrivingValueAttribute(){}
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_DrivingValueAttribute::build_attribute_name() {
   const char *name = "drivingvalue";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );

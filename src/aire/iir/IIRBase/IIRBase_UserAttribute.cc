@@ -51,7 +51,7 @@ IIRBase_UserAttribute::get_suffix() {
   return suffix;
 }
 
-IIR_Statement *
+IIR_UserAttribute *
 IIRBase_UserAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_UserAttribute *new_node = dynamic_cast<IIRBase_UserAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -76,16 +76,16 @@ IIRBase_UserAttribute::is_locally_static(){
   return as_constant->get_value()->is_locally_static();
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_UserAttribute::build_attribute_name(){
-  IIR_TextLiteral *retval = 0;
+  IIR_Identifier *retval = 0;
 
   if( get_suffix() && get_suffix()->is_name() == TRUE ){
-    retval = dynamic_cast<IIR_TextLiteral *>(dynamic_cast<IIR_Name *>(get_suffix())->get_prefix_string());
+    retval = dynamic_cast<IIR_Identifier *>(dynamic_cast<IIR_Name *>(get_suffix())->get_prefix_string());
   }
-  else if ( get_suffix() && dynamic_cast<IIR_Declaration *>(get_suffix()) != NULL ){
-    retval = get_suffix()->get_declarator();
-  }
+  //else if ( get_suffix() && dynamic_cast<IIR_Declaration *>(get_suffix()) != NULL ){
+  //  retval = get_suffix()->get_declarator();
+  //}
   
   return retval;
 }

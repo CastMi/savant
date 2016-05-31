@@ -42,7 +42,7 @@ IIRBase_PosAttribute::get_suffix() {
   return my_suffix;
 }
 
-IIR_Statement *
+IIR_PosAttribute *
 IIRBase_PosAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_PosAttribute *new_node = dynamic_cast<IIRBase_PosAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -58,7 +58,7 @@ IIRBase_PosAttribute::get_subtype(){
   return dynamic_cast<IIR_TypeDefinition *>(get_design_file()->get_standard_package()->get_savant_universal_integer());
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_PosAttribute::build_attribute_name() {
   const char *name = "pos";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());

@@ -91,7 +91,7 @@ IIRBase_ArrayTypeDefinition::set_is_element( IIR_Boolean new_is_element ){
   my_is_element = new_is_element;
 }
 
-IIR *
+IIRBase_ArrayTypeDefinition *
 IIRBase_ArrayTypeDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ArrayTypeDefinition *new_node = dynamic_cast<IIRBase_ArrayTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));

@@ -57,7 +57,10 @@ public:
       assertion condtion.  For anything else it returns 0. */
   virtual IIR_Statement *get_assertion_condition() = 0;
   virtual IIR_Boolean is_locally_static() = 0;
+  virtual IIR_Boolean is_scalar_type() = 0;
+  virtual IIR_Boolean is_array_type() = 0;
   virtual IIR_Boolean is_signal() = 0;
+  virtual IIR_Boolean is_interface() = 0;
   virtual IIR_Boolean is_variable() = 0;
   virtual IIR_Boolean is_object() = 0;
   virtual IIR_Boolean is_logical_operator() = 0;
@@ -65,9 +68,11 @@ public:
   virtual IIR_Boolean is_entity_declaration() = 0;
   virtual IIR_Boolean is_type() = 0;
   virtual IIR_Boolean is_name() = 0;
-  virtual IIRScram_Declaration *_find_formal_declaration();
+  virtual IIR_Declaration *_find_formal_declaration();
   virtual IIR_SignalKind get_signal_kind() = 0;
   virtual IIR_TextLiteral *get_declarator() = 0;
+
+  virtual ostream &print( ostream & ) = 0;
   
   /**
      Republish the VHDL that this node represents.  Called on a expression,

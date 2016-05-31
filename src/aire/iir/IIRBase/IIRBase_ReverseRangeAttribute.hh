@@ -41,12 +41,12 @@ public:
   void set_suffix( IIR_Statement* suffix);
   IIR_Statement* get_suffix();
 
-  IIR_Statement *convert_tree(plugin_class_factory *factory);
+  IIR_ReverseRangeAttribute *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_range_attribute(){ return true; }
   IIR_Boolean has_suffix(){ return TRUE; }
 
-  IIR_TextLiteral *build_attribute_name();
+  IIR_Identifier *build_attribute_name();
 
   void publish_vhdl(ostream &);
   void publish_vhdl_range(ostream &);

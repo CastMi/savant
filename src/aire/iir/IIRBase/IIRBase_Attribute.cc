@@ -100,9 +100,10 @@ IIRBase_Attribute::is_locally_static(){
 
 ostream &
 IIRBase_Attribute::print( ostream &os ){
-  get_prefix()->print( os );
+   // FIXME: implement print() in IIR_Statement
+  //get_prefix()->print( os );
   os << "'";
-  IIR_TextLiteral *attribute_name = build_attribute_name();
+  IIR_Identifier *attribute_name = build_attribute_name();
   if( attribute_name != 0 ){
      // FIXME: overload operator<<
     //os << *attribute_name;
@@ -117,13 +118,13 @@ IIRBase_Attribute::print( ostream &os ){
   return os;
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_Attribute::build_attribute_name(){
   _report_undefined_fn("build_attribute_name()");
   return NULL;
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_Attribute::get_attribute_name(){
   if( my_attribute_name == NULL ){
     my_attribute_name = build_attribute_name();
@@ -133,13 +134,13 @@ IIRBase_Attribute::get_attribute_name(){
   return my_attribute_name;
 }
 
-IIR_Statement *
+IIR_Attribute *
 IIRBase_Attribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_Attribute *new_node = dynamic_cast<IIRBase_Attribute *>(IIRBase_Name::convert_tree(factory));
 
   // Process the variables
-  new_node->my_attribute_name = dynamic_cast<IIR_TextLiteral *>(my_attribute_name->convert_tree(factory));
+  new_node->my_attribute_name = dynamic_cast<IIR_Identifier*>(my_attribute_name->convert_tree(factory));
 
   return new_node;
 }

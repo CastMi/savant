@@ -60,7 +60,7 @@ IIRBase_AccessTypeDefinition::get_designated_type(){
   return access_for_type;
 }
 
-IIR *
+IIRBase_AccessTypeDefinition *
 IIRBase_AccessTypeDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_AccessTypeDefinition *new_node = dynamic_cast<IIRBase_AccessTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));

@@ -47,7 +47,7 @@ IIRBase_IntegerSubtypeDefinition::get_resolution_function(){
   return my_resolution_function;
 }
 
-IIR *
+IIRBase_IntegerSubtypeDefinition *
 IIRBase_IntegerSubtypeDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_IntegerSubtypeDefinition *new_node = dynamic_cast<IIRBase_IntegerSubtypeDefinition *>(IIRBase_IntegerTypeDefinition::convert_tree(factory));

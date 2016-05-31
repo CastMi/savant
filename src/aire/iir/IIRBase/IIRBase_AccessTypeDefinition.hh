@@ -50,7 +50,7 @@ public:
   IIR_TypeDefinition *get_designated_type();
   IIR_ScalarTypeDefinition *get_resolved_index_subtype();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRBase_AccessTypeDefinition *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_element();
   IIR_Boolean is_access_type() { return TRUE; }

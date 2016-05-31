@@ -45,7 +45,7 @@ public:
   
   /** This returns an IIR_TextLiteral when a Dot attribute is
       instantiated. */
-  IIR_TextLiteral *build_attribute_name();
+  IIR_Identifier *build_attribute_name();
 
   /** Sets the value of the expression whose type 
       is the same as that of Q. */
@@ -60,7 +60,7 @@ public:
   IIR_Boolean is_signal() { return TRUE; }
   IIR_Boolean has_suffix(){ return TRUE; }
 
-  IIR_Statement *convert_tree(plugin_class_factory *factory);
+  IIR_AboveAttribute *convert_tree(plugin_class_factory *factory);
 
   /** Returns TRUE if above attribute is found. */
   IIR_Boolean is_above_attribute_found() { return TRUE; }

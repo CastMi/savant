@@ -39,7 +39,7 @@ IIRBase_ReverseRangeAttribute::get_suffix() {
   return suffix;
 }
 
-IIR_Statement *
+IIR_ReverseRangeAttribute *
 IIRBase_ReverseRangeAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ReverseRangeAttribute *new_node = dynamic_cast<IIRBase_ReverseRangeAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -50,7 +50,7 @@ IIRBase_ReverseRangeAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_ReverseRangeAttribute::build_attribute_name() {
   const char *name = "reverserange";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());

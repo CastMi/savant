@@ -42,7 +42,7 @@ class IIRScram_ScalarTypeDefinition : public virtual IIRScram_TypeDefinition,
 				      public virtual IIRBase_ScalarTypeDefinition{
 
 public:
-  IIRScram_ScalarTypeDefinition();
+  IIRScram_ScalarTypeDefinition( IIR_TypeDefinition* right );
 
   virtual IIRScram_TypeDefinition *
   _construct_new_subtype( IIRScram_Name                 *resolution_function,

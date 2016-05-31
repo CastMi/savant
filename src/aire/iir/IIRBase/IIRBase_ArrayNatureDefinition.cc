@@ -65,7 +65,7 @@ IIRBase_ArrayNatureDefinition::set_is_element( IIR_Boolean is_element ){
   my_is_element = is_element;
 }
 
-IIR *
+IIRBase_ArrayNatureDefinition *
 IIRBase_ArrayNatureDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ArrayNatureDefinition *new_node = dynamic_cast<IIRBase_ArrayNatureDefinition *>(IIRBase_NatureDefinition::convert_tree(factory));

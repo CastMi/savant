@@ -76,7 +76,7 @@ IIRBase_ScalarNatureDefinition::get_reference_terminal(){
   return reference_terminal ;
 }
 
-IIR *
+IIRBase_ScalarNatureDefinition *
 IIRBase_ScalarNatureDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ScalarNatureDefinition *new_node = dynamic_cast<IIRBase_ScalarNatureDefinition *>(IIRBase_NatureDefinition::convert_tree(factory));

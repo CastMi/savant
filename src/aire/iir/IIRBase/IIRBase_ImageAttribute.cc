@@ -42,7 +42,7 @@ IIRBase_ImageAttribute::get_suffix() {
   return my_suffix;
 }
 
-IIR_Statement *
+IIR_ImageAttribute *
 IIRBase_ImageAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ImageAttribute *new_node = dynamic_cast<IIRBase_ImageAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -57,7 +57,7 @@ IIRBase_ImageAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_string_type();
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_ImageAttribute::build_attribute_name() {
   const char *name = "image";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );

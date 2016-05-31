@@ -84,7 +84,7 @@ IIRScram_PhysicalLiteral::_get_rval_set( constraint_functor * ){
   return retval;
 }
 
-IIRScram*
+IIRScram_PhysicalLiteral*
 IIRScram_PhysicalLiteral::_clone() {
   return this;
 }

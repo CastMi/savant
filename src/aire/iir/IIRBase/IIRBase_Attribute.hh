@@ -53,17 +53,17 @@ public:
   /** This returns an IIR_TextLiteral with the name of whatever attribute
       was instantiated. */
 
-  IIR_TextLiteral *get_attribute_name();
-  IIR_TextLiteral *build_attribute_name();
+  IIR_Identifier *get_attribute_name();
+  IIR_Identifier *build_attribute_name();
 
-  IIR_Statement *convert_tree(plugin_class_factory *factory);
+  IIR_Attribute *convert_tree(plugin_class_factory *factory);
 protected:
   IIRBase_Attribute();
   virtual ~IIRBase_Attribute() = 0;
     
 private:
 
-  IIR_TextLiteral *my_attribute_name;
+  IIR_Identifier *my_attribute_name;
 
 };
 #endif

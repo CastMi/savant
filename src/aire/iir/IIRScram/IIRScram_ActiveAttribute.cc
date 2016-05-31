@@ -40,7 +40,7 @@ IIRScram_ActiveAttribute::_is_readable(){
 }
 
 
-IIRScram_Statement *
+IIRScram_ActiveAttribute *
 IIRScram_ActiveAttribute::_clone() {
   IIRScram_ActiveAttribute *my_clone = new IIRScram_ActiveAttribute;
   IIRScram_Attribute::_clone(my_clone);

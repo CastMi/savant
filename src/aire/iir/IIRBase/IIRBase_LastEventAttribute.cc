@@ -34,7 +34,7 @@ IIRBase_LastEventAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_time_type();
 }
   
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_LastEventAttribute::build_attribute_name() {
   const char *name = "last_event";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());

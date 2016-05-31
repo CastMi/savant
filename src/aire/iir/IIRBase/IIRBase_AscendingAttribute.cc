@@ -40,7 +40,7 @@ IIRBase_AscendingAttribute::get_suffix(){
   return suffix;
 }
 
-IIR_Statement *
+IIR_AscendingAttribute *
 IIRBase_AscendingAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_AscendingAttribute *new_node = dynamic_cast<IIRBase_AscendingAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -55,7 +55,7 @@ IIRBase_AscendingAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_boolean_type();
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_AscendingAttribute::build_attribute_name() {
   const char *name = "ascending";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );

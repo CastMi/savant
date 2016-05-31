@@ -78,7 +78,7 @@ IIRBase_TypeDefinition::set_type_mark( IIR_TypeDefinition *type_mark ) {
   my_type_mark = type_mark;
 }
 
-IIR *
+IIRBase_TypeDefinition *
 IIRBase_TypeDefinition::convert_tree(plugin_class_factory *factory) {
   IIRBase_TypeDefinition *new_node = dynamic_cast<IIRBase_TypeDefinition *>(IIRBase::convert_tree(factory));
 

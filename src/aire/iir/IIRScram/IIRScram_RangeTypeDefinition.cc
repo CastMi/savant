@@ -45,6 +45,7 @@
 #include <sstream>
 using std::ostringstream;
 
+IIRScram_RangeTypeDefinition::IIRScram_RangeTypeDefinition() {}
 IIRScram_RangeTypeDefinition::~IIRScram_RangeTypeDefinition() {}
 
 IIRScram_TypeDefinition *

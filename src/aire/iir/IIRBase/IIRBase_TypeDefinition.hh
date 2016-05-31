@@ -48,7 +48,7 @@ public:
   IIR_TypeDefinition *get_type_mark();
   void set_type_mark( IIR_TypeDefinition * );
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRBase_TypeDefinition *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_element();
   IIR_Boolean is_resolved() { return TRUE; }

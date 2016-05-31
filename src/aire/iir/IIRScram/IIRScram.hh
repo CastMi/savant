@@ -361,7 +361,7 @@ public:
       has had the declaration applied to it.  For instance, a
       IIRScram_SimpleName returns the declaration itself.  An IIRScram_SelectedName
       resolves the prefix and the suffix, and returns itself. */
-  virtual IIRScram *_decl_to_decl( IIRScram_Declaration * );
+  virtual IIRScram_Statement *_decl_to_decl( IIRScram_Declaration * );
 
   /** This is the main call into the semantic processing routines.  The set
       that gets passed in is the list of possible l-values of the node
@@ -404,7 +404,7 @@ public:
   IIR *_type_check_file_open_information();
 
   virtual IIRScram *_get_component_name( );
-  virtual void _set_component_name( IIRScram * );
+  virtual void _set_component_name( IIRScram_Statement * );
 
   /** Calls "get_entity_aspect" on nodes that define it.  Generates an
       error for any other node. */

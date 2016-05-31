@@ -43,7 +43,7 @@ public:
 
  /** This returns an IIR_TextLiteral when an across attribute is
      instantiated. */
-  IIR_TextLiteral *build_attribute_name();
+  IIR_Identifier *build_attribute_name();
   
   void publish_vhdl(ostream &vhdl_out);
 protected:

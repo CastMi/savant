@@ -27,7 +27,7 @@ IIRBase_ReferenceAttribute::IIRBase_ReferenceAttribute() {}
 
 IIRBase_ReferenceAttribute::~IIRBase_ReferenceAttribute() {}
       
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_ReferenceAttribute::build_attribute_name() {
   const char *name = "reference";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());

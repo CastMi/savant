@@ -96,10 +96,10 @@ public:
   virtual IIR_Boolean _is_delayed_attribute() { return FALSE; }
 
   /** If you hit this, an attribute has an unimplemented clone(). */
-  virtual IIRScram_Statement *_clone();
+  virtual IIRScram_Attribute *_clone() override;
   virtual void _clone( IIRScram_Attribute * );
 
-  IIRScram_TextLiteral *_get_attribute_name();
+  IIRScram_Identifier *_get_attribute_name();
   IIRScram_TextLiteral *_build_attribute_name();
 
   /** This method does the subtype calculation for IIRScram_Range and

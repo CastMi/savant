@@ -49,7 +49,7 @@ IIRBase_FloatingSubtypeDefinition::get_resolution_function(){
   return my_resolution_function;
 }
 
-IIR *
+IIRBase_FloatingSubtypeDefinition *
 IIRBase_FloatingSubtypeDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_FloatingSubtypeDefinition *new_node = dynamic_cast<IIRBase_FloatingSubtypeDefinition *>(IIRBase_FloatingTypeDefinition::convert_tree(factory));

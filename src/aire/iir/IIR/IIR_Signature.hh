@@ -39,6 +39,7 @@ public:
   virtual IIR_DesignatorList    *get_argument_type_list() = 0;
   virtual void                  set_argument_type_list(IIR_DesignatorList *) = 0;
 
+  IIR_Signature *convert_tree(plugin_class_factory *factory);
   virtual void set_return_type( IIR_TypeDefinition *return_type ) = 0;
   virtual IIR_TypeDefinition *get_return_type() = 0;
 };

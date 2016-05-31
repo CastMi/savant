@@ -63,7 +63,7 @@ IIRBase_AccessSubtypeDefinition::get_resolution_function(){
   return my_resolution_function;
 }
 
-IIR *
+IIRBase_AccessSubtypeDefinition *
 IIRBase_AccessSubtypeDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_AccessSubtypeDefinition *new_node = dynamic_cast<IIRBase_AccessSubtypeDefinition *>(IIRBase_AccessTypeDefinition::convert_tree(factory));

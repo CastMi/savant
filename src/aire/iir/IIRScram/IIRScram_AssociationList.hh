@@ -101,8 +101,8 @@ private:
 
   IIRScram_InterfaceDeclaration *_find_declaration_in_formal( IIRScram_AssociationElement * );
   IIRScram_Declaration *_find_declaration( IIRScram_Name *to_find, IIRScram_InterfaceList *list );
-  IIRScram *_find_formal_designator( IIRScram_Statement *formal_part );
-  IIRScram_Declaration *_find_formal_declaration( IIRScram *formal_designator,
+  IIRScram_Statement *_find_formal_designator( IIRScram *formal_part );
+  IIRScram_Declaration *_find_formal_declaration( IIRScram_Statement *formal_designator,
                                                   IIRScram_InterfaceList *formal_list  );
   IIRScram_Statement *_find_actual_designator( IIRScram_Statement *actual_part );
 
@@ -110,7 +110,7 @@ private:
 			   IIRScram_Statement   *actual_part, 
 			   IIRScram_Statement   *actual_designator,
 			   IIRScram             *formal_part,
-			   IIRScram             *formal_designator,
+			   IIRScram_Statement   *formal_designator,
 			   IIRScram_Declaration *formal_declaration,
 			   savant::set<IIRScram_TypeDefinition> *add_types_to_me );
 

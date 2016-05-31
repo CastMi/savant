@@ -51,7 +51,7 @@ IIRBase_EnumerationSubtypeDefinition::get_resolution_function(){
 }
  
 
-IIR *
+IIRBase_EnumerationSubtypeDefinition *
 IIRBase_EnumerationSubtypeDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_EnumerationSubtypeDefinition *new_node =

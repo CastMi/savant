@@ -42,13 +42,13 @@ IIRBase_Name::IIRBase_Name() :
 
 IIRBase_Name::~IIRBase_Name(){}
 
-IIR *
+IIR_Statement *
 IIRBase_Name::get_prefix(){
   return prefix;
 }
 
 void 
-IIRBase_Name::set_prefix( IIR *new_prefix ){
+IIRBase_Name::set_prefix( IIR_Statement *new_prefix ){
   prefix = new_prefix;
 }
 

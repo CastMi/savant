@@ -43,7 +43,7 @@ IIRBase_LengthAttribute::get_suffix() {
   return suffix;
 }
 
-IIR_Statement *
+IIR_LengthAttribute *
 IIRBase_LengthAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_LengthAttribute *new_node = dynamic_cast<IIRBase_LengthAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -58,7 +58,7 @@ IIRBase_LengthAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_savant_universal_integer();
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_LengthAttribute::build_attribute_name() {
   const char *name = "length";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());

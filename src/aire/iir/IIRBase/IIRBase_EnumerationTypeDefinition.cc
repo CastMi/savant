@@ -60,7 +60,7 @@ IIRBase_EnumerationTypeDefinition::set_enumeration_literals(IIR_EnumerationLiter
   enumeration_literals = new_enumeration_literals;
 }
 
-IIR *
+IIRBase_EnumerationTypeDefinition *
 IIRBase_EnumerationTypeDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_EnumerationTypeDefinition *new_node =

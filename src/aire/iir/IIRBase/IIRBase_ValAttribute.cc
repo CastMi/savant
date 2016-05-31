@@ -39,7 +39,7 @@ IIRBase_ValAttribute::get_suffix() {
   return my_suffix;
 }
 
-IIR_Statement *
+IIR_ValAttribute *
 IIRBase_ValAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ValAttribute *new_node = dynamic_cast<IIRBase_ValAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -50,7 +50,7 @@ IIRBase_ValAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_ValAttribute::build_attribute_name() {
   const char *name = "val";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());

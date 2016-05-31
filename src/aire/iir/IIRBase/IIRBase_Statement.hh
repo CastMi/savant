@@ -65,7 +65,10 @@ public:
   virtual IIR_Boolean is_signal() { return false; }
   virtual IIR_Boolean is_name() { return false; };
   virtual IIR_Boolean is_variable() { return false; };
+  virtual IIR_Boolean is_scalar_type() { return false; };
   virtual IIR_Boolean is_logical_operator() { return false; };
+  virtual IIR_Boolean is_array_type() { return false; };
+  virtual IIR_Boolean is_interface() { return false; };
   virtual IIR_Boolean is_relational_operator() { return false; };
   virtual IIR_Boolean is_entity_declaration() { return false; };
   virtual IIR_Boolean is_type() { return false; };

@@ -68,7 +68,7 @@ IIRBase_RecordTypeDefinition::set_element_declarations(IIR_ElementDeclarationLis
   element_declarations = new_element_declarations;
 }
 
-IIR *
+IIRBase_RecordTypeDefinition *
 IIRBase_RecordTypeDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_RecordTypeDefinition *new_node = dynamic_cast<IIRBase_RecordTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));

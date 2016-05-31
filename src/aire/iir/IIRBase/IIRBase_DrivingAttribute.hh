@@ -38,7 +38,7 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_DrivingAttribute";}
 
   IIR_Boolean is_function_attribute(){ return TRUE; }
-  IIR_TextLiteral *build_attribute_name();
+  IIR_Identifier *build_attribute_name();
 
   void publish_vhdl(ostream &);
 protected:

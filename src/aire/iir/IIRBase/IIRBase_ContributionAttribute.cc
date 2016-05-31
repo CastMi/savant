@@ -27,7 +27,7 @@ IIRBase_ContributionAttribute::IIRBase_ContributionAttribute() {}
 
 IIRBase_ContributionAttribute::~IIRBase_ContributionAttribute() {}
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_ContributionAttribute::build_attribute_name() {
   const char *name = "contribution";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );

@@ -98,7 +98,7 @@ public:
   virtual void _get_headers(savant::set<IIRScram>&);
 
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor=0);
-  IIRScram *_decl_to_decl( IIRScram_Declaration * );
+  IIRScram_Statement *_decl_to_decl( IIRScram_Declaration * );
 
   virtual IIRScram_TypeDefinition *_get_type_of_param( int );
 

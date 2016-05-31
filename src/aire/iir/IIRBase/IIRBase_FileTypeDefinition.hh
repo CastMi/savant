@@ -42,7 +42,7 @@ public:
   void set_type_mark( IIR_TypeDefinition* type_mark);
   IIR_TypeDefinition* get_type_mark();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRBase_FileTypeDefinition *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_locally_static();
   IIR_Boolean is_file_type(){ return TRUE; }

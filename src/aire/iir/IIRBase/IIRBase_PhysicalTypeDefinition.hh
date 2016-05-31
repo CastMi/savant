@@ -48,7 +48,7 @@ public:
   void set_primary_unit(IIR_PhysicalUnit*);
   IIR_PhysicalUnit *get_primary_unit();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRBase_PhysicalTypeDefinition *convert_tree(plugin_class_factory *factory);
 
   void publish_vhdl_type_decl(ostream &);
 protected:

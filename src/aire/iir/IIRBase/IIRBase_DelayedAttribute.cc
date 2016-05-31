@@ -39,7 +39,7 @@ IIRBase_DelayedAttribute::get_suffix(){
   return suffix;
 }
 
-IIR_Statement *
+IIR_DelayedAttribute *
 IIRBase_DelayedAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_DelayedAttribute *new_node = dynamic_cast<IIRBase_DelayedAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -49,7 +49,7 @@ IIRBase_DelayedAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_DelayedAttribute::build_attribute_name() {
   const char *name = "delayed";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );

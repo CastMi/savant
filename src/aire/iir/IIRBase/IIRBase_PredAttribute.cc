@@ -39,7 +39,7 @@ IIRBase_PredAttribute::get_suffix() {
   return my_suffix;
 }
 
-IIR_Statement *
+IIR_PredAttribute *
 IIRBase_PredAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_PredAttribute *new_node = dynamic_cast<IIRBase_PredAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -50,7 +50,7 @@ IIRBase_PredAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_PredAttribute::build_attribute_name() {
   const char *name = "pred";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );

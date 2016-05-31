@@ -36,6 +36,7 @@
 #include "IIRScram_DesignFile.hh"
 #include "IIRScram_FunctionCall.hh"
 #include "IIRScram_FunctionDeclaration.hh"
+#include "IIRScram_Identifier.hh"
 #include "IIRScram_IndexedName.hh"
 #include "IIRScram_InterfaceDeclaration.hh"
 #include "IIRScram_PortList.hh"
@@ -108,7 +109,7 @@ IIRScram_AssociationList::_process_positional_part( IIRScram_InterfaceList *form
 
 	if( found_match == TRUE ){
 	  if( resolve == TRUE ){
-	    current_local->set_decl( current_formal );      
+	    current_local->set_formal_decl( current_formal );      
 	    IIRScram_Statement *new_actual = current_local->_get_actual()->_semantic_transform( current_local_type );
 	    new_actual->_type_check( current_local_type );
 	    current_local->set_actual( new_actual->_rval_to_decl( current_local_type ) );
@@ -138,7 +139,7 @@ IIRScram_AssociationList::_process_positional_part( IIRScram_InterfaceList *form
       ASSERT( current_local->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_OPEN);
       num_resolved++;
       if( resolve == TRUE ){
-	current_local->set_decl( current_formal );            
+	current_local->set_formal_decl( current_formal );            
       }
     }
   
@@ -314,9 +315,9 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
   // list, a conversion function, or, a type conversion.
   current_association = first_to_look_at;
   while( current_association != NULL){
-    IIRScram *formal_designator = NULL;
+    IIRScram_Statement *formal_designator = NULL;
     IIRScram_Statement *actual_designator = NULL;
-    IIRScram_Identifier *formal_part = NULL;
+    IIRScram *formal_part = NULL;
     IIRScram_Statement *actual_part = NULL;
     // These are declarations that were found through selection, and
     // MADE VISIBLE.  This means that if they are non-NULL, that we
@@ -326,13 +327,14 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 
     // (We already looked for NULL formals, and if we made it here, there
     // shouldn't be any.
-    formal_part = current_association->_get_formal();
-    ASSERT( formal_part != NULL );
+    formal_part = current_association->_get_formal_decl();
+    ASSERT( formal_part );
     // So, we have a formal.  But, the formal MIGHT have a conversion
     // function associated with it.  So, if we have an indexed name,
     // we must look at the suffix to determine if the formal is there.
     
     formal_designator = _find_formal_designator( formal_part );
+    ASSERT( formal_designator == current_association->_get_formal() );
     if( formal_designator == NULL ){
       if( resolve == TRUE ){
 	ostringstream err;
@@ -347,11 +349,13 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
     }
     
     formal_declaration = _find_formal_declaration( formal_designator, formal_list );
+    ASSERT( formal_declaration == current_association->_get_formal_decl() );
     if( formal_declaration == NULL ){
       if( resolve == TRUE ){
 	ostringstream err;
-	err << "|" << *formal_designator << "| does not designate a formal parameter in "
-	    << "this scope.";
+   // FIXME: overload operator<<
+	//err << "|" << *formal_designator << "| does not designate a formal parameter in "
+	//    << "this scope.";
 
 	report_error( this, err.str() );
 	return FALSE;
@@ -490,7 +494,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 
       // Now we can fully resolve the formal, given the data in "actual_designator".
       savant::set<IIRScram_TypeDefinition> *actual_types_to_consider = NULL;
-      if( (formal_part != formal_designator) && (actual_part != actual_designator) ){
+      if( (formal_part->_get_declarator() != formal_designator) && (actual_part != actual_designator) ){
 	actual_types_to_consider = actual_designator->_get_rval_set();
 	ASSERT( actual_types_to_consider != NULL );
       }
@@ -519,8 +523,9 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
       case 0:{
 	if( resolve == TRUE ){
 	  ostringstream err;
-	  err << "Type of formal part |" << *formal_designator << "| and actual designator |"
-	      << actual_designator << "| don't match, as they must in this context.";
+     // FIXME: overload operator<<
+	  //err << "Type of formal part |" << *formal_designator << "| and actual designator |"
+	  //    << actual_designator << "| don't match, as they must in this context.";
 	  report_error( this, err.str() );
 	}
 	else{
@@ -534,7 +539,8 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	  formal_part->_type_check( actual_types_to_consider );
 	  formal_part = formal_part->_rval_to_decl( actual_types_to_consider->getElement() );      
 	  ASSERT( formal_part->is_resolved() == TRUE );
-	  current_association->set_formal( formal_part );
+	  ASSERT( dynamic_cast<IIR_Declaration*>( formal_part ) );
+	  current_association->set_formal_decl( dynamic_cast<IIR_Declaration*>(formal_part) );
 	}
       }
 	break;
@@ -558,7 +564,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	need_to_hide_formal = TRUE;
       }
 
-      ASSERT( formal_part == formal_designator );
+      ASSERT( formal_part->_get_declarator() == formal_designator );
       switch( formal_types_to_consider->size() ){
       case 0:{
 	if( resolve == TRUE ){
@@ -577,7 +583,8 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	  formal_part->_type_check( formal_types_to_consider );
 	  formal_part = formal_part->_rval_to_decl( formal_types_to_consider->getElement() );      
 	  ASSERT( formal_part->is_resolved() == TRUE );
-	  current_association->set_formal( formal_part );
+	  ASSERT( dynamic_cast<IIR_Declaration*>( formal_part ) );
+	  current_association->set_formal_decl( dynamic_cast<IIR_Declaration*>(formal_part) );
 	}
 	// else everything is OK, go to the next association
 	break;
@@ -642,7 +649,7 @@ IIRScram_InterfaceDeclaration *
 IIRScram_AssociationList::_find_declaration_in_formal( IIRScram_AssociationElement *find_in ){
   IIRScram_Declaration *retval = NULL;
 
-  IIRScram *current_formal = find_in->_get_formal();  
+  IIRScram *current_formal = find_in->_get_formal_decl();  
   ASSERT( current_formal != NULL );
 
   retval = current_formal->_find_formal_declaration();
@@ -691,7 +698,7 @@ IIRScram_AssociationList::_fill_in_defaults( IIRScram *line_info,
       new_association = new IIRScram_AssociationElementOpen();
     }
     copy_location( line_info, new_association );
-    new_association->set_formal( current_formal );
+    new_association->set_formal_decl( current_formal );
 
     append( new_association );
 
@@ -764,13 +771,13 @@ IIRScram_AssociationList::_find_declaration( IIRScram_Name *to_find, IIRScram_De
   return retval;
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_AssociationList::_find_formal_designator( IIRScram *formal_part ){
   ASSERT( formal_part != 0 );
 
-  IIRScram *retval = NULL;
+  IIRScram_Statement *retval = NULL;
   if( formal_part->is_resolved() ){
-    retval = formal_part;
+    retval = formal_part->_get_declarator();
   }
   else{
     // According to Ashenden's book (pg. 594) the formal may only legally
@@ -800,7 +807,7 @@ IIRScram_AssociationList::_find_formal_designator( IIRScram *formal_part ){
 }
 
 IIRScram_Declaration *
-IIRScram_AssociationList::_find_formal_declaration( IIRScram                    *formal_designator,
+IIRScram_AssociationList::_find_formal_declaration( IIRScram_Statement             *formal_designator,
 						    IIRScram_InterfaceList      *formal_list){
   IIRScram_Declaration *retval = NULL;
 
@@ -808,11 +815,13 @@ IIRScram_AssociationList::_find_formal_declaration( IIRScram                    
   // to search the paramter for the type of the formal.  NOTE that if we
   // had "integer( x )", we'd have "x" in "formal_designator".  Same goes
   // for a conversion function.
-  if( formal_designator->_is_iir_declaration() ){
-    retval = dynamic_cast<IIRScram_Declaration *>( formal_designator );
-  }
-  else if( formal_designator->get_kind() == IIR_INDEXED_NAME ){
-    IIRScram *prefix = formal_designator;
+  // FIXME: handle the to_integer( x )
+  //if( formal_designator->_is_iir_declaration() ){
+  //  retval = dynamic_cast<IIRScram_Declaration *>( formal_designator );
+  //}
+  //else if( formal_designator->get_kind() == IIR_INDEXED_NAME ){
+  if( formal_designator->get_kind() == IIR_INDEXED_NAME ){
+    IIRScram_Statement *prefix = formal_designator;
     while( prefix->get_kind() == IIR_INDEXED_NAME ){
       ASSERT( dynamic_cast<IIRScram_IndexedName *>(prefix)->_get_prefix() != NULL );
       prefix = dynamic_cast<IIRScram_IndexedName *>(prefix)->_get_prefix();
@@ -824,7 +833,7 @@ IIRScram_AssociationList::_find_formal_declaration( IIRScram                    
     if( retval == NULL ){
       ASSERT( formal_designator->_is_iir_name() );
       // The formal wasn't in the prefix - look in the suffix.
-      IIRScram *suffix = dynamic_cast<IIRScram_Name *>(formal_designator)->_get_suffix();
+      IIRScram_Statement *suffix = dynamic_cast<IIRScram_Name *>(formal_designator)->_get_suffix();
       ASSERT( suffix->_is_iir_name() == TRUE );
       retval = _find_declaration( dynamic_cast<IIRScram_Name *>(suffix), formal_list );
     }
@@ -856,7 +865,7 @@ IIRScram_AssociationList::_find_formal_types(IIRScram_AssociationElement      *c
 					     IIRScram_Statement               *actual_part, 
 					     IIRScram_Statement               *actual_designator,
 					     IIRScram                         *formal_part,
-					     IIRScram                         *formal_designator,
+					     IIRScram_Statement               *formal_designator,
 					     IIRScram_Declaration             *formal_declaration,
 					     savant::set<IIRScram_TypeDefinition> *add_types_to_me){
 
@@ -865,7 +874,7 @@ IIRScram_AssociationList::_find_formal_types(IIRScram_AssociationElement      *c
   ASSERT( formal_declaration != NULL );
   ASSERT( add_types_to_me != NULL && add_types_to_me->size() == 0 );
   
-  if( (formal_designator != formal_part) && (actual_designator != actual_part ) ){
+  if( (formal_designator != formal_part->_get_declarator()) && (actual_designator != actual_part ) ){
     add_types_to_me->add(formal_declaration->_get_subtype());
   }
   else{
@@ -915,12 +924,12 @@ IIRScram_AssociationList::_build_default_map( IIRScram_ComponentInstantiationSta
     IIRScram_AssociationElement *new_association = 0;
     if( actual_decl ){
       new_association = new IIRScram_AssociationElementByExpression();
-      new_association->set_formal( current_formal );
-      new_association->set_actual( actual_decl );
+      new_association->set_formal_decl( current_formal );
+      new_association->set_actual_decl( actual_decl );
     }
     else{
       new_association = new IIRScram_AssociationElementOpen();
-      new_association->set_formal( current_formal );
+      new_association->set_formal_decl( current_formal );
     }
     copy_location( err_info, new_association );
     append( new_association );

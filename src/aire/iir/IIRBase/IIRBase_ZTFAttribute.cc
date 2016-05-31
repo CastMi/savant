@@ -72,7 +72,7 @@ IIRBase_ZTFAttribute::get_initial_delay() {
   return initial_delay;
 }
 
-IIR_Statement *
+IIR_ZTFAttribute *
 IIRBase_ZTFAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ZTFAttribute *new_node = dynamic_cast<IIRBase_ZTFAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -86,7 +86,7 @@ IIRBase_ZTFAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_ZTFAttribute::build_attribute_name() {
    const char *name = "ztf";
    return IIRBase_Identifier::get(name, strlen(name), get_design_file()->get_class_factory());

@@ -43,6 +43,6 @@ public:
   /** This returns an IIR_TextLiteral with the name of whatever attribute
       was instantiated. */
   virtual IIR_TextLiteral *build_attribute_name() = 0;
-  virtual IIR_TextLiteral *get_attribute_name() = 0;
+  virtual IIR_Identifier *get_attribute_name() = 0;
 };
 #endif

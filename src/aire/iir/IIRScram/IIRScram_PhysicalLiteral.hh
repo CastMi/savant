@@ -46,7 +46,7 @@ public:
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
 
-  IIRScram *_clone();
+  IIRScram_PhysicalLiteral *_clone();
 
   IIRScram * _get_abstract_literal();
   IIRScram_PhysicalUnit *_get_unit_name();

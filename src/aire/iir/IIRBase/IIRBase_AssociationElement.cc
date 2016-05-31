@@ -32,7 +32,29 @@
 
 IIRBase_AssociationElement::IIRBase_AssociationElement()
    : formal(nullptr),
-     decl(nullptr) {}
+     formal_decl(nullptr),
+     actual_decl(nullptr) {}
+IIRBase_AssociationElement::~IIRBase_AssociationElement() {}
+
+void
+IIRBase_AssociationElement::set_formal_decl( IIR_Declaration* ) {
+   ASSERT(0);
+}
+
+IIR_Declaration*
+IIRBase_AssociationElement::get_formal_decl()  {
+   return formal_decl;
+}
+  
+void
+IIRBase_AssociationElement::set_actual_decl( IIR_Declaration* ) {
+   ASSERT(0);
+}
+
+IIR_Declaration*
+IIRBase_AssociationElement::get_actual_decl() {
+   return actual_decl;
+}
 
 void
 IIRBase_AssociationElement::set_actual( IIR_Statement* ) {
@@ -40,23 +62,9 @@ IIRBase_AssociationElement::set_actual( IIR_Statement* ) {
 }
 
 void
-IIRBase_AssociationElement::set_decl( IIR_Declaration* ) {
-   ASSERT(0);
-}
-
-IIR_Declaration*
-IIRBase_AssociationElement::get_decl() {
-   return decl;
-}
-
-IIRBase_AssociationElement::~IIRBase_AssociationElement() {}
-
-
-void
 IIRBase_AssociationElement::set_formal(IIR_Statement *f) {
   formal = f;
 }
-
 
 IIR_Statement*
 IIRBase_AssociationElement::get_formal() {

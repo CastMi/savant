@@ -33,13 +33,15 @@
 class IIR_ScalarTypeDefinition : public virtual IIR_TypeDefinition{
 public:
   virtual ~IIR_ScalarTypeDefinition() {}
-    
-  virtual void set_left( IIR* left) = 0;
-  virtual IIR* get_left() = 0;
+
+  virtual void set_left( IIR_Statement* left) = 0;
+  virtual IIR_Statement* get_left() = 0;
+
   virtual void set_direction( IIR* direction) = 0;
   virtual IIR* get_direction() = 0;
-  virtual void set_right(IIR* right) = 0;
-  virtual IIR* get_right() = 0;
+
+  virtual void set_right(IIR_Statement* right) = 0;
+  virtual IIR_Statement* get_right() = 0;
 };
 
 #endif

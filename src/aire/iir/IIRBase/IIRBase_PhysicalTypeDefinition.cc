@@ -88,7 +88,7 @@ IIRBase_PhysicalTypeDefinition::set_units(IIR_UnitList *new_units) {
   units = new_units;
 }
 
-IIR *
+IIRBase_PhysicalTypeDefinition *
 IIRBase_PhysicalTypeDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_PhysicalTypeDefinition *new_node =

@@ -43,7 +43,7 @@ public:
   const IIR_Char *get_kind_text() const { return "IIR_EnumerationTypeDefinition"; }
   IIR_FunctionDeclaration* get_resolution_function() { return NULL; }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRBase_EnumerationTypeDefinition *convert_tree(plugin_class_factory *factory);
   IIR_Boolean is_enumeration_type(){ return true; }
 
   savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * );

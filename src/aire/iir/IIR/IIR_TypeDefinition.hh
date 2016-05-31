@@ -65,6 +65,7 @@ public:
   virtual IIR_TypeDefinition            *get_element_subtype() = 0;
   virtual void                          set_element_subtype(IIR_TypeDefinition *) = 0;
 
+  virtual IIR_TypeDefinition* convert_tree(plugin_class_factory *) = 0;
   // A scalar subtype may return NULL as it's left even if it has a range
   // constraint.  These methods will travel down to the first base type
   // that has a left defined.  Similarly for right and direction.

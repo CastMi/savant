@@ -43,7 +43,7 @@ IIRBase_AboveAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_boolean_type();
 }
 
-IIR_Statement *
+IIR_AboveAttribute *
 IIRBase_AboveAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_AboveAttribute *new_node = dynamic_cast<IIRBase_AboveAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -53,7 +53,7 @@ IIRBase_AboveAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_AboveAttribute::build_attribute_name(){
   const char *name = "above";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );

@@ -336,7 +336,7 @@ IIRScram::_get_component_name( ){
 }
 
 void 
-IIRScram::_set_component_name( IIRScram * ){
+IIRScram::_set_component_name( IIRScram_Statement * ){
   _report_undefined_scram_fn("_set_component_name()");
 }
 
@@ -401,10 +401,10 @@ IIRScram::_get_integer_static_value(){
   return NULL;
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram::_decl_to_decl( IIRScram_Declaration * ){
   _report_undefined_scram_fn("_decl_to_decl( IIRScram_Declaration * )");
-  return NULL;
+  return nullptr;
 }
 
 IIRScram_FunctionDeclaration*

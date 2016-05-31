@@ -56,20 +56,20 @@
 
 IIRScram_Attribute::IIRScram_Attribute() {}
 
-IIRScram *
+IIRScram_Attribute *
 IIRScram_Attribute::_clone(){
   _report_undefined_scram_fn("_clone()");  
   return NULL;
 }
 
 void 
-IIRScram_Attribute::_set_suffix( IIRScram *suffix ){
+IIRScram_Attribute::_set_suffix( IIRScram_Statement *suffix ){
   set_suffix(suffix);
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_Attribute::_get_suffix( ){
-  return dynamic_cast<IIRScram *>(get_suffix());
+  return dynamic_cast<IIRScram_Statement *>(get_suffix());
 }
 
 void 
@@ -111,11 +111,11 @@ IIRScram_Attribute::_build_range_type(){
     retval->set_right( right );
     if( subtype->_get_direction() == NULL || subtype->is_ascending_range() == TRUE ){
       // This is the "true" literal
-      retval->set_direction( package->get_boolean_type()->get_right() );
+      retval->set_direction( package->get_true_literal() );
     }
     else{
       // This is the "false" literal
-      retval->set_direction( package->get_boolean_type()->get_left() );
+      retval->set_direction( package->get_false_literal() );
     }
   }
   else{
@@ -123,18 +123,18 @@ IIRScram_Attribute::_build_range_type(){
     retval->set_left( right );
     retval->set_right( left );
     if( subtype->_get_direction() == NULL || subtype->is_ascending_range() == TRUE ){
-      retval->set_direction( package->get_boolean_type()->get_right() );
+      retval->set_direction( package->get_true_literal() );
     }
     else{
-      retval->set_direction( package->get_boolean_type()->get_left() );
+      retval->set_direction( package->get_false_literal() );
     }
   }
   return retval;
 }
 
-IIRScram_TextLiteral *
+IIRScram_Identifier *
 IIRScram_Attribute::_get_attribute_name(){
-  return dynamic_cast<IIRScram_TextLiteral *>(get_attribute_name());
+  return dynamic_cast<IIRScram_Identifier *>(get_attribute_name());
 }
 
 savant::set<IIRScram_Declaration> *
@@ -669,7 +669,7 @@ IIRScram_Attribute::_get_subtype_range_attribute(){
   return retval;
 }
 
-IIRScram_TextLiteral *
+IIRScram_Identifier *
 IIRScram_Attribute::_build_attribute_name() {
-  return dynamic_cast<IIRScram_TextLiteral *>(build_attribute_name());
+  return dynamic_cast<IIRScram_Identifier *>(build_attribute_name());
 }

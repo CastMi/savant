@@ -60,7 +60,7 @@ IIRBase_Signature::set_argument_type_list(IIR_DesignatorList *new_argument_type_
   argument_type_list = new_argument_type_list;
 }
 
-IIR *
+IIRBase_Signature *
 IIRBase_Signature::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_Signature *new_node = dynamic_cast<IIRBase_Signature *>(IIRBase_TypeDefinition::convert_tree(factory));

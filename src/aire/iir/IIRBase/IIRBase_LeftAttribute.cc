@@ -39,7 +39,7 @@ IIRBase_LeftAttribute::get_suffix() {
   return suffix;
 }
 
-IIR_Statement *
+IIR_LeftAttribute *
 IIRBase_LeftAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_LeftAttribute *new_node = dynamic_cast<IIRBase_LeftAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -72,7 +72,7 @@ IIRBase_LeftAttribute::is_function_attribute(){
   }
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_LeftAttribute::build_attribute_name() {
   const char *name = "left";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());

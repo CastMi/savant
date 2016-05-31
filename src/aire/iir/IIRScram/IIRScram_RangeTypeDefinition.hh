@@ -44,7 +44,7 @@ class IIRScram_TypeDefinition;
 class IIRScram_RangeTypeDefinition : public virtual IIRScram_ScalarTypeDefinition, public virtual IIRBase_RangeTypeDefinition{
 
 public:
-  IIRScram_RangeTypeDefinition() {}
+  IIRScram_RangeTypeDefinition();
   virtual ~IIRScram_RangeTypeDefinition();
 
   /// Accept visitations \Ref{_accept_visitor}.

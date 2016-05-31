@@ -27,7 +27,7 @@ IIRBase_DotAttribute::IIRBase_DotAttribute() {}
 
 IIRBase_DotAttribute::~IIRBase_DotAttribute() {}
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_DotAttribute::build_attribute_name(){
   const char *name = "dot";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );

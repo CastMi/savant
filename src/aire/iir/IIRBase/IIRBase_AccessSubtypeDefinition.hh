@@ -45,7 +45,7 @@ public:
   void set_resolution_function( IIR_FunctionDeclaration *resolution_function );
   IIR_FunctionDeclaration *get_resolution_function();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRBase_AccessSubtypeDefinition *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_subtype();
   IIR_Boolean is_locally_static(){ return TRUE; }

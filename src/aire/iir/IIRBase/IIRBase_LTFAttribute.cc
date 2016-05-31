@@ -50,7 +50,7 @@ IIRBase_LTFAttribute::get_den() {
   return denominator;
 }
 
-IIR_Statement *
+IIR_LTFAttribute *
 IIRBase_LTFAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_LTFAttribute *new_node = dynamic_cast<IIRBase_LTFAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -62,7 +62,7 @@ IIRBase_LTFAttribute::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_LTFAttribute::build_attribute_name() {
   const char *name = "ltf";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );

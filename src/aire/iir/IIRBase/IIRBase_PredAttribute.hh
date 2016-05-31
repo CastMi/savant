@@ -40,12 +40,12 @@ public:
   void set_suffix( IIR_Statement *suffix);
   IIR_Statement *get_suffix();
 
-  IIR_Statement *convert_tree(plugin_class_factory *factory);
+  IIR_PredAttribute *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_function_attribute(){ return TRUE; }  
   IIR_Boolean has_suffix(){ return TRUE; }
 
-  IIR_TextLiteral *build_attribute_name();
+  IIR_Identifier *build_attribute_name();
   void publish_vhdl(ostream &);
 protected:
   IIRBase_PredAttribute();

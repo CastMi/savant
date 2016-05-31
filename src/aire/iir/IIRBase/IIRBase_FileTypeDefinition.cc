@@ -55,7 +55,7 @@ IIRBase_FileTypeDefinition::is_locally_static(){
   return TRUE;
 }
 
-IIR *
+IIRBase_FileTypeDefinition *
 IIRBase_FileTypeDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_FileTypeDefinition *new_node = dynamic_cast<IIRBase_FileTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));

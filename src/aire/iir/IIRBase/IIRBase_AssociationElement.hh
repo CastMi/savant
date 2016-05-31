@@ -38,8 +38,11 @@ public:
   void set_formal( IIR_Statement* );
   IIR_Statement* get_formal();
 
-  virtual void set_decl( IIR_Declaration* );
-  virtual IIR_Declaration* get_decl();
+  virtual void set_formal_decl( IIR_Declaration* );
+  virtual IIR_Declaration* get_formal_decl();
+  
+  virtual void set_actual_decl( IIR_Declaration* );
+  virtual IIR_Declaration* get_actual_decl();
 
   IIR *convert_tree(plugin_class_factory *factory);
 
@@ -62,6 +65,7 @@ protected:
     
 private:
   IIR_Statement *formal;
-  IIR_Declaration *decl;
+  IIR_Declaration *formal_decl;
+  IIR_Declaration *actual_decl;
 };
 #endif

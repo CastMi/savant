@@ -60,7 +60,7 @@ public:
   IIR_Boolean is_element();
   void set_is_element( IIR_Boolean );
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRBase_ArrayTypeDefinition *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_array_type() { return TRUE; }
   IIR_Boolean is_unconstrained_array_type( );

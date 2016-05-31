@@ -42,7 +42,7 @@ public:
   void set_resolution_function(IIR_FunctionDeclaration *);
   IIR_FunctionDeclaration *get_resolution_function();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRBase_ArraySubtypeDefinition *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_subtype();
 

@@ -39,7 +39,7 @@ IIRBase_EventAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_boolean_type();
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_EventAttribute::build_attribute_name() {
   const char *name = "event";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() );

@@ -43,7 +43,7 @@ IIRBase_QuietAttribute::get_suffix() {
   return suffix;
 }
 
-IIR_Statement *
+IIR_QuietAttribute *
 IIRBase_QuietAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_QuietAttribute *new_node = dynamic_cast<IIRBase_QuietAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -60,7 +60,7 @@ IIRBase_QuietAttribute::get_subtype(){
   return get_design_file()->get_standard_package()->get_boolean_type();
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_QuietAttribute::build_attribute_name(){
   const char *name = "quiet";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());

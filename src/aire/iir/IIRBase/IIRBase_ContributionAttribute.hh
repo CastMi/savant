@@ -46,7 +46,7 @@ public:
   
   /** This returns an IIR_TextLiteral when a Contribution attribute is
     instantiated. */
-  IIR_TextLiteral *build_attribute_name();
+  IIR_Identifier *build_attribute_name();
   void publish_vhdl(ostream &);
 protected:
   IIRBase_ContributionAttribute();

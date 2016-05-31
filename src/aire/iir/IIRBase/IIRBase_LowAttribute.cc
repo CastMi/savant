@@ -39,7 +39,7 @@ IIRBase_LowAttribute::get_suffix( ){
   return my_suffix;
 }
 
-IIR_Statement *
+IIR_LowAttribute *
 IIRBase_LowAttribute::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_LowAttribute *new_node = dynamic_cast<IIRBase_LowAttribute *>(IIRBase_Attribute::convert_tree(factory));
@@ -72,7 +72,7 @@ IIRBase_LowAttribute::is_function_attribute(){
   }
 }
 
-IIR_TextLiteral *
+IIR_Identifier *
 IIRBase_LowAttribute::build_attribute_name() {
   const char *name = "low";
   return IIRBase_Identifier::get( name, strlen(name), get_design_file()->get_class_factory());

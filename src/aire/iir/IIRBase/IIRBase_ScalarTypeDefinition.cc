@@ -40,7 +40,7 @@
 #include <sstream>
 
 IIRBase_ScalarTypeDefinition::IIRBase_ScalarTypeDefinition() :
-  left(0), direction(0), right(0){}
+  left(0), direction(0), right(0) {}
 
 IIRBase_ScalarTypeDefinition::~IIRBase_ScalarTypeDefinition(){
   // In some cases resolution will have pointed left, direction, and right
@@ -48,11 +48,11 @@ IIRBase_ScalarTypeDefinition::~IIRBase_ScalarTypeDefinition(){
 }
 
 void
-IIRBase_ScalarTypeDefinition::set_left( IIR* left) {
+IIRBase_ScalarTypeDefinition::set_left( IIR_Statement* left) {
   this->left = left;
 }
 
-IIR*
+IIR_Statement*
 IIRBase_ScalarTypeDefinition::get_left() {
   return left;
 }
@@ -68,16 +68,16 @@ IIRBase_ScalarTypeDefinition::get_direction() {
 }
 
 void
-IIRBase_ScalarTypeDefinition::set_right(IIR* right) {
+IIRBase_ScalarTypeDefinition::set_right(IIR_Statement* right) {
   this->right = right;
 }
 
-IIR*
+IIR_Statement*
 IIRBase_ScalarTypeDefinition::get_right() {
   return right;
 }
 
-IIR *
+IIRBase_ScalarTypeDefinition *
 IIRBase_ScalarTypeDefinition::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ScalarTypeDefinition *new_node = dynamic_cast<IIRBase_ScalarTypeDefinition *>(IIRBase_TypeDefinition::convert_tree(factory));
@@ -137,7 +137,7 @@ IIRBase_ScalarTypeDefinition::get_base_type_left() {
   IIR *retval = 0;
 
   if( get_left() != NULL ){
-    retval = get_left();
+    retval = get_left()->get_subtype();
   } 
   else if( get_resolved_base_type() != NULL ){
     retval = get_resolved_base_type()->get_base_type_left();
@@ -150,7 +150,7 @@ IIRBase_ScalarTypeDefinition::get_base_type_right() {
   IIR *retval = 0;
 
   if( get_right() != NULL ){
-    retval = get_right();
+    retval = get_right()->get_subtype();
   } 
   else if( get_resolved_base_type() != NULL ){
     retval = get_resolved_base_type()->get_base_type_right();

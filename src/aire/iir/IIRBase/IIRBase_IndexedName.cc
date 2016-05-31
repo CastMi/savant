@@ -142,7 +142,8 @@ IIRBase_IndexedName::is_variable(){
 
 ostream &
 IIRBase_IndexedName::print( ostream &os ){
-  os << *get_prefix();
+  // FIXME: overload the operator<<
+  //os << *get_prefix();
   os << "(";
   // FIXME: overload the operator<<
   // os << *get_suffix();
@@ -153,7 +154,7 @@ IIRBase_IndexedName::print( ostream &os ){
 
 IIR_Declaration*
 IIRBase_IndexedName::get_prefix_declaration() {
-  return get_prefix()->get_prefix_declaration();
+  return get_prefix()->_find_formal_declaration();
 }
 
 void 
