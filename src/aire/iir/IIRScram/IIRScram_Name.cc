@@ -201,7 +201,7 @@ IIRScram_Name::lookup( IIRScram_Name *,
   return return_array;
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_Name::_get_prefix() {
   return dynamic_cast<IIRScram *>(get_prefix());
 }

@@ -68,12 +68,16 @@ public:
   virtual IIR_Boolean is_entity_declaration() = 0;
   virtual IIR_Boolean is_type() = 0;
   virtual IIR_Boolean is_name() = 0;
+  virtual IIR_Boolean is_label() = 0;
+  virtual IIR_Boolean is_text_literal() = 0;
   virtual IIR_Declaration *_find_formal_declaration();
   virtual IIR_SignalKind get_signal_kind() = 0;
   virtual IIR_TextLiteral *get_declarator() = 0;
 
   virtual ostream &print( ostream & ) = 0;
   
+  virtual IIR_Declaration* get_prefix_declaration() = 0;
+  virtual IIR_TextLiteral *get_prefix_string() = 0;
   /**
      Republish the VHDL that this node represents.  Called on a expression,
      it would republish just the expression.  Called on a design file, the whole

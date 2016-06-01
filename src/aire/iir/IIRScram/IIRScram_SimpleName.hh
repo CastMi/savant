@@ -59,7 +59,7 @@ public:
                                                 IIRScram_TypeDefinition *looking_for );
 
   IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition *);
-  IIRScram *_decl_to_decl( IIRScram_Declaration * );
+  IIRScram_Statement *_decl_to_decl( IIRScram_Declaration * );
 
   IIRScram *_rval_to_decl( IIRScram_TypeDefinition *, IIRScram_TypeDefinition * );
   IIRScram *_rval_to_decl( IIRScram_Declaration *, IIRScram_TypeDefinition * );

@@ -395,12 +395,6 @@ IIRScram::_clone(IIRScram* clone) {
   copy_location(this, clone);
 }  
 
-IIRScram_IntegerLiteral *
-IIRScram::_get_integer_static_value(){
-  _report_undefined_scram_fn("_get_integer_static_value()");
-  return NULL;
-}
-
 IIRScram_Statement *
 IIRScram::_decl_to_decl( IIRScram_Declaration * ){
   _report_undefined_scram_fn("_decl_to_decl( IIRScram_Declaration * )");

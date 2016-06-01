@@ -216,7 +216,8 @@ IIRScram_Attribute::_symbol_lookup(){
 	
   if( attached_to == NULL ){
     ostringstream err;
-    err << *_get_prefix() << " undefined";
+    // FIXME: override operator<<
+    //err << *_get_prefix() << " undefined";
     report_error( this, err.str() );
     return NULL;
   }
@@ -272,7 +273,9 @@ IIRScram_Attribute::_get_prefix_subtype( constraint_functor *functor ){
     switch( prefix_types->size() ){
     case 0:{
       ostringstream err;
-      err << "|" << *_get_prefix()
+      // FIXME: override operator<<
+      //err << "|" << *_get_prefix()
+      err << "|"
 	  << "| has no definition appropriate for use as a prefix "
 	  << "to attribute " << _get_attribute_name();
       report_error( this, err.str() );
@@ -284,7 +287,9 @@ IIRScram_Attribute::_get_prefix_subtype( constraint_functor *functor ){
     }
     default: {
       ostringstream err;
-      err << "Cannot disambiguate |" << *_get_prefix() << "| in its usage.";
+      // FIXME: override operator<<
+      //err << "Cannot disambiguate |" << *_get_prefix() << "| in its usage.";
+      err << "Cannot disambiguate || in its usage.";
       report_error( this, err.str() );
     }
     }
@@ -353,9 +358,10 @@ IIRScram_Attribute::_resolve_prefix(){
     if( _get_prefix()->get_kind() == IIR_FUNCTION_CALL ){
       IIRScram_FunctionCall *as_func_call = dynamic_cast<IIRScram_FunctionCall *>(_get_prefix());
       ASSERT( as_func_call->get_implementation() != NULL );
-      IIRScram_Declaration *new_prefix = as_func_call->_get_implementation();
-      delete _get_prefix();
-      set_prefix( new_prefix );
+      // FIXME
+      //IIRScram_Declaration *new_prefix = as_func_call->_get_implementation();
+      //delete _get_prefix();
+      //set_prefix( new_prefix );
     }
   }
  finish:
@@ -363,7 +369,7 @@ IIRScram_Attribute::_resolve_prefix(){
   delete prefix_decls;
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_Attribute::_decl_to_decl( IIRScram_Declaration * ){
   // So, we're being told our declaration is "my_decl".  We don't really
   // care, but we DO need to make that our prefix is resolved.  We probably
@@ -376,7 +382,7 @@ IIRScram_Attribute::_decl_to_decl( IIRScram_Declaration * ){
   return this;
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_Attribute::_rval_to_decl( IIRScram_TypeDefinition * ){
   IIRScram_Attribute *retval = this;
 
@@ -396,14 +402,14 @@ IIRScram_Attribute::_rval_to_decl( IIRScram_TypeDefinition * ){
 }
 
 void
-IIRScram_Attribute::_clone( IIRScram *copy_into ){
+IIRScram_Attribute::_clone( IIRScram_Statement *copy_into ){
   ASSERT( copy_into->_is_iir_attribute() == TRUE );
   IIRScram_Name::_clone( copy_into );
 }
 
 void 
 IIRScram_Attribute::_resolve_suffix_base_type_of_prefix(){
-  IIRScram              *suffix_to_process = NULL;
+  IIRScram_Statement       *suffix_to_process = NULL;
 
   if( _get_suffix() == NULL || _get_suffix()->is_resolved() == FALSE ){
     suffix_to_process = _get_suffix();
@@ -431,7 +437,8 @@ IIRScram_Attribute::_resolve_suffix_base_type_of_prefix(){
     }
     else{
       ostringstream err;
-      err << "|" << *_get_suffix() << "| is not a valid suffix for |" << *this << "|. ";
+      // FIXME: oveload operator<<
+      //err << "|" << *_get_suffix() << "| is not a valid suffix for |" << *this << "|. ";
       err << "The suffix must be an expression whose type is the base type of the prefix.";
     
       report_error( this, err.str() );
@@ -457,7 +464,7 @@ IIRScram_Attribute::_resolve_suffix_local_static_int(){
   // IIRScram_LengthAttribute
   // IIRScram_AscendingAttribute
 
-  IIRScram              *suffix_to_process = _get_suffix();
+  IIRScram_Statement    *suffix_to_process = _get_suffix();
   StandardPackage       *package = _get_design_file()->get_standard_package();
   if( _get_suffix() != NULL && _get_suffix()->is_resolved() == FALSE ){
 
@@ -481,7 +488,8 @@ IIRScram_Attribute::_resolve_suffix_local_static_int(){
     }
     else{
       ostringstream err;
-      err << "|" << *_get_suffix() << "| is not a valid suffix for |" << *this << "|.";
+      // FIXME: oveload operator<<
+      //err << "|" << *_get_suffix() << "| is not a valid suffix for |" << *this << "|.";
       err << " The suffix must be a locally static expression of type universal integer.";
     
       report_error( this, err.str() );
@@ -522,7 +530,8 @@ IIRScram_Attribute::_resolve_suffix_non_negative_time(){
     }
     else{
       ostringstream err;
-      err << "|" << *_get_suffix() << "| is not a valid suffix for |" << *this << "|.";
+      // FIXME: oveload operator<<
+      //err << "|" << *_get_suffix() << "| is not a valid suffix for |" << *this << "|.";
       err << " The suffix must be a locally static expression of type universal integer.";
     
       report_error( this, err.str() );
@@ -572,8 +581,9 @@ IIRScram_Attribute::_get_subtype_high_low_left_right(){
   }
   else{
     ostringstream err;
-    err << "|" << *_get_prefix() << "| must a scalar or an array type to use the "
-	<< "attribute 'HIGH." << endl;
+    // FIXME: oveload operator<<
+    //err << "|" << *_get_prefix() << "| must a scalar or an array type to use the " << "attribute 'HIGH." << endl;
+    err << "|| must a scalar or an array type to use the " << "attribute 'HIGH." << endl;
     report_error( this, err.str() );
     abort();
     return 0;
@@ -596,7 +606,9 @@ IIRScram_Attribute::_get_prefix_rval_range_attributes(){
   switch( prefix_types->size() ){
   case 0:{
     ostringstream err;
-    err << "|" << *_get_prefix() << "| has no array definition - "
+    // FIXME: oveload operator<<
+    //err << "|" << *_get_prefix() << "| has no array definition - "
+    err << "|| has no array definition - "
 	<< "'range is invalid here.";
     report_error( this, err.str() );
     break;
@@ -609,7 +621,9 @@ IIRScram_Attribute::_get_prefix_rval_range_attributes(){
 
   default:{
     ostringstream err;
-    err << "Cannot disambiguate |" << *_get_prefix() << "| in it's usage.";
+    // FIXME: oveload operator<<
+    //err << "Cannot disambiguate |" << *_get_prefix() << "| in it's usage.";
+    err << "Cannot disambiguate || in it's usage.";
     report_error( this, err.str() );
   }
   }
@@ -651,8 +665,10 @@ IIRScram_Attribute::_get_subtype_range_attribute(){
     if( get_kind() == IIR_REVERSE_RANGE_ATTRIBUTE ){
       retval = dynamic_cast<IIRScram_ScalarTypeDefinition *>((dynamic_cast<IIRScram *>(retval))->_clone());
       IIRScram *tmp = retval->_get_base_type_left();
-      retval->set_left( retval->_get_base_type_right() );
-      retval->set_right( tmp );
+      // FIXME: add something like "set_left_type()"
+      // FIXME: add something like "set_right_type()"
+      //retval->set_left( retval->_get_base_type_right() );
+      //retval->set_right( tmp );
 
       StandardPackage *package = _get_design_file()->get_standard_package();
       if( retval->get_direction() ){

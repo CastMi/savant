@@ -67,6 +67,7 @@ class IIR_TypeDefinition;
 class IIR_AssociationList;
 class IIR_Declaration;
 class IIR_Statement;
+class IIR_Identifier;
 
 namespace savant {
   template <class type> class set;
@@ -113,6 +114,9 @@ report_undefined_symbol( IIR_Declaration *, IIR_Name * );
 
 void 
 report_undefined_symbol( savant::set<IIR_TypeDefinition> *, IIR * );
+
+void 
+report_ambiguous_error( IIR_Identifier *, savant::set<IIR_Declaration> * );
 
 void 
 report_ambiguous_error( IIR *error_info, savant::set<IIR_Declaration> *error_set );

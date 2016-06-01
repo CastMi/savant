@@ -64,6 +64,12 @@ IIRScram_Statement::_get_symbol_table( ){
   return _get_my_design_file()->_get_symbol_table();
 }
 
+IIRScram_IntegerLiteral *
+IIRScram_Statement::_get_integer_static_value(){
+  _report_undefined_scram_fn("_get_integer_static_value()");
+  return NULL;
+}
+
 IIRScram *
 IIRScram_Statement::_type_check_and_resolve_boolean_condition( IIRScram *condition ){
   ASSERT( condition != NULL );

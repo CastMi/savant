@@ -48,6 +48,7 @@ class IIRScram_WaveformList;
 
 class IIRScram_Statement : public virtual IIRBase_Statement {
 public:
+  virtual ~IIRScram_Statement() = 0;
   virtual IIRScram_Statement *_clone();
   virtual void _clone( IIRScram_Statement *);
   virtual void _type_check();
@@ -59,6 +60,8 @@ public:
   virtual IIR_Boolean _is_readable();
   virtual IIR_Boolean _is_writable();
   virtual IIR_Boolean _is_iir_name(){ return FALSE; }
+  virtual IIR_Boolean _is_iir_declaration(){ return FALSE; }
+  virtual IIR_Boolean _is_iir_attribute(){ return FALSE; }
   virtual savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
 
   virtual savant::set<IIRScram_Declaration> *_symbol_lookup();
@@ -73,6 +76,13 @@ public:
   // from IIR_Elsif, this must be public!
   static IIRScram_Statement *_type_check_and_resolve_boolean_condition( IIRScram_Statement * );
 	
+  /** This method calculates the locally static value of the expression
+      it's called on.  If this is impossible (i.e. the expression isn't
+      static, or it's not integer valued, it will return NULL.)  If
+      possible, it _allocates_ an IIRScram_IntegerLiteral with the result
+      represented in it. */
+  virtual IIRScram_IntegerLiteral *_get_integer_static_value();
+
   // These virtual methods are needed to support the type checking functions in the
   // protected section
   virtual IIRScram *_get_target();
@@ -96,6 +106,8 @@ public:
       return the report expression. For anything else it returns 0. */
   virtual IIRScram_Statement *_get_severity_expression(){ return 0; }
 
+  virtual IIRScram_Statement *_decl_to_decl( IIRScram_Declaration * ) {return nullptr;};
+  
   virtual IIRScram_Label *_find_instantiate_label( IIRScram_SimpleName * );
 
   virtual void _make_interface_visible( symbol_table * );
@@ -114,9 +126,10 @@ public:
       with. */
   const string _get_design_unit_name();
 
+  IIRScram_Identifier* _get_declarator() { return nullptr; };
+
 protected:
 
-  virtual ~IIRScram_Statement() = 0;
 
   // These methods are used in the type checking of signal assignment statements,
   // and concurrent selected signal assignment statements.

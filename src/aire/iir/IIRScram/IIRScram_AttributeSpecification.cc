@@ -78,7 +78,9 @@ IIRScram_AttributeSpecification::_type_check( IIRScram_DeclarationList * ){
   switch( attribute_decls->size() ){
   case 0:{
     ostringstream err;
-    err << "|" << *_get_declarator() << "| was not defined as an attribute.";
+    // FIXME: overload operator<<
+    //err << "|" << *_get_declarator() << "| was not defined as an attribute.";
+    err << "|| was not defined as an attribute.";
     report_error( this, err.str() );
     goto finish;
   }
@@ -179,7 +181,7 @@ IIRScram_AttributeSpecification::_get_entity_class() {
   return dynamic_cast<IIRScram_Identifier *>(get_entity_class());
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_AttributeSpecification::_get_value() {
-  return dynamic_cast<IIRScram *>(IIRBase_AttributeSpecification::get_value());
+  return dynamic_cast<IIRScram_Statement *>(IIRBase_AttributeSpecification::get_value());
 }

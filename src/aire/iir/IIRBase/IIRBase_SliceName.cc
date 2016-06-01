@@ -74,7 +74,8 @@ IIRBase_SliceName::is_variable(){
 
 ostream &
 IIRBase_SliceName::print( ostream &os ){
-  os << *get_prefix();
+  // FIXME overload operator<<
+  //os << *get_prefix();
   os << "(";
   // FIXME overload operator<<
   // os << *get_suffix();

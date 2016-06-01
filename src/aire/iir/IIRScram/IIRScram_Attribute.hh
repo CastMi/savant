@@ -67,7 +67,7 @@ public:
   virtual void _type_check( savant::set<IIRScram_TypeDefinition> * );
   void set_subtype(IIR_TypeDefinition *type) {IIRBase_Statement::set_subtype(type);}
 
-  IIRScram *_decl_to_decl( IIRScram_Declaration * );
+  IIRScram_Statement *_decl_to_decl( IIRScram_Declaration * );
 
   virtual void _set_suffix( IIRScram_Statement * );
   virtual IIRScram_Statement *_get_suffix( );
@@ -97,10 +97,10 @@ public:
 
   /** If you hit this, an attribute has an unimplemented clone(). */
   virtual IIRScram_Attribute *_clone() override;
-  virtual void _clone( IIRScram_Attribute * );
+  virtual void _clone( IIRScram_Statement * );
 
   IIRScram_Identifier *_get_attribute_name();
-  IIRScram_TextLiteral *_build_attribute_name();
+  IIRScram_Identifier *_build_attribute_name();
 
   /** This method does the subtype calculation for IIRScram_Range and
       IIRScram_ReverseRange attributes.  In the case of some error, NULL is

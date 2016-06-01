@@ -62,7 +62,7 @@ public:
   IIR_Boolean                   _is_iir_attribute_specification(){ return TRUE; }
   IIRScram_Identifier           *_get_entity_class();
   IIRScram_DesignatorList       *_get_entity_name_list();
-  IIRScram                      *_get_value();
+  IIRScram_Statement            *_get_value();
   IIRScram_Declaration          *_get_declaration();
 
 private:

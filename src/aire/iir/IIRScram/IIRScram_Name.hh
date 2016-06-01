@@ -77,13 +77,13 @@ public:
   savant::set<IIRScram_TypeDefinition> *_get_rval_set( savant::set<IIRScram_Declaration> *search_in,
                                                        constraint_functor *functor = 0 );
 
-  IIRScram *_get_prefix();
+  IIRScram_Statement *_get_prefix();
 
   virtual IIRScram_Statement *_get_suffix() { return NULL; }
 
   virtual void _set_suffix(IIRScram *suffix);
 
-  void _clone( IIRScram * );
+  void _clone( IIRScram_Statement * );
 
   virtual void _build_lib( IIRScram_LibraryUnit * );
 

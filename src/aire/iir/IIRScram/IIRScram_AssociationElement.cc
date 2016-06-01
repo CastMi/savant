@@ -48,7 +48,7 @@ IIRScram_AssociationElement::_find_formal_declaration(){
   
   IIRScram_Declaration *retval = NULL;
   if( _get_actual() != NULL ){
-    retval = _get_actual()->_find_formal_declaration();
+    retval = dynamic_cast<IIRScram_Declaration*>(_get_actual()->_find_formal_declaration());
   }
 
   return retval;

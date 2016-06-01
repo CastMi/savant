@@ -192,9 +192,9 @@ IIRScram_SimpleName::_rval_to_decl(IIRScram_TypeDefinition *my_rval) {
 }
 
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_SimpleName::_decl_to_decl( IIRScram_Declaration *my_decl ){
-  IIRScram *retval = _convert_to_function_call( my_decl );
+  IIRScram_Statement *retval = _convert_to_function_call( my_decl );
   delete this;
   return retval;
 }

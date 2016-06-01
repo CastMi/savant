@@ -73,9 +73,14 @@ public:
   virtual IIR_Boolean is_entity_declaration() { return false; };
   virtual IIR_Boolean is_type() { return false; };
   virtual IIR_Boolean is_object() { return false; };
+  virtual IIR_Boolean is_text_literal() { return false; };
+  virtual IIR_Boolean is_label() { return false; };
+
+  virtual IIR_Declaration* get_prefix_declaration() { return nullptr; };
 
   virtual IIR_SignalKind get_signal_kind() { return IIR_SignalKind::IIR_NO_SIGNAL_KIND; };
 
+  virtual IIR_TextLiteral *get_prefix_string() { return nullptr; };
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
   void set_assertion_condition( IIR * );

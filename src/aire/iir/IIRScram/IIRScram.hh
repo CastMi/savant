@@ -323,13 +323,6 @@ public:
       are access types (otherwise, it returns NULL). */
   virtual IIRScram_TypeDefinition *_get_rval_pointed_at();
 
-  /** This method calculates the locally static value of the expression
-      it's called on.  If this is impossible (i.e. the expression isn't
-      static, or it's not integer valued, it will return NULL.)  If
-      possible, it _allocates_ an IIRScram_IntegerLiteral with the result
-      represented in it. */
-  virtual IIRScram_IntegerLiteral *_get_integer_static_value();
-  
   /** This method should only be called on resolved "things".  For
       instance, declarations, resolved names (indexed names with
       declaration prefixes, etc.)  Or, on type definitions.  This method

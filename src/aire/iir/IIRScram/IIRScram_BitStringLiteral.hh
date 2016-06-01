@@ -48,7 +48,7 @@ public:
 
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
-  virtual IIRScram *_clone();
+  virtual IIRScram_BitStringLiteral *_clone();
 
 protected:    
 private:

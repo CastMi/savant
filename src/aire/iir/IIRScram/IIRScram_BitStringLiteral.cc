@@ -45,7 +45,7 @@ void
 IIRScram_BitStringLiteral::_type_check( savant::set<IIRScram_TypeDefinition> * ){}
 
 
-IIRScram *
+IIRScram_BitStringLiteral *
 IIRScram_BitStringLiteral::_clone() {
   return this;
 }
