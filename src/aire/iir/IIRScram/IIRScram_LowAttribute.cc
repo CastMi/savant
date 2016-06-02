@@ -53,11 +53,3 @@ void
 IIRScram_LowAttribute::_resolve_suffix_special(){
   _resolve_suffix_local_static_int();
 }
-
-
-visitor_return_type *
-IIRScram_LowAttribute::_accept_visitor( node_visitor *visitor,
-					visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_LowAttribute(this, arg);
-}

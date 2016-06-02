@@ -62,12 +62,6 @@ IIRScram_AssertionStatement::_clone() {
   return clone;
 }
 
-visitor_return_type *
-IIRScram_AssertionStatement::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_AssertionStatement(this, arg);
-};
-
 IIRScram_Statement *
 IIRScram_AssertionStatement::_get_assertion_condition(){ 
   return dynamic_cast<IIRScram_Statement *>(get_assertion_condition()); 

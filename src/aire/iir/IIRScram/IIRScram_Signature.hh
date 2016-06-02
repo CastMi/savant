@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_SIGNATURE_HH
 #define IIRSCRAM_SIGNATURE_HH
 
@@ -38,22 +37,16 @@ using std::abort;
 
 class IIRScram_FunctionDeclaration;
 
-class IIRScram_Signature : public virtual IIRScram_TypeDefinition, public virtual IIRBase_Signature{
+class IIRScram_Signature : public virtual IIRScram_TypeDefinition, public virtual IIRBase_Signature {
 
 public:
   IIRScram_Signature();
   ~IIRScram_Signature();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   void _set_resolution_function( IIRScram_FunctionDeclaration * ){ abort(); }
 
   // Wrappers for IIRBase functions
   IIRScram_DesignatorList *     _get_argument_type_list();
-
-protected:    
-private:
-
 };
+
 #endif

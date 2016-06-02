@@ -40,14 +40,10 @@ class IIRScram_LibraryUnit;
 class IIRScram_PortList;
 class IIRScram_TypeDefinition;
 
-class IIRScram_SelectedName : public virtual IIRScram_Name, public virtual IIRBase_SelectedName{
+class IIRScram_SelectedName : public virtual IIRScram_Name, public virtual IIRBase_SelectedName {
 
 public:
   IIRScram_SelectedName(){  }
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   /** Find the first prefix.  It should be a library.  Return it. */
   IIRScram_LibraryDeclaration *_get_library_declaration();
@@ -85,9 +81,6 @@ public:
   IIRScram *_clone();
 
   IIRScram_TypeDefinition *_get_rval_pointed_at();
-
-protected:
-private:
 };
 
 #endif

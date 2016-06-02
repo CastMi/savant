@@ -38,11 +38,8 @@
 class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
-class IIRScram_TransactionAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_TransactionAttribute{
+class IIRScram_TransactionAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_TransactionAttribute {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIR_Boolean _is_readable();
 
   IIRScram_Declaration *_get_implicit_declaration( const string &decl_name, 
@@ -50,8 +47,6 @@ public:
   
   IIR_Boolean _is_transaction_attribute() { return TRUE; }
   IIR_Boolean _is_signal_attribute(){ return TRUE; }
-
-protected:
-private:
 };
+
 #endif

@@ -60,11 +60,3 @@ IIRScram_VariableInterfaceDeclaration::_type_check( IIRScram_InterfaceDeclaratio
     report_error( this, err.str() );
   }
 }
-
-visitor_return_type *
-IIRScram_VariableInterfaceDeclaration::_accept_visitor( node_visitor *visitor, 
-							visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_VariableInterfaceDeclaration(this, arg);
-}
-

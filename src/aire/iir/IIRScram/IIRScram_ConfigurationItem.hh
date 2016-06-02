@@ -33,19 +33,11 @@
 #include "IIRScram_Tuple.hh"
 #include "IIRBase_ConfigurationItem.hh"
 
-class IIRScram_ConfigurationItem : public virtual IIRScram_Tuple, public virtual IIRBase_ConfigurationItem{
+class IIRScram_ConfigurationItem : public virtual IIRScram_Tuple, public virtual IIRBase_ConfigurationItem {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIR_Boolean _is_iir_configuration_item() { return TRUE; }
 
   virtual void _type_check_configuration_item( IIRScram_List<IIRScram_Statement> *statement_list, IIRScram *enclosing_region );
-
-protected:
-private:
-  
-
 };
 
 #endif

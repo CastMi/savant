@@ -37,15 +37,11 @@ class IIRScram_BlockConfiguration;
 class IIRScram_DesignatorList;
 class IIRScram_LibraryUnit;
 
-class IIRScram_ComponentConfiguration : public virtual IIRScram_ConfigurationItem, public virtual IIRBase_ComponentConfiguration{
+class IIRScram_ComponentConfiguration : public virtual IIRScram_ConfigurationItem, public virtual IIRBase_ComponentConfiguration {
 
 public:
   IIRScram_ComponentConfiguration();  
   virtual ~IIRScram_ComponentConfiguration();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   void _type_check_configuration_item( IIRScram_List<IIRScram_Statement> *, IIRScram * );
 
@@ -57,11 +53,6 @@ public:
   IIRScram_AssociationList *    _get_generic_map_aspect();
   IIRScram_AssociationList *    _get_port_map_aspect();
   IIRScram_BlockConfiguration * _get_block_configuration();
-
-protected:    
-private:
-  
-
 };
 
 #endif

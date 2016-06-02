@@ -85,14 +85,6 @@ IIRScram_ArraySubtypeDefinition::is_locally_static(){
   return retval;
 }
 
-
-visitor_return_type *
-IIRScram_ArraySubtypeDefinition::_accept_visitor( node_visitor *visitor,
-						  visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ArraySubtypeDefinition(this, arg);
-}
-
 IIRScram_ArraySubtypeDefinition *
 IIRScram_ArraySubtypeDefinition::get(IIRScram_ArrayTypeDefinition *bt,
                                      IIRScram_ScalarTypeDefinition *is,

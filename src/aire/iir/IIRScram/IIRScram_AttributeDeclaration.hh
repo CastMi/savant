@@ -40,21 +40,16 @@ class IIRScram_Declaration;
 class IIRScram_Name;
 class IIRScram_TypeDefinition;
 
-class IIRScram_AttributeDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_AttributeDeclaration{
+class IIRScram_AttributeDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_AttributeDeclaration {
 
 public:
   IIRScram_AttributeDeclaration();
   virtual ~IIRScram_AttributeDeclaration();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   IIRScram_TypeDefinition *_get_type_of_element( int );
 
   // Wrapper Functions
   IIRScram_Attribute *_get_attribute();
-protected:    
-private:
 };
+
 #endif

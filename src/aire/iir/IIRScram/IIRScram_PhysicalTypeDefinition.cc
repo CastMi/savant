@@ -160,14 +160,6 @@ IIRScram_PhysicalTypeDefinition::_set_resolution_function( IIRScram_FunctionDecl
   report_error( this, err.str() );
 }
 
-
-visitor_return_type *
-IIRScram_PhysicalTypeDefinition::_accept_visitor( node_visitor *visitor, 
-						  visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_PhysicalTypeDefinition(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_UnitList *
 IIRScram_PhysicalTypeDefinition::_get_units() {

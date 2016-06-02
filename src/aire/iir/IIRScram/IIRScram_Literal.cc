@@ -38,10 +38,3 @@ IIRScram_Literal::_rval_to_decl( IIRScram_TypeDefinition *my_new_type ){
   set_subtype( my_new_type );
   return this;
 }
-
-visitor_return_type *
-IIRScram_Literal::_accept_visitor( node_visitor *visitor,
-				   visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_Literal(this, arg);
-}

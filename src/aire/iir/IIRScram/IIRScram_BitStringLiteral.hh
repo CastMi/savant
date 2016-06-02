@@ -35,7 +35,7 @@
 
 class IIRScram_TypeDefinition;
 
-class IIRScram_BitStringLiteral : public virtual IIRScram_TextLiteral, public virtual IIRBase_BitStringLiteral{
+class IIRScram_BitStringLiteral : public virtual IIRScram_TextLiteral, public virtual IIRBase_BitStringLiteral {
 
 public:
   IIRScram_BitStringLiteral() {}
@@ -43,14 +43,10 @@ public:
 
   static IIRScram_BitStringLiteral *get( const IIR_Char *value, IIR_Int32 length);
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
   virtual IIRScram_BitStringLiteral *_clone();
 
-protected:    
-private:
 };
+
 #endif

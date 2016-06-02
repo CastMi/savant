@@ -39,7 +39,7 @@ class IIRScram_FunctionDeclaration;
 class IIRScram_IntegerSubtypeDefinition;
 
 class IIRScram_IntegerSubtypeDefinition : public virtual IIRScram_IntegerTypeDefinition,
-					  public virtual IIRBase_IntegerSubtypeDefinition{
+					  public virtual IIRBase_IntegerSubtypeDefinition {
 public:
   IIRScram_IntegerSubtypeDefinition();
   ~IIRScram_IntegerSubtypeDefinition();
@@ -48,8 +48,6 @@ public:
   get( IIRScram_IntegerTypeDefinition* base_type,
        IIRScram* left_limit, IIRScram* direction, IIRScram* right_limit);
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
   //  void _publish_cc_parent_type_name( published_file &_cc_out );
 
   IIRScram *_clone();
@@ -59,8 +57,6 @@ public:
   void set_resolution_function(IIRScram_FunctionDeclaration *new_function );
 
   virtual void _type_check();
-
-protected:
-private:
 };
+
 #endif

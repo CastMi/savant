@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_ASSOCIATION_ELEMENT_BY_EXPRESSION_HH
 #define IIRSCRAM_ASSOCIATION_ELEMENT_BY_EXPRESSION_HH
 
@@ -37,15 +36,11 @@
 class IIRScram_TypeDefinition;
 class IIRScram_DesignatorList;
 
-class IIRScram_AssociationElementByExpression : public virtual IIRScram_AssociationElement, public virtual IIRBase_AssociationElementByExpression{
+class IIRScram_AssociationElementByExpression : public virtual IIRScram_AssociationElement, public virtual IIRBase_AssociationElementByExpression {
 
 public:
   IIRScram_AssociationElementByExpression() {}
   virtual ~IIRScram_AssociationElementByExpression();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
@@ -56,9 +51,6 @@ public:
   IIR_Boolean _is_readable();
   IIR_Boolean _is_writable();
   IIR_Boolean _is_above_attribute_found();
-
-protected: 
-private:
 };
 
 #endif

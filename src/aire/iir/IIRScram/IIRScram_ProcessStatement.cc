@@ -68,12 +68,6 @@ IIRScram_ProcessStatement::_get_process_declarative_part() {
   return dynamic_cast<IIRScram_DeclarationList *>(get_process_declarative_part());
 }
 
-visitor_return_type *
-IIRScram_ProcessStatement::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ProcessStatement(this, arg);
-}
-
 IIRScram *
 IIRScram_ProcessStatement::_clone() {
   IIRScram_Declaration *decl = NULL;

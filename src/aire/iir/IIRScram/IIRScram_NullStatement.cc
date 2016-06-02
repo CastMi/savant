@@ -33,16 +33,7 @@
 #include "IIRScram_List.hh"
 #include "savant.hh"
 
-
 void 
 IIRScram_NullStatement::_type_check() {
   // We don't need to do anything...
-}
-
-
-visitor_return_type *
-IIRScram_NullStatement::_accept_visitor( node_visitor *visitor, 
-					 visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_NullStatement(this, arg);
 }

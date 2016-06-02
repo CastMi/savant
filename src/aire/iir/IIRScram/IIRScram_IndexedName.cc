@@ -1154,11 +1154,6 @@ IIRScram_IndexedName::_find_formal_declaration(){
   return _get_prefix()->_find_formal_declaration();
 }
 
-visitor_return_type *IIRScram_IndexedName::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_IndexedName(this, arg);
-};
-
 IIRScram *
 IIRScram_IndexedName::_get_prefix(){
   ASSERT( get_prefix() != NULL );

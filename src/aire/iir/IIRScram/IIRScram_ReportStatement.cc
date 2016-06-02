@@ -56,13 +56,6 @@ IIRScram_ReportStatement::_type_check(){
 //   }
 // }
 
-visitor_return_type *
-IIRScram_ReportStatement::_accept_visitor( node_visitor *visitor, 
-					   visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ReportStatement(this, arg);
-}
-
 IIRScram *
 IIRScram_ReportStatement::_get_report_expression(){ 
   return dynamic_cast<IIRScram *>(get_report_expression());

@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_ARCHITECTURE_STATEMENT_LIST_HH
 #define IIRSCRAM_ARCHITECTURE_STATEMENT_LIST_HH
 
@@ -33,11 +32,8 @@
 
 class IIRScram_ArchitectureStatementList : public virtual IIRScram_List<IIR_ArchitectureStatement>, public virtual IIRBase_ArchitectureStatementList {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIRScram_Label *_find_instantiate_label( IIRScram_SimpleName * );
   void _type_check_instantiate_statements();
-
 };
+
 #endif

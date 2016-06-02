@@ -30,11 +30,8 @@ include $(top_srcdir)/Makefile.am.common
 noinst_LIBRARIES = libiirVisitor.a
 
 libiirVisitor_a_SOURCES = \
-	node_visitor.hh\
-	visitor_argument_type.cc\
-	visitor_argument_type.hh\
-	visitor_return_type.cc\
-	visitor_return_type.hh
+	generic_visitor.cc \
+	visitor_argument_type.cc
 
 # Location for the library installation
 # With this first command I specify the folder that the "library_include"
@@ -42,7 +39,5 @@ libiirVisitor_a_SOURCES = \
 library_includedir = $(includedir)/savant
 # Now, I specify the headers to install.
 library_include_HEADERS =  \
-	node_visitor.hh\
-	visitor_argument_type.hh\
-	visitor_return_type.hh
-
+	generic_visitor.hh \
+	visitor_argument_type.hh

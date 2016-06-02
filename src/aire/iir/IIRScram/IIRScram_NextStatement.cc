@@ -44,13 +44,6 @@ IIRScram_NextStatement::_type_check() {
   }
 }
 
-visitor_return_type *
-IIRScram_NextStatement::_accept_visitor( node_visitor *visitor, 
-					 visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_NextStatement(this, arg);
-};
-
 IIRScram_SequentialStatement *
 IIRScram_NextStatement::_get_enclosing_loop() {
   return dynamic_cast<IIRScram_SequentialStatement *>(get_enclosing_loop());

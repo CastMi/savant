@@ -31,15 +31,10 @@
 
 #include "IIRBase_AttributeSpecificationList.hh"
 
-class IIRScram_AttributeSpecificationList : public virtual IIRBase_AttributeSpecificationList{
+class IIRScram_AttributeSpecificationList : public virtual IIRBase_AttributeSpecificationList {
 public:
   IIRScram_AttributeSpecificationList() {}
   virtual ~IIRScram_AttributeSpecificationList();
-    
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-protected:
-private:
 };
+
 #endif

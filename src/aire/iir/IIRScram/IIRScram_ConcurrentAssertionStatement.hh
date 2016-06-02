@@ -35,12 +35,8 @@
 
 class IIRScram_DesignatorList;
 
-class IIRScram_ConcurrentAssertionStatement : public virtual IIRScram_ConcurrentStatement, public virtual IIRBase_ConcurrentAssertionStatement{
+class IIRScram_ConcurrentAssertionStatement : public virtual IIRScram_ConcurrentStatement, public virtual IIRBase_ConcurrentAssertionStatement {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
   void _type_check();
   void _type_check_condition();
   void _type_check_expression();
@@ -49,8 +45,6 @@ public:
   IIRScram *_get_assertion_condition();
   IIRScram *_get_report_expression();
   IIRScram *_get_severity_expression();
-
-protected:
-private:
 };
+
 #endif

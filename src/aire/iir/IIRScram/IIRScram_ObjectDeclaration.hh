@@ -80,7 +80,6 @@ public:
 
 protected:
   virtual ~IIRScram_ObjectDeclaration();
-    
-private:
 };
+
 #endif

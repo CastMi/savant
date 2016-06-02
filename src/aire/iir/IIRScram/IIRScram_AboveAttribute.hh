@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_ABOVE_ATTRIBUTE_HH
 #define IIRSCRAM_ABOVE_ATTRIBUTE_HH
 
@@ -41,9 +40,6 @@ public:
   
   virtual void _resolve_suffix_special();
 
-protected:
-
-private:
-
 };
+
 #endif

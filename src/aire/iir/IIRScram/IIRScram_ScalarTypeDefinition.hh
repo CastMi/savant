@@ -39,7 +39,7 @@ class IIRScram_FunctionDeclaration;
 class IIRScram_TypeDefinition;
 
 class IIRScram_ScalarTypeDefinition : public virtual IIRScram_TypeDefinition,
-				      public virtual IIRBase_ScalarTypeDefinition{
+				      public virtual IIRBase_ScalarTypeDefinition {
 
 public:
   IIRScram_ScalarTypeDefinition( IIR_TypeDefinition* right );
@@ -75,6 +75,6 @@ public:
 protected:
   virtual ~IIRScram_ScalarTypeDefinition() = 0;
   void _build_implicit_operators( savant::set<IIRScram_Declaration> * );    
-private:
 };
+
 #endif

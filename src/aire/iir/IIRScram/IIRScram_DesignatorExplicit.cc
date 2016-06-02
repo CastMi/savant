@@ -129,13 +129,6 @@ IIRScram_DesignatorExplicit::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
   return this;
 }
 
-visitor_return_type *
-IIRScram_DesignatorExplicit::_accept_visitor( node_visitor *visitor,
-					      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_DesignatorExplicit(this, arg);
-}
-
 IIRScram *
 IIRScram_DesignatorExplicit::_get_name() {
   return dynamic_cast<IIRScram *>(get_name());

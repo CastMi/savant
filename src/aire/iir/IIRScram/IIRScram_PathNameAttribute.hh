@@ -35,16 +35,10 @@
 class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
-class IIRScram_PathNameAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_PathNameAttribute{
+class IIRScram_PathNameAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_PathNameAttribute {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   IIRScram_Declaration *_get_implicit_declaration( const string &, 
                                                    IIRScram_TypeDefinition * );
-  
-protected:
-private:
 };
+
 #endif

@@ -32,14 +32,10 @@
 #include "IIRBase_RemainderOperator.hh"
 
 class IIRScram_RemainderOperator : public virtual IIRScram_MultiplicationOperators,
-				   public virtual IIRBase_RemainderOperator{
+				   public virtual IIRBase_RemainderOperator {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
   IIRScram *_clone();
-
-protected:
-private:
 };
+
 #endif

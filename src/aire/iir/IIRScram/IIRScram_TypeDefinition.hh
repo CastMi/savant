@@ -33,7 +33,7 @@ class IIRScram_ScalarTypeDefinition;
 class IIRScram_TypeDeclaration;
 
 /** The extension class for IIR_TypeDefinition. */
-class IIRScram_TypeDefinition : public virtual IIRScram, public virtual IIRBase_TypeDefinition{
+class IIRScram_TypeDefinition : public virtual IIRScram, public virtual IIRBase_TypeDefinition {
 
 public:
   IIRScram_TypeDefinition();
@@ -154,4 +154,5 @@ private:
 
   IIRScram_Attribute *my_attribute;
 };
+
 #endif

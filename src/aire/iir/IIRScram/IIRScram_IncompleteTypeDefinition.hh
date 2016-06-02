@@ -44,4 +44,5 @@ public:
   IIRScram_IncompleteTypeDefinition() {}
   virtual ~IIRScram_IncompleteTypeDefinition() {}
 };
+
 #endif

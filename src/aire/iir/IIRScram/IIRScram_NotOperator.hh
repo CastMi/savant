@@ -34,14 +34,7 @@
 class IIRScram_Declaration;
 class IIRScram_TypeDefinition;
 
-class IIRScram_NotOperator : public virtual IIRScram_MonadicOperator, public virtual IIRBase_NotOperator{
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
-
-protected:
-private:
+class IIRScram_NotOperator : public virtual IIRScram_MonadicOperator, public virtual IIRBase_NotOperator {
 };
+
 #endif

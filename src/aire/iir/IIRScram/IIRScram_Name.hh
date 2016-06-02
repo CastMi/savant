@@ -43,7 +43,7 @@ class IIRScram_Name;
 class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
-class IIRScram_Name : public virtual IIRScram_Statement, public virtual IIRBase_Name{
+class IIRScram_Name : public virtual IIRScram_Statement, public virtual IIRBase_Name {
 
 public:
   static IIRScram **lookup( IIRScram_Identifier *identifier,
@@ -53,9 +53,6 @@ public:
   static IIRScram **lookup( IIRScram_Name    *name,
                             IIR_Int32   &number_of_matches,
                             IIRScram         *&first_match);
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   IIR_Boolean _is_iir_name(){ return TRUE; }
 
@@ -86,8 +83,6 @@ public:
   void _clone( IIRScram_Statement * );
 
   virtual void _build_lib( IIRScram_LibraryUnit * );
-
-protected:    
-private:
 };
+
 #endif

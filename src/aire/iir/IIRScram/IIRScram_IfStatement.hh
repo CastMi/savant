@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_IF_STATEMENT_HH
 #define IIRSCRAM_IF_STATEMENT_HH
 
@@ -49,13 +48,11 @@ class IIRScram_List;
 class IIRScram_SequentialStatementList;
 class IIRScram_TypeDefinition;
 
-class IIRScram_IfStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_IfStatement{
+class IIRScram_IfStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_IfStatement {
 public:
   IIRScram_IfStatement();
   virtual ~IIRScram_IfStatement();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   void _type_check();
 
@@ -69,8 +66,8 @@ public:
   IIRScram_Elsif                        *_get_elsif();
   IIRScram_SequentialStatementList      *_get_else_sequence();
 
-protected:
 private:
   IIRScram_List                         *_full_statement_list;
 };
+
 #endif

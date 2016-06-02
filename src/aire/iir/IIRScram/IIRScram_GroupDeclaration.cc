@@ -45,12 +45,6 @@ IIRScram_GroupDeclaration::~IIRScram_GroupDeclaration() {
   delete get_attributes();
 }
 
-visitor_return_type *
-IIRScram_GroupDeclaration::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_GroupDeclaration(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_AttributeSpecificationList* 
 IIRScram_GroupDeclaration::_get_attribute_specification_list() {

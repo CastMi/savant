@@ -32,17 +32,12 @@
 #include "IIRScram_Literal.hh"
 #include "IIRBase_IntegerLiteral64.hh"
 
-class IIRScram_IntegerLiteral64 : public virtual IIRScram_Literal, public virtual IIRBase_IntegerLiteral64{
+class IIRScram_IntegerLiteral64 : public virtual IIRScram_Literal, public virtual IIRBase_IntegerLiteral64 {
 public:
   static IIRScram_IntegerLiteral64* get(IIR_Int64);
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIR_Boolean _is_integer_literal();
   IIRScram *_clone() { return this; }
-
-protected:
-private:
 };
+
 #endif

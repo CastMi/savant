@@ -36,14 +36,11 @@
 
 class IIRScram_TypeDefinition;
 
-class IIRScram_Allocator : public virtual IIRScram_Expression, public virtual IIRBase_Allocator{
+class IIRScram_Allocator : public virtual IIRScram_Expression, public virtual IIRBase_Allocator {
 
 public:
   IIRScram_Allocator() {}
   virtual ~IIRScram_Allocator();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
@@ -53,8 +50,6 @@ public:
 
   IIRScram_Statement                      *_get_value();
   IIRScram_TypeDefinition       *_get_type_mark();
-protected:
-    
-private:
 };
+
 #endif

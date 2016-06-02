@@ -28,13 +28,6 @@
 //---------------------------------------------------------------------------
 #include "IIRScram_SharedVariableDeclaration.hh"
 
-visitor_return_type *
-IIRScram_SharedVariableDeclaration::_accept_visitor(node_visitor *visitor,
-						    visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SharedVariableDeclaration(this, arg);
-}
-
 IIRScram *
 IIRScram_SharedVariableDeclaration::_get_value() {
   return dynamic_cast<IIRScram *>(get_value());

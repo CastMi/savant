@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_DESIGNATORLIST_HH
 #define IIRSCRAM_DESIGNATORLIST_HH
 
@@ -37,15 +36,11 @@ class IIRScram_Label;
 class IIRScram_StatementList;
 class IIRScram_TextLiteral;
 
-class IIRScram_DesignatorList : public virtual IIRBase_DesignatorList{
+class IIRScram_DesignatorList : public virtual IIRBase_DesignatorList {
 public:
   IIRScram_DesignatorList() {}
   virtual ~IIRScram_DesignatorList();
     
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-  
-
   void _type_check_as_instantiation_list( IIRScram *instantiated_unit, 
 					  IIRScram_List<IIRScram> *,
 					  IIRScram *configuration );
@@ -66,4 +61,5 @@ private:
 			       IIRScram_List<IIRScram> *,
 			       IIRScram *configuration );    
 };
+
 #endif

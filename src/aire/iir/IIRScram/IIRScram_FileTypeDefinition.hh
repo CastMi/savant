@@ -26,15 +26,12 @@
 class IIRScram_FunctionDeclaration;
 class IIRScram_TypeDeclaration;
 
-class IIRScram_FileTypeDefinition : public virtual IIRScram_TypeDefinition, public virtual IIRBase_FileTypeDefinition{
+class IIRScram_FileTypeDefinition : public virtual IIRScram_TypeDefinition, public virtual IIRBase_FileTypeDefinition {
 
 public:
   IIRScram_FileTypeDefinition() {}
   virtual ~IIRScram_FileTypeDefinition();
     
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   /** This function builds the implicit declarations associated with
       file types.  It also adds the declarations to the symbol table
       and to the type's list of implicit_declarations. */
@@ -44,8 +41,8 @@ public:
 
   void _set_resolution_function( IIRScram_FunctionDeclaration * );
 
-protected:
 private:
   IIRScram_TypeDefinition *_get_type_mark();
 };
+
 #endif

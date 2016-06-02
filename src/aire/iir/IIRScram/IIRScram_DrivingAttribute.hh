@@ -35,19 +35,9 @@
 
 class IIRScram_TextLiteral;
 
-class IIRScram_DrivingAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_DrivingAttribute{
+class IIRScram_DrivingAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_DrivingAttribute {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   virtual IIR_Boolean _is_driving_attribute() { return TRUE; }
-
-protected:
-private:
 };
+
 #endif
-
-
-
-

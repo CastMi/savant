@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_SIMULTANEOUS_IF_STATEMENT_HH
 #define IIRSCRAM_SIMULTANEOUS_IF_STATEMENT_HH
 
@@ -50,9 +49,6 @@ public:
   IIRScram_ArchitectureStatementList    *_get_then_statement_list();
   IIRScram_ArchitectureStatementList    *_get_else_statement_list();
   IIRScram_SimultaneousElsif            *_get_elsif();
-protected:
-
-private:
-
 };
+
 #endif

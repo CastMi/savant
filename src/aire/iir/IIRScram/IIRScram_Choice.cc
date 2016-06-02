@@ -92,12 +92,6 @@ IIRScram_Choice::_clone() {
   return this;
 }
 
-visitor_return_type *
-IIRScram_Choice::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_Choice(this, arg);
-};
-
 IIRScram *
 IIRScram_Choice::_get_value() {
   return dynamic_cast<IIRScram *>(IIRBase_Choice::get_value());

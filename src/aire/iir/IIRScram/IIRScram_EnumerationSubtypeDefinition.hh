@@ -36,7 +36,7 @@ class IIRScram_EnumerationSubtypeDefinition;
 class IIRScram_FunctionDeclaration;
 class IIRScram_EnumerationLiteral;
 
-class IIRScram_EnumerationSubtypeDefinition : public virtual IIRBase_EnumerationSubtypeDefinition, public virtual IIRScram_EnumerationTypeDefinition{
+class IIRScram_EnumerationSubtypeDefinition : public virtual IIRBase_EnumerationSubtypeDefinition, public virtual IIRScram_EnumerationTypeDefinition {
 
 public:
   IIRScram_EnumerationSubtypeDefinition();
@@ -45,10 +45,6 @@ public:
   static IIRScram_EnumerationSubtypeDefinition *  get( IIRScram_EnumerationTypeDefinition *base_type,
                                                        IIRScram_EnumerationLiteral *left_limit,
                                                        IIRScram_EnumerationLiteral *right_limit);
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   void set_resolution_function( IIRScram_FunctionDeclaration *);
   void _set_resolution_function( IIRScram_FunctionDeclaration *);
@@ -61,8 +57,6 @@ public:
 
   // Wrappers for IIRBase functions
   IIRScram_EnumerationLiteralList *     _get_enumeration_literals();
-protected:
-private:
 };
-#endif
 
+#endif

@@ -167,11 +167,6 @@ IIRScram_AliasDeclaration::_come_out_of_scope( symbol_table *sym_tab ){
   _get_name()->_come_out_of_scope( sym_tab );
 }
 
-visitor_return_type *IIRScram_AliasDeclaration::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_AliasDeclaration(this, arg);
-};
-
 IIRScram *
 IIRScram_AliasDeclaration::_get_name() {
   return dynamic_cast<IIRScram *>(get_name());

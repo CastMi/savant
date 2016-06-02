@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_MONADIC_OPERATOR_HH
 #define IIRSCRAM_MONADIC_OPERATOR_HH
 
@@ -60,7 +59,6 @@ protected:
   const string _get_function_name() const;
 
   void _type_check_operands( );
-    
-private:
 };
+
 #endif

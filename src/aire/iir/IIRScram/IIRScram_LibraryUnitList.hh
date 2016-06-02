@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_LIBRARY_UNIT_LIST_HH
 #define IIRSCRAM_LIBRARY_UNIT_LIST_HH
 
@@ -34,12 +33,7 @@
 #include "IIRScram_DeclarationList.hh"
 #include "IIRBase_LibraryUnitList.hh"
 
-class IIRScram_LibraryUnitList : public virtual IIRScram_DeclarationList, public virtual IIRBase_LibraryUnitList{
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-protected:    
-private:
+class IIRScram_LibraryUnitList : public virtual IIRScram_DeclarationList, public virtual IIRBase_LibraryUnitList {
 };
+
 #endif

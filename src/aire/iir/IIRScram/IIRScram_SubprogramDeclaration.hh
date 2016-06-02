@@ -43,14 +43,11 @@ class IIRScram_InterfaceList;
 class IIRScram_SequentialStatementList;
 class IIRScram_TypeDefinition;
 
-class IIRScram_SubprogramDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_SubprogramDeclaration{
+class IIRScram_SubprogramDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_SubprogramDeclaration {
 
 public:
   IIRScram_SubprogramDeclaration();
   ~IIRScram_SubprogramDeclaration();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   /** See header of IIRScram_Declaration for description. */
   bool _check_param( IIRScram_TypeDefinition *type_def, int arg_num );
@@ -100,9 +97,6 @@ public:
   IIRScram_InterfaceList *              _get_interface_declarations();
   IIRScram_SequentialStatementList *    _get_subprogram_body();
   IIRScram_DeclarationList *            _get_subprogram_declarations();
-
-protected:    
-private:
 };
-#endif
 
+#endif

@@ -40,14 +40,11 @@ class IIRScram_ScalarTypeDefinition;
 class IIRScram_TypeDeclaration;
 class IIRScram_TypeDefinition;
 
-class IIRScram_RecordTypeDefinition : public virtual IIRScram_TypeDefinition, public virtual IIRBase_RecordTypeDefinition{
+class IIRScram_RecordTypeDefinition : public virtual IIRScram_TypeDefinition, public virtual IIRBase_RecordTypeDefinition {
 
 public:
   IIRScram_RecordTypeDefinition();
   ~IIRScram_RecordTypeDefinition();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   virtual IIR_Boolean _is_iir_record_type_definition() { return TRUE; }
 
@@ -75,9 +72,6 @@ public:
   void _come_out_of_scope( symbol_table * );
 
   IIRScram_TypeDefinition *_get_element_subtype(int);
-protected:
-private:
 };
+
 #endif
-
-

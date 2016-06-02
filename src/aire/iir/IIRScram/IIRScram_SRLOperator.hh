@@ -31,15 +31,9 @@
 #include "IIRScram_ShiftOperators.hh"
 #include "IIRBase_SRLOperator.hh"
 
-class IIRScram_SRLOperator : public virtual IIRScram_ShiftOperators, public virtual IIRBase_SRLOperator{
+class IIRScram_SRLOperator : public virtual IIRScram_ShiftOperators, public virtual IIRBase_SRLOperator {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
   IIRScram *_clone();
-
-protected:
-private:
 };
+
 #endif

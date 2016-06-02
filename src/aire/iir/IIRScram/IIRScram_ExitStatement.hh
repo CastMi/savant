@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_EXIT_STATEMENT_HH
 #define IIRSCRAM_EXIT_STATEMENT_HH
 
@@ -47,20 +46,15 @@
 
 class IIRScram_List;
 
-class IIRScram_ExitStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_ExitStatement{
+class IIRScram_ExitStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_ExitStatement {
 public:
   IIRScram_ExitStatement() {}
   virtual ~IIRScram_ExitStatement();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   void _type_check();
 
   IIRScram *_get_condition();
   IIRScram_SequentialStatement *_get_enclosing_loop();
-
-protected:    
-private:
 };
+
 #endif

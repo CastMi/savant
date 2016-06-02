@@ -44,12 +44,6 @@ IIRScram_SelectedWaveform::~IIRScram_SelectedWaveform() {
   delete get_waveform();
 }
 
-visitor_return_type *
-IIRScram_SelectedWaveform::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SelectedWaveform(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram *
 IIRScram_SelectedWaveform::_get_choice() {

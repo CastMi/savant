@@ -41,14 +41,11 @@ class IIRScram_TypeDefinition;
 /**
    The extension base for range types.
  */
-class IIRScram_RangeTypeDefinition : public virtual IIRScram_ScalarTypeDefinition, public virtual IIRBase_RangeTypeDefinition{
+class IIRScram_RangeTypeDefinition : public virtual IIRScram_ScalarTypeDefinition, public virtual IIRBase_RangeTypeDefinition {
 
 public:
   IIRScram_RangeTypeDefinition();
   virtual ~IIRScram_RangeTypeDefinition();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   IIR_Boolean _is_numeric_type(){ return TRUE; };
 
@@ -66,10 +63,9 @@ public:
   // See pg 42, line 354 of the 93 LRM.
   IIRScram_ScalarTypeDefinition *_determine_discrete_type();
 
-protected:    
 private:
   IIRScram_ScalarTypeDefinition *_determine_universal_subtype(IIRScram_TypeDefinition *left_type,
 							      IIRScram_TypeDefinition *right_type);
-  
 };
+
 #endif

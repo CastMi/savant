@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_INEQUALITY_OPERATOR_HH
 #define IIRSCRAM_INEQUALITY_OPERATOR_HH
 
@@ -30,15 +29,10 @@
 #include "IIRScram_RelationalOperators.hh"
 #include "IIRBase_InequalityOperator.hh"
 
-class IIRScram_InequalityOperator : public virtual IIRScram_RelationalOperators, public virtual IIRBase_InequalityOperator{
+class IIRScram_InequalityOperator : public virtual IIRScram_RelationalOperators, public virtual IIRBase_InequalityOperator {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIRScram *_clone();
-
-protected:
-private:
 };
+
 #endif

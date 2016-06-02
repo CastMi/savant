@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_AND_OPERATOR_HH
 #define IIRSCRAM_AND_OPERATOR_HH
 
@@ -33,15 +32,12 @@
 
 
 class IIRScram_AndOperator : public virtual IIRScram_LogicalOperators,
-			     public virtual IIRBase_AndOperator{
+			     public virtual IIRBase_AndOperator {
 public:
   IIRScram_AndOperator() {}
   virtual ~IIRScram_AndOperator();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
   IIRScram_Statement *_clone();
-
-private:
 };
+
 #endif

@@ -34,17 +34,11 @@
 
 class IIRScram_EnumerationLiteral;
 
-class IIRScram_EnumerationLiteralList : public virtual IIRScram_DeclarationList, public virtual IIRBase_EnumerationLiteralList{
+class IIRScram_EnumerationLiteralList : public virtual IIRScram_DeclarationList, public virtual IIRBase_EnumerationLiteralList {
 
 public:
   IIRScram_EnumerationLiteralList() {}
   virtual ~IIRScram_EnumerationLiteralList();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
-protected:     
-private:
 };
+
 #endif

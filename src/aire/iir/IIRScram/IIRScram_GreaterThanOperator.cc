@@ -34,11 +34,3 @@ IIRScram_GreaterThanOperator::_clone() {
   IIRScram_DyadicOperator::_clone(clone);
   return clone;
 }
-
-visitor_return_type *
-IIRScram_GreaterThanOperator::_accept_visitor( node_visitor *visitor, 
-					       visitor_argument_type *arg){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_GreaterThanOperator(this, arg);
-}
-

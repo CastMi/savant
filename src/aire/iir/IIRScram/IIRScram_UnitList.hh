@@ -33,13 +33,7 @@
 #include "IIRScram_DeclarationList.hh"
 #include "IIRBase_UnitList.hh"
 
-class IIRScram_UnitList : public virtual IIRScram_DeclarationList, public virtual IIRBase_UnitList{
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
-protected:    
-private:
+class IIRScram_UnitList : public virtual IIRScram_DeclarationList, public virtual IIRBase_UnitList {
 };
+
 #endif

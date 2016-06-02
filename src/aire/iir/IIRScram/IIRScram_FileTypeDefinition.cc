@@ -277,13 +277,6 @@ IIRScram_FileTypeDefinition::_set_resolution_function( IIRScram_FunctionDeclarat
   report_error( this, err.str() );
 }
 
-visitor_return_type *
-IIRScram_FileTypeDefinition::_accept_visitor( node_visitor *visitor,
-					      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_FileTypeDefinition(this, arg);
-}
-
 IIRScram_TypeDefinition *
 IIRScram_FileTypeDefinition::_get_type_mark() {
   return dynamic_cast<IIRScram_TypeDefinition *>(get_type_mark());

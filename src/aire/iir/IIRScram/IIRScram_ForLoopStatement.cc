@@ -86,13 +86,6 @@ IIRScram_ForLoopStatement::_build_iteration_scheme( IIR_TextLiteral *id,
   set_iteration_scheme(iterator);
 }
 
-
-visitor_return_type *
-IIRScram_ForLoopStatement::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ForLoopStatement(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_SequentialStatementList *
 IIRScram_ForLoopStatement::_get_sequence_of_statements() {

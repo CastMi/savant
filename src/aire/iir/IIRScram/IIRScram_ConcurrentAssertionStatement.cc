@@ -42,12 +42,6 @@ IIRScram_ConcurrentAssertionStatement::_type_check(){
   }
 }
 
-visitor_return_type *
-IIRScram_ConcurrentAssertionStatement::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ConcurrentAssertionStatement(this, arg);
-};
-
 IIRScram *
 IIRScram_ConcurrentAssertionStatement::_get_assertion_condition(){ 
   return dynamic_cast<IIRScram *>(get_assertion_condition()); 

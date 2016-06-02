@@ -32,14 +32,9 @@
 #include "IIRBase_XorOperator.hh"
 
 class IIRScram_XorOperator : public virtual IIRScram_LogicalOperators,
-			     public virtual IIRBase_XorOperator{
+			     public virtual IIRBase_XorOperator {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIRScram *_clone();
-
-protected:
-private:
 };
+
 #endif

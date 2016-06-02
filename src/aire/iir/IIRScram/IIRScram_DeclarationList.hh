@@ -43,9 +43,6 @@ public:
   IIRScram_DeclarationList() {}
   virtual ~IIRScram_DeclarationList();
     
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-  
   /** This method looks through the list, finds the configuration
       specifications, and does the appropriate type checking on them.  The
       statement list passed in is so that labels can be found if needed. */
@@ -70,8 +67,6 @@ public:
   IIRScram_DeclarationList *_build_constrained_list( IIR_Boolean (IIRScram::*constraint_function)() );
 
   IIRScram *_clone();
-
-protected:
-private:
 };
+
 #endif

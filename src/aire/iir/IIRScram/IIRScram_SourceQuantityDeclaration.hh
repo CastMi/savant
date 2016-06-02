@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_SOURCE_QUANTITY_DECLARATION_HH
 #define IIRSCRAM_SOURCE_QUANTITY_DECLARATION_HH
 
@@ -57,9 +56,6 @@ public:
   IIRScram *_get_noise_expression();
   IIRScram *_get_phase_expression();
   IIRScram *_get_magnitude_expression();
-protected:
-
-private:
-
 };
+
 #endif

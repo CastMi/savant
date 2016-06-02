@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_REFERENCE_ATTRIBUTE_HH
 #define IIRSCRAM_REFERENCE_ATTRIBUTE_HH
 
@@ -49,10 +48,6 @@ public:
   /** Returns the "across" type of the nature of the terminal. The implicit
       quantity is of the across type of the nature of terminal T.*/ 
   IIRScram_TypeDefinition *_get_subtype();
-  
-protected:
-
-private:
-
 };
+
 #endif

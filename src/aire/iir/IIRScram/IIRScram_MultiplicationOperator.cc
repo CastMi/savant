@@ -32,18 +32,9 @@
 #include "resolution_func.hh"
 #include "error_func.hh"
 
-
-
 IIRScram*
 IIRScram_MultiplicationOperator::_clone() {
   IIRScram_MultiplicationOperator *clone = new IIRScram_MultiplicationOperator();
   IIRScram_DyadicOperator::_clone(clone);
   return clone;
-}
-
-visitor_return_type *
-IIRScram_MultiplicationOperator::_accept_visitor( node_visitor *visitor,
-						  visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_MultiplicationOperator(this, arg);
 }

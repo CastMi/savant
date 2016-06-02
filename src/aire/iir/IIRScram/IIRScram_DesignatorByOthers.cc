@@ -31,9 +31,3 @@
 
 #include "savant.hh"
 #include "IIRScram_DesignatorByOthers.hh"
-
-visitor_return_type *
-IIRScram_DesignatorByOthers::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_DesignatorByOthers(this, arg);
-}

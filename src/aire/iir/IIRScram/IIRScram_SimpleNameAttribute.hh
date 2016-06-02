@@ -34,13 +34,7 @@
 
 class IIRScram_TextLiteral;
 
-class IIRScram_SimpleNameAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_SimpleNameAttribute{
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
-protected:
-private:
+class IIRScram_SimpleNameAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_SimpleNameAttribute {
 };
+
 #endif

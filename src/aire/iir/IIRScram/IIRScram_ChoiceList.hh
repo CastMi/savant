@@ -37,9 +37,6 @@ class IIRScram_ChoiceList : public virtual IIRScram_List<IIR_Choice>, public vir
 public:
   IIRScram_ChoiceList() {}
   virtual ~IIRScram_ChoiceList();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 };
+
 #endif

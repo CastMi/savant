@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_VARIABLE_ASSIGNMENT_STATEMENT_HH
 #define IIRSCRAM_VARIABLE_ASSIGNMENT_STATEMENT_HH
 
@@ -34,17 +33,13 @@
 #include "IIRScram_SequentialStatement.hh"
 #include "IIRBase_VariableAssignmentStatement.hh"
 
-class IIRScram_VariableAssignmentStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_VariableAssignmentStatement{
+class IIRScram_VariableAssignmentStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_VariableAssignmentStatement {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   void _type_check();
   IIRScram *_clone();
   IIRScram *_get_expression();
 
   IIRScram *_get_target();
-protected:
-private:
 };
+
 #endif

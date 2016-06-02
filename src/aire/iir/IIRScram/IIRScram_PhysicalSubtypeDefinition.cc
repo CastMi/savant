@@ -59,14 +59,6 @@ IIRScram_PhysicalSubtypeDefinition::_clone( IIRScram *copy_into ){
   IIRScram_PhysicalTypeDefinition::_clone( copy_into );
 }
 
-
-
-visitor_return_type *
-IIRScram_PhysicalSubtypeDefinition::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_PhysicalSubtypeDefinition(this, arg);
-};
-
 void 
 IIRScram_PhysicalSubtypeDefinition::_set_resolution_function(IIRScram_FunctionDeclaration *function) {
   IIRBase_PhysicalSubtypeDefinition::set_resolution_function(function);

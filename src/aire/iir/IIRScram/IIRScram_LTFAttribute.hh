@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_LTF_ATTRIBUTE_HH
 #define IIRSCRAM_LTF_ATTRIBUTE_HH
 
@@ -56,8 +55,6 @@ public:
   // Helper functions
   IIRScram *_get_num();
   IIRScram *_get_den();
-protected:
-private:
-  
 };
+
 #endif

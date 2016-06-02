@@ -37,20 +37,14 @@ class IIRScram_DesignatorList;
 class IIRScram_List;
 class IIRScram_WaveformList;
 
-class IIRScram_SelectedWaveform : public virtual IIRScram_Tuple, public virtual IIRBase_SelectedWaveform{
+class IIRScram_SelectedWaveform : public virtual IIRScram_Tuple, public virtual IIRBase_SelectedWaveform {
 public:
   IIRScram_SelectedWaveform();
   ~IIRScram_SelectedWaveform();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   // Wrappers for IIRBase functions
   IIRScram_WaveformList *       _get_waveform();
   IIRScram *                    _get_choice();
-
-protected:
-private:
 };
+
 #endif

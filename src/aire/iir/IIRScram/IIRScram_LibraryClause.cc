@@ -77,12 +77,6 @@ IIRScram_LibraryClause::_type_check(){
   set_library_declaration( lib_decl );  
 }
 
-visitor_return_type *
-IIRScram_LibraryClause::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_LibraryClause(this, arg);
-};
-
 IIRScram_Identifier *
 IIRScram_LibraryClause::_get_logical_name() {
   return dynamic_cast<IIRScram_Identifier *>(get_logical_name());

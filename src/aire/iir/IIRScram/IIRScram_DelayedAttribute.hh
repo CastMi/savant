@@ -37,12 +37,9 @@ class IIRScram_TypeDefinition;
 class IIRScram_TextLiteral;
 class IIRScram_Declaration;
 
-class IIRScram_DelayedAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_DelayedAttribute{
+class IIRScram_DelayedAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_DelayedAttribute {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIR_Boolean is_signal(){ return TRUE; }
 
   IIR_Boolean has_suffix(){ return TRUE; }
@@ -59,6 +56,6 @@ public:
 
 protected:
   void _resolve_suffix_special();
-private:
 };
+
 #endif

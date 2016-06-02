@@ -30,12 +30,7 @@
 #include "IIRScram_List.hh"
 #include "IIRBase_IdentifierList.hh"
 
-class IIRScram_IdentifierList : public virtual IIRScram_List, public virtual IIRBase_IdentifierList{
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-protected:
-private:
+class IIRScram_IdentifierList : public virtual IIRScram_List, public virtual IIRBase_IdentifierList {
 };
+
 #endif

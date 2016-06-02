@@ -23,18 +23,14 @@
 #include "IIRScram_TextLiteral.hh"
 #include "IIRBase_StringLiteral.hh"
 
-class IIRScram_StringLiteral : public virtual IIRScram_TextLiteral, public virtual IIRBase_StringLiteral{
+class IIRScram_StringLiteral : public virtual IIRScram_TextLiteral, public virtual IIRBase_StringLiteral {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
 
   IIR_Boolean _is_string_literal(){ return TRUE; }
 
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0 );
   IIRScram *_clone();
-protected:
-private:
 };
+
 #endif

@@ -43,13 +43,10 @@ class IIRScram_SubprogramDeclaration;
 class IIRScram_TypeDefinition;
 class IIRScram_WaitStatement;
 
-class IIRScram_Elsif : public virtual IIRScram_Tuple, public virtual IIRBase_Elsif{
+class IIRScram_Elsif : public virtual IIRScram_Tuple, public virtual IIRBase_Elsif {
 public:
   IIRScram_Elsif();
   virtual ~IIRScram_Elsif();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
   IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition> *,
@@ -61,8 +58,6 @@ public:
   IIRScram_SequentialStatementList *    _get_then_sequence_of_statements();
   IIRScram *                            _get_condition();
   IIRScram_Elsif *                      _get_else_clause();
-
-protected:
-private:
 };
+
 #endif

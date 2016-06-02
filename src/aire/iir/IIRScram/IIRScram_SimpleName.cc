@@ -368,10 +368,3 @@ IIRScram_SimpleName::_convert_to_function_call( IIRScram_Declaration *my_decl ){
 
   return retval;
 }
-
-visitor_return_type *
-IIRScram_SimpleName::_accept_visitor( node_visitor *visitor, 
-				      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SimpleName(this, arg);
-}

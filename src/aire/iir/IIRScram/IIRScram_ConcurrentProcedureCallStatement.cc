@@ -126,13 +126,6 @@ IIRScram_ConcurrentProcedureCallStatement::_type_check(){
   ASSERT( _get_procedure_name()->is_resolved() == TRUE );  
 }
 
-
-visitor_return_type *
-IIRScram_ConcurrentProcedureCallStatement::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ConcurrentProcedureCallStatement(this, arg);
-};
-
 IIRScram *
 IIRScram_ConcurrentProcedureCallStatement::_get_procedure_name() {
   return dynamic_cast<IIRScram *>(get_procedure_name());

@@ -25,17 +25,3 @@
 //          Malolan Chetlur     mal@ece.uc.edu
 
 //---------------------------------------------------------------------------
-
-#include "IIRScram_AbsoluteOperator.hh"
-#include "resolution_func.hh"
-#include "error_func.hh"
-#include "set.hh"
-#include "node_visitor.hh"
-
-
-visitor_return_type *
-IIRScram_AbsoluteOperator::_accept_visitor( node_visitor *visitor,
-					    visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_AbsoluteOperator(this, arg);
-}

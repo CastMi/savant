@@ -185,11 +185,3 @@ IIRScram_DesignatorList::_type_check_as_instantiation_list( IIRScram *instantiat
     current_designator = dynamic_cast<IIRScram_Designator *>(successor( current_designator ));
   }
 }
-
-
-visitor_return_type *
-IIRScram_DesignatorList::_accept_visitor( node_visitor *visitor,
-					  visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_DesignatorList(this, arg);
-}

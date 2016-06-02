@@ -37,21 +37,15 @@
 class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
-class IIRScram_LastActiveAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_LastActiveAttribute{
+class IIRScram_LastActiveAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_LastActiveAttribute {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
   IIRScram_Declaration *_get_implicit_declaration( const string &_decl_name, 
 					      IIRScram_TypeDefinition *decl_type );
   IIR_Boolean _is_readable();
   virtual IIRScram *_clone();
 
   IIR_Boolean _is_lastactive_attribute() { return TRUE; }
-
-protected:
-private:
 };
+
 #endif

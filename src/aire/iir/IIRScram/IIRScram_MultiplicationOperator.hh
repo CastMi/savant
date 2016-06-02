@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_MULTIPLICATION_OPERATOR_HH
 #define IIRSCRAM_MULTIPLICATION_OPERATOR_HH
 
@@ -31,14 +30,9 @@
 #include "IIRBase_MultiplicationOperator.hh"
 
 class IIRScram_MultiplicationOperator : public virtual IIRScram_MultiplicationOperators,
-					public virtual IIRBase_MultiplicationOperator{
+					public virtual IIRBase_MultiplicationOperator {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIRScram *_clone();
-
-protected:
-private:
 };
+
 #endif

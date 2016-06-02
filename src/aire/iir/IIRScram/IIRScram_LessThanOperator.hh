@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_LESS_THAN_OPERATOR_HH
 #define IIRSCRAM_LESS_THAN_OPERATOR_HH
 
@@ -31,13 +30,7 @@
 #include "IIRBase_LessThanOperator.hh"
 
 class IIRScram_LessThanOperator : public virtual IIRScram_RelationalOperators,
-				  public virtual IIRBase_LessThanOperator{
-
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-protected:
-private:
+				  public virtual IIRBase_LessThanOperator {
 };
+
 #endif

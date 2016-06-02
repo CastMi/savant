@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_CASE_STATEMENT_HH
 #define IIRSCRAM_CASE_STATEMENT_HH
 
@@ -46,15 +45,11 @@
 template <class type> class set;
 class IIRScram_List;
 
-class IIRScram_CaseStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_CaseStatement{
+class IIRScram_CaseStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_CaseStatement {
 public:
   IIRScram_CaseStatement();
   virtual ~IIRScram_CaseStatement();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
   IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition> *, 
 					     IIRScram_SubprogramDeclaration * );
   
@@ -67,7 +62,6 @@ public:
   void _set_case_statement_expression( IIRScram * );
   IIRScram *_clone();
 
-protected:    
 private:
   // Handle error reporting in a function for both expressions and
   // alternatives.
@@ -75,4 +69,5 @@ private:
                                     IIRScram *node_in_consideration,
                                     char *error_part );
 };
+
 #endif

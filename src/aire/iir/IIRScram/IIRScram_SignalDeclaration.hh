@@ -40,15 +40,11 @@ class IIRScram_SignalDeclaration;
 class IIRScram_TypeDefinition;
 
 class IIRScram_SignalDeclaration : public virtual IIRScram_ObjectDeclaration,
-				   public virtual IIRBase_SignalDeclaration{
+				   public virtual IIRBase_SignalDeclaration {
 public:
   IIRScram_SignalDeclaration();
   ~IIRScram_SignalDeclaration();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
   //This function publishes the implicit signal attributes
   //that are in scope for "this" declaration
   //  void _publish_cc_implicit_signal_attributes( published_file &_cc_out );
@@ -63,8 +59,8 @@ public:
      generated.  */
   void _clear_clone(){ _my_clone = 0; }
   
-protected:
 private:
   IIRScram_SignalDeclaration *_my_clone;
 };
+
 #endif

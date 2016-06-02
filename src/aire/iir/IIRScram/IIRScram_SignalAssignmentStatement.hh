@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_SIGNAL_ASSIGNMENT_STATEMENT_HH
 #define IIRSCRAM_SIGNAL_ASSIGNMENT_STATEMENT_HH
 
@@ -36,14 +35,11 @@
 class IIRScram_DesignatorList;
 class IIRScram_List;
 
-class IIRScram_SignalAssignmentStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_SignalAssignmentStatement{
+class IIRScram_SignalAssignmentStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_SignalAssignmentStatement {
 
 public:
   IIRScram_SignalAssignmentStatement();
   virtual ~IIRScram_SignalAssignmentStatement();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   IIR_Boolean _is_sequential_signal_assignment(){ return TRUE; }
 
@@ -57,8 +53,6 @@ public:
 
   // Wrappers for IIRBase functions
   IIRScram_WaveformList *       _get_waveform();
-
-protected:    
-private:
 };
+
 #endif

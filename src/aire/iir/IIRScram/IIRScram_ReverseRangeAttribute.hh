@@ -44,10 +44,6 @@ public:
     _my_rval = NULL;
   }    
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   IIRScram_TypeDefinition *_get_subtype();
   IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
 
@@ -66,4 +62,5 @@ private:
   IIRScram_ScalarTypeDefinition *_my_rval;
 
 };
+
 #endif

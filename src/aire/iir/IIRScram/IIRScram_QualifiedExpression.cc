@@ -65,12 +65,6 @@ IIRScram_QualifiedExpression::_rval_to_decl( IIRScram_TypeDefinition *my_rval ){
   return this;
 }
 
-visitor_return_type *
-IIRScram_QualifiedExpression::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_QualifiedExpression(this, arg);
-}
-
 IIRScram*
 IIRScram_QualifiedExpression::_get_expression() {
   return dynamic_cast<IIRScram *>(get_expression());

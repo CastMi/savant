@@ -339,12 +339,3 @@ IIRScram_AssociationList *
 IIRScram_Aggregate::_get_element_association_list() {
   return dynamic_cast<IIRScram_AssociationList *>(get_element_association_list());
 }
-
-visitor_return_type *
-IIRScram_Aggregate::_accept_visitor( node_visitor *visitor,
-				     visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
- 
-  return visitor->visit_IIR_Aggregate(this, arg);
-}
-

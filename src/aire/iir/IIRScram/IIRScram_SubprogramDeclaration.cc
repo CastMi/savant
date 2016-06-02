@@ -218,13 +218,6 @@ IIRScram_SubprogramDeclaration::_add_declaration(){
   _get_symbol_table()->add_subprogram_declaration( dynamic_cast<IIRScram_SubprogramDeclaration *>(this) );
 }
 
-visitor_return_type *
-IIRScram_SubprogramDeclaration::_accept_visitor( node_visitor *visitor, 
-						 visitor_argument_type *arg){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SubprogramDeclaration(this, arg);
-}
-
 IIRScram_AttributeSpecificationList* 
 IIRScram_SubprogramDeclaration::_get_attribute_specification_list() {
   return dynamic_cast<IIRScram_AttributeSpecificationList *>(get_attributes());

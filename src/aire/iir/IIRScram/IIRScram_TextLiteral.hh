@@ -38,7 +38,7 @@ class IIRScram_Declaration;
 class IIRScram_Name;
 class IIRScram_TypeDefinition;
 
-class IIRScram_TextLiteral : public virtual IIRScram_Literal, public virtual IIRBase_TextLiteral{
+class IIRScram_TextLiteral : public virtual IIRScram_Literal, public virtual IIRBase_TextLiteral {
 
 public:
   IIRScram_TextLiteral();
@@ -56,11 +56,6 @@ public:
 
   // Implements "get_rval_set" for String and BitString Literals
   savant::set<IIRScram_TypeDefinition> *_get_rval_set_for_string();
-  
-
-protected:
-    
-private:
 };
 
 #endif

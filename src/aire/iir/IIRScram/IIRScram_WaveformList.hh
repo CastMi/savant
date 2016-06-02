@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_WAVEFORM_LIST_HH
 #define IIRSCRAM_WAVEFORM_LIST_HH
 
@@ -45,16 +44,10 @@
 #include "IIRScram_List.hh"
 #include "IIRBase_WaveformList.hh"
 
-class IIRScram_WaveformList : public virtual IIRScram_List, public virtual IIRBase_WaveformList{
+class IIRScram_WaveformList : public virtual IIRScram_List, public virtual IIRBase_WaveformList {
 public:
   IIRScram_WaveformList() {}
   virtual ~IIRScram_WaveformList() {}
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
-protected:    
-private:
 };
+
 #endif

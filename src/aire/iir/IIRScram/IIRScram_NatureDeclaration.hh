@@ -52,9 +52,6 @@ public:
   // Wrappers for IIRBase functions
   IIRScram_AttributeSpecificationList * _get_attributes();
   IIRScram_NatureDefinition *           _get_nature();
-
-protected:
-private:
 };
 
 #endif

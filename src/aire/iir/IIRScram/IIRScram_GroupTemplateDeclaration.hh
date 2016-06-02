@@ -36,19 +36,13 @@
 class IIRScram_EntityClassEntryList;
 class IIRScram_List;
 
-class IIRScram_GroupTemplateDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_GroupTemplateDeclaration{
+class IIRScram_GroupTemplateDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_GroupTemplateDeclaration {
 public:
   IIRScram_GroupTemplateDeclaration();
   ~IIRScram_GroupTemplateDeclaration();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   
   // Wrappers for IIRBase functions
   IIRScram_EntityClassEntryList *       _get_entity_class_entry_list();
-
-protected:
-private:
 };
+
 #endif

@@ -45,14 +45,6 @@ IIRScram_FloatingSubtypeDefinition::_type_check(){
   IIRScram_FloatingTypeDefinition::_type_check();
 }
 
-
-visitor_return_type *
-IIRScram_FloatingSubtypeDefinition::_accept_visitor( node_visitor *visitor, 
-						     visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_FloatingSubtypeDefinition(this, arg);
-}
-
 IIRScram_FloatingSubtypeDefinition * 
 IIRScram_FloatingSubtypeDefinition::get(
 				       IIRScram_FloatingTypeDefinition* base_type, IIRScram* left_limit,

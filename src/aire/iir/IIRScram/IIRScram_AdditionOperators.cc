@@ -32,10 +32,4 @@
 #include "resolution_func.hh"
 #include "error_func.hh"
 
-
-
 IIRScram_AdditionOperators::~IIRScram_AdditionOperators() {}
-
-
-
-

@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_COMPONENT_DECLARATION_HH
 #define IIRSCRAM_COMPONENT_DECLARATION_HH
 
@@ -29,14 +28,12 @@ class IIRScram_Name;
 class IIRScram_PortList;
 class IIRScram_TypeDefinition;
 
-class IIRScram_ComponentDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_ComponentDeclaration{
+class IIRScram_ComponentDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_ComponentDeclaration {
 
 public:
   IIRScram_ComponentDeclaration();
   virtual ~IIRScram_ComponentDeclaration();
     
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
   virtual IIRScram_PortList *_get_port_list();
   IIRScram_GenericList *_get_generic_list();
 
@@ -53,6 +50,6 @@ public:
   IIRScram_GenericList			*_get_local_generic_clause();
   IIRScram_PortList			*_get_local_port_clause();
   IIRScram_EntityDeclaration		*_get_entity();
-  
 };
+
 #endif

@@ -38,15 +38,11 @@ class IIRScram_Declaration;
 class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
-class IIRScram_LeftAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_LeftAttribute{
+class IIRScram_LeftAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_LeftAttribute {
 
 public:
   IIRScram_LeftAttribute() {}
   virtual ~IIRScram_LeftAttribute();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIRScram_TypeDefinition *_get_subtype();
 
@@ -59,6 +55,6 @@ public:
 
 protected:
   void _resolve_suffix_special();    
-private:
 };
+
 #endif

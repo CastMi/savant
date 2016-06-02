@@ -30,15 +30,11 @@
 #include "IIRScram_ObjectDeclaration.hh"
 #include "IIRBase_FileDeclaration.hh"
 
-class IIRScram_FileDeclaration : public virtual IIRScram_ObjectDeclaration, public virtual IIRBase_FileDeclaration{
+class IIRScram_FileDeclaration : public virtual IIRScram_ObjectDeclaration, public virtual IIRBase_FileDeclaration {
 
 public:
   IIRScram_FileDeclaration() { _my_clone = NULL; }
   virtual ~IIRScram_FileDeclaration();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIRScram *_clone();
 
@@ -48,10 +44,8 @@ public:
 
   IIRScram * _get_file_logical_name();
   IIRScram *_get_file_open_expression();
-
-protected:
 private:
   IIRScram_FileDeclaration *_my_clone;
 };
-#endif
 
+#endif

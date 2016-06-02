@@ -36,15 +36,11 @@
 class IIRScram_DeclarationList;
 class IIRScram_TypeDefinition;
 
-class IIRScram_AttributeSpecification : public virtual IIRScram_Declaration, public virtual IIRBase_AttributeSpecification{
+class IIRScram_AttributeSpecification : public virtual IIRScram_Declaration, public virtual IIRBase_AttributeSpecification {
 
 public:
   IIRScram_AttributeSpecification();
   virtual ~IIRScram_AttributeSpecification();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   void _type_check( IIRScram_DeclarationList *declarative_region );
 
@@ -68,4 +64,5 @@ public:
 private:
   constraint_functor            *_my_functor;
 };
+
 #endif

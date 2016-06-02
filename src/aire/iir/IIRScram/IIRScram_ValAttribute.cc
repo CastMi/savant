@@ -89,8 +89,3 @@ IIRScram_ValAttribute::_resolve_suffix_special(){
     }
   }  
 }
-
-visitor_return_type *IIRScram_ValAttribute::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ValAttribute(this, arg);
-};

@@ -152,12 +152,6 @@ IIRScram_FunctionDeclaration::_clone() {
   return this;
 }
 
-visitor_return_type *
-IIRScram_FunctionDeclaration::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_FunctionDeclaration(this, arg);
-};
-
 IIRScram_DeclarationList *
 IIRScram_FunctionDeclaration::_get_subprogram_declarations() {
   return dynamic_cast<IIRScram_DeclarationList *>(get_subprogram_declarations());

@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_ADDITION_OPERATOR_HH
 #define IIRSCRAM_ADDITION_OPERATOR_HH
 
@@ -29,19 +28,13 @@
 #include "IIRScram_DyadicOperator.hh"
 #include "IIRBase_AdditionOperator.hh"
 
-class IIRScram_AdditionOperator : public virtual IIRScram_DyadicOperator, public virtual IIRBase_AdditionOperator{
+class IIRScram_AdditionOperator : public virtual IIRScram_DyadicOperator, public virtual IIRBase_AdditionOperator {
 
 public:
   IIRScram_AdditionOperator() {}
   virtual ~IIRScram_AdditionOperator() {}
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
- 
-  
   IIRScram_Statement *_clone();
-
-protected:    
-private:
 };
+
 #endif

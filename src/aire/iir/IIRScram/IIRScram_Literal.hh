@@ -41,15 +41,10 @@ class IIRScram_Literal : public virtual IIRBase_Literal, public virtual IIRScram
 public:
   IIRScram_Literal(){ }
     
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return FALSE; }
   
   IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition * );
-
-protected:
-private:
 };
+
 #endif

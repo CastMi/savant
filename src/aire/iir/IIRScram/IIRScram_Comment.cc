@@ -27,13 +27,6 @@
 #include "savant.hh"
 #include "IIRScram_Comment.hh"
 
-visitor_return_type *
-IIRScram_Comment::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_Comment(this, arg);
-}
-
-
 IIRScram_Comment *
 IIRScram_Comment::get( IIR_Char *text, IIR_Int32 text_length ){
   ASSERT( text_length >= 0 );

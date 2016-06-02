@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_FUNCTION_CALL_HH
 #define IIRSCRAM_FUNCTION_CALL_HH
 
@@ -44,10 +43,6 @@ public:
   IIRScram_FunctionCall();
   virtual ~IIRScram_FunctionCall();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   //void _publish_cc_kernel_type( ostream &os );
 
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
@@ -73,9 +68,8 @@ public:
 
   // Helper functions
   IIRScram_AssociationList *_get_parameter_association_list();
-protected:    
-
 private:
   IIR_Boolean has_been_type_checked;
 };
+
 #endif

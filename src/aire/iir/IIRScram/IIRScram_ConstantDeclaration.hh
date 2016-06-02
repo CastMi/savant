@@ -1,5 +1,3 @@
-
-
 #ifndef IIRSCRAM_CONSTANT_DECLARATION_HH
 #define IIRSCRAM_CONSTANT_DECLARATION_HH
 
@@ -35,16 +33,12 @@
 #include "IIRBase_ConstantDeclaration.hh"
 
 class IIRScram_ConstantDeclaration : public virtual IIRScram_ObjectDeclaration,
-				     public virtual IIRBase_ConstantDeclaration{
+				     public virtual IIRBase_ConstantDeclaration {
 public:
   IIRScram_ConstantDeclaration() {};
   virtual ~IIRScram_ConstantDeclaration();
 
   IIR_Boolean is_locally_static_primary();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return FALSE; }
@@ -52,12 +46,6 @@ public:
   IIRScram *_clone();
 
   IIRScram* _get_value();
-
-protected:
-
-private:
 };
+
 #endif
-
-
-

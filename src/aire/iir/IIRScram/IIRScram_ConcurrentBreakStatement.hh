@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_CONCURRENT_BREAK_STATEMENT_HH
 #define IIRSCRAM_CONCURRENT_BREAK_STATEMENT_HH
 
@@ -54,8 +53,6 @@ public:
   IIRScram_DesignatorList       *_get_sensitivity_list();
   IIRScram                      *_get_condition();
 
-protected:
-private:
-  
 };
+
 #endif

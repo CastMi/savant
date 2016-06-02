@@ -34,21 +34,16 @@
 #include "IIRBase_SensitizedProcessStatement.hh"
 
 class IIRScram_SensitizedProcessStatement : public virtual IIRScram_ProcessStatement,
-					    public virtual IIRBase_SensitizedProcessStatement{
+					    public virtual IIRBase_SensitizedProcessStatement {
 public:
   IIRScram_SensitizedProcessStatement();
   ~IIRScram_SensitizedProcessStatement();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   void _type_check();
   IIRScram *_resolve_signal_name( IIRScram * );
 
   // Wrappers for IIRBase functions
   IIRScram_DesignatorList *     _get_sensitivity_list();
-
-protected:
-private:
 };
+
 #endif

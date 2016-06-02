@@ -43,6 +43,6 @@ public:
 
   IIRScram_Declaration * _get_declaration();
   IIRScram_TypeDefinition *_get_final_subtype();
-protected:
 };
+
 #endif

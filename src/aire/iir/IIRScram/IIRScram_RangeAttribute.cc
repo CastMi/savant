@@ -45,13 +45,6 @@ IIRScram_RangeAttribute::_resolve_suffix_special(){
   _resolve_suffix_local_static_int();
 }
 
-visitor_return_type *
-IIRScram_RangeAttribute::_accept_visitor( node_visitor *visitor, 
-					  visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_RangeAttribute(this, arg);
-}
-
 IIRScram* 
 IIRScram_RangeAttribute::_get_suffix() { 
   return dynamic_cast<IIRScram *>(IIRBase_RangeAttribute::get_suffix()); 

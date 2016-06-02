@@ -81,13 +81,6 @@ IIRScram_PackageDeclaration::_type_check( ){
   _get_package_declarative_part()->_type_check_disconnection_specifications(  );
 }
 
-visitor_return_type *
-IIRScram_PackageDeclaration::_accept_visitor( node_visitor *visitor,
-					      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_PackageDeclaration(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_DeclarationList *
 IIRScram_PackageDeclaration::_get_package_declarative_part() {

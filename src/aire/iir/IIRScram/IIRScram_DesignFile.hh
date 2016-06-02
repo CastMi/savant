@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_DESIGN_FILE_HH
 #define IIRSCRAM_DESIGN_FILE_HH
 
@@ -47,14 +46,10 @@ class StandardPackage;
 class library_manager;
 
 /** The extension base of the node Design File node. */
-class IIRScram_DesignFile : public virtual IIRScram, public virtual IIRBase_DesignFile{
+class IIRScram_DesignFile : public virtual IIRScram, public virtual IIRBase_DesignFile {
 public:
   IIRScram_DesignFile();
   virtual ~IIRScram_DesignFile();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   /** Returns a handle to the work library that we were created with. */ 
   IIRScram_LibraryDeclaration *_get_work_library();
@@ -68,8 +63,6 @@ public:
   IIRScram *                    _get_name();
   IIRScram_LibraryUnitList *    _get_library_units();
   IIRScram_CommentList *        _get_comments();
-
-protected:   
-private:
 };
+
 #endif

@@ -29,9 +29,3 @@
 #include "savant.hh"
 #include "IIRScram_SequentialStatementList.hh"
 
-visitor_return_type *
-IIRScram_SequentialStatementList::_accept_visitor( node_visitor *visitor,
-						   visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SequentialStatementList(this, arg);
-}

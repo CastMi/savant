@@ -136,13 +136,6 @@ IIRScram_FunctionCall::_find_formal_declaration(){
   return dynamic_cast<IIRScram_AssociationElement *>(get_parameter_association_list()->first())->_find_formal_declaration();
 }
 
-visitor_return_type *
-IIRScram_FunctionCall::_accept_visitor( node_visitor *visitor,
-					visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_FunctionCall(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_SubprogramDeclaration*
 IIRScram_FunctionCall::_get_implementation() {

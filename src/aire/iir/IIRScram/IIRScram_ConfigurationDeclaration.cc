@@ -45,12 +45,6 @@ IIRScram_ConfigurationDeclaration::_type_check(){
   _get_configuration_declarative_part()->_type_check_attribute_specifications( NULL );
 }
 
-visitor_return_type *
-IIRScram_ConfigurationDeclaration::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ConfigurationDeclaration(this, arg);
-}
-
 IIRScram_BlockConfiguration *
 IIRScram_ConfigurationDeclaration::_get_block_configuration() {
   return dynamic_cast<IIRScram_BlockConfiguration *>(get_block_configuration());

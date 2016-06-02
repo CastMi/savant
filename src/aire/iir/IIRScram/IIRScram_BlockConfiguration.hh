@@ -43,9 +43,6 @@ public:
   IIRScram_BlockConfiguration();
   virtual ~IIRScram_BlockConfiguration();
     
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   void _type_check_configuration_item( IIRScram_List<IIR_Statement> *statement_list, IIRScram *enclosing_region );
 
   IIRScram                              *_get_block_specification();

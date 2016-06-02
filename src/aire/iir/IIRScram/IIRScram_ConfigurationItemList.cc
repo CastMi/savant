@@ -71,8 +71,3 @@ IIRScram_ConfigurationItemList::append( IIRScram_ConfigurationItem *to_append ){
   ASSERT( to_append->_is_iir_configuration_item() == TRUE );
   IIRScram_List::append( to_append );
 }
-
-visitor_return_type *IIRScram_ConfigurationItemList::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ConfigurationItemList(this, arg);
-};

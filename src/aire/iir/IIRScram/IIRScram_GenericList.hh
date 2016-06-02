@@ -33,9 +33,6 @@
 #include "IIRBase_GenericList.hh"
 
 class IIRScram_GenericList : public virtual IIRScram_InterfaceList, public virtual IIRBase_GenericList {
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 };
+
 #endif

@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_SEQUENTIAL_STATEMENT_HH
 #define IIRSCRAM_SEQUENTIAL_STATEMENT_HH
 
@@ -45,7 +44,7 @@ class IIRScram_SubprogramDeclaration;
 class IIRScram_TypeDefinition;
 class IIRScram_WaitStatement;
 
-class IIRScram_SequentialStatement : public virtual IIRScram_Statement, public virtual IIRBase_SequentialStatement{
+class IIRScram_SequentialStatement : public virtual IIRScram_Statement, public virtual IIRBase_SequentialStatement {
 public:
   IIRScram_SequentialStatement() {};
 
@@ -77,7 +76,6 @@ public:
 
 protected:
   virtual ~IIRScram_SequentialStatement() = 0;
-    
-private:
 };
+
 #endif

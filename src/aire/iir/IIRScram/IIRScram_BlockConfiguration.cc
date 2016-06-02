@@ -240,12 +240,6 @@ IIRScram_BlockConfiguration::_resolve_specification_inside_block_configuration( 
   }
 }
 
-visitor_return_type *
-IIRScram_BlockConfiguration::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_BlockConfiguration(this, arg);
-};
-
 IIRScram*
 IIRScram_BlockConfiguration::_get_block_specification() {
   return dynamic_cast<IIRScram *>(get_block_specification());

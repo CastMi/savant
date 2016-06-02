@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_GREATER_THAN_OPERATOR_HH
 #define IIRSCRAM_GREATER_THAN_OPERATOR_HH
 
@@ -31,13 +30,9 @@
 #include "IIRBase_GreaterThanOperator.hh"
 
 class IIRScram_GreaterThanOperator : public virtual IIRScram_RelationalOperators,
-				     public virtual IIRBase_GreaterThanOperator{
+				     public virtual IIRBase_GreaterThanOperator {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
   IIRScram *_clone();
-
-protected:
-private:
 };
+
 #endif

@@ -41,15 +41,11 @@ class IIRScram_AttributeSpecificationList;
 /**
    The extension base for type declarations.
 */
-class IIRScram_TypeDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_TypeDeclaration{
+class IIRScram_TypeDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_TypeDeclaration {
 
 public:
   IIRScram_TypeDeclaration();
   virtual ~IIRScram_TypeDeclaration();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIR_Boolean _attach_attribute( IIRScram_AttributeSpecification * );
 
@@ -82,8 +78,8 @@ public:
 
 
   IIRScram_TypeDefinition *_get_type_definition();
-protected:    
 private:
   IIRScram_TypeDefinition *                     _fully_defined_type;
 };
+
 #endif

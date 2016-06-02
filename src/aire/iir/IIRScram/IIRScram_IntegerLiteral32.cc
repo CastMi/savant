@@ -36,11 +36,6 @@ IIRScram_IntegerLiteral32::_is_integer_literal() {
   return true;
 }
 
-visitor_return_type *IIRScram_IntegerLiteral32::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_IntegerLiteral32(this, arg);
-};
-
 IIRScram_IntegerLiteral32 *
 IIRScram_IntegerLiteral32::get( IIR_Int32 v ){
   IIRScram_IntegerLiteral32 *retval = new IIRScram_IntegerLiteral32();

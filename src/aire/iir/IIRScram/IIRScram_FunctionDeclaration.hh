@@ -36,14 +36,10 @@
 class IIRScram_Name;
 class IIRScram_TypeDefinition;
 
-class IIRScram_FunctionDeclaration : public virtual IIRScram_SubprogramDeclaration, public virtual IIRBase_FunctionDeclaration{
+class IIRScram_FunctionDeclaration : public virtual IIRScram_SubprogramDeclaration, public virtual IIRBase_FunctionDeclaration {
 public:
   IIRScram_FunctionDeclaration() {}
   virtual ~IIRScram_FunctionDeclaration();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   /** We can have array valued functions. */
   IIRScram_TypeDefinition *_get_type_of_element( int );
@@ -66,9 +62,6 @@ public:
 
   IIRScram_DeclarationList *    _get_subprogram_declarations();
   IIRScram_TypeDefinition*      _get_return_type();
-
-protected:    
-private:
 };
-#endif
 
+#endif

@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_ACROSS_ATTRIBUTE_HH
 #define IIRSCRAM_ACROSS_ATTRIBUTE_HH
 
@@ -37,9 +36,6 @@ public:
   /** Returns the "across" type of the nature of the
       Nature.*/
   IIRScram_TypeDefinition* _get_subtype();
-  
-protected:
-
-private:
 };
+
 #endif

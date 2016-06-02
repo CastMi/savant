@@ -68,11 +68,3 @@ IIRScram*
 IIRScram_StringLiteral::_clone() {
   return this;
 }
-
-visitor_return_type *
-IIRScram_StringLiteral::_accept_visitor( node_visitor *visitor,
-					 visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_StringLiteral(this, arg);
-}
-

@@ -40,9 +40,6 @@ public:
   IIRScram_ArchitectureDeclaration();
   ~IIRScram_ArchitectureDeclaration();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIRScram_EntityDeclaration* _get_entity();
   IIRScram_DeclarationList* _get_architecture_declarative_part();
   IIRScram_ArchitectureStatementList* _get_architecture_statement_part();
@@ -72,6 +69,6 @@ public:
   IIRScram_DeclarationList *_get_configuration_specifications();
 
   IIRScram_DeclarationList* _get_declaration_list();
-
 };
+
 #endif

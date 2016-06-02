@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_THROUGH_ATTRIBUTE_HH
 #define IIRSCRAM_THROUGH_ATTRIBUTE_HH
 
@@ -42,10 +41,6 @@ public:
   /** Returns the "through" type of the nature of the 
       Nature.*/
   IIRScram_TypeDefinition* _get_subtype();
-
-protected:
-
-private:
 };
-#endif
 
+#endif

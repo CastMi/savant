@@ -31,22 +31,18 @@
 #include "IIRScram_SequentialStatement.hh"
 #include "IIRBase_AssertionStatement.hh"
 
-class IIRScram_AssertionStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_AssertionStatement{
+class IIRScram_AssertionStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_AssertionStatement {
 
 public:
   IIRScram_AssertionStatement() {};
   virtual ~IIRScram_AssertionStatement();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
   void _type_check();
   IIRScram_Statement *_clone();
 
   IIRScram_Statement *_get_assertion_condition();  
   IIRScram_Statement *_get_report_expression();  
   IIRScram_Statement *_get_severity_expression();
-
 };
+
 #endif

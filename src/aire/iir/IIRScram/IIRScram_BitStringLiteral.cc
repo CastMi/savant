@@ -50,14 +50,6 @@ IIRScram_BitStringLiteral::_clone() {
   return this;
 }
 
-visitor_return_type *
-IIRScram_BitStringLiteral::_accept_visitor( node_visitor *visitor,
-					    visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_BitStringLiteral(this, arg);
-}
-
-
 IIRScram_BitStringLiteral *
 IIRScram_BitStringLiteral::get( const IIR_Char *new_text, IIR_Int32 new_length){
   ASSERT( new_text != NULL);

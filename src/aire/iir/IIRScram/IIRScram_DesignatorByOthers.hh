@@ -34,13 +34,7 @@
 #include "IIRScram_Designator.hh"
 #include "IIRBase_DesignatorByOthers.hh"
 
-class IIRScram_DesignatorByOthers : public virtual IIRScram_Designator, public virtual IIRBase_DesignatorByOthers{
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
-protected:
-private:
+class IIRScram_DesignatorByOthers : public virtual IIRScram_Designator, public virtual IIRBase_DesignatorByOthers {
 };
+
 #endif

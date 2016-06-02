@@ -52,8 +52,6 @@ public:
   IIRScram_Statement* _get_actual();
 
   IIRScram_Declaration *_find_formal_declaration();
-
-protected:    
-private:
 };
+
 #endif

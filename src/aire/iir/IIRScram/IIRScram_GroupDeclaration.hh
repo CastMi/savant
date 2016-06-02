@@ -34,30 +34,15 @@
 
 class IIRScram_List;
 
-class IIRScram_GroupDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_GroupDeclaration{
+class IIRScram_GroupDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_GroupDeclaration {
 public:
   IIRScram_GroupDeclaration();
   ~IIRScram_GroupDeclaration();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIRScram_AttributeSpecificationList* _get_attribute_specification_list();
 
   // Wrappers for IIRBase functions
   IIRScram_DesignatorList *             _get_group_constituent_list();
-
-protected:
-private:
 };
+
 #endif
-
-
-
-
-
-
-
-
-

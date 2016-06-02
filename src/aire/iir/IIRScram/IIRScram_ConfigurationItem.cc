@@ -36,10 +36,3 @@ void
 IIRScram_ConfigurationItem::_type_check_configuration_item( IIRScram_List *, IIRScram * ) {
   _report_undefined_scram_fn("_type_check_configuration_item( IIRScram_List *, IIRScram * )");
 }
-
-
-visitor_return_type *IIRScram_ConfigurationItem::_accept_visitor( node_visitor *visitor,
-								  visitor_argument_type *arg){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ConfigurationItem(this, arg);
-}

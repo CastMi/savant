@@ -50,10 +50,6 @@ public:
   IIRScram                              *_get_condition();
   IIRScram_ArchitectureStatementList    *_get_then_sequence_of_statements();
   IIRScram_SimultaneousElsif            *_get_else_clause();
-
-protected:
-private:
-
 };
-#endif
 
+#endif

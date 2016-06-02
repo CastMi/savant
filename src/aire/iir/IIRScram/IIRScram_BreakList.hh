@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_BREAK_LIST_HH
 #define IIRSCRAM_BREAK_LIST_HH
 
@@ -37,9 +36,6 @@ public:
   virtual ~IIRScram_BreakList() {};
 
   /** @name Method for publishing VHDL code. */
-
-protected:
-private:
-
 };
+
 #endif

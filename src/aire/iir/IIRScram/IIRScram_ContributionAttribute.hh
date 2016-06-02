@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_CONTRIBUTION_ATTRIBUTE_HH
 #define IIRSCRAM_CONTRIBUTION_ATTRIBUTE_HH
 
@@ -51,10 +50,6 @@ public:
       implicit quantity is of the through type of the nature of terminal
       T. */
   IIRScram_TypeDefinition *_get_subtype();
-  
-protected:
-private:
-  
 };
-#endif
 
+#endif

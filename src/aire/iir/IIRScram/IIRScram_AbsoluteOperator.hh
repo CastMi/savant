@@ -36,15 +36,7 @@ class published_file;
 class node_visitor;
 
 class IIRScram_AbsoluteOperator : public virtual IIRScram_MonadicOperator,
-				  public virtual IIRBase_AbsoluteOperator{
-
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
-
-protected:
-private:
+				  public virtual IIRBase_AbsoluteOperator {
 };
+
 #endif

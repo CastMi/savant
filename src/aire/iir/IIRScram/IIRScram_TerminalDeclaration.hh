@@ -38,8 +38,6 @@ public:
   IIR_Int32 terminal_id;
   IIR_Boolean _is_terminal(){ return TRUE; }
   void _type_check();
-
-protected:
-private:
 };
+
 #endif

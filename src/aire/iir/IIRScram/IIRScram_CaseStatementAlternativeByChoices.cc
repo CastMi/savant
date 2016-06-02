@@ -98,12 +98,6 @@ IIRScram_CaseStatementAlternativeByChoices::_clone() {
   return clone;
 }
 
-visitor_return_type *
-IIRScram_CaseStatementAlternativeByChoices::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_CaseStatementAlternativeByChoices(this, arg);
-};
-
 IIRScram_ChoiceList *
 IIRScram_CaseStatementAlternativeByChoices::_get_choices() {
   return dynamic_cast<IIRScram_ChoiceList *>(get_choices());

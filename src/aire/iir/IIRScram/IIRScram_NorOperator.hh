@@ -33,13 +33,9 @@
 #include "IIRBase_NorOperator.hh"
 
 class IIRScram_NorOperator : public virtual IIRScram_LogicalOperators,
-			     public virtual IIRBase_NorOperator{
+			     public virtual IIRBase_NorOperator {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-  
   IIRScram *_clone();
-
-private:
 };
+
 #endif

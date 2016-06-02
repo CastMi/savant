@@ -1,4 +1,3 @@
-	
 #ifndef IIRSCRAM_ZTF_ATTRIBUTE_HH
 #define IIRSCRAM_ZTF_ATTRIBUTE_HH
 
@@ -54,11 +53,6 @@ public:
   IIRScram      *_get_den();
   IIRScram      *_get_t();
   IIRScram      *_get_initial_delay();
-
-protected:
-
-private:
-
 };
-#endif
 
+#endif

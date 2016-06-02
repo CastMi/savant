@@ -38,15 +38,11 @@ class IIRScram_Declaration;
 class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
-class IIRScram_EventAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_EventAttribute{
+class IIRScram_EventAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_EventAttribute {
 
 public:
   IIRScram_EventAttribute() {}
   virtual ~IIRScram_EventAttribute();    
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIR_Boolean _is_readable();
 
@@ -64,7 +60,6 @@ private:
 					       IIRScram::SignalAttribute type );
   IIR_VariableDeclaration *_build_implicit_variable( const string &declarator,
 						     IIR_TypeDefinition *subtype );
-
-
 };
+
 #endif

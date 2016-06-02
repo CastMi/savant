@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_EXPONENTIATION_OPERATOR_HH
 #define IIRSCRAM_EXPONENTIATION_OPERATOR_HH
 
@@ -31,19 +30,13 @@
 #include "IIRBase_ExponentiationOperator.hh"
 
 class IIRScram_ExponentiationOperator : public virtual IIRScram_DyadicOperator,
-					public virtual IIRBase_ExponentiationOperator{
+					public virtual IIRBase_ExponentiationOperator {
 
 public:
   IIRScram_ExponentiationOperator() {}
   virtual ~IIRScram_ExponentiationOperator();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIRScram *_clone();
-
-protected:
-    
-private:
 };
+
 #endif

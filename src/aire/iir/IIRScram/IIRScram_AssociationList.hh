@@ -52,9 +52,6 @@ class IIRScram_AssociationList : public virtual IIRScram_List<IIR_AssociationEle
 public:
   IIRScram_AssociationList() {}
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   void _replace( IIRScram_AssociationElement *to_replace, IIRScram_AssociationElement *replace_with );
 
   void _resolve_and_order( IIRScram_InterfaceList *formal_list,
@@ -117,4 +114,5 @@ private:
   IIRScram_Name *_get_formal_designator_from_indexed_name( IIRScram_IndexedName * );
   IIRScram_Statement *_get_actual_designator_from_indexed_name( IIRScram_IndexedName * );
 };
+
 #endif

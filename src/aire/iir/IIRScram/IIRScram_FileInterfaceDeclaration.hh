@@ -34,16 +34,10 @@
 
 class IIRScram_List;
 
-class IIRScram_FileInterfaceDeclaration : public virtual IIRScram_InterfaceDeclaration, public virtual IIRBase_FileInterfaceDeclaration{
+class IIRScram_FileInterfaceDeclaration : public virtual IIRScram_InterfaceDeclaration, public virtual IIRBase_FileInterfaceDeclaration {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   void _type_check( IIRScram_InterfaceDeclaration::_InterfaceListType );
-
-protected:
-private:
 };
+
 #endif

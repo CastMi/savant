@@ -119,13 +119,6 @@ IIRScram_TypeDeclaration::_clone() {
   return this;
 }
 
-visitor_return_type *
-IIRScram_TypeDeclaration::_accept_visitor( node_visitor *visitor,
-					   visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_TypeDeclaration(this, arg);
-}
-
 IIR_Boolean
 IIRScram_TypeDeclaration::_can_be_in_same_region( IIRScram_Declaration *to_check ){
   if(( is_incomplete_type_declaration() == TRUE && 

@@ -51,13 +51,6 @@ IIRScram_PhysicalUnit::_get_rval_set( constraint_functor * ){
   return new savant::set<IIRScram_TypeDefinition>( _get_subtype() );
 }
 
-visitor_return_type *
-IIRScram_PhysicalUnit::_accept_visitor( node_visitor *visitor, 
-					visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_PhysicalUnit(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_AttributeSpecificationList *
 IIRScram_PhysicalUnit::_get_attribute_specification_list(){ 

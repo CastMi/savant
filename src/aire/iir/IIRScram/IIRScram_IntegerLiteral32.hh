@@ -33,12 +33,9 @@
 #include "IIRScram_Literal.hh"
 #include "IIRBase_IntegerLiteral32.hh"
 
-class IIRScram_IntegerLiteral32 : public virtual IIRScram_Literal, public virtual IIRBase_IntegerLiteral32{
+class IIRScram_IntegerLiteral32 : public virtual IIRScram_Literal, public virtual IIRBase_IntegerLiteral32 {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIR_Boolean _is_integer_literal();
   IIRScram_Statement *_clone() { return this; }
 
@@ -48,8 +45,6 @@ public:
      Do nothing.
    */
   virtual void _type_check( savant::set<IIRScram_TypeDefinition> * ){}
-
-protected:    
-private:
 };
+
 #endif

@@ -56,8 +56,3 @@ savant::set<IIRScram_TypeDefinition> *
 IIRScram_RightAttribute::_get_rval_set(constraint_functor *functor){
   return _get_rval_set_high_low_left_right( functor );
 }
-
-visitor_return_type *IIRScram_RightAttribute::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_RightAttribute(this, arg);
-};

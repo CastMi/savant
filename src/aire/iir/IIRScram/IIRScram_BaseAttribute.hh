@@ -38,15 +38,9 @@ class IIRScram_TypeDefinition;
 class IIRScram_TextLiteral;
 
 class IIRScram_BaseAttribute : public virtual IIRScram_Attribute,
-			       public virtual IIRBase_BaseAttribute{
+			       public virtual IIRBase_BaseAttribute {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIRScram_TypeDefinition *_get_subtype();
-
-protected:
-
-private:
 };
+
 #endif

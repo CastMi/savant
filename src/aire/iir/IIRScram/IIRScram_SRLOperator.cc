@@ -33,11 +33,3 @@ IIRScram_SRLOperator::_clone() {
   IIRScram_DyadicOperator::_clone(clone);
   return clone;
 }
-
-visitor_return_type *
-IIRScram_SRLOperator::_accept_visitor( node_visitor *visitor, 
-				       visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SRLOperator(this, arg);
-}
-

@@ -49,13 +49,6 @@ IIRScram_VariableDeclaration::_clone() {
   return _my_clone;
 }
 
-visitor_return_type *
-IIRScram_VariableDeclaration::_accept_visitor( node_visitor *visitor, 
-					       visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_VariableDeclaration(this, arg);
-}
-
 IIRScram *
 IIRScram_VariableDeclaration::_get_value() {
   return dynamic_cast<IIRScram *>(IIRBase_VariableDeclaration::get_value());

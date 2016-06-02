@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_TERMINAL_INTERFACE_DECLARATION_HH
 #define IIRSCRAM_TERMINAL_INTERFACE_DECLARATION_HH
 
@@ -38,8 +37,6 @@ public:
   IIR_Boolean _is_terminal(){ return TRUE; }
 
   void _type_check( IIRScram_InterfaceDeclaration::_InterfaceListType );
-
-protected:
-private:
 };
+
 #endif

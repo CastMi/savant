@@ -74,13 +74,6 @@ IIRScram_DesignFile::_get_work_library(){
   return dynamic_cast<IIRScram_LibraryDeclaration *>(my_parser->get_work_library());
 }
 
-visitor_return_type *
-IIRScram_DesignFile::_accept_visitor( node_visitor *visitor,
-				      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_DesignFile(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_CommentList *
 IIRScram_DesignFile::_get_comments() {

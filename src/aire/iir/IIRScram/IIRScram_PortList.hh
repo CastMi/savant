@@ -30,15 +30,9 @@
 //---------------------------------------------------------------------------
 
 #include "IIRScram_InterfaceList.hh"
-#include "IIRScram_List.hh"
 #include "IIRBase_PortList.hh"
 
-class IIR_InterfaceDeclaration;
-
 class IIRScram_PortList : public virtual IIRScram_InterfaceList, public virtual IIRBase_PortList {
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 };
+
 #endif

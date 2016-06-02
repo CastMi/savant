@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_DYADIC_OPERATOR_HH
 #define IIRSCRAM_DYADIC_OPERATOR_HH
 
@@ -40,7 +39,7 @@ class IIR_DotAttribute;
 class IIRScram_SubprogramDeclaration;
 
 class IIRScram_DyadicOperator : public virtual IIRScram_Operator,
-				public virtual IIRBase_DyadicOperator{
+				public virtual IIRBase_DyadicOperator {
 public:
   IIRScram_DyadicOperator() {};
 
@@ -80,8 +79,6 @@ protected:
   virtual ~IIRScram_DyadicOperator() = 0;
 
   void _type_check_operands( );
-
-private:
-  
 };
+
 #endif

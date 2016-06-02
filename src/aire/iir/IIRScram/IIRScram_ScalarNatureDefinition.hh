@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_SCALAR_NATURE_DEFINITION_HH
 #define IIRSCRAM_SCALAR_NATURE_DEFINITION_HH
 
@@ -44,10 +43,6 @@ public:
   IIRScram_TypeDefinition               *_get_through();
   IIRScram_TypeDefinition               *_get_across();
   IIRScram_TerminalDeclaration          *_get_reference_terminal();
-
-protected:
-private:
-
 };
 
 #endif

@@ -38,7 +38,7 @@ class IIRScram_DesignatorList;
 class IIRScram_Expression;
 class IIRScram_TypeDefinition;
 
-class IIRScram_Expression : public virtual IIRScram_Statement, public virtual IIRBase_Expression{
+class IIRScram_Expression : public virtual IIRScram_Statement, public virtual IIRBase_Expression {
 
 public:
   IIRScram_Expression() {};
@@ -53,7 +53,6 @@ public:
 
 protected:
   virtual ~IIRScram_Expression() = 0;
-    
-private:
 };
+
 #endif

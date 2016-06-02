@@ -42,13 +42,6 @@ IIRScram_GroupTemplateDeclaration::~IIRScram_GroupTemplateDeclaration() {
   delete get_entity_class_entry_list();
 }
 
-visitor_return_type *
-IIRScram_GroupTemplateDeclaration::_accept_visitor(node_visitor *visitor,
-						   visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_GroupTemplateDeclaration(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_EntityClassEntryList *
 IIRScram_GroupTemplateDeclaration::_get_entity_class_entry_list() {

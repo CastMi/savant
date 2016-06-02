@@ -40,13 +40,10 @@ class IIRScram_DesignatorList;
 class IIRScram_AliasDeclaration;
 class IIRScram_AttributeSpecificationList;
 
-class IIRScram_AliasDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_AliasDeclaration{
+class IIRScram_AliasDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_AliasDeclaration {
 
 public:
   IIRScram_AliasDeclaration() { _my_clone = NULL; }
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   // See IIRScram_Declaration for internal documentation for these methods.
   IIR_Boolean is_object();
@@ -79,4 +76,5 @@ protected:
 private:
   IIRScram_AliasDeclaration *_my_clone;
 };
+
 #endif

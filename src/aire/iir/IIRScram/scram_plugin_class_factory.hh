@@ -280,4 +280,5 @@ private:
   scram_plugin_class_factory(){}
   virtual ~scram_plugin_class_factory(){}
 };
+
 #endif

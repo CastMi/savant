@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_DIVISION_OPERATOR_HH
 #define IIRSCRAM_DIVISION_OPERATOR_HH
 
@@ -29,18 +28,12 @@
 #include "IIRScram_MultiplicationOperators.hh"
 #include "IIRBase_DivisionOperator.hh"
 
-class IIRScram_DivisionOperator : public virtual IIRScram_MultiplicationOperators, public virtual IIRBase_DivisionOperator{
+class IIRScram_DivisionOperator : public virtual IIRScram_MultiplicationOperators, public virtual IIRBase_DivisionOperator {
 public:
   IIRScram_DivisionOperator() {}
   virtual ~IIRScram_DivisionOperator();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIRScram *_clone();
-
-protected:
-
-private:
 };
+
 #endif

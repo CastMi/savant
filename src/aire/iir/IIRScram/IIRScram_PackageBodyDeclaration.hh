@@ -35,22 +35,15 @@
 #include "IIRBase_PackageBodyDeclaration.hh"
 
 class IIRScram_PackageBodyDeclaration : public virtual IIRScram_LibraryUnit,
-					public virtual IIRBase_PackageBodyDeclaration{
+					public virtual IIRBase_PackageBodyDeclaration {
 public:
   IIRScram_PackageBodyDeclaration();
   ~IIRScram_PackageBodyDeclaration();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIR_Boolean _is_iir_package_body_declaration(){ return TRUE; }
 
   // Wrappers for IIRBase functions
   IIRScram_DeclarationList *_get_package_declarative_part();
-
-protected:
-
-private:
 };
+
 #endif

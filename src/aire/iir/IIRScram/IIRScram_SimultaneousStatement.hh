@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_SIMULTANEOUS_STATEMENT_HH
 #define IIRSCRAM_SIMULTANEOUS_STATEMENT_HH
 
@@ -33,8 +32,6 @@ class IIRScram_SimultaneousStatement : public virtual IIRScram_ArchitectureState
 public:
   IIRScram_SimultaneousStatement();
   virtual ~IIRScram_SimultaneousStatement() = 0;
-
-protected:
-private:
 };
+
 #endif

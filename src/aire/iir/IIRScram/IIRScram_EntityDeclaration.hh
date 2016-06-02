@@ -33,14 +33,11 @@
 #include "IIRScram_LibraryUnit.hh"
 #include "IIRBase_EntityDeclaration.hh"
 
-class IIRScram_EntityDeclaration : public virtual IIRScram_LibraryUnit, public virtual IIRBase_EntityDeclaration{
+class IIRScram_EntityDeclaration : public virtual IIRScram_LibraryUnit, public virtual IIRBase_EntityDeclaration {
 
 public:
   IIRScram_EntityDeclaration();
   virtual ~IIRScram_EntityDeclaration();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   void _make_interface_visible( symbol_table * );
 
@@ -55,9 +52,6 @@ public:
   IIRScram_GenericList *                        _get_generic_clause();
   IIRScram_GenericList *                        _get_generic_list();
   IIRScram_ArchitectureStatementList *          _get_entity_statement_part();
-   
-private:
 };
+
 #endif
-
-

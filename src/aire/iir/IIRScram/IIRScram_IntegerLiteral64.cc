@@ -35,9 +35,3 @@ IIR_Boolean
 IIRScram_IntegerLiteral64::_is_integer_literal() {
   return true;
 }
-
-
-visitor_return_type *IIRScram_IntegerLiteral64::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_IntegerLiteral64(this, arg);
-};

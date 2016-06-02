@@ -39,13 +39,10 @@ class IIRScram_DesignatorList;
 class IIRScram_SelectedWaveformList;
 class IIRScram_SignalDeclaration;
 
-class IIRScram_ConcurrentSelectedSignalAssignment : public virtual IIRScram_ConcurrentStatement, public virtual IIRBase_ConcurrentSelectedSignalAssignment{
+class IIRScram_ConcurrentSelectedSignalAssignment : public virtual IIRScram_ConcurrentStatement, public virtual IIRBase_ConcurrentSelectedSignalAssignment {
 public:
   IIRScram_ConcurrentSelectedSignalAssignment();
   virtual ~IIRScram_ConcurrentSelectedSignalAssignment();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   IIRScram *_clone();
 
@@ -77,4 +74,5 @@ private:
   void _type_check_expression_and_choices();
   void _type_check_target_and_waveforms();
 };
+
 #endif

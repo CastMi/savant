@@ -33,18 +33,13 @@
 #include "IIRScram_InterfaceDeclaration.hh"
 #include "IIRBase_VariableInterfaceDeclaration.hh"
 
-class IIRScram_VariableInterfaceDeclaration : public virtual IIRScram_InterfaceDeclaration, public virtual IIRBase_VariableInterfaceDeclaration{
+class IIRScram_VariableInterfaceDeclaration : public virtual IIRScram_InterfaceDeclaration, public virtual IIRBase_VariableInterfaceDeclaration {
 public:
   IIRScram_VariableInterfaceDeclaration() {}
   virtual ~IIRScram_VariableInterfaceDeclaration();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIRScram *_clone();
   void _type_check( IIRScram_InterfaceDeclaration::_InterfaceListType );
-
-protected:    
-private:
 };
+
 #endif

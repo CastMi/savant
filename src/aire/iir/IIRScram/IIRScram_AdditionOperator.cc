@@ -36,10 +36,3 @@ IIRScram_AdditionOperator::_clone() {
   //  return clone;
   return NULL;
 }
-
-visitor_return_type *
-IIRScram_AdditionOperator::_accept_visitor( node_visitor *visitor,
-					    visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_AdditionOperator(this, arg);
-}

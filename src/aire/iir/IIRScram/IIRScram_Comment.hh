@@ -37,18 +37,12 @@ class IIRScram_CommentList;
    Typically these will be collected into a list and attached to the design
    unit in which they are found.  */
 class IIRScram_Comment : public virtual IIRScram_TextLiteral,
-			 public virtual IIRBase_Comment{
+			 public virtual IIRBase_Comment {
 public:
   IIRScram_Comment() {}
   virtual ~IIRScram_Comment() {}
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   static IIRScram_Comment *get( IIR_Char *text, IIR_Int32 text_length );
-protected:
-    
-private:
 };
+
 #endif

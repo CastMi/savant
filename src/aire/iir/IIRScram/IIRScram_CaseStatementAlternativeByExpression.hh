@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_CASE_STATEMENT_ALTERNATIVE_BY_EXPRESSION_HH
 #define IIRSCRAM_CASE_STATEMENT_ALTERNATIVE_BY_EXPRESSION_HH
 
@@ -37,13 +36,9 @@ class IIRScram_Choice;
 class IIRScram_List;
 class IIRScram_TypeDefinition;
 
-class IIRScram_CaseStatementAlternativeByExpression : public virtual IIRScram_CaseStatementAlternative, public virtual IIRBase_CaseStatementAlternativeByExpression{
+class IIRScram_CaseStatementAlternativeByExpression : public virtual IIRScram_CaseStatementAlternative, public virtual IIRBase_CaseStatementAlternativeByExpression {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-  
-
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor=0); 
   savant::set<IIRScram_Declaration> *_symbol_lookup();
   IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
@@ -51,11 +46,6 @@ public:
 
   IIRScram *_clone();
   IIRScram_Choice* _get_choice();
-
-protected:
-    
-private:
-
 };
 
 #endif

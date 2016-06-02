@@ -43,16 +43,12 @@ class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
 class IIRScram_EnumerationTypeDefinition : public virtual IIRScram_ScalarTypeDefinition,
-					   public virtual IIRBase_EnumerationTypeDefinition{
+					   public virtual IIRBase_EnumerationTypeDefinition {
 
 public:
   IIRScram_EnumerationTypeDefinition();
   virtual ~IIRScram_EnumerationTypeDefinition();
     
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   virtual IIRScram_TypeDefinition *_get_new_subtype();
 
   virtual IIRScram *_clone();
@@ -80,10 +76,6 @@ public:
 
   // Wrappers for IIRBase functions
   IIRScram_EnumerationLiteralList *     _get_enumeration_literals();
-
-protected:
-private:
 };
+
 #endif
-
-

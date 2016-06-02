@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_BREAK_ELEMENT_HH
 #define IIRSCRAM_BREAK_ELEMENT_HH
 
@@ -47,8 +46,6 @@ public:
   IIRScram_Name *_get_quantity_name();
   IIRScram_Name *_get_selector_quantity_name();
   IIRScram      *_get_expression();
-protected:
-private:
-  
 };
+
 #endif

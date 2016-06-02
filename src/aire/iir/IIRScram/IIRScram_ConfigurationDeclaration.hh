@@ -26,14 +26,10 @@
 class IIRScram_ArchitectureDeclaration;
 class IIRScram_BlockConfiguration;
 
-class IIRScram_ConfigurationDeclaration : public virtual IIRScram_LibraryUnit, public virtual IIRBase_ConfigurationDeclaration{
+class IIRScram_ConfigurationDeclaration : public virtual IIRScram_LibraryUnit, public virtual IIRBase_ConfigurationDeclaration {
 public:
   IIRScram_ConfigurationDeclaration();
   virtual ~IIRScram_ConfigurationDeclaration();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   void _make_interface_visible( symbol_table * );
 
@@ -43,7 +39,6 @@ public:
   IIRScram_DeclarationList      *_get_configuration_declarative_part();
   IIRScram_BlockConfiguration   *_get_block_configuration();
   IIRScram_EntityDeclaration    *_get_entity();
-protected:    
-private:
 };
+
 #endif

@@ -29,10 +29,3 @@
 #include "savant.hh"
 #include "IIRScram_SimpleNameAttribute.hh"
 
-visitor_return_type *
-IIRScram_SimpleNameAttribute::_accept_visitor( node_visitor *visitor,
-					       visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SimpleNameAttribute(this, arg);
-}
-

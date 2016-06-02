@@ -32,8 +32,6 @@ class IIRScram_ProcedureReturnTypeDefinition :
 public:
   IIRScram_ProcedureReturnTypeDefinition(){};
   ~IIRScram_ProcedureReturnTypeDefinition(){};
-
-private:
 };
 
 #endif

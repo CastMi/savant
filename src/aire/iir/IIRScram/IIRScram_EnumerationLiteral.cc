@@ -148,12 +148,6 @@ IIRScram_EnumerationLiteral::_is_homograph_of( IIRScram_Declaration *compare_to 
   return TRUE;
 }
 
-visitor_return_type *
-IIRScram_EnumerationLiteral::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_EnumerationLiteral(this, arg);
-}
-
 IIRScram_AttributeSpecificationList* 
 IIRScram_EnumerationLiteral::_get_attribute_specification_list() { 
   return dynamic_cast<IIRScram_AttributeSpecificationList *>(get_attributes()); 

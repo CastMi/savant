@@ -137,13 +137,6 @@ IIRScram_OthersInitialization::_get_rval_set( constraint_functor * ){
   return retval;
 }
 
-visitor_return_type *
-IIRScram_OthersInitialization::_accept_visitor( node_visitor *visitor, 
-						visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_OthersInitialization(this, arg);
-}
-
 IIRScram *
 IIRScram_OthersInitialization::_get_expression() {
   return dynamic_cast<IIRScram *>(get_expression());

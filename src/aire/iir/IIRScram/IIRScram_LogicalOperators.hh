@@ -30,13 +30,12 @@
 
 #include "IIRScram_DyadicOperator.hh"
 
-class IIRScram_LogicalOperators : public virtual IIRScram_DyadicOperator{
+class IIRScram_LogicalOperators : public virtual IIRScram_DyadicOperator {
 public:
   IIRScram_LogicalOperators() {}
 
 protected:
   virtual ~IIRScram_LogicalOperators() = 0;
-    
-private:
 };
+
 #endif

@@ -35,15 +35,11 @@ class IIRScram_DeclarationList;
 class IIRScram_Label;
 class IIRScram_SimpleName;
 
-class IIRScram_ConcurrentGenerateIfStatement : public virtual IIRScram_ConcurrentStatement, public virtual IIRBase_ConcurrentGenerateIfStatement{
+class IIRScram_ConcurrentGenerateIfStatement : public virtual IIRScram_ConcurrentStatement, public virtual IIRBase_ConcurrentGenerateIfStatement {
 
 public:
   IIRScram_ConcurrentGenerateIfStatement();  
   virtual ~IIRScram_ConcurrentGenerateIfStatement();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   void _type_check();
 
@@ -57,8 +53,6 @@ public:
   IIRScram *                                    _get_if_condition();
   IIRScram_DeclarationList *                    _get_block_declarative_part();
   IIRScram_ArchitectureStatementList *          _get_concurrent_statement_part();
-
-protected:    
-private:  
 };
+
 #endif

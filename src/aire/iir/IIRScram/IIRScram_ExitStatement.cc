@@ -46,13 +46,6 @@ IIRScram_ExitStatement::_type_check() {
   }
 }
 
-
-visitor_return_type *
-IIRScram_ExitStatement::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ExitStatement(this, arg);
-}
-
 IIRScram *
 IIRScram_ExitStatement::_get_condition() {
   return dynamic_cast<IIRScram *>(get_condition());

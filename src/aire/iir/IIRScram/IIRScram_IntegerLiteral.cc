@@ -60,13 +60,6 @@ IIRScram_IntegerLiteral::_get_integer_static_value(){
   return dynamic_cast<IIRScram_IntegerLiteral *>(get( get_base(), get_mantissa(), get_mantissa_length(), get_exponent(), get_exponent_length() ));
 }
 
-visitor_return_type *
-IIRScram_IntegerLiteral::_accept_visitor( node_visitor *visitor,
-					  visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_IntegerLiteral(this, arg);
-}
-
 IIRScram_IntegerLiteral *
 IIRScram_IntegerLiteral::get( IIR_Int32 base,
                               IIR_Char *mantissa,

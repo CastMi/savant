@@ -32,17 +32,11 @@
 #include "IIRScram_DeclarationList.hh"
 #include "IIRBase_ElementDeclarationList.hh"
 
-class IIRScram_ElementDeclarationList : public virtual IIRScram_DeclarationList, public virtual IIRBase_ElementDeclarationList{
+class IIRScram_ElementDeclarationList : public virtual IIRScram_DeclarationList, public virtual IIRBase_ElementDeclarationList {
 
 public:
   IIRScram_ElementDeclarationList() {}
   virtual ~IIRScram_ElementDeclarationList();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
-protected:    
-private:
 };
+
 #endif

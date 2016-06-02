@@ -107,11 +107,6 @@ IIRScram_Elsif::_clone() {
   return clone;
 }
 
-visitor_return_type *IIRScram_Elsif::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_Elsif(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_SequentialStatementList *
 IIRScram_Elsif::_get_then_sequence_of_statements() {

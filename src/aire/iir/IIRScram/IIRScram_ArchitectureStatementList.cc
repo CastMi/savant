@@ -57,10 +57,3 @@ IIRScram_ArchitectureStatementList::_type_check_instantiate_statements(){
     node->_type_check_instantiate_statements();
   }
 }
-
-visitor_return_type *
-IIRScram_ArchitectureStatementList::_accept_visitor( node_visitor *visitor,
-						     visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ArchitectureStatementList(this, arg);
-}

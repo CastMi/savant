@@ -426,13 +426,6 @@ IIRScram_SelectedName::_get_rval_pointed_at(){
   return _get_suffix()->_get_rval_pointed_at();
 }
 
-visitor_return_type *
-IIRScram_SelectedName::_accept_visitor( node_visitor *visitor,
-					visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SelectedName(this, arg);
-}
-
 IIRScram_PortList *
 IIRScram_SelectedName::_get_port_list(){
   ASSERT( is_resolved() == TRUE );

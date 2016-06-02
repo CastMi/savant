@@ -57,14 +57,6 @@ IIRScram_SignalDeclaration::_clone() {
   return _my_clone;
 }
 
-visitor_return_type *
-IIRScram_SignalDeclaration::_accept_visitor( node_visitor *visitor,
-					     visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SignalDeclaration(this, arg);
-}
-
-
 IIRScram*
 IIRScram_SignalDeclaration::_get_value() {
   return dynamic_cast<IIRScram *>(IIRBase_SignalDeclaration::get_value());

@@ -68,11 +68,6 @@ IIRScram_Label::_clone() {
   return clone;
 }
 
-visitor_return_type *IIRScram_Label::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_Label(this, arg);
-};
-
 IIRScram_AttributeSpecificationList* 
 IIRScram_Label::_get_attribute_specification_list() {
   return dynamic_cast<IIRScram_AttributeSpecificationList *>(get_attributes());

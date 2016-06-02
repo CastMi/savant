@@ -45,10 +45,3 @@ IIRScram_InterfaceList::_find_declaration( IIRScram_TextLiteral *declarator ){
 
   return NULL;
 }
-
-visitor_return_type *
-IIRScram_InterfaceList::_accept_visitor( node_visitor *visitor,
-					 visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_InterfaceList(this, arg);
-}

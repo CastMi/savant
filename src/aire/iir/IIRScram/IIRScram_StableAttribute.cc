@@ -39,10 +39,3 @@ void
 IIRScram_StableAttribute::_resolve_suffix_special() {
   _resolve_suffix_non_negative_time();
 }
-
-visitor_return_type *
-IIRScram_StableAttribute::_accept_visitor( node_visitor *visitor, 
-					   visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_StableAttribute(this, arg);
-}

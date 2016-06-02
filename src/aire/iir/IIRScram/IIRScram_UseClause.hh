@@ -35,14 +35,10 @@
 
 class IIRScram_Declaration;
 
-class IIRScram_UseClause : public virtual IIRScram_Declaration, public virtual IIRBase_UseClause{
+class IIRScram_UseClause : public virtual IIRScram_Declaration, public virtual IIRBase_UseClause {
 public:
   IIRScram_UseClause();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
   void _type_check();
 
   IIR_Boolean _is_specification(){ return true; }
@@ -51,15 +47,6 @@ public:
 
   // Helper function
   IIRScram_Name * _get_selected_name();
-
-protected:
-private:
 };
+
 #endif
-
-
-
-
-
-
-

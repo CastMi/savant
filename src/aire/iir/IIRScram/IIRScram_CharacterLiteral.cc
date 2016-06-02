@@ -42,12 +42,6 @@ IIRScram_CharacterLiteral::_get_from_character( char my_char ){
   return dynamic_cast<IIRScram_CharacterLiteral *>(get( os.str() ));
 }
 
-visitor_return_type *
-IIRScram_CharacterLiteral::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_CharacterLiteral(this, arg);
-};
-
 IIRScram_CharacterLiteral *
 IIRScram_CharacterLiteral::get( const string new_text ){
   IIRScram_CharacterLiteral *retval = new IIRScram_CharacterLiteral();

@@ -38,14 +38,10 @@
 class IIRScram_List;
 class IIRScram_VariableDeclaration;
 
-class IIRScram_VariableDeclaration : public virtual IIRScram_ObjectDeclaration, public virtual IIRBase_VariableDeclaration{
+class IIRScram_VariableDeclaration : public virtual IIRScram_ObjectDeclaration, public virtual IIRBase_VariableDeclaration {
 public:
   IIRScram_VariableDeclaration();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
   IIR_Boolean _is_readable(){ return TRUE; }
   IIR_Boolean _is_writable(){ return TRUE; }
 
@@ -57,8 +53,8 @@ public:
 
   IIRScram *_get_value();
 
-protected:
 private:
   IIRScram_VariableDeclaration *_my_clone;
 };
+
 #endif

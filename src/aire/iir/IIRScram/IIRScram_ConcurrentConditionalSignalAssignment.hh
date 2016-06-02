@@ -40,14 +40,10 @@ class IIRScram_SignalDeclaration;
 
 class IIRScram_ConcurrentConditionalSignalAssignment :
   public virtual IIRScram_ConcurrentStatement,
-  public virtual IIRBase_ConcurrentConditionalSignalAssignment{
+  public virtual IIRBase_ConcurrentConditionalSignalAssignment {
 public:
   IIRScram_ConcurrentConditionalSignalAssignment();
   virtual ~IIRScram_ConcurrentConditionalSignalAssignment();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   void _type_check();
   void _type_check_target_and_waveforms();
@@ -62,8 +58,6 @@ public:
   IIR_DelayMechanism                    _get_delay_mechanism();
   IIRScram_ConditionalWaveformList *    _get_conditional_waveforms();
 
-protected:    
-private:
 };
-#endif
 
+#endif

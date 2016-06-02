@@ -41,15 +41,11 @@ class IIRScram_List;
 class IIRScram_PhysicalTypeDefinition;
 class IIRScram_TypeDefinition;
 
-class IIRScram_PhysicalUnit : public virtual IIRScram_Declaration, public virtual IIRBase_PhysicalUnit{
+class IIRScram_PhysicalUnit : public virtual IIRScram_Declaration, public virtual IIRBase_PhysicalUnit {
 
 public:
   IIRScram_PhysicalUnit();
   virtual ~IIRScram_PhysicalUnit();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIRScram_AttributeSpecificationList *_get_attribute_specification_list();
 
@@ -64,7 +60,6 @@ public:
   IIRScram_AttributeSpecificationList   *_get_attributes();
   IIRScram *                            _get_multiplier();
   IIRScram_PhysicalTypeDefinition       *_get_physical_type();
-protected:    
-private:
 };
+
 #endif

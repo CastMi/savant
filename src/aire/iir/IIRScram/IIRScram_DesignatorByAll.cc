@@ -147,10 +147,3 @@ IIRScram_DesignatorByAll::_rval_to_decl( IIRScram_Declaration *,
 					 IIRScram_TypeDefinition * ){
   return this;
 }
-
-visitor_return_type *
-IIRScram_DesignatorByAll::_accept_visitor( node_visitor *visitor,
-					   visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_DesignatorByAll(this, arg);
-}

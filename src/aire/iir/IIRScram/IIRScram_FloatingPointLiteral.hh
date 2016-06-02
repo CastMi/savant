@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_FLOATING_POINT_LITERAL_HH
 #define IIRSCRAM_FLOATING_POINT_LITERAL_HH
 
@@ -35,14 +34,11 @@
 
 class IIRScram_TypeDefinition;
 
-class IIRScram_FloatingPointLiteral : public virtual IIRScram_Literal, public virtual IIRBase_FloatingPointLiteral{
+class IIRScram_FloatingPointLiteral : public virtual IIRScram_Literal, public virtual IIRBase_FloatingPointLiteral {
 
 public:
   IIRScram_FloatingPointLiteral() {}
   virtual ~IIRScram_FloatingPointLiteral();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   static IIRScram_FloatingPointLiteral* get( IIR_Int32 base, 
 					     IIR_Char *mantissa,  
@@ -56,10 +52,6 @@ public:
 
   IIR_Boolean _is_floating_literal() { return TRUE; }
   IIRScram *_clone() { return this; }
-
-protected:    
-
-private:
-
 };
+
 #endif

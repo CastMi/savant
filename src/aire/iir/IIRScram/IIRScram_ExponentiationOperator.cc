@@ -32,8 +32,6 @@
 #include "StandardPackage.hh"
 #include "resolution_func.hh"
 
-
-
 IIRScram_ExponentiationOperator::~IIRScram_ExponentiationOperator() {}
 
 IIRScram*
@@ -41,12 +39,4 @@ IIRScram_ExponentiationOperator::_clone() {
   IIRScram_ExponentiationOperator *clone = new IIRScram_ExponentiationOperator();
   IIRScram_DyadicOperator::_clone(clone);
   return clone;
-}
-
-
-visitor_return_type *
-IIRScram_ExponentiationOperator::_accept_visitor( node_visitor *visitor,
-						  visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ExponentiationOperator(this, arg);
 }

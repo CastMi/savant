@@ -127,11 +127,6 @@ IIRScram_IfStatement::_clone() {
   return clone;
 }
 
-visitor_return_type *IIRScram_IfStatement::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_IfStatement(this, arg);
-};
-
 // IIRBase Function Wrapper(s)
 IIRScram_SequentialStatementList *
 IIRScram_IfStatement::_get_then_sequence() {

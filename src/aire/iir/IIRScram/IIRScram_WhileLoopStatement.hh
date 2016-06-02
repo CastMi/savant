@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_WHILE_LOOP_STATEMENT_HH
 #define IIRSCRAM_WHILE_LOOP_STATEMENT_HH
 
@@ -47,14 +46,10 @@
 #include "IIRScram_SequentialStatement.hh"
 #include "IIRBase_WhileLoopStatement.hh"
 
-class IIRScram_WhileLoopStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_WhileLoopStatement{
+class IIRScram_WhileLoopStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_WhileLoopStatement {
 public:
   IIRScram_WhileLoopStatement();
   ~IIRScram_WhileLoopStatement();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   void _type_check();
   IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition> *,
@@ -65,8 +60,6 @@ public:
   // Wrappers for IIRBase functions
   IIRScram_SequentialStatementList *    _get_sequence_of_statements();
   IIRScram *                            _get_while_condition();
-
-protected:
-private:
 };
+
 #endif

@@ -50,7 +50,6 @@ protected:
 private:
   double default_rtol;
   double default_atol;
-
 };
 
 #endif

@@ -48,8 +48,3 @@ IIRScram_FileInterfaceDeclaration::_type_check(IIRScram_InterfaceDeclaration::_I
 
   IIRScram_InterfaceDeclaration::_type_check();
 }
-
-visitor_return_type *IIRScram_FileInterfaceDeclaration::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_FileInterfaceDeclaration(this, arg);
-};

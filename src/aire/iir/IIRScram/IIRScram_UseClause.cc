@@ -111,12 +111,6 @@ IIRScram_UseClause::_clone() {
   return this;
 }
 
-visitor_return_type *
-IIRScram_UseClause::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_UseClause(this, arg);
-};
-
 IIRScram_Name *
 IIRScram_UseClause::_get_selected_name() {
   return dynamic_cast<IIRScram_Name *>(get_selected_name());

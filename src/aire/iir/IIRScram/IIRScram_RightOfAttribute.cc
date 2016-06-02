@@ -47,11 +47,3 @@ void
 IIRScram_RightOfAttribute::_resolve_suffix_special(){
   _resolve_suffix_base_type_of_prefix();
 }
-
-
-visitor_return_type *
-IIRScram_RightOfAttribute::_accept_visitor( node_visitor *visitor,
-					    visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_RightOfAttribute(this, arg);
-}

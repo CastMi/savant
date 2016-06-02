@@ -32,16 +32,10 @@
 #include "IIRScram_List.hh"
 #include "IIRBase_EntityClassEntryList.hh"
 
-class IIRScram_EntityClassEntryList : public virtual IIRScram_List, public virtual IIRBase_EntityClassEntryList{
+class IIRScram_EntityClassEntryList : public virtual IIRScram_List, public virtual IIRBase_EntityClassEntryList {
 public:
   IIRScram_EntityClassEntryList() {};
   virtual ~IIRScram_EntityClassEntryList();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
-protected:    
-private:
 };
+
 #endif

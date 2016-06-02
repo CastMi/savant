@@ -31,7 +31,7 @@
 #include "IIRScram_TextLiteral.hh"
 #include "IIRBase_CharacterLiteral.hh"
 
-class IIRScram_CharacterLiteral : public virtual IIRScram_TextLiteral, public virtual IIRBase_CharacterLiteral{
+class IIRScram_CharacterLiteral : public virtual IIRScram_TextLiteral, public virtual IIRBase_CharacterLiteral {
 
 public:
   IIRScram_CharacterLiteral() {}
@@ -41,14 +41,9 @@ public:
   static IIRScram_CharacterLiteral *get( const IIR_Char *new_text, IIR_Int32 new_length );
   static IIRScram_CharacterLiteral *get( const string new_text );
     
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   // This method takes a C-language character and returns a VHDL character literal
   // with the ' characters on either side.
   static IIRScram_CharacterLiteral *_get_from_character( char );
-
-protected:
-private:
 };
+
 #endif

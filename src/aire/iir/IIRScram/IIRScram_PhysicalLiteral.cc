@@ -89,13 +89,6 @@ IIRScram_PhysicalLiteral::_clone() {
   return this;
 }
 
-visitor_return_type *
-IIRScram_PhysicalLiteral::_accept_visitor( node_visitor *visitor, 
-					   visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_PhysicalLiteral(this, arg);
-}
-
 IIRScram *
 IIRScram_PhysicalLiteral::_get_abstract_literal() {
   return dynamic_cast<IIRScram *>(get_abstract_literal());

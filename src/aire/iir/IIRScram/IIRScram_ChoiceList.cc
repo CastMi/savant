@@ -30,10 +30,3 @@
 #include "IIRScram_ChoiceList.hh"
 
 IIRScram_ChoiceList::~IIRScram_ChoiceList() {}
-
-visitor_return_type *
-IIRScram_ChoiceList::_accept_visitor( node_visitor *visitor,
-				      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ChoiceList(this, arg);
-}

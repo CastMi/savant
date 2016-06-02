@@ -28,7 +28,3 @@
 #include "IIRScram_NameList.hh"
 #include "savant.hh"
 
-visitor_return_type *IIRScram_NameList::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_NameList(this, arg);
-};

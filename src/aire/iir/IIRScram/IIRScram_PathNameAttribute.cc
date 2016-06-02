@@ -28,9 +28,3 @@
 #include "IIRScram_PathNameAttribute.hh"
 #include "savant.hh"
 
-visitor_return_type *
-IIRScram_PathNameAttribute::_accept_visitor( node_visitor *visitor, 
-					     visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_PathNameAttribute(this, arg);
-}

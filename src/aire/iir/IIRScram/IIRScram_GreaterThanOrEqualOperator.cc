@@ -27,11 +27,3 @@
 
 #include "IIRScram_GreaterThanOrEqualOperator.hh"
 #include "savant.hh"
-
-
-visitor_return_type *
-IIRScram_GreaterThanOrEqualOperator::_accept_visitor( node_visitor *visitor, 
-						      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_GreaterThanOrEqualOperator(this, arg);
-}

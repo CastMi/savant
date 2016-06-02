@@ -127,12 +127,6 @@ IIRScram_RecordTypeDefinition::_come_out_of_scope( symbol_table *sym_tab ){
   sym_tab->get_in_scope_record_types()->remove( dynamic_cast<IIRScram_RecordTypeDefinition *>(this ) );
 }
 
-visitor_return_type *
-IIRScram_RecordTypeDefinition::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_RecordTypeDefinition(this, arg);
-}
-
 IIRScram_FunctionDeclaration*
 IIRScram_RecordTypeDefinition::_get_resolution_function(){
   return dynamic_cast<IIRScram_FunctionDeclaration*>(get_resolution_function());

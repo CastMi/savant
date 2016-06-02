@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_PROCESS_STATEMENT_HH
 #define IIRSCRAM_PROCESS_STATEMENT_HH
 
@@ -39,14 +38,11 @@ class IIRScram_SequentialStatementList;
 class IIRScram_WaitStatement;
 
 class IIRScram_ProcessStatement : public virtual IIRScram_ConcurrentStatement,
-				  public virtual IIRBase_ProcessStatement{
+				  public virtual IIRBase_ProcessStatement {
 public:
   IIRScram_ProcessStatement();
   virtual ~IIRScram_ProcessStatement();
     
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   /** Publshes the warped state class for this process. */
   void _add_declarations_in_initializations();
 
@@ -56,9 +52,6 @@ public:
   IIRScram_SequentialStatementList *    _get_process_statement_part();
   // Wrappers for IIRBase functions
   IIRScram_DeclarationList *            _get_process_declarative_part();
-
-protected:
-private:
-
 };
+
 #endif

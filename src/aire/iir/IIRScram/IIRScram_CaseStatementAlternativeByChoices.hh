@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_CASE_STATEMENT_ALTERNATIVE_BY_CHOICES_HH
 #define IIRSCRAM_CASE_STATEMENT_ALTERNATIVE_BY_CHOICES_HH
 
@@ -35,25 +34,18 @@
 class IIRScram_TypeDefinition;
 class IIRScram_ChoiceList;
 
-class IIRScram_CaseStatementAlternativeByChoices : public virtual IIRScram_CaseStatementAlternative, public virtual IIRBase_CaseStatementAlternativeByChoices{
+class IIRScram_CaseStatementAlternativeByChoices : public virtual IIRScram_CaseStatementAlternative, public virtual IIRBase_CaseStatementAlternativeByChoices {
   
 public:
   IIRScram_CaseStatementAlternativeByChoices();
   virtual ~IIRScram_CaseStatementAlternativeByChoices();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-  
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor=0); 
   
   
   IIRScram              *_clone();
   IIRScram_ChoiceList   *_get_choices();
-
-protected:
-private:
-
 };
 
 #endif

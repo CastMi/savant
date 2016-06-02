@@ -39,14 +39,11 @@ class IIRScram_DesignatorList;
 class IIRScram_Declaration;
 class IIRScram_AssociationElement;
 
-class IIRScram_Aggregate : public virtual IIRScram_Expression, public virtual IIRBase_Aggregate{
+class IIRScram_Aggregate : public virtual IIRScram_Expression, public virtual IIRBase_Aggregate {
 
 public:
   IIRScram_Aggregate();
   virtual ~IIRScram_Aggregate();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
@@ -60,7 +57,6 @@ public:
 
   // Helper Functions
   IIRScram_AssociationList *_get_element_association_list();
-protected:    
 private:
   void _rval_to_decl_process_named_part( IIRScram_TypeDefinition *, IIRScram_AssociationElement * );
 };

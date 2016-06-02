@@ -32,19 +32,13 @@
 #include "IIRScram_Literal.hh"
 #include "IIRBase_FloatingPointLiteral32.hh"
 
-class IIRScram_FloatingPointLiteral32 : public virtual IIRScram_Literal, public virtual IIRBase_FloatingPointLiteral32{
+class IIRScram_FloatingPointLiteral32 : public virtual IIRScram_Literal, public virtual IIRBase_FloatingPointLiteral32 {
 public:
   static IIRScram_FloatingPointLiteral32* get_value(IIR_FP32);
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIR_Boolean _is_floating_literal() { return TRUE; }
 
   IIRScram *_clone() { return this; }
-
-protected:
-private:
 };
+
 #endif

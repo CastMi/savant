@@ -69,12 +69,6 @@ IIRScram_CaseStatementAlternativeByExpression::_clone() {
   return clone;
 }
 
-visitor_return_type *
-IIRScram_CaseStatementAlternativeByExpression::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_CaseStatementAlternativeByExpression(this, arg);
-};
-
 IIRScram_Choice*
 IIRScram_CaseStatementAlternativeByExpression::_get_choice() {
   return dynamic_cast<IIRScram_Choice *>(get_choice());

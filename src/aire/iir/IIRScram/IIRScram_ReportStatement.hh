@@ -38,10 +38,6 @@ class IIRScram_ReportStatement : public virtual IIRScram_SequentialStatement,
 public:
   IIRScram_ReportStatement() {};
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
   IIRScram *_get_report_expression();  
   IIRScram *_get_severity_expression();
 
@@ -50,8 +46,6 @@ public:
 //   IIR_Boolean _is_above_attribute_found();
 //   void _build_above_attribute_set(savant::set<IIR_AboveAttribute> *);
 
-protected:
-   
-private:
 };
+
 #endif

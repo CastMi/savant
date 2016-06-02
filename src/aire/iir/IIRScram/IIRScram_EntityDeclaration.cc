@@ -96,12 +96,6 @@ IIRScram_EntityDeclaration::_type_check(){
   _get_entity_declarative_part()->_type_check_disconnection_specifications( );
 }
 
-visitor_return_type *
-IIRScram_EntityDeclaration::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_EntityDeclaration(this, arg);
-}
-
 IIRScram_ArchitectureStatementList *
 IIRScram_EntityDeclaration::_get_entity_statement_part() {
   return dynamic_cast<IIRScram_ArchitectureStatementList *>(get_entity_statement_part());

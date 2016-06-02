@@ -36,15 +36,11 @@
 class IIRScram_Name;
 class IIRScram_TypeDefinition;
 
-class IIRScram_Label : public virtual IIRScram_Declaration, public virtual IIRBase_Label{
+class IIRScram_Label : public virtual IIRScram_Declaration, public virtual IIRBase_Label {
 
 public:
   IIRScram_Label();
   ~IIRScram_Label();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   void _make_interface_visible( symbol_table * );
 
@@ -59,8 +55,6 @@ public:
 
   // Wrappers for IIRBase functions
   IIRScram_AttributeSpecificationList * _get_attributes();
-
-protected:    
-private:
 };
+
 #endif

@@ -315,10 +315,3 @@ IIRScram_ArrayTypeDefinition::_set_resolution_function( IIRScram_FunctionDeclara
       << "should have been caught earlier.";
   report_error( this, err.str() );
 }
-
-visitor_return_type *
-IIRScram_ArrayTypeDefinition::_accept_visitor( node_visitor *visitor,
-					       visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ArrayTypeDefinition(this, arg);
-}

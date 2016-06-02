@@ -144,13 +144,6 @@ IIRScram_EnumerationTypeDefinition::_construct_new_type(IIRScram_EnumerationLite
   return retval; 
 }
 
-visitor_return_type *
-IIRScram_EnumerationTypeDefinition::_accept_visitor( node_visitor *visitor,
-						     visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_EnumerationTypeDefinition(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_EnumerationLiteralList *
 IIRScram_EnumerationTypeDefinition::_get_enumeration_literals() {

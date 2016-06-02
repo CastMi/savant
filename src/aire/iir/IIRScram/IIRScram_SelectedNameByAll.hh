@@ -32,12 +32,7 @@
 #include "IIRScram_Name.hh"
 #include "IIRBase_SelectedNameByAll.hh"
 
-class IIRScram_SelectedNameByAll : public virtual IIRScram_Name, public virtual IIRBase_SelectedNameByAll{
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-protected:
-private:
+class IIRScram_SelectedNameByAll : public virtual IIRScram_Name, public virtual IIRBase_SelectedNameByAll {
 };
+
 #endif

@@ -83,12 +83,3 @@ IIRScram_SignalInterfaceDeclaration::_type_check( IIRScram_InterfaceDeclaration:
     report_error( this, err.str() );
   }
 }
-
-visitor_return_type *
-IIRScram_SignalInterfaceDeclaration::_accept_visitor( node_visitor *visitor,
-						      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SignalInterfaceDeclaration(this, arg);
-}
-
-

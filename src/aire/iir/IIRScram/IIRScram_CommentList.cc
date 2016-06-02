@@ -26,10 +26,3 @@
 #include "IIRScram_CommentList.hh"
 
 IIRScram_CommentList::~IIRScram_CommentList(){}
-
-visitor_return_type *
-IIRScram_CommentList::_accept_visitor( node_visitor *visitor,
-				       visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_CommentList(this, arg);
-}

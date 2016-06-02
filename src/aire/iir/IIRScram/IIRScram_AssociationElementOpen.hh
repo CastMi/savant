@@ -33,14 +33,7 @@
 #include "IIRScram_AssociationElement.hh"
 #include "IIRBase_AssociationElementOpen.hh"
 
-class IIRScram_AssociationElementOpen : public virtual IIRScram_AssociationElement, public virtual IIRBase_AssociationElementOpen{
-
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
-protected:
-private:
+class IIRScram_AssociationElementOpen : public virtual IIRScram_AssociationElement, public virtual IIRBase_AssociationElementOpen {
 };
+
 #endif

@@ -29,9 +29,3 @@
 //---------------------------------------------------------------------------
 
 #include "IIRScram_LibraryUnitList.hh"
-
-visitor_return_type *
-IIRScram_LibraryUnitList::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_LibraryUnitList(this, arg);
-}

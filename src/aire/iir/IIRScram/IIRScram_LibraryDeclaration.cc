@@ -62,13 +62,6 @@ IIRScram_LibraryDeclaration::_add_to_declarative_region( savant::set<IIRScram_De
   IIRScram_Declaration::_add_to_declarative_region( _get_primary_units(), set_to_add );
 }
 
-visitor_return_type *
-IIRScram_LibraryDeclaration::_accept_visitor( node_visitor *visitor,
-					      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_LibraryDeclaration(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_LibraryUnitList *
 IIRScram_LibraryDeclaration::_get_primary_units() {

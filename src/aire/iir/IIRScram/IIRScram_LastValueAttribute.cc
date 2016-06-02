@@ -66,11 +66,3 @@ IIRScram_LastValueAttribute::_clone() {
   IIRScram_Attribute::_clone( clone );
   return clone;
 }
-
-visitor_return_type *
-IIRScram_LastValueAttribute::_accept_visitor( node_visitor *visitor,
-					      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_LastValueAttribute(this, arg);
-}
-

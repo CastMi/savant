@@ -173,12 +173,6 @@ IIRScram_ConcurrentSelectedSignalAssignment::_set_case_statement_expression( IIR
   set_expression( new_expression );
 }
 
-visitor_return_type *
-IIRScram_ConcurrentSelectedSignalAssignment::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ConcurrentSelectedSignalAssignment(this, arg);
-};
-
 IIRScram_SelectedWaveformList *
 IIRScram_ConcurrentSelectedSignalAssignment::_get_selected_waveforms() {
   return dynamic_cast<IIRScram_SelectedWaveformList *>(get_selected_waveforms());

@@ -24,7 +24,6 @@
 #include <string>
 #include "IIRBase.hh"
 #include "IIRScram_List.hh"
-#include "node_visitor.hh"
 #include "dl_list.hh"
 
 using std::string;
@@ -35,6 +34,7 @@ class include_manager;
 class published_file;
 class break_handler;
 class constraint_functor;
+class generic_visitor;
 class IIR_AboveAttribute;
 
 namespace savant {
@@ -83,28 +83,25 @@ class IIR_Statement;
     they might be better suited somewhere else.  Unfortunately, it is often
     the case that IIR is the closest common ancestor that one can find to
     insert a virtual method into. */
-class IIRScram : public virtual IIRBase{
+class IIRScram : public virtual IIRBase {
 
 public:
   IIRScram();
   /** Accepts a visitor for this node.
 
-      Pure virtual method that allows visitors access to the intermediate
-      form.  The visitor pattern implemented in this intermediate provides
+      The visitor pattern implemented in this intermediate provides
       support for parameter transmission by a visitor.  This capability is
       achieved by defining the visitor pattern with a return type of void*
       and with an input parameter of type void*.
 
-      @return a void* parameter, allowing parameter transmission within the
-      visitor that is not predetermined by the core intermediate.
+      @return bool To know whether the visit should continue or not.
 
       @param visitor a pointer to the visitor object.
       @param arg location for a visitor specific pointer to be passed
       into the visitor methods.
 
-      @see node_visitor */
-  virtual visitor_return_type *_accept_visitor( node_visitor *, 
-						visitor_argument_type *){ return 0; }
+      @see generic_visitor */
+  bool accept( generic_visitor * visitor, visitor_argument_type *);
 
   //@{
   /** These methods only apply to entities, components, etc.  (Or names

@@ -35,18 +35,13 @@
 
 class IIRScram_List;
 
-class IIRScram_SharedVariableDeclaration : public virtual IIRScram_ObjectDeclaration, public virtual IIRBase_SharedVariableDeclaration{
+class IIRScram_SharedVariableDeclaration : public virtual IIRScram_ObjectDeclaration, public virtual IIRBase_SharedVariableDeclaration {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   // Helper Functions
   IIRScram *_get_value();
 
   virtual IIR_Boolean _is_readable(){ return TRUE; }
   virtual IIR_Boolean _is_writable(){ return TRUE; }
-protected:
-private:
 };
+
 #endif

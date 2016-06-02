@@ -37,17 +37,12 @@ class IIRScram_FunctionDeclaration;
 class IIRScram_PhysicalSubtypeDefinition;
 
 class IIRScram_PhysicalSubtypeDefinition : public virtual IIRScram_PhysicalTypeDefinition,
-					   public virtual IIRBase_PhysicalSubtypeDefinition{
+					   public virtual IIRBase_PhysicalSubtypeDefinition {
 
 public:
   static IIRScram_PhysicalSubtypeDefinition* get(IIRScram_PhysicalTypeDefinition* base_type,
                                                  IIRScram* left_limit,
                                                  IIRScram* right_limit);
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
 
   void _set_resolution_function(IIRScram_FunctionDeclaration *function);
   IIRScram_FunctionDeclaration* _get_resolution_function();
@@ -57,9 +52,6 @@ public:
   virtual IIRScram *_clone();
   virtual void _clone( IIRScram * );
   virtual IIR_Boolean _is_iir_physical_subtype_definition(){ return TRUE; }
-
-protected:
-private:
 };
 
 #endif

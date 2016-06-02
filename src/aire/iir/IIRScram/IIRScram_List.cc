@@ -31,8 +31,6 @@
 #include "IIRScram_List.hh"
 #include "IIRScram_TypeDefinition.hh"
 #include "savant.hh"
-
-
 #include "plugin_class_factory.hh"
 
 IIRScram_List::~IIRScram_List(){}

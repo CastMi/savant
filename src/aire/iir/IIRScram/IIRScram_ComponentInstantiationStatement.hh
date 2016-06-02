@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_COMPONENT_INSTANTIATION_STATEMENT_HH
 #define IIRSCRAM_COMPONENT_INSTANTIATION_STATEMENT_HH
 
@@ -45,15 +44,11 @@ class IIRScram_LibraryUnit;
 class IIRScram_SimpleName;
 class IIRScram_TypeDefinition;
 
-class IIRScram_ComponentInstantiationStatement : public virtual IIRScram_ConcurrentStatement, public virtual IIRBase_ComponentInstantiationStatement{
+class IIRScram_ComponentInstantiationStatement : public virtual IIRScram_ConcurrentStatement, public virtual IIRBase_ComponentInstantiationStatement {
 
 public:
   IIRScram_ComponentInstantiationStatement();
   virtual ~IIRScram_ComponentInstantiationStatement();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   // This method _only_ resolves the instantiated unit, and it gets called
   // from the parser during the parse.  (Type check of configuration
@@ -96,7 +91,6 @@ protected:
   IIRScram_ConfigurationSpecification *
   _build_implicit_configuration_specification(IIRScram_LibraryUnit *, IIRScram_ComponentDeclaration *);
 
-
 private:
   /** Returns the instantiated unit - the instantiation type is ENTITY. */
   void _resolve_instantiated_unit_for_entity();
@@ -112,4 +106,5 @@ private:
 
   IIR_Kind my_instantiation_type;
 };
+
 #endif

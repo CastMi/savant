@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_CONCURRENT_STATEMENT_HH
 #define IIRSCRAM_CONCURRENT_STATEMENT_HH
 
@@ -33,9 +32,10 @@
 #include "IIRScram_ArchitectureStatement.hh"
 #include "IIRBase_ConcurrentStatement.hh"
 
-class IIRScram_ConcurrentStatement : public virtual IIRScram_ArchitectureStatement, public virtual IIRBase_ConcurrentStatement{
+class IIRScram_ConcurrentStatement : public virtual IIRScram_ArchitectureStatement, public virtual IIRBase_ConcurrentStatement {
 public:
   IIRScram_ConcurrentStatement();
   virtual ~IIRScram_ConcurrentStatement();
 };
+
 #endif

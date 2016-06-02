@@ -41,14 +41,11 @@ class IIRScram_TypeDefinition;
 class IIRScram_UnitList;
 
 class IIRScram_PhysicalTypeDefinition : public virtual IIRScram_ScalarTypeDefinition,
-					public virtual IIRBase_PhysicalTypeDefinition{
+					public virtual IIRBase_PhysicalTypeDefinition {
 
 public:
   IIRScram_PhysicalTypeDefinition();
   ~IIRScram_PhysicalTypeDefinition();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   IIR_Boolean _is_numeric_type() { return TRUE; }
   IIR_Boolean _is_physical_type() { return TRUE; }
@@ -68,8 +65,6 @@ public:
   IIRScram_PhysicalUnit *       _get_primary_unit();
 protected: 
   void _build_implicit_operators( savant::set<IIRScram_Declaration> * );
-    
-private:
 };
 
 #endif

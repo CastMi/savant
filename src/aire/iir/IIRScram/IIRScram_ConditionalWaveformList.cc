@@ -30,8 +30,3 @@
 #include "IIRScram_ConditionalWaveformList.hh"
 
 IIRScram_ConditionalWaveformList::~IIRScram_ConditionalWaveformList(){}
-
-visitor_return_type *IIRScram_ConditionalWaveformList::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ConditionalWaveformList(this, arg);
-}

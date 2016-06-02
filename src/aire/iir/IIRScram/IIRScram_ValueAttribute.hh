@@ -35,11 +35,8 @@
 class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
-class IIRScram_ValueAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_ValueAttribute{
+class IIRScram_ValueAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_ValueAttribute {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIRScram_TypeDefinition *_get_subtype();
 
   IIR_Boolean has_suffix(){ return TRUE; }
@@ -47,6 +44,6 @@ public:
 
 protected:
   void _resolve_suffix_special();
-private:
 };
+
 #endif

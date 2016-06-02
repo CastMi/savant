@@ -33,16 +33,10 @@
 
 class IIRScram_DesignatorList;
 
-class IIRScram_ConditionalWaveformList : public virtual IIRScram_List, public virtual IIRBase_ConditionalWaveformList{
+class IIRScram_ConditionalWaveformList : public virtual IIRScram_List, public virtual IIRBase_ConditionalWaveformList {
 public:
   IIRScram_ConditionalWaveformList() {};
   virtual ~IIRScram_ConditionalWaveformList();
-    
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
-protected:
-private:
 };
+
 #endif

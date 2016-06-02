@@ -58,12 +58,6 @@ IIRScram_Label *
 IIRScram_ConcurrentGenerateIfStatement::_find_instantiate_label( IIRScram_SimpleName *to_find ){
   return _get_concurrent_statement_part()->_find_instantiate_label( to_find );
 }
-visitor_return_type *
-IIRScram_ConcurrentGenerateIfStatement::_accept_visitor( node_visitor *visitor,
-							 visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ConcurrentGenerateIfStatement(this, arg);
-}
 
 IIRScram_List *
 IIRScram_ConcurrentGenerateIfStatement::_get_statement_list() {

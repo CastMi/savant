@@ -37,12 +37,8 @@ class IIRScram_Identifier;
 class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
-class IIRScram_RangeAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_RangeAttribute{
+class IIRScram_RangeAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_RangeAttribute {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   IIRScram_TypeDefinition *_get_subtype();
   IIRScram_Declaration *_get_implicit_declaration( const string &decl_name, 
 					      IIRScram_TypeDefinition *decl_type );
@@ -56,6 +52,6 @@ public:
 
 protected:
   void _resolve_suffix_special();
-private:
 };
+
 #endif

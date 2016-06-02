@@ -36,31 +36,17 @@
 
 class IIRScram_DesigantorList;
 
-class IIRScram_SignalInterfaceDeclaration : public virtual IIRScram_InterfaceDeclaration, public virtual IIRBase_SignalInterfaceDeclaration{
+class IIRScram_SignalInterfaceDeclaration : public virtual IIRScram_InterfaceDeclaration, public virtual IIRBase_SignalInterfaceDeclaration {
 public:
   IIRScram_SignalInterfaceDeclaration();
   ~IIRScram_SignalInterfaceDeclaration();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
   IIRScram *_clone();
 
   void _type_check( IIRScram_InterfaceDeclaration::_InterfaceListType );
 
-protected:
 private:
   IIRScram_SignalInterfaceDeclaration *_my_clone;
 };
+
 #endif
-
-
-
-
-
-
-
-
-
-

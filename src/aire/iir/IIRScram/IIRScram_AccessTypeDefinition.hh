@@ -41,16 +41,12 @@ class IIRScram_ScalarTypeDefinition;
 class IIRScram_TypeDeclaration;
 class IIRScram_AccessSubtypeDefinition;
 
-class IIRScram_AccessTypeDefinition : public virtual IIRScram_TypeDefinition, public virtual IIRBase_AccessTypeDefinition{
+class IIRScram_AccessTypeDefinition : public virtual IIRScram_TypeDefinition, public virtual IIRBase_AccessTypeDefinition {
 
 public:
   IIRScram_AccessTypeDefinition();
 
   static IIRScram_AccessTypeDefinition *get( IIRScram_TypeDefinition *designated_type );
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIR_Boolean _is_iir_access_type_definition() { return TRUE; }
   IIR_Boolean _designates_incomplete_type();
@@ -82,8 +78,6 @@ protected:
   
   IIRScram_TypeDefinition *_construct_new_subtype( IIRScram_Name                        *resolution_function, 
                                                    IIRScram_ScalarTypeDefinition        *new_constraint);
-    
-private:
 };
-#endif
 
+#endif

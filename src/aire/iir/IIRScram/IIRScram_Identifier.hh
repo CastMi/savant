@@ -33,18 +33,13 @@
 
 class IIRScram_Name;
 
-class IIRScram_Identifier : public virtual IIRScram_TextLiteral, public virtual IIRBase_Identifier{
+class IIRScram_Identifier : public virtual IIRScram_TextLiteral, public virtual IIRBase_Identifier {
 
 public:
   IIRScram_Identifier() {}
   virtual ~IIRScram_Identifier();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIRScram_Statement * _clone();
-
-protected:    
-private:
 };
+
 #endif

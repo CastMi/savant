@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_ATTRIBUTE_HH
 #define IIRSCRAM_ATTRIBUTE_HH
 
@@ -49,7 +48,7 @@ class IIRScram_TextLiteral;
 class IIRScram_TypeDeclaration;
 class IIRScram_TypeDefinition;
 
-class IIRScram_Attribute : public virtual IIRScram_Name, public virtual IIRBase_Attribute{
+class IIRScram_Attribute : public virtual IIRScram_Name, public virtual IIRBase_Attribute {
 
 public:
   IIRScram_Attribute();

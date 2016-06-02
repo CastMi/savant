@@ -169,12 +169,6 @@ IIRScram_ElementDeclaration::_rval_to_decl( IIRScram_TypeDefinition *,
   return this;
 }
 
-visitor_return_type *
-IIRScram_ElementDeclaration::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ElementDeclaration(this, arg);
-}
-
 IIRScram_TypeDefinition *
 IIRScram_ElementDeclaration::_get_type_of_element( int index_num ){
   ASSERT( _get_subtype() != NULL );

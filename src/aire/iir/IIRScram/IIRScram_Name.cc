@@ -186,11 +186,6 @@ IIRScram_Name::_build_lib( IIRScram_LibraryUnit * ){
   _report_undefined_scram_fn("IIRScram_Name::_build_lib");
 }
 
-visitor_return_type *IIRScram_Name::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_Name(this, arg);
-};
-
 IIRScram **
 IIRScram_Name::lookup( IIRScram_Name *,
 		       IIR_Int32 &,

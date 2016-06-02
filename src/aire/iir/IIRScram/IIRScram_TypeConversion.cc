@@ -51,13 +51,6 @@ IIRScram_TypeConversion::_find_formal_declaration(){
   return _get_type_mark()->_find_formal_declaration();
 }
 
-visitor_return_type *
-IIRScram_TypeConversion::_accept_visitor( node_visitor *visitor, 
-					  visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_TypeConversion(this, arg);
-}
-
 IIRScram_TypeDefinition *
 IIRScram_TypeConversion::_get_type_mark() {
   return dynamic_cast<IIRScram_TypeDefinition *>(get_type_mark());

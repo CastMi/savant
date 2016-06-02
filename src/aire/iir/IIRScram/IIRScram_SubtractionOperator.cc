@@ -34,10 +34,3 @@ IIRScram_SubtractionOperator::_clone() {
   IIRScram_DyadicOperator::_clone(clone);
   return clone;
 }
-
-visitor_return_type *
-IIRScram_SubtractionOperator::_accept_visitor( node_visitor *visitor,
-					       visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SubtractionOperator(this, arg);
-}

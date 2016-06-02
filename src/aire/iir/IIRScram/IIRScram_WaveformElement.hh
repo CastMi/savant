@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_WAVEFORM_ELEMENT_HH
 #define IIRSCRAM_WAVEFORM_ELEMENT_HH
 
@@ -47,13 +46,9 @@
 
 class IIRScram_TypeDefinition;
 
-class IIRScram_WaveformElement : public virtual IIRScram_Tuple, public virtual IIRBase_WaveformElement{
+class IIRScram_WaveformElement : public virtual IIRScram_Tuple, public virtual IIRBase_WaveformElement {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   // Methods for semantic checking
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0 );
@@ -66,7 +61,6 @@ public:
   // Helper functions
   IIRScram *_get_value();
   IIRScram *_get_time();
-protected:
-private:
 };
+
 #endif

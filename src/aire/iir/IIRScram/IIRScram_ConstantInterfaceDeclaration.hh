@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_CONSTANT_INTERFACE_DECLARATION_HH
 #define IIRSCRAM_CONSTANT_INTERFACE_DECLARATION_HH
 
@@ -34,17 +33,13 @@
 #include "IIRScram_InterfaceDeclaration.hh"
 #include "IIRBase_ConstantInterfaceDeclaration.hh"
 
-class IIRScram_ConstantInterfaceDeclaration : public virtual IIRScram_InterfaceDeclaration, public virtual IIRBase_ConstantInterfaceDeclaration{
+class IIRScram_ConstantInterfaceDeclaration : public virtual IIRScram_InterfaceDeclaration, public virtual IIRBase_ConstantInterfaceDeclaration {
 
 public:
   IIRScram_ConstantInterfaceDeclaration() {}
   virtual ~IIRScram_ConstantInterfaceDeclaration();
 
   IIR_Boolean is_locally_static_primary();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   void _build_generic_parameter_set(savant::set<IIRScram_Declaration> *);
 
@@ -54,10 +49,8 @@ public:
 
   IIRScram * _get_value();
 
-protected:    
-
 private:
   IIR_Int32 _stmt_node_index;
 };
-#endif
 
+#endif

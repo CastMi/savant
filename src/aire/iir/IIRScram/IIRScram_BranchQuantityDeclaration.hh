@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_BRANCH_QUANTITY_DECLARATION_HH
 #define IIRSCRAM_BRANCH_QUANTITY_DECLARATION_HH
 
@@ -52,11 +51,6 @@ public:
   IIRScram * _get_through_aspect_tolerance();
   IIRScram_Name* _get_plus_terminal_name();
   IIRScram_Name* _get_minus_terminal_name();
-
-protected:
-
-private:
 };
+
 #endif
-
-

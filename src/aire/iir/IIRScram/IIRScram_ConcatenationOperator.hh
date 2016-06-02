@@ -32,23 +32,17 @@
 #include "IIRScram_DyadicOperator.hh"
 #include "IIRBase_ConcatenationOperator.hh"
 
-class IIRScram_ConcatenationOperator : public virtual IIRScram_DyadicOperator, public virtual IIRBase_ConcatenationOperator{
+class IIRScram_ConcatenationOperator : public virtual IIRScram_DyadicOperator, public virtual IIRBase_ConcatenationOperator {
 
 public:
   IIRScram_ConcatenationOperator() {}
   virtual ~IIRScram_ConcatenationOperator();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
-  
   IIRScram *_clone();
   
-
-protected:    
 private:
   // Removes types that aren't dimensional arrays from the set passed in.
   void _remove_non_one_d_array_types( savant::set<IIRScram_TypeDefinition> *remove_from );
 };
+
 #endif

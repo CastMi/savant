@@ -35,12 +35,6 @@ IIRScram_Signature::IIRScram_Signature() {
 
 IIRScram_Signature::~IIRScram_Signature(){}
 
-visitor_return_type *IIRScram_Signature::_accept_visitor( node_visitor *visitor,
-							  visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_Signature(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_DesignatorList *
 IIRScram_Signature::_get_argument_type_list() {

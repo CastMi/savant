@@ -316,13 +316,6 @@ IIRScram_ArchitectureDeclaration::_static_elaborate(IIRScram_ArchitectureDeclara
 }
 #endif
 
-visitor_return_type *
-IIRScram_ArchitectureDeclaration::_accept_visitor( node_visitor *visitor, 
-						   visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ArchitectureDeclaration(this, arg);
-}
-
 IIRScram_DeclarationList *
 IIRScram_ArchitectureDeclaration::_get_architecture_declarative_part() {
   return dynamic_cast<IIRScram_DeclarationList *>(get_architecture_declarative_part());

@@ -31,21 +31,13 @@
 
 /** Captures a set of VHDL comments.  Typically these comments are
     collected by the lexer and placed with each design unit. */
-class IIRScram_CommentList : public virtual IIRScram_List, public virtual IIRBase_CommentList{
+class IIRScram_CommentList : public virtual IIRScram_List, public virtual IIRBase_CommentList {
 
 public:
   IIRScram_CommentList() {};
   virtual ~IIRScram_CommentList();
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   /// Write the VHDL source of the comment list.
-
-protected:    
-private:
 };
+
 #endif
-
-
-

@@ -52,13 +52,6 @@ IIRScram_IntegerSubtypeDefinition::_type_check(){
   IIRScram_IntegerTypeDefinition::_type_check();
 }
 
-visitor_return_type *
-IIRScram_IntegerSubtypeDefinition::_accept_visitor( node_visitor *visitor,
-						    visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_IntegerSubtypeDefinition(this, arg);
-};
-
 IIRScram_FunctionDeclaration *
 IIRScram_IntegerSubtypeDefinition::_get_resolution_function(){ 
   return dynamic_cast<IIRScram_FunctionDeclaration *>(get_resolution_function()); 

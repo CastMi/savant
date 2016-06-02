@@ -104,13 +104,6 @@ IIRScram_ConcurrentConditionalSignalAssignment::_get_delay_mechanism(){
   return get_delay_mechanism();
 }
 
-visitor_return_type *
-IIRScram_ConcurrentConditionalSignalAssignment::_accept_visitor( node_visitor *visitor,
-								 visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ConcurrentConditionalSignalAssignment(this, arg);
-}
-
 IIRScram_ConditionalWaveformList *
 IIRScram_ConcurrentConditionalSignalAssignment::_get_conditional_waveforms() {
   return dynamic_cast<IIRScram_ConditionalWaveformList *>(get_conditional_waveforms());

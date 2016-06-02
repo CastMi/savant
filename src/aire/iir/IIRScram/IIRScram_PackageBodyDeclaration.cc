@@ -42,13 +42,6 @@ IIRScram_PackageBodyDeclaration::~IIRScram_PackageBodyDeclaration() {
   delete get_package_declarative_part();
 }
 
-visitor_return_type *
-IIRScram_PackageBodyDeclaration::_accept_visitor( node_visitor *visitor, 
-						  visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_PackageBodyDeclaration(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_DeclarationList *
 IIRScram_PackageBodyDeclaration::_get_package_declarative_part() {

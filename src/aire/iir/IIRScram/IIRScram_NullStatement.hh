@@ -37,14 +37,9 @@
 class IIRScram_DesignatorList;
 class IIRScram_List;
 
-class IIRScram_NullStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_NullStatement{
+class IIRScram_NullStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_NullStatement {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   void _type_check();
-
-protected:
-private:
 };
+
 #endif

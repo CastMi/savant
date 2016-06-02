@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_OR_OPERATOR_HH
 #define IIRSCRAM_OR_OPERATOR_HH
 
@@ -32,14 +31,10 @@
 #include "IIRBase_OrOperator.hh"
 
 class IIRScram_OrOperator : public virtual IIRScram_LogicalOperators,
-			    public virtual IIRBase_OrOperator{
+			    public virtual IIRBase_OrOperator {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-  
   IIRScram *_clone();
-
-private:
 };
+
 #endif

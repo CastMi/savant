@@ -32,17 +32,11 @@ class IIRScram_TypeDefinition;
 class IIRScram_TypeDeclaration;
 
 /** The extension base for array type definitions. */
-class IIRScram_ArrayTypeDefinition : public virtual IIRScram_TypeDefinition, public virtual IIRBase_ArrayTypeDefinition{
+class IIRScram_ArrayTypeDefinition : public virtual IIRScram_TypeDefinition, public virtual IIRBase_ArrayTypeDefinition {
   friend class StandardPackage;
-
 public:
   IIRScram_ArrayTypeDefinition();
   virtual ~IIRScram_ArrayTypeDefinition();
-  
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   
   IIR_Boolean _is_iir_array_type_definition() { return TRUE; }
   IIR_Int32 get_num_indexes();
@@ -94,7 +88,6 @@ public:
   void _build_implicit_operators( savant::set<IIRScram_Declaration> * );
   
   virtual void _set_resolution_function( IIRScram_FunctionDeclaration * );
-
-private:  
 };
+
 #endif

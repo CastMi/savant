@@ -64,11 +64,6 @@ IIRScram_EnumerationSubtypeDefinition::_clone( IIRScram *copy_into ){
   IIRScram_EnumerationTypeDefinition::_clone( copy_into );
 }
 
-visitor_return_type *IIRScram_EnumerationSubtypeDefinition::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_EnumerationSubtypeDefinition(this, arg);
-};
-
 IIRScram_EnumerationSubtypeDefinition *
 IIRScram_EnumerationSubtypeDefinition::get( IIRScram_EnumerationTypeDefinition *base_type,
 					  IIRScram_EnumerationLiteral *left_limit,

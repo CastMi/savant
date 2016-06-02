@@ -33,7 +33,7 @@
 #include "IIRScram_Tuple.hh"
 #include "IIRBase_Designator.hh"
 
-class IIRScram_Designator : public virtual IIRScram_Tuple, public virtual IIRBase_Designator{
+class IIRScram_Designator : public virtual IIRScram_Tuple, public virtual IIRBase_Designator {
 
 public:
   IIRScram_Designator() {}
@@ -42,8 +42,6 @@ public:
   IIR_Boolean _is_designator(){ return TRUE; }
 
   virtual IIRScram* _get_name();
-
-protected:
-private:
 };
+
 #endif

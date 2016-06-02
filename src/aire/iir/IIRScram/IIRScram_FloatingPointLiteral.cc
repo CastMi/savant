@@ -55,13 +55,6 @@ IIRScram_FloatingPointLiteral::_get_rval_set(constraint_functor *functor){
   return retval;
 }
 
-visitor_return_type *
-IIRScram_FloatingPointLiteral::_accept_visitor( node_visitor *visitor,
-						visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_FloatingPointLiteral(this, arg);
-}
-
 IIRScram_FloatingPointLiteral*
 IIRScram_FloatingPointLiteral::get(IIR_Int32 base, 
                                    IIR_Char* mantissa, IIR_Int32 mantissa_length,

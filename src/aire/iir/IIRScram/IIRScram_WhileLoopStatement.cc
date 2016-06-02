@@ -83,11 +83,6 @@ IIRScram_WhileLoopStatement::_clone() {
   return whilestmt;
 }
 
-visitor_return_type *IIRScram_WhileLoopStatement::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_WhileLoopStatement(this, arg);
-};
-
 // IIRBase Function Wrapper(s)
 IIRScram_SequentialStatementList *
 IIRScram_WhileLoopStatement::_get_sequence_of_statements() {

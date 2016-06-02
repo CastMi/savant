@@ -31,14 +31,10 @@
 #include "IIRScram_List.hh"
 #include "IIRBase_DesignUnitList.hh"
 
-class IIRScram_DesignUnitList : public virtual IIRScram_List, public virtual IIRBase_DesignUnitList{
+class IIRScram_DesignUnitList : public virtual IIRScram_List, public virtual IIRBase_DesignUnitList {
 public:
   IIRScram_DesignUnitList() {};
   virtual ~IIRScram_DesignUnitList();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-protected:    
-private:
 };
+
 #endif

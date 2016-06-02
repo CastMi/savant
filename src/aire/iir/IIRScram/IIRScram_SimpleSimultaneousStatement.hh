@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_SIMPLE_SIMULTANEOUS_STATEMENT_HH
 #define IIRSCRAM_SIMPLE_SIMULTANEOUS_STATEMENT_HH
 
@@ -50,4 +49,5 @@ public:
 private:
   IIR_Label * _mangled_stmt_label;
 };
+
 #endif

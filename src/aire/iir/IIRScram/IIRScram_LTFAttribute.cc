@@ -29,13 +29,12 @@
 #include "IIRScram_LTFAttribute.hh"
 #include "IIRScram_TypeDeclaration.hh"
 #include "IIRScram_TypeDefinition.hh"
-
 #include "set.hh"
 #include "symbol_table.hh"
 #include "resolution_func.hh"
 #include "error_func.hh"
-
 #include <sstream>
+
 using std::ostringstream;
 
 

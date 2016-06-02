@@ -38,12 +38,9 @@ class IIRScram_FunctionDeclaration;
 class IIRScram_IntegerSubtypeDefinition;
 class IIRScram_TypeDefinition;
 
-class IIRScram_IntegerTypeDefinition : public virtual IIRScram_ScalarTypeDefinition, public virtual IIRBase_IntegerTypeDefinition{
+class IIRScram_IntegerTypeDefinition : public virtual IIRScram_ScalarTypeDefinition, public virtual IIRBase_IntegerTypeDefinition {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   IIR_Boolean _is_numeric_type(){ return true; }
   IIR_Boolean _is_iir_integer_type_definition(){ return true; }
 
@@ -61,7 +58,6 @@ public:
 
 protected:
   void _build_implicit_operators( savant::set<IIRScram_Declaration> * );
-    
-private:
 };
+
 #endif

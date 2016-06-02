@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_WAIT_STATEMENT_HH
 #define IIRSCRAM_WAIT_STATEMENT_HH
 
@@ -36,14 +35,11 @@
 
 class IIRScram_DesignatorList;
 
-class IIRScram_WaitStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_WaitStatement{
+class IIRScram_WaitStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_WaitStatement {
 
 public:
   IIRScram_WaitStatement();
   ~IIRScram_WaitStatement();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   void _type_check();
   IIRScram *_resolve_signal_name(IIRScram*);
@@ -52,8 +48,6 @@ public:
   IIRScram_DesignatorList *     _get_sensitivity_list();
   IIRScram *                    _get_condition_clause();
   IIRScram *                    _get_timeout_clause();
-
-protected:    
-private:
 };
+
 #endif

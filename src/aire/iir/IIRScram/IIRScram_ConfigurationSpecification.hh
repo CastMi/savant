@@ -38,16 +38,12 @@ class IIRScram_DesignatorList;
 class IIRScram_LibraryUnit;
 class IIRScram_StatementList;
 
-class IIRScram_ConfigurationSpecification : public virtual IIRScram_Declaration, public virtual IIRBase_ConfigurationSpecification{
+class IIRScram_ConfigurationSpecification : public virtual IIRScram_Declaration, public virtual IIRBase_ConfigurationSpecification {
 
 public:
   IIRScram_ConfigurationSpecification();
   virtual ~IIRScram_ConfigurationSpecification();
   enum type_check_mode { CONFIG_SPEC, COMPONENT_INSTANT };
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIR_Boolean _is_specification() { return TRUE; }
   IIR_Boolean _is_iir_configuration_specification() { return TRUE; }
@@ -68,4 +64,5 @@ public:
   IIRScram_AssociationList * _get_generic_map_aspect();
   IIRScram_AssociationList * _get_port_map_aspect();
 };
+
 #endif

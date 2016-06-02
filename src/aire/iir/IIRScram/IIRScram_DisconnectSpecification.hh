@@ -36,15 +36,11 @@
 class IIRScram_DeclarationList;
 class IIRScram_List;
 
-class IIRScram_DisconnectSpecification : public virtual IIRScram_Declaration, public virtual IIRBase_DisconnectSpecification{
+class IIRScram_DisconnectSpecification : public virtual IIRScram_Declaration, public virtual IIRBase_DisconnectSpecification {
 
 public:
   IIRScram_DisconnectSpecification();  
   virtual ~IIRScram_DisconnectSpecification();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIR_Boolean _is_specification(){
     return TRUE;
@@ -57,9 +53,6 @@ public:
   IIRScram_DesignatorList *     _get_guarded_signal_list();
   IIRScram_TypeDefinition *     _get_type_mark();
   IIRScram *                    _get_time_expression();
-
-protected:    
-private:  
 };
 
 #endif

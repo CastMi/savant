@@ -37,13 +37,8 @@ class IIRScram_TypeDefinition;
 class IIRScram_TextLiteral;
 class IIRScram_Declaration;
 
-class IIRScram_AscendingAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_AscendingAttribute{
-
+class IIRScram_AscendingAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_AscendingAttribute {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   IIR_Boolean has_suffix(){ return TRUE; }
   void _set_suffix( IIRScram_Statement *new_suffix ){ IIRBase_AscendingAttribute::set_suffix( new_suffix ); }
 
@@ -51,7 +46,6 @@ public:
 
 protected:
   void _resolve_suffix_special();
-
-private:
 };
+
 #endif

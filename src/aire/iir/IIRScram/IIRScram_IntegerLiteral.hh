@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_INTEGER_LITERAL_HH
 #define IIRSCRAM_INTEGER_LITERAL_HH
 
@@ -37,12 +36,9 @@
 class IIRScram_Declaration;
 class IIRScram_TypeDefinition;
 
-class IIRScram_IntegerLiteral : public virtual IIRScram_Literal, public virtual IIRBase_IntegerLiteral{
+class IIRScram_IntegerLiteral : public virtual IIRScram_Literal, public virtual IIRBase_IntegerLiteral {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   static IIRScram_IntegerLiteral *get( IIR_Int32 base, 
                                        IIR_Char *mantissa,  
                                        IIR_Int32 mantissa_length,
@@ -60,8 +56,6 @@ public:
   IIRScram_IntegerLiteral *_clone() { return this; }
 
   IIRScram_IntegerLiteral *_get_integer_static_value();
-
-protected:    
-private:
 };
+
 #endif

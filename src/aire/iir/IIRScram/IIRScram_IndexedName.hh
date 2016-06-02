@@ -40,7 +40,7 @@ class IIRScram_PortList;
 class IIRScram_SliceName;
 class IIRScram_TypeDefinition;
 
-class IIRScram_IndexedName : public virtual IIRScram_Name, public virtual IIRBase_IndexedName{
+class IIRScram_IndexedName : public virtual IIRScram_Name, public virtual IIRBase_IndexedName {
 
 public:
   virtual ~IIRScram_IndexedName() {}
@@ -50,8 +50,6 @@ public:
     _have_rval_set = FALSE;
   }
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
 
   IIRScram_Declaration* _get_package_declaration();
@@ -109,7 +107,6 @@ public:
 
   IIRScram *_get_index(int index_num);
 
-protected:    
 private:
   // Same as above, but for an array...
   IIRScram *_process_as_array( savant::set<IIRScram_TypeDefinition> * );
@@ -128,4 +125,5 @@ private:
   savant::set<IIRScram_TypeDefinition> *_my_rval_set;
   IIR_Boolean _have_rval_set;
 };
+
 #endif

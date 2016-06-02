@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_SEQUENTIAL_STATEMENT_LIST_HH
 #define IIRSCRAM_SEQUENTIAL_STATEMENT_LIST_HH
 
@@ -45,14 +44,7 @@
 #include "IIRScram_List.hh"
 #include "IIRBase_SequentialStatementList.hh"
 
-class IIRScram_SequentialStatementList : public virtual IIRScram_List, public virtual IIRBase_SequentialStatementList{
-
-public:    
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
-protected:
-private:
+class IIRScram_SequentialStatementList : public virtual IIRScram_List, public virtual IIRBase_SequentialStatementList {
 };
+
 #endif

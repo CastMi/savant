@@ -37,7 +37,6 @@ public:
 
 protected:
   virtual ~IIRScram_ShiftOperators() = 0;
-    
-private:
 };
+
 #endif

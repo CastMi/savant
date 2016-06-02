@@ -37,10 +37,3 @@ IIR_Boolean
 IIRScram_TransactionAttribute::_is_readable(){
   return _get_prefix()->_is_readable();
 }
-
-visitor_return_type *
-IIRScram_TransactionAttribute::_accept_visitor( node_visitor *visitor, 
-						visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_TransactionAttribute(this, arg);
-}

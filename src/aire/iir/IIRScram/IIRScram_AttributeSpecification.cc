@@ -164,13 +164,6 @@ IIRScram_AttributeSpecification::_can_be_in_same_region( IIRScram_Declaration *t
   return retval;
 }
 
-visitor_return_type *
-IIRScram_AttributeSpecification::_accept_visitor( node_visitor *visitor, 
-						  visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_AttributeSpecification(this, arg);
-}
-
 IIRScram_DesignatorList *
 IIRScram_AttributeSpecification::_get_entity_name_list() {
   return dynamic_cast<IIRScram_DesignatorList *>(get_entity_name_list());

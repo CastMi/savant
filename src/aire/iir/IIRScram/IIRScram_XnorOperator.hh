@@ -32,15 +32,9 @@
 #include "IIRBase_XnorOperator.hh"
 
 class IIRScram_XnorOperator : public virtual IIRScram_LogicalOperators,
-			      public virtual IIRBase_XnorOperator{
+			      public virtual IIRBase_XnorOperator {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-  
   IIRScram *_clone();
-
-protected:
-private:
 };
+
 #endif

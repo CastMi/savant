@@ -41,12 +41,3 @@ IIRScram_TypeDefinition *
 IIRScram_AttributeDeclaration::_get_type_of_element( int element_number ){
   return _get_subtype()->_get_type_of_element( element_number );
 }
-
-visitor_return_type *
-IIRScram_AttributeDeclaration::_accept_visitor( node_visitor *visitor,
-						visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_AttributeDeclaration(this, arg);
-}
-
-

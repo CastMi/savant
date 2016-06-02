@@ -31,9 +31,6 @@
 #include "IIRScram_LibraryDeclaration.hh"
 #include "IIRScram_LibraryUnit.hh"
 #include "IIRScram_TextLiteral.hh"
-
-
-
 #include "language_processing_control.hh"
 
 IIRScram_LibraryUnit::IIRScram_LibraryUnit(){}

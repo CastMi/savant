@@ -34,16 +34,12 @@
 
 class IIRScram_TypeDefinition;
 
-class IIRScram_EnumerationLiteral : public virtual IIRScram_Declaration, public virtual IIRBase_EnumerationLiteral{
+class IIRScram_EnumerationLiteral : public virtual IIRScram_Declaration, public virtual IIRBase_EnumerationLiteral {
 
 public:
   IIRScram_EnumerationLiteral();
   virtual ~IIRScram_EnumerationLiteral();
     
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
   savant::set<IIRScram_Declaration> *_symbol_lookup();
   IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
@@ -65,8 +61,6 @@ public:
 
   // Wrappers for IIRBase functions
   IIRScram_AttributeSpecificationList * _get_attributes();
-
-protected:
-private:
 };
+
 #endif

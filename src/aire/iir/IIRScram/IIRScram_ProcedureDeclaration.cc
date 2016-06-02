@@ -36,13 +36,6 @@
 #include "IIRScram_ProcedureReturnTypeDefinition.hh"
 #include "IIRScram_TextLiteral.hh"
 
-visitor_return_type *
-IIRScram_ProcedureDeclaration::_accept_visitor( node_visitor *visitor, 
-						visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ProcedureDeclaration(this, arg);
-}
-
 IIR_TypeDefinition *
 IIRScram_ProcedureDeclaration::get_subtype(){
   IIR_TypeDefinition *type = get_procedure_return_type();

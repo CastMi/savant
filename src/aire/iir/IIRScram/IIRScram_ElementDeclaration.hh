@@ -36,13 +36,9 @@
 class IIRScram_Name;
 class IIRScram_TypeDefinition;
 
-class IIRScram_ElementDeclaration : public virtual IIRScram_ObjectDeclaration, public virtual IIRBase_ElementDeclaration{
+class IIRScram_ElementDeclaration : public virtual IIRScram_ObjectDeclaration, public virtual IIRBase_ElementDeclaration {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   savant::set<IIRScram_TypeDefinition> *_get_rval_set( savant::set<IIRScram_TypeDefinition> *,
                                                        constraint_functor *functor = 0 );
 
@@ -55,8 +51,6 @@ public:
   IIR_Boolean _is_iir_element_declaration(){ return TRUE; }
 
   IIRScram_TypeDefinition *_get_type_of_element( int );
-
-protected:
-private:
 };
+
 #endif

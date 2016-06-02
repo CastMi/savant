@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_ARRAY_NATURE_DEFINITION_HH
 #define IIRSCRAM_ARRAY_NATURE_DEFINITION_HH
 
@@ -75,7 +74,6 @@ public:
   /** Gets number of indexes in an array */
   IIR_Int32 get_num_indexes();
 
-protected:
 private:
   static IIRScram_ArraySubnatureDefinition *_construct_unconstrained( IIRScram_ScalarTypeDefinition *, 
                                                                       IIRScram_NatureDefinition *, 
@@ -85,4 +83,5 @@ private:
                                                                     IIRScram_NatureDefinition *,
                                                                     IIRScram_NatureDeclaration *);
 };
+
 #endif

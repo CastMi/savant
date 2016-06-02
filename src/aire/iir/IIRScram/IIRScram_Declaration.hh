@@ -39,7 +39,7 @@ class IIRScram_TypeDefinition;
 
 #define numSignalAttributes 10
 
-class IIRScram_Declaration : public virtual IIRScram, public virtual IIRBase_Declaration{
+class IIRScram_Declaration : public virtual IIRScram, public virtual IIRBase_Declaration {
 public:
   IIRScram_Declaration();
   virtual ~IIRScram_Declaration();
@@ -151,9 +151,6 @@ public:
   // Helper functions
   IIRScram              *_get_value();
   IIRScram              *_get_declarative_region();
-  
-protected:
-private:
-
 };
+
 #endif

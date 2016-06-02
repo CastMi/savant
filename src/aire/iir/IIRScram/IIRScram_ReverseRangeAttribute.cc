@@ -63,10 +63,3 @@ void
 IIRScram_ReverseRangeAttribute::_resolve_suffix_special(){
   _resolve_suffix_local_static_int();
 }
-
-visitor_return_type *
-IIRScram_ReverseRangeAttribute::_accept_visitor( node_visitor *visitor, 
-						 visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ReverseRangeAttribute(this, arg);
-}

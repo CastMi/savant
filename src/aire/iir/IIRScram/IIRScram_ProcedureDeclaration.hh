@@ -41,19 +41,11 @@ class IIRScram_WaitStatement;
 class IIRScram_ProcedureDeclaration : public virtual IIRScram_SubprogramDeclaration,
 				      public virtual IIRBase_ProcedureDeclaration {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
   IIRScram *                _get_procedure_name();
 
   virtual IIR_TypeDefinition *get_subtype();
 
   static IIR_TypeDefinition *get_procedure_return_type();
-
-protected:
-private:
 };
+
 #endif
-
-
-
-

@@ -37,15 +37,11 @@ class IIRScram_Identifier;
 class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
-class IIRScram_SimpleName : public virtual IIRScram_Name, public virtual IIRBase_SimpleName{
+class IIRScram_SimpleName : public virtual IIRScram_Name, public virtual IIRBase_SimpleName {
 
 public:
   IIRScram_SimpleName() {}
   virtual ~IIRScram_SimpleName();    
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   savant::set<IIRScram_Declaration> *_symbol_lookup();
   savant::set<IIRScram_Declaration> *_symbol_lookup( savant::set<IIRScram_Declaration> * );
@@ -71,7 +67,6 @@ public:
 
   IIRScram_Statement *_clone();
 
-protected:
 private:
 
   // This method looks at what this name is about to resolve to and decides
@@ -79,4 +74,5 @@ private:
   // either a function call, or the declaration passed in.
   IIRScram *_convert_to_function_call( IIRScram_Declaration * );
 };
+
 #endif

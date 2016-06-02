@@ -38,7 +38,7 @@
 class IIRScram_AttributeSpecification;
 class IIRScram_TypeDefinition;
 
-class IIRScram_InterfaceDeclaration : public virtual IIRScram_ObjectDeclaration, public virtual IIRBase_InterfaceDeclaration{
+class IIRScram_InterfaceDeclaration : public virtual IIRScram_ObjectDeclaration, public virtual IIRBase_InterfaceDeclaration {
 
 public:
   IIRScram_InterfaceDeclaration() {}
@@ -65,13 +65,6 @@ public:
   virtual void _type_check( );
 
   IIRScram * _get_value();
-
-protected:
-private:
 };
+
 #endif
-
-
-
-
-

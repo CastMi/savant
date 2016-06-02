@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_ARRAY_SUBNATURE_DEFINITION_HH
 #define IIRSCRAM_ARRAY_SUBNATURE_DEFINITION_HH
 
@@ -35,8 +34,6 @@ public:
   virtual ~IIRScram_ArraySubnatureDefinition();
 
   virtual IIRScram *_clone();
-
-protected:    
-private: 
 };
+
 #endif

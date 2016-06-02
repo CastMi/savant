@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_PROCEDURE_CALL_STATEMENT_HH
 #define IIRSCRAM_PROCEDURE_CALL_STATEMENT_HH
 
@@ -48,13 +47,10 @@
 class IIRScram_DesignatorList;
 class IIRScram_List;
 
-class IIRScram_ProcedureCallStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_ProcedureCallStatement{
+class IIRScram_ProcedureCallStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_ProcedureCallStatement {
 public:
   IIRScram_ProcedureCallStatement();
   virtual ~IIRScram_ProcedureCallStatement();    
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   void _type_check();
 
@@ -63,7 +59,6 @@ public:
   // Wrappers for IIRBase functions
   IIRScram_AssociationList *    _get_actual_parameter_part();
   IIRScram *                    _get_procedure_name();
-protected:
-private:
 };
+
 #endif

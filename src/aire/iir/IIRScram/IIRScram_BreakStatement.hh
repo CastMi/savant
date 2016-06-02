@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_BREAK_STATEMENT_HH
 #define IIRSCRAM_BREAK_STATEMENT_HH
 
@@ -45,8 +44,6 @@ public:
   // Help Functions
   IIRScram_BreakList    *_get_break_list();
   IIRScram              *_get_condition();
-protected:
-private:
-
 };
+
 #endif

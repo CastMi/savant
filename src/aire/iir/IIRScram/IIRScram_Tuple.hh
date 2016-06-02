@@ -33,13 +33,7 @@
 #include "IIRScram.hh"
 #include "IIRBase_Tuple.hh"
 
-class IIRScram_Tuple : public virtual IIRScram, public virtual IIRBase_Tuple{
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-protected:
-private:
+class IIRScram_Tuple : public virtual IIRScram, public virtual IIRBase_Tuple {
 };
 
 #endif

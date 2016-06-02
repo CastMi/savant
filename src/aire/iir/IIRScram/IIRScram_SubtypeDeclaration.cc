@@ -68,10 +68,3 @@ IIRScram*
 IIRScram_SubtypeDeclaration::_clone() {
   return this;
 }
-
-visitor_return_type *
-IIRScram_SubtypeDeclaration::_accept_visitor( node_visitor *visitor, 
-					      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SubtypeDeclaration(this, arg);
-}

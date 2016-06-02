@@ -34,7 +34,7 @@
 #include "IIRBase_FloatingSubtypeDefinition.hh"
 #include "IIRScram_FunctionDeclaration.hh"
 
-class IIRScram_FloatingSubtypeDefinition : public virtual IIRScram_FloatingTypeDefinition, public virtual IIRBase_FloatingSubtypeDefinition{
+class IIRScram_FloatingSubtypeDefinition : public virtual IIRScram_FloatingTypeDefinition, public virtual IIRBase_FloatingSubtypeDefinition {
 
 public:
   IIRScram_FloatingSubtypeDefinition() {};  
@@ -43,9 +43,6 @@ public:
   static IIRScram_FloatingSubtypeDefinition* get( IIRScram_FloatingTypeDefinition* base_type, 
                                                   IIRScram* left_limit,
                                                   IIRScram* direction, IIRScram* right_limit);
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   void _set_resolution_function(IIRScram_FunctionDeclaration *function);
 
@@ -56,10 +53,6 @@ public:
   IIRScram_FunctionDeclaration* _get_resolution_function();
 
   virtual void _type_check();
-
-protected:
-private:
 };
 
 #endif
-

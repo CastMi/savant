@@ -40,23 +40,18 @@ class node_visitor;
 class IIRScram_TypeDefinition;
 
 class IIRScram_AccessSubtypeDefinition : public virtual IIRScram_AccessTypeDefinition,
-					 public virtual IIRBase_AccessSubtypeDefinition{
+					 public virtual IIRBase_AccessSubtypeDefinition {
 public:
   IIRScram_AccessSubtypeDefinition() {}
   virtual ~IIRScram_AccessSubtypeDefinition();
 
   static IIRScram_AccessSubtypeDefinition *get( IIRScram_TypeDefinition *designated_type);
 
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   virtual IIRScram *_clone();
   virtual void _clone( IIRScram * );
 
   IIRScram_TypeDefinition *_get_designated_subtype();
 
-protected:     
-private:
 };
+
 #endif

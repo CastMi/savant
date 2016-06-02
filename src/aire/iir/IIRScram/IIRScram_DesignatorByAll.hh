@@ -39,12 +39,8 @@
 class IIRScram_Declaration;
 class IIRScram_TypeDefinition;
 
-class IIRScram_DesignatorByAll : public virtual IIRScram_Designator, public virtual IIRBase_DesignatorByAll{
+class IIRScram_DesignatorByAll : public virtual IIRScram_Designator, public virtual IIRBase_DesignatorByAll {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   const string convert_to_library_name(){ return ""; }
   
   savant::set<IIRScram_Declaration> *_symbol_lookup( savant::set<IIRScram_Declaration> * );
@@ -65,8 +61,6 @@ public:
   IIR_Boolean _is_writable(){ return TRUE; };
   IIR_Boolean _is_readable(){ return TRUE; };
   IIR_Boolean _is_by_all(){ return TRUE; }
-
-protected:
-private:
 };
+
 #endif

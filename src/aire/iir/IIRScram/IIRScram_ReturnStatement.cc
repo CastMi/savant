@@ -116,13 +116,6 @@ IIRScram_ReturnStatement::_type_check( savant::set<IIRScram_TypeDefinition> *con
   }
 }
 
-visitor_return_type *
-IIRScram_ReturnStatement::_accept_visitor( node_visitor *visitor, 
-					   visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ReturnStatement(this, arg);
-}
-
 IIRScram *
 IIRScram_ReturnStatement::_get_return_expression() {
   return dynamic_cast<IIRScram *>(get_return_expression());

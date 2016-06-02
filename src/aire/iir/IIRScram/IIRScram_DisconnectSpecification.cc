@@ -155,13 +155,6 @@ IIRScram_DisconnectSpecification::_type_check( IIRScram_DeclarationList * ){
   delete time_expression_types;
 }
 
-visitor_return_type *
-IIRScram_DisconnectSpecification::_accept_visitor( node_visitor *visitor,
-						   visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_DisconnectSpecification(this, arg);
-};
-
 // IIRBase Function Wrapper(s)
 IIRScram_DesignatorList *
 IIRScram_DisconnectSpecification::_get_guarded_signal_list() {

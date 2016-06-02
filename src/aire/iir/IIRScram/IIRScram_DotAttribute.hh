@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_DOT_ATTRIBUTE_HH
 #define IIRSCRAM_DOT_ATTRIBUTE_HH
 
@@ -44,10 +43,6 @@ public:
   /** Returns the type of the quantity. The implicit quantity is of the
       same type as the quantity Q.*/
   IIRScram_TypeDefinition *_get_subtype();
-  
-protected:
-  
-private:
-  
 };
+
 #endif

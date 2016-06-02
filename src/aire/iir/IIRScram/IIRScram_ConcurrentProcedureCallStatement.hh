@@ -38,20 +38,15 @@ class IIRScram_DesignatorList;
 
 class IIRScram_ConcurrentProcedureCallStatement 
   : public virtual IIRScram_ConcurrentStatement,
-    public virtual IIRBase_ConcurrentProcedureCallStatement{
+    public virtual IIRBase_ConcurrentProcedureCallStatement {
 public:
   IIRScram_ConcurrentProcedureCallStatement();
   ~IIRScram_ConcurrentProcedureCallStatement();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   void _type_check();
 
   IIRScram *                    _get_procedure_name();
   IIRScram_AssociationList *    _get_actual_parameter_part();
-
-protected:
-private:
 };
+
 #endif

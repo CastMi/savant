@@ -34,8 +34,6 @@ public:
   virtual ~IIRScram_QuantityDeclaration();
 
   IIR_Boolean _is_quantity() {return TRUE;}  
-protected:
-private:
 };
 
 #endif

@@ -57,12 +57,6 @@ IIRScram_FileDeclaration::_clone() {
   return _my_clone;
 }
 
-visitor_return_type *
-IIRScram_FileDeclaration::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_FileDeclaration(this, arg);
-}
-
 IIRScram *
 IIRScram_FileDeclaration::_get_file_open_expression() {
   return dynamic_cast<IIRScram *>(get_file_open_expression());

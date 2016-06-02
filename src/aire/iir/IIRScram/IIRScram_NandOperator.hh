@@ -33,13 +33,9 @@
 #include "IIRBase_NandOperator.hh"
 
 class IIRScram_NandOperator : public virtual IIRScram_LogicalOperators,
-			      public virtual IIRBase_NandOperator{
+			      public virtual IIRBase_NandOperator {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
   IIRScram *_clone();
-
-private:
-
 };
+
 #endif

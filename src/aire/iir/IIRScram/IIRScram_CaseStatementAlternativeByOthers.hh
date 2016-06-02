@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_CASE_STATEMENT_ALTERNATIVE_BY_OTHERS_HH
 #define IIRSCRAM_CASE_STATEMENT_ALTERNATIVE_BY_OTHERS_HH
 
@@ -34,18 +33,10 @@
 
 class IIRScram_List;
 
-class IIRScram_CaseStatementAlternativeByOthers : public virtual IIRScram_CaseStatementAlternative, public virtual IIRBase_CaseStatementAlternativeByOthers{
+class IIRScram_CaseStatementAlternativeByOthers : public virtual IIRScram_CaseStatementAlternative, public virtual IIRBase_CaseStatementAlternativeByOthers {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   IIRScram *_clone();
-
-protected:
-private:
-
 };
 
 #endif

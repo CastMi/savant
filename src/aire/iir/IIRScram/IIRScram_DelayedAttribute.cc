@@ -48,12 +48,6 @@ IIRScram_DelayedAttribute::_resolve_suffix_special(){
   _resolve_suffix_non_negative_time();
 }
 
-visitor_return_type *
-IIRScram_DelayedAttribute::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_DelayedAttribute(this, arg);
-};
-
 void 
 IIRScram_DelayedAttribute::_set_suffix( IIRScram *new_suffix ) {  
   IIRBase_DelayedAttribute::set_suffix( new_suffix ); 

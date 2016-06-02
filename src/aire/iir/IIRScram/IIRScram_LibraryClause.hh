@@ -38,21 +38,13 @@ class IIRScram_List;
 class IIRScram_LibraryDeclaration;
 
 class IIRScram_LibraryClause : public virtual IIRScram_Declaration,
-			       public virtual IIRBase_LibraryClause{
+			       public virtual IIRBase_LibraryClause {
 public:
   IIRScram_LibraryClause(){}
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
 
   void _type_check();
 
   IIRScram_Identifier *_get_logical_name();
-
-protected:    
-private:
 };
 
 #endif

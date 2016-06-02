@@ -88,13 +88,6 @@ IIRScram_SignalAssignmentStatement::_get_delay_mechanism(){
   return get_delay_mechanism();
 }
 
-visitor_return_type *
-IIRScram_SignalAssignmentStatement::_accept_visitor( node_visitor *visitor, 
-						     visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SignalAssignmentStatement(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_WaveformList *
 IIRScram_SignalAssignmentStatement::_get_waveform() {

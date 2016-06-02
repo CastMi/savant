@@ -36,15 +36,11 @@
 class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
-class IIRScram_UserAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_UserAttribute{
+class IIRScram_UserAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_UserAttribute {
 public:
   IIRScram_UserAttribute(){
     _survived_transformation = FALSE;
   }
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIRScram_TypeDefinition *_get_subtype();
   IIRScram_Declaration *_get_implicit_declaration( const string &decl_name, 
@@ -57,17 +53,9 @@ public:
   void _resolve_suffix_special();
 
   IIRScram *_get_suffix();
-protected:    
 private:
   IIR_Boolean _is_qualified_expression();
   IIR_Boolean _survived_transformation;
 };
+
 #endif
-
-
-
-
-
-
-
-

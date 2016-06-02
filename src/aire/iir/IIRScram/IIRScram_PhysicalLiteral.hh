@@ -37,12 +37,8 @@
 class IIRScram_PhysicalUnit;
 class IIRScram_TypeDefinition;
 
-class IIRScram_PhysicalLiteral : public virtual IIRScram_Expression, public virtual IIRBase_PhysicalLiteral{
+class IIRScram_PhysicalLiteral : public virtual IIRScram_Expression, public virtual IIRBase_PhysicalLiteral {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
 
@@ -50,7 +46,6 @@ public:
 
   IIRScram * _get_abstract_literal();
   IIRScram_PhysicalUnit *_get_unit_name();
-protected:
-private:
 };
+
 #endif

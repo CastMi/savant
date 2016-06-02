@@ -110,13 +110,6 @@ IIRScram_SliceName::_find_formal_declaration(){
   return _get_prefix()->_find_formal_declaration();
 }
 
-visitor_return_type *
-IIRScram_SliceName::_accept_visitor( node_visitor *visitor, 
-				     visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SliceName(this, arg);
-}
-
 IIRScram_List *
 IIRScram_SliceName::_get_statement_list(){
   ASSERT( _get_prefix()->is_label() == TRUE );

@@ -40,11 +40,3 @@ IIRScram_Identifier::_clone() {
   IIRScram_Identifier *clone = dynamic_cast<IIRScram_Identifier *>(get( text->get_text(), scram_plugin_class_factory::instance() ));
   return clone;
 }
-
-visitor_return_type *
-IIRScram_Identifier::_accept_visitor( node_visitor *visitor,
-				      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_Identifier(this, arg);
-}
-

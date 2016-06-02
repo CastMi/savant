@@ -120,13 +120,6 @@ IIRScram_BlockStatement::_make_interface_visible( symbol_table *sym_tab ){
   _get_block_statement_part()->_make_interface_visible( sym_tab );
 }
 
-visitor_return_type *
-IIRScram_BlockStatement::_accept_visitor( node_visitor *visitor, 
-					  visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_BlockStatement(this, arg);
-}
-
 IIRScram_PortList *
 IIRScram_BlockStatement::_get_port_clause() {
   return dynamic_cast<IIRScram_PortList *>(get_port_clause());

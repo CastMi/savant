@@ -33,13 +33,9 @@
 #include "IIRBase_TypeConversion.hh"
 
 class IIRScram_TypeConversion : public virtual IIRScram_Expression,
-				public virtual IIRBase_TypeConversion{
+				public virtual IIRBase_TypeConversion {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   void _type_check( savant::set<IIRScram_TypeDefinition> * ){}
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0 );
 
@@ -48,10 +44,8 @@ public:
   IIRScram_TypeDefinition *_get_type_mark();
   IIRScram * _get_expression();
 
-protected:
-
 private:
   IIR_Int32 _stmt_node_index;
-
 };
+
 #endif

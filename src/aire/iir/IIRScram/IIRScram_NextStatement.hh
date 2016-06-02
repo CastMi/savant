@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_NEXT_STATEMENT_HH
 #define IIRSCRAM_NEXT_STATEMENT_HH
 
@@ -35,17 +34,13 @@
 
 class IIRScram_List;
 
-class IIRScram_NextStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_NextStatement{
+class IIRScram_NextStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_NextStatement {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   void _type_check();
 
   IIRScram_SequentialStatement * _get_enclosing_loop();
   IIRScram * _get_condition();
-protected:
-private:
 };
+
 #endif

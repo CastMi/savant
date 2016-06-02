@@ -169,13 +169,6 @@ IIRScram_SensitizedProcessStatement::_resolve_signal_name( IIRScram *signal_name
   return retval;
 }
 
-visitor_return_type *
-IIRScram_SensitizedProcessStatement::_accept_visitor( node_visitor *visitor,
-						      visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_SensitizedProcessStatement(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_DesignatorList *
 IIRScram_SensitizedProcessStatement::_get_sensitivity_list() {

@@ -30,8 +30,3 @@
 #include "savant.hh"
 
 IIRScram_DesignUnitList::~IIRScram_DesignUnitList(){}
-
-visitor_return_type *IIRScram_DesignUnitList::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_DesignUnitList(this, arg);
-};

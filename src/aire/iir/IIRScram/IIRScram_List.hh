@@ -73,10 +73,6 @@ public:
 
 protected:  
   virtual ~IIRScram_List() = 0;
-    
-private:
-  
-
 };
 
 #endif

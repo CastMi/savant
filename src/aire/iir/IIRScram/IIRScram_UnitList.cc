@@ -31,9 +31,3 @@
 #include "IIRScram_UnitList.hh"
 #include "savant.hh"
 
-visitor_return_type *
-IIRScram_UnitList::_accept_visitor( node_visitor *visitor, 
-				    visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_UnitList(this, arg);
-}

@@ -49,13 +49,6 @@ IIRScram_AccessSubtypeDefinition::_clone( IIRScram *copy_into ){
   IIRScram_AccessTypeDefinition::_clone( copy_into );
 }
 
-visitor_return_type *
-IIRScram_AccessSubtypeDefinition::_accept_visitor( node_visitor *visitor,
-						   visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_AccessSubtypeDefinition(this, arg);
-}
-
 IIRScram_AccessSubtypeDefinition *
 IIRScram_AccessSubtypeDefinition::get( IIRScram_TypeDefinition * ){
   std::cerr << "IIRBase_AccessSubtypeDefinition::get has not been implemented yet.\n";

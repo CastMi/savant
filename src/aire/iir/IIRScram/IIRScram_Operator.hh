@@ -80,4 +80,5 @@ private:
   IIR_Boolean has_been_type_checked;
   IIRScram_SubprogramDeclaration *my_decl;
 };
+
 #endif

@@ -40,7 +40,7 @@ class IIRScram_TypeDefinition;
 class IIRScram_SubprogramDeclaration;
 class IIRScram_SequentialStatementList;
 
-class IIRScram_CaseStatementAlternative : public virtual IIRScram_Tuple, public virtual IIRBase_CaseStatementAlternative{
+class IIRScram_CaseStatementAlternative : public virtual IIRScram_Tuple, public virtual IIRBase_CaseStatementAlternative {
 
 public:
   IIRScram_CaseStatementAlternative();
@@ -55,11 +55,6 @@ public:
 
   virtual void _clone( IIRScram * );
   IIRScram *_clone();
-
-protected:
-    
-
-private:
-
 };
+
 #endif

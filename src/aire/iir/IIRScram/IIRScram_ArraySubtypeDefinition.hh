@@ -42,15 +42,11 @@ class visitor_return_type;
 class IIRScram_ScalarTypeDefinition;
 
 class IIRScram_ArraySubtypeDefinition : public virtual IIRScram_ArrayTypeDefinition,
-					public virtual IIRBase_ArraySubtypeDefinition{
-
+					public virtual IIRBase_ArraySubtypeDefinition {
 public:
   IIRScram_ArraySubtypeDefinition(){}
   virtual ~IIRScram_ArraySubtypeDefinition();
     
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   static IIRScram_ArraySubtypeDefinition *get( IIRScram_ArrayTypeDefinition *bt,
                                                IIRScram_ScalarTypeDefinition *is,
                                                IIRScram_FunctionDeclaration *res_func );
@@ -67,4 +63,5 @@ public:
     set_resolution_function( dynamic_cast<IIR_FunctionDeclaration *>(new_decl) ); 
   }
 };
+
 #endif

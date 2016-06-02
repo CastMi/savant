@@ -57,13 +57,6 @@ IIRScram_ComponentDeclaration::_make_interface_visible( symbol_table *sym_tab ){
   sym_tab->make_visible( _get_local_port_clause() );
 }
 
-visitor_return_type *
-IIRScram_ComponentDeclaration::_accept_visitor( node_visitor *visitor,
-						visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ComponentDeclaration(this, arg);
-}
-
 IIRScram_AttributeSpecificationList*
 IIRScram_ComponentDeclaration::_get_attribute_specification_list(){
   return dynamic_cast<IIRScram_AttributeSpecificationList *>(get_attributes());

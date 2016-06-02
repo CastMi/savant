@@ -78,12 +78,6 @@ IIRScram_ConfigurationSpecification::_get_entity_aspect(){
   return dynamic_cast<IIRScram_LibraryUnit *>(get_entity_aspect());
 }
 
-visitor_return_type *
-IIRScram_ConfigurationSpecification::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ConfigurationSpecification(this, arg);
-};
-
 IIRScram_DesignatorList *
 IIRScram_ConfigurationSpecification::_get_instantiation_list() {
   return dynamic_cast<IIRScram_DesignatorList *>(get_instantiation_list());

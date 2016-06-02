@@ -40,15 +40,11 @@ class IIRScram_Name;
 /**
    Extension base for package declarations.
 */
-class IIRScram_PackageDeclaration : public virtual IIRScram_LibraryUnit, public virtual IIRBase_PackageDeclaration{
+class IIRScram_PackageDeclaration : public virtual IIRScram_LibraryUnit, public virtual IIRBase_PackageDeclaration {
 public:
   IIRScram_PackageDeclaration();
   ~IIRScram_PackageDeclaration();
   
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   /**
      Presumably, we don't need to add package declarations into the code
      generator table.  However, in some cases (like attribute names
@@ -64,8 +60,6 @@ public:
 
   // Wrappers for IIRBase functions
   IIRScram_DeclarationList         *_get_package_declarative_part();
-
-protected:
-private:
 };
+
 #endif

@@ -29,11 +29,3 @@
 //---------------------------------------------------------------------------
 #include "IIRScram_GenericList.hh"
 #include "IIRScram_ConstantInterfaceDeclaration.hh"
-
-visitor_return_type *
-IIRScram_GenericList::_accept_visitor( node_visitor *visitor,
-				       visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_GenericList(this, arg);
-}
-

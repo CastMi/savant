@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_FOR_LOOP_STATEMENT_HH
 #define IIRSCRAM_FOR_LOOP_STATEMENT_HH
 
@@ -53,15 +52,11 @@ class IIRScram_TypeDefinition;
 class IIR_ScalarTypeDefinition;
 
 class IIRScram_ForLoopStatement : public virtual IIRScram_SequentialStatement,
-				  public virtual IIRBase_ForLoopStatement{
+				  public virtual IIRBase_ForLoopStatement {
 
 public:
   IIRScram_ForLoopStatement();
   virtual ~IIRScram_ForLoopStatement();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   void _type_check();
   IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition> *,
@@ -78,9 +73,9 @@ public:
   void _build_iteration_scheme( IIR_TextLiteral *declarator,
 				IIR_ScalarTypeDefinition *subtype );
  
-protected:   
 private:
   void _publish_cc_initialize_iterator( published_file & );
   void _publish_cc_while_loop_begin( published_file & );
 };
+
 #endif

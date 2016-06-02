@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_NEGATION_OPERATOR_HH
 #define IIRSCRAM_NEGATION_OPERATOR_HH
 
@@ -32,16 +31,11 @@
 #include "IIRBase_NegationOperator.hh"
 
 
-class IIRScram_NegationOperator : public virtual IIRScram_MonadicOperator, public virtual IIRBase_NegationOperator{
+class IIRScram_NegationOperator : public virtual IIRScram_MonadicOperator, public virtual IIRBase_NegationOperator {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-  
   const string &_get_cc_operator_name() const;
   void _publish_cc_ams_operator_name(published_file &);
-
-protected:
-private:
 };
+
 #endif

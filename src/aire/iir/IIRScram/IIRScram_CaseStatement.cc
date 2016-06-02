@@ -126,13 +126,6 @@ IIRScram_CaseStatement::_clone(){
   return clone;
 }
 
-visitor_return_type *
-IIRScram_CaseStatement::_accept_visitor( node_visitor *visitor,
-					 visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_CaseStatement(this, arg);
-}
-
 IIRScram *
 IIRScram_CaseStatement::_get_case_statement_expression(){
   return dynamic_cast<IIRScram *>(get_expression());

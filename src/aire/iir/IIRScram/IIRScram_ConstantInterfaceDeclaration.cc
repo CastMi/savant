@@ -60,13 +60,6 @@ IIRScram_ConstantInterfaceDeclaration::_type_check( IIRScram_InterfaceDeclaratio
   IIRScram_InterfaceDeclaration::_type_check();
 }
 
-visitor_return_type *
-IIRScram_ConstantInterfaceDeclaration::_accept_visitor( node_visitor *visitor,
-							visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ConstantInterfaceDeclaration(this, arg);
-}
-
 void
 IIRScram_ConstantInterfaceDeclaration::_build_generic_parameter_set(savant::set<IIRScram_Declaration> *to_build) {
   to_build->add(this);

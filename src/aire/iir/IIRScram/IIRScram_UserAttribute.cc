@@ -248,13 +248,6 @@ IIRScram_UserAttribute::_resolve_suffix_special(){
   }
 }
 
-visitor_return_type *
-IIRScram_UserAttribute::_accept_visitor( node_visitor *visitor, 
-					 visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_UserAttribute(this, arg);
-}
-
 IIRScram *
 IIRScram_UserAttribute::_get_suffix() {
   return dynamic_cast<IIRScram *>(get_suffix());

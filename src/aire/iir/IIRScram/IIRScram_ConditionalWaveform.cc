@@ -98,12 +98,6 @@ IIRScram_ConditionalWaveform::_type_check( savant::set<IIRScram_TypeDefinition> 
   }
 }
 
-visitor_return_type *
-IIRScram_ConditionalWaveform::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ConditionalWaveform(this, arg);
-}
-
 IIRScram *
 IIRScram_ConditionalWaveform::_get_condition() {
   return dynamic_cast<IIRScram *>(get_condition());

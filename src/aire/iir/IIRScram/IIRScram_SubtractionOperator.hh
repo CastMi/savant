@@ -1,4 +1,3 @@
-
 #ifndef IIRSCRAM_SUBTRACTION_OPERATOR_HH
 #define IIRSCRAM_SUBTRACTION_OPERATOR_HH
 
@@ -31,13 +30,9 @@
 #include "IIRBase_SubtractionOperator.hh"
 
 class IIRScram_SubtractionOperator : public virtual IIRScram_AdditionOperators,
-				     public virtual IIRBase_SubtractionOperator{
+				     public virtual IIRBase_SubtractionOperator {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
   IIRScram *_clone();
-
-protected:
-private:
 };
+
 #endif

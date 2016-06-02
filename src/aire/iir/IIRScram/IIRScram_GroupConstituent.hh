@@ -31,13 +31,7 @@
 #include "IIRScram_Tuple.hh"
 #include "IIRBase_GroupConstituent.hh"
 
-class IIRScram_GroupConstituent : public virtual IIRScram_Tuple, public virtual IIRBase_GroupConstituent{
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
-protected:
-private:
+class IIRScram_GroupConstituent : public virtual IIRScram_Tuple, public virtual IIRBase_GroupConstituent {
 };
+
 #endif

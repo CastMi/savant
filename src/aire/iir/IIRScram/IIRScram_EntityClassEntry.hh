@@ -35,13 +35,7 @@
 
 class IIRScram_List;
 
-class IIRScram_EntityClassEntry : public virtual IIRScram_Tuple, public virtual IIRBase_EntityClassEntry{
-public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-protected:
-private:
+class IIRScram_EntityClassEntry : public virtual IIRScram_Tuple, public virtual IIRBase_EntityClassEntry {
 };
 
 #endif

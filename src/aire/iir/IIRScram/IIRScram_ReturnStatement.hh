@@ -36,18 +36,14 @@
 class IIRScram_List;
 class IIRScram_TypeDefinition;
 
-class IIRScram_ReturnStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_ReturnStatement{
+class IIRScram_ReturnStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_ReturnStatement {
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   void _type_check();
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
 
   IIRScram *_get_return_expression();
   IIRScram_SubprogramDeclaration*_get_enclosing_subprogram();
 
-protected:
-private:
 };
+
 #endif

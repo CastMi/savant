@@ -38,15 +38,12 @@ class IIRScram_List;
 class IIRScram_TypeDefinition;
 class IIRScram_WaveformList;
 
-class IIRScram_ConditionalWaveform : public virtual IIRScram_Tuple, public virtual IIRBase_ConditionalWaveform{
+class IIRScram_ConditionalWaveform : public virtual IIRScram_Tuple, public virtual IIRBase_ConditionalWaveform {
 
 public:
   IIRScram_ConditionalWaveform();
   virtual ~IIRScram_ConditionalWaveform();
     
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor=0); 
   IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
@@ -54,11 +51,6 @@ public:
 
   IIRScram *                    _get_condition();
   IIRScram_WaveformList *       _get_waveform();
-
-protected:  
-private:
-  
-
 };
 
 #endif

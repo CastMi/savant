@@ -38,16 +38,10 @@ class IIRScram_TextLiteral;
 class IIRScram_InterfaceList : public virtual IIRScram_List<IIR_InterfaceDeclaration>, public virtual IIRBase_InterfaceList {
 
 public:
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   /** Used by IIRScram_AssociationList#_build_default_map to find formals
       corresponding to the actuals that exist.  Returns null if no matching
       formal is found. */
   IIRScram_InterfaceDeclaration *_find_declaration( IIRScram_TextLiteral *declarator );
-  
-protected:    
-private:
 };
+
 #endif

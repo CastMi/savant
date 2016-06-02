@@ -42,14 +42,10 @@ class IIRScram_TypeDefinition;
 /**
    The extension base for subtype declarations.
  */
-class IIRScram_SubtypeDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_SubtypeDeclaration{
+class IIRScram_SubtypeDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_SubtypeDeclaration {
 public:
   IIRScram_SubtypeDeclaration();
   ~IIRScram_SubtypeDeclaration();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIRScram_AttributeSpecificationList* _get_attribute_specification_list();
 
@@ -69,9 +65,6 @@ public:
 
   // Wrappers for IIRBase functions
   IIRScram_AttributeSpecificationList * _get_attributes();
-
-protected:
-private:
 };
-#endif
 
+#endif

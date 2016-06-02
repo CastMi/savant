@@ -38,13 +38,9 @@ class IIRScram_Declaration;
 class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
-class IIRScram_ActiveAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_ActiveAttribute{
+class IIRScram_ActiveAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_ActiveAttribute {
 public:
   IIRScram_ActiveAttribute() {}
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
 
   IIR_Boolean _is_readable();
 
@@ -56,7 +52,6 @@ public:
 
 protected:
   virtual ~IIRScram_ActiveAttribute();
-    
-private:
 };
+
 #endif

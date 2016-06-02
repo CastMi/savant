@@ -38,13 +38,8 @@ class IIRScram_Declaration;
 class IIRScram_TextLiteral;
 class IIRScram_TypeDefinition;
 
-class IIRScram_LastValueAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_LastValueAttribute{
+class IIRScram_LastValueAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_LastValueAttribute {
 public:
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
-
-
   IIR_Boolean _is_readable();
   IIRScram_TypeDefinition *_get_subtype();
 
@@ -54,8 +49,6 @@ public:
   virtual IIRScram *_clone();
   
   IIR_Boolean _is_lastvalue_attribute() { return TRUE; }
-
-protected:
-private:
 };
+
 #endif

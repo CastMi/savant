@@ -40,14 +40,11 @@ class IIRScram_TypeDefinition;
 /**
    The extension base for library declarations.
  */
-class IIRScram_LibraryDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_LibraryDeclaration{
+class IIRScram_LibraryDeclaration : public virtual IIRScram_Declaration, public virtual IIRBase_LibraryDeclaration {
 
 public:
   IIRScram_LibraryDeclaration();
   virtual ~IIRScram_LibraryDeclaration();
-
-  /// Accept visitations \Ref{_accept_visitor}.
-  visitor_return_type* _accept_visitor(node_visitor *, visitor_argument_type *);
 
   IIR_Boolean _is_iir_library_declaration(){ return TRUE; }
 
@@ -56,7 +53,6 @@ public:
 
   // Wrappers for IIRBase functions
   IIRScram_LibraryUnitList *    _get_primary_units();
-protected:
-private:
 };
+
 #endif

@@ -186,13 +186,6 @@ IIRScram_WaitStatement::_clone() {
   return stmt;
 }
 
-visitor_return_type *
-IIRScram_WaitStatement::_accept_visitor( node_visitor *visitor, 
-					 visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_WaitStatement(this, arg);
-}
-
 // IIRBase Function Wrapper(s)
 IIRScram_DesignatorList *
 IIRScram_WaitStatement::_get_sensitivity_list() {

@@ -37,7 +37,7 @@ class IIRScram_LibraryDeclaration;
 class IIRScram_TypeDefinition;
 
 class IIRScram_LibraryUnit : public virtual IIRScram_Declaration,
-			     public virtual IIRBase_LibraryUnit{
+			     public virtual IIRBase_LibraryUnit {
 
 public:
   IIRScram_LibraryUnit();
@@ -56,9 +56,6 @@ public:
 
 protected:
   virtual ~IIRScram_LibraryUnit();
-  
-private:
-
 };
-#endif
 
+#endif

@@ -54,7 +54,6 @@ public:
   
 protected:  
   virtual void _resolve_guard_signal( symbol_table * );
-
-private:
 };
+
 #endif

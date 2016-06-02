@@ -52,6 +52,7 @@
 #include "include_manager.hh"
 #include "library_manager.hh"
 #include "resolution_func.hh"
+#include "generic_visitor.hh"
 #include "set.hh"
 #include "symbol_table.hh"
 #include "StandardPackage.hh"
@@ -85,6 +86,12 @@ IIRScram::_is_numeric_literal() {
   else {
     return FALSE;
   }
+}
+
+bool
+IIRScram::accept( generic_visitor * visitor, visitor_argument_type *) {
+   ASSERT( visitor );
+   return visitor->visit(this);
 }
 
 IIR_Boolean

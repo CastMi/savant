@@ -189,12 +189,6 @@ IIRScram_AccessTypeDefinition::_index_constrain_array( IIRScram_ScalarTypeDefini
   return retval;
 }
 
-visitor_return_type *
-IIRScram_AccessTypeDefinition::_accept_visitor(node_visitor *visitor, visitor_argument_type *arg) {
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_AccessTypeDefinition(this, arg);
-}
-
 IIRScram_TypeDefinition *
 IIRScram_AccessTypeDefinition::_get_designated_type() {
   return dynamic_cast<IIRScram_TypeDefinition *>(get_designated_type());

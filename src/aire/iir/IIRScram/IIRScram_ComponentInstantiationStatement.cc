@@ -350,13 +350,6 @@ IIRScram_ComponentInstantiationStatement::_build_default_entity_aspect(IIRScram 
   return retval;
 }
 
-visitor_return_type *
-IIRScram_ComponentInstantiationStatement::_accept_visitor( node_visitor *visitor, 
-							   visitor_argument_type *arg ){
-  ASSERT(visitor != NULL);
-  return visitor->visit_IIR_ComponentInstantiationStatement(this, arg);
-}
-
 IIRScram_AssociationList *
 IIRScram_ComponentInstantiationStatement::_get_generic_map_aspect() {
   return dynamic_cast<IIRScram_AssociationList *>(get_generic_map_aspect());
