@@ -89,9 +89,9 @@ IIRScram::_is_numeric_literal() {
 }
 
 bool
-IIRScram::accept( generic_visitor * visitor, visitor_argument_type *) {
+IIRScram::accept( generic_visitor * visitor, visitor_argument_type * arg ) {
    ASSERT( visitor );
-   return visitor->visit(this);
+   return visitor->visit( this, arg );
 }
 
 IIR_Boolean

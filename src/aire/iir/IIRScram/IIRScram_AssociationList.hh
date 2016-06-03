@@ -30,8 +30,6 @@
 
 #include "IIRBase_AssociationList.hh"
 #include "IIRScram_List.hh"
-#include "visitor_return_type.hh"
-#include "node_visitor.hh"
 
 class IIRScram_AssociationElement;
 class IIRScram_ComponentInstantiationStatement;

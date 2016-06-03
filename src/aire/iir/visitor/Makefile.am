@@ -29,6 +29,10 @@ include $(top_srcdir)/Makefile.am.common
 
 noinst_LIBRARIES = libiirVisitor.a
 
+libiirVisitor_a_CPPFLAGS = \
+	-I$(top_srcdir)/src/aire/iir/IIR \
+	-I$(top_srcdir)/src/aire
+
 libiirVisitor_a_SOURCES = \
 	generic_visitor.cc \
 	visitor_argument_type.cc
