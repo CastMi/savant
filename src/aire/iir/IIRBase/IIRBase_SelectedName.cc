@@ -46,7 +46,7 @@ IIRBase_SelectedName::set_suffix( IIR_Statement *suffix ){
 }
 
 IIR_Statement *
-IIRBase_SelectedName::get_suffix(){
+IIRBase_SelectedName::get_suffix() const {
   return suffix;
 }
 
@@ -62,7 +62,7 @@ IIRBase_SelectedName::convert_tree(plugin_class_factory *factory) {
 }
 
 IIR_Boolean
-IIRBase_SelectedName::is_resolved( ){
+IIRBase_SelectedName::is_resolved() const {
   if( get_prefix()->is_resolved() == TRUE && get_suffix()->is_resolved() ){
     return TRUE;
   }
@@ -72,7 +72,7 @@ IIRBase_SelectedName::is_resolved( ){
 }
 
 IIR_Boolean
-IIRBase_SelectedName::is_signal( ){
+IIRBase_SelectedName::is_signal() const {
   ASSERT( is_resolved() == TRUE );
   if( get_prefix()->is_signal() == TRUE || get_suffix()->is_signal() == TRUE ){
     return TRUE;
@@ -83,7 +83,7 @@ IIRBase_SelectedName::is_signal( ){
 }
 
 IIR_Boolean
-IIRBase_SelectedName::is_entity_declaration() {
+IIRBase_SelectedName::is_entity_declaration() const {
   ASSERT ( is_resolved() == TRUE );
   
   if ((get_suffix()->is_entity_declaration() == TRUE) ||
@@ -111,7 +111,7 @@ IIRBase_SelectedName::get_subtype(){
 }
 
 IIR_Boolean
-IIRBase_SelectedName::is_object( ){
+IIRBase_SelectedName::is_object() const {
   ASSERT( is_resolved() == TRUE );
   if( get_prefix()->is_object() == TRUE || 
       get_suffix()->is_object() == TRUE ){
@@ -123,7 +123,7 @@ IIRBase_SelectedName::is_object( ){
 }
 
 IIR_SignalKind
-IIRBase_SelectedName::get_signal_kind(){
+IIRBase_SelectedName::get_signal_kind() const {
   if( get_suffix()->is_signal() == TRUE ){
     return get_suffix()->get_signal_kind();
   }
@@ -136,13 +136,13 @@ IIRBase_SelectedName::get_signal_kind(){
 }
 
 IIR_Boolean
-IIRBase_SelectedName::is_type( ){
+IIRBase_SelectedName::is_type() const {
   ASSERT( is_resolved() == TRUE );
   return get_suffix()->is_type();
 }
 
 IIR_Boolean
-IIRBase_SelectedName::is_variable( ){
+IIRBase_SelectedName::is_variable() const {
   ASSERT( is_resolved() == TRUE );
   if( get_prefix()->is_variable() == TRUE || get_suffix()->is_variable() == TRUE ){
     return TRUE;

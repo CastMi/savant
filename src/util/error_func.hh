@@ -94,46 +94,46 @@ report_error( const string &message,
 	      severity = FATAL );
 
 void 
-report_error( IIR *if_node, const string &message, severity = FATAL );
+report_error( const IIR *if_node, const string &message, severity = FATAL );
 
 void 
-report_error( IIR_Statement *if_node, const string msg, severity = FATAL );
+report_error( const IIR_Statement *if_node, const string msg, severity = FATAL );
 
 template<class type>
 void 
 report_error( IIR_List<type> *if_node, const string msg, severity = FATAL );
 
 void 
-report_undefined_symbol( IIR_Statement * );
+report_undefined_symbol( const IIR_Statement * );
 
 void 
-report_undefined_symbol( IIR * );
+report_undefined_symbol( const IIR * );
 
 void 
-report_undefined_symbol( IIR_Declaration *, IIR_Name * );
+report_undefined_symbol( const IIR_Declaration *, const IIR_Name * );
 
 void 
-report_undefined_symbol( savant::set<IIR_TypeDefinition> *, IIR * );
+report_undefined_symbol( savant::set<IIR_TypeDefinition> *, const IIR * );
 
 void 
-report_ambiguous_error( IIR_Identifier *, savant::set<IIR_Declaration> * );
+report_ambiguous_error( const IIR_Identifier *, savant::set<IIR_Declaration> * );
 
 void 
-report_ambiguous_error( IIR *error_info, savant::set<IIR_Declaration> *error_set );
+report_ambiguous_error( const IIR *error_info, savant::set<IIR_Declaration> *error_set );
 
 void 
-report_ambiguous_error( IIR *error_info, savant::set<IIR_TypeDefinition> *error_set );
+report_ambiguous_error( const IIR *error_info, savant::set<IIR_TypeDefinition> *error_set );
 
 void 
-report_ambiguous_error( IIR_Statement *error_info, savant::set<IIR_TypeDefinition> *error_set );
+report_ambiguous_error( const IIR_Statement *error_info, savant::set<IIR_TypeDefinition> *error_set );
 
 void 
-report_ambiguous_error( IIR_Declaration *prefix,
-			IIR_Name *suffix,
+report_ambiguous_error( const IIR_Declaration *prefix,
+			const IIR_Name *suffix,
 			savant::set<IIR_Declaration> *error_set );
 
 void
-report_undefined_function(char *func_name);
+report_undefined_function(const char *func_name);
 
 #endif
 

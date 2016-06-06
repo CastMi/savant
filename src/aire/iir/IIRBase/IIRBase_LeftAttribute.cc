@@ -35,7 +35,7 @@ IIRBase_LeftAttribute::set_suffix( IIR_Statement* suffix) {
 }
 
 IIR_Statement *
-IIRBase_LeftAttribute::get_suffix() {
+IIRBase_LeftAttribute::get_suffix() const {
   return suffix;
 }
 
@@ -50,7 +50,7 @@ IIRBase_LeftAttribute::convert_tree(plugin_class_factory *factory) {
 }
 
 IIR_Boolean 
-IIRBase_LeftAttribute::is_value_attribute(){
+IIRBase_LeftAttribute::is_value_attribute() const {
   ASSERT( is_resolved() );
   if( get_prefix()->is_scalar_type() ){
     ASSERT( get_suffix() == NULL );

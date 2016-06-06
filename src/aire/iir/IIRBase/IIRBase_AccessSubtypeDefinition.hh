@@ -40,7 +40,7 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_AccessSubtypeDefinition";}
 
   void set_designated_subtype( IIR_TypeDefinition *designated_type);
-  IIR_TypeDefinition *get_designated_subtype();
+  IIR_TypeDefinition *get_designated_subtype() const;
 
   void set_resolution_function( IIR_FunctionDeclaration *resolution_function );
   IIR_FunctionDeclaration *get_resolution_function();

@@ -35,7 +35,7 @@ IIRBase_HighAttribute::set_suffix( IIR_Statement *suffix ){
 }
 
 IIR_Statement *
-IIRBase_HighAttribute::get_suffix( ){
+IIRBase_HighAttribute::get_suffix() const {
   return my_suffix;
 }
 
@@ -50,7 +50,7 @@ IIRBase_HighAttribute::convert_tree(plugin_class_factory *factory) {
 }
 
 IIR_Boolean 
-IIRBase_HighAttribute::is_value_attribute(){
+IIRBase_HighAttribute::is_value_attribute() const {
   ASSERT( is_resolved() == TRUE );
   if( get_prefix()->is_scalar_type() == TRUE ){
     ASSERT( get_suffix() == NULL );

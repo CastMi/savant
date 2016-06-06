@@ -35,7 +35,7 @@ class IIRBase_ElementDeclaration : public virtual IIRBase_ObjectDeclaration, pub
 public:
   IIR_Kind get_kind() const {return IIR_ELEMENT_DECLARATION;}
   const IIR_Char *get_kind_text() const {return "IIR_ElementDeclaration";}
-  IIR_Boolean is_element(){ return TRUE; }
+  IIR_Boolean is_element() const { return TRUE; }
 
   declaration_type get_declaration_type(){ return ELEMENT; }
 

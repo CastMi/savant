@@ -35,7 +35,7 @@ IIRBase_DelayedAttribute::set_suffix( IIR_Statement *suffix ){
 }
 
 IIR_Statement *
-IIRBase_DelayedAttribute::get_suffix(){
+IIRBase_DelayedAttribute::get_suffix() const {
   return suffix;
 }
 

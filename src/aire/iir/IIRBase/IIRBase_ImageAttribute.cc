@@ -38,7 +38,7 @@ IIRBase_ImageAttribute::set_suffix( IIR_Statement *suffix ){
 }
 
 IIR_Statement *
-IIRBase_ImageAttribute::get_suffix() {
+IIRBase_ImageAttribute::get_suffix() const {
   return my_suffix;
 }
 

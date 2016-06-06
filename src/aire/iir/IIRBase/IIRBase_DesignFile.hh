@@ -45,7 +45,7 @@ public:
   IIR_Kind get_kind() const {return IIR_DESIGN_FILE;}
   const IIR_Char *get_kind_text() const {return "IIR_DesignFile";}
 
-  IIR_Identifier *get_name();
+  IIR_Identifier *get_name() const;
   void set_name( IIR_Identifier * );
 
   IIR *convert_tree(plugin_class_factory *factory);

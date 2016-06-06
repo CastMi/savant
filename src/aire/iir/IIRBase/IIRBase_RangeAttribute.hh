@@ -39,7 +39,7 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_RangeAttribute";}
 
   void set_suffix( IIR_Statement* suffix);
-  IIR_Statement* get_suffix();
+  IIR_Statement* get_suffix() const;
 
   IIR_RangeAttribute *convert_tree(plugin_class_factory *factory);
   

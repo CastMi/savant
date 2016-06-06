@@ -69,7 +69,7 @@ IIRBase::set_file_name( IIR_Identifier *file_name, plugin_class_factory *factory
 }
 
 IIR_Identifier *
-IIRBase::get_file_name(){
+IIRBase::get_file_name() const {
   if( _my_design_file == NULL ){
     return NULL;
   }
@@ -82,7 +82,7 @@ IIRBase::get_file_name(){
 IIRBase::~IIRBase() {}
 
 IIR_Statement *
-IIRBase::get_value() {
+IIRBase::get_value() const {
   return NULL;
 }
 
@@ -131,19 +131,19 @@ IIRBase::copy_location(IIR *dest) {
 }
 
 IIR_Boolean
-IIRBase::is_ascending_range() {
+IIRBase::is_ascending_range() const {
   ASSERT(0);
   return false;
 }
 
 IIR_Boolean 
-IIRBase::is_locally_static(){
+IIRBase::is_locally_static() {
   _report_undefined_fn("is_locally_static()");
   return FALSE;
 }
 
 IIR_TypeDefinition *
-IIRBase::get_subtype() {
+IIRBase::get_subtype() const {
   return subtype;
 }
 
@@ -160,7 +160,7 @@ IIRBase::get_class_factory(){
 }
 
 void 
-IIRBase::_report_undefined_fn(const char *fn_name) {
+IIRBase::_report_undefined_fn(const char *fn_name) const {
   ostringstream os;
   os << fn_name << " not defined for node: " << get_kind_text();
   report_error( this, os.str() );
@@ -168,13 +168,13 @@ IIRBase::_report_undefined_fn(const char *fn_name) {
 }
 
 IIR_SignalKind
-IIRBase::get_signal_kind() {
+IIRBase::get_signal_kind() const {
   _report_undefined_fn("get_signal_kind()");
   return IIR_SignalKind::IIR_NO_SIGNAL_KIND;
 }
 
 IIR_Boolean
-IIRBase::is_guard_signal() {
+IIRBase::is_guard_signal() const {
   if( is_signal() == TRUE && get_signal_kind() != IIR_SignalKind::IIR_NO_SIGNAL_KIND ){
     return TRUE;
   }
@@ -184,37 +184,37 @@ IIRBase::is_guard_signal() {
 }
 
 IIR_Boolean
-IIRBase::is_access_type(){
+IIRBase::is_access_type() const {
   ASSERT( get_subtype() );
   return get_subtype()->is_access_type();
 }
 
 IIR_Boolean
-IIRBase::is_array_type(){
+IIRBase::is_array_type() const {
   ASSERT( get_subtype() );
   return get_subtype()->is_array_type();
 }
 
 IIR_Boolean
-IIRBase::is_enumeration_type(){
+IIRBase::is_enumeration_type() const {
   ASSERT( get_subtype() );
   return get_subtype()->is_enumeration_type();
 }
 
 IIR_Boolean
-IIRBase::is_file_type(){
+IIRBase::is_file_type() const {
   ASSERT( get_subtype() );
   return get_subtype()->is_file_type();
 }
 
 IIR_Boolean
-IIRBase::is_record_type(){
+IIRBase::is_record_type() const {
   ASSERT( get_subtype() );
   return get_subtype()->is_record_type();
 }
 
 IIR_Boolean
-IIRBase::is_scalar_type(){
+IIRBase::is_scalar_type() const {
   ASSERT( get_subtype() );
   return get_subtype()->is_scalar_type();
 }

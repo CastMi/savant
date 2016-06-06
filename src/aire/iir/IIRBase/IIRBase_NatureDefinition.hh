@@ -36,7 +36,7 @@ public:
   IIR_Kind get_kind() const { return IIR_NATURE_DEFINITION ; }
   const IIR_Char *get_kind_text() const { return "IIR_NatureDefinition"; }
 
-  IIR_Boolean is_array_type() { return FALSE; }
+  IIR_Boolean is_array_type() const { return FALSE; }
 
   virtual IIR_TypeDefinition *get_final_subtype();
 

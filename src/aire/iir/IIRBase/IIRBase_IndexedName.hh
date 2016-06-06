@@ -38,15 +38,15 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_IndexedName";}
 
   void set_suffix( IIR_Statement* );
-  IIR_Statement* get_suffix();
+  IIR_Statement* get_suffix() const;
 
   IIR_Statement *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_resolved();
-  IIR_Boolean is_signal();
-  IIR_Boolean is_entity_declaration() { return TRUE; }
-  IIR_Boolean is_interface();
-  IIR_Boolean is_variable();
+  IIR_Boolean is_resolved() const;
+  IIR_Boolean is_signal() const;
+  IIR_Boolean is_entity_declaration() const { return TRUE; }
+  IIR_Boolean is_interface() const;
+  IIR_Boolean is_variable() const;
 
   // Override the IIR_Name default
   void set_subtype(IIR_TypeDefinition *type) { IIRBase_Statement::set_subtype(type); }

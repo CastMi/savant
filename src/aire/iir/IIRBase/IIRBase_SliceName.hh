@@ -39,12 +39,12 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_SliceName";}
 
   void set_suffix( IIR_Statement* suffix);
-  IIR_Statement* get_suffix();
+  IIR_Statement* get_suffix() const;
 
   IIR_Statement *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_resolved();
-  IIR_Boolean is_variable();
+  IIR_Boolean is_resolved() const;
+  IIR_Boolean is_variable() const;
 
   // Override the undefined definition in IIRBase_Name
   void set_subtype(IIR_TypeDefinition *type) { IIRBase_Statement::set_subtype(type); }

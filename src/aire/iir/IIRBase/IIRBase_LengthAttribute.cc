@@ -39,7 +39,7 @@ IIRBase_LengthAttribute::set_suffix( IIR_Statement* suffix) {
 }
 
 IIR_Statement *
-IIRBase_LengthAttribute::get_suffix() {
+IIRBase_LengthAttribute::get_suffix() const {
   return suffix;
 }
 

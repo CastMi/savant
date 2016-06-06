@@ -36,14 +36,14 @@ class IIRBase_Attribute : public virtual IIRBase_Name,
 public:
 
   virtual void set_suffix(IIR_Statement *);
-  virtual IIR_Statement* get_suffix() {return NULL;}
+  virtual IIR_Statement* get_suffix() const {return NULL;}
 
   IIR_Boolean is_locally_static();
-  IIR_Boolean is_resolved();
-  IIR_Boolean is_signal() { return FALSE; };
-  IIR_Boolean is_value_attribute(){ return FALSE; }
-  IIR_Boolean is_function_attribute(){ return FALSE; }
-  IIR_Boolean is_above_attribute() { return FALSE; }
+  IIR_Boolean is_resolved() const;
+  IIR_Boolean is_signal() const { return FALSE; };
+  IIR_Boolean is_value_attribute() const { return FALSE; }
+  IIR_Boolean is_function_attribute() const { return FALSE; }
+  IIR_Boolean is_above_attribute() const { return FALSE; }
   IIR_Boolean has_suffix() { return FALSE; }
 
   void set_subtype(IIR_TypeDefinition *type) {IIRBase_Statement::set_subtype(type);}

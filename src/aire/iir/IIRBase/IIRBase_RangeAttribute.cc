@@ -35,7 +35,7 @@ IIRBase_RangeAttribute::set_suffix( IIR_Statement* suffix) {
 }
 
 IIR_Statement * 
-IIRBase_RangeAttribute::get_suffix() {
+IIRBase_RangeAttribute::get_suffix() const {
   return suffix;
 }
 

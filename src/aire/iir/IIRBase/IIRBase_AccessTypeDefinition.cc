@@ -56,7 +56,7 @@ IIRBase_AccessTypeDefinition::set_designated_type( IIR_TypeDefinition *designate
 
 
 IIR_TypeDefinition *
-IIRBase_AccessTypeDefinition::get_designated_type(){
+IIRBase_AccessTypeDefinition::get_designated_type() const {
   return access_for_type;
 }
 
@@ -72,7 +72,7 @@ IIRBase_AccessTypeDefinition::convert_tree(plugin_class_factory *factory) {
 }
 
 IIR_Boolean
-IIRBase_AccessTypeDefinition::is_scalar_type() {
+IIRBase_AccessTypeDefinition::is_scalar_type() const {
   IIR_TypeDefinition *type = get_designated_type();
   if((type != NULL) && (type != this)) {
     return type->is_scalar_type();
@@ -83,7 +83,7 @@ IIRBase_AccessTypeDefinition::is_scalar_type() {
 }
 
 IIR_Boolean
-IIRBase_AccessTypeDefinition::is_array_type() {
+IIRBase_AccessTypeDefinition::is_array_type() const {
   IIR_TypeDefinition *type = get_designated_type();
   if((type != NULL) && (type != this)) {
     return type->is_array_type();
@@ -105,7 +105,7 @@ IIRBase_AccessTypeDefinition::is_unconstrained_array_type() {
 }
 
 IIR_Boolean
-IIRBase_AccessTypeDefinition::is_record_type() {
+IIRBase_AccessTypeDefinition::is_record_type() const {
   IIR_TypeDefinition *type = get_designated_type();
   if((type != NULL) && (type != this)) {
     return type->is_record_type();
@@ -116,7 +116,7 @@ IIRBase_AccessTypeDefinition::is_record_type() {
 }
 
 IIR_Boolean 
-IIRBase_AccessTypeDefinition::is_element(){
+IIRBase_AccessTypeDefinition::is_element() const {
   return get_designated_type()->is_element();
 }
 

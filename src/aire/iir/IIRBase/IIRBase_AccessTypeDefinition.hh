@@ -47,17 +47,17 @@ public:
 
   void set_designated_type( IIR_TypeDefinition *designated_type);
 
-  IIR_TypeDefinition *get_designated_type();
+  IIR_TypeDefinition *get_designated_type() const;
   IIR_ScalarTypeDefinition *get_resolved_index_subtype();
 
   IIRBase_AccessTypeDefinition *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_element();
-  IIR_Boolean is_access_type() { return TRUE; }
-  IIR_Boolean is_scalar_type();
-  IIR_Boolean is_array_type();
-  IIR_Boolean is_unconstrained_array_type();
-  IIR_Boolean is_record_type();
+  IIR_Boolean is_element() const override;
+  IIR_Boolean is_access_type() const override { return TRUE; }
+  IIR_Boolean is_scalar_type() const override;
+  IIR_Boolean is_array_type() const override;
+  IIR_Boolean is_unconstrained_array_type() override;
+  IIR_Boolean is_record_type() const override;
   
   IIR_TypeDefinition *get_element_subtype();
   void set_element_subtype( IIR_TypeDefinition * );

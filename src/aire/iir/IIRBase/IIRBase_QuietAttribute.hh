@@ -39,12 +39,12 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_QuietAttribute";}
 
   void set_suffix( IIR_Statement* suffix);
-  IIR_Statement* get_suffix();
+  IIR_Statement* get_suffix() const;
 
   IIR_QuietAttribute *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_signal(){ return TRUE; }  
-  IIR_Boolean has_suffix(){ return TRUE; }
+  IIR_Boolean is_signal() const { return TRUE; }  
+  IIR_Boolean has_suffix() { return TRUE; }
 
   IIR_TypeDefinition *get_subtype();
 

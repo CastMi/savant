@@ -41,7 +41,7 @@ IIRBase_SliceName::set_suffix( IIR_Statement *new_suffix ){
 }
 
 IIR_Statement *
-IIRBase_SliceName::get_suffix() {
+IIRBase_SliceName::get_suffix() const {
   return suffix;
 }
 
@@ -58,7 +58,7 @@ IIRBase_SliceName::convert_tree(plugin_class_factory *factory) {
 }
 
 IIR_Boolean 
-IIRBase_SliceName::is_resolved(){
+IIRBase_SliceName::is_resolved() const {
   IIR_Boolean retval = TRUE;
   if( get_prefix()->is_resolved() == FALSE || get_suffix()->is_resolved() == FALSE ){
     retval = FALSE;
@@ -68,7 +68,7 @@ IIRBase_SliceName::is_resolved(){
 }
 
 IIR_Boolean 
-IIRBase_SliceName::is_variable(){
+IIRBase_SliceName::is_variable() const {
   return get_prefix()->is_variable();
 }
 

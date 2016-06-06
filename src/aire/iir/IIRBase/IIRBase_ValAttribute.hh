@@ -42,11 +42,11 @@ public:
   }
 
   void set_suffix( IIR_Statement *suffix );
-  IIR_Statement *get_suffix();
+  IIR_Statement *get_suffix() const;
 
   IIR_ValAttribute *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_function_attribute(){ return TRUE; }
+  IIR_Boolean is_function_attribute() const { return TRUE; }
   IIR_Boolean has_suffix(){ return TRUE; }
 
   IIR_Identifier *build_attribute_name();

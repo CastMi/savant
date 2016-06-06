@@ -37,7 +37,7 @@ public:
   IIR_Kind get_kind() const {return IIR_BIT_STRING_LITERAL;}
   const IIR_Char *get_kind_text() const {return "IIR_BitStringLiteral";}
 
-  IIR_Boolean is_array_type(){ return TRUE; }
+  IIR_Boolean is_array_type() const { return TRUE; }
 
 protected:
   IIRBase_BitStringLiteral();

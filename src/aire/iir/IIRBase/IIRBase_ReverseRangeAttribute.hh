@@ -39,11 +39,11 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_ReverseRangeAttribute";}
 
   void set_suffix( IIR_Statement* suffix);
-  IIR_Statement* get_suffix();
+  IIR_Statement* get_suffix() const;
 
   IIR_ReverseRangeAttribute *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_range_attribute(){ return true; }
+  IIR_Boolean is_range_attribute() const { return true; }
   IIR_Boolean has_suffix(){ return TRUE; }
 
   IIR_Identifier *build_attribute_name();

@@ -36,7 +36,7 @@ IIRBase_AscendingAttribute::set_suffix( IIR_Statement *suffix ){
 }
 
 IIR_Statement *
-IIRBase_AscendingAttribute::get_suffix(){
+IIRBase_AscendingAttribute::get_suffix() const {
   return suffix;
 }
 

@@ -108,7 +108,7 @@ IIRBase_TypeDefinition::is_anonymous(){
 }
 
 IIR_Boolean 
-IIRBase_TypeDefinition::is_element(){
+IIRBase_TypeDefinition::is_element() const {
   ASSERT( is_access_type() == TRUE || is_array_type() == FALSE );
   return FALSE;
 }

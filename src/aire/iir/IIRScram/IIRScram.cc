@@ -76,10 +76,12 @@ IIRScram::_get_name_type() {
 }
 
 IIR_Boolean
-IIRScram::_is_attribute(){ return FALSE; }
+IIRScram::_is_attribute() const {
+   return FALSE;
+}
 
 IIR_Boolean
-IIRScram::_is_numeric_literal() {
+IIRScram::_is_numeric_literal() const {
   if( _is_integer_literal() == TRUE ||  _is_floating_literal() == TRUE ){
     return TRUE;
   }

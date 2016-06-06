@@ -33,12 +33,12 @@ class IIR_Attribute : public virtual IIR_Name{
 public:
   virtual ~IIR_Attribute() {}
 
-  virtual IIR_Boolean is_function_attribute() = 0;
-  virtual IIR_Boolean is_value_attribute() = 0;
+  virtual IIR_Boolean is_function_attribute() const = 0;
+  virtual IIR_Boolean is_value_attribute() const = 0;
   virtual IIR_Boolean has_suffix() = 0;
 
   /** Returns true if it is an above attribute. */ 
-  virtual IIR_Boolean is_above_attribute() = 0;
+  virtual IIR_Boolean is_above_attribute() const = 0;
 
   /** This returns an IIR_TextLiteral with the name of whatever attribute
       was instantiated. */

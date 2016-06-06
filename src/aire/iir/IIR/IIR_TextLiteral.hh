@@ -36,8 +36,8 @@ class IIR_TextLiteral : public virtual IIR_Literal{
 public:
   virtual ~IIR_TextLiteral() {}
     
-  virtual IIR_Char *get_text() = 0;
-  virtual IIR_Int32 get_text_length() = 0;
+  virtual IIR_Char *get_text() const = 0;
+  virtual IIR_Int32 get_text_length() const = 0;
 
   virtual IIR_Char &operator[]( IIR_Int32 subscript ) = 0;
 

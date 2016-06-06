@@ -158,6 +158,6 @@ IIRBase_Statement::publish_vhdl_delay_mechanism( ostream &vhdl_out,
 }
 
 Precedence
-IIRBase_Statement::get_precedence(){
+IIRBase_Statement::get_precedence() const {
   return Precedence::OTHERS;
 }

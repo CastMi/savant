@@ -38,7 +38,7 @@ public:
   virtual ~IIR_AccessSubtypeDefinition() {}
 
   virtual void set_designated_subtype( IIR_TypeDefinition *designated_type) = 0;
-  virtual IIR_TypeDefinition *get_designated_subtype() = 0;
+  virtual IIR_TypeDefinition *get_designated_subtype() const = 0;
 
   virtual void set_resolution_function( IIR_FunctionDeclaration *resolution_function ) = 0;
   virtual IIR_FunctionDeclaration *get_resolution_function() = 0;

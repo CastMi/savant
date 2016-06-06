@@ -68,7 +68,7 @@ public:
   virtual void set_line_number(IIR_Int32 line_number) = 0;
 
   /** Read the file name from the node. */
-  virtual IIR_Identifier *get_file_name() = 0;
+  virtual IIR_Identifier *get_file_name() const = 0;
 
   /** Read the line number from the node. */
   virtual IIR_Int32 get_line_number() const = 0;
@@ -152,7 +152,7 @@ public:
       casting.  If this method is overridden, it will call the derived
       method.  If not it simply returns NULL.
   */
-  virtual IIR_Statement* get_value() = 0;
+  virtual IIR_Statement* get_value() const = 0;
 
   virtual ~IIR() {}
 
@@ -163,91 +163,91 @@ public:
   virtual IIR* convert_tree(plugin_class_factory *) = 0;
 
   /** Needed for guard signals */
-  virtual IIR_SignalKind get_signal_kind() = 0;
-  virtual IIR_Boolean is_guard_signal() = 0;
+  virtual IIR_SignalKind get_signal_kind() const = 0;
+  virtual IIR_Boolean is_guard_signal() const = 0;
 
-  virtual IIR_Boolean is_incomplete_type_declaration() = 0;
+  virtual IIR_Boolean is_incomplete_type_declaration() const = 0;
 
   /** Does this node represent an "object".  (An object, according to
       the LRM, is a constant, signal, variable, or a file.)  This method
       is overriden by things like IIR_SelectedName, and
       IIR_AliasDeclaration.  A "TRUE" from this method does NOT mean
       that it's safe to cast to IIR_ObjectDeclaration. */
-  virtual IIR_Boolean is_object() = 0;
+  virtual IIR_Boolean is_object() const = 0;
 
-  virtual IIR_Boolean is_name() = 0;
-  virtual IIR_Boolean is_signal() = 0;
-  virtual IIR_Boolean is_scalar_type() = 0;
-  virtual IIR_Boolean is_record_type() = 0;
-  virtual IIR_Boolean is_array_type() = 0;
-  virtual IIR_Boolean is_entity_declaration() = 0;
-  virtual IIR_Boolean is_resolved() = 0;
-  virtual IIR_Boolean is_ascending_range() = 0;
-  virtual IIR_Boolean is_subtype() = 0;
-  virtual IIR_Boolean is_access_type() = 0;
-  virtual IIR_Boolean is_interface() = 0;
-  virtual IIR_Boolean is_enumeration_type() = 0;
-  virtual IIR_Boolean is_text_literal() = 0;
-  virtual IIR_Boolean is_aggregate_expression() = 0;
-  virtual IIR_Boolean is_constant() = 0;
-  virtual IIR_Boolean is_file_type() = 0;
-  virtual IIR_Boolean is_type() = 0;
-  virtual IIR_Boolean is_subprogram()  = 0;
-  virtual IIR_Boolean is_integer_type() = 0;
-  virtual IIR_Boolean is_character_type() = 0;
-  virtual IIR_Boolean is_discrete_type() = 0;
-  virtual IIR_Boolean is_variable() = 0;
-  virtual IIR_Boolean is_literal() = 0;
-  virtual IIR_Boolean is_operator() = 0;
-  virtual IIR_Boolean is_above_attribute_found() = 0;
-  virtual IIR_Boolean is_relational_operator() = 0;
-  virtual IIR_Boolean is_logical_operator() = 0;
+  virtual IIR_Boolean is_name() const = 0;
+  virtual IIR_Boolean is_signal() const = 0;
+  virtual IIR_Boolean is_scalar_type() const = 0;
+  virtual IIR_Boolean is_record_type() const = 0;
+  virtual IIR_Boolean is_array_type() const = 0;
+  virtual IIR_Boolean is_entity_declaration() const = 0;
+  virtual IIR_Boolean is_resolved() const = 0;
+  virtual IIR_Boolean is_ascending_range() const = 0;
+  virtual IIR_Boolean is_subtype() const = 0;
+  virtual IIR_Boolean is_access_type() const = 0;
+  virtual IIR_Boolean is_interface() const = 0;
+  virtual IIR_Boolean is_enumeration_type() const = 0;
+  virtual IIR_Boolean is_text_literal() const = 0;
+  virtual IIR_Boolean is_aggregate_expression() const = 0;
+  virtual IIR_Boolean is_constant() const = 0;
+  virtual IIR_Boolean is_file_type() const = 0;
+  virtual IIR_Boolean is_type() const = 0;
+  virtual IIR_Boolean is_subprogram() const = 0;
+  virtual IIR_Boolean is_integer_type() const = 0;
+  virtual IIR_Boolean is_character_type() const = 0;
+  virtual IIR_Boolean is_discrete_type() const = 0;
+  virtual IIR_Boolean is_variable() const = 0;
+  virtual IIR_Boolean is_literal() const = 0;
+  virtual IIR_Boolean is_operator() const = 0;
+  virtual IIR_Boolean is_above_attribute_found() const = 0;
+  virtual IIR_Boolean is_relational_operator() const = 0;
+  virtual IIR_Boolean is_logical_operator() const = 0;
 
   /** This returns TRUE, if the type definition, or subtype definition is
       part of subtype declaration. */
-  virtual IIR_Boolean is_subtype_decl() = 0;
+  virtual IIR_Boolean is_subtype_decl() const = 0;
 
   /// Is this node an architecture declaration?
-  virtual IIR_Boolean is_architecture_declaration() = 0;
+  virtual IIR_Boolean is_architecture_declaration() const = 0;
 
   /// Is this node an attribute declaration?
-  virtual IIR_Boolean is_attribute_declaration() = 0;
+  virtual IIR_Boolean is_attribute_declaration() const = 0;
 
   /// Is this node an scalar type definition?
-  virtual IIR_Boolean is_scalar_type_definition() = 0;
+  virtual IIR_Boolean is_scalar_type_definition() const = 0;
 
   /// Is this node a label?
-  virtual IIR_Boolean is_label() = 0;
+  virtual IIR_Boolean is_label() const = 0;
 
   /// Is this node an component declaration?
-  virtual IIR_Boolean is_component_declaration() = 0;
+  virtual IIR_Boolean is_component_declaration() const = 0;
 
   /// Is this node a function declaration?
-  virtual IIR_Boolean is_function_declaration() = 0;
+  virtual IIR_Boolean is_function_declaration() const = 0;
 
   /// Is this node an configuration declaration?
-  virtual IIR_Boolean is_configuration_declaration() = 0;
+  virtual IIR_Boolean is_configuration_declaration() const = 0;
 
   /// Is this node a procedure declaration?
-  virtual IIR_Boolean is_procedure_declaration() = 0;
+  virtual IIR_Boolean is_procedure_declaration() const = 0;
 
   /// Is this node a package declaration?
-  virtual IIR_Boolean is_package_declaration() = 0;
+  virtual IIR_Boolean is_package_declaration() const = 0;
 
   /// Is this node a type declaration?
-  virtual IIR_Boolean is_type_declaration() = 0;
+  virtual IIR_Boolean is_type_declaration() const = 0;
 
   /// Is this node a subtype declaration?
-  virtual IIR_Boolean is_subtype_declaration() = 0;
+  virtual IIR_Boolean is_subtype_declaration() const = 0;
 
   /// Is this node a physical unit?
-  virtual IIR_Boolean is_physical_unit() = 0;
+  virtual IIR_Boolean is_physical_unit() const = 0;
 
   /// Is this node a group declaration?
-  virtual IIR_Boolean is_group_declaration() = 0;
+  virtual IIR_Boolean is_group_declaration() const = 0;
 
   /// Is this node a file declaration?
-  virtual IIR_Boolean is_file() = 0;
+  virtual IIR_Boolean is_file() const = 0;
 
   //@{
 
@@ -265,7 +265,7 @@ public:
   //@}
   virtual IIR_Boolean is_locally_static() = 0;
 
-  virtual IIR_TypeDefinition *get_subtype() = 0;
+  virtual IIR_TypeDefinition *get_subtype() const = 0;
   virtual void set_subtype(IIR_TypeDefinition *) = 0;
 
   /** The following methods help to avoid publish the same signal attribute

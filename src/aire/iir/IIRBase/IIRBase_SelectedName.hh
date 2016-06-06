@@ -38,18 +38,18 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_SelectedName";}
 
   void set_suffix( IIR_Statement *suffix );
-  IIR_Statement *get_suffix();
+  IIR_Statement *get_suffix() const;
 
   IIR_Statement *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_resolved();
-  IIR_Boolean is_signal();
-  IIR_Boolean is_entity_declaration();
-  IIR_Boolean is_object();
-  IIR_Boolean is_type();
-  IIR_Boolean is_variable();
+  IIR_Boolean is_resolved() const;
+  IIR_Boolean is_signal() const;
+  IIR_Boolean is_entity_declaration() const;
+  IIR_Boolean is_object() const;
+  IIR_Boolean is_type() const;
+  IIR_Boolean is_variable() const;
   
-  IIR_SignalKind get_signal_kind();
+  IIR_SignalKind get_signal_kind() const;
   IIR_TypeDefinition *get_subtype();
 
   ostream &print( ostream & );

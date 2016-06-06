@@ -52,7 +52,7 @@ IIRBase_DesignFile::~IIRBase_DesignFile() {}
 // }
 
 IIR_Identifier *
-IIRBase_DesignFile::get_name(){
+IIRBase_DesignFile::get_name() const {
   return my_file_name;
 }
 

@@ -31,8 +31,8 @@ class IIRBase_TextLiteral : public virtual IIRBase_Literal,
 			    public virtual IIR_TextLiteral{
 
 public:
-  IIR_Char *get_text();
-  IIR_Int32 get_text_length();
+  IIR_Char *get_text() const;
+  IIR_Int32 get_text_length() const;
 
   IIR_Char &operator[]( IIR_Int32 subscript );
 
@@ -47,7 +47,7 @@ public:
 
   IIR_Statement *convert_tree(plugin_class_factory *);
  
-  IIR_Boolean is_text_literal() { return TRUE; }
+  IIR_Boolean is_text_literal() const { return TRUE; }
 
   IIR_TextLiteral *get_prefix_string(){ return this; }
 

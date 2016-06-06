@@ -35,7 +35,7 @@ IIRBase_ReverseRangeAttribute::set_suffix( IIR_Statement* suffix) {
 }
 
 IIR_Statement * 
-IIRBase_ReverseRangeAttribute::get_suffix() {
+IIRBase_ReverseRangeAttribute::get_suffix() const {
   return suffix;
 }
 

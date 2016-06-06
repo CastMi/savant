@@ -35,7 +35,7 @@ IIRBase_LowAttribute::set_suffix( IIR_Statement *suffix ){
 }
 
 IIR_Statement *
-IIRBase_LowAttribute::get_suffix( ){
+IIRBase_LowAttribute::get_suffix() const {
   return my_suffix;
 }
 
@@ -50,7 +50,7 @@ IIRBase_LowAttribute::convert_tree(plugin_class_factory *factory) {
 }
 
 IIR_Boolean 
-IIRBase_LowAttribute::is_value_attribute(){
+IIRBase_LowAttribute::is_value_attribute() const {
   ASSERT( is_resolved() );
   if( get_prefix()->is_scalar_type() ){
     ASSERT( get_suffix() == NULL );
@@ -63,7 +63,7 @@ IIRBase_LowAttribute::is_value_attribute(){
 }
 
 IIR_Boolean 
-IIRBase_LowAttribute::is_function_attribute(){
+IIRBase_LowAttribute::is_function_attribute() const {
   if( is_value_attribute() == TRUE ){
     return FALSE;
   }

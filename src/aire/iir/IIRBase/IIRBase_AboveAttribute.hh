@@ -52,7 +52,7 @@ public:
   void set_suffix(IIR_Statement* suffix);
   
   /** Returns the value of the expression. */
-  IIR_Statement* get_suffix();
+  IIR_Statement* get_suffix() const;
   
   /** Returns the type of the signal created. */
   IIR_TypeDefinition *get_subtype();

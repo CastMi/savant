@@ -52,7 +52,7 @@ public:
   virtual IIR_TypeDefinition            *get_type_mark() = 0;
   virtual void                          set_type_mark( IIR_TypeDefinition * ) = 0;
 
-  virtual IIR_Boolean                   is_element() = 0;
+  virtual IIR_Boolean                   is_element() const = 0;
   virtual IIR_Boolean                   is_unconstrained_array_type() = 0;
   virtual IIR_Boolean                   is_incomplete_type_definition() = 0;
   virtual IIR_Boolean                   is_anonymous() = 0;

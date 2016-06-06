@@ -37,13 +37,13 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_LowAttribute";}
 
   void set_suffix( IIR_Statement * );
-  IIR_Statement *get_suffix( );
+  IIR_Statement *get_suffix() const;
   IIR_Identifier *build_attribute_name();
 
   IIR_LowAttribute *convert_tree(plugin_class_factory *factory); 
 
-  IIR_Boolean is_value_attribute();
-  IIR_Boolean is_function_attribute();
+  IIR_Boolean is_value_attribute() const;
+  IIR_Boolean is_function_attribute() const;
   IIR_Boolean has_suffix(){ return TRUE; }
 
   void publish_vhdl(ostream &);

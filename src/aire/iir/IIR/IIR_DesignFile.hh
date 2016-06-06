@@ -48,7 +48,7 @@ public:
   virtual void                   set_comments(IIR_CommentList *) = 0;
   virtual void                   set_library_units(IIR_LibraryUnitList *) = 0;
 
-  virtual IIR_Identifier         *get_name() = 0;
+  virtual IIR_Identifier         *get_name() const = 0;
   virtual void                   set_name( IIR_Identifier * ) = 0;
 
   virtual StandardPackage        *get_standard_package() = 0;

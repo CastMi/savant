@@ -62,7 +62,7 @@ public:
 
   virtual declaration_type get_declaration_type() = 0;
 
-  virtual IIR_Boolean is_element() = 0;
+  virtual IIR_Boolean is_element() const = 0;
 
   /** These methods are referring to the region that this declaration is
       IN. */
@@ -73,7 +73,7 @@ public:
       and sometimes they should.  deallocate( foo : some_access_type )
       should be visible.  foo'quiet will create "foo_quiet" which definitely
       shouldn't. */
-  virtual IIR_Boolean is_visible() = 0;
+  virtual IIR_Boolean is_visible() const = 0;
   virtual void set_is_visible( IIR_Boolean new_flag ) = 0;
 
   /** An implicit declaration is one that exists, but doesn't appear in the
@@ -83,7 +83,7 @@ public:
   virtual void set_is_implicit( IIR_Boolean new_flag ) = 0;
   virtual IIR_Boolean is_implicit_declaration() = 0;
 
-  virtual IIR_Boolean contains_body() = 0;
+  virtual IIR_Boolean contains_body() const = 0;
 
   virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name * ) = 0;
   virtual savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral *) = 0;
@@ -97,6 +97,6 @@ public:
   /**
      Does this declaration represent the work library in some way?
   */
-  virtual bool is_work_library() = 0;
+  virtual bool is_work_library() const = 0;
 };
 #endif

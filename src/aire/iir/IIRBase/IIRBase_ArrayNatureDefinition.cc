@@ -46,7 +46,7 @@ IIRBase_ArrayNatureDefinition::get_index_subtype(){
 }
  
 IIR_Boolean
-IIRBase_ArrayNatureDefinition::is_element(){
+IIRBase_ArrayNatureDefinition::is_element() const {
   return my_is_element;
 }
  

@@ -35,7 +35,7 @@ IIRBase_LeftOfAttribute::set_suffix( IIR_Statement *suffix) {
 }
 
 IIR_Statement *
-IIRBase_LeftOfAttribute::get_suffix() {
+IIRBase_LeftOfAttribute::get_suffix() const {
   return my_suffix;
 }
 

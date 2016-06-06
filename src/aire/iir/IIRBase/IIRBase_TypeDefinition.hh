@@ -50,7 +50,7 @@ public:
 
   IIRBase_TypeDefinition *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_element();
+  IIR_Boolean is_element() const;
   IIR_Boolean is_resolved() { return TRUE; }
   IIR_Boolean is_anonymous();
   IIR_Boolean is_subtype();
@@ -59,12 +59,12 @@ public:
   IIR_Boolean is_incomplete_type_definition(){ return FALSE; }
   IIR_Boolean is_subtype_decl();
 
-  IIR_Boolean is_access_type()     { return FALSE; }
-  IIR_Boolean is_array_type()      { return FALSE; }
-  IIR_Boolean is_enumeration_type(){ return FALSE; }
-  IIR_Boolean is_file_type()       { return FALSE; }
-  IIR_Boolean is_record_type()     { return FALSE; }
-  IIR_Boolean is_scalar_type()     { return FALSE; }
+  IIR_Boolean is_access_type() const { return FALSE; }
+  IIR_Boolean is_array_type() const { return FALSE; }
+  IIR_Boolean is_enumeration_type() const { return FALSE; }
+  IIR_Boolean is_file_type() const { return FALSE; }
+  IIR_Boolean is_record_type() const { return FALSE; }
+  IIR_Boolean is_scalar_type() const { return FALSE; }
 
   IIR_TypeDefinition            *get_subtype() { return this; }
   IIR_ScalarTypeDefinition      *get_resolved_index_subtype();

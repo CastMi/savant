@@ -35,11 +35,11 @@ public:
   IIR *get_declarative_region();
   void set_declarative_region( IIR * );
 
-  IIR_Boolean contains_body(){ return FALSE; }
+  IIR_Boolean contains_body() const { return FALSE; }
 
-  IIR_Boolean is_incomplete_type_declaration(){ return FALSE; }
-  IIR_Boolean is_signal() { return FALSE; }
-  bool is_work_library() { return FALSE; }
+  IIR_Boolean is_incomplete_type_declaration() const { return FALSE; }
+  IIR_Boolean is_signal() const { return FALSE; }
+  bool is_work_library() const { return FALSE; }
 
   /** This method tells us if a declaration is a an IIR_TypeDeclaration or
       IIR_SubtypeDeclaration. */
@@ -48,19 +48,19 @@ public:
   /** Tells us if this is a scalar type - or an object of a scalar type. */
 
   /** Tells us if this is a array type - or an object of a array type. */
-  IIR_Boolean is_resolved() { return TRUE; }
-  IIR_Boolean is_element() { return FALSE; }
-  IIR_Boolean is_object() { return FALSE; }
+  IIR_Boolean is_resolved() const { return TRUE; }
+  IIR_Boolean is_element() const { return FALSE; }
+  IIR_Boolean is_object() const { return FALSE; }
 
   //ams additions
   /** This function tells if a quantity is an across-quantity */
-  IIR_Boolean is_across_quantity() { return FALSE; }
+  IIR_Boolean is_across_quantity() const { return FALSE; }
 
   /** Sometimes implicit declarations need to be visible in the symbol table
       and sometimes they should.  deallocate( foo : some_access_type )
       should be visible.  foo'quiet will create "foo_quiet" which definitely
       shouldn't. */
-  IIR_Boolean is_visible(){ return visible_flag; }
+  IIR_Boolean is_visible() const { return visible_flag; }
   void set_is_visible( IIR_Boolean new_flag ){ visible_flag = new_flag; }
 
   /** An implicit declaration is one that exists, but doesn't appear in the

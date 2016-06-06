@@ -35,7 +35,7 @@ public:
   virtual ~IIR_RightAttribute() {}
     
   virtual void set_suffix( IIR_Statement *suffix) = 0;
-  virtual IIR_Statement *get_suffix() = 0;
+  virtual IIR_Statement *get_suffix() const = 0;
 };
 
 #endif

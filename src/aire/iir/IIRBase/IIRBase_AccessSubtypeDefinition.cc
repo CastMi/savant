@@ -48,7 +48,7 @@ IIRBase_AccessSubtypeDefinition::set_designated_subtype( IIR_TypeDefinition *des
 
 
 IIR_TypeDefinition *
-IIRBase_AccessSubtypeDefinition::get_designated_subtype(){
+IIRBase_AccessSubtypeDefinition::get_designated_subtype() const {
   return IIRBase_AccessTypeDefinition::get_designated_type();
 }
 

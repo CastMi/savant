@@ -53,7 +53,7 @@ public:
   }
 
   /** Read the file name from the node. */
-  IIR_Identifier *get_file_name();
+  IIR_Identifier *get_file_name() const;
 
   /** Read the line number from the node. */
   IIR_Int32 get_line_number()  const { return iir_line_number; }
@@ -145,7 +145,7 @@ public:
   /** This method has been introduced to remove unneccessary type
       casting.  If this method is overridden, it will call the derived
       method.  If not it simply returns NULL. */
-  virtual IIR_Statement *get_value();
+  virtual IIR_Statement *get_value() const;
 
   /** This function performs the conversion of one tree into another.  At this 
       level it creates a copy of the current node using the passed in factory, 
@@ -153,94 +153,95 @@ public:
   virtual IIR *convert_tree(plugin_class_factory *factory) = 0;
 
   /** Needed for guard signals */
-  IIR_SignalKind get_signal_kind();
-  IIR_Boolean is_guard_signal();
+  IIR_SignalKind get_signal_kind() const;
+  IIR_Boolean is_guard_signal() const;
 
-  IIR_Boolean is_incomplete_type_declaration(){ return FALSE; }
+  IIR_Boolean is_incomplete_type_declaration() const { return FALSE; }
 
-  IIR_Boolean is_name(){ return FALSE; }
-  IIR_Boolean is_signal(){ return FALSE; }
+  IIR_Boolean is_name() const { return FALSE; }
+  IIR_Boolean is_signal() const { return FALSE; }
   //@{
   /** Querying various type properties */
-  IIR_Boolean is_access_type();
-  IIR_Boolean is_array_type();
-  IIR_Boolean is_enumeration_type();
-  IIR_Boolean is_file_type();
-  IIR_Boolean is_record_type();
-  IIR_Boolean is_scalar_type();
+  IIR_Boolean is_access_type() const;
+  IIR_Boolean is_array_type() const;
+  IIR_Boolean is_enumeration_type() const;
+  IIR_Boolean is_file_type() const;
+  IIR_Boolean is_record_type() const;
+  IIR_Boolean is_scalar_type() const;
   //@}
-  IIR_Boolean is_entity_declaration() { return FALSE; }
-  IIR_Boolean is_resolved(){ return FALSE; }
-  IIR_Boolean is_ascending_range();
-  IIR_Boolean is_subtype(){ return FALSE; }
-  IIR_Boolean is_interface(){ return FALSE; }
-  IIR_Boolean is_text_literal() {return FALSE; }
-  IIR_Boolean is_aggregate_expression() { return FALSE; }
-  IIR_Boolean is_constant(){ return FALSE; }
-  IIR_Boolean is_type(){ return FALSE; }
-  IIR_Boolean is_subprogram(){ return FALSE; }
-  IIR_Boolean is_character_type(){ return FALSE; }
-  IIR_Boolean is_discrete_type(){ return FALSE; }
-  IIR_Boolean is_integer_type(){ return FALSE; }
-  IIR_Boolean is_variable(){ return FALSE; }
-  IIR_Boolean is_literal() { return FALSE; }
-  IIR_Boolean is_operator() { return FALSE; }
-  IIR_Boolean is_above_attribute_found() { return FALSE; }
-  IIR_Boolean is_logical_operator(){ return FALSE; }
-  IIR_Boolean is_relational_operator(){ return FALSE; }
+  IIR_Boolean is_entity_declaration() const { return FALSE; }
+  IIR_Boolean is_resolved() const { return FALSE; }
+  IIR_Boolean is_ascending_range() const;
+  IIR_Boolean is_subtype() const { return FALSE; }
+  IIR_Boolean is_interface() const { return FALSE; }
+  IIR_Boolean is_text_literal() const { return FALSE; }
+  IIR_Boolean is_aggregate_expression() const { return FALSE; }
+  IIR_Boolean is_constant() const { return FALSE; }
+  IIR_Boolean is_type() const { return FALSE; }
+  IIR_Boolean is_subprogram() const { return FALSE; }
+  IIR_Boolean is_character_type() const { return FALSE; }
+  IIR_Boolean is_discrete_type() const { return FALSE; }
+  IIR_Boolean is_integer_type() const { return FALSE; }
+  IIR_Boolean is_variable() const { return FALSE; }
+  IIR_Boolean is_literal() const { return FALSE; }
+  IIR_Boolean is_operator() const { return FALSE; }
+  IIR_Boolean is_above_attribute_found() const { return FALSE; }
+  IIR_Boolean is_logical_operator() const { return FALSE; }
+  IIR_Boolean is_relational_operator() const { return FALSE; }
 
   /** Does this node represent an "object".  (An object, according to
       the LRM, is a constant, signal, variable, or a file.)  This method
       is overriden by things like IIR_SelectedName, and
       IIR_AliasDeclaration.  A "TRUE" from this method does NOT mean
       that it's safe to cast to IIR_ObjectDeclaration. */
-  IIR_Boolean is_object(){ return FALSE; }
+  IIR_Boolean is_object() const { return FALSE; }
 
   /** This returns TRUE, if the type definition, or subtype definition is
       part of subtype declaration. */
-  IIR_Boolean is_subtype_decl() { return FALSE; }
+<<<<<<< HEAD
+  IIR_Boolean is_subtype_decl() const { return FALSE; }
 
   /// Is this node an architecture declaration?
-  IIR_Boolean is_architecture_declaration(){ return FALSE; }
+  IIR_Boolean is_architecture_declaration() const { return FALSE; }
 
   /// Is this node an attribute declaration?
-  IIR_Boolean is_attribute_declaration(){ return FALSE; }
+  IIR_Boolean is_attribute_declaration() const { return FALSE; }
 
   /// Is this node a scalar type definition?
-  IIR_Boolean is_scalar_type_definition(){ return FALSE; }
+  IIR_Boolean is_scalar_type_definition() const { return FALSE; }
 
   /// Is this node a Label?
-  IIR_Boolean is_label(){ return FALSE; }
+  IIR_Boolean is_label() const { return FALSE; }
 
   /// Is this node a component declaration?
-  IIR_Boolean is_component_declaration(){ return FALSE; }
+  IIR_Boolean is_component_declaration() const { return FALSE; }
 
   /// Is this node a function declaration?
-  IIR_Boolean is_function_declaration(){ return FALSE; }
+  IIR_Boolean is_function_declaration() const { return FALSE; }
 
   /// Is this node a configuration declaration?
-  IIR_Boolean is_configuration_declaration(){ return FALSE; }
+  IIR_Boolean is_configuration_declaration() const { return FALSE; }
 
   /// Is this node a procedure declaration?
-  IIR_Boolean is_procedure_declaration(){ return FALSE; }
+  IIR_Boolean is_procedure_declaration() const { return FALSE; }
 
   /// Is this node a procedure declaration?
-  IIR_Boolean is_physical_unit(){ return FALSE; }
+  IIR_Boolean is_physical_unit() const { return FALSE; }
 
   /// Is this node a package declaration?
-  IIR_Boolean is_package_declaration(){ return FALSE; }
+  IIR_Boolean is_package_declaration() const { return FALSE; }
 
   /// Is this node a type declaration?
-  IIR_Boolean is_type_declaration(){ return FALSE; }
+  IIR_Boolean is_type_declaration() const { return FALSE; }
 
   /// Is this node a subtype declaration?
-  IIR_Boolean is_subtype_declaration() { return FALSE; }
+  IIR_Boolean is_subtype_declaration() const { return FALSE; }
 
   /// Is this node a group declaration?
-  IIR_Boolean is_group_declaration(){ return FALSE; }
+  IIR_Boolean is_group_declaration() const { return FALSE; }
 
   /// Is this node a file declaration?
-  IIR_Boolean is_file() { return FALSE; }
+  IIR_Boolean is_file() const { return FALSE; }
 
   //@{
 
@@ -256,7 +257,7 @@ public:
   IIR_Boolean is_locally_static();
   //@}
 
-  IIR_TypeDefinition *get_subtype();
+  IIR_TypeDefinition *get_subtype() const;
   void set_subtype(IIR_TypeDefinition *);
 
   /** This method returns the number of indexes an array object has. */
@@ -315,7 +316,7 @@ protected:
       table associated with the file. */
   IIR_DesignFile *_my_design_file;
     
-  void _report_undefined_fn(const char *);
+  void _report_undefined_fn(const char *) const;
 private:
   /** Where the line number is stored. */
   IIR_Int32  iir_line_number;

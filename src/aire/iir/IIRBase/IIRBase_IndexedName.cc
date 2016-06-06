@@ -47,7 +47,7 @@ IIRBase_IndexedName::set_suffix( IIR_Statement* suffix) {
 }
 
 IIR_Statement *
-IIRBase_IndexedName::get_suffix() {
+IIRBase_IndexedName::get_suffix() const {
   return suffix;
 }
 
@@ -69,7 +69,7 @@ IIRBase_IndexedName::convert_tree(plugin_class_factory *factory) {
 }
 
 IIR_Boolean 
-IIRBase_IndexedName::is_resolved(){
+IIRBase_IndexedName::is_resolved() const {
   if( get_prefix()->is_resolved() == TRUE && 
       get_suffix()->is_resolved() == TRUE ){
     return TRUE;
@@ -80,14 +80,14 @@ IIRBase_IndexedName::is_resolved(){
 }
 
 IIR_Boolean 
-IIRBase_IndexedName::is_signal(){
+IIRBase_IndexedName::is_signal() const {
   ASSERT( is_resolved() == TRUE );
   return get_prefix()->is_signal();
 }
 
 
 IIR_Boolean
-IIRBase_IndexedName::is_interface() {
+IIRBase_IndexedName::is_interface() const {
   return get_prefix()->is_interface();
 }
 
@@ -135,7 +135,7 @@ IIRBase_IndexedName::get_num_indexes(){
 }
 
 IIR_Boolean 
-IIRBase_IndexedName::is_variable(){
+IIRBase_IndexedName::is_variable() const {
   ASSERT( is_resolved() == TRUE );
   return get_prefix()->is_variable();
 }

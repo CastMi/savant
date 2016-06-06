@@ -47,10 +47,10 @@ public:
                        IIR         *&first_match);
   
   void set_prefix( IIR_Statement *prefix );
-  IIR_Statement *get_prefix();
+  IIR_Statement *get_prefix() const;
 
   void set_suffix( IIR_Statement *suffix );
-  IIR_Statement *get_suffix();
+  IIR_Statement *get_suffix() const;
 
   IIR_Statement *convert_tree(plugin_class_factory *factory);
   

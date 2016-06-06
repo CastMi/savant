@@ -46,7 +46,7 @@ IIRBase_UserAttribute::set_suffix( IIR_Statement *new_suffix ){
 }
 
 IIR_Statement*
-IIRBase_UserAttribute::get_suffix() {
+IIRBase_UserAttribute::get_suffix() const {
 
   return suffix;
 }

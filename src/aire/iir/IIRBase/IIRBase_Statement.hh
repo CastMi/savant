@@ -48,12 +48,12 @@ public:
 
   savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
   
-  virtual Precedence get_precedence();
+  virtual Precedence get_precedence() const;
   /** For assertion statements this method is overloaded to return the
       assertion condtion.  For anything else it returns 0. */
   IIR_Statement *get_assertion_condition(){ return 0; }
   
-  virtual IIR_Boolean is_above_attribute_found() { return false; };
+  virtual IIR_Boolean is_above_attribute_found() const { return false; };
   /** For report and assertion statements this method is overloaded to
       return the report expression.  For anything else it returns 0. */
   IIR_Statement *get_report_expression(){ return 0; }
@@ -62,24 +62,24 @@ public:
   IIR_Statement *get_severity_expression(){ return 0; }
 
   virtual IIR_Boolean is_locally_static() { return false; };
-  virtual IIR_Boolean is_signal() { return false; }
-  virtual IIR_Boolean is_name() { return false; };
-  virtual IIR_Boolean is_variable() { return false; };
-  virtual IIR_Boolean is_scalar_type() { return false; };
-  virtual IIR_Boolean is_logical_operator() { return false; };
-  virtual IIR_Boolean is_array_type() { return false; };
-  virtual IIR_Boolean is_interface() { return false; };
-  virtual IIR_Boolean is_relational_operator() { return false; };
-  virtual IIR_Boolean is_entity_declaration() { return false; };
-  virtual IIR_Boolean is_type() { return false; };
-  virtual IIR_Boolean is_object() { return false; };
-  virtual IIR_Boolean is_text_literal() { return false; };
-  virtual IIR_Boolean is_label() { return false; };
-  virtual IIR_Boolean _is_iir_attribute() { return false; };
+  virtual IIR_Boolean is_signal() const { return false; }
+  virtual IIR_Boolean is_name() const { return false; };
+  virtual IIR_Boolean is_variable() const { return false; };
+  virtual IIR_Boolean is_scalar_type() const { return false; };
+  virtual IIR_Boolean is_logical_operator() const { return false; };
+  virtual IIR_Boolean is_array_type() const { return false; };
+  virtual IIR_Boolean is_interface() const { return false; };
+  virtual IIR_Boolean is_relational_operator() const { return false; };
+  virtual IIR_Boolean is_entity_declaration() const { return false; };
+  virtual IIR_Boolean is_type() const { return false; };
+  virtual IIR_Boolean is_object() const { return false; };
+  virtual IIR_Boolean is_text_literal() const { return false; };
+  virtual IIR_Boolean is_label() const { return false; };
+  virtual IIR_Boolean _is_iir_attribute() const { return false; };
 
   virtual IIR_Declaration* get_prefix_declaration() { return nullptr; };
 
-  virtual IIR_SignalKind get_signal_kind() { return IIR_SignalKind::IIR_NO_SIGNAL_KIND; };
+  virtual IIR_SignalKind get_signal_kind() const { return IIR_SignalKind::IIR_NO_SIGNAL_KIND; };
 
   virtual IIR_TextLiteral *get_prefix_string() { return nullptr; };
   /**  This is overloaded for assertion and report statements.  Generate

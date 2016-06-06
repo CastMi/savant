@@ -58,7 +58,7 @@ report_error( const char *message,
 void 
 report_error( const char *message, 
 	      int line_number, 
-	      IIR_Identifier *file_name, 
+	      const IIR_Identifier *file_name, 
 	      severity how_serious ){
 
   if( file_name != NULL ){
@@ -69,9 +69,9 @@ report_error( const char *message,
 }
 
 void 
-report_error( const string &message,
+report_error( const string& message,
 	      int line_number, 
-	      IIR_Identifier *file_name, 
+	      const IIR_Identifier *file_name, 
 	      severity how_serious ){
   if( how_serious == FATAL ){
     parse_error = true;
@@ -81,7 +81,7 @@ report_error( const string &message,
 }
 
 void 
-report_error( IIR *if_node, 
+report_error( const IIR *if_node, 
 	      const string &message,
 	      severity how_serious ){
   if( how_serious == FATAL ){
@@ -92,7 +92,7 @@ report_error( IIR *if_node,
 }
 
 void 
-report_error( IIR *if_node, const char *msg, severity how_serious ) {
+report_error( const IIR *if_node, const char *msg, severity how_serious ) {
   if( how_serious == FATAL ){
     parse_error = true;
   }
@@ -101,21 +101,21 @@ report_error( IIR *if_node, const char *msg, severity how_serious ) {
 }
 
 void 
-report_undefined_symbol( IIR *name ){
+report_undefined_symbol( const IIR *name ){
   ostringstream err;
   err << "|" << *name << "| is undefined in this scope.";
   report_error( name, err.str() );
 }
 
 void 
-report_undefined_symbol( IIR_Declaration *prefix, IIR_Name *suffix ){
+report_undefined_symbol( const IIR_Declaration *prefix, const IIR_Name *suffix ){
   ostringstream err;
   err << "|" << *prefix << "." << *suffix << "| is undefined in this scope.";
   report_error( suffix, err.str() );
 }
 
 void 
-report_undefined_symbol( savant::set<IIR_TypeDefinition> *type_def_set, IIR *name ){
+report_undefined_symbol( savant::set<IIR_TypeDefinition> *type_def_set, const IIR *name ){
   if( type_def_set == NULL || type_def_set->size() == 0 ){
     ostringstream err;
     err << "|" << *name << "| is undefined in this scope.";
@@ -126,7 +126,7 @@ report_undefined_symbol( savant::set<IIR_TypeDefinition> *type_def_set, IIR *nam
 
 
 void 
-report_ambiguous_error( IIR *error_info, savant::set<IIR_Declaration> *error_set ){
+report_ambiguous_error( const IIR *error_info, savant::set<IIR_Declaration> *error_set ){
   ostringstream err;
 
   ASSERT( error_set != NULL );
@@ -160,7 +160,7 @@ report_ambiguous_error( IIR *error_info, savant::set<IIR_Declaration> *error_set
 }
 
 void 
-report_ambiguous_error( IIR *error_info, savant::set<IIR_TypeDefinition> *error_set ){
+report_ambiguous_error( const IIR *error_info, savant::set<IIR_TypeDefinition> *error_set ){
   IIR_TypeDefinition *current;
   
   ostringstream err;
@@ -195,8 +195,8 @@ report_ambiguous_error( IIR *error_info, savant::set<IIR_TypeDefinition> *error_
 
 
 void 
-report_ambiguous_error( IIR_Declaration *prefix, 
-			IIR_Name *suffix, 
+report_ambiguous_error( const IIR_Declaration *prefix, 
+			const IIR_Name *suffix, 
 			savant::set<IIR_Declaration> *error_set ){
 
   IIR_SelectedName *error_info = new IIRScram_SelectedName();
@@ -210,7 +210,7 @@ report_ambiguous_error( IIR_Declaration *prefix,
 }
 
 void
-report_undefined_function(char *function_name, IIR* node) {
+report_undefined_function(const char *function_name, const IIR* node) {
   ostringstream os;
   os << function_name << " not defined for node: " << node->get_kind_text();
   report_error( node, os.str() );

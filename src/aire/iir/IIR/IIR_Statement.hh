@@ -49,7 +49,7 @@ public:
 
   virtual void _report_undefined_fn(const char *) = 0;
   virtual plugin_class_factory *get_class_factory();
-  virtual IIR_Boolean is_above_attribute_found() = 0;
+  virtual IIR_Boolean is_above_attribute_found() const = 0;
   virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name * ) = 0;
 
   virtual IIR_TypeDefinition *get_subtype() = 0;
@@ -57,22 +57,22 @@ public:
       assertion condtion.  For anything else it returns 0. */
   virtual IIR_Statement *get_assertion_condition() = 0;
   virtual IIR_Boolean is_locally_static() = 0;
-  virtual IIR_Boolean is_scalar_type() = 0;
-  virtual IIR_Boolean is_array_type() = 0;
-  virtual IIR_Boolean is_signal() = 0;
-  virtual IIR_Boolean is_interface() = 0;
-  virtual IIR_Boolean is_variable() = 0;
-  virtual IIR_Boolean is_object() = 0;
-  virtual IIR_Boolean is_logical_operator() = 0;
-  virtual IIR_Boolean is_relational_operator() = 0;
-  virtual IIR_Boolean is_entity_declaration() = 0;
-  virtual IIR_Boolean is_type() = 0;
-  virtual IIR_Boolean is_name() = 0;
-  virtual IIR_Boolean is_label() = 0;
-  virtual IIR_Boolean _is_iir_attribute() = 0;
-  virtual IIR_Boolean is_text_literal() = 0;
+  virtual IIR_Boolean is_scalar_type() const = 0;
+  virtual IIR_Boolean is_array_type() const = 0;
+  virtual IIR_Boolean is_signal() const = 0;
+  virtual IIR_Boolean is_interface() const = 0;
+  virtual IIR_Boolean is_variable() const = 0;
+  virtual IIR_Boolean is_object() const = 0;
+  virtual IIR_Boolean is_logical_operator() const = 0;
+  virtual IIR_Boolean is_relational_operator() const = 0;
+  virtual IIR_Boolean is_entity_declaration() const = 0;
+  virtual IIR_Boolean is_type() const = 0;
+  virtual IIR_Boolean is_name() const = 0;
+  virtual IIR_Boolean is_label() const = 0;
+  virtual IIR_Boolean _is_iir_attribute() const = 0;
+  virtual IIR_Boolean is_text_literal() const = 0;
   virtual IIR_Declaration *_find_formal_declaration();
-  virtual IIR_SignalKind get_signal_kind() = 0;
+  virtual IIR_SignalKind get_signal_kind() const = 0;
   virtual IIR_TextLiteral *get_declarator() = 0;
 
   virtual ostream &print( ostream & ) = 0;
@@ -105,7 +105,7 @@ public:
       according to LRM. The higher the number , the higher the
       precedence. 
   */
-  virtual Precedence get_precedence() = 0;
+  virtual Precedence get_precedence() const = 0;
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */

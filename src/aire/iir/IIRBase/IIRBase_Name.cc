@@ -34,16 +34,13 @@
 
 #include "savant.hh"
 
-
-
-
 IIRBase_Name::IIRBase_Name() :
   prefix(0){}
 
 IIRBase_Name::~IIRBase_Name(){}
 
 IIR_Statement *
-IIRBase_Name::get_prefix(){
+IIRBase_Name::get_prefix() const {
   return prefix;
 }
 
@@ -60,7 +57,7 @@ IIRBase_Name::set_suffix( IIR_Statement * ){
 }
 
 IIR_Statement *
-IIRBase_Name::get_suffix(){
+IIRBase_Name::get_suffix() const {
   return 0;
 }
 

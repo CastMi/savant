@@ -35,7 +35,7 @@ IIRBase_ValueAttribute::set_suffix( IIR_Statement *new_suffix ){
 }
 
 IIR_Statement*
-IIRBase_ValueAttribute::get_suffix() {
+IIRBase_ValueAttribute::get_suffix() const {
   return suffix;
 }
 

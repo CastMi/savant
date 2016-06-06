@@ -35,7 +35,7 @@ IIRBase_PredAttribute::set_suffix( IIR_Statement *suffix) {
 }
 
 IIR_Statement * 
-IIRBase_PredAttribute::get_suffix() {
+IIRBase_PredAttribute::get_suffix() const {
   return my_suffix;
 }
 

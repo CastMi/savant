@@ -50,7 +50,7 @@ public:
   void set_is_element(IIR_Boolean);
 
   /** Returns true if the calling object is of element type */
-  IIR_Boolean is_element();
+  IIR_Boolean is_element() const;
 
   IIRBase_ArrayNatureDefinition *convert_tree(plugin_class_factory *factory);
 

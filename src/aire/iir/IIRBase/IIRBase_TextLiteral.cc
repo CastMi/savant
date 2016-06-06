@@ -32,12 +32,12 @@ IIRBase_TextLiteral::IIRBase_TextLiteral() :
 IIRBase_TextLiteral::~IIRBase_TextLiteral(){}
 
 IIR_Char *
-IIRBase_TextLiteral::get_text(){
+IIRBase_TextLiteral::get_text() const {
   return const_cast<char *>(text->get_text().c_str());
 }
 
 IIR_Int32 
-IIRBase_TextLiteral::get_text_length(){
+IIRBase_TextLiteral::get_text_length() const {
   return text->get_text_length();
 }
 

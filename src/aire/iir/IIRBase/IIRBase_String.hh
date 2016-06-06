@@ -47,11 +47,11 @@ public:
     return my_text.compare( compare_text );
   }
 
-  const string &get_text(){
+  const string &get_text() const {
     return my_text;
   }
 
-  int get_text_length(){
+  int get_text_length() const {
     return my_text.length();
   }
 

@@ -38,6 +38,6 @@ public:
 
   virtual void set_designated_type( IIR_TypeDefinition *designated_type) = 0;
 
-  virtual IIR_TypeDefinition *get_designated_type() = 0;
+  virtual IIR_TypeDefinition *get_designated_type() const = 0;
 };
 #endif
