@@ -198,5 +198,5 @@ IIRScram_Name::lookup( IIRScram_Name *,
 
 IIRScram_Statement *
 IIRScram_Name::_get_prefix() {
-  return dynamic_cast<IIRScram *>(get_prefix());
+  return dynamic_cast<IIRScram_Statement *>(get_prefix());
 }

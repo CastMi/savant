@@ -90,9 +90,10 @@ IIRScram_AttributeSpecification::_type_check( IIRScram_DeclarationList * ){
                                       _get_declarator() ) == 0  );
     attr_declaration = attribute_decls->getElement();
     
-    set_value( _get_value()->_semantic_transform( attr_declaration->_get_subtype() ));
+    // FIXME: the two lines here are wrong 
+    //set_value( _get_value()->_semantic_transform( attr_declaration->_get_subtype() ));
     _get_value()->_type_check( attr_declaration->_get_subtype() );
-    set_value( _get_value()->_rval_to_decl( attr_declaration->_get_subtype() ));
+    //set_value( _get_value()->_rval_to_decl( attr_declaration->_get_subtype() ));
     
     set_declaration( attr_declaration );
     break;

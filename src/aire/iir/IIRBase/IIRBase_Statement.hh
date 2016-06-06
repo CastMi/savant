@@ -75,6 +75,7 @@ public:
   virtual IIR_Boolean is_object() { return false; };
   virtual IIR_Boolean is_text_literal() { return false; };
   virtual IIR_Boolean is_label() { return false; };
+  virtual IIR_Boolean _is_iir_attribute() { return false; };
 
   virtual IIR_Declaration* get_prefix_declaration() { return nullptr; };
 

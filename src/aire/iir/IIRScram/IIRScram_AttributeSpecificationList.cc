@@ -28,8 +28,6 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIRScram.hh"
 #include "IIRScram_AttributeSpecificationList.hh"
-#include "IIRScram_AttributeSpecification.hh"
 
 IIRScram_AttributeSpecificationList::~IIRScram_AttributeSpecificationList() {}

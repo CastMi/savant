@@ -216,7 +216,7 @@ IIRScram_Attribute::_symbol_lookup(){
 	
   if( attached_to == NULL ){
     ostringstream err;
-    // FIXME: override operator<<
+    // FIXME overload operator<<
     //err << *_get_prefix() << " undefined";
     report_error( this, err.str() );
     return NULL;
@@ -273,7 +273,7 @@ IIRScram_Attribute::_get_prefix_subtype( constraint_functor *functor ){
     switch( prefix_types->size() ){
     case 0:{
       ostringstream err;
-      // FIXME: override operator<<
+      // FIXME: overload operator<<
       //err << "|" << *_get_prefix()
       err << "|"
 	  << "| has no definition appropriate for use as a prefix "
@@ -287,7 +287,7 @@ IIRScram_Attribute::_get_prefix_subtype( constraint_functor *functor ){
     }
     default: {
       ostringstream err;
-      // FIXME: override operator<<
+      // FIXME: overload operator<<
       //err << "Cannot disambiguate |" << *_get_prefix() << "| in its usage.";
       err << "Cannot disambiguate || in its usage.";
       report_error( this, err.str() );
@@ -355,6 +355,7 @@ IIRScram_Attribute::_resolve_prefix(){
     set_prefix( _get_prefix()->_rval_to_decl( prefix_rvals->getElement() ) );
     ASSERT( _get_prefix()->is_resolved() == TRUE );
     
+    /*
     if( _get_prefix()->get_kind() == IIR_FUNCTION_CALL ){
       IIRScram_FunctionCall *as_func_call = dynamic_cast<IIRScram_FunctionCall *>(_get_prefix());
       ASSERT( as_func_call->get_implementation() != NULL );
@@ -363,6 +364,7 @@ IIRScram_Attribute::_resolve_prefix(){
       //delete _get_prefix();
       //set_prefix( new_prefix );
     }
+    */
   }
  finish:
   delete prefix_rvals;

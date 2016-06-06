@@ -69,6 +69,7 @@ public:
   virtual IIR_Boolean is_type() = 0;
   virtual IIR_Boolean is_name() = 0;
   virtual IIR_Boolean is_label() = 0;
+  virtual IIR_Boolean _is_iir_attribute() = 0;
   virtual IIR_Boolean is_text_literal() = 0;
   virtual IIR_Declaration *_find_formal_declaration();
   virtual IIR_SignalKind get_signal_kind() = 0;

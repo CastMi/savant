@@ -67,7 +67,7 @@ public:
   virtual savant::set<IIRScram_Declaration> *_symbol_lookup();
   symbol_table *_get_symbol_table( );
   virtual IIRScram_TypeDefinition *_get_subtype();
-				
+
   // This method does the type checking and resolution for a boolean
   // condition.  Pass in a conditional, and it will return it
   // resolved.  It will report any errors it finds (like that value
@@ -129,7 +129,6 @@ public:
   IIRScram_Identifier* _get_declarator() { return nullptr; };
 
 protected:
-
 
   // These methods are used in the type checking of signal assignment statements,
   // and concurrent selected signal assignment statements.
