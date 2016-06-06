@@ -45,7 +45,7 @@ bool
 IIRBase_DivisionOperator::is_associative(IIR_Kind oper_kind) {
   switch(oper_kind) {
   case IIR_MULTIPLICATION_OPERATOR:
-    return FALSE;
+    return false;
   default:
     return TRUE;
   }

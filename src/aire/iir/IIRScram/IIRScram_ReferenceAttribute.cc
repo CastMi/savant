@@ -47,7 +47,7 @@ IIRScram_ReferenceAttribute::_get_subtype(){
   }
   term_decl = terminal_decl_set->getElement();
   while (term_decl != NULL) {
-    if (term_decl->_is_terminal() == FALSE) {
+    if (term_decl->_is_terminal() == false) {
       terminal_decl_set->remove(term_decl);
     }
     term_decl = terminal_decl_set->getNextElement();

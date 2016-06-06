@@ -139,7 +139,7 @@ IIRBase::is_ascending_range() const {
 IIR_Boolean 
 IIRBase::is_locally_static() {
   _report_undefined_fn("is_locally_static()");
-  return FALSE;
+  return false;
 }
 
 IIR_TypeDefinition *
@@ -179,7 +179,7 @@ IIRBase::is_guard_signal() const {
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 

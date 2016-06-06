@@ -74,7 +74,7 @@ IIRScram_ObjectDeclaration::_type_check(){
       return;
     }
 
-    IIR_Boolean exact_match = FALSE;
+    IIR_Boolean exact_match = false;
     IIRScram_TypeDefinition *current_type = initializer_types->getElement();
     while( current_type != NULL ){
       if( current_type == _get_subtype() ){
@@ -84,8 +84,8 @@ IIRScram_ObjectDeclaration::_type_check(){
       current_type = initializer_types->getNextElement();
     }
     
-    IIR_Boolean one_matched = FALSE;
-    if( exact_match == FALSE ){
+    IIR_Boolean one_matched = false;
+    if( exact_match == false ){
       current_type = initializer_types->getElement();
       while( current_type != NULL ){
 	if( current_type->is_compatible( _get_subtype() ) != NULL ){
@@ -116,9 +116,9 @@ IIRScram_ObjectDeclaration::_type_check(){
     delete initializer_types;
   }
   // There's no initializer.
-  if( (is_interface() == FALSE && (is_variable() == TRUE || is_signal() == TRUE))
+  if( (is_interface() == false && (is_variable() == TRUE || is_signal() == TRUE))
       || is_element() == TRUE ){
-    if( _get_subtype()->is_access_type() == FALSE && 
+    if( _get_subtype()->is_access_type() == false && 
 	_get_subtype()->is_unconstrained_array_type() == TRUE ){
       ostringstream err;
       err << "A signal or variable object with an array type must be constrained.";

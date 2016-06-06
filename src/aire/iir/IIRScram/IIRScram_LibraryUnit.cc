@@ -67,7 +67,7 @@ IIRScram_LibraryUnit::_is_homograph_of( IIRScram_Declaration *to_check ){
   if( to_check->_is_iir_library_unit() == TRUE ){
 
     // Two library units with the same name aren't homographs.
-    return FALSE;    
+    return false;    
   }
   else{
     return TRUE;

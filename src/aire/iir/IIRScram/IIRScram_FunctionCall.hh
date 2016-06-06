@@ -51,7 +51,7 @@ public:
 
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
   IIR_Boolean _is_readable(){ return TRUE; }
-  IIR_Boolean _is_writable(){ return FALSE; }
+  IIR_Boolean _is_writable(){ return false; }
 
   static IIRScram_FunctionCall *_build_function_call( IIRScram_SubprogramDeclaration *, IIRScram_IndexedName * );
 

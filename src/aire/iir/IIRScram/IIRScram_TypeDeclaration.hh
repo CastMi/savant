@@ -57,7 +57,7 @@ public:
   IIR_Boolean _can_be_in_same_region( IIRScram_Declaration * );
 
   IIR_Boolean _is_readable(){ return TRUE; }
-  IIR_Boolean _is_writable(){ return FALSE; }
+  IIR_Boolean _is_writable(){ return false; }
   IIR_Int32 get_num_indexes();
 
   // The following methods apply to incomplete type declarations.  After

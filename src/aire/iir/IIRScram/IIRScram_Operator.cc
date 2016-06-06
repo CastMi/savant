@@ -51,11 +51,11 @@ IIRScram_Operator::~IIRScram_Operator() {}
 
 IIR_Boolean 
 IIRScram_Operator::_type_check_user_declared( set<IIRScram_TypeDefinition> *context_set ){
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
 
   set<IIRScram_Declaration> *function_declarations = _symbol_lookup();
   if( function_declarations == NULL ){
-    return FALSE;
+    return false;
   }
 
   // Build an argument list for use with the function we have for
@@ -80,7 +80,7 @@ IIRScram_Operator::_type_check_user_declared( set<IIRScram_TypeDefinition> *cont
     // We only need to complain if it's ambiguous.
     switch( function_declarations->size() ){
     case 0:{
-      retval = FALSE;
+      retval = false;
       break;
     }
     case 1:{
@@ -152,7 +152,7 @@ IIRScram_Operator::_get_rval_set( constraint_functor * ){
   set<IIRScram_TypeDefinition> *retval = NULL;
 
   // We're caching rval sets here, for performance.
-  if( has_been_type_checked == FALSE ){
+  if( has_been_type_checked == false ){
     // First look for the user overloaded operators.
     retval = _get_user_overloaded_rvals();
     
@@ -200,7 +200,7 @@ IIRScram_Operator::_get_user_overloaded_rvals(){
 	IIR_Boolean valid_call = 
 	  arg_list->_check_valid_arguments( as_function->_get_interface_declarations(), 
                                             NULL);
-	if( valid_call == FALSE ){
+	if( valid_call == false ){
 	  my_decls->remove( current_decl );
 	}
 	arg_list->_destroy_list();
@@ -227,7 +227,7 @@ IIRScram_Operator::_semantic_transform( set<IIRScram_TypeDefinition> *context_se
     
     // Only transform this to a function call if the user _explicitly_
     // declared this operator.
-    if( _get_implementation()->is_implicit_declaration() == FALSE ){
+    if( _get_implementation()->is_implicit_declaration() == false ){
       IIRScram_FunctionCall *function_call = new IIRScram_FunctionCall();
       copy_location( this, function_call );
       function_call->set_implementation( get_implementation() );

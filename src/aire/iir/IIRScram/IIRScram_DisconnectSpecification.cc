@@ -86,13 +86,13 @@ IIRScram_DisconnectSpecification::_type_check( IIRScram_DeclarationList * ){
 	new_designator = current_designator->_rval_to_decl( correct_type );
 	ASSERT( new_designator == current_designator );
 
-	if( new_designator->is_locally_static() == FALSE ){
+	if( new_designator->is_locally_static() == false ){
 	  ostringstream err;
 	  err << "Signal |" << *current_designator << "| is not locally static.  Only "
 	      << "locally static signals are allowed in disconnection specifications.";
 	  report_error( current_designator, err.str() );
 	}
-	if( new_designator->is_guard_signal() == FALSE ){
+	if( new_designator->is_guard_signal() == false ){
 	  ostringstream err;
 	  err << "Signal |" << *current_designator << "| is not a guarded signal.  Only "
 	      << "guard signals are allowed in disconnection specifications.";

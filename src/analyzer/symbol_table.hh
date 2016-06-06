@@ -90,7 +90,7 @@ class scope_entry {
       }
 
       void close_scope(){
-         open = FALSE;
+         open = false;
       }
 
       IIR_Boolean is_closed(){

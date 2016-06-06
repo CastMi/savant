@@ -59,14 +59,14 @@ IIRBase_RightAttribute::is_value_attribute() const {
   }
   else{
     ASSERT( get_prefix()->is_array_type() == TRUE );
-    return FALSE;
+    return false;
   }
 }
 
 IIR_Boolean 
 IIRBase_RightAttribute::is_function_attribute() const {
   if( is_value_attribute() == TRUE ){
-    return FALSE;
+    return false;
   }
   else{
     return TRUE;

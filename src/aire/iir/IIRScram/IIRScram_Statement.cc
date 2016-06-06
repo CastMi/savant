@@ -105,7 +105,7 @@ IIRScram_Statement::_type_check_and_resolve_boolean_condition( IIRScram *conditi
     }
   case 1:{
     condition = condition->_rval_to_decl( condition_rvals->getElement() );
-    if( condition->_is_readable() == FALSE ){
+    if( condition->_is_readable() == false ){
       ostringstream err;
       err << "Expression |" << *condition << "| is not readable, and therefore invalid "
 	  << "in this context.";
@@ -183,7 +183,7 @@ IIRScram_Statement::_type_check_case_statement_expression( IIRScram_CaseStatemen
     _set_case_statement_expression( _get_case_statement_expression()->_rval_to_decl( correct_rval ) );
 
     if( _get_case_statement_expression()->_get_subtype() != NULL &&
-	_get_case_statement_expression()->_get_subtype()->is_locally_static() == FALSE ){
+	_get_case_statement_expression()->_get_subtype()->is_locally_static() == false ){
       ostringstream err;
       err << "When the expression of a case statement is of an array type, the expression "
 	  << "must be locally static. |" << *_get_case_statement_expression() <<"| is not.";
@@ -255,14 +255,14 @@ IIRScram_Statement::_type_check_target_and_waveform( IIRScram_WaveformList *wave
   case 1:{
     target_lval = target_lvals->getElement();
     set_target( _get_target()->_rval_to_decl( target_lval ) );
-    if( _get_target()->is_signal() == FALSE ){
+    if( _get_target()->is_signal() == false ){
       ostringstream err;
       err << "|" << *_get_target() << "| is not signal valued, and therefore may not be"
 	  << " the target of a signal assignment statement.";
       report_error( this, err.str() );
       return;
     }
-    if( _get_target()->_is_writable() == FALSE ){
+    if( _get_target()->_is_writable() == false ){
       ostringstream err;
       err << "|" << *_get_target() << "| is not writable, and therefore may not be"
 	  << " the target of a signal assignment statement.";
@@ -296,7 +296,7 @@ IIRScram_Statement::_type_check_target_and_waveform( IIRScram_WaveformList *wave
     ASSERT( current_waveform == temp_waveform );
     //    waveform_list->_replace( current_waveform, temp_waveform );
 
-    if( current_waveform->_is_readable() == FALSE ){
+    if( current_waveform->_is_readable() == false ){
       ostringstream err;
       err << "|" << *current_waveform << "| is not readable, and therefore may not be"
 	  << " an expression of a signal assignment statement.";

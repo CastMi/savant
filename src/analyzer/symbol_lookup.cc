@@ -98,7 +98,7 @@ symbol_lookup::build_hidden_declaration_set( IIR_Declaration *about_to_add ){
    while( current_declaration ){
       // There is at least one declaration with the same name visible.
       IIR_Boolean are_homographs = TRUE;
-      IIR_Boolean can_be_in_same_region = FALSE;
+      IIR_Boolean can_be_in_same_region = false;
       if( current_declaration == about_to_add ){
          current_declaration = dynamic_cast<IIRScram_Declaration *>(current_declarations->getNextElement());
          continue;
@@ -114,7 +114,7 @@ symbol_lookup::build_hidden_declaration_set( IIR_Declaration *about_to_add ){
          // implentation issues and AIRE specific quirks.
          can_be_in_same_region = about_to_add_scram->_can_be_in_same_region( current_declaration );
 
-         if( can_be_in_same_region == FALSE &&
+         if( can_be_in_same_region == false &&
                (about_to_add_scram->_get_declarative_region() ==
                 current_declaration->_get_declarative_region())){
             ostringstream err;

@@ -88,7 +88,7 @@ IIRBase_ArrayNatureDefinition::is_unconstrained_array_type(){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -140,7 +140,7 @@ IIRBase_ArrayNatureDefinition::publish_vhdl(ostream &vhdl_out){
 
 void
 IIRBase_ArrayNatureDefinition::publish_vhdl_subtype_decl(ostream &vhdl_out){
-  if( is_anonymous() == FALSE ){
+  if( is_anonymous() == false ){
     if( get_type_mark() != NULL ){
       get_type_mark()->get_declaration()->get_declarator()->publish_vhdl(vhdl_out);
     }

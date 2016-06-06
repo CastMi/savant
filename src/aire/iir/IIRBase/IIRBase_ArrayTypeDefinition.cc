@@ -35,7 +35,7 @@
 IIRBase_ArrayTypeDefinition::IIRBase_ArrayTypeDefinition() :
   my_index_subtype( 0 ),
   my_element_subtype( 0 ),
-  my_is_element( FALSE ){}
+  my_is_element( false ){}
 
 IIRBase_ArrayTypeDefinition::~IIRBase_ArrayTypeDefinition(){}
 
@@ -57,7 +57,7 @@ IIRBase_ArrayTypeDefinition::get_num_indexes(){
   IIRBase_TypeDefinition *current_subtype = _get_element_subtype();
   ASSERT(current_subtype != NULL);
   while( current_subtype->is_array_type() == TRUE
-         && current_subtype->is_element() == FALSE ){
+         && current_subtype->is_element() == false ){
     num_indexes++;
     current_subtype = current_subtype->_get_element_subtype();
     ASSERT(current_subtype != NULL);
@@ -115,7 +115,7 @@ IIRBase_ArrayTypeDefinition::is_unconstrained_array_type(){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -130,13 +130,13 @@ IIRBase_ArrayTypeDefinition::is_discrete_type(){
     return get_element_subtype()->is_discrete_type();
   }
   else {
-    return FALSE;
+    return false;
   }
 }
 
 IIR_Boolean 
 IIRBase_ArrayTypeDefinition::is_character_type(){
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
 
   if( get_base_type() != 0 ){
     retval = get_base_type()->is_character_type();
@@ -216,7 +216,7 @@ IIRBase_ArrayTypeDefinition::get_final_subtype() {
 
 void
 IIRBase_ArrayTypeDefinition::publish_vhdl_subtype_decl(ostream &vhdl_out){
-  if (is_anonymous() == FALSE) {
+  if (is_anonymous() == false) {
     if (get_type_mark() != 0) {
       get_type_mark()->get_declaration()->get_declarator()->publish_vhdl(vhdl_out);
     }

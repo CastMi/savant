@@ -112,7 +112,7 @@ IIRScram_DeclarationList::_build_constrained_list( IIR_Boolean (IIRScram::*const
   IIRScram_Declaration *current = dynamic_cast<IIRScram_Declaration *>(cloned_list->first());
   while( current != NULL ){
     next = dynamic_cast<IIRScram_Declaration *>(cloned_list->successor( current ));    
-    if( (current->*constraint_function)() == FALSE ){
+    if( (current->*constraint_function)() == false ){
       cloned_list->remove( current );
     }
     current = next;

@@ -296,7 +296,7 @@ IIRScram_ComponentInstantiationStatement::_get_default_binding_indication(){
   IIRScram *component_name = _get_instantiated_unit();
 
   IIRScram_ArchitectureDeclaration *arch = 0;
-  IIRScram_EntityDeclaration *entity = dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( FALSE,
+  IIRScram_EntityDeclaration *entity = dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( false,
                                                                                                                               component_name,
                                                                                                                               _get_work_library(),
                                                                                                                               get_design_file()->get_standard_package(),

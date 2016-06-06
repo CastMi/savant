@@ -103,14 +103,14 @@ IIR_Boolean
 IIRBase_SignalAssignmentStatement::is_resolved(){
   IIR_Boolean retval = TRUE;
 
-  if( get_target() && get_target()->is_resolved() == FALSE ){
-    retval = FALSE;
+  if( get_target() && get_target()->is_resolved() == false ){
+    retval = false;
   }
-  else if( get_reject_time_expression() && get_reject_time_expression()->is_resolved() == FALSE ){
-    retval = FALSE;
+  else if( get_reject_time_expression() && get_reject_time_expression()->is_resolved() == false ){
+    retval = false;
   }
-  else if ( get_waveform()->is_resolved() == FALSE ){
-    retval = FALSE;
+  else if ( get_waveform()->is_resolved() == false ){
+    retval = false;
   }
 
   return retval;

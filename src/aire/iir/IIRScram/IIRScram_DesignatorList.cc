@@ -157,7 +157,7 @@ IIRScram_DesignatorList::_type_check_as_instantiation_list( IIRScram *instantiat
       break;
       
     case IIR_DESIGNATOR_BY_OTHERS:
-      _process_by_all_or_others( as_decl, statement_list, FALSE, configuration );
+      _process_by_all_or_others( as_decl, statement_list, false, configuration );
       break;
       
     case IIR_DESIGNATOR_EXPLICIT:

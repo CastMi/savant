@@ -97,7 +97,7 @@ IIRBase_ScalarTypeDefinition::is_ascending_range() {
     err << "Get direction called on type that has no direction.";
     report_error( this, err.str(), WARNING );
 
-    return FALSE;
+    return false;
   }
   else{
     return get_direction()->is_ascending_range();
@@ -121,10 +121,10 @@ IIRBase_ScalarTypeDefinition::is_resolved(){
       ASSERT( get_right() != NULL);
       ASSERT( get_direction() != NULL);
       
-      if( get_left()->is_resolved() == FALSE ||
-	  get_right()->is_resolved() == FALSE || 
-	  get_direction()->is_resolved() == FALSE ){
-	retval = FALSE;
+      if( get_left()->is_resolved() == false ||
+	  get_right()->is_resolved() == false || 
+	  get_direction()->is_resolved() == false ){
+	retval = false;
       }
     }
   }

@@ -102,7 +102,7 @@ IIRScram_SubprogramDeclaration::_type_check(){
 
 IIR_Boolean 
 IIRScram_SubprogramDeclaration::_type_check_return_statements( IIRScram_TypeDefinition *my_rval ){
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   
   savant::set<IIRScram_TypeDefinition> *context_set = NULL;
   if( my_rval != NULL ){
@@ -111,7 +111,7 @@ IIRScram_SubprogramDeclaration::_type_check_return_statements( IIRScram_TypeDefi
 
   IIRScram_SequentialStatement *stmt = NULL;
 
-  IIR_Boolean found_one = FALSE;  
+  IIR_Boolean found_one = false;  
   stmt = dynamic_cast<IIRScram_SequentialStatement *>(get_subprogram_body()->first());
   while( stmt != NULL ){
     if( stmt->get_kind() == IIR_RETURN_STATEMENT ){
@@ -168,19 +168,19 @@ IIRScram_SubprogramDeclaration::_compare_signatures( IIRScram_SubprogramDeclarat
   ASSERT( b != NULL );
   
   if( a->_get_subtype()->is_compatible( b->_get_subtype()) == NULL ){
-    return FALSE;
+    return false;
   }
 
   int a_num_params =  a->get_interface_declarations()->size();
   int b_num_params =  b->get_interface_declarations()->size();
   if( a_num_params != b_num_params ){
-    return FALSE;
+    return false;
   }
 
   int i;
   for( i = 0 ; i < a_num_params; i++ ){
     if( a->_get_type_of_param( i )->is_compatible( b->_get_type_of_param( i ) ) == NULL ){
-      return FALSE;
+      return false;
     }
   }
 
@@ -200,14 +200,14 @@ IIRScram_SubprogramDeclaration::_is_homograph_of( IIRScram_Declaration *compare_
 
   // If they're not the same kind of node, they're not.
   if( get_kind() != compare_to->get_kind() ){
-    return FALSE;
+    return false;
   }
 
   ASSERT( compare_to->is_subprogram() == TRUE );
   IIRScram_SubprogramDeclaration *compare_as_subprog = dynamic_cast<IIRScram_SubprogramDeclaration *>(compare_to);
   
-  if( _compare_signatures( this, compare_as_subprog ) == FALSE ){
-    return FALSE;
+  if( _compare_signatures( this, compare_as_subprog ) == false ){
+    return false;
   }
   
   return TRUE;
@@ -241,16 +241,16 @@ IIRScram_SubprogramDeclaration::_num_required_args(){
 
 IIR_Boolean 
 IIRScram_SubprogramDeclaration::_can_be_in_same_region( IIRScram_Declaration *to_check ){
-  if(( contains_body() == TRUE && to_check->contains_body() == FALSE ) ||
-     ( contains_body() == FALSE && to_check->contains_body() == TRUE )){
+  if(( contains_body() == TRUE && to_check->contains_body() == false ) ||
+     ( contains_body() == false && to_check->contains_body() == TRUE )){
     return TRUE;
   }
-  else if(( _is_implicit_operator() == TRUE && to_check->_is_implicit_operator() == FALSE )||
-	  ( _is_implicit_operator() == FALSE && to_check->_is_implicit_operator() == TRUE )){
+  else if(( _is_implicit_operator() == TRUE && to_check->_is_implicit_operator() == false )||
+	  ( _is_implicit_operator() == false && to_check->_is_implicit_operator() == TRUE )){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -260,7 +260,7 @@ IIRScram_SubprogramDeclaration::_is_implicit_operator(){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 

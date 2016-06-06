@@ -46,7 +46,7 @@ public:
 
   /** The condition specified after if and elsif (if any) are evaluated in
       succession until one evaluates to TRUE or all conditions are
-      evaluated and yield FALSE. LRM [ 15.2 - 75 ] */
+      evaluated and yield false. LRM [ 15.2 - 75 ] */
   void set_else_clause(IIR_SimultaneousElsif* else_clause);
   IIR_SimultaneousElsif* get_else_clause();
 

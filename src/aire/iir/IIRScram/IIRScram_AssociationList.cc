@@ -74,12 +74,12 @@ IIRScram_AssociationList::_process_positional_part( IIRScram_InterfaceList *form
   while( current_local != NULL && 
 	 current_local->_is_positional() == TRUE ){
 
-    IIR_Boolean found_match = FALSE;
+    IIR_Boolean found_match = false;
     IIRScram_TypeDefinition *current_local_type = NULL;
 
     if( current_local->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION ){
       // Process all of the positional associations
-      if( current_formal != NULL && found_match == FALSE ){
+      if( current_formal != NULL && found_match == false ){
 	// Does the type of our local match that of the parameter?
 	IIRScram_TypeDefinition *current_formal_type = current_formal->_get_subtype();
 	savant::set<IIRScram_TypeDefinition> *current_local_rvals = current_local->_get_rval_set();
@@ -117,7 +117,7 @@ IIRScram_AssociationList::_process_positional_part( IIRScram_InterfaceList *form
 	  num_resolved++;
 	}
 	else{
-	  if( current_formal->_is_optional() == FALSE ){
+	  if( current_formal->_is_optional() == false ){
 	    if( resolve == TRUE ){
 	      // Then something went wrong - we shouldn't have been called seeing
 	      // how this interface list doesn't even go with this association list!
@@ -170,8 +170,8 @@ IIRScram_AssociationList::_resolve_and_order( IIRScram_InterfaceList    *formal_
 IIR_Boolean 
 IIRScram_AssociationList::_check_valid_arguments( IIRScram_InterfaceList        *formal_list,
 						  IIRScram_InterfaceList        *local_list){
-  //  ASSERT( is_resolved() == FALSE );
-  return _check_or_resolve( formal_list, local_list, FALSE );
+  //  ASSERT( is_resolved() == false );
+  return _check_or_resolve( formal_list, local_list, false );
 }
 
 IIRScram_Name *
@@ -198,7 +198,7 @@ IIRScram_AssociationList::_get_formal_designator_from_indexed_name( IIRScram_Ind
     to_lookup = dynamic_cast<IIRScram_Name *>(to_lookup->_get_prefix());
   }
   
-  IIR_Boolean suffix_is_formal_designator = FALSE;
+  IIR_Boolean suffix_is_formal_designator = false;
   savant::set<IIRScram_Declaration> *prefix_decls = to_lookup->_symbol_lookup();
   if( prefix_decls == NULL ){
     // Then we couldn't find the prefix in the symbol table.  It's not 
@@ -223,7 +223,7 @@ IIRScram_AssociationList::_get_formal_designator_from_indexed_name( IIRScram_Ind
   if( suffix_is_formal_designator == TRUE ){
     // If the suffix isn't a name, we're in trouble!
     IIRScram_Statement *temp = name->_get_suffix();  
-    if( temp->_is_iir_name() == FALSE ){
+    if( temp->_is_iir_name() == false ){
       retval = NULL;
     }
     else{
@@ -244,7 +244,7 @@ IIRScram_AssociationList::_get_actual_designator_from_indexed_name( IIRScram_Ind
       (dynamic_cast<IIRScram_AssociationList *>(suffix))->size() != 1 ){
     savant::set<IIRScram_Declaration> *decls = prefix->_symbol_lookup();
     // might be type conversion or conversion function
-    IIR_Boolean prefix_match = FALSE;
+    IIR_Boolean prefix_match = false;
     if( decls != NULL ){
       IIRScram_Declaration *current = decls->getElement();
       while( current != NULL ){
@@ -287,7 +287,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
       abort();
     }
     else{
-      return FALSE;
+      return false;
     }
   }
   // If we made it here, the positional part of the VHDL was just fine.
@@ -304,7 +304,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	report_error( current_association, err.str() );
       }
       else{
-	return FALSE;
+	return false;
       }
     }
     current_association = dynamic_cast<IIRScram_AssociationElement *>(successor( current_association ));
@@ -341,10 +341,10 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	err << "Couldn't find formal designator in IIRScram_AssociationList::_check_or_resolve"
 	    << ", and resolve is TRUE!";
 	report_error( this, err.str() );
-	return FALSE;
+	return false;
       }
       else{
-	return FALSE;
+	return false;
       }
     }
     
@@ -358,10 +358,10 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	//    << "this scope.";
 
 	report_error( this, err.str() );
-	return FALSE;
+	return false;
       }
       else{
-	return FALSE;
+	return false;
       }
     }
 
@@ -380,8 +380,8 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
     //    formal part....
     
     actual_part = current_association->_get_actual();
-    IIR_Boolean need_to_hide_formal = FALSE;
-    IIR_Boolean need_to_hide_actual = FALSE;
+    IIR_Boolean need_to_hide_formal = false;
+    IIR_Boolean need_to_hide_actual = false;
 
     if( actual_part != NULL ){
       // Then it's not open.
@@ -416,10 +416,10 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
     if( formal_types_to_consider == NULL ){
       if( resolve == TRUE ){
 	report_undefined_symbol( formal_part );
-	return FALSE;
+	return false;
       }
       else{
-	return FALSE;
+	return false;
       }
     }
     
@@ -430,7 +430,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
       if( actual_declaration != NULL ){
 	// We're going to put this SINGLE declaration back into visibility
 	// so that the type checking that occurs after this can see it.
-	if( current_association->_get_symbol_table()->is_visible( actual_declaration ) == FALSE ){
+	if( current_association->_get_symbol_table()->is_visible( actual_declaration ) == false ){
 	  current_association->_get_symbol_table()->make_visible( actual_declaration );
 	  need_to_hide_actual = TRUE;
 	}
@@ -441,7 +441,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	if( resolve == TRUE ){
 	  report_undefined_symbol( actual_part );
 	}
-	return FALSE;
+	return false;
       }
 
       reconcile_sets( formal_types_to_consider, actual_part_rvals );
@@ -456,7 +456,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	  //report_error( formal_designator, err.str() );
 	  report_error( formal_designator, "NEEDFIXHERE" );
 	}
-	return FALSE;
+	return false;
 	break;
       }
       case 1:{
@@ -470,7 +470,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	// unless we're supposed to.  Also, "semantic transform" deletes
 	// the old value in some cases, so we need to clone it if we
 	// want to save it.
-	if( resolve == FALSE ){
+	if( resolve == false ){
 	  new_actual = actual_part->_clone();
 	}
 
@@ -503,7 +503,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	actual_types_to_consider = new savant::set<IIRScram_TypeDefinition>( actual_part->_get_subtype() );
       }
 
-      if( current_association->_get_symbol_table()->is_visible( formal_declaration ) == FALSE ){
+      if( current_association->_get_symbol_table()->is_visible( formal_declaration ) == false ){
 	current_association->_get_symbol_table()->make_visible( formal_declaration );
 	need_to_hide_formal = TRUE;
       }
@@ -514,7 +514,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	if( resolve == TRUE ){
 	  report_undefined_symbol( formal_part );
 	}
-	return FALSE;
+	return false;
       }
 
       reconcile_sets( actual_types_to_consider, formal_part_rvals );
@@ -529,7 +529,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	  report_error( this, err.str() );
 	}
 	else{
-	  return FALSE;
+	  return false;
 	}
 	break;
       }
@@ -559,7 +559,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
       // this interface is allowed to be open...
       ASSERT( formal_declaration != NULL );
 
-      if( current_association->_get_symbol_table()->is_visible( formal_declaration ) == FALSE ){
+      if( current_association->_get_symbol_table()->is_visible( formal_declaration ) == false ){
 	current_association->_get_symbol_table()->make_visible( formal_declaration );
 	need_to_hide_formal = TRUE;
       }
@@ -575,7 +575,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	  report_error( current_association, err.str() );
 	  abort();
 	}
-	return FALSE;
+	return false;
       }
       case 1:{
 	if( resolve == TRUE ){
@@ -594,7 +594,7 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
 	  report_ambiguous_error( formal_part, formal_types_to_consider->convert_set<IIR_TypeDefinition>() );
 	}
         delete formal_types_to_consider;
-	return FALSE;
+	return false;
       }
       }
     }
@@ -630,15 +630,15 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
   int num_required = 0;
   IIRScram_InterfaceDeclaration *current_formal = dynamic_cast<IIRScram_InterfaceDeclaration *>(formal_list->first());
   while( current_formal != NULL ){
-    if( current_formal->_is_optional() == FALSE ){
+    if( current_formal->_is_optional() == false ){
       num_required++;
     }
     current_formal = dynamic_cast<IIRScram_InterfaceDeclaration *>(formal_list->successor( current_formal ));
   }
 
   if( size() < num_required ){
-    if( resolve == FALSE ){
-      return FALSE;
+    if( resolve == false ){
+      return false;
     }
   }
 
@@ -715,7 +715,7 @@ IIRScram_AssociationList::_fill_in_defaults( IIRScram *line_info,
     while( current_decl != NULL ){
       IIRScram_AssociationElement *current_assoc =
 	dynamic_cast<IIRScram_AssociationElement *>(first());
-      IIR_Boolean one_matched = FALSE;
+      IIR_Boolean one_matched = false;
       while( current_assoc != NULL ){
 	IIRScram_InterfaceDeclaration *formal_declaration =
 	  _find_declaration_in_formal( current_assoc );
@@ -869,7 +869,7 @@ IIRScram_AssociationList::_find_formal_types(IIRScram_AssociationElement      *c
 					     IIRScram_Declaration             *formal_declaration,
 					     savant::set<IIRScram_TypeDefinition> *add_types_to_me){
 
-  bool retval = FALSE;
+  bool retval = false;
   ASSERT( formal_part != NULL );
   ASSERT( formal_declaration != NULL );
   ASSERT( add_types_to_me != NULL && add_types_to_me->size() == 0 );
@@ -878,7 +878,7 @@ IIRScram_AssociationList::_find_formal_types(IIRScram_AssociationElement      *c
     add_types_to_me->add(formal_declaration->_get_subtype());
   }
   else{
-    if( current_association->_get_symbol_table()->is_visible( formal_declaration ) == FALSE ){
+    if( current_association->_get_symbol_table()->is_visible( formal_declaration ) == false ){
       current_association->_get_symbol_table()->make_visible( formal_declaration );
       retval = TRUE;
     }

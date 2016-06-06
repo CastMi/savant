@@ -30,7 +30,7 @@
 
 IIRBase_EntityClassEntry::IIRBase_EntityClassEntry(){
   my_entity_kind = _IIR_ERROR;
-  my_is_boxed = FALSE;
+  my_is_boxed = false;
 }
 
 IIRBase_EntityClassEntry::~IIRBase_EntityClassEntry() {}

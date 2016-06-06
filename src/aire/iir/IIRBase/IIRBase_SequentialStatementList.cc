@@ -33,7 +33,7 @@ IIRBase_SequentialStatementList::~IIRBase_SequentialStatementList() {}
 
 IIR_Boolean
 IIRBase_SequentialStatementList::is_above_attribute_found() {
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
 
   IIR_SequentialStatement *stmt = first();
   while (stmt != NULL) {

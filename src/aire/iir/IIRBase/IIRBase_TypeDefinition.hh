@@ -55,16 +55,16 @@ public:
   IIR_Boolean is_anonymous();
   IIR_Boolean is_subtype();
 
-  IIR_Boolean is_unconstrained_array_type(){ return FALSE; }
-  IIR_Boolean is_incomplete_type_definition(){ return FALSE; }
+  IIR_Boolean is_unconstrained_array_type(){ return false; }
+  IIR_Boolean is_incomplete_type_definition(){ return false; }
   IIR_Boolean is_subtype_decl();
 
-  IIR_Boolean is_access_type() const { return FALSE; }
-  IIR_Boolean is_array_type() const { return FALSE; }
-  IIR_Boolean is_enumeration_type() const { return FALSE; }
-  IIR_Boolean is_file_type() const { return FALSE; }
-  IIR_Boolean is_record_type() const { return FALSE; }
-  IIR_Boolean is_scalar_type() const { return FALSE; }
+  IIR_Boolean is_access_type() const { return false; }
+  IIR_Boolean is_array_type() const { return false; }
+  IIR_Boolean is_enumeration_type() const { return false; }
+  IIR_Boolean is_file_type() const { return false; }
+  IIR_Boolean is_record_type() const { return false; }
+  IIR_Boolean is_scalar_type() const { return false; }
 
   IIR_TypeDefinition            *get_subtype() { return this; }
   IIR_ScalarTypeDefinition      *get_resolved_index_subtype();

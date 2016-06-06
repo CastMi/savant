@@ -46,7 +46,7 @@ IIRBase_SubtractionOperator::is_associative(IIR_Kind oper_kind) {
   switch(oper_kind) {                         
   case IIR_ADDITION_OPERATOR:
   case IIR_SUBTRACTION_OPERATOR:
-    return FALSE;                             
+    return false;                             
   default:
     return TRUE;                                                             
   }

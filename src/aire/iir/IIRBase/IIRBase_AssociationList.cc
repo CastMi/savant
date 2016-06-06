@@ -37,8 +37,8 @@ IIRBase_AssociationList::is_resolved(){
 
   IIR_AssociationElement *current = dynamic_cast<IIR_AssociationElement *>(first());
   while( current != NULL ){
-    if( current->is_resolved() == FALSE ){
-      retval = FALSE;
+    if( current->is_resolved() == false ){
+      retval = false;
     }
 
     current = dynamic_cast<IIR_AssociationElement *>(successor( current ));
@@ -49,7 +49,7 @@ IIRBase_AssociationList::is_resolved(){
 
 IIR_Boolean 
 IIRBase_AssociationList::is_above_attribute_found() {
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   IIR_AssociationElement *node = dynamic_cast<IIR_AssociationElement *>(first());
   for (;node != NULL; node = dynamic_cast<IIR_AssociationElement *>(successor(node))) {
     retval = retval || node->is_above_attribute_found();

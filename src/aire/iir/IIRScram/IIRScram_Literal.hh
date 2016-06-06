@@ -42,7 +42,7 @@ public:
   IIRScram_Literal(){ }
     
   IIR_Boolean _is_readable(){ return TRUE; }
-  IIR_Boolean _is_writable(){ return FALSE; }
+  IIR_Boolean _is_writable(){ return false; }
   
   IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition * );
 };

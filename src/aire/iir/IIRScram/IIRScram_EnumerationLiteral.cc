@@ -138,11 +138,11 @@ IIRScram_EnumerationLiteral::_clone() {
 IIR_Boolean 
 IIRScram_EnumerationLiteral::_is_homograph_of( IIRScram_Declaration *compare_to ){
   if( get_kind() != compare_to->get_kind() ){
-    return FALSE;
+    return false;
   }
   
   if( _get_subtype()->is_compatible( compare_to->_get_subtype() ) == NULL ){
-    return FALSE;
+    return false;
   }
 
   return TRUE;

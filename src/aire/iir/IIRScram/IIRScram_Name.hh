@@ -56,7 +56,7 @@ public:
 
   IIR_Boolean _is_iir_name(){ return TRUE; }
 
-  virtual IIR_Boolean _is_by_all(){ return FALSE; }
+  virtual IIR_Boolean _is_by_all(){ return false; }
 
   virtual void set_subtype( IIR_TypeDefinition * );
 

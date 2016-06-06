@@ -72,13 +72,13 @@ IIR_Boolean
 IIRBase_AssociationElementByExpression::is_resolved(){
   IIR_Boolean retval = TRUE;
 
-  if( get_formal() != NULL && get_formal()->is_resolved() == FALSE ){
-    retval = FALSE;
+  if( get_formal() != NULL && get_formal()->is_resolved() == false ){
+    retval = false;
     goto finish;
   }
   
-  if( get_actual() != NULL && get_actual()->is_resolved() == FALSE ){
-    retval = FALSE;
+  if( get_actual() != NULL && get_actual()->is_resolved() == false ){
+    retval = false;
   }
 
  finish:
@@ -89,8 +89,8 @@ IIR_Boolean
 IIRBase_AssociationElementByExpression::is_signal(){
   IIR_Boolean retval = TRUE;
 
-  if( get_actual()->is_signal() == FALSE ){
-    retval = FALSE;
+  if( get_actual()->is_signal() == false ){
+    retval = false;
   }
 
   return retval;
@@ -100,8 +100,8 @@ IIR_Boolean
 IIRBase_AssociationElementByExpression::is_variable(){
   IIR_Boolean retval = TRUE;
 
-  if( get_actual()->is_variable() == FALSE ){
-    retval = FALSE;
+  if( get_actual()->is_variable() == false ){
+    retval = false;
   }
 
   return retval;
@@ -109,7 +109,7 @@ IIRBase_AssociationElementByExpression::is_variable(){
 
 IIR_Boolean
 IIRBase_AssociationElementByExpression::is_above_attribute_found(){
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   if(get_actual() != NULL) {
     retval = retval || get_actual()->is_above_attribute_found();
   }

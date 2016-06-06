@@ -208,5 +208,5 @@ IIRBase_FloatingPointLiteral::is_negative(){
   if ( get_floating_point_value() < 0 ){
     return TRUE;
   }
-  return FALSE;
+  return false;
 }

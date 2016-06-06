@@ -57,7 +57,7 @@ IIRScram_AssociationElement::_find_formal_declaration(){
 IIR_Boolean 
 IIRScram_AssociationElement::_is_positional(){
   // If the formal is NULL and we're not others, we're positional
-  return get_formal() == NULL && is_by_others() == FALSE;
+  return get_formal() == NULL && is_by_others() == false;
 }
 
 IIRScram_Statement* 

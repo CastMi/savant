@@ -99,7 +99,7 @@ IIRBase_ArraySubnatureDefinition::publish_vhdl_decl(ostream &vhdl_out) {
   ASSERT ( get_base_type()->get_resolved_index_subtype() != NULL );
 
   if( get_base_type()->is_unconstrained_array_type() == TRUE &&
-      is_unconstrained_array_type() == FALSE ){
+      is_unconstrained_array_type() == false ){
      IIRBase_TypeDefinition *node ;
      int index, max_index ;
 

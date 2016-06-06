@@ -61,7 +61,7 @@ IIRBase_BreakStatement::set_break_list(IIR_BreakList * new_break_list) {
 
 IIR_Boolean
 IIRBase_BreakStatement::is_above_attribute_found() {
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   if(get_condition() != NULL) {
     retval = get_condition()->is_above_attribute_found();
   }

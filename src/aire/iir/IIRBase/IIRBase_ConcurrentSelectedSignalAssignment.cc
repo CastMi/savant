@@ -33,10 +33,10 @@
 
 IIRBase_ConcurrentSelectedSignalAssignment::IIRBase_ConcurrentSelectedSignalAssignment() :
   selected_waveforms(0) {
-  set_postponed( FALSE );
+  set_postponed( false );
   set_target( NULL );
   set_expression( NULL );
-  set_guarded( FALSE );
+  set_guarded( false );
   set_delay_mechanism( IIR_INERTIAL_DELAY );
   set_reject_time_expression( NULL );
   set_guard_signal(NULL);
@@ -141,17 +141,17 @@ IIR_Boolean
 IIRBase_ConcurrentSelectedSignalAssignment::is_resolved(){
   IIR_Boolean retval = TRUE;
 
-  if( get_target()->is_resolved() == FALSE ){
-    retval = FALSE;
+  if( get_target()->is_resolved() == false ){
+    retval = false;
   }
   
   if( get_reject_time_expression() != NULL &&
-      get_reject_time_expression()->is_resolved() == FALSE ){
-    retval = FALSE;
+      get_reject_time_expression()->is_resolved() == false ){
+    retval = false;
   }
 
-  if( get_selected_waveforms()->is_resolved() == FALSE ){
-    retval = FALSE;
+  if( get_selected_waveforms()->is_resolved() == false ){
+    retval = false;
   }
 
   return retval;

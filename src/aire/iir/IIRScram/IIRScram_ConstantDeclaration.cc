@@ -52,7 +52,7 @@ IIRScram_ConstantDeclaration::is_locally_static_primary(){
 
   ASSERT( _get_subtype() != NULL );
   if( _get_subtype()->is_access_type() == TRUE ){
-    retval = FALSE;
+    retval = false;
   }
 
   return retval;

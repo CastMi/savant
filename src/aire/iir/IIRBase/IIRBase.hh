@@ -156,10 +156,10 @@ public:
   IIR_SignalKind get_signal_kind() const;
   IIR_Boolean is_guard_signal() const;
 
-  IIR_Boolean is_incomplete_type_declaration() const { return FALSE; }
+  IIR_Boolean is_incomplete_type_declaration() const { return false; }
 
-  IIR_Boolean is_name() const { return FALSE; }
-  IIR_Boolean is_signal() const { return FALSE; }
+  IIR_Boolean is_name() const { return false; }
+  IIR_Boolean is_signal() const { return false; }
   //@{
   /** Querying various type properties */
   IIR_Boolean is_access_type() const;
@@ -169,79 +169,78 @@ public:
   IIR_Boolean is_record_type() const;
   IIR_Boolean is_scalar_type() const;
   //@}
-  IIR_Boolean is_entity_declaration() const { return FALSE; }
-  IIR_Boolean is_resolved() const { return FALSE; }
+  IIR_Boolean is_entity_declaration() const  { return false; }
+  IIR_Boolean is_resolved() const { return false; }
   IIR_Boolean is_ascending_range() const;
-  IIR_Boolean is_subtype() const { return FALSE; }
-  IIR_Boolean is_interface() const { return FALSE; }
-  IIR_Boolean is_text_literal() const { return FALSE; }
-  IIR_Boolean is_aggregate_expression() const { return FALSE; }
-  IIR_Boolean is_constant() const { return FALSE; }
-  IIR_Boolean is_type() const { return FALSE; }
-  IIR_Boolean is_subprogram() const { return FALSE; }
-  IIR_Boolean is_character_type() const { return FALSE; }
-  IIR_Boolean is_discrete_type() const { return FALSE; }
-  IIR_Boolean is_integer_type() const { return FALSE; }
-  IIR_Boolean is_variable() const { return FALSE; }
-  IIR_Boolean is_literal() const { return FALSE; }
-  IIR_Boolean is_operator() const { return FALSE; }
-  IIR_Boolean is_above_attribute_found() const { return FALSE; }
-  IIR_Boolean is_logical_operator() const { return FALSE; }
-  IIR_Boolean is_relational_operator() const { return FALSE; }
+  IIR_Boolean is_subtype() const { return false; }
+  IIR_Boolean is_interface() const { return false; }
+  IIR_Boolean is_text_literal() const {return false; }
+  IIR_Boolean is_aggregate_expression() const { return false; }
+  IIR_Boolean is_constant() const { return false; }
+  IIR_Boolean is_type() const { return false; }
+  IIR_Boolean is_subprogram() const { return false; }
+  IIR_Boolean is_character_type() const { return false; }
+  IIR_Boolean is_discrete_type() const { return false; }
+  IIR_Boolean is_integer_type() const { return false; }
+  IIR_Boolean is_variable() const { return false; }
+  IIR_Boolean is_literal() const { return false; }
+  IIR_Boolean is_operator() const { return false; }
+  IIR_Boolean is_above_attribute_found() const { return false; }
+  IIR_Boolean is_logical_operator() const { return false; }
+  IIR_Boolean is_relational_operator() const { return false; }
 
   /** Does this node represent an "object".  (An object, according to
       the LRM, is a constant, signal, variable, or a file.)  This method
       is overriden by things like IIR_SelectedName, and
       IIR_AliasDeclaration.  A "TRUE" from this method does NOT mean
       that it's safe to cast to IIR_ObjectDeclaration. */
-  IIR_Boolean is_object() const { return FALSE; }
+  IIR_Boolean is_object() const { return false; }
 
   /** This returns TRUE, if the type definition, or subtype definition is
       part of subtype declaration. */
-<<<<<<< HEAD
-  IIR_Boolean is_subtype_decl() const { return FALSE; }
+  IIR_Boolean is_subtype_decl() const { return false; }
 
   /// Is this node an architecture declaration?
-  IIR_Boolean is_architecture_declaration() const { return FALSE; }
+  IIR_Boolean is_architecture_declaration() const { return false; }
 
   /// Is this node an attribute declaration?
-  IIR_Boolean is_attribute_declaration() const { return FALSE; }
+  IIR_Boolean is_attribute_declaration() const { return false; }
 
   /// Is this node a scalar type definition?
-  IIR_Boolean is_scalar_type_definition() const { return FALSE; }
+  IIR_Boolean is_scalar_type_definition() const { return false; }
 
   /// Is this node a Label?
-  IIR_Boolean is_label() const { return FALSE; }
+  IIR_Boolean is_label() const { return false; }
 
   /// Is this node a component declaration?
-  IIR_Boolean is_component_declaration() const { return FALSE; }
+  IIR_Boolean is_component_declaration() const { return false; }
 
   /// Is this node a function declaration?
-  IIR_Boolean is_function_declaration() const { return FALSE; }
+  IIR_Boolean is_function_declaration() const { return false; }
 
   /// Is this node a configuration declaration?
-  IIR_Boolean is_configuration_declaration() const { return FALSE; }
+  IIR_Boolean is_configuration_declaration() const { return false; }
 
   /// Is this node a procedure declaration?
-  IIR_Boolean is_procedure_declaration() const { return FALSE; }
+  IIR_Boolean is_procedure_declaration() const { return false; }
 
   /// Is this node a procedure declaration?
-  IIR_Boolean is_physical_unit() const { return FALSE; }
+  IIR_Boolean is_physical_unit() const { return false; }
 
   /// Is this node a package declaration?
-  IIR_Boolean is_package_declaration() const { return FALSE; }
+  IIR_Boolean is_package_declaration() const { return false; }
 
   /// Is this node a type declaration?
-  IIR_Boolean is_type_declaration() const { return FALSE; }
+  IIR_Boolean is_type_declaration() const { return false; }
 
   /// Is this node a subtype declaration?
-  IIR_Boolean is_subtype_declaration() const { return FALSE; }
+  IIR_Boolean is_subtype_declaration() const { return false; }
 
   /// Is this node a group declaration?
-  IIR_Boolean is_group_declaration() const { return FALSE; }
+  IIR_Boolean is_group_declaration() const { return false; }
 
   /// Is this node a file declaration?
-  IIR_Boolean is_file() const { return FALSE; }
+  IIR_Boolean is_file() const { return false; }
 
   //@{
 

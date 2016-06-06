@@ -46,7 +46,7 @@ public:
   IIR_Int32 get_num_indexes();
   
   IIR_Boolean _is_readable(){ return TRUE; }
-  IIR_Boolean _is_writable(){ return FALSE; }
+  IIR_Boolean _is_writable(){ return false; }
   IIRScram *_clone();
 
   /** This method looks at the function declaration and determines if it

@@ -79,8 +79,8 @@ IIRBase_QualifiedExpression::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_QualifiedExpression::is_resolved(){
-  if( get_type_mark()->is_resolved() == FALSE ||  get_expression()->is_resolved() == FALSE ){
-    return FALSE;
+  if( get_type_mark()->is_resolved() == false ||  get_expression()->is_resolved() == false ){
+    return false;
   }
   else{
     return TRUE;
@@ -119,11 +119,11 @@ IIRBase_QualifiedExpression::publish_vhdl(ostream &vhdl_out) {
   ASSERT(get_subtype() != NULL);
   get_type_mark()->publish_vhdl(vhdl_out);
   vhdl_out << "'" ;
-  if ( get_expression()->is_aggregate_expression() == FALSE ){ 
+  if ( get_expression()->is_aggregate_expression() == false ){ 
   vhdl_out << " ( ";
   }
   get_expression()->publish_vhdl(vhdl_out);
-  if ( get_expression()->is_aggregate_expression() == FALSE ){
+  if ( get_expression()->is_aggregate_expression() == false ){
   vhdl_out << " ) ";
   }
 }

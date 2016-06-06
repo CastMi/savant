@@ -31,9 +31,9 @@
 
 IIRBase_ConcurrentConditionalSignalAssignment::IIRBase_ConcurrentConditionalSignalAssignment() :
   conditional_waveforms(0) {
-  set_postponed( FALSE );
+  set_postponed( false );
   set_target( NULL );
-  set_guarded( FALSE );
+  set_guarded( false );
   set_delay_mechanism( IIR_INERTIAL_DELAY );
   set_reject_time_expression( NULL );
   set_guard_signal( NULL );
@@ -129,15 +129,15 @@ IIRBase_ConcurrentConditionalSignalAssignment::convert_tree(plugin_class_factory
 IIR_Boolean 
 IIRBase_ConcurrentConditionalSignalAssignment::is_resolved(){
   IIR_Boolean retval = TRUE;
-  if( get_target() != NULL && get_target()->is_resolved() == FALSE ){
-    retval = FALSE;
+  if( get_target() != NULL && get_target()->is_resolved() == false ){
+    retval = false;
   }
   else if( get_reject_time_expression() != NULL 
-	   && get_reject_time_expression()->is_resolved() == FALSE ){
-    retval = FALSE;
+	   && get_reject_time_expression()->is_resolved() == false ){
+    retval = false;
   }
-  else if( get_conditional_waveforms()->is_resolved() == FALSE ){
-    retval = FALSE;
+  else if( get_conditional_waveforms()->is_resolved() == false ){
+    retval = false;
   }
   return retval;
 }

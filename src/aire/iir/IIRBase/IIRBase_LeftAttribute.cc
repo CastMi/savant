@@ -58,14 +58,14 @@ IIRBase_LeftAttribute::is_value_attribute() const {
   }
   else{
     ASSERT( get_prefix()->is_array_type() );
-    return FALSE;
+    return false;
   }
 }
 
 IIR_Boolean 
 IIRBase_LeftAttribute::is_function_attribute(){
   if( is_value_attribute() ){
-    return FALSE;
+    return false;
   }
   else{
     return TRUE;

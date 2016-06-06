@@ -35,9 +35,9 @@ class IIRBase_SequentialStatement : public virtual IIRBase_Statement, public vir
 public:
 
   /** This method tells us if this statement has it's own list of statements. */
-  IIR_Boolean has_statement_list() { return FALSE; }
+  IIR_Boolean has_statement_list() { return false; }
 
-  IIR_Boolean is_above_attribute_found() { return FALSE; }
+  IIR_Boolean is_above_attribute_found() { return false; }
 protected:
   
   IIRBase_SequentialStatement();

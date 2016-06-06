@@ -39,7 +39,7 @@ using std::ostringstream;
 
 void
 IIRScram_FileInterfaceDeclaration::_type_check(IIRScram_InterfaceDeclaration::_InterfaceListType ){
-  if( dynamic_cast<IIRScram_TypeDefinition *>(IIRBase_ObjectDeclaration::get_subtype())->is_file_type() == FALSE ){
+  if( dynamic_cast<IIRScram_TypeDefinition *>(IIRBase_ObjectDeclaration::get_subtype())->is_file_type() == false ){
     ostringstream err;
     err << "File interface declaration |" << *_get_declarator() << "| must have a subtype "
 	<< "indication that defines a subtype that is a file type.";

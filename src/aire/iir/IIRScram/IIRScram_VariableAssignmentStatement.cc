@@ -87,19 +87,19 @@ IIRScram_VariableAssignmentStatement::_type_check(){
     set_expression( _get_expression()->_rval_to_decl( type ));
     set_target( _get_target()->_rval_to_decl( type ) );
 
-    if( _get_expression()->_is_readable() == FALSE ){
+    if( _get_expression()->_is_readable() == false ){
       ostringstream err;
       err << "Expression |" << *_get_expression() << "| cannot be read from.";
       report_error( this, err.str() );
     }
 
-    if( _get_target()->_is_writable() == FALSE ){
+    if( _get_target()->_is_writable() == false ){
       ostringstream err;
       err << "Target |" << *_get_target() << "| is not writable and cannot be assigned to.";
       report_error( this, err.str() );
     }
     
-    if( _get_target()->is_variable() == FALSE ){
+    if( _get_target()->is_variable() == false ){
       ostringstream err;
       err << "Target |" << *_get_target() << "| is not a variable and cannot be assigned"
 	  << " through a variable assignment statement.";

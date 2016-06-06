@@ -69,7 +69,7 @@ IIRBase_ProcedureCallStatement::set_actual_parameter_part(IIR_AssociationList *n
 
 IIR_Boolean
 IIRBase_ProcedureCallStatement::is_above_attribute_found() {
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   retval = retval || get_actual_parameter_part()->is_above_attribute_found();
   return retval;
 }

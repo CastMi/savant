@@ -77,11 +77,11 @@ IIR_Boolean
 IIRBase_ConditionalWaveform::is_resolved(){
   IIR_Boolean retval = TRUE;
 
-  if( get_condition() != NULL && get_condition()->is_resolved() == FALSE ){
-    retval = FALSE;
+  if( get_condition() != NULL && get_condition()->is_resolved() == false ){
+    retval = false;
   }
-  else if( get_waveform()->is_resolved() == FALSE ){
-    retval = FALSE;
+  else if( get_waveform()->is_resolved() == false ){
+    retval = false;
   }
 
   return retval;

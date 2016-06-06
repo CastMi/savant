@@ -49,7 +49,7 @@ public:
   IIR_Boolean _is_iir_expression(){ return TRUE; }
 
   IIR_Boolean _is_readable(){ return TRUE; }
-  IIR_Boolean _is_writable(){ return FALSE; }
+  IIR_Boolean _is_writable(){ return false; }
 
 protected:
   virtual ~IIRScram_Expression() = 0;

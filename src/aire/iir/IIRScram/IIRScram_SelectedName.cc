@@ -76,7 +76,7 @@ IIRScram_SelectedName::_symbol_lookup(){
     IIRScram_Declaration *current_decl = dynamic_cast<IIRScram_Declaration *>(prefix_decls->getElement());
     savant::set<IIRScram_Declaration> *suffix_decls = NULL;
     while( current_decl != NULL ){
-      IIR_Boolean found_in_library = FALSE;
+      IIR_Boolean found_in_library = false;
       suffix_decls = _get_suffix()->_symbol_lookup( prefix_decls );
       if( suffix_decls == NULL ){
 	savant::set<IIRScram_Declaration>       *decls = NULL;
@@ -149,7 +149,7 @@ IIRScram_SelectedName::convert_to_library_name(){
 
 IIRScram *
 IIRScram_SelectedName::_rval_to_decl( IIRScram_TypeDefinition *my_type){
-  if( is_resolved() == FALSE ){
+  if( is_resolved() == false ){
     savant::set<IIRScram_Declaration> *prefix_decls = _get_prefix()->_symbol_lookup();
     if( prefix_decls == NULL ){
       savant::set<IIRScram_TypeDefinition> *prefix_rvals = _get_prefix()->_get_rval_set();
@@ -187,7 +187,7 @@ IIRScram_SelectedName::_type_check( savant::set<IIRScram_TypeDefinition> * ){
 savant::set<IIRScram_TypeDefinition> *
 IIRScram_SelectedName::_get_rval_set(constraint_functor *functor){
   savant::set<IIRScram_TypeDefinition> *retval = NULL;
-  if( is_resolved() == FALSE ){
+  if( is_resolved() == false ){
     savant::set<IIRScram_Declaration> *prefix_decls = _get_prefix()->_symbol_lookup();
     
     if( prefix_decls == NULL ){
@@ -217,7 +217,7 @@ IIRScram_SelectedName::is_object( ){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -252,7 +252,7 @@ IIRScram_SelectedName::is_configuration_declaration() {
     return TRUE;
   }
   
-  return FALSE;
+  return false;
 }
 
 IIR_Boolean 
@@ -412,9 +412,9 @@ IIR_Boolean
 IIRScram_SelectedName::is_locally_static(){
   IIR_Boolean retval = TRUE;
   
-  if( _get_prefix()->is_locally_static() == FALSE || 
-      _get_suffix()->is_locally_static() == FALSE ){
-    retval = FALSE;
+  if( _get_prefix()->is_locally_static() == false || 
+      _get_suffix()->is_locally_static() == false ){
+    retval = false;
   }
   
   return retval;

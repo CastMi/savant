@@ -60,21 +60,21 @@ IIRScram_ArraySubtypeDefinition::is_locally_static(){
   IIR_Boolean retval = TRUE;
 
   if( is_unconstrained_array_type() == TRUE ){
-    retval = FALSE;
+    retval = false;
   }
   else{
     IIRScram_ScalarTypeDefinition *current_index = _get_index_subtype();
-    if( current_index->is_locally_static() == FALSE ){
-      retval = FALSE;
+    if( current_index->is_locally_static() == false ){
+      retval = false;
     }
     IIRScram_TypeDefinition *current_element_type = _get_element_subtype();
     ASSERT( current_element_type != NULL );
     while( current_element_type->_is_iir_array_type_definition() == TRUE && 
-	   current_element_type->is_element() == FALSE ){
+	   current_element_type->is_element() == false ){
       IIRScram_ArrayTypeDefinition *as_array_type = dynamic_cast<IIRScram_ArrayTypeDefinition *>(current_element_type);
       ASSERT( as_array_type->get_index_subtype() != NULL );
-      if( as_array_type->_get_index_subtype()->is_locally_static() == FALSE ){
-	retval = FALSE;
+      if( as_array_type->_get_index_subtype()->is_locally_static() == false ){
+	retval = false;
 	break;
       }
       current_element_type = as_array_type->_get_element_subtype();

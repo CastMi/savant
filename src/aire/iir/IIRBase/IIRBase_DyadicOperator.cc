@@ -85,8 +85,8 @@ IIRBase_DyadicOperator::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_DyadicOperator::is_resolved(){
-  if( get_implementation() != NULL && get_implementation()->is_resolved() == FALSE ){
-    return FALSE;
+  if( get_implementation() != NULL && get_implementation()->is_resolved() == false ){
+    return false;
   }
   ASSERT( get_left_operand() != NULL );
   ASSERT( get_right_operand() != NULL );
@@ -97,7 +97,7 @@ IIRBase_DyadicOperator::is_resolved(){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -139,8 +139,8 @@ IIRBase_DyadicOperator::print( ostream &os ){
 
 void
 IIRBase_DyadicOperator::publish_vhdl(ostream &vhdl_out){
-  bool left_bracket = FALSE;
-  bool right_bracket = FALSE ;
+  bool left_bracket = false;
+  bool right_bracket = false ;
   Precedence left_precedence = get_left_operand()->get_precedence();
   Precedence right_precedence = get_right_operand()->get_precedence();
   Precedence self_precedence = get_precedence();
@@ -163,7 +163,7 @@ IIRBase_DyadicOperator::publish_vhdl(ostream &vhdl_out){
     right_bracket = TRUE ;
   } 
   if ((right_precedence == self_precedence) &&
-      (is_associative(get_right_operand()->get_kind()) == FALSE)) {
+      (is_associative(get_right_operand()->get_kind()) == false)) {
     right_bracket = TRUE;
   }
   if ( left_bracket ){

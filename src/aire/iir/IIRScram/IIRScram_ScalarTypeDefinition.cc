@@ -192,9 +192,9 @@ IIRScram_ScalarTypeDefinition::_construct_new_subtype( IIRScram_Name *resolution
     // 1) base type isn't null
     // 2) base type is a type - not a subtype, and it's anonymous.
     ASSERT( _get_base_type() != NULL );
-    ASSERT( _get_base_type()->is_subtype() == FALSE ||
+    ASSERT( _get_base_type()->is_subtype() == false ||
             _get_base_type()->is_enumeration_type() == TRUE );
-    ASSERT( _get_base_type()->is_anonymous() == FALSE );
+    ASSERT( _get_base_type()->is_anonymous() == false );
 
     scalar_subtype->set_base_type( _get_base_type() );
   }
@@ -215,7 +215,7 @@ IIRScram_ScalarTypeDefinition::_construct_new_subtype( IIRScram_Name *resolution
       ASSERT( new_constraint->_get_direction() != NULL );
 
       // Resolve the left side, if needed
-      if( new_constraint->_get_left()->is_resolved() == FALSE ){
+      if( new_constraint->_get_left()->is_resolved() == false ){
 	new_constraint->set_left( new_constraint->_get_left()->_semantic_transform( this ) );
 	new_constraint->_get_left()->_type_check( this );
 	new_constraint->set_left( new_constraint->_get_left()->_rval_to_decl( this ) );	
@@ -235,7 +235,7 @@ IIRScram_ScalarTypeDefinition::_construct_new_subtype( IIRScram_Name *resolution
       scalar_subtype->set_direction( new_constraint->_get_direction() );
 
       // Resolve the right side, if needed
-      if( new_constraint->_get_right()->is_resolved() == FALSE ){
+      if( new_constraint->_get_right()->is_resolved() == false ){
 	new_constraint->set_right( new_constraint->_get_right()->_semantic_transform( this ) );
 	new_constraint->_get_right()->_type_check( this );
 	new_constraint->set_right( new_constraint->_get_right()->_rval_to_decl( this ) );	

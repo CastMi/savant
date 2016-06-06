@@ -35,26 +35,26 @@ public:
   IIR *get_declarative_region();
   void set_declarative_region( IIR * );
 
-  IIR_Boolean contains_body() const { return FALSE; }
+  IIR_Boolean contains_body() const { return false; }
 
-  IIR_Boolean is_incomplete_type_declaration() const { return FALSE; }
-  IIR_Boolean is_signal() const { return FALSE; }
-  bool is_work_library() const { return FALSE; }
+  IIR_Boolean is_incomplete_type_declaration() const { return false; }
+  IIR_Boolean is_signal() const { return false; }
+  bool is_work_library() const { return false; }
 
   /** This method tells us if a declaration is a an IIR_TypeDeclaration or
       IIR_SubtypeDeclaration. */
-  IIR_Boolean is_type() { return FALSE; }
+  IIR_Boolean is_type() { return false; }
 
   /** Tells us if this is a scalar type - or an object of a scalar type. */
 
   /** Tells us if this is a array type - or an object of a array type. */
   IIR_Boolean is_resolved() const { return TRUE; }
-  IIR_Boolean is_element() const { return FALSE; }
-  IIR_Boolean is_object() const { return FALSE; }
+  IIR_Boolean is_element() const { return false; }
+  IIR_Boolean is_object() const { return false; }
 
   //ams additions
   /** This function tells if a quantity is an across-quantity */
-  IIR_Boolean is_across_quantity() const { return FALSE; }
+  IIR_Boolean is_across_quantity() const { return false; }
 
   /** Sometimes implicit declarations need to be visible in the symbol table
       and sometimes they should.  deallocate( foo : some_access_type )

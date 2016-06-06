@@ -96,7 +96,7 @@ IIRBase_EnumerationTypeDefinition::find_declarations( IIR_Name *to_find ){
 //   its enumeration literals is a character literal.
 IIR_Boolean
 IIRBase_EnumerationTypeDefinition::is_character_type() {
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
 
   if( get_base_type() != 0 ){
     retval = get_base_type()->is_character_type();

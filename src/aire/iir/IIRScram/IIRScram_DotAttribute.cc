@@ -42,7 +42,7 @@ IIRScram_DotAttribute::_get_subtype() {
   
   quan_decl = quantity_decl_set->getElement();
   while (quan_decl != NULL) {
-    if (quan_decl->_is_quantity() == FALSE) {
+    if (quan_decl->_is_quantity() == false) {
       quantity_decl_set->remove(quan_decl);
     }
     quan_decl = quantity_decl_set->getNextElement();

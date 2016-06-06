@@ -101,7 +101,7 @@ IIRBase_TypeDeclaration::is_incomplete_type_declaration(){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 

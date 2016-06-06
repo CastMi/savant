@@ -93,7 +93,7 @@ IIRBase_FunctionDeclaration::is_operator() {
     }
   }
 
-  return FALSE;
+  return false;
 }
 
 void 

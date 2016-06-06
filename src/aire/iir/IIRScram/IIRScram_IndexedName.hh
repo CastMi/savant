@@ -45,9 +45,9 @@ class IIRScram_IndexedName : public virtual IIRScram_Name, public virtual IIRBas
 public:
   virtual ~IIRScram_IndexedName() {}
   IIRScram_IndexedName(){
-    _been_transformed = FALSE;
+    _been_transformed = false;
     _my_rval_set = NULL;
-    _have_rval_set = FALSE;
+    _have_rval_set = false;
   }
 
 

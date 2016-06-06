@@ -50,7 +50,7 @@ IIRScram_ValueAttribute::_resolve_suffix_special(){
   // Suffix must be an expression of type string
   StandardPackage       *package = _get_design_file()->get_standard_package();
 
-  if( _get_suffix() != NULL && _get_suffix()->is_resolved() == FALSE ){
+  if( _get_suffix() != NULL && _get_suffix()->is_resolved() == false ){
 
     ASSERT( _get_prefix()->is_resolved() == TRUE );
 

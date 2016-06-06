@@ -53,7 +53,7 @@ IIRScram_Declaration::~IIRScram_Declaration(){}
 
 IIR_Boolean
 IIRScram_Declaration::_is_homograph_of( IIRScram_Declaration *to_check ){
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
 
   if( IIRBase_TextLiteral::cmp( _get_declarator(), to_check->_get_declarator() ) == 0 ){
     int olCount = 0;
@@ -71,7 +71,7 @@ IIRScram_Declaration::_is_homograph_of( IIRScram_Declaration *to_check ){
       break;
     }
     case 2:{
-      retval = FALSE;
+      retval = false;
       break;
     }
     default:{
@@ -122,7 +122,7 @@ IIRScram_Declaration::_is_physical_type(){
     return _get_subtype()->_is_physical_type();
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -214,7 +214,7 @@ IIRScram_Declaration::_in_process_statement() {
     return TRUE;
   }
   else {
-    return FALSE;
+    return false;
   }
 }
 

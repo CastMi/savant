@@ -46,7 +46,7 @@ public:
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
 
   IIR_Boolean _is_readable(){ return TRUE; }
-  IIR_Boolean _is_writable(){ return FALSE; }
+  IIR_Boolean _is_writable(){ return false; }
 
   IIRScram_Statement                      *_get_value();
   IIRScram_TypeDefinition       *_get_type_mark();

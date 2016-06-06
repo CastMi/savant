@@ -51,7 +51,7 @@ public:
   IIR_Boolean is_locally_static() { return TRUE;}
   IIR_Boolean _is_overloadable(){ return TRUE; }
   IIR_Boolean _is_readable(){ return TRUE; }
-  IIR_Boolean _is_writable(){ return FALSE; }
+  IIR_Boolean _is_writable(){ return false; }
   IIR_Boolean _is_homograph_of( IIRScram_Declaration * );
 
   // an empty function to prevent incorrect error message.

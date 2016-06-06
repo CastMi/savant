@@ -45,7 +45,7 @@ using std::ostringstream;
 
 void 
 IIRScram_LibraryClause::_type_check(){
-  IIR_Boolean is_std_lib = FALSE;
+  IIR_Boolean is_std_lib = false;
   IIRScram *logical_name = _get_logical_name();
   ASSERT( logical_name->is_text_literal() == TRUE );
 
@@ -68,7 +68,7 @@ IIRScram_LibraryClause::_type_check(){
     report_error( logical_name, err.str() );
   }
   else{
-    if( is_std_lib == FALSE ){
+    if( is_std_lib == false ){
       copy_location( this, lib_decl );
       lib_decl->_add_declaration();    
     }

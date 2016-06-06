@@ -74,21 +74,21 @@ IIRBase_EnumerationLiteral::is_ascending_range() {
     return TRUE;		// Temporary solution -- SK.
   } 
   else if(IIRBase_TextLiteral::cmp(get_declarator(), "false") == 0) {
-    return FALSE;
+    return false;
   } else {
      // FIXME: overload operator<<
     //cerr << "Unknown enumeration literal " << *get_declarator() 
 	 //<< " in IIRBase_EnumerationLiteral::"
 	 //<< "_is_ascending_range()" << endl;
     abort();
-    return FALSE;
+    return false;
   }
 }
 
 IIR_Boolean 
 IIRBase_EnumerationLiteral::is_resolved(){
   if( get_subtype() == NULL ){
-    return FALSE;
+    return false;
   }
   else{
     return TRUE;
@@ -110,7 +110,7 @@ IIRBase_EnumerationLiteral::is_character_literal() {
      (*my_text_lit)[0] == '\'' && (*my_text_lit)[2] == '\'') {
     return TRUE;
   }
-  return FALSE;
+  return false;
 }
 
 IIR_Boolean

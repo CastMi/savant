@@ -36,7 +36,7 @@ IIRBase_DesignatorList::IIRBase_DesignatorList() {
 IIRBase_DesignatorList::~IIRBase_DesignatorList() {}
 IIR_Boolean
 IIRBase_DesignatorList::is_above_attribute_found() {
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   IIR_Designator* element = dynamic_cast<IIR_Designator *>(first());
   IIR *current_name = NULL;
   while(element != NULL) {

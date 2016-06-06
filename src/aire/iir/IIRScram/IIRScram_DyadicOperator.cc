@@ -187,7 +187,7 @@ IIRScram_DyadicOperator::_is_readable(){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 

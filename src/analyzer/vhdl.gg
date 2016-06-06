@@ -1187,7 +1187,7 @@ process_statement[ IIRScram_Label *label ] > [IIRScram_ProcessStatement *retval]
 
       copy_location( process, process_stmt );
     }
-    process_stmt->set_postponed( FALSE );
+    process_stmt->set_postponed( false );
   >>
   { IS }
   process_declarative_part[ process_stmt->get_process_declarative_part() ]
@@ -2381,7 +2381,7 @@ functions and procedures
 subprogram[ IIR_DeclarationList *list]:
   <<
     IIRScram_SubprogramDeclaration   *new_subp_decl          = NULL;
-    IIR_Boolean                 added_declaration       = FALSE;
+    IIR_Boolean                 added_declaration       = false;
   >>     
   subprogram_header > [ new_subp_decl ]
   {
@@ -2395,7 +2395,7 @@ subprogram[ IIR_DeclarationList *list]:
       IIR_Boolean found_return = 
 	dynamic_cast<IIRScram_SubprogramDeclaration *>(new_subp_decl)->_type_check_return_statements( dynamic_cast<IIRScram_TypeDefinition *>(return_type) );
     
-      if( new_subp_decl->get_kind() == IIR_FUNCTION_DECLARATION && found_return == FALSE ){
+      if( new_subp_decl->get_kind() == IIR_FUNCTION_DECLARATION && found_return == false ){
 	ostringstream err;
 	err << "No return statement found in subprogram "
 	    << *dynamic_cast<IIRScram_TextLiteral *>(new_subp_decl->get_declarator());
@@ -2408,7 +2408,7 @@ subprogram[ IIR_DeclarationList *list]:
   SEMI_COLON
   <<
     list->append( new_subp_decl );
-    if( added_declaration == FALSE ){
+    if( added_declaration == false ){
       my_symbol_table->add_subprogram_declaration( new_subp_decl, true );
       dynamic_cast<IIRScram_SubprogramDeclaration *>(new_subp_decl)->_type_check();
       my_symbol_table->close_scope( new_subp_decl );
@@ -3388,7 +3388,7 @@ array_type_definition[ IIRScram_TypeDeclaration *type_decl ] > [IIRScram_ArrayTy
       ASSERT( dynamic_cast<IIRScram_ArrayTypeDefinition *>(prev_subtype->get_base_type())->_is_iir_array_type_definition() == TRUE );
       dynamic_cast<IIRScram_ArrayTypeDefinition *>(prev_subtype->get_base_type())->set_element_subtype( final_subtype );
       if( is_unconstrained == TRUE ){
-	if( dynamic_cast<IIRScram_ArrayTypeDefinition *>(final_subtype)->is_unconstrained_array_type() == FALSE ){
+	if( dynamic_cast<IIRScram_ArrayTypeDefinition *>(final_subtype)->is_unconstrained_array_type() == false ){
 	  err_flag = TRUE;
 	}
       }
@@ -3816,7 +3816,7 @@ index_constraint[ IIRScram_TypeDefinition *type_definition ] > [ IIRScram_TypeDe
       report_error( current_constraint, err.str() );
     }
     else{
-      if( dynamic_cast<IIRScram_TypeDefinition *>(array_type)->is_unconstrained_array_type() == FALSE ){
+      if( dynamic_cast<IIRScram_TypeDefinition *>(array_type)->is_unconstrained_array_type() == false ){
         ostringstream err;
         cerr << "Index constraints may only be applied to unconstrained array types.";
         report_error( array_type, err.str() );
@@ -3838,8 +3838,8 @@ index_constraint[ IIRScram_TypeDefinition *type_definition ] > [ IIRScram_TypeDe
         previous_unconstrained_type = final_unconstrained_type;
   
         IIRScram_TypeDefinition *old_element_type = dynamic_cast<IIRScram_TypeDefinition *>(previous_unconstrained_type)->_get_element_subtype();
-        if( dynamic_cast<IIRScram *>(old_element_type)->is_array_type() == FALSE ||
-	    dynamic_cast<IIRScram_TypeDefinition *>(old_element_type)->is_anonymous() == FALSE ){
+        if( dynamic_cast<IIRScram *>(old_element_type)->is_array_type() == false ||
+	    dynamic_cast<IIRScram_TypeDefinition *>(old_element_type)->is_anonymous() == false ){
 	  ostringstream err;
 	  err << "Index constraints must be applied to array types.";
 	  report_error( array_type, err.str() );
@@ -3958,7 +3958,7 @@ shared_variable_declaration[IIR_DeclarationList *list]:
 ;
 
 variable_declaration[ IIR_DeclarationList *list ]:
-  <<IIR_Boolean shared = FALSE;>>
+  <<IIR_Boolean shared = false;>>
   { SHARED <<shared = TRUE;>> } VARIABLE 
   variable_declaration_body[$list, shared]	
 ;
@@ -3978,7 +3978,7 @@ variable_declaration_body[IIR_DeclarationList *list, bool shared]:
   <<
     id = dynamic_cast<IIRScram_Identifier *>(id_list->first());
     while (id != NULL) {
-      if( shared == FALSE ){ 
+      if( shared == false ){ 
         IIRScram_VariableDeclaration *new_var_decl =  new IIRScram_VariableDeclaration();
         new_var_decl->set_value(initial_value);
 	copy_location( id, new_var_decl );
@@ -4344,7 +4344,7 @@ component_declaration[IIR_DeclarationList *decl_list]:
   for (IIR_LibraryDeclaration *lib = libraries->getElement();
        lib != NULL;
        lib = libraries->getNextElement()) {
-    entity = library_manager::instance()->lookup_entity(FALSE, 
+    entity = library_manager::instance()->lookup_entity(false, 
 							component_name, 
 							lib, 
 							my_std_package, 
@@ -4675,7 +4675,7 @@ simple_expression > [IIRScram *e]:
     $e = NULL;
     IIRScram_DyadicOperator  *be             = NULL;
     IIRScram_MonadicOperator *ue             = NULL;
-    IIR_Boolean         sign_op_present = FALSE;
+    IIR_Boolean         sign_op_present = false;
     IIR                 *wk             = NULL;
   >>
   { sign_op:SIGN_OPERATOR <<sign_op_present = TRUE;>> } term > [$e]
@@ -5776,7 +5776,7 @@ discrete_range > [IIRScram_ScalarTypeDefinition *retval ]:
 | subtype_indication > [ base_type ]
   <<
     if( base_type != NULL ){
-      if( dynamic_cast<IIRScram_TypeDefinition *>(base_type)->is_discrete_type() == FALSE ){
+      if( dynamic_cast<IIRScram_TypeDefinition *>(base_type)->is_discrete_type() == false ){
 	ostringstream err;
 	err << "|" << *dynamic_cast<IIRScram_TypeDefinition *>(base_type) << "| is not a discrete type.";
 	report_error( base_type, err.str() );
@@ -6288,7 +6288,7 @@ array_nature_definition[IIRScram_NatureDeclaration *nature_decl] > [IIRScram_Arr
       ASSERT( dynamic_cast<IIRScram_ArrayNatureDefinition *>(prev_subtype)->_get_base_type()->_is_iir_array_type_definition() == TRUE );
       dynamic_cast<IIRScram_ArrayTypeDefinition *>((prev_subtype->get_base_type()))->set_element_subtype( dynamic_cast<IIRScram_ArrayNatureDefinition *>(final_subtype) );
       if( is_unconstrained == TRUE ){
-      if( dynamic_cast<IIRScram_ArrayNatureDefinition *>(final_subtype)->is_unconstrained_array_type() == FALSE ){
+      if( dynamic_cast<IIRScram_ArrayNatureDefinition *>(final_subtype)->is_unconstrained_array_type() == false ){
 	  err_flag = TRUE;
 	}
       }

@@ -62,8 +62,8 @@ IIRScram_Aggregate::_is_readable( ){
 
   current_assoc = dynamic_cast<IIRScram_AssociationElement *>(list->first());
   while( current_assoc != NULL ){
-    if( current_assoc->_is_readable() == FALSE ){
-      retval = FALSE;
+    if( current_assoc->_is_readable() == false ){
+      retval = false;
     }
     current_assoc = dynamic_cast<IIRScram_AssociationElement *>(list->successor( current_assoc ));
   }
@@ -80,8 +80,8 @@ IIRScram_Aggregate::_is_writable( ){
 
   current_assoc = dynamic_cast<IIRScram_AssociationElement *>(list->first());
   while( current_assoc != NULL ){
-    if( current_assoc->_is_writable() == FALSE ){
-      retval = FALSE;
+    if( current_assoc->_is_writable() == false ){
+      retval = false;
     }
     current_assoc = dynamic_cast<IIRScram_AssociationElement *>(list->successor( current_assoc ));
   }

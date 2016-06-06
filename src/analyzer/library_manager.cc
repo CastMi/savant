@@ -1182,7 +1182,7 @@ library_manager::lookup_architecture( IIR_Boolean               complain_on_erro
 				      IIR_Name                  *architecture_name){
   IIR_ArchitectureDeclaration *retval = NULL;
 
-  ASSERT( complain_on_error == TRUE ||  complain_on_error == FALSE );
+  ASSERT( complain_on_error == TRUE ||  complain_on_error == false );
   ASSERT( entity != NULL );
   ASSERT( architecture_name != NULL );
   ASSERT( entity->get_library() != NULL );

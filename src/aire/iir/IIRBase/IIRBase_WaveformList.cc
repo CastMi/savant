@@ -33,7 +33,7 @@ IIRBase_WaveformList::~IIRBase_WaveformList() {}
 
 IIR_Boolean
 IIRBase_WaveformList::is_above_attribute_found() {
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   IIR_WaveformElement* element = first();
   for(; element != NULL; element = successor(element)) {
     retval = retval || element->is_above_attribute_found();

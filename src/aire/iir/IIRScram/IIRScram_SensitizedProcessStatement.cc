@@ -159,7 +159,7 @@ IIRScram_SensitizedProcessStatement::_resolve_signal_name( IIRScram *signal_name
     }
   }
   
-  if( retval && retval->is_signal() == FALSE ){
+  if( retval && retval->is_signal() == false ){
     ostringstream err;
     err << "Symbol |" << *signal_name 
 	<< "| is not a signal and there for is invalid as an element of a process sensitivity list";

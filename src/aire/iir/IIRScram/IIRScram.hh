@@ -119,18 +119,18 @@ public:
   virtual IIR_Mode _get_mode();
 
   /** This method tells use whether or not this is <name>.all */
-  virtual IIR_Boolean _is_by_all() const { return FALSE; }
-  virtual IIR_Boolean _is_floating_type() const { return FALSE; }
-  virtual IIR_Boolean _is_integer_literal() const { return FALSE; }
-  virtual IIR_Boolean _is_floating_literal() const { return FALSE; }
-  virtual IIR_Boolean _is_string_literal() const { return FALSE; }
-  virtual IIR_Boolean _is_association() const { return FALSE; }
-  virtual IIR_Boolean _is_sequential_signal_assignment() const { return FALSE; }
-  virtual IIR_Boolean _is_designator() const { return FALSE; }
-  virtual IIR_Boolean _is_enumeration_literal() const { return FALSE; }
+  virtual IIR_Boolean _is_by_all() const { return false; }
+  virtual IIR_Boolean _is_floating_type() const { return false; }
+  virtual IIR_Boolean _is_integer_literal() const { return false; }
+  virtual IIR_Boolean _is_floating_literal() const { return false; }
+  virtual IIR_Boolean _is_string_literal() const { return false; }
+  virtual IIR_Boolean _is_association() const { return false; }
+  virtual IIR_Boolean _is_sequential_signal_assignment() const { return false; }
+  virtual IIR_Boolean _is_designator() const { return false; }
+  virtual IIR_Boolean _is_enumeration_literal() const { return false; }
   virtual IIR_Boolean _is_numeric_literal() const;
-  virtual IIR_Boolean _is_numeric_type() const { return FALSE; }
-  virtual IIR_Boolean _is_physical_type() const { return FALSE; }
+  virtual IIR_Boolean _is_numeric_type() const { return false; }
+  virtual IIR_Boolean _is_physical_type() const { return false; }
   virtual IIR_Boolean _is_attribute() const;
 
   /** @name Node Type Queries
@@ -148,67 +148,67 @@ public:
 
   //@{
   /// Is this node an IIRScram_Attribute?
-  virtual IIR_Boolean _is_iir_attribute() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_attribute() const { return false; }
   /// Is this node an IIRScram_ConcurrentStatement?
-  virtual IIR_Boolean _is_iir_concurrent_statement() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_concurrent_statement() const { return false; }
   /// Is this node an IIRScram_ConfigurationItem?
-  virtual IIR_Boolean _is_iir_configuration_item() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_configuration_item() const { return false; }
   /// Is this node an IIRScram_Declaration?
-  virtual IIR_Boolean _is_iir_declaration() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_declaration() const { return false; }
   /// Is this node an IIRScram_Expression?
-  virtual IIR_Boolean _is_iir_expression() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_expression() const { return false; }
   /// Is this node an IIRScram_ObjectDeclaration?
-  virtual IIR_Boolean _is_iir_object_declaration() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_object_declaration() const { return false; }
   /// Is this node an IIRScram_PackageBodyDeclaration?
-  virtual IIR_Boolean _is_iir_package_body_declaration() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_package_body_declaration() const { return false; }
   /// Is this node an IIRScram_List?
-  virtual IIR_Boolean _is_iir_list() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_list() const { return false; }
   /// Is this node an IIRScram_SignalDeclaration?
-  virtual IIR_Boolean _is_iir_signal_declaration() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_signal_declaration() const { return false; }
   /// Is this node an IIRScram_InterfaceDeclaration?
-  virtual IIR_Boolean _is_iir_interface_declaration() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_interface_declaration() const { return false; }
   /// Is this node an IIRScram_ElementDeclaration?
-  virtual IIR_Boolean _is_iir_element_declaration() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_element_declaration() const { return false; }
   /// Is this node an IIRScram_PhysicaTypeSubtypeDefinition?
-  virtual IIR_Boolean _is_iir_physical_subtype_definition() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_physical_subtype_definition() const { return false; }
   /// Is this node an IIRScram_SequentialStatement?
-  virtual IIR_Boolean _is_iir_sequential_statement() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_sequential_statement() const { return false; }
   /// Is this node an IIRScram_TypeDefinition?
-  virtual IIR_Boolean _is_iir_type_definition() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_type_definition() const { return false; }
   /// Is this node an IIRScram_RecordTypeDefinition?
-  virtual IIR_Boolean _is_iir_record_type_definition() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_record_type_definition() const { return false; }
   /// Is this node an IIRScram_FloatingTypeDefinition?
-  virtual IIR_Boolean _is_iir_floating_type_definition() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_floating_type_definition() const { return false; }
   /// Is this node an IIRScram_IntegerTypeDefinition?
-  virtual IIR_Boolean _is_iir_integer_type_definition() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_integer_type_definition() const { return false; }
   /// Is this node an IIRScram_AccessTypeDefinition?
-  virtual IIR_Boolean _is_iir_access_type_definition() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_access_type_definition() const { return false; }
   /// Is this node an IIRScram_EnumerationTypeDefinition?
-  virtual IIR_Boolean _is_iir_enumeration_type_definition() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_enumeration_type_definition() const { return false; }
   /// Is this node an IIRScram_PhysicalTypeDefinition?
-  virtual IIR_Boolean _is_iir_physical_type_definition() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_physical_type_definition() const { return false; }
   /// Is this node an IIRScram_ArrayTypeDefinition?
-  virtual IIR_Boolean _is_iir_array_type_definition() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_array_type_definition() const { return false; }
   /// Is this node an IIRScram_CaseStatementAlternative?
-  virtual IIR_Boolean _is_iir_case_statement_alternative() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_case_statement_alternative() const { return false; }
   /// Is this node an IIRScram_ConfigurationSpecification?
-  virtual IIR_Boolean _is_iir_configuration_specification() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_configuration_specification() const { return false; }
   /// Is this node an IIRScram_AttributeSpecification?
-  virtual IIR_Boolean _is_iir_attribute_specification() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_attribute_specification() const { return false; }
   /// Is this node an IIRScram_DisconnectSpecification?
-  virtual IIR_Boolean _is_iir_disconnect_specification() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_disconnect_specification() const { return false; }
   /// Is this node an IIRScram_EnumerationLiteral?
-  virtual IIR_Boolean _is_iir_enumeration_literal() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_enumeration_literal() const { return false; }
   /// Is this node an IIRScram_TextLiteral?
-  virtual IIR_Boolean _is_iir_text_literal() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_text_literal() const { return false; }
   /// Is this node an IIRScram_Name?
-  virtual IIR_Boolean _is_iir_name() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_name() const { return false; }
   /// Is this node an IIRScram_Statement?
-  virtual IIR_Boolean _is_iir_statement() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_statement() const { return false; }
   /// Is this node an IIRScram_LibraryUnit?
-  virtual IIR_Boolean _is_iir_library_unit() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_library_unit() const { return false; }
   /// Is this node an IIRScram_LibraryDeclaration?
-  virtual IIR_Boolean _is_iir_library_declaration() const { return FALSE; }
+  virtual IIR_Boolean _is_iir_library_declaration() const { return false; }
   //@}
 
   /** Returns true if static analysis says this expression is readable,

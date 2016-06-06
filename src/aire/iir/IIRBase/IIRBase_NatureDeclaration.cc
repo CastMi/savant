@@ -85,7 +85,7 @@ IIRBase_NatureDeclaration::is_array_type() {
     return get_nature()->is_array_type();
   }
   else {
-    return FALSE;
+    return false;
   }
 }
 

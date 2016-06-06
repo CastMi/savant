@@ -56,7 +56,7 @@ public:
   IIR_TypeDefinition *get_final_subtype();
 
   // This method returns TRUE if the element_subtype is REALLY that of the
-  // element, or FALSE if it's simply a placeholder for a mutlidimensional array.
+  // element, or false if it's simply a placeholder for a mutlidimensional array.
   IIR_Boolean is_element();
   void set_is_element( IIR_Boolean );
 

@@ -70,7 +70,7 @@ IIRScram_InterfaceDeclaration::_is_readable(){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -80,7 +80,7 @@ IIRScram_InterfaceDeclaration::_is_writable(){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -130,7 +130,7 @@ IIRScram_InterfaceDeclaration::_clone( IIRScram *copy_into ) {
 IIR_Boolean 
 IIRScram_InterfaceDeclaration::_is_optional(){
   if( _get_value() == NULL ){
-    return FALSE;
+    return false;
   }
   else{
     return TRUE;

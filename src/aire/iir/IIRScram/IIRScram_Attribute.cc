@@ -413,7 +413,7 @@ void
 IIRScram_Attribute::_resolve_suffix_base_type_of_prefix(){
   IIRScram_Statement       *suffix_to_process = NULL;
 
-  if( _get_suffix() == NULL || _get_suffix()->is_resolved() == FALSE ){
+  if( _get_suffix() == NULL || _get_suffix()->is_resolved() == false ){
     suffix_to_process = _get_suffix();
     ASSERT( _get_prefix()->is_resolved() == TRUE );
 
@@ -468,7 +468,7 @@ IIRScram_Attribute::_resolve_suffix_local_static_int(){
 
   IIRScram_Statement    *suffix_to_process = _get_suffix();
   StandardPackage       *package = _get_design_file()->get_standard_package();
-  if( _get_suffix() != NULL && _get_suffix()->is_resolved() == FALSE ){
+  if( _get_suffix() != NULL && _get_suffix()->is_resolved() == false ){
 
     ASSERT( _get_prefix()->is_resolved() == TRUE );
 
@@ -511,7 +511,7 @@ IIRScram_Attribute::_resolve_suffix_non_negative_time(){
   // IIRScram_QuietAttribute
 
   StandardPackage       *package = _get_design_file()->get_standard_package();
-  if( _get_suffix() != NULL && _get_suffix()->is_resolved() == FALSE ){
+  if( _get_suffix() != NULL && _get_suffix()->is_resolved() == false ){
     ASSERT( _get_prefix()->is_resolved() == TRUE );
     savant::set<IIRScram_TypeDefinition> *suffix_types = _get_suffix()->_get_rval_set();
     IIR_TypeDefinition *time_rval = package->get_time_type();

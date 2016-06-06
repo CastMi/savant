@@ -55,7 +55,7 @@ void
 IIRScram_IfStatement::_type_check(){
   IIRScram *new_condition = _type_check_and_resolve_boolean_condition( _get_condition() );
   ASSERT( new_condition != NULL );
-  if( parse_error == FALSE ){
+  if( parse_error == false ){
     ASSERT( new_condition->is_resolved() == TRUE );
     set_condition( new_condition );
   }

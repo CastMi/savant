@@ -48,7 +48,7 @@ IIRBase_RemainderOperator::is_associative(IIR_Kind oper_kind){
   case IIR_DIVISION_OPERATOR:
   case IIR_REMAINDER_OPERATOR:
   case IIR_MODULUS_OPERATOR:
-    return FALSE;
+    return false;
   default:
     return TRUE;
   }

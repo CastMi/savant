@@ -40,11 +40,11 @@ public:
 
   IIR_Boolean is_locally_static();
   IIR_Boolean is_resolved() const;
-  IIR_Boolean is_signal() const { return FALSE; };
-  IIR_Boolean is_value_attribute() const { return FALSE; }
-  IIR_Boolean is_function_attribute() const { return FALSE; }
-  IIR_Boolean is_above_attribute() const { return FALSE; }
-  IIR_Boolean has_suffix() { return FALSE; }
+  IIR_Boolean is_signal() const { return false; };
+  IIR_Boolean is_value_attribute() const { return false; }
+  IIR_Boolean is_function_attribute() const { return false; }
+  IIR_Boolean is_above_attribute() const { return false; }
+  IIR_Boolean has_suffix() { return false; }
 
   void set_subtype(IIR_TypeDefinition *type) {IIRBase_Statement::set_subtype(type);}
   

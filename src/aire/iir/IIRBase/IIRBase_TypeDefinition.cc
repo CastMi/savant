@@ -95,7 +95,7 @@ IIRBase_TypeDefinition::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean
 IIRBase_TypeDefinition::is_subtype() {
-  return FALSE;
+  return false;
 }
 
 IIR_Boolean 
@@ -109,8 +109,8 @@ IIRBase_TypeDefinition::is_anonymous(){
 
 IIR_Boolean 
 IIRBase_TypeDefinition::is_element() const {
-  ASSERT( is_access_type() == TRUE || is_array_type() == FALSE );
-  return FALSE;
+  ASSERT( is_access_type() == TRUE || is_array_type() == false );
+  return false;
 }
 
 IIR_ScalarTypeDefinition *
@@ -173,7 +173,7 @@ IIRBase_TypeDefinition::is_compatible( IIR_TypeDefinition *to_check ){
   }
 
   if( base_type_left == base_type_right ){
-    if( to_check->is_subtype() == TRUE && is_subtype() == FALSE ){
+    if( to_check->is_subtype() == TRUE && is_subtype() == false ){
       return to_check;
     }
     else{
@@ -239,7 +239,7 @@ IIRBase_TypeDefinition::is_subtype_decl() {
     return type_decl->is_subtype_decl();
   }
   else {
-    return FALSE;
+    return false;
   }
 }
 

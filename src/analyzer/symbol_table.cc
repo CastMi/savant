@@ -391,7 +391,7 @@ symbol_table::make_visible( IIR_Declaration *decl_ptr ){
   // Since we're maintaining an out_of_scope list (temporarily), we 
   // need to take this declaration out of that list and put it back
   // in scope.
-  if( scram_decl != NULL && scram_decl->_is_specification() == FALSE ){
+  if( scram_decl != NULL && scram_decl->_is_specification() == false ){
 
     // First we'll make sure it's not already visible...
     if( is_visible( scram_decl ) == true ){
@@ -458,7 +458,7 @@ symbol_table::make_visible( savant::set<IIR_Declaration> *decl_set ){
 
 void 
 symbol_table::add_to_use_list( IIR_Declaration *declaration ){
-  ASSERT( use_clause_entries.contains( declaration ) == FALSE );
+  ASSERT( use_clause_entries.contains( declaration ) == false );
   use_clause_entries.add( declaration );
 }
 

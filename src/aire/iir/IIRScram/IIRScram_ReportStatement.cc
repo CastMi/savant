@@ -40,7 +40,7 @@ IIRScram_ReportStatement::_type_check(){
 
 // IIR_Boolean
 // IIRScram_ReportStatement::_is_above_attribute_found() {
-//   IIR_Boolean retval = FALSE;
+//   IIR_Boolean retval = false;
 //   retval = retval || get_report_expression()->_is_above_attribute_found();
 //   if(get_severity_expression() != NULL) {
 //     retval = retval || get_severity_expression()->_is_above_attribute_found();

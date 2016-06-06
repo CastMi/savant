@@ -39,7 +39,7 @@ class IIRScram_TypeDefinition;
 class IIRScram_UserAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_UserAttribute {
 public:
   IIRScram_UserAttribute(){
-    _survived_transformation = FALSE;
+    _survived_transformation = false;
   }
 
   IIRScram_TypeDefinition *_get_subtype();

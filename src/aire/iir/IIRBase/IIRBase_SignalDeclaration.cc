@@ -80,7 +80,7 @@ IIRBase_SignalDeclaration::is_guard_signal() {
     return TRUE;
   }
 
-  return FALSE;
+  return false;
 }
 
 IIR_Boolean
@@ -90,10 +90,10 @@ IIRBase_SignalDeclaration::is_above_attribute_found() {
       return TRUE;
     }
     else
-      return FALSE;
+      return false;
   }
   else
-    return FALSE;
+    return false;
 }
 
 IIR_Declaration::declaration_type 

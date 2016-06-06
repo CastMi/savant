@@ -105,7 +105,7 @@ IIRScram_FunctionDeclaration::_get_type_of_element( int index ){
 
 IIR_Boolean 
 IIRScram_FunctionDeclaration::_could_be_conversion_function( ){
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   if( get_interface_declarations()->size() == 1 ){
     // We know the argument is the right type, and the return type is
     // right, or we wouldn't have resolved it to this.

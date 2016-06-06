@@ -98,7 +98,7 @@ IIRScram_UseClause::_make_interface_visible( symbol_table *sym_tab ){
   if( decls != 0 ){
     ASSERT( decls->size() == 1 );
     IIRScram_Declaration *decl = decls->getElement();
-    if( sym_tab->in_use_list( decl ) == FALSE ){
+    if( sym_tab->in_use_list( decl ) == false ){
       sym_tab->add_to_use_list( decl );
       decl->_make_interface_visible( sym_tab );
     }

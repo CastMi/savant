@@ -58,7 +58,7 @@ IIRScram_TypeDeclaration::_designates_incomplete_type(){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -78,8 +78,8 @@ IIRScram_TypeDeclaration::_come_into_scope( symbol_table *sym_tab ){
   // We need to see if this is actually a subtype declaration, due to the
   // organization of AIRE.
   IIRScram_TypeDefinition *type = _get_type_definition();
-  if( is_subtype_declaration() == FALSE ){
-    if(  type != NULL && type ->is_incomplete_type_definition() == FALSE ){
+  if( is_subtype_declaration() == false ){
+    if(  type != NULL && type ->is_incomplete_type_definition() == false ){
       ASSERT( type->is_subtype() == TRUE ||
 	      type->is_record_type() == TRUE ||
 	      type->is_file_type() == TRUE  );
@@ -122,13 +122,13 @@ IIRScram_TypeDeclaration::_clone() {
 IIR_Boolean
 IIRScram_TypeDeclaration::_can_be_in_same_region( IIRScram_Declaration *to_check ){
   if(( is_incomplete_type_declaration() == TRUE && 
-       to_check->is_incomplete_type_declaration() == FALSE ) ||
-     ( is_incomplete_type_declaration() == FALSE && 
+       to_check->is_incomplete_type_declaration() == false ) ||
+     ( is_incomplete_type_declaration() == false && 
        to_check->is_incomplete_type_declaration() == TRUE )){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 

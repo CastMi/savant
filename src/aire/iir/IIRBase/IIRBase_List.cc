@@ -62,8 +62,8 @@ IIRBase_List::is_resolved(){
 
   IIR *current_element = dynamic_cast<IIR *>(first());
   while( current_element != NULL ){
-    if( current_element->is_resolved() == FALSE ){
-      retval = FALSE;
+    if( current_element->is_resolved() == false ){
+      retval = false;
       break;
     }
     current_element = dynamic_cast<IIR *>(successor( current_element ));

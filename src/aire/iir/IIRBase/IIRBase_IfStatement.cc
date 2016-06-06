@@ -106,7 +106,7 @@ IIRBase_IfStatement::set_else_sequence(IIR_SequentialStatementList *new_else_seq
 
 IIR_Boolean
 IIRBase_IfStatement::is_above_attribute_found() {
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
 
   ASSERT(get_condition() != NULL);
 

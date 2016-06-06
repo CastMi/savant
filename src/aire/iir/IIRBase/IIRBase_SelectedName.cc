@@ -67,7 +67,7 @@ IIRBase_SelectedName::is_resolved() const {
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -78,7 +78,7 @@ IIRBase_SelectedName::is_signal() const {
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -91,7 +91,7 @@ IIRBase_SelectedName::is_entity_declaration() const {
     return TRUE;
   }
   
-  return FALSE;
+  return false;
 }
 
 IIR_TypeDefinition *
@@ -118,7 +118,7 @@ IIRBase_SelectedName::is_object() const {
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -148,7 +148,7 @@ IIRBase_SelectedName::is_variable() const {
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 

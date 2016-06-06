@@ -55,7 +55,7 @@ IIRBase_AttributeDeclaration::is_signal(){
   }
   else{
     // It must be user defined, and then it can't be signal valued..
-    return FALSE;
+    return false;
   }
 }
 

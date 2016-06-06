@@ -77,7 +77,7 @@ IIRScram::_get_name_type() {
 
 IIR_Boolean
 IIRScram::_is_attribute() const {
-   return FALSE;
+   return false;
 }
 
 IIR_Boolean
@@ -86,7 +86,7 @@ IIRScram::_is_numeric_literal() const {
     return TRUE;
   }
   else {
-    return FALSE;
+    return false;
   }
 }
 
@@ -98,12 +98,12 @@ IIRScram::accept( generic_visitor * visitor, visitor_argument_type * arg ) {
 
 IIR_Boolean
 IIRScram::_is_quantity() {
-  return FALSE;
+  return false;
 }
 
 IIR_Boolean
 IIRScram::_is_terminal() {
-  return FALSE;
+  return false;
 }
 
 void 
@@ -165,13 +165,13 @@ IIRScram::_report_undefined_scram_fn(const char *fn_name) {
 IIR_Boolean
 IIRScram::_is_readable() {
   _report_undefined_scram_fn("_is_readable()");
-  return FALSE;
+  return false;
 }
 
 IIR_Boolean
 IIRScram::_is_writable() {
   _report_undefined_scram_fn("_is_writable()");
-  return FALSE;
+  return false;
 }
 
 IIRScram_GenericList *
@@ -219,7 +219,7 @@ IIRScram_Label *
 IIRScram::_lookup_label( IIR_Boolean complain_on_error ){
   IIRScram_Label *retval = NULL;
   
-  ASSERT( complain_on_error == TRUE ||  complain_on_error == FALSE );
+  ASSERT( complain_on_error == TRUE ||  complain_on_error == false );
   
   constraint_functor *functor = new is_label_functor;
   savant::set<IIRScram_Declaration> *decls = _symbol_lookup( functor );
@@ -363,7 +363,7 @@ IIRScram::_find_default_binding( IIRScram_SimpleName *component_name ){
   IIRScram_LibraryUnit *retval = NULL;
 
   IIRScram_EntityDeclaration *entity_decl = 
-    dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( FALSE, component_name, _get_work_library(), _get_design_file()->get_standard_package(), _get_design_file()->get_class_factory() ));
+    dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( false, component_name, _get_work_library(), _get_design_file()->get_standard_package(), _get_design_file()->get_class_factory() ));
   if( entity_decl != NULL ){
     // We need to go get the most recently analyzed architecure.
     retval = dynamic_cast<IIRScram_LibraryUnit *>(library_manager::instance()->lookup_default_architecture( entity_decl ));
@@ -644,7 +644,7 @@ IIR_Boolean
 IIRScram::_attach_attribute_specification( IIRScram_AttributeSpecification *to_attach ){
   IIRScram_AttributeSpecificationList *list = _get_attribute_specification_list();
   if( list == NULL ){
-    return FALSE;
+    return false;
   }
   else{
     list->append( to_attach );
@@ -656,7 +656,7 @@ IIR_Boolean
 IIRScram::_attach_disconnection_specification( IIRScram_AttributeSpecification * ){
   _report_undefined_scram_fn("_attach_disconnection_specification( IIRScram_AttributeSpecification *)");
   abort();
-  return FALSE;
+  return false;
 }
 
 IIRScram_DeclarationList*
@@ -685,7 +685,7 @@ IIRScram::_set_design_file( IIRScram_DesignFile *new_design_file ){
 
 IIR_Boolean
 IIRScram::_is_branchQ(){
-  return FALSE;
+  return false;
 }
 
 void

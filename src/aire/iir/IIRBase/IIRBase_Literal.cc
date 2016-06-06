@@ -128,7 +128,7 @@ IIRBase_Literal::is_locally_static(){
 IIR_Boolean
 IIRBase_Literal::is_resolved(){
   if( get_subtype() == NULL ){
-    return FALSE;
+    return false;
   }
   else{
     return TRUE;

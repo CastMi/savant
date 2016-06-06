@@ -59,9 +59,9 @@ public:
   virtual IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition * );
   virtual IIR_Boolean _is_readable();
   virtual IIR_Boolean _is_writable();
-  virtual IIR_Boolean _is_iir_name(){ return FALSE; }
-  virtual IIR_Boolean _is_iir_declaration(){ return FALSE; }
-  virtual IIR_Boolean _is_iir_attribute(){ return FALSE; }
+  virtual IIR_Boolean _is_iir_name() { return false; }
+  virtual IIR_Boolean _is_iir_declaration(){ return false; }
+  virtual IIR_Boolean _is_iir_attribute(){ return false; }
   virtual savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
 
   virtual savant::set<IIRScram_Declaration> *_symbol_lookup();

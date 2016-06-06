@@ -190,7 +190,7 @@ reconcile_sets( set<IIRScram_Declaration> *decls,
 	  current_rval = rval_set->getNextElement();
 	} // inner loop
 
-	if( one_matched == FALSE ){
+	if( one_matched == false ){
 	  decls->remove( current_decl );
 	}
       }
@@ -240,7 +240,7 @@ resolve_subprogram_decls(set<IIRScram_Declaration>              *possible_subpro
     arguments_match =
       argument_list->_check_valid_arguments( as_subprog->_get_interface_declarations(), NULL);
 
-    if( arguments_match == FALSE ){
+    if( arguments_match == false ){
       possible_subprogram_decls->remove( current_decl );
     }
     current_decl = possible_subprogram_decls->getNextElement();

@@ -171,7 +171,7 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
   ASSERT ( base_type->get_index_subtype() != NULL );
   
   if(( base_type->is_unconstrained_array_type() == TRUE &&
-	    is_unconstrained_array_type() == FALSE ) ||
+	    is_unconstrained_array_type() == false ) ||
        base_type->get_index_subtype()->is_enumeration_type() == TRUE ){
      IIRBase_ArrayTypeDefinition *node;
      int index, max_index;

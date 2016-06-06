@@ -29,7 +29,7 @@
 #include "savant.hh"
 
 IIRBase_ConcurrentAssertionStatement::IIRBase_ConcurrentAssertionStatement(){
-  set_postponed( FALSE );
+  set_postponed( false );
   set_assertion_condition( NULL );
   set_report_expression( NULL );
   set_severity_expression( NULL );

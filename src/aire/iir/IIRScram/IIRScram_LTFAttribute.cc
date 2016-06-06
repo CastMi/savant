@@ -51,7 +51,7 @@ IIRScram_LTFAttribute::_get_subtype() {
   IIRScram_Declaration *current_decl;
   current_decl = prefix_decls->getElement();
   while( current_decl != NULL ) {
-    if( current_decl->_is_quantity() == FALSE ) {
+    if( current_decl->_is_quantity() == false ) {
       prefix_decls->remove( current_decl );
     }
     current_decl = prefix_decls->getNextElement();

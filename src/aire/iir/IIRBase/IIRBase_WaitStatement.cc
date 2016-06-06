@@ -75,7 +75,7 @@ IIRBase_WaitStatement::set_sensitivity_list(IIR_DesignatorList *new_sensitivity_
 
 IIR_Boolean
 IIRBase_WaitStatement::is_above_attribute_found() {
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
 
   retval = retval || get_sensitivity_list()->is_above_attribute_found();
 

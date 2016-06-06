@@ -152,7 +152,7 @@ IIRBase_BranchQuantityDeclaration::_is_across_quantity() {
     return TRUE;
   }
   else {
-    return FALSE;
+    return false;
   }
 }
 

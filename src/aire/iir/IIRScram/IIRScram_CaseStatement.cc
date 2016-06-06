@@ -84,7 +84,7 @@ IIRScram_CaseStatement::_handle_reconciliation( savant::set<IIRScram_TypeDefinit
 IIR_Boolean 
 IIRScram_CaseStatement::_type_check_return_statements(savant::set<IIRScram_TypeDefinition> *context_set, 
                                                       IIRScram_SubprogramDeclaration *subprogram_decl ){
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   
   IIRScram_CaseStatementAlternative *alternative;
   alternative = dynamic_cast<IIRScram_CaseStatementAlternative *>(get_case_statement_alternatives()->first());

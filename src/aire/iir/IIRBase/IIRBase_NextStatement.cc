@@ -63,7 +63,7 @@ IIRBase_NextStatement::get_condition() {
 
 IIR_Boolean
 IIRBase_NextStatement::is_above_attribute_found() {
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   if(get_condition() != NULL ) {
     retval = retval || get_condition()->is_above_attribute_found();
   }

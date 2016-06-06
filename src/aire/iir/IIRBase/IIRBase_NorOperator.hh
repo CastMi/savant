@@ -42,7 +42,7 @@ public:
   Precedence  get_precedence();
   IIR_Boolean is_logical_operator(){ return TRUE; }
   bool is_associative(IIR_Kind);
-  bool is_left_associative(){ return FALSE; }
+  bool is_left_associative(){ return false; }
 
 protected:
   

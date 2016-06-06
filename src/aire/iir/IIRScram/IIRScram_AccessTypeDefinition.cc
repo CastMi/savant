@@ -42,7 +42,7 @@ IIRScram_AccessTypeDefinition::_designates_incomplete_type() {
   if(  type != NULL && type->is_incomplete_type_definition() == TRUE ){
     return TRUE;
   } else {
-    return FALSE;
+    return false;
   }
 }
 
@@ -125,7 +125,7 @@ IIRScram_AccessTypeDefinition::_construct_new_subtype( IIRScram_Name            
   IIRScram_AccessSubtypeDefinition *retval = new IIRScram_AccessSubtypeDefinition();
   IIRScram_TypeDefinition *old_type = _get_designated_type();
 
-  if( old_type != NULL && old_type->is_incomplete_type_definition() == FALSE ){
+  if( old_type != NULL && old_type->is_incomplete_type_definition() == false ){
     retval->set_designated_subtype( old_type->_construct_new_subtype( 0, new_constraint) );
   }
   else{

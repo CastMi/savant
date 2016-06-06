@@ -137,7 +137,7 @@ IIRScram_SimpleName::_rval_to_decl(IIRScram_TypeDefinition *my_rval) {
   while( current_decl != NULL ){
     if ( (current_decl->_get_subtype() != NULL  
 	  && current_decl->_get_subtype()->is_compatible( my_rval ) != NULL ) && 
-	  (current_decl->is_subprogram() == FALSE || 
+	  (current_decl->is_subprogram() == false || 
 	   (dynamic_cast<IIRScram_SubprogramDeclaration *>(current_decl))->_num_required_args() == 0 )) {
       possibilities->add( current_decl );
     }
@@ -154,7 +154,7 @@ IIRScram_SimpleName::_rval_to_decl(IIRScram_TypeDefinition *my_rval) {
   if( possibilities->size() == 0 ){
     current_decl = my_decls->getElement();
     while( current_decl != NULL ){
-      if ( current_decl->is_subprogram() == FALSE || 
+      if ( current_decl->is_subprogram() == false || 
 	   (dynamic_cast<IIRScram_SubprogramDeclaration *>(current_decl))->_num_required_args() == 0 ) {
 	possibilities->add( current_decl );
       }

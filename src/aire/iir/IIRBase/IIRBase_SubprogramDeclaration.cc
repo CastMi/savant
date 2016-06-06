@@ -39,7 +39,7 @@ IIRBase_SubprogramDeclaration::IIRBase_SubprogramDeclaration()  :
   subprogram_declarations(0),
   subprogram_body(0),
   attributes(0),
-  my_contains_body(FALSE)
+  my_contains_body(false)
  { }
 
 IIRBase_SubprogramDeclaration::~IIRBase_SubprogramDeclaration() {
@@ -131,7 +131,7 @@ IIRBase_SubprogramDeclaration::is_operator(){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 

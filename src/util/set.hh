@@ -117,7 +117,7 @@ namespace savant {
     if (functor != NULL) {
       IIRScram_Declaration *current = getElement();
       while( current != NULL ){
-        if( (*functor)(current) == FALSE ){
+        if( (*functor)(current) == false ){
         remove( current );
         }
         current = getNextElement();
@@ -132,7 +132,7 @@ namespace savant {
     if (functor != NULL) {
       IIRScram_TypeDefinition *current = getElement();
       while( current != NULL ){
-        if( (*functor)(current) == FALSE ){
+        if( (*functor)(current) == false ){
           remove( current );
         }
         current = getNextElement();

@@ -93,12 +93,12 @@ IIR_Boolean
 IIRBase_WaveformElement::is_resolved(){
   IIR_Boolean retval = TRUE;
 
-  if( get_value() != NULL && get_value()->is_resolved() == FALSE ){
-    retval = FALSE;
+  if( get_value() != NULL && get_value()->is_resolved() == false ){
+    retval = false;
   }
 
-  if( get_time() != NULL && get_time()->is_resolved() == FALSE ){
-    retval = FALSE;
+  if( get_time() != NULL && get_time()->is_resolved() == false ){
+    retval = false;
   }
 
   return retval;

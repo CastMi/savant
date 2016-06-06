@@ -66,12 +66,12 @@ IIR_Boolean
 IIRBase_Aggregate::is_resolved( ){
   IIR_Boolean retval = TRUE;
 
-  if( get_element_association_list()->is_resolved() == FALSE ){
-    retval = FALSE;
+  if( get_element_association_list()->is_resolved() == false ){
+    retval = false;
   }
 
   if( get_subtype() == NULL ){
-    retval = FALSE;
+    retval = false;
   }
 
   return retval;
@@ -86,8 +86,8 @@ IIRBase_Aggregate::is_signal( ){
   ASSERT( is_resolved() == TRUE );
   current_assoc = dynamic_cast<IIR_AssociationElement *>(list->first());
   while( current_assoc != NULL ){
-    if( current_assoc->is_signal() == FALSE ){
-      retval = FALSE;
+    if( current_assoc->is_signal() == false ){
+      retval = false;
     }
     current_assoc = dynamic_cast<IIR_AssociationElement *>(list->successor( current_assoc ));
   }
@@ -104,8 +104,8 @@ IIRBase_Aggregate::is_variable( ){
   ASSERT( is_resolved() == TRUE );
   current_assoc = dynamic_cast<IIR_AssociationElement *>(list->first());
   while( current_assoc != NULL ){
-    if( current_assoc->is_variable() == FALSE ){
-      retval = FALSE;
+    if( current_assoc->is_variable() == false ){
+      retval = false;
     }
     current_assoc = dynamic_cast<IIR_AssociationElement *>(list->successor( current_assoc ));
   }

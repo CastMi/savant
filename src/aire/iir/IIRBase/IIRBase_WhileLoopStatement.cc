@@ -49,7 +49,7 @@ IIRBase_WhileLoopStatement::get_while_condition() {
 
 IIR_Boolean
 IIRBase_WhileLoopStatement::is_above_attribute_found() {
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   if(get_while_condition() != NULL) {
     retval = retval || get_while_condition()->is_above_attribute_found();
   }

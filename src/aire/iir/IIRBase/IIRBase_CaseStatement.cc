@@ -82,18 +82,18 @@ IIRBase_CaseStatement::convert_tree(plugin_class_factory *factory) {
 IIR_Boolean
 IIRBase_CaseStatement::is_resolved(){
   IIR_Boolean retval = TRUE;
-  if( get_expression()->is_resolved() == FALSE ){
-    retval = FALSE;
+  if( get_expression()->is_resolved() == false ){
+    retval = false;
   }
-  if( get_case_statement_alternatives()->is_resolved() == FALSE ){
-    retval = FALSE;
+  if( get_case_statement_alternatives()->is_resolved() == false ){
+    retval = false;
   }
   return retval;
 }
 
 IIR_Boolean
 IIRBase_CaseStatement::is_above_attribute_found() {
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   retval = retval || get_expression()->is_above_attribute_found();
   retval = retval || get_case_statement_alternatives()->is_above_attribute_found();
   return retval;

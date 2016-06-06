@@ -259,5 +259,5 @@ IIRBase_IntegerLiteral::is_negative(){
   if (man[0] == '-') {
     return TRUE;
   }
-  return FALSE;
+  return false;
 }

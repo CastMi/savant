@@ -80,7 +80,7 @@ IIRScram_MonadicOperator::_build_argument_list(){
   IIRScram_AssociationList *retval = new IIRScram_AssociationList;
   //  copy_location( this, retval );
   
-  if( _get_operand()->_is_association() == FALSE ){
+  if( _get_operand()->_is_association() == false ){
     IIRScram_AssociationElementByExpression *new_assoc = new IIRScram_AssociationElementByExpression();
     copy_location( this, new_assoc );
     new_assoc->set_actual( get_operand() );
@@ -109,7 +109,7 @@ IIRScram_MonadicOperator::_is_readable(){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 

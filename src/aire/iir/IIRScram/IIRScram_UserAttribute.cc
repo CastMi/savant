@@ -54,7 +54,7 @@ IIRScram_UserAttribute::_get_subtype(){
 
   ASSERT( _get_suffix() != NULL );
 
-  if( _is_qualified_expression() == FALSE ){
+  if( _is_qualified_expression() == false ){
 
     suffix_rvals = _get_suffix()->_get_rval_set();
     if( suffix_rvals == NULL ){
@@ -188,13 +188,13 @@ IIRScram_UserAttribute::_semantic_transform( savant::set<IIRScram_TypeDefinition
 
 IIR_Boolean 
 IIRScram_UserAttribute::_is_qualified_expression(){
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   // An attribute name can have a suffix that is a simple name, or
   // a suffix that is an indexed name, with a simple name prefix.
   // In either case, the simple name MUST refer to an attribute.
   if( _survived_transformation == TRUE ){
     // Then retval remains false;
-    return FALSE;
+    return false;
   }
   if(_get_prefix()->get_kind() == IIR_SIMPLE_NAME || _get_prefix()->get_kind() == IIR_SELECTED_NAME){
     constraint_functor *functor = new is_type_functor;

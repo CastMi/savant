@@ -51,7 +51,7 @@ IIRScram_ValAttribute::_get_subtype(){
 
 void 
 IIRScram_ValAttribute::_resolve_suffix_special(){
-  if( _get_suffix() != NULL && _get_suffix()->is_resolved() == FALSE ){
+  if( _get_suffix() != NULL && _get_suffix()->is_resolved() == false ){
 
     ASSERT( _get_prefix()->is_resolved() == TRUE );
 

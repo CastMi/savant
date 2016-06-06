@@ -157,7 +157,7 @@ IIRScram_AttributeSpecification::_type_check( IIRScram_DeclarationList * ){
 
 IIR_Boolean 
 IIRScram_AttributeSpecification::_can_be_in_same_region( IIRScram_Declaration *to_check ){
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   if( to_check != 0 && to_check->get_kind() == get_kind() ){
     retval = TRUE;
   }

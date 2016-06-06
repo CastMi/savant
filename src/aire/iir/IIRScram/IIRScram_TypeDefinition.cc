@@ -53,7 +53,7 @@ IIRScram_TypeDefinition::_is_line_type() {
     return ( IIRBase_TextLiteral::cmp(_get_declaration()->_get_declarator(), "line") == 0 );
   }
   else {
-    return FALSE;
+    return false;
   }
 }
 
@@ -146,7 +146,7 @@ IIRScram_TypeDefinition::_is_base_type(IIRScram_TypeDefinition *_base) {
 
     base_type = base_type->_get_resolved_base_type();
   }
-  return FALSE;
+  return false;
 }
 
 IIRScram_TypeDefinition *
@@ -440,7 +440,7 @@ IIRScram_TypeDefinition::_build_implicit_operator( const char *op,
   IIRScram_ConstantInterfaceDeclaration *left = new IIRScram_ConstantInterfaceDeclaration();
   left->set_declarator( IIRScram_Identifier::get("left", strlen("left"), get_design_file()->get_class_factory()) );
   left->set_subtype( dynamic_cast<IIRScram_TypeDefinition *>(left_type ) );
-  left->set_is_visible( FALSE );
+  left->set_is_visible( false );
   new_operator->set_is_implicit( TRUE );
   IIRScram::copy_location( this, left );
   new_operator->get_interface_declarations()->append( left );
@@ -449,7 +449,7 @@ IIRScram_TypeDefinition::_build_implicit_operator( const char *op,
     IIRScram_ConstantInterfaceDeclaration *right = new IIRScram_ConstantInterfaceDeclaration();
     right->set_declarator( IIRScram_Identifier::get("right", strlen("right"), get_design_file()->get_class_factory() ) );
     right->set_subtype( dynamic_cast<IIRScram_TypeDefinition *>(right_type ) );
-    right->set_is_visible( FALSE );
+    right->set_is_visible( false );
     new_operator->set_is_implicit( TRUE );
     IIRScram::copy_location( this, right );
     new_operator->get_interface_declarations()->append( right );

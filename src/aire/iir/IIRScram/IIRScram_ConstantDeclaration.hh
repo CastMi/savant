@@ -41,7 +41,7 @@ public:
   IIR_Boolean is_locally_static_primary();
 
   IIR_Boolean _is_readable(){ return TRUE; }
-  IIR_Boolean _is_writable(){ return FALSE; }
+  IIR_Boolean _is_writable(){ return false; }
   
   IIRScram *_clone();
 

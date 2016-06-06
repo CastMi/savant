@@ -80,19 +80,19 @@ public:
   virtual IIR_Boolean _is_iir_attribute(){ return TRUE; }
   virtual IIR_Boolean _is_attribute(){ return TRUE; }
   virtual IIR_Boolean _is_readable(){ return TRUE; }
-  virtual IIR_Boolean _is_range_attribute(){ return FALSE; }
-  virtual IIR_Boolean _is_signal_attribute(){ return FALSE; }  
-  virtual IIR_Boolean _is_quiet_attribute() { return FALSE; }
-  virtual IIR_Boolean _is_stable_attribute() { return FALSE; }
-  virtual IIR_Boolean _is_transaction_attribute() { return FALSE; }
-  virtual IIR_Boolean _is_event_attribute() { return FALSE; }
-  virtual IIR_Boolean _is_active_attribute() { return FALSE; }
-  virtual IIR_Boolean _is_lastevent_attribute() { return FALSE; }
-  virtual IIR_Boolean _is_lastactive_attribute() { return FALSE; }
-  virtual IIR_Boolean _is_lastvalue_attribute() { return FALSE; }
-  virtual IIR_Boolean _is_driving_attribute() { return FALSE; }
-  virtual IIR_Boolean _is_drivingvalue_attribute() { return FALSE; }
-  virtual IIR_Boolean _is_delayed_attribute() { return FALSE; }
+  virtual IIR_Boolean _is_range_attribute(){ return false; }
+  virtual IIR_Boolean _is_signal_attribute(){ return false; }  
+  virtual IIR_Boolean _is_quiet_attribute() { return false; }
+  virtual IIR_Boolean _is_stable_attribute() { return false; }
+  virtual IIR_Boolean _is_transaction_attribute() { return false; }
+  virtual IIR_Boolean _is_event_attribute() { return false; }
+  virtual IIR_Boolean _is_active_attribute() { return false; }
+  virtual IIR_Boolean _is_lastevent_attribute() { return false; }
+  virtual IIR_Boolean _is_lastactive_attribute() { return false; }
+  virtual IIR_Boolean _is_lastvalue_attribute() { return false; }
+  virtual IIR_Boolean _is_driving_attribute() { return false; }
+  virtual IIR_Boolean _is_drivingvalue_attribute() { return false; }
+  virtual IIR_Boolean _is_delayed_attribute() { return false; }
 
   /** If you hit this, an attribute has an unimplemented clone(). */
   virtual IIRScram_Attribute *_clone() override;
@@ -117,7 +117,7 @@ private:
   void _resolve_prefix();
   void _resolve_suffix();
 
-  virtual IIR_Boolean _need_to_process_prefix_prefix(){ return FALSE; }
+  virtual IIR_Boolean _need_to_process_prefix_prefix(){ return false; }
 };
 
 #endif

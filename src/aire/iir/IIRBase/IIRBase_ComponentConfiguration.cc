@@ -146,13 +146,13 @@ IIRBase_ComponentConfiguration::convert_tree(plugin_class_factory *factory) {
 IIR_Boolean 
 IIRBase_ComponentConfiguration::is_resolved(){
   IIR_Boolean retval = TRUE;
-  if( (get_component_name() != NULL && get_component_name()->is_resolved() == FALSE) ||
-      (get_entity_aspect() != NULL && get_entity_aspect()->is_resolved() == FALSE) ||
-      (get_block_configuration() != NULL && get_block_configuration()->is_resolved() == FALSE) ||
-      get_instantiation_list()->is_resolved() == FALSE ||
-      get_generic_map_aspect()->is_resolved() == FALSE ||
-      get_port_map_aspect()->is_resolved() == FALSE ){
-    retval = FALSE;
+  if( (get_component_name() != NULL && get_component_name()->is_resolved() == false) ||
+      (get_entity_aspect() != NULL && get_entity_aspect()->is_resolved() == false) ||
+      (get_block_configuration() != NULL && get_block_configuration()->is_resolved() == false) ||
+      get_instantiation_list()->is_resolved() == false ||
+      get_generic_map_aspect()->is_resolved() == false ||
+      get_port_map_aspect()->is_resolved() == false ){
+    retval = false;
   }
   return retval;
 }

@@ -36,7 +36,7 @@
 #include "IIRScram_Identifier.hh"
 
 IIRScram_FunctionCall::IIRScram_FunctionCall() :
-  has_been_type_checked( FALSE )
+  has_been_type_checked( false )
 {
   set_parameter_association_list(new IIRScram_AssociationList());
 }
@@ -64,12 +64,12 @@ IIRScram_FunctionCall::_build_function_call( IIRScram_SubprogramDeclaration *fun
 // Then, this function call MUST have ONLY one argument.
 void 
 IIRScram_FunctionCall::_type_check( savant::set<IIRScram_TypeDefinition> * ){
-  if (has_been_type_checked  == FALSE) {
+  if (has_been_type_checked  == false) {
     has_been_type_checked = TRUE;
     ASSERT(_get_implementation() != NULL);
     IIRScram_SubprogramDeclaration *my_decl = _get_implementation();
   
-    if (_get_parameter_association_list()->is_resolved() == FALSE) {
+    if (_get_parameter_association_list()->is_resolved() == false) {
       _get_parameter_association_list()->_resolve_and_order(my_decl->_get_interface_declarations(),
 							    NULL,
 							    this);

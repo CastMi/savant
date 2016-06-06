@@ -75,7 +75,7 @@ IIRBase_IndexedName::is_resolved() const {
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 

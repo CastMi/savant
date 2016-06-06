@@ -78,7 +78,7 @@ IIRBase_AccessTypeDefinition::is_scalar_type() const {
     return type->is_scalar_type();
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -89,7 +89,7 @@ IIRBase_AccessTypeDefinition::is_array_type() const {
     return type->is_array_type();
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -100,7 +100,7 @@ IIRBase_AccessTypeDefinition::is_unconstrained_array_type() {
     return type->is_unconstrained_array_type();
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -111,7 +111,7 @@ IIRBase_AccessTypeDefinition::is_record_type() const {
     return type->is_record_type();
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 
@@ -161,7 +161,7 @@ IIRBase_AccessTypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
   IIRBase_TypeDefinition *type = dynamic_cast<IIRBase_TypeDefinition *>(get_designated_type());
   ASSERT(type == NULL);
 
-  if ( type->is_anonymous() == FALSE ){
+  if ( type->is_anonymous() == false ){
     type->get_declaration()->get_declarator()->publish_vhdl(vhdl_out);
   }
   else {

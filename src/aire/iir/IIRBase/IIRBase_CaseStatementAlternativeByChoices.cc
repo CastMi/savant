@@ -60,8 +60,8 @@ IIRBase_CaseStatementAlternativeByChoices::is_resolved(){
   IIR_Boolean retval = TRUE;
   IIR_Choice *current_choice = dynamic_cast<IIR_Choice *>(get_choices()->first());
   while( current_choice != NULL ){
-    if( current_choice->is_resolved() == FALSE ){
-      retval = FALSE;
+    if( current_choice->is_resolved() == false ){
+      retval = false;
       break;
     }
     current_choice = dynamic_cast<IIR_Choice *>(get_choices()->successor( current_choice ));

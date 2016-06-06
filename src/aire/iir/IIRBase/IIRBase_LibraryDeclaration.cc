@@ -112,7 +112,7 @@ IIRBase_LibraryDeclaration::find_declarations( IIR_Name *to_find){
   }
 
   entity_decl = 
-    dynamic_cast<IIR_EntityDeclaration *>(library_manager::instance()->lookup_entity( FALSE,
+    dynamic_cast<IIR_EntityDeclaration *>(library_manager::instance()->lookup_entity( false,
                                                                                       to_find,
                                                                                       dynamic_cast<IIR_LibraryDeclaration *>(this),
                                                                                       get_design_file()->get_standard_package(),
@@ -123,7 +123,7 @@ IIRBase_LibraryDeclaration::find_declarations( IIR_Name *to_find){
   }
 
   package_decl = 
-    dynamic_cast<IIR_PackageDeclaration *>(library_manager::instance()->lookup_package( FALSE,
+    dynamic_cast<IIR_PackageDeclaration *>(library_manager::instance()->lookup_package( false,
                                                                                         to_find,
                                                                                         dynamic_cast<IIR_LibraryDeclaration *>(this),
                                                                                         get_design_file()->get_standard_package(),
@@ -134,7 +134,7 @@ IIRBase_LibraryDeclaration::find_declarations( IIR_Name *to_find){
   }
   
   configuration_decl = 
-    dynamic_cast<IIR_ConfigurationDeclaration *>(library_manager::instance()->lookup_configuration( FALSE, 
+    dynamic_cast<IIR_ConfigurationDeclaration *>(library_manager::instance()->lookup_configuration( false, 
                                                                                                     to_find, 
                                                                                                     dynamic_cast<IIR_LibraryDeclaration *>(this),
                                                                                                     get_design_file()->get_standard_package(),

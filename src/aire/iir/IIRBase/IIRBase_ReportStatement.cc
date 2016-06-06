@@ -61,7 +61,7 @@ IIRBase_ReportStatement::get_severity_expression() {
 
 IIR_Boolean
 IIRBase_ReportStatement::is_above_attribute_found() {
-  IIR_Boolean retval = FALSE;
+  IIR_Boolean retval = false;
   retval = retval || get_report_expression()->is_above_attribute_found();
   if(get_severity_expression() != NULL) {
     retval = retval || get_severity_expression()->is_above_attribute_found();

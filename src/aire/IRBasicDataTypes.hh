@@ -39,7 +39,6 @@ using std::ostream;
 
 #ifndef TRUE
 #define TRUE true
-#define FALSE false
 #endif
 
 typedef bool      IIR_Boolean;

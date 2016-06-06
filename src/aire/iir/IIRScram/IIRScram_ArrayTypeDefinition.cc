@@ -53,7 +53,7 @@ IIRScram_ArrayTypeDefinition::get_num_indexes() {
   IIRScram_TypeDefinition *current_subtype = _get_element_subtype();
   ASSERT(current_subtype != NULL);
   while( current_subtype->is_array_type() == TRUE
-	 && current_subtype->is_element() == FALSE ){
+	 && current_subtype->is_element() == false ){
     num_indexes++;
     current_subtype = current_subtype->_get_element_subtype();
     ASSERT(current_subtype != NULL);
@@ -83,7 +83,7 @@ IIRScram_ArrayTypeDefinition::_index_constrain_array( IIRScram_ScalarTypeDefinit
   IIRScram_TypeDefinition *current_index_type = _get_resolved_index_subtype(); 
   
   current_index_type = current_index_type->_construct_new_subtype( NULL, constraint );
-  if( constraint->is_subtype() == FALSE && constraint->is_anonymous() == FALSE ){
+  if( constraint->is_subtype() == false && constraint->is_anonymous() == false ){
     current_index_type->set_type_mark( constraint );
   }
   else{

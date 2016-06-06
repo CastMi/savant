@@ -80,7 +80,7 @@ IIRBase_PhysicalLiteral::convert_tree(plugin_class_factory *factory) {
 IIR_Boolean
 IIRBase_PhysicalLiteral::is_resolved(){
   if( get_subtype() == NULL ){
-    return FALSE;
+    return false;
   }
   else{
     return TRUE;

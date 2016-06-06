@@ -86,7 +86,7 @@ IIRBase_AssociationElement::convert_tree(plugin_class_factory *factory) {
 IIR_Boolean 
 IIRBase_AssociationElement::is_named(){
   // If the formal isn't NULL we're named, unless we're by others.
-  return get_formal() != NULL && is_by_others() == FALSE ;
+  return get_formal() != NULL && is_by_others() == false ;
 }
 
 IIR_Boolean
@@ -95,7 +95,7 @@ IIRBase_AssociationElement::is_by_others(){
     return TRUE;
   }
   else{
-    return FALSE;
+    return false;
   }
 }
 

@@ -116,8 +116,8 @@ IIRBase_RecordTypeDefinition::is_locally_static(){
   IIR_ElementDeclaration *current_decl = dynamic_cast<IIR_ElementDeclaration *>(get_element_declarations()->first());
   while( current_decl != NULL ){
     ASSERT( current_decl->get_subtype() != NULL );
-    if( current_decl->get_subtype()->is_locally_static() == FALSE ){
-      retval = FALSE;
+    if( current_decl->get_subtype()->is_locally_static() == false ){
+      retval = false;
       break;
     }
     current_decl = dynamic_cast<IIR_ElementDeclaration *>(get_element_declarations()->successor( current_decl ));

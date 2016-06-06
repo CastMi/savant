@@ -91,8 +91,8 @@ IIRScram_IndexedName::_my_type_given_array_prefix_type( IIRScram_TypeDefinition 
     if( suffix_decls != NULL ){
       IIRScram_Declaration *current_decl = suffix_decls->getElement();
       while( current_decl != NULL ){
-	if( current_decl->is_type() == FALSE ||
-	    current_decl->is_scalar_type() == FALSE ){
+	if( current_decl->is_type() == false ||
+	    current_decl->is_scalar_type() == false ){
 	  suffix_decls->remove( current_decl );
 	}
 	current_decl = suffix_decls->getNextElement();
@@ -259,7 +259,7 @@ IIRScram_IndexedName::_return_type_given_prefix_declaration( IIRScram_Declaratio
     //     }
     //     else{
     // Let's try to determine the exact function being called.
-    IIR_Boolean add_rval = FALSE;
+    IIR_Boolean add_rval = false;
     if( _get_suffix()->get_kind() == IIR_ASSOCIATION_LIST ){
       IIRScram_AssociationList *as_list = dynamic_cast<IIRScram_AssociationList *>(_get_suffix());
       add_rval = as_list->_check_valid_arguments( as_subprogram->_get_interface_declarations(), NULL);
@@ -472,7 +472,7 @@ IIRScram_IndexedName::_is_array_access(){
   if( (_get_suffix()->is_scalar_type() == TRUE && 
        _get_suffix()->_is_iir_type_definition() == TRUE) || 
       (_get_suffix()->is_scalar_type() == TRUE && _get_suffix()->is_type() == TRUE) ){
-    return FALSE;
+    return false;
   }
   else{
     return TRUE;
@@ -497,7 +497,7 @@ IIRScram_IndexedName::_process_as_function_call( savant::set<IIRScram_TypeDefini
     IIR_Boolean need_to_delete;
     if( _get_suffix()->get_kind() == IIR_ASSOCIATION_LIST ){
       arg_list = dynamic_cast<IIRScram_AssociationList *>(_get_suffix() );
-      need_to_delete = FALSE;
+      need_to_delete = false;
     }
     else{
       arg_list = new IIRScram_AssociationList();
@@ -577,7 +577,7 @@ IIRScram_IndexedName::_get_array_prefixes(){
   
   IIRScram_TypeDefinition *current_prefix_rval = prefix_rvals->getElement();
   while( current_prefix_rval != NULL ){
-    if( current_prefix_rval->is_array_type() == FALSE || 
+    if( current_prefix_rval->is_array_type() == false || 
 	current_prefix_rval->get_num_indexes() < num_indexes ){
       prefix_rvals->remove( current_prefix_rval );
     }
@@ -674,7 +674,7 @@ IIRScram_IndexedName::_process_as_slice( savant::set<IIRScram_TypeDefinition> *c
 
   current_prefix_type = prefix_rvals->getElement();
   while( current_prefix_type != NULL ){
-    bool one_matched = FALSE;
+    bool one_matched = false;
     IIRScram_TypeDefinition *to_consider;
     if( current_prefix_type->is_access_type() == TRUE ){
       to_consider = (dynamic_cast<IIRScram_AccessTypeDefinition *>(current_prefix_type))->_get_designated_type();
@@ -692,7 +692,7 @@ IIRScram_IndexedName::_process_as_slice( savant::set<IIRScram_TypeDefinition> *c
       current_context_type = dynamic_cast<IIRScram_TypeDefinition *>(context_set->getNextElement());
     }
 
-    if( one_matched == FALSE ){
+    if( one_matched == false ){
       prefix_rvals->remove( current_prefix_type );
     }
     current_prefix_type = prefix_rvals->getNextElement();
@@ -724,8 +724,8 @@ IIRScram_IndexedName::_process_as_slice( savant::set<IIRScram_TypeDefinition> *c
     else{
       IIRScram_Declaration *current_decl = suffix_decls->getElement();
       while( current_decl != NULL ){
-	if( current_decl->is_type() == FALSE ||
-	    current_decl->is_scalar_type() == FALSE ){
+	if( current_decl->is_type() == false ||
+	    current_decl->is_scalar_type() == false ){
 	  suffix_decls->remove( current_decl );
 	}
 	current_decl = suffix_decls->getNextElement();
@@ -775,7 +775,7 @@ IIRScram_IndexedName::_process_as_array( savant::set<IIRScram_TypeDefinition> *c
   // Now, we need to match up possible array types and our context set.
   IIRScram_TypeDefinition *current_array_type = prefix_rvals->getElement();
   while( current_array_type != NULL ){
-    IIR_Boolean one_matched = FALSE;
+    IIR_Boolean one_matched = false;
     IIRScram_TypeDefinition *current_context_type = context_set->getElement();
     while( current_context_type != NULL ){
       if( current_array_type->_get_type_of_element( get_num_indexes() )->is_compatible( current_context_type ) != NULL ){
@@ -785,7 +785,7 @@ IIRScram_IndexedName::_process_as_array( savant::set<IIRScram_TypeDefinition> *c
       current_context_type = context_set->getNextElement();
     }
     
-    if( one_matched == FALSE ){
+    if( one_matched == false ){
       prefix_rvals->remove( current_array_type );
     }
 
@@ -825,7 +825,7 @@ IIRScram_IndexedName::_process_as_array( savant::set<IIRScram_TypeDefinition> *c
     else{
       for( i = 0 ; i < get_num_indexes(); i++ ){
 	index_type = current_element_type->_get_resolved_index_subtype( );
-	ASSERT( index_type->is_element() == FALSE );
+	ASSERT( index_type->is_element() == false );
 	set_index( i + 1, _get_index( i + 1 )->_semantic_transform( index_type ) );
 	_get_index( i + 1 )->_type_check( index_type );
 	set_index( i + 1, _get_index( i + 1 )->_rval_to_decl( index_type ) );      
@@ -1056,7 +1056,7 @@ IIRScram_IndexedName::_rval_to_decl( IIRScram_Declaration *declaration, IIRScram
 	if( return_type == my_rval ){
 	  set_prefix( prefix_decl );
 	  // The suffix might be a slice or something already resolved...
-	  if( _get_suffix()->is_resolved() == FALSE ){
+	  if( _get_suffix()->is_resolved() == false ){
 	    // We definitely should be array valued, as function calls, type conversions,
 	    // etc should have been semantic transformed away by now...
 	    IIRScram_TypeDefinition *prefix_rval = prefix_decl->_get_subtype();
@@ -1204,7 +1204,7 @@ IIRScram_IndexedName::_clone() {
 
   clone->_been_transformed = _been_transformed;
   clone->_my_rval_set = 0;
-  clone->_have_rval_set = FALSE;
+  clone->_have_rval_set = false;
 
   return clone;
 }

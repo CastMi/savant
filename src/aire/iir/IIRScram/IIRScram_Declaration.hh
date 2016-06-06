@@ -45,13 +45,13 @@ public:
   virtual ~IIRScram_Declaration();
   
   IIR_Boolean _is_iir_declaration() { return TRUE; }
-  virtual IIR_Boolean _is_overloadable() { return FALSE; }
-  virtual IIR_Boolean _is_specification() { return FALSE; }
-  virtual IIR_Boolean _is_implicit_operator(){ return FALSE; }
-  virtual IIR_Boolean _is_enumeration_literal() { return FALSE; }
+  virtual IIR_Boolean _is_overloadable() { return false; }
+  virtual IIR_Boolean _is_specification() { return false; }
+  virtual IIR_Boolean _is_implicit_operator(){ return false; }
+  virtual IIR_Boolean _is_enumeration_literal() { return false; }
 
   /** This method returns TRUE if this declaration is a homograph of the one
-      passed in, and FALSE otherwise. */
+      passed in, and false otherwise. */
   virtual IIR_Boolean _is_homograph_of( IIRScram_Declaration * );
   
   /** There are special circumstances that two declarations that _are_
@@ -60,11 +60,11 @@ public:
       and it's complete type.  These are mainly due to implentation issues
       and AIRE specific quirks.  The following method tells us if these two
       homographs can be in the same region or not. */
-  virtual IIR_Boolean _can_be_in_same_region( IIRScram_Declaration * ){ return FALSE; }
+  virtual IIR_Boolean _can_be_in_same_region( IIRScram_Declaration * ){ return false; }
 
   virtual IIR_Boolean _is_physical_type();
 
-  virtual IIR_Boolean _designates_incomplete_type(){ return FALSE; }
+  virtual IIR_Boolean _designates_incomplete_type(){ return false; }
 
   virtual IIRScram_PortList *_get_port_list(){ return NULL; }
   virtual IIRScram_GenericList *_get_generic_list(){ return NULL; }
@@ -72,7 +72,7 @@ public:
 
   //ams additions
   /** This function tells if a quantity is an across-quantity */
-  virtual IIR_Boolean _is_across_quantity() { return FALSE; }
+  virtual IIR_Boolean _is_across_quantity() { return false; }
 
   /** This method returns a pointer to a cstringolding the "type" of the
       declaration.  For instance, an entity declaration would return
@@ -143,10 +143,10 @@ public:
       attribute. */
   IIRScram_Attribute *_get_attribute_name();
   
-  virtual IIR_Boolean _is_terminal() { return FALSE; }
-  virtual IIR_Boolean _is_quantity() { return FALSE; }
+  virtual IIR_Boolean _is_terminal() { return false; }
+  virtual IIR_Boolean _is_quantity() { return false; }
 
-  virtual IIR_Boolean   _is_branchQ()  { return FALSE; }
+  virtual IIR_Boolean   _is_branchQ()  { return false; }
 
   // Helper functions
   IIRScram              *_get_value();

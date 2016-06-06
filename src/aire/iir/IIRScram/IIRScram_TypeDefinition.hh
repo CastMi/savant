@@ -40,7 +40,7 @@ public:
   virtual ~IIRScram_TypeDefinition();
 
   virtual IIR_Boolean _is_line_type();
-  virtual IIR_Boolean _designates_incomplete_type(){ return FALSE; }
+  virtual IIR_Boolean _designates_incomplete_type(){ return false; }
 
   virtual IIR_Boolean _is_iir_type_definition() { return TRUE; }
   
