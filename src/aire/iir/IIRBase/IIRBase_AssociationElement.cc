@@ -92,7 +92,7 @@ IIRBase_AssociationElement::is_named(){
 IIR_Boolean
 IIRBase_AssociationElement::is_by_others(){
   if( get_actual() != NULL && get_actual()->get_kind() == IIR_OTHERS_INITIALIZATION ){
-    return TRUE;
+    return true;
   }
   else{
     return false;

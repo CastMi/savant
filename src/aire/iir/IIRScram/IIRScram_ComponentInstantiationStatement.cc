@@ -99,16 +99,16 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_entity(
     entity_name = as_indexed_name->_get_prefix();
     arch_name = as_indexed_name->_get_suffix();
       
-    ASSERT( entity_name->_is_iir_name() == TRUE );
-    entity_decl = dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( TRUE, 
+    ASSERT( entity_name->_is_iir_name() == true );
+    entity_decl = dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( true, 
                                                                                                          dynamic_cast<IIRScram_Name *>(entity_name),
                                                                                                          _get_work_library(),
                                                                                                          get_design_file()->get_standard_package(),
                                                                                                          get_design_file()->get_class_factory()));
     if( entity_decl != NULL ){
-      ASSERT( arch_name->_is_iir_name() == TRUE );
+      ASSERT( arch_name->_is_iir_name() == true );
       IIRScram_ArchitectureDeclaration *arch_decl = 
-	dynamic_cast<IIRScram_ArchitectureDeclaration *>(library_manager::instance()->lookup_architecture( TRUE,
+	dynamic_cast<IIRScram_ArchitectureDeclaration *>(library_manager::instance()->lookup_architecture( true,
                                                                                                            entity_decl,
                                                                                                            dynamic_cast<IIRScram_Name *>(arch_name)));
       
@@ -119,7 +119,7 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_entity(
 	as_indexed_name->set_prefix( entity_name->_decl_to_decl( entity_decl ) );
 	as_indexed_name->set_suffix( arch_name->_decl_to_decl( arch_decl ) );
 	
-	ASSERT( as_indexed_name->is_resolved() == TRUE );
+	ASSERT( as_indexed_name->is_resolved() == true );
 	set_instantiated_unit( as_indexed_name );
       }
     }
@@ -129,8 +129,8 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_entity(
   }
   else{
     entity_name = _get_instantiated_unit();
-    ASSERT( entity_name->_is_iir_name() == TRUE );
-    entity_decl = dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( TRUE, 
+    ASSERT( entity_name->_is_iir_name() == true );
+    entity_decl = dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( true, 
                                                                                                          dynamic_cast<IIRScram_Name *>(entity_name),
                                                                                                          _get_work_library(),
                                                                                                          get_design_file()->get_standard_package(),
@@ -234,7 +234,7 @@ void
 IIRScram_ComponentInstantiationStatement::_type_check(){
   // So, the instantiated unit should be resolved, unless there was an error.
 
-  if( _get_instantiated_unit() != NULL && _get_instantiated_unit()->is_resolved() == TRUE ){
+  if( _get_instantiated_unit() != NULL && _get_instantiated_unit()->is_resolved() == true ){
     // The locals are in "get_instantiated_unit()->_get_generic_list()"
     _get_generic_map_aspect()->_resolve_and_order( _get_instantiated_unit()->_get_generic_list(),
 						   0, this );

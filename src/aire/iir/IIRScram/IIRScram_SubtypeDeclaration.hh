@@ -49,8 +49,8 @@ public:
 
   IIRScram_AttributeSpecificationList* _get_attribute_specification_list();
 
-  IIR_Boolean is_subtype_declaration(){ return TRUE; }
-  IIR_Boolean _is_readable(){ return TRUE; }
+  IIR_Boolean is_subtype_declaration(){ return true; }
+  IIR_Boolean _is_readable(){ return true; }
   virtual IIRScram *_clone();
 
   virtual void _type_check();

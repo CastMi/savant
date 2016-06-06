@@ -97,8 +97,8 @@ IIRBase_TypeDeclaration::is_locally_static(){
 
 IIR_Boolean
 IIRBase_TypeDeclaration::is_incomplete_type_declaration(){
-  if( get_type() == NULL || get_type()->is_incomplete_type_definition() == TRUE ){
-    return TRUE;
+  if( get_type() == NULL || get_type()->is_incomplete_type_definition() == true ){
+    return true;
   }
   else{
     return false;

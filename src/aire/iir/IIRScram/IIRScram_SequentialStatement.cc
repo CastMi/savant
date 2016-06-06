@@ -59,14 +59,14 @@ IIRScram_SequentialStatement::_type_check_return_statements(savant::set<IIRScram
     if( current_statement->get_kind() == IIR_RETURN_STATEMENT ){
       (dynamic_cast<IIRScram_ReturnStatement *>(current_statement))->set_enclosing_subprogram( subprogram_decl );
       (dynamic_cast<IIRScram_ReturnStatement *>(current_statement))->_type_check( context_set );
-      retval = TRUE;
+      retval = true;
     }
-    else if( current_statement->has_statement_list() == TRUE ){
+    else if( current_statement->has_statement_list() == true ){
       IIR_Boolean found_one;
       found_one = 
 	current_statement->_type_check_return_statements( context_set, subprogram_decl );
-      if( found_one == TRUE ){
-	retval = TRUE;
+      if( found_one == true ){
+	retval = true;
       }
     }
     current_statement = dynamic_cast<IIRScram_SequentialStatement *>(list->successor( current_statement ));
@@ -83,7 +83,7 @@ IIRScram_SequentialStatement::_clone() {
 
 void
 IIRScram_SequentialStatement::_clone( IIRScram *clone ){
-  ASSERT( clone->_is_iir_sequential_statement() == TRUE );
+  ASSERT( clone->_is_iir_sequential_statement() == true );
 
   IIRScram::_clone( clone );
   // clone IIRScram_SequentialStatement info

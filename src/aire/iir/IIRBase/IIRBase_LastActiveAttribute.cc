@@ -43,8 +43,8 @@ IIRBase_LastActiveAttribute::build_attribute_name() {
 void 
 IIRBase_LastActiveAttribute::publish_vhdl(ostream &vhdl_out) {
   ASSERT( get_prefix() != NULL );
-  ASSERT(get_prefix()->is_resolved() == TRUE );
-  ASSERT(get_prefix()->is_signal() == TRUE );
+  ASSERT(get_prefix()->is_resolved() == true );
+  ASSERT(get_prefix()->is_signal() == true );
   get_prefix()->publish_vhdl(vhdl_out);
   vhdl_out << "'LAST_ACTIVE ";
 }

@@ -111,7 +111,7 @@ IIRBase_RecordTypeDefinition::get_element_subtype( int index ){
 
 IIR_Boolean
 IIRBase_RecordTypeDefinition::is_locally_static(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
   IIR_ElementDeclaration *current_decl = dynamic_cast<IIR_ElementDeclaration *>(get_element_declarations()->first());
   while( current_decl != NULL ){

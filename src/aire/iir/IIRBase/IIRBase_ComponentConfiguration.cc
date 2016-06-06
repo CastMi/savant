@@ -145,7 +145,7 @@ IIRBase_ComponentConfiguration::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_ComponentConfiguration::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
   if( (get_component_name() != NULL && get_component_name()->is_resolved() == false) ||
       (get_entity_aspect() != NULL && get_entity_aspect()->is_resolved() == false) ||
       (get_block_configuration() != NULL && get_block_configuration()->is_resolved() == false) ||
@@ -159,7 +159,7 @@ IIRBase_ComponentConfiguration::is_resolved(){
 
 void 
 IIRBase_ComponentConfiguration::publish_vhdl(ostream &vhdl_out) {
-  ASSERT(get_component_name()->is_resolved() == TRUE);
+  ASSERT(get_component_name()->is_resolved() == true);
   vhdl_out << " for ";
   get_instantiation_list()->publish_vhdl(vhdl_out);
   vhdl_out << " : ";

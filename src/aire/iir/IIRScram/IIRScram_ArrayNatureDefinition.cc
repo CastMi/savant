@@ -89,7 +89,7 @@ IIRScram_ArrayNatureDefinition::_construct_constrained( IIRScram_ScalarTypeDefin
   base_index_type->_set_resolution_function( index_subtype->_get_resolution_function() );
   base_index_type->set_type_mark( index_subtype );
   base_index_type->set_declaration( index_subtype->_get_declaration() );
-  ASSERT( base_index_type->is_scalar_type_definition() == TRUE );
+  ASSERT( base_index_type->is_scalar_type_definition() == true );
   base_type->set_index_subtype( dynamic_cast<IIRScram_ScalarTypeDefinition *>(base_index_type) );
   base_type->_get_resolved_index_subtype()->set_type_mark( index_subtype );
   base_type->_set_design_file( declaration->_get_design_file());  
@@ -123,10 +123,10 @@ IIRScram_ArrayNatureDefinition::_index_constrain_array( IIRScram_ScalarTypeDefin
   retval = new IIRScram_ArraySubnatureDefinition();
   copy_location( constraint, retval );
 
-  ASSERT( current_index_type->is_scalar_type() == TRUE );
+  ASSERT( current_index_type->is_scalar_type() == true );
   retval->set_index_subtype( dynamic_cast<IIRScram_ScalarTypeDefinition *>(current_index_type) );
 
-  if( is_subtype() == TRUE ){
+  if( is_subtype() == true ){
     retval->set_base_type( get_base_type() );
   }
   else{
@@ -151,7 +151,7 @@ IIRScram_ArrayNatureDefinition::_construct_new_subtype( IIRScram_Name *,
 
   if( retval == NULL ){
     retval = _get_new_subtype();
-    ASSERT( retval->_is_iir_array_type_definition() == TRUE );
+    ASSERT( retval->_is_iir_array_type_definition() == true );
     _clone( dynamic_cast<IIRScram_ArrayNatureDefinition *>(retval) );
     if( is_subtype() ){
       retval->set_base_type( get_base_type() );
@@ -190,7 +190,7 @@ IIRScram_ArrayNatureDefinition::_clone(){
 
 void
 IIRScram_ArrayNatureDefinition::_clone( IIRScram *my_clone ){
-  ASSERT( my_clone->_is_iir_array_type_definition() == TRUE );
+  ASSERT( my_clone->_is_iir_array_type_definition() == true );
   IIRScram_ArrayNatureDefinition *as_array_type = dynamic_cast<IIRScram_ArrayNatureDefinition *>(my_clone);
 
   as_array_type->set_index_subtype( get_index_subtype() );
@@ -205,7 +205,7 @@ IIRScram_ArrayNatureDefinition::get_num_indexes() {
 
   IIRScram_TypeDefinition *current_subtype = _get_element_subtype();
   ASSERT(current_subtype != NULL);
-  while( current_subtype->is_array_type() == TRUE
+  while( current_subtype->is_array_type() == true
          && current_subtype->is_element() == false ){
     num_indexes++;
     current_subtype = current_subtype->_get_element_subtype();

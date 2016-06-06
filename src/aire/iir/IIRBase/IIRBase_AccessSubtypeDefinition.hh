@@ -48,7 +48,7 @@ public:
   IIRBase_AccessSubtypeDefinition *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_subtype();
-  IIR_Boolean is_locally_static(){ return TRUE; }
+  IIR_Boolean is_locally_static(){ return true; }
 
   void publish_vhdl_decl(ostream &);
 protected:

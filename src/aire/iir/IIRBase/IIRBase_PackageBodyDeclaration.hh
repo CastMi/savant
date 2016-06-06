@@ -46,7 +46,7 @@ public:
   IIR *convert_tree(plugin_class_factory *factory);
   
   declaration_type get_declaration_type();
-  IIR_Boolean is_secondary_unit(){ return TRUE; }
+  IIR_Boolean is_secondary_unit(){ return true; }
 
   void publish_vhdl_decl(ostream &);
 protected:

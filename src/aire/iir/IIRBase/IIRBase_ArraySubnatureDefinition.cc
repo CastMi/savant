@@ -33,7 +33,7 @@ IIRBase_ArraySubnatureDefinition::~IIRBase_ArraySubnatureDefinition(){}
 
 IIR_Boolean
 IIRBase_ArraySubnatureDefinition::is_subtype() {
-  return TRUE;
+  return true;
 }
 
 void
@@ -61,8 +61,8 @@ IIRBase_ArraySubnatureDefinition::publish_vhdl_type_decl( ostream &vhdl_out ){
   vhdl_out << "array ";
   ASSERT ( get_base_type()->get_resolved_index_subtype() != NULL );
 
-  if(( get_base_type()->is_unconstrained_array_type() == TRUE) ||
-      (get_base_type()->get_resolved_index_subtype()->is_enumeration_type() == TRUE) ){
+  if(( get_base_type()->is_unconstrained_array_type() == true) ||
+      (get_base_type()->get_resolved_index_subtype()->is_enumeration_type() == true) ){
      IIRBase_TypeDefinition *node ;
      int index, max_index ;
 
@@ -73,7 +73,7 @@ IIRBase_ArraySubnatureDefinition::publish_vhdl_type_decl( ostream &vhdl_out ){
     for( node = this;
 	 index <= max_index;
 	 index++, node = dynamic_cast<IIRBase_TypeDefinition *>(node->get_element_subtype()) ){
-      ASSERT(node->is_array_type() == TRUE );
+      ASSERT(node->is_array_type() == true );
       ASSERT(node->get_resolved_index_subtype() != NULL );
       ASSERT(node->get_element_subtype() != NULL );
       if (index > 1) {
@@ -98,7 +98,7 @@ IIRBase_ArraySubnatureDefinition::publish_vhdl_decl(ostream &vhdl_out) {
   get_base_type()->publish_vhdl(vhdl_out);
   ASSERT ( get_base_type()->get_resolved_index_subtype() != NULL );
 
-  if( get_base_type()->is_unconstrained_array_type() == TRUE &&
+  if( get_base_type()->is_unconstrained_array_type() == true &&
       is_unconstrained_array_type() == false ){
      IIRBase_TypeDefinition *node ;
      int index, max_index ;
@@ -110,7 +110,7 @@ IIRBase_ArraySubnatureDefinition::publish_vhdl_decl(ostream &vhdl_out) {
     for (node = this;
 	 index <= max_index; index++,
 	   node = dynamic_cast<IIRBase_TypeDefinition *>(node->get_element_subtype()) ){
-      ASSERT(node->is_array_type() == TRUE );
+      ASSERT(node->is_array_type() == true );
       ASSERT(node->get_resolved_index_subtype() != NULL );
       ASSERT(node->get_element_subtype() != NULL );
       if (index > 1) {
@@ -123,7 +123,7 @@ IIRBase_ArraySubnatureDefinition::publish_vhdl_decl(ostream &vhdl_out) {
 
     vhdl_out << " ) ";
 
-    if ( get_base_type()->is_anonymous() == TRUE )  {
+    if ( get_base_type()->is_anonymous() == true )  {
       vhdl_out << " of ";
       node->publish_vhdl(vhdl_out);
     }

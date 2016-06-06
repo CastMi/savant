@@ -43,10 +43,10 @@ public:
   virtual ~IIRScram_DisconnectSpecification();
 
   IIR_Boolean _is_specification(){
-    return TRUE;
+    return true;
   }
 
-  IIR_Boolean _is_iir_disconnect_specification(){ return TRUE; }
+  IIR_Boolean _is_iir_disconnect_specification(){ return true; }
   void _type_check( IIRScram_DeclarationList *declarative_region );
   
   // Wrappers for IIRBase functions

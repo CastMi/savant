@@ -58,7 +58,7 @@ public:
 
   savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
 
-  IIR_Boolean is_attribute_declaration(){ return TRUE; }
+  IIR_Boolean is_attribute_declaration(){ return true; }
 
   IIR_Declaration* get_prefix_declaration() { return this; }
   void publish_vhdl(ostream &);

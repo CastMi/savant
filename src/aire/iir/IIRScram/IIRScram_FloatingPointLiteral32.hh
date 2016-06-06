@@ -36,7 +36,7 @@ class IIRScram_FloatingPointLiteral32 : public virtual IIRScram_Literal, public 
 public:
   static IIRScram_FloatingPointLiteral32* get_value(IIR_FP32);
 
-  IIR_Boolean _is_floating_literal() { return TRUE; }
+  IIR_Boolean _is_floating_literal() { return true; }
 
   IIRScram *_clone() { return this; }
 };

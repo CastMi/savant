@@ -45,7 +45,7 @@ public:
   
   IIR_Boolean is_range_attribute(){ return true; }
 
-  IIR_Boolean has_suffix(){ return TRUE; }
+  IIR_Boolean has_suffix(){ return true; }
   IIR_Identifier *build_attribute_name();
 
 

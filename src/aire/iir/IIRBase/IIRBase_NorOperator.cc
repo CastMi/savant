@@ -52,6 +52,6 @@ IIRBase_NorOperator::is_associative(IIR_Kind oper_kind){
   case IIR_NOR_OPERATOR:
     return false;                                                             
   default:
-    return TRUE;                                                             
+    return true;                                                             
   }                  
 }

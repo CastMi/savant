@@ -56,7 +56,7 @@ IIRBase_ArrayTypeDefinition::get_num_indexes(){
 
   IIRBase_TypeDefinition *current_subtype = _get_element_subtype();
   ASSERT(current_subtype != NULL);
-  while( current_subtype->is_array_type() == TRUE
+  while( current_subtype->is_array_type() == true
          && current_subtype->is_element() == false ){
     num_indexes++;
     current_subtype = current_subtype->_get_element_subtype();
@@ -112,7 +112,7 @@ IIRBase_ArrayTypeDefinition::is_unconstrained_array_type(){
     ASSERT( index->get_right() == 0 );
     ASSERT( index->get_direction() == 0 );
 
-    return TRUE;
+    return true;
   }
   else{
     return false;
@@ -126,7 +126,7 @@ IIRBase_ArrayTypeDefinition::find_declarations( IIR_Name *to_find){
 
 IIR_Boolean
 IIRBase_ArrayTypeDefinition::is_discrete_type(){
-  if(get_element_subtype()->is_scalar_type() == TRUE){
+  if(get_element_subtype()->is_scalar_type() == true){
     return get_element_subtype()->is_discrete_type();
   }
   else {
@@ -142,9 +142,9 @@ IIRBase_ArrayTypeDefinition::is_character_type(){
     retval = get_base_type()->is_character_type();
   }
   else{
-    if( get_element_subtype()->is_character_type() == TRUE &&
-	get_element_subtype()->is_scalar_type() == TRUE ){
-      retval = TRUE;
+    if( get_element_subtype()->is_character_type() == true &&
+	get_element_subtype()->is_scalar_type() == true ){
+      retval = true;
     }
   }
     
@@ -239,7 +239,7 @@ IIRBase_ArrayTypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out << "array (";
   
   IIRBase_TypeDefinition *node = this;
-  while ((node->is_array_type() == TRUE) && (max_index > 0)) {
+  while ((node->is_array_type() == true) && (max_index > 0)) {
     dynamic_cast<IIRBase_ScalarTypeDefinition *>
       (node->get_resolved_index_subtype())->publish_vhdl_index(vhdl_out);
     max_index--;

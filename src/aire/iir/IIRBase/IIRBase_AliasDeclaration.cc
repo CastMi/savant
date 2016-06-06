@@ -60,55 +60,55 @@ IIRBase_AliasDeclaration::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_AliasDeclaration::is_signal(){
-  ASSERT( get_name()->is_resolved() == TRUE );
+  ASSERT( get_name()->is_resolved() == true );
   return get_name()->is_signal();
 }
 
 IIR_Boolean
 IIRBase_AliasDeclaration::is_access_type(){
-  ASSERT ( get_name()->is_resolved() == TRUE );
+  ASSERT ( get_name()->is_resolved() == true );
   return get_name()->is_access_type();
 }
 
 IIR_Boolean
 IIRBase_AliasDeclaration::is_array_type(){
-  ASSERT ( get_name()->is_resolved() == TRUE );
+  ASSERT ( get_name()->is_resolved() == true );
   return get_name()->is_array_type();
 }
 
 IIR_Boolean
 IIRBase_AliasDeclaration::is_enumeration_type(){
-  ASSERT ( get_name()->is_resolved() == TRUE );
+  ASSERT ( get_name()->is_resolved() == true );
   return get_name()->is_enumeration_type();
 }
 
 IIR_Boolean
 IIRBase_AliasDeclaration::is_file_type(){
-  ASSERT ( get_name()->is_resolved() == TRUE );
+  ASSERT ( get_name()->is_resolved() == true );
   return get_name()->is_file_type();
 }
 
 IIR_Boolean
 IIRBase_AliasDeclaration::is_record_type(){
-  ASSERT ( get_name()->is_resolved() == TRUE );
+  ASSERT ( get_name()->is_resolved() == true );
   return get_name()->is_record_type();
 }
 
 IIR_Boolean
 IIRBase_AliasDeclaration::is_scalar_type(){
-  ASSERT ( get_name()->is_resolved() == TRUE );
+  ASSERT ( get_name()->is_resolved() == true );
   return get_name()->is_scalar_type();
 }
 
 IIR_Boolean 
 IIRBase_AliasDeclaration::is_locally_static(){
-  ASSERT ( get_name()->is_resolved() == TRUE );
+  ASSERT ( get_name()->is_resolved() == true );
   return get_name()->is_locally_static();
 }
 
 IIR_Boolean 
 IIRBase_AliasDeclaration::is_object(){
-  ASSERT( get_name()->is_resolved() == TRUE );
+  ASSERT( get_name()->is_resolved() == true );
   return get_name()->is_object();
 }
 
@@ -119,13 +119,13 @@ IIRBase_AliasDeclaration::get_declaration_type(){
 
 IIR_Boolean
 IIRBase_AliasDeclaration::is_type(){
-  ASSERT ( get_name()->is_resolved() == TRUE );
+  ASSERT ( get_name()->is_resolved() == true );
   return get_name()->is_type();
 }
 
 IIR_Boolean 
 IIRBase_AliasDeclaration::is_variable(){
-  ASSERT( get_name()->is_resolved() == TRUE );
+  ASSERT( get_name()->is_resolved() == true );
   return get_name()->is_variable();
 }
 

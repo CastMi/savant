@@ -51,6 +51,6 @@ IIRBase_XnorOperator::is_associative(IIR_Kind oper_kind){
   case IIR_AND_OPERATOR:
     return false;                                                             
   default:
-    return TRUE;                                                             
+    return true;                                                             
   }                 
 }

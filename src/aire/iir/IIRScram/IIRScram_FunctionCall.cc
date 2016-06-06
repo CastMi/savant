@@ -65,7 +65,7 @@ IIRScram_FunctionCall::_build_function_call( IIRScram_SubprogramDeclaration *fun
 void 
 IIRScram_FunctionCall::_type_check( savant::set<IIRScram_TypeDefinition> * ){
   if (has_been_type_checked  == false) {
-    has_been_type_checked = TRUE;
+    has_been_type_checked = true;
     ASSERT(_get_implementation() != NULL);
     IIRScram_SubprogramDeclaration *my_decl = _get_implementation();
   
@@ -78,7 +78,7 @@ IIRScram_FunctionCall::_type_check( savant::set<IIRScram_TypeDefinition> * ){
 							  my_decl->_get_interface_declarations());
     
 
-    ASSERT( _get_parameter_association_list()->is_resolved() == TRUE );
+    ASSERT( _get_parameter_association_list()->is_resolved() == true );
   }
 }
 
@@ -123,14 +123,14 @@ IIRScram_FunctionCall::_clone() {
 IIR_Mode
 IIRScram_FunctionCall::_get_mode() {
   ASSERT(get_parameter_association_list()->size() == 1);
-  ASSERT(dynamic_cast<IIRScram_AssociationElement *>(get_parameter_association_list()->first())->is_signal() == TRUE);
+  ASSERT(dynamic_cast<IIRScram_AssociationElement *>(get_parameter_association_list()->first())->is_signal() == true);
 
   return dynamic_cast<IIRScram_AssociationElement *>(get_parameter_association_list()->first())->_get_actual()->_get_mode();
 }
 
 IIRScram_Declaration *
 IIRScram_FunctionCall::_find_formal_declaration(){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   ASSERT( get_parameter_association_list()->size() == 1 );
   ASSERT( get_parameter_association_list()->first() != NULL );
   return dynamic_cast<IIRScram_AssociationElement *>(get_parameter_association_list()->first())->_find_formal_declaration();

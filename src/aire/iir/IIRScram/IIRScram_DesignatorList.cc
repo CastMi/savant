@@ -52,7 +52,7 @@ IIRScram_DesignatorList::_process_instantiate_statement( IIRScram_Declaration *i
   if( statement->get_kind() == IIR_COMPONENT_INSTANTIATION_STATEMENT ){
     IIRScram_ComponentInstantiationStatement *as_instantiate_statement = NULL;
     as_instantiate_statement = dynamic_cast<IIRScram_ComponentInstantiationStatement *>(statement);
-    ASSERT( as_instantiate_statement->_get_instantiated_unit()->_is_iir_declaration() == TRUE );
+    ASSERT( as_instantiate_statement->_get_instantiated_unit()->_is_iir_declaration() == true );
     if( as_instantiate_statement->_get_instantiated_unit() == instantiated_unit ){
       ASSERT( as_instantiate_statement->_get_label() != NULL );
       ASSERT( as_instantiate_statement->_get_label()->_get_statement() != NULL );
@@ -115,7 +115,7 @@ IIRScram_DesignatorList::_process_by_all_or_others( IIRScram_Declaration *instan
       ASSERT( new_label->get_statement()->get_kind() == IIR_COMPONENT_INSTANTIATION_STATEMENT );
       IIRScram_ComponentInstantiationStatement *statement = NULL;
       statement = dynamic_cast<IIRScram_ComponentInstantiationStatement *>(new_label->get_statement());
-      if( by_all == TRUE || statement->_get_configuration() == NULL ){
+      if( by_all == true || statement->_get_configuration() == NULL ){
 	IIRScram_DesignatorExplicit *new_designator = new IIRScram_DesignatorExplicit();
 	copy_location( new_label, new_designator );
 	new_designator->set_name( new_label );
@@ -146,14 +146,14 @@ IIRScram_DesignatorList::_type_check_as_instantiation_list( IIRScram *instantiat
 							    IIRScram_List *statement_list,
 							    IIRScram *configuration ){
   ASSERT( instantiated_unit != NULL );
-  ASSERT( instantiated_unit->_is_iir_declaration() == TRUE );
+  ASSERT( instantiated_unit->_is_iir_declaration() == true );
   IIRScram_Declaration *as_decl = dynamic_cast<IIRScram_Declaration *>(instantiated_unit);
 
   IIRScram_Designator *current_designator = dynamic_cast<IIRScram_Designator *>(first());
   if( current_designator != NULL ){
     switch( current_designator->get_kind() ){
     case IIR_DESIGNATOR_BY_ALL:
-      _process_by_all_or_others( as_decl, statement_list, TRUE, configuration );
+      _process_by_all_or_others( as_decl, statement_list, true, configuration );
       break;
       
     case IIR_DESIGNATOR_BY_OTHERS:

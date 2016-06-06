@@ -56,18 +56,18 @@ class scope_entry {
          belongs_to = scope_owner;
          declarations = new savant::stack<IIR_Declaration*>;
          scopes = new savant::set<scope_entry>;
-         open = TRUE;
+         open = true;
          previous = previous_scope;
       }
 
       void add_declaration( IIR_Declaration *to_add ){
-         ASSERT( open == TRUE );
+         ASSERT( open == true );
          declarations->push( to_add );
       }
 
       scope_entry *open_scope( IIR *to_add ){
          scope_entry *retval = new scope_entry( this, to_add );
-         ASSERT( open == TRUE );
+         ASSERT( open == true );
          scopes->add( retval );
 
          return retval;

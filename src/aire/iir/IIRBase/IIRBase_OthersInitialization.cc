@@ -80,15 +80,15 @@ IIRBase_OthersInitialization::print( ostream &os ) {
 void 
 IIRBase_OthersInitialization::publish_vhdl(ostream &vhdl_out) {
   ASSERT(get_subtype() != NULL);
-  if (get_subtype()->is_record_type() == TRUE) {
+  if (get_subtype()->is_record_type() == true) {
     vhdl_out << " (";
   }
   vhdl_out << "others => ";
 
   ASSERT(get_expression() != NULL);
-  ASSERT(get_expression()->is_resolved() == TRUE);
+  ASSERT(get_expression()->is_resolved() == true);
   get_expression()->publish_vhdl(vhdl_out);
-  if (get_subtype()->is_record_type() == TRUE) {
+  if (get_subtype()->is_record_type() == true) {
     vhdl_out << ")";
   }
 }

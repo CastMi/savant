@@ -36,7 +36,7 @@ public:
       build_signal_declaration. */
   IIRScram_Declaration* _get_implicit_declaration(const string &, IIRScram_TypeDefinition *);
 
-  IIR_Boolean has_suffix(){ return TRUE; }
+  IIR_Boolean has_suffix(){ return true; }
   
   virtual void _resolve_suffix_special();
 

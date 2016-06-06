@@ -46,39 +46,39 @@ IIRScram_AliasDeclaration::~IIRScram_AliasDeclaration() {}
 IIRScram_AttributeSpecificationList* 
 IIRScram_AliasDeclaration::_get_attribute_specification_list() {
   ASSERT(_get_name() != NULL);
-  ASSERT(_is_iir_declaration() == TRUE);
+  ASSERT(_is_iir_declaration() == true);
   return (dynamic_cast<IIRScram_Declaration*>(_get_name())->_get_attribute_specification_list());
 }
 
 
 IIR_Boolean 
 IIRScram_AliasDeclaration::is_object(){
-  ASSERT( _get_name()->is_resolved() == TRUE );
+  ASSERT( _get_name()->is_resolved() == true );
   return _get_name()->is_object();
 }
 
 IIR_Boolean 
 IIRScram_AliasDeclaration::_is_readable(){
-  ASSERT( _get_name()->is_resolved() == TRUE );
+  ASSERT( _get_name()->is_resolved() == true );
   return _get_name()->_is_readable();  
 }
 
 IIR_Boolean 
 IIRScram_AliasDeclaration::_is_writable(){
-  ASSERT( _get_name()->is_resolved() == TRUE );
+  ASSERT( _get_name()->is_resolved() == true );
   return _get_name()->_is_writable();  
 }
 
 IIRScram_TypeDefinition *
 IIRScram_AliasDeclaration::_get_type_of_element( int index ){
-  ASSERT( _get_name()->is_resolved() == TRUE );
+  ASSERT( _get_name()->is_resolved() == true );
   return _get_name()->_get_type_of_element( index );
 }
 
 
 IIR_Int32
 IIRScram_AliasDeclaration::get_num_indexes( ){
-  ASSERT( _get_name()->is_resolved() == TRUE );
+  ASSERT( _get_name()->is_resolved() == true );
   return _get_name()->_get_subtype()->get_num_indexes( );
 }
 
@@ -158,7 +158,7 @@ IIRScram_AliasDeclaration::_clone() {
 
 void 
 IIRScram_AliasDeclaration::_come_into_scope( symbol_table *sym_tab ){
-  ASSERT( _get_name()->is_resolved() == TRUE );
+  ASSERT( _get_name()->is_resolved() == true );
   _get_name()->_come_into_scope( sym_tab );
 }
 

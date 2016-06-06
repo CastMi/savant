@@ -462,7 +462,7 @@ xnor		{BEGIN(language_to_process); return buildToken( XNOR, yyleng );}
     << yytext
     << ".  Negative exponent not allowed."
     << endl;
-  parse_error = TRUE;
+  parse_error = true;
   BEGIN(language_to_process);
   return buildBasedIntToken( "2#00#", 5 ); // default for continuing parse
 }
@@ -493,7 +493,7 @@ b\"[0-1](_?[0-1]+)*\"|b\%[0-1](_?[0-1]+)*\%|o\"[0-7](_?[0-7]+)*\"|o\%[0-7](_?[0-
     << yytext
     << ".  Negative exponent not allowed."
     << endl;
-  parse_error = TRUE;
+  parse_error = true;
   BEGIN(language_to_process); 
   return buildDecimalIntToken( "0", 1 ); // default to continue parse
 }
@@ -512,7 +512,7 @@ b\"[0-1](_?[0-1]+)*\"|b\%[0-1](_?[0-1]+)*\%|o\"[0-7](_?[0-7]+)*\"|o\%[0-7](_?[0-
     << " Illegal quote character (\") encountered in percent (%) bounded string literal:"
     << endl << "    " << yytext << endl
     << "seen.  Matching zero length string literal (%%)." << endl;
-  parse_error = TRUE;
+  parse_error = true;
   BEGIN(language_to_process); 
   return buildLiteralToken( STRING_LITERAL, "%%", 1 );
 }
@@ -558,7 +558,7 @@ b\"[0-1](_?[0-1]+)*\"|b\%[0-1](_?[0-1]+)*\%|o\"[0-7](_?[0-7]+)*\"|o\%[0-7](_?[0-
     << " Illegal character '"
     << yytext
     << "' seen.  Ignored" << endl;
-  parse_error = TRUE;
+  parse_error = true;
 }
 
 <<EOF>>	{BEGIN(language_to_process); return buildToken( ENDFILE, 0 );}

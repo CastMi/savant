@@ -43,7 +43,7 @@ IIRScram_DeclarationList::_type_check_configuration_specifications( IIRScram_Lis
   for (IIRScram_Declaration *current_declaration = dynamic_cast<IIRScram_Declaration *>(first());
        current_declaration != NULL;
        current_declaration = dynamic_cast<IIRScram_Declaration *>(successor(current_declaration))) {
-    if( current_declaration->_is_iir_configuration_specification() == TRUE ){
+    if( current_declaration->_is_iir_configuration_specification() == true ){
       IIRScram_ConfigurationSpecification *as_specification;
       as_specification = dynamic_cast<IIRScram_ConfigurationSpecification *>(current_declaration);
       as_specification->_type_check( statement_list, 
@@ -56,7 +56,7 @@ void
 IIRScram_DeclarationList::_type_check_disconnection_specifications( ){
   for (IIRScram_Declaration *decl = dynamic_cast<IIRScram_Declaration *>(first());
        decl != NULL;decl = dynamic_cast<IIRScram_Declaration *>(successor(decl))) {
-    if( decl->_is_iir_disconnect_specification() == TRUE ){
+    if( decl->_is_iir_disconnect_specification() == true ){
       IIRScram_DisconnectSpecification *as_specification;
       as_specification = dynamic_cast<IIRScram_DisconnectSpecification *>(decl);
       as_specification->_type_check( this );
@@ -68,7 +68,7 @@ void
 IIRScram_DeclarationList::_type_check_attribute_specifications( IIRScram_List * ){
   for (IIRScram_Declaration *decl = dynamic_cast<IIRScram_Declaration *>(first());
        decl != NULL;decl = dynamic_cast<IIRScram_Declaration *>(successor(decl))) {
-    if( decl->_is_iir_attribute_specification() == TRUE ){
+    if( decl->_is_iir_attribute_specification() == true ){
       IIRScram_AttributeSpecification *as_specification;
       as_specification = dynamic_cast<IIRScram_AttributeSpecification *>(decl);
       as_specification->_type_check( this );

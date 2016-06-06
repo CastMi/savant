@@ -42,7 +42,7 @@ public:
   virtual IIR_Boolean _is_line_type();
   virtual IIR_Boolean _designates_incomplete_type(){ return false; }
 
-  virtual IIR_Boolean _is_iir_type_definition() { return TRUE; }
+  virtual IIR_Boolean _is_iir_type_definition() { return true; }
   
   virtual IIRScram_TypeDefinition *get_across(); 
   virtual IIRScram_TypeDefinition *get_through();  

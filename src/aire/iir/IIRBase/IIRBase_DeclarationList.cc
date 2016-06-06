@@ -121,7 +121,7 @@ IIRBase_DeclarationList::find_declarations( IIR_TextLiteral *to_find ){
 	}
 	// If we have an enumeration type, we need to search for the our
 	// culprit in the literal list.
-	if( current->is_enumeration_type() == TRUE ){
+	if( current->is_enumeration_type() == true ){
 	  savant::set<IIR_Declaration> *enumeration_literals = current->find_declarations( to_find );
 	  if( enumeration_literals != NULL ){
 	    ASSERT( enumeration_literals->size() == 1 );

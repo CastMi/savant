@@ -41,7 +41,7 @@ public:
 
   IIR *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_signal(){ return TRUE; }
+  IIR_Boolean is_signal(){ return true; }
 
   declaration_type get_declaration_type();
   void publish_vhdl_decl(ostream &);

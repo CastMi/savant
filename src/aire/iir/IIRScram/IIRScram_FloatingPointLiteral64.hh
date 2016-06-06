@@ -37,7 +37,7 @@ public:
   IIRScram_FloatingPointLiteral64() {}
   virtual ~IIRScram_FloatingPointLiteral64();
 
-  IIR_Boolean _is_floating_literal() { return TRUE; }
+  IIR_Boolean _is_floating_literal() { return true; }
 
   IIRScram *_clone() { return this; }
 

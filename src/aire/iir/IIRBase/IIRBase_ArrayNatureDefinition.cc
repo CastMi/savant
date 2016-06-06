@@ -85,7 +85,7 @@ IIRBase_ArrayNatureDefinition::is_unconstrained_array_type(){
   if( index->get_left() == NULL ){
     ASSERT( index->get_right() == NULL );
     ASSERT( index->get_direction() == NULL );
-    return TRUE;
+    return true;
   }
   else{
     return false;
@@ -116,7 +116,7 @@ IIRBase_ArrayNatureDefinition::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out << "array (";
 
   IIRBase_TypeDefinition *node = this;
-  while ((node->is_array_type() == TRUE) && (max_index > 0)) {
+  while ((node->is_array_type() == true) && (max_index > 0)) {
     dynamic_cast<IIRBase_ScalarTypeDefinition *>
       (node->get_resolved_index_subtype())->publish_vhdl_index(vhdl_out);
     max_index--;

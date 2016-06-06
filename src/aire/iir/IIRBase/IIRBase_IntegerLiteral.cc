@@ -257,7 +257,7 @@ IIR_Boolean
 IIRBase_IntegerLiteral::is_negative(){
   IIR_Char* man = get_mantissa();
   if (man[0] == '-') {
-    return TRUE;
+    return true;
   }
   return false;
 }

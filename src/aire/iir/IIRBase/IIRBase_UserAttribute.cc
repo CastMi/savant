@@ -80,7 +80,7 @@ IIR_Identifier *
 IIRBase_UserAttribute::build_attribute_name(){
   IIR_Identifier *retval = 0;
 
-  if( get_suffix() && get_suffix()->is_name() == TRUE ){
+  if( get_suffix() && get_suffix()->is_name() == true ){
     retval = dynamic_cast<IIR_Identifier *>(dynamic_cast<IIR_Name *>(get_suffix())->get_prefix_string());
   }
   //else if ( get_suffix() && dynamic_cast<IIR_Declaration *>(get_suffix()) != NULL ){
@@ -93,9 +93,9 @@ IIRBase_UserAttribute::build_attribute_name(){
 void 
 IIRBase_UserAttribute::publish_vhdl(ostream &vhdl_out) {
   ASSERT(get_prefix() != NULL);
-  ASSERT(get_prefix()->is_resolved() == TRUE);
+  ASSERT(get_prefix()->is_resolved() == true);
   ASSERT(get_suffix() != NULL);
-  ASSERT(get_suffix()->is_resolved() == TRUE);
+  ASSERT(get_suffix()->is_resolved() == true);
 
   get_prefix()->publish_vhdl(vhdl_out);
   vhdl_out << "'";

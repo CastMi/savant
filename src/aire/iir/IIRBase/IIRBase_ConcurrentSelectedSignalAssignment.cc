@@ -139,7 +139,7 @@ IIRBase_ConcurrentSelectedSignalAssignment::convert_tree(plugin_class_factory *f
 
 IIR_Boolean 
 IIRBase_ConcurrentSelectedSignalAssignment::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
   if( get_target()->is_resolved() == false ){
     retval = false;
@@ -174,7 +174,7 @@ IIRBase_ConcurrentSelectedSignalAssignment::build_alternative_list(IIR_Boolean b
        // FIXME
       sastmt = NULL; //get_design_file()->get_class_factory()->new_IIR_SignalAssignmentStatement();
       copy_location (this, sastmt);
-      ASSERT ( get_target()->is_resolved() == TRUE );
+      ASSERT ( get_target()->is_resolved() == true );
       
       sastmt->set_target(get_target());
       sastmt->set_delay_mechanism(get_delay_mechanism());

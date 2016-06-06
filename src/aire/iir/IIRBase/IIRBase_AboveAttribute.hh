@@ -57,14 +57,14 @@ public:
   /** Returns the type of the signal created. */
   IIR_TypeDefinition *get_subtype();
 
-  IIR_Boolean is_signal() { return TRUE; }
-  IIR_Boolean has_suffix(){ return TRUE; }
+  IIR_Boolean is_signal() { return true; }
+  IIR_Boolean has_suffix(){ return true; }
 
   IIR_AboveAttribute *convert_tree(plugin_class_factory *factory);
 
-  /** Returns TRUE if above attribute is found. */
-  IIR_Boolean is_above_attribute_found() { return TRUE; }
-  IIR_Boolean is_above_attribute() { return TRUE; }
+  /** Returns true if above attribute is found. */
+  IIR_Boolean is_above_attribute_found() { return true; }
+  IIR_Boolean is_above_attribute() { return true; }
   void publish_vhdl(ostream &);
 protected:
   IIRBase_AboveAttribute();

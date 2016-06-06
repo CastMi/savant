@@ -47,12 +47,12 @@ void
 IIRScram_LibraryClause::_type_check(){
   IIR_Boolean is_std_lib = false;
   IIRScram *logical_name = _get_logical_name();
-  ASSERT( logical_name->is_text_literal() == TRUE );
+  ASSERT( logical_name->is_text_literal() == true );
 
   IIR_TextLiteral *as_literal = dynamic_cast<IIR_TextLiteral *>(logical_name);
   
   if( IIRBase_TextLiteral::cmp( as_literal, "std" ) == 0 ){  
-    is_std_lib = TRUE;
+    is_std_lib = true;
   }
 
   // Calling this method in this manner will cause the library to be found

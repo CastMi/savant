@@ -70,7 +70,7 @@ public:
   IIR_Boolean _is_writable();
 
   /** Assuming we have an array type (which gets asserted), is this an
-      array access (returns TRUE) or a slice? */
+      array access (returns true) or a slice? */
   IIR_Boolean _is_array_access();
 
   IIRScram_Statement *_semantic_transform( savant::set<IIRScram_TypeDefinition> *context_set );

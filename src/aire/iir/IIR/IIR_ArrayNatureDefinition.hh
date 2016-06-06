@@ -50,7 +50,7 @@ public:
   /** Gets the pointer to the final index in a multidimensional array */
   IIR_TypeDefinition *get_final_subtype() = 0;
   
-  /** The Boolean variable is set TRUE if the object is of element type
+  /** The Boolean variable is set true if the object is of element type
       i.e. one of subnature_indication type */
   virtual void set_is_element(IIR_Boolean) = 0;
 };

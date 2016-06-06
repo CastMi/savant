@@ -109,7 +109,7 @@ IIRBase_TypeDefinition::is_anonymous(){
 
 IIR_Boolean 
 IIRBase_TypeDefinition::is_element() const {
-  ASSERT( is_access_type() == TRUE || is_array_type() == false );
+  ASSERT( is_access_type() == true || is_array_type() == false );
   return false;
 }
 
@@ -158,14 +158,14 @@ IIRBase_TypeDefinition::is_compatible( IIR_TypeDefinition *to_check ){
   IIR_TypeDefinition *base_type_left = 0;
   IIR_TypeDefinition *base_type_right = 0;
   // Check for "normal" compatibility.
-  if( is_subtype() == TRUE ){
+  if( is_subtype() == true ){
     base_type_left = get_base_type();
   }
   else{
     base_type_left = dynamic_cast<IIR_TypeDefinition *>(this);
   }
   
-  if( to_check->is_subtype() == TRUE ){
+  if( to_check->is_subtype() == true ){
     base_type_right = to_check->get_base_type();
   }
   else{
@@ -173,7 +173,7 @@ IIRBase_TypeDefinition::is_compatible( IIR_TypeDefinition *to_check ){
   }
 
   if( base_type_left == base_type_right ){
-    if( to_check->is_subtype() == TRUE && is_subtype() == false ){
+    if( to_check->is_subtype() == true && is_subtype() == false ){
       return to_check;
     }
     else{

@@ -113,7 +113,7 @@ symbol_table::add_declaration( IIR_Declaration *decl_ptr ){
   IIRScram_Declaration *scram_decl = dynamic_cast<IIRScram_Declaration *>(decl_ptr);
   ASSERT( scram_decl != NULL );
   ASSERT( scram_decl->get_declaration_type() != IIR_Declaration::ERROR );
-  //  ASSERT( decl_ptr->is_visible() == TRUE );
+  //  ASSERT( decl_ptr->is_visible() == true );
   
   if (debug_symbol_table) {
     cerr << this << " - adding declaration : |" << *scram_decl << "| - " << scram_decl;
@@ -155,7 +155,7 @@ symbol_table::add_declaration( IIR_Declaration *decl_ptr ){
   if( dynamic_cast<IIR_LibraryUnit *>(scram_decl) != NULL ){
     library_manager::instance()->add_declaration( dynamic_cast<IIRScram_LibraryUnit *>(decl_ptr) );
   }
-  if( scram_decl->is_incomplete_type_declaration() == TRUE ){
+  if( scram_decl->is_incomplete_type_declaration() == true ){
     get_incomplete_types()->add( dynamic_cast<IIR_TypeDeclaration *>(decl_ptr) );
   }
 }
@@ -271,7 +271,7 @@ symbol_table::close_scope( IIR *declarative_region ){
   IIR *decl_region = declarative_region_stack.pop();  
   ASSERT( decl_region == declarative_region );
 
-  if( debug_symbol_table == TRUE ){
+  if( debug_symbol_table == true ){
     if( decl_region != NULL ){
       cerr << " - popping declarative region |" << *decl_region << "|." << endl;
     }
@@ -286,12 +286,12 @@ symbol_table::close_scope( IIR *declarative_region ){
   ASSERT( current_scope != NULL );
   ASSERT( current_scope->get_owner() == decl_region );
   ASSERT( current_scope->get_scopes()->getElement() == NULL || 
-	  current_scope->get_scopes()->getElement()->is_closed() == TRUE );
+	  current_scope->get_scopes()->getElement()->is_closed() == true );
   
   IIR_Declaration *current = current_scope->get_declarations()->pop();
   while( current != NULL ){
-    if( current->is_incomplete_type_declaration() == TRUE ){
-      ASSERT( current->is_type_declaration() == TRUE );
+    if( current->is_incomplete_type_declaration() == true ){
+      ASSERT( current->is_type_declaration() == true );
       if( (dynamic_cast<IIRScram_TypeDeclaration *>(current))->_get_fully_defined_type() == NULL ){
 	ostringstream err;
 	err << "Type |" << *current << "| was defined as an incomplete type, but "
@@ -410,7 +410,7 @@ symbol_table::make_visible( IIR_Declaration *decl_ptr ){
     add_declaration( decl_ptr );
 
 
-    if (scram_decl->get_kind() == IIR_TYPE_DECLARATION && scram_decl->is_enumeration_type() == TRUE ){
+    if (scram_decl->get_kind() == IIR_TYPE_DECLARATION && scram_decl->is_enumeration_type() == true ){
       IIR_EnumerationTypeDefinition *enum_type;
       IIR_EnumerationLiteral *lit;
       enum_type = dynamic_cast<IIR_EnumerationTypeDefinition *>((dynamic_cast<IIR_TypeDeclaration*>(decl_ptr))->get_type());
@@ -481,12 +481,12 @@ symbol_table::incomplete_type_fixup( IIR_TypeDeclaration *old_incomplete_type,
   // done, we can remove this incomplete type from our list.
   IIR_TypeDeclaration *current_access_type_declaration = designates_incomplete_type.getElement();
   while( current_access_type_declaration != NULL ){
-    ASSERT(dynamic_cast<IIRScram_TypeDeclaration *>(current_access_type_declaration)->_designates_incomplete_type() == TRUE );
-    //    ASSERT(dynamic_cast<IIRScram_TypeDeclaration *>(current_access_type_declaration)->_get_type()->_is_iir_access_type_definition() == TRUE);
+    ASSERT(dynamic_cast<IIRScram_TypeDeclaration *>(current_access_type_declaration)->_designates_incomplete_type() == true );
+    //    ASSERT(dynamic_cast<IIRScram_TypeDeclaration *>(current_access_type_declaration)->_get_type()->_is_iir_access_type_definition() == true);
     
     IIR_AccessTypeDefinition *access_type = 
       dynamic_cast<IIR_AccessTypeDefinition *>(current_access_type_declaration->get_type());
-    ASSERT( dynamic_cast<IIRScram_AccessTypeDefinition *>(access_type)->_get_designated_type()->is_incomplete_type_definition() == TRUE );
+    ASSERT( dynamic_cast<IIRScram_AccessTypeDefinition *>(access_type)->_get_designated_type()->is_incomplete_type_definition() == true );
     
     IIR_IncompleteTypeDefinition *current_type_definition =
       dynamic_cast<IIR_IncompleteTypeDefinition *>(access_type->get_designated_type());      

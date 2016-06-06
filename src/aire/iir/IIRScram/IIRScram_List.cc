@@ -54,7 +54,7 @@ IIRScram_List::_clone(){
 
 void 
 IIRScram_List::_clone( IIRScram *clone_into ){
-  ASSERT( clone_into->_is_iir_list() == TRUE );
+  ASSERT( clone_into->_is_iir_list() == true );
   IIRScram_List *as_list = dynamic_cast<IIRScram_List *>(clone_into);
 
   IIRScram *current = dynamic_cast<IIRScram *>(first());

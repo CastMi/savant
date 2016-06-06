@@ -73,8 +73,8 @@ IIRScram_Elsif::_type_check_return_statements( savant::set<IIRScram_TypeDefiniti
       _get_else_clause()->_type_check_return_statements( context_set, subprogram_decl );
   }
 
-  if( retval1 == TRUE || retval2 == true ){
-    retval = TRUE;
+  if( retval1 == true || retval2 == true ){
+    retval = true;
   }
 
   return retval;

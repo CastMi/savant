@@ -77,9 +77,9 @@ public:
       prefix'right.  */
   virtual IIRScram_RangeTypeDefinition *_build_range_type();
 
-  virtual IIR_Boolean _is_iir_attribute(){ return TRUE; }
-  virtual IIR_Boolean _is_attribute(){ return TRUE; }
-  virtual IIR_Boolean _is_readable(){ return TRUE; }
+  virtual IIR_Boolean _is_iir_attribute(){ return true; }
+  virtual IIR_Boolean _is_attribute(){ return true; }
+  virtual IIR_Boolean _is_readable(){ return true; }
   virtual IIR_Boolean _is_range_attribute(){ return false; }
   virtual IIR_Boolean _is_signal_attribute(){ return false; }  
   virtual IIR_Boolean _is_quiet_attribute() { return false; }

@@ -47,6 +47,6 @@ IIRBase_ExponentiationOperator::is_associative(IIR_Kind oper_kind) {
   case IIR_ABSOLUTE_OPERATOR:
     return false;
   default:
-    return TRUE;
+    return true;
   }
 }

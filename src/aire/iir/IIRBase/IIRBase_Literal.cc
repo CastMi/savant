@@ -111,7 +111,7 @@ IIRBase_Literal::is_locally_static(){
   // run at aribtrary resolutions - 1 fs might translate to 0 ns or
   // something.  Savant is not like that so we're going to oversimplify and
   // say that time literals are locally static too.
-  return TRUE;
+  return true;
 
 //   ASSERT( get_subtype() != 0 );
 //   if( !get_design_file() ){
@@ -131,6 +131,6 @@ IIRBase_Literal::is_resolved(){
     return false;
   }
   else{
-    return TRUE;
+    return true;
   }
 }

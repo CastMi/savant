@@ -54,7 +54,7 @@ IIRScram_SimpleName::_symbol_lookup() {
   if( prefix->_is_iir_declaration() == true ){
     retval = new set<IIRScram_Declaration>( dynamic_cast<IIRScram_Declaration *>(prefix) );
   }
-  else if( prefix->is_text_literal() == TRUE ){
+  else if( prefix->is_text_literal() == true ){
     set<IIR_Declaration> *decls= new set<IIR_Declaration>(*_get_symbol_table()->find_set( get_prefix_string()));
     retval = decls->convert_set<IIRScram_Declaration>();
     delete decls;

@@ -37,7 +37,7 @@ public:
   IIR_Kind get_kind() const {return IIR_SIMPLE_NAME;}
   const IIR_Char *get_kind_text() const {return "IIR_SimpleName";}
 
-  IIR_Boolean is_component_declaration() { return TRUE; }
+  IIR_Boolean is_component_declaration() { return true; }
 
   ostream &print( ostream &os );
   void publish_vhdl(ostream &);

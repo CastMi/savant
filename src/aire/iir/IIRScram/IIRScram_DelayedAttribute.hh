@@ -40,9 +40,9 @@ class IIRScram_Declaration;
 class IIRScram_DelayedAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_DelayedAttribute {
 
 public:
-  IIR_Boolean is_signal(){ return TRUE; }
+  IIR_Boolean is_signal(){ return true; }
 
-  IIR_Boolean has_suffix(){ return TRUE; }
+  IIR_Boolean has_suffix(){ return true; }
   void _set_suffix( IIRScram *new_suffix );
   IIRScram *_get_suffix();
 
@@ -50,9 +50,9 @@ public:
 
   IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
 
-  virtual IIR_Boolean _is_delayed_attribute() { return TRUE; }
+  virtual IIR_Boolean _is_delayed_attribute() { return true; }
 
-  IIR_Boolean _is_signal_attribute(){ return TRUE; }
+  IIR_Boolean _is_signal_attribute(){ return true; }
 
 protected:
   void _resolve_suffix_special();

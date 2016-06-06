@@ -48,10 +48,10 @@ IIRScram_ConstantDeclaration::_get_value() {
 
 IIR_Boolean 
 IIRScram_ConstantDeclaration::is_locally_static_primary(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
   ASSERT( _get_subtype() != NULL );
-  if( _get_subtype()->is_access_type() == TRUE ){
+  if( _get_subtype()->is_access_type() == true ){
     retval = false;
   }
 

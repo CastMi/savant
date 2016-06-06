@@ -89,7 +89,7 @@ IIRScram_SelectedName::_symbol_lookup(){
 
 	if( decls != NULL ){
 	  suffix_decls = decls;
-	  found_in_library = TRUE;
+	  found_in_library = true;
 	}
       }
       if( suffix_decls != NULL ){
@@ -97,7 +97,7 @@ IIRScram_SelectedName::_symbol_lookup(){
 	  retval = new savant::set<IIRScram_Declaration>;
 	}
 	retval->add( suffix_decls );
-	if( found_in_library == TRUE ){
+	if( found_in_library == true ){
 	  current_decl->_add_to_declarative_region( suffix_decls );
 	}
       }      
@@ -212,9 +212,9 @@ IIRScram_SelectedName::_get_rval_set(constraint_functor *functor){
 
 IIR_Boolean
 IIRScram_SelectedName::is_object( ){
-  ASSERT( is_resolved() == TRUE );
-  if( _get_prefix()->is_object() == TRUE || _get_suffix()->is_object() == TRUE ){
-    return TRUE;
+  ASSERT( is_resolved() == true );
+  if( _get_prefix()->is_object() == true || _get_suffix()->is_object() == true ){
+    return true;
   }
   else{
     return false;
@@ -223,7 +223,7 @@ IIRScram_SelectedName::is_object( ){
 
 IIR_Boolean
 IIRScram_SelectedName::_is_readable( ){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   if( _get_prefix() && _get_prefix()->is_object() ){
     return _get_prefix()->_is_readable();
   }
@@ -234,7 +234,7 @@ IIRScram_SelectedName::_is_readable( ){
 
 IIR_Boolean
 IIRScram_SelectedName::_is_writable( ){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   if( _get_prefix() && _get_prefix()->is_object() ){
     return _get_prefix()->_is_writable();
   }
@@ -245,11 +245,11 @@ IIRScram_SelectedName::_is_writable( ){
 
 IIR_Boolean
 IIRScram_SelectedName::is_configuration_declaration() {
-  ASSERT ( is_resolved() == TRUE );
+  ASSERT ( is_resolved() == true );
   
-  if ((_get_suffix()->is_configuration_declaration() == TRUE) ||
-      (_get_prefix()->is_configuration_declaration() == TRUE)) {
-    return TRUE;
+  if ((_get_suffix()->is_configuration_declaration() == true) ||
+      (_get_prefix()->is_configuration_declaration() == true)) {
+    return true;
   }
   
   return false;
@@ -323,7 +323,7 @@ IIRScram_SelectedName::_decl_to_decl( IIRScram_Declaration *suffix_decl ){
 
   delete prefix_decls;
 
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   return this;
 }
   
@@ -363,7 +363,7 @@ IIRScram_SelectedName::_build_lib( IIRScram_LibraryUnit *new_unit ){
 
 void 
 IIRScram_SelectedName::_make_interface_visible( symbol_table *sym_tab ){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
 
   if( get_suffix()->get_kind() == IIR_DESIGNATOR_BY_ALL ){
     _get_prefix()->_make_interface_visible( sym_tab );
@@ -379,7 +379,7 @@ IIRScram_SelectedName::_make_interface_visible( symbol_table *sym_tab ){
 
 void 
 IIRScram_SelectedName::_come_into_scope( symbol_table *sym_tab ){
-  ASSERT( _get_suffix()->is_resolved() == TRUE );
+  ASSERT( _get_suffix()->is_resolved() == true );
   _get_suffix()->_come_into_scope( sym_tab );
 }
 
@@ -391,7 +391,7 @@ IIRScram_SelectedName::_come_out_of_scope( symbol_table *sym_tab ){
 
 IIRScram_GenericList *
 IIRScram_SelectedName::_get_generic_list(){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   ASSERT( _get_suffix() != NULL );
   return _get_suffix()->_get_generic_list();
 }
@@ -410,7 +410,7 @@ IIRScram_SelectedName::_clone(){
 
 IIR_Boolean 
 IIRScram_SelectedName::is_locally_static(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
   
   if( _get_prefix()->is_locally_static() == false || 
       _get_suffix()->is_locally_static() == false ){
@@ -422,13 +422,13 @@ IIRScram_SelectedName::is_locally_static(){
 
 IIRScram_TypeDefinition *
 IIRScram_SelectedName::_get_rval_pointed_at(){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   return _get_suffix()->_get_rval_pointed_at();
 }
 
 IIRScram_PortList *
 IIRScram_SelectedName::_get_port_list(){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   ASSERT( _get_suffix() != NULL );
   return _get_suffix()->_get_port_list();
 }

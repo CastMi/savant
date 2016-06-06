@@ -771,7 +771,7 @@ architecture_body[ IIR_LibraryDeclaration *library ] > [IIRScram_ArchitectureDec
   <<
     my_symbol_table->open_scope(new_arch);
     IIRScram_EntityDeclaration *entity_decl = 
-      dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( TRUE, 
+      dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( true, 
 											     entity_name, 
 											     library,
 											     my_std_package,
@@ -842,7 +842,7 @@ configuration_declaration[ IIR_LibraryDeclaration *library ] > [IIRScram_Configu
   OF selected_or_simple_name > [entity_name]
   <<
     IIRScram_EntityDeclaration *entity_decl = NULL;
-    entity_decl = dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( TRUE,
+    entity_decl = dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( true,
                                                               entity_name,
                                                               library,
                                                               my_std_package,
@@ -1196,7 +1196,7 @@ process_statement[ IIRScram_Label *label ] > [IIRScram_ProcessStatement *retval]
   END 
   {
     POSTPONED 
-    <<process_stmt->set_postponed( TRUE );>>
+    <<process_stmt->set_postponed( true );>>
   }
   PROCESS 
   {
@@ -1476,7 +1476,7 @@ options > [IIR_Boolean guard, IIR_DelayMechanism delay_mech, IIRScram *reject_li
     $delay_mech = IIR_INERTIAL_DELAY;
     $reject_lim = NULL;
   >>
-  { GUARDED <<$guard = TRUE;>> }
+  { GUARDED <<$guard = true;>> }
   { delay_mechanism > [$delay_mech, $reject_lim] }
 ;
 
@@ -2135,7 +2135,7 @@ next_statement[ IIRScram_Label *label ] > [IIRScram_NextStatement *stmt]:
 
 	if( goto_label != NULL ){
 	  IIRScram_Statement *next_statement  = dynamic_cast<IIRScram_Statement *>(goto_label->get_statement());
-	  if( dynamic_cast<IIRScram_Statement *>(next_statement)->_is_iir_sequential_statement() == TRUE ){
+	  if( dynamic_cast<IIRScram_Statement *>(next_statement)->_is_iir_sequential_statement() == true ){
 	    $stmt->set_enclosing_loop( dynamic_cast<IIRScram_SequentialStatement *>(next_statement) );
 	  }
 	  else{
@@ -2213,7 +2213,7 @@ exit_statement[ IIRScram_Label *label ] > [IIRScram_ExitStatement *stmt]:
 	if( exit_label != NULL ){
 	  IIRScram_Statement *exit_statement =
 	    dynamic_cast<IIRScram_Statement *>(exit_label->get_statement());
-	  if( exit_statement->_is_iir_sequential_statement() == TRUE ){
+	  if( exit_statement->_is_iir_sequential_statement() == true ){
 	    $stmt->set_enclosing_loop( dynamic_cast<IIR_SequentialStatement *>(exit_statement) );
 	  }
 	  else{
@@ -2324,7 +2324,7 @@ package_body[ IIR_LibraryDeclaration *library ] > [ IIRScram_PackageBodyDeclarat
     dynamic_cast<IIRScram_PackageBodyDeclaration *>($new_package_body)->_add_declaration_and_open_scope( );
 
     IIRScram_PackageDeclaration *my_decl = NULL;
-    my_decl = dynamic_cast<IIRScram_PackageDeclaration *>(library_manager::instance()->lookup_package( TRUE, 
+    my_decl = dynamic_cast<IIRScram_PackageDeclaration *>(library_manager::instance()->lookup_package( true, 
                                                            package_name, 
                                                            library,
                                                            my_std_package,
@@ -2387,7 +2387,7 @@ subprogram[ IIR_DeclarationList *list]:
   {
     subprogram_body[ new_subp_decl ]
     <<
-      added_declaration = TRUE;
+      added_declaration = true;
       IIRScram_TypeDefinition *return_type = NULL;
       // This will be NULL if the subprogram is a procedure.
       return_type = dynamic_cast<IIRScram_SubprogramDeclaration *>(new_subp_decl)->_get_subtype();
@@ -2496,7 +2496,7 @@ subprogram_body[IIRScram_SubprogramDeclaration *subp_decl]:
   >>
   is:IS
   <<
-    subp_decl->set_contains_body( TRUE );
+    subp_decl->set_contains_body( true );
     my_symbol_table->add_subprogram_declaration( subp_decl, true );
   
     if( subp_decl->get_kind() == IIR_PROCEDURE_DECLARATION ){
@@ -2972,7 +2972,7 @@ entity_aspect > [IIRScram_LibraryUnit *lib_unit]:
   selected_or_simple_name > [entity_name]
   <<
     if( entity_name != NULL ){
-      $lib_unit = dynamic_cast<IIRScram_LibraryUnit *>(library_manager::instance()->lookup_entity( TRUE, 
+      $lib_unit = dynamic_cast<IIRScram_LibraryUnit *>(library_manager::instance()->lookup_entity( true, 
 	        				              entity_name,
 						              dynamic_cast<IIRScram_Name *>(entity_name)->_get_work_library(),
                                                               my_std_package,
@@ -2984,8 +2984,8 @@ entity_aspect > [IIRScram_LibraryUnit *lib_unit]:
     simple_name > [arch_name]
     <<
       if( $lib_unit != NULL ){
-        ASSERT( dynamic_cast<IIRScram_LibraryUnit *>($lib_unit)->is_entity_declaration() == TRUE );
-	$lib_unit = dynamic_cast<IIRScram_LibraryUnit *>(library_manager::instance()->lookup_architecture( TRUE, 
+        ASSERT( dynamic_cast<IIRScram_LibraryUnit *>($lib_unit)->is_entity_declaration() == true );
+	$lib_unit = dynamic_cast<IIRScram_LibraryUnit *>(library_manager::instance()->lookup_architecture( true, 
                                                                                                       dynamic_cast<IIRScram_EntityDeclaration *>($lib_unit),
                                                                                                       arch_name));
       }
@@ -2997,7 +2997,7 @@ entity_aspect > [IIRScram_LibraryUnit *lib_unit]:
   <<
     if( configuration_name != NULL ){
       $lib_unit = dynamic_cast<IIRScram_LibraryUnit *>(
-        library_manager::instance()->lookup_configuration( TRUE, 
+        library_manager::instance()->lookup_configuration( true, 
 							   configuration_name,
 							   dynamic_cast<IIRScram_Name *>(configuration_name)->_get_work_library(),
                                                            my_std_package,
@@ -3372,7 +3372,7 @@ array_type_definition[ IIRScram_TypeDeclaration *type_decl ] > [IIRScram_ArrayTy
   <<
     $retval = IIRScram_ArrayTypeDefinition::_construct_array_type( dynamic_cast<IIRScram_ScalarTypeDefinition *>(index_subtype), NULL, dynamic_cast<IIRScram_TypeDeclaration *>(type_decl) );
     if( dynamic_cast<IIRScram_ArrayTypeDefinition *>($retval)->is_unconstrained_array_type() ){
-      is_unconstrained = TRUE;
+      is_unconstrained = true;
     }
     copy_location( array,  $retval );
     final_subtype = $retval;
@@ -3385,20 +3385,20 @@ array_type_definition[ IIRScram_TypeDeclaration *type_decl ] > [IIRScram_ArrayTy
       final_subtype = IIRScram_ArraySubtypeDefinition::_construct_array_type( dynamic_cast<IIRScram_ScalarTypeDefinition *>(index_subtype), NULL, NULL );
       dynamic_cast<IIRScram_ArrayTypeDefinition *>(prev_subtype)->set_element_subtype( final_subtype );
       ASSERT( prev_subtype->get_base_type() != NULL );
-      ASSERT( dynamic_cast<IIRScram_ArrayTypeDefinition *>(prev_subtype->get_base_type())->_is_iir_array_type_definition() == TRUE );
+      ASSERT( dynamic_cast<IIRScram_ArrayTypeDefinition *>(prev_subtype->get_base_type())->_is_iir_array_type_definition() == true );
       dynamic_cast<IIRScram_ArrayTypeDefinition *>(prev_subtype->get_base_type())->set_element_subtype( final_subtype );
-      if( is_unconstrained == TRUE ){
+      if( is_unconstrained == true ){
 	if( dynamic_cast<IIRScram_ArrayTypeDefinition *>(final_subtype)->is_unconstrained_array_type() == false ){
-	  err_flag = TRUE;
+	  err_flag = true;
 	}
       }
       else{
-	if( dynamic_cast<IIRScram_ArrayTypeDefinition *>(final_subtype)->is_unconstrained_array_type() == TRUE ){
-	  err_flag = TRUE;	
+	if( dynamic_cast<IIRScram_ArrayTypeDefinition *>(final_subtype)->is_unconstrained_array_type() == true ){
+	  err_flag = true;	
 	}
       }
 
-      if( err_flag == TRUE ){
+      if( err_flag == true ){
 	ostringstream err;
 	err << "All indexes of an array must be either constrained or unconstrained."
 	    << " They cannot be mixed.";
@@ -3410,13 +3410,13 @@ array_type_definition[ IIRScram_TypeDeclaration *type_decl ] > [IIRScram_ArrayTy
   OF
   subtype_indication > [element_subtype]
   <<
-    if( dynamic_cast<IIRScram_TypeDefinition *>(element_subtype)->is_array_type() == TRUE ){
-      dynamic_cast<IIRScram_TypeDefinition *>(element_subtype)->set_is_element( TRUE );
+    if( dynamic_cast<IIRScram_TypeDefinition *>(element_subtype)->is_array_type() == true ){
+      dynamic_cast<IIRScram_TypeDefinition *>(element_subtype)->set_is_element( true );
     }
 
     dynamic_cast<IIRScram_ArrayTypeDefinition *>(final_subtype)->set_element_subtype( element_subtype );
     if( dynamic_cast<IIRScram_ArrayTypeDefinition *>(final_subtype)->_get_base_type() != NULL ){
-      ASSERT( dynamic_cast<IIRScram_ArrayTypeDefinition *>(final_subtype)->_get_base_type()->_is_iir_array_type_definition() == TRUE );
+      ASSERT( dynamic_cast<IIRScram_ArrayTypeDefinition *>(final_subtype)->_get_base_type()->_is_iir_array_type_definition() == true );
       (dynamic_cast<IIRScram_ArrayTypeDefinition *>(final_subtype->get_base_type()))->set_element_subtype( element_subtype );
     }
   >>
@@ -3448,8 +3448,8 @@ index_subtype_definition > [IIRScram_ScalarTypeDefinition *retval]:
   >>
   type_mark > [type_designator]
   <<
-    if( dynamic_cast<IIRScram_TypeDefinition *>(type_designator)->is_scalar_type() != TRUE ||
-	dynamic_cast<IIRScram_TypeDefinition *>(type_designator)->is_discrete_type() != TRUE ){
+    if( dynamic_cast<IIRScram_TypeDefinition *>(type_designator)->is_scalar_type() != true ||
+	dynamic_cast<IIRScram_TypeDefinition *>(type_designator)->is_discrete_type() != true ){
       ostringstream err;
       err << "Array indexes must be discrete, scalar, types.";
       report_error( type_designator, err.str() );
@@ -3469,7 +3469,7 @@ index_subtype_definition > [IIRScram_ScalarTypeDefinition *retval]:
     subtype = dynamic_cast<IIRScram_TypeDefinition *>(type_designator)->_construct_new_subtype( NULL, dynamic_cast<IIRScram_RangeTypeDefinition *>(temp_range) );
     dynamic_cast<IIRScram_TypeDefinition *>(subtype)->set_type_mark( type_designator );
 
-    ASSERT( dynamic_cast<IIRScram_TypeDefinition *>(subtype)->is_scalar_type() == TRUE );
+    ASSERT( dynamic_cast<IIRScram_TypeDefinition *>(subtype)->is_scalar_type() == true );
     $retval = dynamic_cast<IIRScram_ScalarTypeDefinition *>(subtype);
 
     copy_location( start, $retval );
@@ -3781,7 +3781,7 @@ constraint[ IIRScram_TypeDefinition *type_def,
   >>
   range_constraint > [ additional_constraint ]
   <<
-    ASSERT( type_def != NULL || parse_error == TRUE );
+    ASSERT( type_def != NULL || parse_error == true );
     if( type_def != NULL ){
       $constrained_type = 
 	dynamic_cast<IIRScram_TypeDefinition *>(type_def)->_construct_new_subtype( dynamic_cast<IIRScram_Name *>(resolution_function), dynamic_cast<IIRScram_ScalarTypeDefinition *>(additional_constraint) );
@@ -3789,7 +3789,7 @@ constraint[ IIRScram_TypeDefinition *type_def,
   >>
 | index_constraint[ type_def ] > [$constrained_type]
   <<
-    ASSERT( type_def != NULL || parse_error == TRUE );
+    ASSERT( type_def != NULL || parse_error == true );
   >>
 ;
 
@@ -3804,7 +3804,7 @@ index_constraint[ IIRScram_TypeDefinition *type_definition ] > [ IIRScram_TypeDe
   >>
   l_paren:L_PAREN 
   <<
-    if( dynamic_cast<IIRScram_TypeDefinition *>(type_definition)->is_array_type() == TRUE ){
+    if( dynamic_cast<IIRScram_TypeDefinition *>(type_definition)->is_array_type() == true ){
       array_type = type_definition;
     }
   >>
@@ -3832,8 +3832,8 @@ index_constraint[ IIRScram_TypeDefinition *type_definition ] > [ IIRScram_TypeDe
     COMMA discrete_range > [current_constraint]
     <<
       if( array_type != NULL ){
-        ASSERT( dynamic_cast<IIRScram_TypeDefinition *>(final_constrained_type)->is_array_type() == TRUE );
-        ASSERT( dynamic_cast<IIRScram_TypeDefinition *>(final_unconstrained_type)->is_array_type() == TRUE );
+        ASSERT( dynamic_cast<IIRScram_TypeDefinition *>(final_constrained_type)->is_array_type() == true );
+        ASSERT( dynamic_cast<IIRScram_TypeDefinition *>(final_unconstrained_type)->is_array_type() == true );
         previous_constrained_type = final_constrained_type;
         previous_unconstrained_type = final_unconstrained_type;
   
@@ -3856,7 +3856,7 @@ index_constraint[ IIRScram_TypeDefinition *type_definition ] > [ IIRScram_TypeDe
   R_PAREN 
   <<
     if( array_type != NULL ){
-      ASSERT( dynamic_cast<IIRScram *>(final_unconstrained_type)->is_array_type() == TRUE );
+      ASSERT( dynamic_cast<IIRScram *>(final_unconstrained_type)->is_array_type() == true );
       dynamic_cast<IIRScram_TypeDefinition *>(final_constrained_type)->set_element_subtype( dynamic_cast<IIRScram_TypeDefinition *>(final_unconstrained_type)->_get_element_subtype() );
     }
   >>
@@ -3954,12 +3954,12 @@ signal_kind > [IIR_SignalKind kind]:
 ;
 
 shared_variable_declaration[IIR_DeclarationList *list]:
-  SHARED VARIABLE variable_declaration_body[$list, TRUE]
+  SHARED VARIABLE variable_declaration_body[$list, true]
 ;
 
 variable_declaration[ IIR_DeclarationList *list ]:
   <<IIR_Boolean shared = false;>>
-  { SHARED <<shared = TRUE;>> } VARIABLE 
+  { SHARED <<shared = true;>> } VARIABLE 
   variable_declaration_body[$list, shared]	
 ;
 
@@ -4416,7 +4416,7 @@ group_declaration[ IIR_DeclarationList *list ]:
   >>
   keyword:GROUP identifier > [group_name] COLON selected_or_simple_name > [ group_template_name ]
   <<
-    if( dynamic_cast<IIRScram_GroupDeclaration *>(group_template_name)->is_name() != TRUE ){
+    if( dynamic_cast<IIRScram_GroupDeclaration *>(group_template_name)->is_name() != true ){
       // There is  no general purpose method for printing names yet.
       report_error("No group template by name [Internal error] found");
     }
@@ -4468,7 +4468,7 @@ entity_class_entry > [ IIRScram_EntityClassEntry *new_entity_class_entry ]:
   <<$new_entity_class_entry->set_entity_kind( ent_class );>>
   {
     box:LESS_GREATER 
-    <<$new_entity_class_entry->set_boxed( TRUE );>>
+    <<$new_entity_class_entry->set_boxed( true );>>
   }
 ;
 
@@ -4678,9 +4678,9 @@ simple_expression > [IIRScram *e]:
     IIR_Boolean         sign_op_present = false;
     IIR                 *wk             = NULL;
   >>
-  { sign_op:SIGN_OPERATOR <<sign_op_present = TRUE;>> } term > [$e]
+  { sign_op:SIGN_OPERATOR <<sign_op_present = true;>> } term > [$e]
   <<
-    if( sign_op_present == TRUE ){
+    if( sign_op_present == true ){
       switch (sign_op->getType()) {
       case PLUS: 
         ue = new IIRScram_IdentityOperator();
@@ -5782,7 +5782,7 @@ discrete_range > [IIRScram_ScalarTypeDefinition *retval ]:
 	report_error( base_type, err.str() );
       }
       else{
-	ASSERT( dynamic_cast<IIRScram_TypeDefinition *>(base_type)->is_scalar_type() == TRUE );
+	ASSERT( dynamic_cast<IIRScram_TypeDefinition *>(base_type)->is_scalar_type() == true );
 	$retval = dynamic_cast<IIRScram_ScalarTypeDefinition *>(base_type);
       }
     }
@@ -6274,7 +6274,7 @@ array_nature_definition[IIRScram_NatureDeclaration *nature_decl] > [IIRScram_Arr
     $array_def = IIRScram_ArrayNatureDefinition::_construct_array_type( dynamic_cast<IIRScram_ScalarTypeDefinition *>(index_subtype), NULL, dynamic_cast<IIRScram_NatureDeclaration *>(nature_decl) );
     if( dynamic_cast<IIRScram_ArrayNatureDefinition *>($array_def)->is_unconstrained_array_type() ){
      
-      is_unconstrained = TRUE;
+      is_unconstrained = true;
     }
     copy_location(array_, $array_def);
     final_subtype = $array_def;
@@ -6285,20 +6285,20 @@ array_nature_definition[IIRScram_NatureDeclaration *nature_decl] > [IIRScram_Arr
       final_subtype = IIRScram_ArraySubnatureDefinition::_construct_array_type( dynamic_cast<IIRScram_ScalarTypeDefinition *>(index_subtype), NULL, NULL );
       dynamic_cast<IIRScram_ArrayNatureDefinition *>(prev_subtype)->set_element_subtype( dynamic_cast<IIRScram_ArrayNatureDefinition *>(final_subtype) );
       ASSERT( dynamic_cast<IIRScram_ArrayNatureDefinition *>(prev_subtype)->_get_base_type() != NULL );
-      ASSERT( dynamic_cast<IIRScram_ArrayNatureDefinition *>(prev_subtype)->_get_base_type()->_is_iir_array_type_definition() == TRUE );
+      ASSERT( dynamic_cast<IIRScram_ArrayNatureDefinition *>(prev_subtype)->_get_base_type()->_is_iir_array_type_definition() == true );
       dynamic_cast<IIRScram_ArrayTypeDefinition *>((prev_subtype->get_base_type()))->set_element_subtype( dynamic_cast<IIRScram_ArrayNatureDefinition *>(final_subtype) );
-      if( is_unconstrained == TRUE ){
+      if( is_unconstrained == true ){
       if( dynamic_cast<IIRScram_ArrayNatureDefinition *>(final_subtype)->is_unconstrained_array_type() == false ){
-	  err_flag = TRUE;
+	  err_flag = true;
 	}
       }
       else{
-	if( dynamic_cast<IIRScram_ArrayNatureDefinition *>(final_subtype)->is_unconstrained_array_type() == TRUE ){
-	  err_flag = TRUE;	
+	if( dynamic_cast<IIRScram_ArrayNatureDefinition *>(final_subtype)->is_unconstrained_array_type() == true ){
+	  err_flag = true;	
 	}
       }
 
-      if( err_flag == TRUE ){
+      if( err_flag == true ){
 	ostringstream err;
 	err << "All indexes of an array must be either constrained or unconstrained."
 	    << " They cannot be mixed.";
@@ -6308,12 +6308,12 @@ array_nature_definition[IIRScram_NatureDeclaration *nature_decl] > [IIRScram_Arr
   )*
   R_PAREN OF subnature_indication > [element_subtype]
   <<
-    if( dynamic_cast<IIRScram_NatureDefinition *>( element_subtype )->is_array_type() == TRUE ){
-      dynamic_cast<IIRScram_NatureDefinition *>(element_subtype)->set_is_element( TRUE );
+    if( dynamic_cast<IIRScram_NatureDefinition *>( element_subtype )->is_array_type() == true ){
+      dynamic_cast<IIRScram_NatureDefinition *>(element_subtype)->set_is_element( true );
     }
     final_subtype->set_element_subtype(element_subtype);
     if( dynamic_cast<IIRScram_ArrayNatureDefinition *>(final_subtype)->get_base_type() != NULL ){
-      ASSERT( dynamic_cast<IIRScram_ArrayNatureDefinition *>(final_subtype->get_base_type())->_is_iir_array_type_definition() == TRUE );
+      ASSERT( dynamic_cast<IIRScram_ArrayNatureDefinition *>(final_subtype->get_base_type())->_is_iir_array_type_definition() == true );
     (dynamic_cast<IIRScram_ArrayNatureDefinition *>(final_subtype->get_base_type()))->set_element_subtype( element_subtype );
     }
   >>

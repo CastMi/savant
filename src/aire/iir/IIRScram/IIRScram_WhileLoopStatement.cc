@@ -49,7 +49,7 @@ IIRScram_WhileLoopStatement::_type_check(){
   if( _get_while_condition() != NULL ){
     set_while_condition( _type_check_and_resolve_boolean_condition( _get_while_condition() ) );
     if( parse_error == false ){
-      ASSERT( _get_while_condition()->is_resolved() == TRUE );
+      ASSERT( _get_while_condition()->is_resolved() == true );
     }
   }
 }

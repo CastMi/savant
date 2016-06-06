@@ -53,7 +53,7 @@ public:
   IIRBase_AccessTypeDefinition *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_element() const override;
-  IIR_Boolean is_access_type() const override { return TRUE; }
+  IIR_Boolean is_access_type() const override { return true; }
   IIR_Boolean is_scalar_type() const override;
   IIR_Boolean is_array_type() const override;
   IIR_Boolean is_unconstrained_array_type() override;

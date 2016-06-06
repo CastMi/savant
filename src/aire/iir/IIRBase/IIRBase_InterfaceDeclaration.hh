@@ -41,8 +41,8 @@ public:
   IIR_Statement* get_value();
 
   IIR *convert_tree(plugin_class_factory *factory);
-  IIR_Boolean is_interface() { return TRUE; };
-  IIR_Boolean is_object() { return TRUE;}
+  IIR_Boolean is_interface() { return true; };
+  IIR_Boolean is_object() { return true;}
 
   ostream &print( ostream & );
   void publish_vhdl_mode(ostream &);

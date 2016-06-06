@@ -35,7 +35,7 @@ class IIRScram_TextLiteral;
 
 class IIRScram_NatureDefinition : public virtual IIRScram_TypeDefinition, public virtual IIRBase_NatureDefinition {
 public:
-  IIR_Boolean _is_nature_definition() { return TRUE; }
+  IIR_Boolean _is_nature_definition() { return true; }
 
   virtual IIRScram_TerminalDeclaration *get_reference_terminal();
   virtual IIRScram_TypeDefinition *_get_element_subtype();

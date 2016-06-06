@@ -91,10 +91,10 @@ IIRBase_DyadicOperator::is_resolved(){
   ASSERT( get_left_operand() != NULL );
   ASSERT( get_right_operand() != NULL );
 
-  if( get_left_operand()->is_resolved() == TRUE 
-      && get_right_operand()->is_resolved() == TRUE
+  if( get_left_operand()->is_resolved() == true 
+      && get_right_operand()->is_resolved() == true
       && get_subtype() != NULL ){
-    return TRUE;
+    return true;
   }
   else{
     return false;
@@ -103,7 +103,7 @@ IIRBase_DyadicOperator::is_resolved(){
 
 IIR_Boolean
 IIRBase_DyadicOperator::is_locally_static(){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   ASSERT( get_left_operand() );
   ASSERT( get_right_operand() );
   return get_left_operand()->is_locally_static() && get_right_operand()->is_locally_static();
@@ -120,7 +120,7 @@ IIRBase_DyadicOperator::is_above_attribute_found() {
 
 bool
 IIRBase_DyadicOperator::is_associative( IIR_Kind ){
-  return TRUE;
+  return true;
 }
 
 ostream &
@@ -147,24 +147,24 @@ IIRBase_DyadicOperator::publish_vhdl(ostream &vhdl_out){
 
   if (( left_precedence < self_precedence ) ||
       (dynamic_cast<IIRBase *>(get_left_operand())->is_relational_operator() )){
-    left_bracket = TRUE ;
+    left_bracket = true ;
   }
   if (( get_left_operand()->get_kind() == get_kind()) &&
       !is_left_associative() ){
-    left_bracket = TRUE ;
+    left_bracket = true ;
   }
   if (( left_precedence == self_precedence ) &&
       ( is_logical_operator() ) &&
       ( get_kind() != get_left_operand()->get_kind() )){
-    left_bracket = TRUE ;
+    left_bracket = true ;
   }
   if (( right_precedence < self_precedence ) ||
       (get_right_operand()->is_relational_operator())){
-    right_bracket = TRUE ;
+    right_bracket = true ;
   } 
   if ((right_precedence == self_precedence) &&
       (is_associative(get_right_operand()->get_kind()) == false)) {
-    right_bracket = TRUE;
+    right_bracket = true;
   }
   if ( left_bracket ){
     vhdl_out << "(";

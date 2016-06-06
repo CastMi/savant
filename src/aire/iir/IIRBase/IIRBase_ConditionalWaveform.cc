@@ -75,7 +75,7 @@ IIRBase_ConditionalWaveform::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_ConditionalWaveform::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
   if( get_condition() != NULL && get_condition()->is_resolved() == false ){
     retval = false;

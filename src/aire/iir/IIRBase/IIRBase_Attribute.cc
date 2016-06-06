@@ -51,7 +51,7 @@ IIRBase_Attribute::set_suffix(IIR_Statement *) {
 
 IIR_Boolean 
 IIRBase_Attribute::is_resolved() const {
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
   if( get_prefix()->is_resolved() == false || 
       ( get_suffix() != NULL && get_suffix()->is_resolved() == false ) ){
     retval = false;

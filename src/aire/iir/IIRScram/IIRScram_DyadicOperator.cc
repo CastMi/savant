@@ -182,9 +182,9 @@ IIRScram_DyadicOperator::_build_argument_list(){
 
 IIR_Boolean
 IIRScram_DyadicOperator::_is_readable(){
-  if( _get_left_operand() && _get_left_operand()->_is_readable() == TRUE &&
-      _get_right_operand() && _get_right_operand()->_is_readable() == TRUE ){
-    return TRUE;
+  if( _get_left_operand() && _get_left_operand()->_is_readable() == true &&
+      _get_right_operand() && _get_right_operand()->_is_readable() == true ){
+    return true;
   }
   else{
     return false;
@@ -249,7 +249,7 @@ IIRScram_DyadicOperator::_rval_to_decl( IIRScram_TypeDefinition *my_rval ){
     set_right_operand( _get_right_operand()->_rval_to_decl( my_rval ) );
   }
   set_subtype( my_rval );
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   return this;
 }
 

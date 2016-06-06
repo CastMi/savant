@@ -41,7 +41,7 @@ public:
   IIR_Int32 get_num_across_elements();
   IIR_Int32 get_num_through_elements();
   void _type_check();
-  IIR_Boolean _is_branchQ() {return TRUE;}
+  IIR_Boolean _is_branchQ() {return true;}
   IIR_Boolean _is_readable();
 
   // Wrapper functions

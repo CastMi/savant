@@ -106,7 +106,7 @@ IIRBase_ScalarTypeDefinition::is_ascending_range() {
 
 IIR_Boolean 
 IIRBase_ScalarTypeDefinition::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
   StandardPackage *package = get_design_file()->get_standard_package();
   if( this != dynamic_cast<IIR_ScalarTypeDefinition *>(package->get_savant_universal_integer()) &&
@@ -176,7 +176,7 @@ IIRBase_ScalarTypeDefinition::get_resolved_base_type() {
   IIR_TypeDefinition *retval = get_base_type();
 
   if( dynamic_cast<IIR_SubtypeDeclaration *>(this) != NULL || 
-      ( is_anonymous() == TRUE && get_type_mark() != NULL )){
+      ( is_anonymous() == true && get_type_mark() != NULL )){
     retval = get_type_mark();
   }
   return retval;
@@ -216,7 +216,7 @@ IIRBase_ScalarTypeDefinition::print( ostream &os ){
     if( get_left() != NULL ){
       os << *get_base_type_left();
     }
-    if( is_ascending_range() == TRUE ){
+    if( is_ascending_range() == true ){
       os << " to ";
     }
     else{
@@ -243,7 +243,7 @@ IIRBase_ScalarTypeDefinition::publish_vhdl_decl(ostream &vhdl_out){
   if (get_type_mark() != NULL) {
     get_type_mark()->get_declaration()->get_declarator()->publish_vhdl(vhdl_out);
     
-    if (get_type_mark()->is_scalar_type_definition() == TRUE) {
+    if (get_type_mark()->is_scalar_type_definition() == true) {
       IIRBase_ScalarTypeDefinition *as_scalar = dynamic_cast<IIRBase_ScalarTypeDefinition *>(get_type_mark());
       if( get_base_type_left() == as_scalar->get_base_type_left() &&
 	  get_base_type_right() == as_scalar->get_base_type_right() &&
@@ -257,7 +257,7 @@ IIRBase_ScalarTypeDefinition::publish_vhdl_decl(ostream &vhdl_out){
   vhdl_out << " range ";
   get_base_type_left()->publish_vhdl(vhdl_out);
   vhdl_out << " ";
-  if( is_ascending_range() == TRUE ){
+  if( is_ascending_range() == true ){
     vhdl_out << " to ";
   }
   else {
@@ -269,9 +269,9 @@ IIRBase_ScalarTypeDefinition::publish_vhdl_decl(ostream &vhdl_out){
 
 void 
 IIRBase_ScalarTypeDefinition::publish_vhdl(ostream &vhdl_out){
-  if( is_anonymous() == TRUE ){
+  if( is_anonymous() == true ){
     if( get_type_mark() != NULL ){
-      ASSERT( get_type_mark()->is_scalar_type_definition() == TRUE );
+      ASSERT( get_type_mark()->is_scalar_type_definition() == true );
       IIRBase_ScalarTypeDefinition *as_scalar = dynamic_cast<IIRBase_ScalarTypeDefinition *>(get_type_mark());
       get_type_mark()->publish_vhdl( vhdl_out );
       if( get_base_type_left() != as_scalar->get_base_type_left() ||
@@ -288,7 +288,7 @@ IIRBase_ScalarTypeDefinition::publish_vhdl(ostream &vhdl_out){
     }
   } 
   else {
-    ASSERT(get_declaration()->is_resolved() == TRUE);
+    ASSERT(get_declaration()->is_resolved() == true);
     get_declaration()->publish_vhdl(vhdl_out);
   }
 }
@@ -320,7 +320,7 @@ IIRBase_ScalarTypeDefinition::publish_vhdl_range(ostream &vhdl_out) {
     ASSERT(get_direction() != NULL);
     get_base_type_left()->publish_vhdl(vhdl_out);
     vhdl_out << " ";
-    if( is_ascending_range() == TRUE ){
+    if( is_ascending_range() == true ){
       vhdl_out << "to";
     } else {
       vhdl_out << "downto";

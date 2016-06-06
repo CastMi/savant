@@ -76,7 +76,7 @@ IIRScram_ConcurrentBreakStatement::_type_check() {
   if( _get_condition() != NULL ){
     new_condition = _type_check_and_resolve_boolean_condition(_get_condition());
     ASSERT( new_condition != NULL );
-    ASSERT( new_condition->is_resolved() == TRUE );
+    ASSERT( new_condition->is_resolved() == true );
     set_condition( new_condition );
   }
 }
@@ -103,7 +103,7 @@ IIRScram_ConcurrentBreakStatement::_resolve_signal_name(IIRScram *sig_name) {
     sig_name = sig_name->_semantic_transform( sig_type );
     sig_name->_type_check( sig_type );
     retval = sig_name->_rval_to_decl( sig_type );
-    ASSERT( retval->is_resolved() == TRUE );
+    ASSERT( retval->is_resolved() == true );
     break;
   }
   default:

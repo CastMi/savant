@@ -81,7 +81,7 @@ IIRScram_RecordTypeDefinition::_type_check(){
 
 void
 IIRScram_RecordTypeDefinition::_clone( IIRScram *copy_into ){
-  ASSERT( copy_into->_is_iir_record_type_definition() == TRUE );
+  ASSERT( copy_into->_is_iir_record_type_definition() == true );
   IIRScram_RecordTypeDefinition *as_record_type = dynamic_cast<IIRScram_RecordTypeDefinition *>(copy_into);
 
   as_record_type->set_declaration( _get_declaration() );
@@ -98,7 +98,7 @@ IIRScram_RecordTypeDefinition::_clone(){
   IIRScram_RecordTypeDefinition *retval;
   IIRScram_TypeDefinition *temp = _get_new_subtype();
 
-  ASSERT( temp->_is_iir_record_type_definition() == TRUE );
+  ASSERT( temp->_is_iir_record_type_definition() == true );
   retval = dynamic_cast<IIRScram_RecordTypeDefinition *>(temp);
 
   _clone( retval );

@@ -54,8 +54,8 @@ IIRScram_TypeDeclaration::~IIRScram_TypeDeclaration() {
 
 IIR_Boolean
 IIRScram_TypeDeclaration::_designates_incomplete_type(){
-  if( _get_type_definition() != NULL && _get_type_definition()->_designates_incomplete_type() == TRUE ){
-    return TRUE;
+  if( _get_type_definition() != NULL && _get_type_definition()->_designates_incomplete_type() == true ){
+    return true;
   }
   else{
     return false;
@@ -80,18 +80,18 @@ IIRScram_TypeDeclaration::_come_into_scope( symbol_table *sym_tab ){
   IIRScram_TypeDefinition *type = _get_type_definition();
   if( is_subtype_declaration() == false ){
     if(  type != NULL && type ->is_incomplete_type_definition() == false ){
-      ASSERT( type->is_subtype() == TRUE ||
-	      type->is_record_type() == TRUE ||
-	      type->is_file_type() == TRUE  );
+      ASSERT( type->is_subtype() == true ||
+	      type->is_record_type() == true ||
+	      type->is_file_type() == true  );
       type->_come_into_scope( sym_tab, dynamic_cast<IIRScram_TypeDeclaration *>(this) );
       
-      if( type->_is_iir_access_type_definition() == TRUE &&
-	  type->_designates_incomplete_type() == TRUE ){
+      if( type->_is_iir_access_type_definition() == true &&
+	  type->_designates_incomplete_type() == true ){
 	sym_tab->get_designates_incomplete_type()->add( dynamic_cast<IIRScram_TypeDeclaration *>(this) );
       }
     }
     
-    if( is_incomplete_type_declaration() == TRUE ){
+    if( is_incomplete_type_declaration() == true ){
       sym_tab->get_incomplete_types()->add( dynamic_cast<IIRScram_TypeDeclaration *>(this) );
     }
   }
@@ -103,7 +103,7 @@ IIRScram_TypeDeclaration::_come_out_of_scope( symbol_table *sym_tab ){
     _get_type_definition()->_come_out_of_scope( sym_tab );
   }
 
-  if( _designates_incomplete_type() == TRUE ){
+  if( _designates_incomplete_type() == true ){
     sym_tab->get_designates_incomplete_type()->remove( dynamic_cast<IIRScram_TypeDeclaration *>(this) );    
   }
 }
@@ -121,11 +121,11 @@ IIRScram_TypeDeclaration::_clone() {
 
 IIR_Boolean
 IIRScram_TypeDeclaration::_can_be_in_same_region( IIRScram_Declaration *to_check ){
-  if(( is_incomplete_type_declaration() == TRUE && 
+  if(( is_incomplete_type_declaration() == true && 
        to_check->is_incomplete_type_declaration() == false ) ||
      ( is_incomplete_type_declaration() == false && 
-       to_check->is_incomplete_type_declaration() == TRUE )){
-    return TRUE;
+       to_check->is_incomplete_type_declaration() == true )){
+    return true;
   }
   else{
     return false;

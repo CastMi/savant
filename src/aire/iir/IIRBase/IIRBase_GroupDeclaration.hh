@@ -54,7 +54,7 @@ public:
 
   declaration_type                      get_declaration_type();
 
-  IIR_Boolean                           is_group_declaration(){ return TRUE; }
+  IIR_Boolean                           is_group_declaration(){ return true; }
   void publish_vhdl_decl(ostream &);
 protected:
   IIRBase_GroupDeclaration();

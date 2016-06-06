@@ -48,7 +48,7 @@ public:
 
   static IIRScram_AccessTypeDefinition *get( IIRScram_TypeDefinition *designated_type );
 
-  IIR_Boolean _is_iir_access_type_definition() { return TRUE; }
+  IIR_Boolean _is_iir_access_type_definition() { return true; }
   IIR_Boolean _designates_incomplete_type();
 
   IIRScram_TypeDefinition *_get_element_subtype();

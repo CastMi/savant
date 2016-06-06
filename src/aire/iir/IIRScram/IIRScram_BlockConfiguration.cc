@@ -65,7 +65,7 @@ IIRScram_BlockConfiguration::_type_check_configuration_item( IIRScram_List<IIR_S
 							     IIRScram *enclosing_region ){
   _get_symbol_table()->open_scope( this );
   _type_check_block_specification( statement_list, enclosing_region );
-  ASSERT( _get_block_specification()->is_resolved() == TRUE );
+  ASSERT( _get_block_specification()->is_resolved() == true );
 
   if( debug_symbol_table == true ){
     cerr << "Type checking block configuration - making |"
@@ -111,7 +111,7 @@ IIRScram_BlockConfiguration::_type_check_block_specification( IIRScram_List<IIR_
   }
   }
   
-  ASSERT( _get_block_specification()->is_resolved() == TRUE );
+  ASSERT( _get_block_specification()->is_resolved() == true );
 
 }
 
@@ -138,14 +138,14 @@ IIRScram_BlockConfiguration::_resolve_specification_inside_configuration_declara
     return;
   }
 
-  ASSERT( original_specification->_is_iir_name() == TRUE );
+  ASSERT( original_specification->_is_iir_name() == true );
   specification_declaration = 
-    dynamic_cast<IIRScram_Declaration *>(library_manager::instance()->lookup_architecture( TRUE, 
+    dynamic_cast<IIRScram_Declaration *>(library_manager::instance()->lookup_architecture( true, 
                                                                                            configuration_entity,
                                                                                            dynamic_cast<IIR_Name *>(original_specification)));
 
   if( specification_declaration == NULL ){
-    ASSERT( parse_error == TRUE );
+    ASSERT( parse_error == true );
     return;
   }
 
@@ -194,15 +194,15 @@ IIRScram_BlockConfiguration::_resolve_specification_inside_block_configuration( 
   if( get_block_specification()->get_kind() == IIR_INDEXED_NAME ){
     original_indexed_name = dynamic_cast<IIRScram_IndexedName *>(_get_block_specification());
     IIRScram *prefix = original_indexed_name->_get_prefix();
-    ASSERT( prefix->_is_iir_name() == TRUE );
+    ASSERT( prefix->_is_iir_name() == true );
     to_lookup = dynamic_cast<IIRScram_Name *>(prefix);
   }
   else{
-    ASSERT( _get_block_specification()->_is_iir_name() == TRUE );
+    ASSERT( _get_block_specification()->_is_iir_name() == true );
     to_lookup = dynamic_cast<IIRScram_Name *>(_get_block_specification());
   }
   
-  IIRScram_Label *my_label = to_lookup->_lookup_label( TRUE );
+  IIRScram_Label *my_label = to_lookup->_lookup_label( true );
   IIRScram_Statement *current_statement = my_label->_get_statement();
   if( current_statement->get_kind() != IIR_BLOCK_STATEMENT &&
       current_statement->get_kind() != IIR_CONCURRENT_GENERATE_FOR_STATEMENT &&

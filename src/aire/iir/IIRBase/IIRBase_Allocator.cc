@@ -94,7 +94,7 @@ IIRBase_Allocator::publish_vhdl(ostream &vhdl_out) {
   get_type_mark()->publish_vhdl(vhdl_out);
   
   if( IIRBase_Allocator::get_value() != NULL ){
-    ASSERT( get_value()->is_resolved() == TRUE );
+    ASSERT( get_value()->is_resolved() == true );
 
     vhdl_out << "'( ";
     get_value()->publish_vhdl( vhdl_out );

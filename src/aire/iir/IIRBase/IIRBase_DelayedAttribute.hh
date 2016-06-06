@@ -43,8 +43,8 @@ public:
 
   IIR_DelayedAttribute *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_signal() const { return TRUE; }
-  IIR_Boolean has_suffix() const { return TRUE; }
+  IIR_Boolean is_signal() const { return true; }
+  IIR_Boolean has_suffix() const { return true; }
   void publish_vhdl(ostream &);
 protected:
   IIRBase_DelayedAttribute();

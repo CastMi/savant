@@ -53,9 +53,9 @@ public:
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_locally_static();
-  IIR_Boolean is_operator() { return TRUE; }
+  IIR_Boolean is_operator() { return true; }
   IIR_Boolean is_above_attribute_found();
-  virtual IIR_Boolean is_left_associative(){ return TRUE; }
+  virtual IIR_Boolean is_left_associative(){ return true; }
   virtual bool is_associative( IIR_Kind oper_kind );
 
   ostream &print( ostream & );

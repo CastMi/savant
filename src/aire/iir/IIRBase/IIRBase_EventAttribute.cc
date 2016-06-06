@@ -58,7 +58,7 @@ IIRBase_EventAttribute::build_implicit_variable( const string &declarator,
 void 
 IIRBase_EventAttribute::publish_vhdl(ostream &vhdl_out) {
   ASSERT(get_prefix() != NULL);
-  ASSERT( get_prefix()->is_resolved() == TRUE );
+  ASSERT( get_prefix()->is_resolved() == true );
   get_prefix()->publish_vhdl(vhdl_out);
   vhdl_out << "'EVENT ";
 }

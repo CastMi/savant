@@ -40,7 +40,7 @@ public:
   const string &get_operator_string() const;
 
   Precedence  get_precedence();
-  IIR_Boolean is_relational_operator(){ return TRUE; }
+  IIR_Boolean is_relational_operator(){ return true; }
 
 protected:
   

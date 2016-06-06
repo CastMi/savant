@@ -51,24 +51,24 @@ IIRBase_HighAttribute::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_HighAttribute::is_value_attribute() const {
-  ASSERT( is_resolved() == TRUE );
-  if( get_prefix()->is_scalar_type() == TRUE ){
+  ASSERT( is_resolved() == true );
+  if( get_prefix()->is_scalar_type() == true ){
     ASSERT( get_suffix() == NULL );
-    return TRUE;
+    return true;
   }
   else{
-    ASSERT( get_prefix()->is_array_type() == TRUE );
+    ASSERT( get_prefix()->is_array_type() == true );
     return false;
   }
 }
 
 IIR_Boolean 
 IIRBase_HighAttribute::is_function_attribute(){
-  if( is_value_attribute() == TRUE ){
+  if( is_value_attribute() == true ){
     return false;
   }
   else{
-    return TRUE;
+    return true;
   }
 }
 
@@ -81,11 +81,11 @@ IIRBase_HighAttribute::build_attribute_name() {
 void 
 IIRBase_HighAttribute::publish_vhdl(ostream &vhdl_out) {
   ASSERT(get_prefix() != NULL);
-  ASSERT(get_prefix()->is_resolved() == TRUE);
+  ASSERT(get_prefix()->is_resolved() == true);
   get_prefix()->publish_vhdl(vhdl_out);
   vhdl_out << "'HIGH(";
   if(get_suffix() != NULL) {
-    ASSERT(get_suffix()->is_resolved() == TRUE);
+    ASSERT(get_suffix()->is_resolved() == true);
     get_suffix()->publish_vhdl(vhdl_out);
   } else {
     vhdl_out << "1";

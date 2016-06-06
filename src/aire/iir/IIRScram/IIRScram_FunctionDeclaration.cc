@@ -92,7 +92,7 @@ IIRScram_FunctionDeclaration::_get_type_of_element( int index ){
   
     int i;
     for( i = 0; i < index - 1; i++ ){
-      ASSERT( current_subtype->is_array_type() == TRUE );
+      ASSERT( current_subtype->is_array_type() == true );
       current_subtype = current_subtype->_get_element_subtype();
     }
   }
@@ -109,7 +109,7 @@ IIRScram_FunctionDeclaration::_could_be_conversion_function( ){
   if( get_interface_declarations()->size() == 1 ){
     // We know the argument is the right type, and the return type is
     // right, or we wouldn't have resolved it to this.
-    retval = TRUE;
+    retval = true;
   }
   
   return retval;

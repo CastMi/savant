@@ -91,7 +91,7 @@ IIRBase_WaveformElement::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_WaveformElement::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
   if( get_value() != NULL && get_value()->is_resolved() == false ){
     retval = false;

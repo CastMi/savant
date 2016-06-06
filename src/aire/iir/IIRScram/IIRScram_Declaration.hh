@@ -44,13 +44,13 @@ public:
   IIRScram_Declaration();
   virtual ~IIRScram_Declaration();
   
-  IIR_Boolean _is_iir_declaration() { return TRUE; }
+  IIR_Boolean _is_iir_declaration() { return true; }
   virtual IIR_Boolean _is_overloadable() { return false; }
   virtual IIR_Boolean _is_specification() { return false; }
   virtual IIR_Boolean _is_implicit_operator(){ return false; }
   virtual IIR_Boolean _is_enumeration_literal() { return false; }
 
-  /** This method returns TRUE if this declaration is a homograph of the one
+  /** This method returns true if this declaration is a homograph of the one
       passed in, and false otherwise. */
   virtual IIR_Boolean _is_homograph_of( IIRScram_Declaration * );
   

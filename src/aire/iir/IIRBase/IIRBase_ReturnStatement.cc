@@ -79,7 +79,7 @@ IIRBase_ReturnStatement::is_resolved(){
     return get_return_expression()->is_resolved();
   }
   else {
-    return TRUE;
+    return true;
   }
 }
 

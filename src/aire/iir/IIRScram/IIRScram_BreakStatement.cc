@@ -39,7 +39,7 @@ IIRScram_BreakStatement::_type_check() {
   if ( get_condition() != NULL ){
     new_condition = _type_check_and_resolve_boolean_condition( _get_condition() );
     ASSERT( new_condition != NULL);
-    ASSERT( new_condition->is_resolved() == TRUE );
+    ASSERT( new_condition->is_resolved() == true );
     set_condition( new_condition );
   }
 }

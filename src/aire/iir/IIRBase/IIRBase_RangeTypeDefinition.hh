@@ -39,7 +39,7 @@ public:
 
   // XXX - this is a kludge.  This shouldn't need to be here.  Essentially
   // a range type is a type that we don't know if it is discrete or not...
-  IIR_Boolean is_discrete_type(){ return TRUE; };
+  IIR_Boolean is_discrete_type(){ return true; };
   void publish_vhdl(ostream &);
   void publish_vhdl_decl(ostream &);
   void publish_vhdl_constraint(ostream &);

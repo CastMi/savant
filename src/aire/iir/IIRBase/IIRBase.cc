@@ -175,8 +175,8 @@ IIRBase::get_signal_kind() const {
 
 IIR_Boolean
 IIRBase::is_guard_signal() const {
-  if( is_signal() == TRUE && get_signal_kind() != IIR_SignalKind::IIR_NO_SIGNAL_KIND ){
-    return TRUE;
+  if( is_signal() == true && get_signal_kind() != IIR_SignalKind::IIR_NO_SIGNAL_KIND ){
+    return true;
   }
   else{
     return false;

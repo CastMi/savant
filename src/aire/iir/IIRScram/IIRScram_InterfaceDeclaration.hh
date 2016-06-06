@@ -47,8 +47,8 @@ public:
   IIR_Boolean _attach_attribute_specification( IIRScram_AttributeSpecification * );
 
   
-  IIR_Boolean is_object() { return TRUE;}
-  IIR_Boolean _is_iir_interface_declaration(){ return TRUE; }
+  IIR_Boolean is_object() { return true;}
+  IIR_Boolean _is_iir_interface_declaration(){ return true; }
 
   IIRScram_TypeDefinition *_get_type_of_element( int );
 

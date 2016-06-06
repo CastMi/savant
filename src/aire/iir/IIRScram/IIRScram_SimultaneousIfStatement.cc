@@ -39,7 +39,7 @@ void
 IIRScram_SimultaneousIfStatement::_type_check(){
   IIRScram *new_condition = _type_check_and_resolve_boolean_condition( _get_condition() );
   ASSERT( new_condition != NULL );
-  ASSERT( new_condition->is_resolved() == TRUE );
+  ASSERT( new_condition->is_resolved() == true );
   set_condition( new_condition );
   savant::set<IIRScram_TypeDefinition> *bool_rvals = 
     new savant::set<IIRScram_TypeDefinition>(dynamic_cast<IIRScram_TypeDefinition *>(_get_design_file()->get_standard_package()->get_boolean_type()));

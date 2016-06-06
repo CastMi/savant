@@ -48,7 +48,7 @@ public:
 
   savant::set<IIR_Declaration> *find_declarations( IIR_Name * );
 
-  IIR_Boolean is_component_declaration(){ return TRUE; }
+  IIR_Boolean is_component_declaration(){ return true; }
   void publish_vhdl_decl(ostream &);
 
   void set_entity( IIR_EntityDeclaration *entity );

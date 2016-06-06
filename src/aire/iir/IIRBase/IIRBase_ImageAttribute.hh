@@ -46,8 +46,8 @@ public:
   
   IIR_ImageAttribute *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_function_attribute() const { return TRUE; }
-  IIR_Boolean has_suffix(){ return TRUE; }
+  IIR_Boolean is_function_attribute() const { return true; }
+  IIR_Boolean has_suffix(){ return true; }
 
   IIR_Identifier *build_attribute_name();
   void publish_vhdl(ostream &);

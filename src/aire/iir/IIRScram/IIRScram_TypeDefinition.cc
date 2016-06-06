@@ -101,7 +101,7 @@ IIRScram_TypeDefinition::_get_type_of_element( int index ){
 
   int i;
   for( i = 0; i < index - 1; i++ ){
-    ASSERT( current_subtype->is_array_type() == TRUE );
+    ASSERT( current_subtype->is_array_type() == true );
 
     current_subtype = current_subtype->_get_element_subtype();
   }
@@ -120,7 +120,7 @@ IIRScram_TypeDefinition::_is_explicit_type_conversion_needed(IIRScram_TypeDefini
     return NULL;
   }
 
-  if (targetType->is_anonymous() == TRUE) {
+  if (targetType->is_anonymous() == true) {
     targetType = dynamic_cast<IIRScram_TypeDefinition *>(targetType->get_bottom_base_type());
   }
   
@@ -141,7 +141,7 @@ IIRScram_TypeDefinition::_is_base_type(IIRScram_TypeDefinition *_base) {
   while (base_type != NULL) {
     if ((base_type == _base) ||
 	(IIRBase_TextLiteral::cmp(base_type->_get_declarator(), _base->_get_declarator()) == 0)) {
-      return TRUE;
+      return true;
     }
 
     base_type = base_type->_get_resolved_base_type();
@@ -200,16 +200,16 @@ IIRScram_TypeDefinition::_determine_type_of_bound( IIRScram *left_or_right ){
   
   case 1:{
     retval = dynamic_cast<IIRScram_ScalarTypeDefinition *>(left_or_right_types->getElement());
-    ASSERT( retval->is_scalar_type() == TRUE );
+    ASSERT( retval->is_scalar_type() == true );
     break;
   }
     
   default:{
-    if( left_or_right_types->contains( dynamic_cast<IIRScram_IntegerSubtypeDefinition *>(package->get_savant_universal_integer()) ) == TRUE ){
+    if( left_or_right_types->contains( dynamic_cast<IIRScram_IntegerSubtypeDefinition *>(package->get_savant_universal_integer()) ) == true ){
       left_or_right_type = dynamic_cast<IIRScram_ScalarTypeDefinition *>(package->get_savant_universal_integer());
       retval = left_or_right_type;
     }
-    else if( left_or_right_types->contains( dynamic_cast<IIRScram_FloatingSubtypeDefinition *>(package->get_savant_universal_real()) ) == TRUE ){
+    else if( left_or_right_types->contains( dynamic_cast<IIRScram_FloatingSubtypeDefinition *>(package->get_savant_universal_real()) ) == true ){
       left_or_right_type = dynamic_cast<IIRScram_ScalarTypeDefinition *>(package->get_savant_universal_real());
       retval = left_or_right_type;
     }
@@ -247,8 +247,8 @@ IIRScram_TypeDefinition::_construct_new_type( IIRScram_RangeTypeDefinition      
       return NULL;
     }
 
-    if( left_type->_is_iir_integer_type_definition() == TRUE ){
-      if( right_type->_is_iir_integer_type_definition() == TRUE ){
+    if( left_type->_is_iir_integer_type_definition() == true ){
+      if( right_type->_is_iir_integer_type_definition() == true ){
 	retval = IIRScram_IntegerTypeDefinition::_construct_new_type( temp_range, type_decl , design_file );
       }
       else{
@@ -260,8 +260,8 @@ IIRScram_TypeDefinition::_construct_new_type( IIRScram_RangeTypeDefinition      
 	retval = NULL;
       }
     }
-    else if ( left_type->_is_iir_floating_type_definition() == TRUE ){
-      if( right_type->_is_iir_floating_type_definition() == TRUE ){
+    else if ( left_type->_is_iir_floating_type_definition() == true ){
+      if( right_type->_is_iir_floating_type_definition() == true ){
 	retval = IIRScram_FloatingTypeDefinition::_construct_new_type( temp_range, type_decl, design_file );	
       }
       else{
@@ -290,7 +290,7 @@ IIRScram_TypeDefinition::_construct_new_type( IIRScram_RangeTypeDefinition      
     abort();
   }
   ASSERT( retval != NULL );
-  ASSERT( retval->is_resolved() == TRUE );
+  ASSERT( retval->is_resolved() == true );
   return retval;
 }
 
@@ -361,7 +361,7 @@ IIRScram_TypeDefinition::_construct_new_subtype_resolution_function_only( IIRScr
 
 void 
 IIRScram_TypeDefinition::_clone( IIRScram *copy_into ){
-  ASSERT( copy_into->_is_iir_type_definition() == TRUE );
+  ASSERT( copy_into->_is_iir_type_definition() == true );
 
   IIRScram_TypeDefinition *as_type = dynamic_cast<IIRScram_TypeDefinition *>(copy_into);
   if( is_subtype() ){
@@ -413,7 +413,7 @@ IIRScram_TypeDefinition::_build_implicit_operators( savant::set<IIRScram_Declara
                              dynamic_cast<IIRScram_EnumerationSubtypeDefinition *>(package->get_boolean_type()),
                              this,
                              this );
-  if( _is_numeric_type() == TRUE ){
+  if( _is_numeric_type() == true ){
     const char *addition_operators[] = { "\"+\"", "\"-\"", NULL };
     _build_implicit_operators( addition_operators, add_to, this, this, this );
     // This is unary +/-
@@ -441,7 +441,7 @@ IIRScram_TypeDefinition::_build_implicit_operator( const char *op,
   left->set_declarator( IIRScram_Identifier::get("left", strlen("left"), get_design_file()->get_class_factory()) );
   left->set_subtype( dynamic_cast<IIRScram_TypeDefinition *>(left_type ) );
   left->set_is_visible( false );
-  new_operator->set_is_implicit( TRUE );
+  new_operator->set_is_implicit( true );
   IIRScram::copy_location( this, left );
   new_operator->get_interface_declarations()->append( left );
   
@@ -450,13 +450,13 @@ IIRScram_TypeDefinition::_build_implicit_operator( const char *op,
     right->set_declarator( IIRScram_Identifier::get("right", strlen("right"), get_design_file()->get_class_factory() ) );
     right->set_subtype( dynamic_cast<IIRScram_TypeDefinition *>(right_type ) );
     right->set_is_visible( false );
-    new_operator->set_is_implicit( TRUE );
+    new_operator->set_is_implicit( true );
     IIRScram::copy_location( this, right );
     new_operator->get_interface_declarations()->append( right );
   }
 
   new_operator->set_return_type( dynamic_cast<IIRScram_TypeDefinition *>(return_type ) );
-  new_operator->set_is_implicit( TRUE );
+  new_operator->set_is_implicit( true );
   IIRScram::copy_location( this, new_operator );
   
   add_to->add( new_operator );

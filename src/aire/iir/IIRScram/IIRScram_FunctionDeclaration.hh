@@ -45,7 +45,7 @@ public:
   IIRScram_TypeDefinition *_get_type_of_element( int );
   IIR_Int32 get_num_indexes();
   
-  IIR_Boolean _is_readable(){ return TRUE; }
+  IIR_Boolean _is_readable(){ return true; }
   IIR_Boolean _is_writable(){ return false; }
   IIRScram *_clone();
 

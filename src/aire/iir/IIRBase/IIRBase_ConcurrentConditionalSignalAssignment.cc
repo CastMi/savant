@@ -128,7 +128,7 @@ IIRBase_ConcurrentConditionalSignalAssignment::convert_tree(plugin_class_factory
 
 IIR_Boolean 
 IIRBase_ConcurrentConditionalSignalAssignment::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
   if( get_target() != NULL && get_target()->is_resolved() == false ){
     retval = false;
   }

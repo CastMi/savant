@@ -40,7 +40,7 @@ public:
     return "IIR_ThroughAttribute";
   }
   
-  IIR_Boolean is_signal() { return TRUE; }
+  IIR_Boolean is_signal() { return true; }
  
  /** This returns an IIR_TextLiteral when a through attribute is
      instantiated. */

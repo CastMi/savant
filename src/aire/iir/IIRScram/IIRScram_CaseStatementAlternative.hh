@@ -49,7 +49,7 @@ public:
   IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition> *,
 					     IIRScram_SubprogramDeclaration * );
 
-  IIR_Boolean _is_iir_case_statement_alternative() {return TRUE;};
+  IIR_Boolean _is_iir_case_statement_alternative() {return true;};
 
   IIRScram_SequentialStatementList *_get_sequence_of_statements();
 

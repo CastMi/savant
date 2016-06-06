@@ -48,7 +48,7 @@ public:
   IIR *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_guard_signal();
-  IIR_Boolean is_signal(){ return TRUE; }
+  IIR_Boolean is_signal(){ return true; }
   IIR_Boolean is_above_attribute_found();
   
   declaration_type get_declaration_type();

@@ -50,14 +50,14 @@ IIRScram_AssociationElementByExpression::~IIRScram_AssociationElementByExpressio
 
 IIR_Boolean 
 IIRScram_AssociationElementByExpression::_is_readable(){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
 
   return _get_actual()->_is_readable();
 }
 
 IIR_Boolean 
 IIRScram_AssociationElementByExpression::_is_writable(){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   return _get_actual()->_is_writable();
 }
 
@@ -153,8 +153,8 @@ IIRScram_AssociationElementByExpression::_semantic_transform( savant::set<IIRScr
 IIRScram *
 IIRScram_AssociationElementByExpression::_rval_to_decl( IIRScram_TypeDefinition *my_rval){
 
-  if( is_by_others() == TRUE &&
-      my_rval->is_array_type() == TRUE ){
+  if( is_by_others() == true &&
+      my_rval->is_array_type() == true ){
     // Actual is an element of the array.
     IIRScram_TypeDefinition *element_subtype = my_rval->_get_element_subtype();
     set_actual( _get_actual()->_rval_to_decl( element_subtype) );

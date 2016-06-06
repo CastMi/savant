@@ -38,14 +38,14 @@ IIRScram_Expression::~IIRScram_Expression() {}
 IIRScram *
 IIRScram_Expression::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
   set_subtype( my_type );
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
 
   return this;
 }
 
 void
 IIRScram_Expression::_clone( IIRScram *copy_into ){
-  ASSERT( copy_into->_is_iir_expression() == TRUE );
+  ASSERT( copy_into->_is_iir_expression() == true );
   IIRScram_Expression *as_expression = dynamic_cast<IIRScram_Expression *>(copy_into);
   IIRScram::_clone( copy_into );
   // clone IIRScram_Expression info

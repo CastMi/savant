@@ -44,7 +44,7 @@ public:
 
   IIR_Boolean is_resolved() const;
   IIR_Boolean is_signal() const;
-  IIR_Boolean is_entity_declaration() const { return TRUE; }
+  IIR_Boolean is_entity_declaration() const { return true; }
   IIR_Boolean is_interface() const;
   IIR_Boolean is_variable() const;
 

@@ -54,7 +54,7 @@ public:
   virtual IIRScram *_clone();
   virtual void _clone( IIRScram * );
 
-  IIR_Boolean _is_iir_enumeration_type_definition(){ return TRUE; }
+  IIR_Boolean _is_iir_enumeration_type_definition(){ return true; }
 
   void _come_into_scope( symbol_table *, IIRScram_TypeDeclaration * );
   void _come_out_of_scope( symbol_table * );

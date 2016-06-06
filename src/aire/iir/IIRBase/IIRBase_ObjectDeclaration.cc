@@ -96,11 +96,11 @@ IIRBase_ObjectDeclaration::find_declarations( IIR_Name *to_find){
 
   ASSERT( get_subtype() != NULL );
 
-  if( get_subtype()->is_record_type() == TRUE ){
+  if( get_subtype()->is_record_type() == true ){
     IIR_TypeDefinition *my_subtype = get_subtype();
     retval = my_subtype->find_declarations( to_find );
   }
-  else if( get_subtype()->is_access_type() == TRUE ){
+  else if( get_subtype()->is_access_type() == true ){
     IIR_AccessTypeDefinition *my_subtype = dynamic_cast<IIR_AccessTypeDefinition *>(get_subtype());
     if( my_subtype == NULL ){
       ostringstream err;
@@ -127,7 +127,7 @@ void
 IIRBase_ObjectDeclaration::publish_vhdl_subtype_indication(ostream &vhdl_out){
 
   ASSERT( get_subtype() != NULL );	
-  if (get_subtype()->is_anonymous() == TRUE) {
+  if (get_subtype()->is_anonymous() == true) {
     dynamic_cast<IIRBase_TypeDefinition *>(get_subtype())->publish_vhdl_decl(vhdl_out);
   }
   else {

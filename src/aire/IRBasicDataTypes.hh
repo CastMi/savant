@@ -37,10 +37,6 @@ using std::ostream;
  * some enums and few methods related to them
  */
 
-#ifndef TRUE
-#define TRUE true
-#endif
-
 typedef bool      IIR_Boolean;
 typedef char      IIR_Char;
 typedef int32_t   IIR_Int32;

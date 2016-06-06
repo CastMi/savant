@@ -45,7 +45,7 @@ public:
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
 
-  IIR_Boolean _is_readable(){ return TRUE; }
+  IIR_Boolean _is_readable(){ return true; }
   IIR_Boolean _is_writable(){ return false; }
 
   IIRScram_Statement                      *_get_value();

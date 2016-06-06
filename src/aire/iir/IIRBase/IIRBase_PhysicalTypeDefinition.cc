@@ -109,7 +109,7 @@ IIRBase_PhysicalTypeDefinition::publish_vhdl_type_decl(ostream &vhdl_out) {
 
   ASSERT(get_direction()->get_kind() == IIR_ENUMERATION_LITERAL);
 
-  if( is_ascending_range() == TRUE ){
+  if( is_ascending_range() == true ){
     vhdl_out << " to ";
   }
   else{

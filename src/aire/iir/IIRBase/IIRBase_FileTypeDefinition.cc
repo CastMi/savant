@@ -52,7 +52,7 @@ IIRBase_FileTypeDefinition::get_type_mark() {
 
 IIR_Boolean
 IIRBase_FileTypeDefinition::is_locally_static(){
-  return TRUE;
+  return true;
 }
 
 IIRBase_FileTypeDefinition *

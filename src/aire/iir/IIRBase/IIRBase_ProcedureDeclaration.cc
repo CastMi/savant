@@ -53,7 +53,7 @@ IIRBase_ProcedureDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
     vhdl_out << ")";
   }
 
-  if (contains_body() == TRUE) {
+  if (contains_body() == true) {
     vhdl_out << " is\n";
     if( get_subprogram_declarations()->size() != 0) {
       dynamic_cast<IIRBase_DeclarationList *>

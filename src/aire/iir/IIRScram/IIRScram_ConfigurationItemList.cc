@@ -54,10 +54,10 @@ IIRScram_ConfigurationItemList::first(){
 IIRScram_ConfigurationItem *
 IIRScram_ConfigurationItemList::successor( IIRScram_ConfigurationItem *to_succeed ){
   ASSERT( to_succeed != NULL );
-  ASSERT( to_succeed->_is_iir_configuration_item() == TRUE );
+  ASSERT( to_succeed->_is_iir_configuration_item() == true );
   IIRScram *temp = dynamic_cast<IIRScram *>(IIRScram_List::successor( to_succeed ));
   if( temp != NULL ){
-    ASSERT( temp->_is_iir_configuration_item() == TRUE );
+    ASSERT( temp->_is_iir_configuration_item() == true );
     return dynamic_cast<IIRScram_ConfigurationItem *>(temp);
   }
   else{
@@ -68,6 +68,6 @@ IIRScram_ConfigurationItemList::successor( IIRScram_ConfigurationItem *to_succee
 void 
 IIRScram_ConfigurationItemList::append( IIRScram_ConfigurationItem *to_append ){
   ASSERT( to_append != NULL );
-  ASSERT( to_append->_is_iir_configuration_item() == TRUE );
+  ASSERT( to_append->_is_iir_configuration_item() == true );
   IIRScram_List::append( to_append );
 }

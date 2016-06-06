@@ -40,7 +40,7 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_LastEventAttribute";}
 
   IIR_TypeDefinition *get_subtype();
-  IIR_Boolean is_function_attribute(){ return TRUE; }
+  IIR_Boolean is_function_attribute(){ return true; }
 
   IIR_Identifier *build_attribute_name();
 

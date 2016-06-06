@@ -84,15 +84,15 @@ private:
   /** This method is responsible for checking to see if this list matches the
       interface list passed in, OR, for resolving a mathing list.  If this
       method is called with an incorrect interface list and the boolean argument
-      is TRUE, it should abort. */
+      is true, it should abort. */
   IIR_Boolean _check_or_resolve( IIRScram_InterfaceList         *formal_list,
 				 IIRScram_InterfaceList         *local_list,
-				 IIR_Boolean                    resolve = TRUE );  
+				 IIR_Boolean                    resolve = true );  
   
   /** This method checks the positional part of an argument list.  It only
-      blows up on errors if the second parameter is TRUE.  It returns -1 if
+      blows up on errors if the second parameter is true.  It returns -1 if
       an argument didn't match. */
-  IIR_Int32 _process_positional_part( IIRScram_InterfaceList *, IIR_Boolean resolve = TRUE );
+  IIR_Int32 _process_positional_part( IIRScram_InterfaceList *, IIR_Boolean resolve = true );
 
   IIRScram_InterfaceDeclaration *_find_declaration_in_formal( IIRScram_AssociationElement * );
   IIRScram_Declaration *_find_declaration( IIRScram_Name *to_find, IIRScram_InterfaceList *list );

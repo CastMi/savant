@@ -47,7 +47,7 @@ public:
   // Makes this string go to lower case.
   void _to_lower();
 
-  IIR_Boolean _is_iir_text_literal(){ return TRUE; }
+  IIR_Boolean _is_iir_text_literal(){ return true; }
 
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);  
 

@@ -47,9 +47,9 @@ public:
   IIRScram_PhysicalTypeDefinition();
   ~IIRScram_PhysicalTypeDefinition();
 
-  IIR_Boolean _is_numeric_type() { return TRUE; }
-  IIR_Boolean _is_physical_type() { return TRUE; }
-  IIR_Boolean _is_iir_physical_type_definition() { return TRUE; }
+  IIR_Boolean _is_numeric_type() { return true; }
+  IIR_Boolean _is_physical_type() { return true; }
+  IIR_Boolean _is_iir_physical_type_definition() { return true; }
 
   
   virtual IIRScram_TypeDefinition *_get_new_subtype();

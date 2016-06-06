@@ -62,7 +62,7 @@ IIRBase_PhysicalSubtypeDefinition::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean
 IIRBase_PhysicalSubtypeDefinition::is_subtype(){
-  return TRUE;
+  return true;
 }
 
 void 

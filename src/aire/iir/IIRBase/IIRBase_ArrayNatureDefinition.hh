@@ -45,7 +45,7 @@ public:
   void
   set_element_subtype(IIR_TypeDefinition* element_subtype);
   
-  /** The Boolean variable is set TRUE if the object is of element type
+  /** The Boolean variable is set true if the object is of element type
       i.e. one of subnature_indication type */
   void set_is_element(IIR_Boolean);
 
@@ -58,7 +58,7 @@ public:
   IIR_Boolean is_unconstrained_array_type();
 
   /** It is used to identify if the object if of array type */
-  IIR_Boolean is_array_type() { return TRUE; }     
+  IIR_Boolean is_array_type() { return true; }     
   
   /** Gets the element subtype of a given index object */
   IIR_TypeDefinition *get_element_subtype();        

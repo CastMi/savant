@@ -48,7 +48,7 @@ public:
   IIR_SimultaneousElsif* get_elsif();
 
   /** The condition specified after if and elsif (if any) are evaluated in
-      succession until one evaluates to TRUE or all conditions are
+      succession until one evaluates to true or all conditions are
       evaluated and yield false. LRM [ 15.2 - 75 ] */
   void set_condition(IIR *);
   IIR* get_condition();
@@ -61,7 +61,7 @@ protected:
   virtual ~IIRBase_SimultaneousIfStatement()=0;
   
 private:
-  /** The simultaneous statement part whose condition evaluates to TRUE is
+  /** The simultaneous statement part whose condition evaluates to true is
       evaluated. LRM [ $ 15.2 - 75 ] */
   IIR_ArchitectureStatementList *then_statement_list;
   IIR_ArchitectureStatementList *else_statement_list;

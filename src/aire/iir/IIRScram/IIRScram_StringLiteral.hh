@@ -27,7 +27,7 @@ class IIRScram_StringLiteral : public virtual IIRScram_TextLiteral, public virtu
 public:
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
 
-  IIR_Boolean _is_string_literal(){ return TRUE; }
+  IIR_Boolean _is_string_literal(){ return true; }
 
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0 );
   IIRScram *_clone();

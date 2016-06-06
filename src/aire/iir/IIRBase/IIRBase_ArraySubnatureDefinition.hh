@@ -34,7 +34,7 @@ public:
   const IIR_Char *get_kind_text() const { return "IIR_ArraySubnatureDefinition"; }
 
   IIR_Boolean is_subtype();
-  IIR_Boolean is_array_type() { return TRUE; }
+  IIR_Boolean is_array_type() { return true; }
 
   void publish_vhdl(ostream &);
   void publish_vhdl_decl(ostream &);

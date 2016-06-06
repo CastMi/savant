@@ -43,8 +43,8 @@ public:
 
   IIR_QuietAttribute *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_signal() const { return TRUE; }  
-  IIR_Boolean has_suffix() { return TRUE; }
+  IIR_Boolean is_signal() const { return true; }  
+  IIR_Boolean has_suffix(){ return true; }
 
   IIR_TypeDefinition *get_subtype();
 

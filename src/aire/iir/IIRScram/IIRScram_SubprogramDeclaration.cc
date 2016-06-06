@@ -119,15 +119,15 @@ IIRScram_SubprogramDeclaration::_type_check_return_statements( IIRScram_TypeDefi
       return_stmt->set_enclosing_subprogram(dynamic_cast<IIRScram_SubprogramDeclaration *>(this));
       return_stmt->_type_check( context_set );
 
-      ASSERT( return_stmt->is_resolved() == TRUE );
+      ASSERT( return_stmt->is_resolved() == true );
 
-      retval = TRUE;
+      retval = true;
     }
-    else if( stmt->has_statement_list() == TRUE ){
+    else if( stmt->has_statement_list() == true ){
       found_one = 
 	stmt->_type_check_return_statements( context_set, dynamic_cast<IIRScram_SubprogramDeclaration *>(this) );
-      if( found_one == TRUE ){
-	retval = TRUE;
+      if( found_one == true ){
+	retval = true;
       }      
     }
 
@@ -185,7 +185,7 @@ IIRScram_SubprogramDeclaration::_compare_signatures( IIRScram_SubprogramDeclarat
   }
 
   // If we made it here, everything matched up...
-  return TRUE;
+  return true;
 }
 
 void
@@ -203,14 +203,14 @@ IIRScram_SubprogramDeclaration::_is_homograph_of( IIRScram_Declaration *compare_
     return false;
   }
 
-  ASSERT( compare_to->is_subprogram() == TRUE );
+  ASSERT( compare_to->is_subprogram() == true );
   IIRScram_SubprogramDeclaration *compare_as_subprog = dynamic_cast<IIRScram_SubprogramDeclaration *>(compare_to);
   
   if( _compare_signatures( this, compare_as_subprog ) == false ){
     return false;
   }
   
-  return TRUE;
+  return true;
 }
 
 void 
@@ -241,13 +241,13 @@ IIRScram_SubprogramDeclaration::_num_required_args(){
 
 IIR_Boolean 
 IIRScram_SubprogramDeclaration::_can_be_in_same_region( IIRScram_Declaration *to_check ){
-  if(( contains_body() == TRUE && to_check->contains_body() == false ) ||
-     ( contains_body() == false && to_check->contains_body() == TRUE )){
-    return TRUE;
+  if(( contains_body() == true && to_check->contains_body() == false ) ||
+     ( contains_body() == false && to_check->contains_body() == true )){
+    return true;
   }
-  else if(( _is_implicit_operator() == TRUE && to_check->_is_implicit_operator() == false )||
-	  ( _is_implicit_operator() == false && to_check->_is_implicit_operator() == TRUE )){
-    return TRUE;
+  else if(( _is_implicit_operator() == true && to_check->_is_implicit_operator() == false )||
+	  ( _is_implicit_operator() == false && to_check->_is_implicit_operator() == true )){
+    return true;
   }
   else{
     return false;
@@ -256,8 +256,8 @@ IIRScram_SubprogramDeclaration::_can_be_in_same_region( IIRScram_Declaration *to
 
 IIR_Boolean 
 IIRScram_SubprogramDeclaration::_is_implicit_operator(){
-  if( is_implicit_declaration() == TRUE && is_operator() == TRUE ){
-    return TRUE;
+  if( is_implicit_declaration() == true && is_operator() == true ){
+    return true;
   }
   else{
     return false;

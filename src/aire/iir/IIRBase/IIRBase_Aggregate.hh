@@ -46,7 +46,7 @@ public:
 
   IIR_Boolean is_resolved( );
   IIR_Boolean is_signal( );
-  IIR_Boolean is_aggregate_expression(){ return TRUE; }
+  IIR_Boolean is_aggregate_expression(){ return true; }
   IIR_Boolean is_variable( );
   IIR_Boolean is_locally_static();
 

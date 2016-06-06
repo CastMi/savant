@@ -76,7 +76,7 @@ IIRScram_BranchQuantityDeclaration::_type_check() {
 
 IIR_Boolean
 IIRScram_BranchQuantityDeclaration::_is_readable() {
-  return TRUE;
+  return true;
 }
 
 IIRScram *

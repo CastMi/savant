@@ -47,7 +47,7 @@ public:
   IIR_Statement *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_resolved();
-  IIR_Boolean is_operator() { return TRUE; }
+  IIR_Boolean is_operator() { return true; }
   IIR_Boolean is_above_attribute_found();
 
   void publish_vhdl(ostream &);

@@ -138,7 +138,7 @@ public:
   IIR_ArchitectureDeclaration *lookup_default_architecture( IIR_EntityDeclaration       *entity_decl);
 
   /** This method finds the last declared architecture of the name it's
-      called on for the entity passed in.  If complain on error is TRUE.
+      called on for the entity passed in.  If complain on error is true.
       it will generate an error message when it fails.  The library
       searched will be that of the entity. */
   IIR_ArchitectureDeclaration *lookup_architecture( IIR_Boolean                 complain_on_error,
@@ -350,7 +350,7 @@ private:
                                        IIR_Kind                         unitType,
                                        StandardPackage                  *package,
                                        plugin_class_factory          *factory,
-                                       IIR_Boolean                      complain_on_error = TRUE );
+                                       IIR_Boolean                      complain_on_error = true );
 
   /** Finds unit_name from the specified library.  Only looks for the
       kind passed in. */
@@ -359,7 +359,7 @@ private:
                                        IIR_Kind                         unitType,
                                        StandardPackage                  *package,
                                        plugin_class_factory          *factory,
-                                       IIR_Boolean                      complain_on_error = TRUE );
+                                       IIR_Boolean                      complain_on_error = true );
 
   /** Finds unit_name from the specified library.  If there are multiple
       possibilies found, it will complain no matter what the
@@ -368,7 +368,7 @@ private:
                                        IIR_Name                         *unit_name,
                                        StandardPackage                  *package,
                                        plugin_class_factory          *factory,
-                                       IIR_Boolean                      complain_on_error = TRUE );
+                                       IIR_Boolean                      complain_on_error = true );
 
   //@}
 

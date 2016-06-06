@@ -60,8 +60,8 @@ IIRScram_ConcurrentConditionalSignalAssignment::~IIRScram_ConcurrentConditionalS
 void 
 IIRScram_ConcurrentConditionalSignalAssignment::_type_check(){
   _type_check_target_and_waveforms();
-  ASSERT( is_resolved() == TRUE || parse_error == TRUE );
-  if( get_guarded() == TRUE ){
+  ASSERT( is_resolved() == true || parse_error == true );
+  if( get_guarded() == true ){
     _resolve_guard_signal( _get_symbol_table() );
   }
 }

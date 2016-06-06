@@ -104,7 +104,7 @@ IIRScram_ProcedureCallStatement::_type_check(){
     case 1:{
       set_procedure_name( _get_procedure_name()->_decl_to_decl( my_decls->getElement() ) );
       IIRScram *temp_name = _get_procedure_name();
-      ASSERT( temp_name->is_subprogram() == TRUE );
+      ASSERT( temp_name->is_subprogram() == true );
       IIRScram_SubprogramDeclaration *my_decl = dynamic_cast<IIRScram_SubprogramDeclaration *>(temp_name);
 
       _get_actual_parameter_part()->_resolve_and_order( my_decl->_get_interface_declarations(),
@@ -136,7 +136,7 @@ IIRScram_ProcedureCallStatement::_type_check(){
     delete old_proc_name;
   }
     
-  ASSERT( _get_procedure_name()->is_resolved() == TRUE );  
+  ASSERT( _get_procedure_name()->is_resolved() == true );  
 }
 
 IIRScram*

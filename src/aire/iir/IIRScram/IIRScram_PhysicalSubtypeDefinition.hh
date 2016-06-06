@@ -51,7 +51,7 @@ public:
 
   virtual IIRScram *_clone();
   virtual void _clone( IIRScram * );
-  virtual IIR_Boolean _is_iir_physical_subtype_definition(){ return TRUE; }
+  virtual IIR_Boolean _is_iir_physical_subtype_definition(){ return true; }
 };
 
 #endif

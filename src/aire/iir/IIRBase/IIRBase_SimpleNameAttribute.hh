@@ -36,7 +36,7 @@ public:
   IIR_Kind get_kind() const {return IIR_SIMPLE_NAME_ATTRIBUTE;}
   const IIR_Char *get_kind_text() const {return "IIR_SimpleNameAttribute";}
 
-  IIR_Boolean is_value_attribute(){ return TRUE; }
+  IIR_Boolean is_value_attribute(){ return true; }
 
   IIR_Identifier *build_attribute_name();
 

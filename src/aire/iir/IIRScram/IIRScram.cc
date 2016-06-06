@@ -82,8 +82,8 @@ IIRScram::_is_attribute() const {
 
 IIR_Boolean
 IIRScram::_is_numeric_literal() const {
-  if( _is_integer_literal() == TRUE ||  _is_floating_literal() == TRUE ){
-    return TRUE;
+  if( _is_integer_literal() == true ||  _is_floating_literal() == true ){
+    return true;
   }
   else {
     return false;
@@ -219,14 +219,14 @@ IIRScram_Label *
 IIRScram::_lookup_label( IIR_Boolean complain_on_error ){
   IIRScram_Label *retval = NULL;
   
-  ASSERT( complain_on_error == TRUE ||  complain_on_error == false );
+  ASSERT( complain_on_error == true ||  complain_on_error == false );
   
   constraint_functor *functor = new is_label_functor;
   savant::set<IIRScram_Declaration> *decls = _symbol_lookup( functor );
   delete functor;
 
   ASSERT( decls != NULL );
-  if( decls->size() == 0 && complain_on_error == TRUE ){
+  if( decls->size() == 0 && complain_on_error == true ){
     report_undefined_symbol( (IIRScram *)this );
   }
 
@@ -239,7 +239,7 @@ IIRScram::_lookup_label( IIR_Boolean complain_on_error ){
   }
   case 1:{
     IIRScram_Declaration *temp = decls->getElement();
-    ASSERT( temp->is_label() == TRUE );
+    ASSERT( temp->is_label() == true );
     retval = dynamic_cast<IIRScram_Label *>(temp);
     break;
   }
@@ -302,7 +302,7 @@ IIRScram_TypeDefinition *
 IIRScram::_get_rval_pointed_at(){
   IIRScram_TypeDefinition *retval = NULL;
 
-  if( _get_subtype()->_is_iir_access_type_definition() == TRUE ){
+  if( _get_subtype()->_is_iir_access_type_definition() == true ){
     retval = dynamic_cast<IIRScram_TypeDefinition *>((dynamic_cast<IIRScram_AccessTypeDefinition *>(_get_subtype())->get_designated_type()));
   }
 
@@ -463,8 +463,8 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
   // This currently gets resolved by the parser...
   IIRScram *aspect = _get_entity_aspect();
   if( aspect != NULL ){
-    ASSERT( aspect->_is_iir_declaration() == TRUE );
-    ASSERT( aspect->is_resolved() == TRUE );
+    ASSERT( aspect->_is_iir_declaration() == true );
+    ASSERT( aspect->is_resolved() == true );
     IIRScram_Declaration *aspect_decl = dynamic_cast<IIRScram_Declaration *>(aspect);
     
     // The formal generics and ports of the entity must be visible here.
@@ -509,7 +509,7 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
   }
   _get_symbol_table()->close_scope( (IIR *)this );
   // else it's OPEN
-  //  ASSERT( is_resolved() == TRUE );
+  //  ASSERT( is_resolved() == true );
   delete component_decls;
 }
 
@@ -567,7 +567,7 @@ IIRScram::_type_check_iteration_scheme( IIRScram_ConstantDeclaration *iteration_
   }
   else{
     // else it should be resolved.
-    ASSERT( iteration_scheme->_get_subtype()->is_resolved() == TRUE );
+    ASSERT( iteration_scheme->_get_subtype()->is_resolved() == true );
     retval = iteration_scheme->_get_subtype();
   }
 
@@ -648,7 +648,7 @@ IIRScram::_attach_attribute_specification( IIRScram_AttributeSpecification *to_a
   }
   else{
     list->append( to_attach );
-    return TRUE;
+    return true;
   }
 }
 

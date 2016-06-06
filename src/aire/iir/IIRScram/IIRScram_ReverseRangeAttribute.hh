@@ -47,12 +47,12 @@ public:
   IIRScram_TypeDefinition *_get_subtype();
   IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
 
-   IIR_Boolean has_suffix(){ return TRUE; }
+   IIR_Boolean has_suffix(){ return true; }
   void _set_suffix( IIRScram *new_suffix ){ IIRBase_ReverseRangeAttribute::set_suffix( new_suffix ); }
 
   IIRScram* _get_suffix();
 
-  IIR_Boolean _is_range_attribute(){ return TRUE; }
+  IIR_Boolean _is_range_attribute(){ return true; }
 
 protected:
   void _resolve_suffix_special();

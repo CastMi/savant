@@ -89,7 +89,7 @@ IIRBase_FunctionDeclaration::is_operator() {
   
   for(int i = 0; operators[i] != 0; i++) {
     if (IIRBase_TextLiteral::cmp(decl, operators[i]) == 0) {
-      return TRUE;
+      return true;
     }
   }
 
@@ -114,7 +114,7 @@ IIRBase_FunctionDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out << " return ";
   get_return_type()->publish_vhdl(vhdl_out);
   
-  if (contains_body() == TRUE) {
+  if (contains_body() == true) {
     vhdl_out << " is " << endl;
     dynamic_cast<IIRBase_DeclarationList *>
       (get_subprogram_declarations())->publish_vhdl_decl(vhdl_out);

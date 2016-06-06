@@ -128,7 +128,7 @@ IIRBase_SubprogramDeclaration::is_operator(){
     ASSERT( get_interface_declarations()->num_elements() == 1 ||
 	    get_interface_declarations()->num_elements() == 2 );
     
-    return TRUE;
+    return true;
   }
   else{
     return false;

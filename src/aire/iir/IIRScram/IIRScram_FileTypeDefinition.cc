@@ -58,13 +58,13 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     IIRScram_ProcedureDeclaration *new_procedure_declaration = new IIRScram_ProcedureDeclaration();
     copy_location( this, new_procedure_declaration );
     new_procedure_declaration->set_declarator( IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
-    new_procedure_declaration->set_is_implicit( TRUE );
+    new_procedure_declaration->set_is_implicit( true );
 
     type_declaration->get_implicit_declarations()->add( new_procedure_declaration );
     
     IIRScram_ConstantInterfaceDeclaration *new_interface_declaration;
     new_interface_declaration  = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     copy_location( this, new_interface_declaration );
 
     name = "f";
@@ -78,7 +78,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     IIRScram_TypeDefinition *string_type = dynamic_cast<IIRScram_TypeDefinition *>(package->get_string_type());
     
     new_interface_declaration  = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     new_interface_declaration->set_is_visible( false );
     copy_location( this, new_interface_declaration );
     
@@ -90,7 +90,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     IIRScram_TypeDefinition *file_open_type = dynamic_cast<IIRScram_TypeDefinition *>(package->get_file_open_kind_type());
     
     new_interface_declaration  = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     new_interface_declaration->set_is_visible( false );
     copy_location( this, new_interface_declaration );
     new_interface_declaration->set_declarator(  IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
@@ -107,7 +107,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     
     name = "file_open";
     new_procedure_declaration = new IIRScram_ProcedureDeclaration();
-    new_procedure_declaration->set_is_implicit( TRUE );
+    new_procedure_declaration->set_is_implicit( true );
     copy_location( this, new_procedure_declaration );
     new_procedure_declaration->set_declarator( IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
 
@@ -117,7 +117,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     IIRScram_TypeDefinition *file_open_status_type = dynamic_cast<IIRScram_TypeDefinition *>(package->get_file_open_status_type());
     
     new_interface_declaration = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     new_interface_declaration->set_is_visible( false );
     copy_location( this, new_interface_declaration );
     new_interface_declaration->set_declarator(  IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
@@ -126,7 +126,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     
     name = "f";
     new_interface_declaration = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     new_interface_declaration->set_is_visible( false );
     copy_location( this, new_interface_declaration );
     new_interface_declaration->set_declarator(  IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
@@ -135,7 +135,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     
     name = "external_name";
     new_interface_declaration = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     new_interface_declaration->set_is_visible( false );
     copy_location( this, new_interface_declaration );
     new_interface_declaration->set_declarator(  IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
@@ -144,7 +144,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     
     name = "my_open_kind";
     new_interface_declaration = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     new_interface_declaration->set_is_visible( false );
     copy_location( this, new_interface_declaration );
     new_interface_declaration->set_declarator(  IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
@@ -155,7 +155,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     // procedure file_close( file f : ft );
     name = "file_close";
     new_procedure_declaration = new IIRScram_ProcedureDeclaration();
-    new_procedure_declaration->set_is_implicit( TRUE );
+    new_procedure_declaration->set_is_implicit( true );
     copy_location( this, new_procedure_declaration );
     new_procedure_declaration->set_declarator( IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
     
@@ -163,7 +163,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     
     name = "f";
     new_interface_declaration = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     new_interface_declaration->set_is_visible( false );
     copy_location( this, new_interface_declaration );
     new_interface_declaration->set_declarator(  IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
@@ -174,7 +174,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     // procedure read ( file f : ft; value : out tm );
     name = "read";
     new_procedure_declaration = new IIRScram_ProcedureDeclaration();
-    new_procedure_declaration->set_is_implicit( TRUE );
+    new_procedure_declaration->set_is_implicit( true );
     copy_location( this, new_procedure_declaration );
     new_procedure_declaration->set_declarator( IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
     
@@ -182,7 +182,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     
     name = "f";
     new_interface_declaration = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     new_interface_declaration->set_is_visible( false );
     copy_location( this, new_interface_declaration );
     new_interface_declaration->set_declarator(  IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
@@ -191,7 +191,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     
     name = "value";
     new_interface_declaration = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     new_interface_declaration->set_is_visible( false );
     copy_location( this, new_interface_declaration );
     new_interface_declaration->set_declarator(  IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
@@ -199,10 +199,10 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     new_interface_declaration->set_mode( IIR_OUT_MODE );
     new_procedure_declaration->get_interface_declarations()->append( new_interface_declaration );
     
-    if( type_mark->is_unconstrained_array_type() == TRUE ){
+    if( type_mark->is_unconstrained_array_type() == true ){
       name = "length";
       new_interface_declaration = new IIRScram_ConstantInterfaceDeclaration();
-      new_interface_declaration->set_is_implicit( TRUE );
+      new_interface_declaration->set_is_implicit( true );
       new_interface_declaration->set_is_visible( false );
       copy_location( this, new_interface_declaration );
       new_interface_declaration->set_declarator(  IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
@@ -215,7 +215,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     // procedure write ( file f : ft; value in tm );
     name = "write";
     new_procedure_declaration = new IIRScram_ProcedureDeclaration();
-    new_procedure_declaration->set_is_implicit( TRUE );
+    new_procedure_declaration->set_is_implicit( true );
     copy_location( this, new_procedure_declaration );
     new_procedure_declaration->set_declarator( IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
 
@@ -223,7 +223,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
 
     name = "f";
     new_interface_declaration = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     new_interface_declaration->set_is_visible( false );
     copy_location( this, new_procedure_declaration );
     new_interface_declaration->set_declarator(  IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
@@ -232,7 +232,7 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
 
     name = "value";
     new_interface_declaration = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     new_interface_declaration->set_is_visible( false );
     copy_location( this, new_interface_declaration );
     new_interface_declaration->set_declarator(  IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
@@ -244,14 +244,14 @@ IIRScram_FileTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     // function endfile ( file f : ft ) return boolean;
     name = "endfile";
     IIRScram_FunctionDeclaration *new_function_declaration = new IIRScram_FunctionDeclaration();
-    new_function_declaration->set_is_implicit( TRUE );
+    new_function_declaration->set_is_implicit( true );
     copy_location( this, new_function_declaration );
     new_function_declaration->set_declarator( IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );
     type_declaration->get_implicit_declarations()->add( new_function_declaration );
 
     name = "f";
     new_interface_declaration = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     new_interface_declaration->set_is_visible( false );
     copy_location( this, new_interface_declaration );
     new_interface_declaration->set_declarator(  IIRScram_Identifier::get( name, strlen(name), get_design_file()->get_class_factory() ) );

@@ -41,7 +41,7 @@ IIRScram_ComponentDeclaration::_get_port_type( int port_num ){
   IIRScram_Declaration *port_element 
     = dynamic_cast<IIRScram_Declaration *>(get_local_port_clause()->get_nth_element( port_num ));
 
-  ASSERT( port_element->_is_iir_declaration() == TRUE );
+  ASSERT( port_element->_is_iir_declaration() == true );
 
   return port_element->_get_subtype();
 }

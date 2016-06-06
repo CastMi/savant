@@ -36,7 +36,7 @@ IIRBase_DesignatorByAll::~IIRBase_DesignatorByAll() {}
 
 IIR_Boolean 
 IIRBase_DesignatorByAll::is_resolved(){
-  return TRUE;
+  return true;
 }
 
 ostream &

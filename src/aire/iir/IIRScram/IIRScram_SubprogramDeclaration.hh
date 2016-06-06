@@ -73,7 +73,7 @@ public:
   IIRScram_TypeDefinition *_get_type_of_param(int);
   
   IIR_Boolean _is_implicit_operator();
-  IIR_Boolean _is_overloadable(){ return TRUE; }
+  IIR_Boolean _is_overloadable(){ return true; }
   
   /** This method takes two subprogram declarations and compares their
       return values and signatures (ONLY - not parameter names or anything

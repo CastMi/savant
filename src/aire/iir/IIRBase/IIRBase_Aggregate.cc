@@ -64,7 +64,7 @@ IIRBase_Aggregate::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_Aggregate::is_resolved( ){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
   if( get_element_association_list()->is_resolved() == false ){
     retval = false;
@@ -79,11 +79,11 @@ IIRBase_Aggregate::is_resolved( ){
 
 IIR_Boolean 
 IIRBase_Aggregate::is_signal( ){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
   IIR_AssociationElement *current_assoc;
   IIR_AssociationList *list = get_element_association_list();
 
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   current_assoc = dynamic_cast<IIR_AssociationElement *>(list->first());
   while( current_assoc != NULL ){
     if( current_assoc->is_signal() == false ){
@@ -97,11 +97,11 @@ IIRBase_Aggregate::is_signal( ){
 
 IIR_Boolean 
 IIRBase_Aggregate::is_variable( ){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
   IIR_AssociationElement *current_assoc;
   IIR_AssociationList *list = get_element_association_list();
 
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   current_assoc = dynamic_cast<IIR_AssociationElement *>(list->first());
   while( current_assoc != NULL ){
     if( current_assoc->is_variable() == false ){

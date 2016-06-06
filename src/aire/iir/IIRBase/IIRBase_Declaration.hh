@@ -48,7 +48,7 @@ public:
   /** Tells us if this is a scalar type - or an object of a scalar type. */
 
   /** Tells us if this is a array type - or an object of a array type. */
-  IIR_Boolean is_resolved() const { return TRUE; }
+  IIR_Boolean is_resolved() const { return true; }
   IIR_Boolean is_element() const { return false; }
   IIR_Boolean is_object() const { return false; }
 

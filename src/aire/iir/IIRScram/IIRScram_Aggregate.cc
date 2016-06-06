@@ -56,7 +56,7 @@ IIRScram_Aggregate::~IIRScram_Aggregate(){}
 
 IIR_Boolean 
 IIRScram_Aggregate::_is_readable( ){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
   IIRScram_AssociationElement *current_assoc;
   IIRScram_AssociationList *list = dynamic_cast<IIRScram_AssociationList *>(get_element_association_list());
 
@@ -74,7 +74,7 @@ IIRScram_Aggregate::_is_readable( ){
 
 IIR_Boolean 
 IIRScram_Aggregate::_is_writable( ){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
   IIRScram_AssociationElement *current_assoc;
   IIRScram_AssociationList *list = dynamic_cast<IIRScram_AssociationList *>(get_element_association_list());
 
@@ -98,7 +98,7 @@ IIRScram_Aggregate::_get_rval_set( constraint_functor * ){
   savant::set<IIRScram_ArrayTypeDefinition> *array_types = _get_symbol_table()->get_in_scope_array_types()->convert_set<IIRScram_ArrayTypeDefinition>();
   IIRScram_TypeDefinition *current = array_types->getElement();
   while( current != NULL ){
-    ASSERT( current->is_array_type() == TRUE );
+    ASSERT( current->is_array_type() == true );
     retval->add( current );
     current = array_types->getNextElement();
   }
@@ -107,7 +107,7 @@ IIRScram_Aggregate::_get_rval_set( constraint_functor * ){
   savant::set<IIRScram_RecordTypeDefinition> *record_types = _get_symbol_table()->get_in_scope_record_types()->convert_set<IIRScram_RecordTypeDefinition>();
   current = record_types->getElement();
   while( current != NULL ){
-    ASSERT( current->is_record_type() == TRUE );
+    ASSERT( current->is_record_type() == true );
     retval->add( current );
     current = record_types->getNextElement();
   }
@@ -126,16 +126,16 @@ IIRScram_Aggregate::_type_check( savant::set<IIRScram_TypeDefinition> * ){
   IIRScram_AssociationElement *current = dynamic_cast<IIRScram_AssociationElement *>(list->first());
 
   while( current != NULL ){
-    if( current->is_named() == TRUE ){
-      have_seen_named = TRUE;
+    if( current->is_named() == true ){
+      have_seen_named = true;
     }
-    if( current->_is_positional() == TRUE && have_seen_named == TRUE ){
+    if( current->_is_positional() == true && have_seen_named == true ){
       ostringstream err;
       err << "Positional associations cannot follow named associations in an aggregate.";
       report_error( current, err.str() );
     }
 
-    if( have_seen_others == TRUE ){
+    if( have_seen_others == true ){
       // That means (due to the order of these if statements) that there was something
       // after the others!
       ostringstream err;
@@ -143,8 +143,8 @@ IIRScram_Aggregate::_type_check( savant::set<IIRScram_TypeDefinition> * ){
       report_error( current, err.str() );      
     }
 
-    if( current->is_by_others() == TRUE ){
-      have_seen_others = TRUE;
+    if( current->is_by_others() == true ){
+      have_seen_others = true;
     }
     current = dynamic_cast<IIRScram_AssociationElement *>(list->successor( current ));
   }
@@ -153,7 +153,7 @@ IIRScram_Aggregate::_type_check( savant::set<IIRScram_TypeDefinition> * ){
 void 
 IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *my_type, 
 						      IIRScram_AssociationElement *starting_with ){
-  ASSERT( my_type->_is_iir_record_type_definition() == TRUE );
+  ASSERT( my_type->_is_iir_record_type_definition() == true );
 
   IIRScram_AssociationElement *current_association = starting_with;
   while( current_association != NULL ){
@@ -197,7 +197,7 @@ IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *m
 	break;
       }
       default:{
-	if( current_formal->is_resolved() == TRUE ){
+	if( current_formal->is_resolved() == true ){
 	  // OK, formal is already resolved; we need to deal with the actual.
 	  IIRScram_TypeDefinition *actual_type = current_formal->_get_subtype();
 	  ASSERT( current_association->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION );	
@@ -242,15 +242,15 @@ IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *m
 
 IIRScram_Statement *
 IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
-  ASSERT( my_type->is_array_type() == TRUE || my_type->is_record_type() );
+  ASSERT( my_type->is_array_type() == true || my_type->is_record_type() );
   
   enum processing_mode_t { ARRAY, RECORD, ERROR };
 
   processing_mode_t processing_mode = ERROR;
-  if( my_type->is_array_type() == TRUE ){
+  if( my_type->is_array_type() == true ){
     processing_mode = ARRAY;
   }
-  else if( my_type->is_record_type() == TRUE ){
+  else if( my_type->is_record_type() == true ){
     processing_mode = RECORD;
   }
 
@@ -265,7 +265,7 @@ IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
     
     if( processing_mode == ARRAY ){
       formal_type = my_type->_get_resolved_index_subtype();
-      if( current_association->is_by_others() == TRUE ){
+      if( current_association->is_by_others() == true ){
 	actual_type = my_type;
       }
       else{
@@ -309,7 +309,7 @@ IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
     
   set_subtype( my_type );
 
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
 
   return this;
 }

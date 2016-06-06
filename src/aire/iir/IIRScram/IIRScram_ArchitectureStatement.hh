@@ -41,7 +41,7 @@ public:
     return NULL;
   }
   
-  IIR_Boolean _is_iir_concurrent_statement() { return TRUE; }
+  IIR_Boolean _is_iir_concurrent_statement() { return true; }
 
   // This method is overriden by classes that can contain instantiate
   // statements.

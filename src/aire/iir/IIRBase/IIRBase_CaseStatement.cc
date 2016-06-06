@@ -81,7 +81,7 @@ IIRBase_CaseStatement::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean
 IIRBase_CaseStatement::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
   if( get_expression()->is_resolved() == false ){
     retval = false;
   }
@@ -106,7 +106,7 @@ IIRBase_CaseStatement::publish_vhdl(ostream &vhdl_out) {
   publish_vhdl_stmt_label(vhdl_out);
 
   vhdl_out << "case ";
-  ASSERT( get_expression()->is_resolved() == TRUE );
+  ASSERT( get_expression()->is_resolved() == true );
   get_expression()->publish_vhdl(vhdl_out);
   vhdl_out << " is\n";
 

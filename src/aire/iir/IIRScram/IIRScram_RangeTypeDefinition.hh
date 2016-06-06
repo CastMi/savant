@@ -47,7 +47,7 @@ public:
   IIRScram_RangeTypeDefinition();
   virtual ~IIRScram_RangeTypeDefinition();
 
-  IIR_Boolean _is_numeric_type(){ return TRUE; };
+  IIR_Boolean _is_numeric_type(){ return true; };
 
 
   void _set_resolution_function( IIRScram_FunctionDeclaration * );

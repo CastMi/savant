@@ -43,7 +43,7 @@ public:
 
   static IIRScram_List<type> *_listcopy( IIRScram_List<type> *source, plugin_class_factory *factory );
   
-  IIR_Boolean _is_iir_list(){ return TRUE; }
+  IIR_Boolean _is_iir_list(){ return true; }
 
   //virtual IIRScram *_clone(  );
   //virtual void _clone( IIRScram * );

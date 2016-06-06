@@ -49,7 +49,7 @@ public:
 
   IIRBase_RecordTypeDefinition *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_record_type() { return TRUE; }
+  IIR_Boolean is_record_type() { return true; }
   IIR_Boolean is_subtype();
   IIR_Boolean is_locally_static();
 

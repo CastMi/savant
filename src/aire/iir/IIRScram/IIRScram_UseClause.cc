@@ -77,7 +77,7 @@ IIRScram_UseClause::_type_check(){
       cerr << _get_symbol_table() << " - processing use clause - making |" 
 	   << tmp_name << "| visible!\n";
     }
-    if( decl->is_package_declaration() == TRUE ){
+    if( decl->is_package_declaration() == true ){
       _make_interface_visible( _get_symbol_table() );      
     }
     else{
@@ -88,12 +88,12 @@ IIRScram_UseClause::_type_check(){
 
   delete use_clause_decls;
 
-  ASSERT( _get_selected_name()->is_resolved() == TRUE );
+  ASSERT( _get_selected_name()->is_resolved() == true );
 }
 
 void 
 IIRScram_UseClause::_make_interface_visible( symbol_table *sym_tab ){
-  ASSERT( _get_selected_name()->is_resolved() == TRUE );
+  ASSERT( _get_selected_name()->is_resolved() == true );
   savant::set<IIRScram_Declaration> *decls = _get_selected_name()->_symbol_lookup();
   if( decls != 0 ){
     ASSERT( decls->size() == 1 );

@@ -47,8 +47,8 @@ public:
 
   /** Before you assume these are redundant, read the documentation in
       IIRScram.hh :-) */
-  IIR_Boolean is_object(){ return TRUE; }
-  IIR_Boolean _is_iir_object_declaration(){ return TRUE; }
+  IIR_Boolean is_object(){ return true; }
+  IIR_Boolean _is_iir_object_declaration(){ return true; }
 
   /** This returns how many dimensions an array object has.. (0 if it's not
       an array) */

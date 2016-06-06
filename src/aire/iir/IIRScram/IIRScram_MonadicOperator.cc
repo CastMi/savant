@@ -106,7 +106,7 @@ IIRScram_MonadicOperator::_rval_to_decl( IIRScram_TypeDefinition *my_rval ){
 IIR_Boolean 
 IIRScram_MonadicOperator::_is_readable(){
   if( _get_operand() && _get_operand()->_is_readable() ){
-    return TRUE;
+    return true;
   }
   else{
     return false;

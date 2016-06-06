@@ -64,13 +64,13 @@ IIRScram_LibraryUnit::_clone(IIRScram *cl) {
 IIR_Boolean 
 IIRScram_LibraryUnit::_is_homograph_of( IIRScram_Declaration *to_check ){
   ASSERT( to_check != NULL );
-  if( to_check->_is_iir_library_unit() == TRUE ){
+  if( to_check->_is_iir_library_unit() == true ){
 
     // Two library units with the same name aren't homographs.
     return false;    
   }
   else{
-    return TRUE;
+    return true;
   }
 }
 

@@ -34,7 +34,7 @@ public:
   virtual ~IIRScram_TerminalInterfaceDeclaration();
 
 
-  IIR_Boolean _is_terminal(){ return TRUE; }
+  IIR_Boolean _is_terminal(){ return true; }
 
   void _type_check( IIRScram_InterfaceDeclaration::_InterfaceListType );
 };

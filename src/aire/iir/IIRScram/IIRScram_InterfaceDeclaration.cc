@@ -67,7 +67,7 @@ IIRScram_InterfaceDeclaration::_type_check(){
 IIR_Boolean 
 IIRScram_InterfaceDeclaration::_is_readable(){
   if( get_mode() == IIR_IN_MODE || get_mode() == IIR_INOUT_MODE || get_mode() == IIR_BUFFER_MODE ){
-    return TRUE;
+    return true;
   }
   else{
     return false;
@@ -77,7 +77,7 @@ IIRScram_InterfaceDeclaration::_is_readable(){
 IIR_Boolean 
 IIRScram_InterfaceDeclaration::_is_writable(){
   if( get_mode() == IIR_OUT_MODE || get_mode() == IIR_INOUT_MODE || get_mode() == IIR_BUFFER_MODE ){
-    return TRUE;
+    return true;
   }
   else{
     return false;
@@ -102,7 +102,7 @@ IIRScram_InterfaceDeclaration::_get_type_of_element( int index ){
 
   int i;
   for( i = 0; i < index - 1; i++ ){
-    ASSERT( current_subtype->is_array_type() == TRUE );
+    ASSERT( current_subtype->is_array_type() == true );
 
     current_subtype = current_subtype->_get_element_subtype();
       
@@ -115,7 +115,7 @@ IIRScram_InterfaceDeclaration::_get_type_of_element( int index ){
 
 void
 IIRScram_InterfaceDeclaration::_clone( IIRScram *copy_into ) {
-  ASSERT( copy_into->_is_iir_interface_declaration() == TRUE );
+  ASSERT( copy_into->_is_iir_interface_declaration() == true );
   IIRScram_Declaration::_clone( copy_into );
 
   IIRScram_InterfaceDeclaration *as_interface = dynamic_cast<IIRScram_InterfaceDeclaration *>(copy_into);
@@ -133,7 +133,7 @@ IIRScram_InterfaceDeclaration::_is_optional(){
     return false;
   }
   else{
-    return TRUE;
+    return true;
   }
 }
 

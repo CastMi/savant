@@ -107,7 +107,7 @@ void
 IIRBase_ForLoopStatement::publish_vhdl(ostream &vhdl_out) {
 
   ASSERT(get_iteration_scheme() != NULL);
-  ASSERT(get_iteration_scheme()->is_resolved() == TRUE);
+  ASSERT(get_iteration_scheme()->is_resolved() == true);
 
   publish_vhdl_stmt_label(vhdl_out);
     

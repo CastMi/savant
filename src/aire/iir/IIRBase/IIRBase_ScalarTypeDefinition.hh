@@ -49,11 +49,11 @@ public:
   IIRBase_ScalarTypeDefinition *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_ascending_range();
-  IIR_Boolean is_scalar_type(){ return TRUE; }
+  IIR_Boolean is_scalar_type(){ return true; }
   IIR_Boolean is_resolved();
   IIR_Boolean is_locally_static();
 
-  IIR_Boolean is_scalar_type_definition(){ return TRUE; }
+  IIR_Boolean is_scalar_type_definition(){ return true; }
 
   ostream &print( ostream & );
   virtual void publish_vhdl(ostream &);

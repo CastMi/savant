@@ -56,7 +56,7 @@ public:
   IIR_Boolean _designates_incomplete_type();
   IIR_Boolean _can_be_in_same_region( IIRScram_Declaration * );
 
-  IIR_Boolean _is_readable(){ return TRUE; }
+  IIR_Boolean _is_readable(){ return true; }
   IIR_Boolean _is_writable(){ return false; }
   IIR_Int32 get_num_indexes();
 

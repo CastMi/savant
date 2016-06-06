@@ -33,7 +33,7 @@ IIRBase_AssociationList::~IIRBase_AssociationList() {}
 
 IIR_Boolean
 IIRBase_AssociationList::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
   IIR_AssociationElement *current = dynamic_cast<IIR_AssociationElement *>(first());
   while( current != NULL ){

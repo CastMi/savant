@@ -48,7 +48,7 @@ IIRScram_OthersInitialization::_build_element_subtype_set( savant::set<IIRScram_
   savant::set<IIRScram_TypeDefinition> *retval = new savant::set<IIRScram_TypeDefinition>;
   IIRScram_TypeDefinition *current = context_set->getElement();
   while( current != NULL ){
-    if( current->is_array_type() == TRUE ){
+    if( current->is_array_type() == true ){
       retval->add( current->_get_element_subtype() );
     }
     else{
@@ -80,7 +80,7 @@ IIRScram_OthersInitialization::_type_check( savant::set<IIRScram_TypeDefinition>
 
 IIRScram *
 IIRScram_OthersInitialization::_rval_to_decl( IIRScram_TypeDefinition *new_type ){
-  if( new_type->is_array_type() == TRUE ){
+  if( new_type->is_array_type() == true ){
     IIRScram_TypeDefinition *element_type = new_type->_get_element_subtype();
     // Everything else should have happened in type check.
     set_expression( _get_expression()->_rval_to_decl( element_type ) );
@@ -91,7 +91,7 @@ IIRScram_OthersInitialization::_rval_to_decl( IIRScram_TypeDefinition *new_type 
     set_subtype( new_type );
   }
 
-  ASSERT( is_resolved() == TRUE || parse_error == true );
+  ASSERT( is_resolved() == true || parse_error == true );
   return this;
 }
 

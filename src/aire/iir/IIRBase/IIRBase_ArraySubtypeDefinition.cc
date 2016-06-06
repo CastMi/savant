@@ -61,7 +61,7 @@ IIRBase_ArraySubtypeDefinition::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean
 IIRBase_ArraySubtypeDefinition::is_subtype() {
-  return TRUE;
+  return true;
 }
 
 IIR_ScalarTypeDefinition *
@@ -122,8 +122,8 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl_type_decl( ostream &vhdl_out ){
   vhdl_out << "array ";
   ASSERT ( base_type->get_index_subtype() != NULL );
   
-  if(( base_type->is_unconstrained_array_type() == TRUE) ||
-      (base_type->get_index_subtype()->is_enumeration_type() == TRUE) ){
+  if(( base_type->is_unconstrained_array_type() == true) ||
+      (base_type->get_index_subtype()->is_enumeration_type() == true) ){
      IIRBase_ArrayTypeDefinition *node;
      int index, max_index;
     
@@ -170,9 +170,9 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
   base_type->publish_vhdl(vhdl_out);
   ASSERT ( base_type->get_index_subtype() != NULL );
   
-  if(( base_type->is_unconstrained_array_type() == TRUE &&
+  if(( base_type->is_unconstrained_array_type() == true &&
 	    is_unconstrained_array_type() == false ) ||
-       base_type->get_index_subtype()->is_enumeration_type() == TRUE ){
+       base_type->get_index_subtype()->is_enumeration_type() == true ){
      IIRBase_ArrayTypeDefinition *node;
      int index, max_index;
     
@@ -182,7 +182,7 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
     max_index = get_num_indexes();
     for (node = this; (index <= max_index); index++, node = 
 	   dynamic_cast<IIRBase_ArrayTypeDefinition *>(node->get_element_subtype()) ){
-      ASSERT(node->is_array_type() == TRUE );
+      ASSERT(node->is_array_type() == true );
       ASSERT(node->get_index_subtype() != NULL );
       ASSERT(node->get_element_subtype() != NULL );
       
@@ -200,7 +200,7 @@ IIRBase_ArraySubtypeDefinition::publish_vhdl_decl(ostream &vhdl_out) {
     
     vhdl_out << " ) ";
     
-    if ( base_type->is_anonymous() == TRUE )  {
+    if ( base_type->is_anonymous() == true )  {
       vhdl_out << " of ";
       node->publish_vhdl(vhdl_out);
     }

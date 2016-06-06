@@ -48,7 +48,7 @@ public:
 
   IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
   
-  IIR_Boolean _is_event_attribute() { return TRUE; }
+  IIR_Boolean _is_event_attribute() { return true; }
 
   virtual IIRScram *_clone();
 

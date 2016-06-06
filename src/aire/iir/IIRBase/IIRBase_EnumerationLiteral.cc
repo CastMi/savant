@@ -71,7 +71,7 @@ IIRBase_EnumerationLiteral::convert_tree(plugin_class_factory *factory) {
 IIR_Boolean
 IIRBase_EnumerationLiteral::is_ascending_range() {
   if(IIRBase_TextLiteral::cmp(get_declarator(), "true") == 0) {
-    return TRUE;		// Temporary solution -- SK.
+    return true;		// Temporary solution -- SK.
   } 
   else if(IIRBase_TextLiteral::cmp(get_declarator(), "false") == 0) {
     return false;
@@ -91,7 +91,7 @@ IIRBase_EnumerationLiteral::is_resolved(){
     return false;
   }
   else{
-    return TRUE;
+    return true;
   }
 }
 
@@ -108,14 +108,14 @@ IIRBase_EnumerationLiteral::is_character_literal() {
 
   if(my_text_lit->get_text_length() == 3 &&
      (*my_text_lit)[0] == '\'' && (*my_text_lit)[2] == '\'') {
-    return TRUE;
+    return true;
   }
   return false;
 }
 
 IIR_Boolean
 IIRBase_EnumerationLiteral::is_locally_static(){
-  return TRUE;
+  return true;
 }
 
 ostream &

@@ -43,7 +43,7 @@ IIRScram_TypeConversion::_get_rval_set(constraint_functor * ){
 
 IIRScram_Declaration *
 IIRScram_TypeConversion::_find_formal_declaration(){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   ASSERT( _get_expression() != NULL );
   ASSERT( _get_expression()->get_kind() != IIR_ASSOCIATION_LIST || 
 	  (dynamic_cast<IIRScram_AssociationList *>(_get_expression())->size() == 1 ));

@@ -174,7 +174,7 @@ IIRScram_Name::_set_suffix(IIRScram *){
 
 void
 IIRScram_Name::_clone( IIRScram *clone ){
-  ASSERT( clone->_is_iir_name() == TRUE );
+  ASSERT( clone->_is_iir_name() == true );
   IIRScram_Name *as_name = dynamic_cast<IIRScram_Name *>(clone);
   IIRScram::_clone(clone);
 

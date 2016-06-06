@@ -65,7 +65,7 @@ public:
   IIR_Boolean contains_body();
   void set_contains_body( IIR_Boolean );
 
-  IIR_Boolean is_subprogram(){ return TRUE; }
+  IIR_Boolean is_subprogram(){ return true; }
   IIR_Boolean is_operator();
   IIR_Boolean has_statement_list() { return contains_body(); }
 

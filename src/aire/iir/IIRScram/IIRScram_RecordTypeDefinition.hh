@@ -46,7 +46,7 @@ public:
   IIRScram_RecordTypeDefinition();
   ~IIRScram_RecordTypeDefinition();
 
-  virtual IIR_Boolean _is_iir_record_type_definition() { return TRUE; }
+  virtual IIR_Boolean _is_iir_record_type_definition() { return true; }
 
   IIRScram_ElementDeclarationList *_get_element_declarations();
 

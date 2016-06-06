@@ -38,7 +38,7 @@ public:
 
   declaration_type get_declaration_type();
 
-  IIR_Boolean is_file(){ return TRUE; }
+  IIR_Boolean is_file(){ return true; }
   void publish_vhdl_decl(ostream &);
 protected:
   IIRBase_FileInterfaceDeclaration();

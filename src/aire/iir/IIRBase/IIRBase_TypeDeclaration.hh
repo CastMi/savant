@@ -48,8 +48,8 @@ public:
   IIR *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_incomplete_type_declaration();
-  IIR_Boolean is_type(){ return TRUE; }
-  IIR_Boolean is_type_declaration(){ return TRUE; }
+  IIR_Boolean is_type(){ return true; }
+  IIR_Boolean is_type_declaration(){ return true; }
   IIR_Boolean is_locally_static();
 
   IIR_TypeDefinition *get_subtype();

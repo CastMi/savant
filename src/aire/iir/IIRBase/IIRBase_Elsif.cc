@@ -95,7 +95,7 @@ IIRBase_Elsif::convert_tree(plugin_class_factory *factory) {
 
 void 
 IIRBase_Elsif::publish_vhdl(ostream &vhdl_out) {
-  ASSERT(get_condition()->is_resolved() == TRUE);
+  ASSERT(get_condition()->is_resolved() == true);
 
   vhdl_out << "elsif ";
   get_condition()->publish_vhdl(vhdl_out);

@@ -83,7 +83,7 @@ IIRBase_MonadicOperator::is_resolved(){
 
 IIR_Boolean 
 IIRBase_MonadicOperator::is_locally_static(){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   return get_operand()->is_locally_static();
 }
 

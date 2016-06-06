@@ -39,8 +39,8 @@ IIRScram_AccessTypeDefinition::~IIRScram_AccessTypeDefinition(){}
 IIR_Boolean 
 IIRScram_AccessTypeDefinition::_designates_incomplete_type() {
   IIRScram_TypeDefinition *type = _get_designated_type();
-  if(  type != NULL && type->is_incomplete_type_definition() == TRUE ){
-    return TRUE;
+  if(  type != NULL && type->is_incomplete_type_definition() == true ){
+    return true;
   } else {
     return false;
   }
@@ -64,11 +64,11 @@ IIRScram_AccessTypeDefinition::_come_into_scope( symbol_table *sym_tab,
     IIRScram_ProcedureDeclaration *new_procedure_declaration = new IIRScram_ProcedureDeclaration();
     copy_location( this, new_procedure_declaration );
     new_procedure_declaration->set_declarator( IIRScram_Identifier::get( name, strlen(name ), get_design_file()->get_class_factory() ) );
-    new_procedure_declaration->set_is_implicit( TRUE );
+    new_procedure_declaration->set_is_implicit( true );
     
     IIRScram_ConstantInterfaceDeclaration *new_interface_declaration = NULL;
     new_interface_declaration  = new IIRScram_ConstantInterfaceDeclaration();
-    new_interface_declaration->set_is_implicit( TRUE );
+    new_interface_declaration->set_is_implicit( true );
     copy_location( this, new_interface_declaration );
     
     name = "p";
@@ -105,7 +105,7 @@ IIRScram_AccessTypeDefinition::_clone(){
 
 void 
 IIRScram_AccessTypeDefinition::_clone( IIRScram *copy_into ){
-  ASSERT( copy_into->_is_iir_access_type_definition() == TRUE );
+  ASSERT( copy_into->_is_iir_access_type_definition() == true );
   IIRScram_AccessTypeDefinition *as_access_type = dynamic_cast<IIRScram_AccessTypeDefinition *>(copy_into);
 
   as_access_type->set_designated_type( get_designated_type() );
@@ -132,7 +132,7 @@ IIRScram_AccessTypeDefinition::_construct_new_subtype( IIRScram_Name            
     ASSERT( new_constraint == NULL );
   }
 
-  if( is_subtype() == TRUE ){
+  if( is_subtype() == true ){
     retval->set_base_type( get_base_type() );
   }
   else{

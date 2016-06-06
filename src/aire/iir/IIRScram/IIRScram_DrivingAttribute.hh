@@ -37,7 +37,7 @@ class IIRScram_TextLiteral;
 
 class IIRScram_DrivingAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_DrivingAttribute {
 public:
-  virtual IIR_Boolean _is_driving_attribute() { return TRUE; }
+  virtual IIR_Boolean _is_driving_attribute() { return true; }
 };
 
 #endif

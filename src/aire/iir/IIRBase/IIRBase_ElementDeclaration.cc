@@ -41,7 +41,7 @@ IIRBase_ElementDeclaration::find_declarations( IIR_Name *to_find ){
 
   ASSERT( get_subtype() != NULL );
 
-  if( get_subtype()->is_record_type() == TRUE ){
+  if( get_subtype()->is_record_type() == true ){
     IIR_RecordTypeDefinition *my_subtype = 
       dynamic_cast<IIR_RecordTypeDefinition *>(get_subtype());
     retval = my_subtype->get_element_declarations()->find_declarations( to_find );

@@ -67,15 +67,15 @@ IIRScram_IndexedName::_my_type_given_array_prefix_type( IIRScram_TypeDefinition 
   savant::set<IIRScram_TypeDefinition> *retval = new savant::set<IIRScram_TypeDefinition>;
 
   // This function should only be called on array types - that's it's point..
-  ASSERT( prefix_rval->is_array_type() == TRUE );
-  if( _get_suffix()->_is_iir_type_definition() == TRUE && _get_suffix()->is_scalar_type() == TRUE ){
+  ASSERT( prefix_rval->is_array_type() == true );
+  if( _get_suffix()->_is_iir_type_definition() == true && _get_suffix()->is_scalar_type() == true ){
     // This is a slice.
     retval->add(prefix_rval);
-    if( prefix_rval->is_access_type() == TRUE ){
+    if( prefix_rval->is_access_type() == true ){
       retval->add( (dynamic_cast<IIRScram_AccessTypeDefinition *>(prefix_rval))->_get_designated_type() );
     }
   }
-  else if ( _get_suffix()->_is_attribute() == TRUE ){
+  else if ( _get_suffix()->_is_attribute() == true ){
     if( _get_suffix()->get_kind() == IIR_RANGE_ATTRIBUTE ||
 	_get_suffix()->get_kind() == IIR_REVERSE_RANGE_ATTRIBUTE){
       // Slice
@@ -86,7 +86,7 @@ IIRScram_IndexedName::_my_type_given_array_prefix_type( IIRScram_TypeDefinition 
       retval->add( prefix_rval->_get_type_of_element( get_num_indexes() ) );
     }
   }
-  else if ( _get_suffix()->is_name() == TRUE ){
+  else if ( _get_suffix()->is_name() == true ){
     savant::set<IIRScram_Declaration> *suffix_decls = _get_suffix()->_symbol_lookup();
     if( suffix_decls != NULL ){
       IIRScram_Declaration *current_decl = suffix_decls->getElement();
@@ -153,7 +153,7 @@ IIRScram_IndexedName::_get_name_type(){
   // This case is not handled yet.
   ASSERT(get_suffix()->get_kind() != IIR_ASSOCIATION_LIST);
 
-  if(type_def->is_array_type() == TRUE) {
+  if(type_def->is_array_type() == true) {
     IIRScram_ArrayTypeDefinition* array_type_def = dynamic_cast<IIRScram_ArrayTypeDefinition*>( type_def);
     element_type = array_type_def->_get_element_subtype();
   }
@@ -212,7 +212,7 @@ IIRScram_IndexedName::_return_type_given_prefix_declaration( IIRScram_Declaratio
   case IIR_Declaration::INTERFACE_VARIABLE:
   case IIR_Declaration::INTERFACE_SIGNAL:
   case IIR_Declaration::INTERFACE_CONSTANT:{
-    if( current_rval->is_array_type() == TRUE ){
+    if( current_rval->is_array_type() == true ){
       savant::set<IIRScram_TypeDefinition> *type_set = _my_type_given_array_prefix_type( current_rval );
       if( type_set != NULL ){
 	retval->add( type_set );
@@ -245,7 +245,7 @@ IIRScram_IndexedName::_return_type_given_prefix_declaration( IIRScram_Declaratio
     // They can return non-arrays, but take parameters-
     // x := foo( argument ), or they can take no parameters,
     // but return an array!  x := foo( array_index )
-    //     if( current_rval->is_array_type() == TRUE ){
+    //     if( current_rval->is_array_type() == true ){
     //     if( _get_prefix()->get_kind() == IIR_FUNCTION_CALL ){ 
     //       // then we definitely need to treat this as an array access...
     //       int index_num;
@@ -282,7 +282,7 @@ IIRScram_IndexedName::_return_type_given_prefix_declaration( IIRScram_Declaratio
       delete new_element;
     }
 
-    if( add_rval == TRUE ){
+    if( add_rval == true ){
       retval->add( prefix_decl->_get_subtype() );
     }
     break;
@@ -319,7 +319,7 @@ IIRScram_IndexedName::_get_rval_set(constraint_functor *functor){
     // We already know the type.
     retval = new savant::set<IIRScram_TypeDefinition>( _get_subtype() );
   }
-  else if( _have_rval_set == TRUE ){
+  else if( _have_rval_set == true ){
     // We've already calculated the possibilities once, use that.
     if( _my_rval_set != NULL ){
       retval = new savant::set<IIRScram_TypeDefinition>(*_my_rval_set);
@@ -341,7 +341,7 @@ IIRScram_IndexedName::_get_rval_set(constraint_functor *functor){
     ASSERT( _get_prefix() != NULL );
     
     // If this indexed name is already resolved, we shouldn't need to do anything...
-    if( is_resolved() == TRUE ){
+    if( is_resolved() == true ){
       retval->add( _get_subtype() );
       return retval;
     }
@@ -368,7 +368,7 @@ IIRScram_IndexedName::_get_rval_set(constraint_functor *functor){
       }
       IIRScram_TypeDefinition *current_prefix_rval = prefix_types->getElement();
       while( current_prefix_rval != NULL ){
-	if( current_prefix_rval->is_array_type() == TRUE ){
+	if( current_prefix_rval->is_array_type() == true ){
 	  // Then it's an array access or a slice...  It's not a function call, 
 	  savant::set<IIRScram_TypeDefinition> *tmp = _my_type_given_array_prefix_type( current_prefix_rval );
 	  retval->add( tmp );
@@ -393,7 +393,7 @@ IIRScram_IndexedName::_get_rval_set(constraint_functor *functor){
       _my_rval_set = new savant::set<IIRScram_TypeDefinition>(*retval);
     }
 
-    _have_rval_set = TRUE;
+    _have_rval_set = true;
   }
   
 
@@ -416,7 +416,7 @@ IIRScram_IndexedName::_get_rval_set( savant::set<IIRScram_Declaration> *look_in,
                    
     We're passed the possible declarations of foo... */
 
-  ASSERT( _get_prefix()->is_name() == TRUE );
+  ASSERT( _get_prefix()->is_name() == true );
   IIRScram_Declaration *current_decl = look_in->getElement();
   while( current_decl != NULL ){
     savant::set<IIRScram_Declaration> *prefix_decls = NULL;
@@ -449,14 +449,14 @@ IIRScram_IndexedName::_get_rval_set( savant::set<IIRScram_Declaration> *look_in,
 
 IIR_Boolean 
 IIRScram_IndexedName::_is_readable(){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
 
   return _get_prefix()->_is_readable();
 }
 
 IIR_Boolean 
 IIRScram_IndexedName::_is_writable(){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
 
   return _get_prefix()->_is_writable();
 }
@@ -469,13 +469,13 @@ IIRScram_IndexedName::_is_array_access(){
   // as part of the resolution process...
 
   ASSERT( _get_subtype() != NULL );
-  if( (_get_suffix()->is_scalar_type() == TRUE && 
-       _get_suffix()->_is_iir_type_definition() == TRUE) || 
-      (_get_suffix()->is_scalar_type() == TRUE && _get_suffix()->is_type() == TRUE) ){
+  if( (_get_suffix()->is_scalar_type() == true && 
+       _get_suffix()->_is_iir_type_definition() == true) || 
+      (_get_suffix()->is_scalar_type() == true && _get_suffix()->is_type() == true) ){
     return false;
   }
   else{
-    return TRUE;
+    return true;
   }
 }
 
@@ -502,8 +502,8 @@ IIRScram_IndexedName::_process_as_function_call( savant::set<IIRScram_TypeDefini
     else{
       arg_list = new IIRScram_AssociationList();
       copy_location( this, arg_list );
-      need_to_delete = TRUE;
-      if( _get_suffix()->_is_association() == TRUE ){
+      need_to_delete = true;
+      if( _get_suffix()->_is_association() == true ){
 	arg_list->append( dynamic_cast<IIRScram_AssociationElement *>(_get_suffix() ));
       }
       else{
@@ -534,7 +534,7 @@ IIRScram_IndexedName::_process_as_function_call( savant::set<IIRScram_TypeDefini
       copy_location( this, retval );
 
       ASSERT( subprogram_decl != NULL );
-      ASSERT( subprogram_decl->is_subprogram() == TRUE );
+      ASSERT( subprogram_decl->is_subprogram() == true );
 
       retval->set_implementation( subprogram_decl );
       
@@ -552,7 +552,7 @@ IIRScram_IndexedName::_process_as_function_call( savant::set<IIRScram_TypeDefini
     }
     }
     
-    if( need_to_delete == TRUE ){
+    if( need_to_delete == true ){
       delete arg_list;
     }
   }
@@ -595,19 +595,19 @@ IIRScram_IndexedName::_get_array_prefixes(){
 IIRScram_SliceName *
 IIRScram_IndexedName::_build_slice( IIRScram_TypeDefinition *my_prefix_type ){
 
-  ASSERT( my_prefix_type->is_array_type() == TRUE );
+  ASSERT( my_prefix_type->is_array_type() == true );
   ASSERT( _get_suffix() != NULL );
 
   IIRScram_ScalarTypeDefinition *constraint = NULL;
 
-  if( _get_suffix()->is_scalar_type_definition() == TRUE ){
+  if( _get_suffix()->is_scalar_type_definition() == true ){
     constraint = dynamic_cast<IIRScram_ScalarTypeDefinition *>(_get_suffix());
   }
-  else if( _get_suffix()->_is_attribute() == TRUE ){
+  else if( _get_suffix()->_is_attribute() == true ){
     ASSERT( _get_suffix()->get_kind() == IIR_RANGE_ATTRIBUTE ||
 	    _get_suffix()->get_kind() == IIR_REVERSE_RANGE_ATTRIBUTE );
     ASSERT( _get_suffix()->_get_subtype() != NULL );
-    ASSERT( _get_suffix()->_get_subtype()->is_scalar_type_definition() == TRUE );
+    ASSERT( _get_suffix()->_get_subtype()->is_scalar_type_definition() == true );
     constraint = dynamic_cast<IIRScram_ScalarTypeDefinition *>(_get_suffix()->_get_subtype());
     
     set_suffix( _get_suffix()->_semantic_transform( constraint ) );
@@ -617,7 +617,7 @@ IIRScram_IndexedName::_build_slice( IIRScram_TypeDefinition *my_prefix_type ){
   else if ( _get_suffix()->get_kind() == IIR_TYPE_DECLARATION || 
 	    _get_suffix()->get_kind() == IIR_SUBTYPE_DECLARATION ){
     IIRScram_TypeDefinition *temp_constraint =  (dynamic_cast<IIRScram_Declaration *>(_get_suffix())->_get_subtype() );
-    ASSERT( temp_constraint->is_scalar_type_definition() == TRUE );
+    ASSERT( temp_constraint->is_scalar_type_definition() == true );
     constraint = dynamic_cast<IIRScram_ScalarTypeDefinition *>(temp_constraint);
   }
   else{
@@ -645,7 +645,7 @@ IIRScram_IndexedName::_build_slice( IIRScram_TypeDefinition *my_prefix_type ){
   retval->set_prefix( _get_prefix() );
   retval->set_suffix( _get_suffix() );
 
-  if( my_type->is_access_type() == TRUE ){
+  if( my_type->is_access_type() == true ){
     retval->set_subtype( (dynamic_cast<IIRScram_AccessTypeDefinition *>(my_type))->_get_designated_type() );    
   }
   else{
@@ -676,7 +676,7 @@ IIRScram_IndexedName::_process_as_slice( savant::set<IIRScram_TypeDefinition> *c
   while( current_prefix_type != NULL ){
     bool one_matched = false;
     IIRScram_TypeDefinition *to_consider;
-    if( current_prefix_type->is_access_type() == TRUE ){
+    if( current_prefix_type->is_access_type() == true ){
       to_consider = (dynamic_cast<IIRScram_AccessTypeDefinition *>(current_prefix_type))->_get_designated_type();
     }
     else{
@@ -686,7 +686,7 @@ IIRScram_IndexedName::_process_as_slice( savant::set<IIRScram_TypeDefinition> *c
     IIRScram_TypeDefinition *current_context_type = dynamic_cast<IIRScram_TypeDefinition *>(context_set->getElement());
     while( current_context_type != NULL ){
       if( to_consider->is_compatible( current_context_type) != NULL ){
-	one_matched = TRUE;
+	one_matched = true;
 	break;
       }
       current_context_type = dynamic_cast<IIRScram_TypeDefinition *>(context_set->getNextElement());
@@ -712,11 +712,11 @@ IIRScram_IndexedName::_process_as_slice( savant::set<IIRScram_TypeDefinition> *c
   }
 
   // Check for a suffix that would be possible for this to be a slice.
-  if( _get_suffix()->is_scalar_type_definition() == TRUE ||
-      _get_suffix()->_is_attribute() == TRUE ){
+  if( _get_suffix()->is_scalar_type_definition() == true ||
+      _get_suffix()->_is_attribute() == true ){
     retval = _build_slice( my_prefix_type );
   }
-  else if ( _get_suffix()->is_name() == TRUE ){
+  else if ( _get_suffix()->is_name() == true ){
     savant::set<IIRScram_Declaration> *suffix_decls = _get_suffix()->_symbol_lookup();
     if( suffix_decls == NULL ){
       goto finish;
@@ -779,7 +779,7 @@ IIRScram_IndexedName::_process_as_array( savant::set<IIRScram_TypeDefinition> *c
     IIRScram_TypeDefinition *current_context_type = context_set->getElement();
     while( current_context_type != NULL ){
       if( current_array_type->_get_type_of_element( get_num_indexes() )->is_compatible( current_context_type ) != NULL ){
-	one_matched = TRUE;
+	one_matched = true;
 	break;
       }
       current_context_type = context_set->getNextElement();
@@ -998,7 +998,7 @@ IIRScram_IndexedName::_semantic_transform( savant::set<IIRScram_TypeDefinition> 
     report_error( this, err.str() );
   }
 
-  _been_transformed = TRUE;
+  _been_transformed = true;
 
   if( retval == NULL ){
     retval = this;
@@ -1009,14 +1009,14 @@ IIRScram_IndexedName::_semantic_transform( savant::set<IIRScram_TypeDefinition> 
     }
   }
   
-  ASSERT( parse_error == TRUE || retval->is_resolved() == TRUE );
+  ASSERT( parse_error == true || retval->is_resolved() == true );
   
   return retval;
 }
 
 IIRScram *
 IIRScram_IndexedName::_rval_to_decl( IIRScram_TypeDefinition *new_rval ){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   ASSERT( new_rval != 0 );
   ASSERT( new_rval->is_compatible( _get_subtype() ) != NULL );
 
@@ -1038,7 +1038,7 @@ IIRScram_IndexedName::_rval_to_decl( IIRScram_Declaration *declaration, IIRScram
                    
   We're passed the declaration of foo... */
 
-  ASSERT( _get_prefix()->is_name() == TRUE );
+  ASSERT( _get_prefix()->is_name() == true );
 
   savant::set<IIRScram_Declaration> *prefix_decls = NULL;
 
@@ -1061,14 +1061,14 @@ IIRScram_IndexedName::_rval_to_decl( IIRScram_Declaration *declaration, IIRScram
 	    // etc should have been semantic transformed away by now...
 	    IIRScram_TypeDefinition *prefix_rval = prefix_decl->_get_subtype();
 	    ASSERT( prefix_rval != NULL );
-	    if( prefix_rval->is_array_type() == TRUE ){
+	    if( prefix_rval->is_array_type() == true ){
 	      IIRScram_TypeDefinition *index_subtype = prefix_rval->_get_resolved_index_subtype();
 	      set_suffix( _get_suffix()->_semantic_transform( index_subtype ) );
 	      _get_suffix()->_type_check( index_subtype  );
 	      set_suffix( _get_suffix()->_rval_to_decl( index_subtype ) );
 	      return this;
 	    }
-	    else if (prefix_rval->is_record_type() == TRUE ){
+	    else if (prefix_rval->is_record_type() == true ){
 	      // We'll figure this out later...
 	    }
 	    else{
@@ -1108,7 +1108,7 @@ IIRScram_IndexedName::_type_check( savant::set<IIRScram_TypeDefinition> *){}
 IIRScram_Declaration *
 IIRScram_IndexedName::_determine_decl_in_set( savant::set<IIRScram_Declaration> *look_in,
 					      IIRScram_TypeDefinition *my_rval ){
-  ASSERT( _get_prefix()->is_name() == TRUE );
+  ASSERT( _get_prefix()->is_name() == true );
   IIRScram_Declaration *current_decl = look_in->getElement();
   while( current_decl != NULL ){
     savant::set<IIRScram_Declaration> *prefix_decls = NULL;
@@ -1147,7 +1147,7 @@ IIRScram_IndexedName::_determine_decl_in_set( savant::set<IIRScram_Declaration> 
 
 IIRScram_Declaration *
 IIRScram_IndexedName::_find_formal_declaration(){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   ASSERT( _get_suffix() != NULL );
 //   ASSERT( _get_suffix()->get_kind() != IIR_ASSOCIATION_LIST || 
 // 	  (dynamic_cast<IIRScram_AssociationList *>(_get_suffix())->size() == 1 );

@@ -40,7 +40,7 @@ class IIRScram_ImageAttribute : public virtual IIRScram_Attribute, public virtua
 
 public:
 
-  IIR_Boolean has_suffix(){ return TRUE; }
+  IIR_Boolean has_suffix(){ return true; }
   void _set_suffix( IIRScram *new_suffix ){ IIRBase_ImageAttribute::set_suffix( new_suffix ); }
 
   IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );

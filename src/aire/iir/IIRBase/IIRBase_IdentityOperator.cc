@@ -33,7 +33,7 @@ IIRBase_IdentityOperator::~IIRBase_IdentityOperator() {}
 
 IIR_TypeDefinition * 
 IIRBase_IdentityOperator::get_subtype(){
-  ASSERT( get_operand()->is_resolved() == TRUE );
+  ASSERT( get_operand()->is_resolved() == true );
   return get_operand()->get_subtype();
 }
 

@@ -142,7 +142,7 @@ IIRScram_WaitStatement::_resolve_signal_name(IIRScram *sig_name) {
     sig_name_transformed->_type_check( sig_type );
     retval = sig_name_transformed->_rval_to_decl( sig_type );
 
-    ASSERT( retval->is_resolved() == TRUE );
+    ASSERT( retval->is_resolved() == true );
     break;
   }
   default:

@@ -48,7 +48,7 @@ public:
   IIR_UserAttribute *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_locally_static();
-  IIR_Boolean has_suffix(){ return TRUE; }
+  IIR_Boolean has_suffix(){ return true; }
 
   IIR_Identifier *build_attribute_name( );
   void publish_vhdl(ostream &);

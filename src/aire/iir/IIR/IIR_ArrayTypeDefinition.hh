@@ -49,7 +49,7 @@ public:
       subtype. */
   virtual IIR_TypeDefinition *get_final_subtype() = 0;
 
-  // This method returns TRUE if the element_subtype is REALLY that of the
+  // This method returns true if the element_subtype is REALLY that of the
   // element, or false if it's simply a placeholder for a mutlidimensional array.
   virtual IIR_Boolean is_element() = 0;
   virtual void set_is_element( IIR_Boolean ) = 0;

@@ -45,7 +45,7 @@ public:
 
 
   /** Used to identify if the object is of type Array Nature */
-  IIR_Boolean _is_iir_array_type_definition() { return TRUE; }
+  IIR_Boolean _is_iir_array_type_definition() { return true; }
 
   /** Used to construct constrained and unconstrained arrays */
   static IIRScram_ArrayNatureDefinition *

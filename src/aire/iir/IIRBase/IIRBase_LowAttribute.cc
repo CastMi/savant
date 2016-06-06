@@ -54,7 +54,7 @@ IIRBase_LowAttribute::is_value_attribute() const {
   ASSERT( is_resolved() );
   if( get_prefix()->is_scalar_type() ){
     ASSERT( get_suffix() == NULL );
-    return TRUE;
+    return true;
   }
   else{
     ASSERT( get_prefix()->is_array_type() );
@@ -64,11 +64,11 @@ IIRBase_LowAttribute::is_value_attribute() const {
 
 IIR_Boolean 
 IIRBase_LowAttribute::is_function_attribute() const {
-  if( is_value_attribute() == TRUE ){
+  if( is_value_attribute() == true ){
     return false;
   }
   else{
-    return TRUE;
+    return true;
   }
 }
 
@@ -81,11 +81,11 @@ IIRBase_LowAttribute::build_attribute_name() {
 void 
 IIRBase_LowAttribute::publish_vhdl(ostream &vhdl_out) {
   ASSERT(get_prefix() != NULL);
-  ASSERT(get_prefix()->is_resolved() == TRUE);
+  ASSERT(get_prefix()->is_resolved() == true);
   get_prefix()->publish_vhdl(vhdl_out);
   vhdl_out << "'LOW(";
   if(get_suffix() != NULL) {
-    ASSERT(get_suffix()->is_resolved() == TRUE);
+    ASSERT(get_suffix()->is_resolved() == true);
     get_suffix()->publish_vhdl(vhdl_out);
   } else {
     vhdl_out << "1";

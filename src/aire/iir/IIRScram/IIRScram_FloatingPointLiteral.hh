@@ -50,7 +50,7 @@ public:
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor=0);
 
-  IIR_Boolean _is_floating_literal() { return TRUE; }
+  IIR_Boolean _is_floating_literal() { return true; }
   IIRScram *_clone() { return this; }
 };
 

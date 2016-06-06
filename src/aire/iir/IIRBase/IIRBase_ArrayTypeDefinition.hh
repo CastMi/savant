@@ -55,18 +55,18 @@ public:
       subtype. */
   IIR_TypeDefinition *get_final_subtype();
 
-  // This method returns TRUE if the element_subtype is REALLY that of the
+  // This method returns true if the element_subtype is REALLY that of the
   // element, or false if it's simply a placeholder for a mutlidimensional array.
   IIR_Boolean is_element();
   void set_is_element( IIR_Boolean );
 
   IIRBase_ArrayTypeDefinition *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_array_type() { return TRUE; }
+  IIR_Boolean is_array_type() { return true; }
   IIR_Boolean is_unconstrained_array_type( );
   IIR_Boolean is_discrete_type();
 
-  /** is_character_type() is TRUE for an Enumeration type, that has
+  /** is_character_type() is true for an Enumeration type, that has
       at least one character literal in its set of enumerations.  But
       scram/code-generator overloads this function for single dimensional
       array types whose element is a scalar type and is a character

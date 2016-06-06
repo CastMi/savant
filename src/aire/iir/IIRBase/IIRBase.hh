@@ -192,11 +192,11 @@ public:
   /** Does this node represent an "object".  (An object, according to
       the LRM, is a constant, signal, variable, or a file.)  This method
       is overriden by things like IIR_SelectedName, and
-      IIR_AliasDeclaration.  A "TRUE" from this method does NOT mean
+      IIR_AliasDeclaration.  A "true" from this method does NOT mean
       that it's safe to cast to IIR_ObjectDeclaration. */
   IIR_Boolean is_object() const { return false; }
 
-  /** This returns TRUE, if the type definition, or subtype definition is
+  /** This returns true, if the type definition, or subtype definition is
       part of subtype declaration. */
   IIR_Boolean is_subtype_decl() const { return false; }
 

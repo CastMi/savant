@@ -117,8 +117,8 @@ IIRScram_ScalarTypeDefinition::_determine_discrete_type( IIRScram_RangeTypeDefin
     IIRScram_TypeDefinition *left_type = left_set->getElement();
     IIRScram_TypeDefinition *right_type = right_set->getElement();
 
-    ASSERT( left_type->is_scalar_type() == TRUE );
-    ASSERT( right_type->is_scalar_type() == TRUE );
+    ASSERT( left_type->is_scalar_type() == true );
+    ASSERT( right_type->is_scalar_type() == true );
 
 
     if( left_type->get_bottom_base_type() != right_type->get_bottom_base_type() ){
@@ -142,7 +142,7 @@ IIRScram_ScalarTypeDefinition::_determine_discrete_type( IIRScram_RangeTypeDefin
       subtype_of = dynamic_cast<IIRScram_ScalarTypeDefinition *>(left_set->getElement());
     }
 
-    ASSERT( subtype_of->is_scalar_type() == TRUE );
+    ASSERT( subtype_of->is_scalar_type() == true );
     break;
   }
   default:{
@@ -160,10 +160,10 @@ IIRScram_ScalarTypeDefinition::_determine_discrete_type( IIRScram_RangeTypeDefin
 
   // This method is following the rules of page 42, line 350 of the LRM.  
   if( subtype_of == dynamic_cast<IIRScram_IntegerSubtypeDefinition *>(package->get_savant_universal_integer()) &&
-      ( range->_get_base_type_left()->_is_integer_literal() == TRUE ||
-	range->_get_base_type_left()->_is_attribute() == TRUE ) &&
-      ( range->_get_base_type_right()->_is_integer_literal() == TRUE ||
-	range->_get_base_type_right()->_is_attribute() == TRUE ) ){
+      ( range->_get_base_type_left()->_is_integer_literal() == true ||
+	range->_get_base_type_left()->_is_attribute() == true ) &&
+      ( range->_get_base_type_right()->_is_integer_literal() == true ||
+	range->_get_base_type_right()->_is_attribute() == true ) ){
     subtype_of = dynamic_cast<IIRScram_IntegerSubtypeDefinition *>(package->get_integer_type());
   }
 
@@ -176,7 +176,7 @@ IIRScram_ScalarTypeDefinition::_construct_new_subtype( IIRScram_Name *resolution
   IIRScram_FunctionDeclaration *resolution_function_decl = NULL;
 
   IIRScram_TypeDefinition *subtype = _get_new_subtype();
-  ASSERT( subtype->is_scalar_type_definition() == TRUE );
+  ASSERT( subtype->is_scalar_type_definition() == true );
   IIRScram_ScalarTypeDefinition *scalar_subtype =
     dynamic_cast<IIRScram_ScalarTypeDefinition *>(subtype);
   
@@ -187,13 +187,13 @@ IIRScram_ScalarTypeDefinition::_construct_new_subtype( IIRScram_Name *resolution
   
    // Enumeration types don't have anonymous base types unlike the
   // other scalar types - hence all of the special cases here.
-  if( is_subtype() == TRUE ){
+  if( is_subtype() == true ){
     // If we are a subtype, and we're NOT an enumeration type:
     // 1) base type isn't null
     // 2) base type is a type - not a subtype, and it's anonymous.
     ASSERT( _get_base_type() != NULL );
     ASSERT( _get_base_type()->is_subtype() == false ||
-            _get_base_type()->is_enumeration_type() == TRUE );
+            _get_base_type()->is_enumeration_type() == true );
     ASSERT( _get_base_type()->is_anonymous() == false );
 
     scalar_subtype->set_base_type( _get_base_type() );
@@ -222,9 +222,9 @@ IIRScram_ScalarTypeDefinition::_construct_new_subtype( IIRScram_Name *resolution
       }
       // Modified by SK -- Begin
       // set the subtype of left if it is an enumeration literal.
-      if(new_constraint->_get_left()->_is_enumeration_literal() == TRUE) {
+      if(new_constraint->_get_left()->_is_enumeration_literal() == true) {
 	if(new_constraint->_get_left()->_get_subtype() == NULL) {
-	  ASSERT(is_enumeration_type() == TRUE);
+	  ASSERT(is_enumeration_type() == true);
 	  (dynamic_cast<IIRScram_EnumerationLiteral *>( new_constraint->_get_left()))->set_subtype(dynamic_cast<IIRScram_EnumerationTypeDefinition*>(this));
 	}
       }
@@ -243,9 +243,9 @@ IIRScram_ScalarTypeDefinition::_construct_new_subtype( IIRScram_Name *resolution
 
       // Modified by SK -- Begin
       // set the subtype of right if it is an enumeration literal.
-      if(new_constraint->_get_right()->_is_enumeration_literal() == TRUE) {
+      if(new_constraint->_get_right()->_is_enumeration_literal() == true) {
 	if(new_constraint->_get_right()->_get_subtype() == NULL) {
-	  ASSERT(is_enumeration_type() == TRUE);
+	  ASSERT(is_enumeration_type() == true);
 	  (dynamic_cast<IIRScram_EnumerationLiteral *>( new_constraint->_get_right()))->set_subtype(dynamic_cast<IIRScram_EnumerationTypeDefinition*>(this));
 	}
       }
@@ -276,7 +276,7 @@ IIRScram_ScalarTypeDefinition::set_resolution_function( IIRScram_FunctionDeclara
 
 void 
 IIRScram_ScalarTypeDefinition::_clone( IIRScram *copy_into ){
-  ASSERT( copy_into->is_scalar_type_definition() == TRUE );
+  ASSERT( copy_into->is_scalar_type_definition() == true );
   
   IIRScram_ScalarTypeDefinition *as_scalar_type = dynamic_cast<IIRScram_ScalarTypeDefinition *>(copy_into);
   

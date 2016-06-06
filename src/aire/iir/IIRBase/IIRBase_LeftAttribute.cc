@@ -54,7 +54,7 @@ IIRBase_LeftAttribute::is_value_attribute() const {
   ASSERT( is_resolved() );
   if( get_prefix()->is_scalar_type() ){
     ASSERT( get_suffix() == NULL );
-    return TRUE;
+    return true;
   }
   else{
     ASSERT( get_prefix()->is_array_type() );
@@ -68,7 +68,7 @@ IIRBase_LeftAttribute::is_function_attribute(){
     return false;
   }
   else{
-    return TRUE;
+    return true;
   }
 }
 

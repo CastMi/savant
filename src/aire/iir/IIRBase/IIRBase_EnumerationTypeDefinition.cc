@@ -105,8 +105,8 @@ IIRBase_EnumerationTypeDefinition::is_character_type() {
 
     IIR_EnumerationLiteral *literal = dynamic_cast<IIR_EnumerationLiteral *>(get_enumeration_literals()->first());
     while(literal != NULL) {
-      if(literal->is_character_literal() == TRUE) {
-	retval = TRUE;
+      if(literal->is_character_literal() == true) {
+	retval = true;
 	break;
       }
       literal = dynamic_cast<IIR_EnumerationLiteral *>(get_enumeration_literals()->successor(literal));

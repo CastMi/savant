@@ -43,7 +43,7 @@ public:
 
   declaration_type get_declaration_type();
 
-  IIR_Boolean is_variable(){ return TRUE; }
+  IIR_Boolean is_variable(){ return true; }
   void publish_vhdl_decl(ostream &);
 protected:
   IIRBase_VariableDeclaration();

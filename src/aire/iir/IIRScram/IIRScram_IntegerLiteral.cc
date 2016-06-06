@@ -38,8 +38,8 @@
 void
 IIRScram_IntegerLiteral::set_subtype( IIR_TypeDefinition *subtype ){
   IIRScram_TypeDefinition *my_subtype = dynamic_cast<IIRScram_TypeDefinition *>(subtype);
-  ASSERT( my_subtype->_is_iir_integer_type_definition() == TRUE ||
-	  my_subtype->_is_iir_physical_type_definition() == TRUE );
+  ASSERT( my_subtype->_is_iir_integer_type_definition() == true ||
+	  my_subtype->_is_iir_physical_type_definition() == true );
   IIRScram_Literal::set_subtype( my_subtype );
 }
 

@@ -57,17 +57,17 @@ IIRScram_Declaration::_is_homograph_of( IIRScram_Declaration *to_check ){
 
   if( IIRBase_TextLiteral::cmp( _get_declarator(), to_check->_get_declarator() ) == 0 ){
     int olCount = 0;
-    if( _is_overloadable() == TRUE ){
+    if( _is_overloadable() == true ){
       olCount++;
     }
-    if( to_check->_is_overloadable() == TRUE ){
+    if( to_check->_is_overloadable() == true ){
       olCount++;
     }
 
     switch( olCount ){
     case 0:
     case 1:{
-      retval = TRUE;
+      retval = true;
       break;
     }
     case 2:{
@@ -211,7 +211,7 @@ IIRScram_Declaration::_add_to_declarative_region( IIRScram_DeclarationList *regi
 IIR_Boolean
 IIRScram_Declaration::_in_process_statement() {
   if(_get_declarative_region()->get_kind() == IIR_PROCESS_STATEMENT) {
-    return TRUE;
+    return true;
   }
   else {
     return false;
@@ -259,7 +259,7 @@ IIRScram_Declaration::_make_interface_visible(symbol_table *sym_tab ){
 savant::set<IIRScram_TypeDefinition> *
 IIRScram_Declaration::_get_rval_set( constraint_functor *functor ){
   if (functor != 0 ) {
-    ASSERT((*functor)(this) == TRUE );
+    ASSERT((*functor)(this) == true );
   }
   ASSERT( _get_subtype() != 0 );
   return new savant::set<IIRScram_TypeDefinition>( _get_subtype() );

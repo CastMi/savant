@@ -44,11 +44,11 @@ public:
 					      IIRScram_TypeDefinition *decl_type );
   IIRScram_TypeDefinition *_get_prefix_rval();
   
-  IIR_Boolean has_suffix(){ return TRUE; }
+  IIR_Boolean has_suffix(){ return true; }
   void _set_suffix( IIRScram_Statement *new_suffix ){ IIRBase_RangeAttribute::set_suffix( new_suffix ); }
   IIRScram_Statement* _get_suffix();
 
-  IIR_Boolean _is_range_attribute(){ return TRUE; }
+  IIR_Boolean _is_range_attribute(){ return true; }
 
 protected:
   void _resolve_suffix_special();

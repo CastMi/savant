@@ -56,7 +56,7 @@ IIRScram_IfStatement::_type_check(){
   IIRScram *new_condition = _type_check_and_resolve_boolean_condition( _get_condition() );
   ASSERT( new_condition != NULL );
   if( parse_error == false ){
-    ASSERT( new_condition->is_resolved() == TRUE );
+    ASSERT( new_condition->is_resolved() == true );
     set_condition( new_condition );
   }
 
@@ -83,8 +83,8 @@ IIRScram_IfStatement::_type_check_return_statements( savant::set<IIRScram_TypeDe
       _get_elsif()->_type_check_return_statements(context_set, subprogram_decl);
   }
 
-  if ( retval1 == TRUE || retval2 == TRUE || retval3 == TRUE ){
-    retval = TRUE;
+  if ( retval1 == true || retval2 == true || retval3 == true ){
+    retval = true;
   }
 
   return retval;

@@ -53,7 +53,7 @@ public:
 
   declaration_type get_declaration_type();
 
-  IIR_Boolean is_physical_unit(){ return TRUE; }  
+  IIR_Boolean is_physical_unit(){ return true; }  
 
   IIR_Boolean is_locally_static();
 

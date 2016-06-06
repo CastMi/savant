@@ -38,7 +38,7 @@ public:
   IIR_Kind get_kind() const {return IIR_CASE_STATEMENT_ALTERNATIVE_BY_OTHERS;}
   const IIR_Char *get_kind_text() const {return "IIR_CaseStatementAlternativeByOthers";}
 
-  IIR_Boolean is_resolved(){ return TRUE; }
+  IIR_Boolean is_resolved(){ return true; }
 
   ostream &print( ostream & );
   void publish_vhdl(ostream &);

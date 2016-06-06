@@ -137,7 +137,7 @@ IIRScram_UserAttribute::_get_subtype(){
 IIRScram *
 IIRScram_UserAttribute::_semantic_transform( savant::set<IIRScram_TypeDefinition> * ){
   IIRScram              *retval = this;
-  if( _is_qualified_expression() == TRUE ){
+  if( _is_qualified_expression() == true ){
     // We have to type check the qualified expression right here to build it
     // correctly...
     savant::set<IIRScram_TypeDefinition> *suffix_rvals = _get_suffix()->_get_rval_set();
@@ -179,7 +179,7 @@ IIRScram_UserAttribute::_semantic_transform( savant::set<IIRScram_TypeDefinition
     delete suffix_rvals;
   }
   else{
-    _survived_transformation = TRUE;
+    _survived_transformation = true;
   }
   
   return retval;
@@ -192,7 +192,7 @@ IIRScram_UserAttribute::_is_qualified_expression(){
   // An attribute name can have a suffix that is a simple name, or
   // a suffix that is an indexed name, with a simple name prefix.
   // In either case, the simple name MUST refer to an attribute.
-  if( _survived_transformation == TRUE ){
+  if( _survived_transformation == true ){
     // Then retval remains false;
     return false;
   }
@@ -203,7 +203,7 @@ IIRScram_UserAttribute::_is_qualified_expression(){
     if( prefix_decls != NULL ){
       if( prefix_decls->size() == 1 ){
 	// Then it's unabiguously a type declaration.
-	retval = TRUE;
+	retval = true;
       }
       delete prefix_decls;
     }

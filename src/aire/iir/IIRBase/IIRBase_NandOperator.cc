@@ -52,6 +52,6 @@ IIRBase_NandOperator::is_associative(IIR_Kind oper_kind){
   case IIR_NAND_OPERATOR:
     return false;                                                             
   default:
-    return TRUE;                                                             
+    return true;                                                             
   }                 
 }

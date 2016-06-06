@@ -118,8 +118,8 @@ IIRScram_RangeTypeDefinition::_determine_discrete_type() {
     IIRScram_TypeDefinition *left_type = left_set->getElement();
     IIRScram_TypeDefinition *right_type = right_set->getElement();
 
-    ASSERT( left_type->is_scalar_type() == TRUE );
-    ASSERT( right_type->is_scalar_type() == TRUE );
+    ASSERT( left_type->is_scalar_type() == true );
+    ASSERT( right_type->is_scalar_type() == true );
 
 
     if( left_type->get_bottom_base_type() != right_type->get_bottom_base_type() ){
@@ -131,7 +131,7 @@ IIRScram_RangeTypeDefinition::_determine_discrete_type() {
       subtype_of = dynamic_cast<IIRScram_ScalarTypeDefinition *>(left_set->getElement());
     }
 
-    ASSERT( subtype_of->is_scalar_type() == TRUE );
+    ASSERT( subtype_of->is_scalar_type() == true );
     break;
   }
 
@@ -153,10 +153,10 @@ IIRScram_RangeTypeDefinition::_determine_discrete_type() {
   IIRScram_IntegerSubtypeDefinition *scram_int = 
     dynamic_cast<IIRScram_IntegerSubtypeDefinition *>(get_design_file()->get_standard_package()->get_savant_universal_integer());
   if( subtype_of == scram_int &&
-      ( _get_base_type_left()->_is_integer_literal() == TRUE ||
-	_get_base_type_left()->_is_attribute() == TRUE ) &&
-      ( _get_base_type_right()->_is_integer_literal() == TRUE ||
-	_get_base_type_right()->_is_attribute() == TRUE ) ){
+      ( _get_base_type_left()->_is_integer_literal() == true ||
+	_get_base_type_left()->_is_attribute() == true ) &&
+      ( _get_base_type_right()->_is_integer_literal() == true ||
+	_get_base_type_right()->_is_attribute() == true ) ){
     subtype_of = 
       dynamic_cast<IIRScram_IntegerSubtypeDefinition *>(get_design_file()->get_standard_package()->get_integer_type());
   }

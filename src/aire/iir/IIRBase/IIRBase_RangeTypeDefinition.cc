@@ -65,7 +65,7 @@ IIRBase_RangeTypeDefinition::publish_vhdl_constraint(ostream &vhdl_out) {
     ASSERT(get_direction()->get_kind() == IIR_ENUMERATION_LITERAL);
     
     get_base_type_left()->publish_vhdl(vhdl_out);
-    if( is_ascending_range() == TRUE ){
+    if( is_ascending_range() == true ){
       vhdl_out << " to ";
     }
     else {

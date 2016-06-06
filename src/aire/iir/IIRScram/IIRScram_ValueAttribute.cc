@@ -52,7 +52,7 @@ IIRScram_ValueAttribute::_resolve_suffix_special(){
 
   if( _get_suffix() != NULL && _get_suffix()->is_resolved() == false ){
 
-    ASSERT( _get_prefix()->is_resolved() == TRUE );
+    ASSERT( _get_prefix()->is_resolved() == true );
 
     savant::set<IIRScram_TypeDefinition> *suffix_types = _get_suffix()->_get_rval_set();
     IIRScram_TypeDefinition *string_rval = 

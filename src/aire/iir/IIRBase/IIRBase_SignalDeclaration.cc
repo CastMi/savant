@@ -77,7 +77,7 @@ IIR_Boolean
 IIRBase_SignalDeclaration::is_guard_signal() {
   ASSERT ( get_declarator() != NULL );
   if (IIRBase_TextLiteral::cmp( get_declarator(), "guard") == 0) {
-    return TRUE;
+    return true;
   }
 
   return false;
@@ -85,9 +85,9 @@ IIRBase_SignalDeclaration::is_guard_signal() {
 
 IIR_Boolean
 IIRBase_SignalDeclaration::is_above_attribute_found() {
-  if(is_implicit_declaration() == TRUE && get_attribute_name() != NULL) {
-    if(get_attribute_name()->is_above_attribute() == TRUE) {
-      return TRUE;
+  if(is_implicit_declaration() == true && get_attribute_name() != NULL) {
+    if(get_attribute_name()->is_above_attribute() == true) {
+      return true;
     }
     else
       return false;

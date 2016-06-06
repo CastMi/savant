@@ -65,11 +65,11 @@ IIRScram_ConcurrentSelectedSignalAssignment::_type_check(){
   // Next, we'll type check the target and the waveforms.
   _type_check_target_and_waveforms();
 
-  if( get_guarded() == TRUE ){
+  if( get_guarded() == true ){
     _resolve_guard_signal( _get_symbol_table() );
   }
 
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
 }
 
 void 
@@ -105,7 +105,7 @@ IIRScram_ConcurrentSelectedSignalAssignment::_read_alternative_list( IIRScram_Ca
   while( current_waveform != NULL ){
     ASSERT( current_alt != NULL );
 
-    ASSERT( current_alt->_is_iir_case_statement_alternative() == TRUE );
+    ASSERT( current_alt->_is_iir_case_statement_alternative() == true );
     current_waveform->set_choice( current_alt );
 
     current_alt = dynamic_cast<IIRScram_CaseStatementAlternative *>(alt_list->successor( current_alt ));

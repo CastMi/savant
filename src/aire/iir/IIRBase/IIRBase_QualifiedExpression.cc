@@ -83,7 +83,7 @@ IIRBase_QualifiedExpression::is_resolved(){
     return false;
   }
   else{
-    return TRUE;
+    return true;
   }
 }
 
@@ -95,7 +95,7 @@ IIRBase_QualifiedExpression::get_subtype(){
 IIR_Boolean 
 IIRBase_QualifiedExpression::is_locally_static(){
   ASSERT( get_expression() != NULL );
-  ASSERT( get_expression()->is_resolved() == TRUE );
+  ASSERT( get_expression()->is_resolved() == true );
   return get_expression()->is_locally_static();
 }
 

@@ -84,7 +84,7 @@ IIRScram_Operator::_type_check_user_declared( set<IIRScram_TypeDefinition> *cont
       break;
     }
     case 1:{
-      retval = TRUE;
+      retval = true;
 
       ASSERT( function_declarations->getElement() != NULL );
       ASSERT( function_declarations->getElement()->get_kind() == IIR_FUNCTION_DECLARATION );
@@ -100,7 +100,7 @@ IIRScram_Operator::_type_check_user_declared( set<IIRScram_TypeDefinition> *cont
     default:{
       // This will guarantee that other type check methods aren't applied
       // to this node.
-      retval = TRUE;
+      retval = true;
       report_ambiguous_error( this, function_declarations->convert_set<IIR_Declaration>());
     }
     }
@@ -126,7 +126,7 @@ IIRScram_Operator::_rval_to_decl( IIRScram_TypeDefinition *my_rval ){
   delete my_rvals;
   my_rvals = 0;
 
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
 
   return this;
 }
@@ -160,7 +160,7 @@ IIRScram_Operator::_get_rval_set( constraint_functor * ){
       my_rvals = new set<IIRScram_TypeDefinition>( *retval );
     }
     
-    has_been_type_checked = TRUE;
+    has_been_type_checked = true;
   }
   else{
     if( my_rvals != 0 ){
@@ -221,9 +221,9 @@ IIRScram *
 IIRScram_Operator::_semantic_transform( set<IIRScram_TypeDefinition> *context_set ){
   IIRScram *retval = this;
 
-  if( _type_check_user_declared( context_set ) == TRUE ){
+  if( _type_check_user_declared( context_set ) == true ){
     ASSERT( _get_implementation() != NULL );
-    ASSERT( _get_implementation()->is_resolved() == TRUE );
+    ASSERT( _get_implementation()->is_resolved() == true );
     
     // Only transform this to a function call if the user _explicitly_
     // declared this operator.
@@ -239,7 +239,7 @@ IIRScram_Operator::_semantic_transform( set<IIRScram_TypeDefinition> *context_se
       IIRScram_AssociationElement *current =  
         dynamic_cast<IIRScram_AssociationElement *>(function_call->get_parameter_association_list()->first());
       while( current != NULL ){
-	ASSERT( current->is_resolved() == TRUE );
+	ASSERT( current->is_resolved() == true );
 	current =  
           dynamic_cast<IIRScram_AssociationElement *>(function_call->get_parameter_association_list()->successor( current ));
       }

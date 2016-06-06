@@ -37,7 +37,7 @@ public:
       and to the type's list of implicit_declarations. */
   void  _come_into_scope( symbol_table *, IIRScram_TypeDeclaration * );
 
-  IIR_Boolean is_locally_static(){ return TRUE; }
+  IIR_Boolean is_locally_static(){ return true; }
 
   void _set_resolution_function( IIRScram_FunctionDeclaration * );
 

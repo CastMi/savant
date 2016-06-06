@@ -70,7 +70,7 @@ IIRBase_AssociationElementByExpression::convert_tree(plugin_class_factory *facto
 
 IIR_Boolean 
 IIRBase_AssociationElementByExpression::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
   if( get_formal() != NULL && get_formal()->is_resolved() == false ){
     retval = false;
@@ -87,7 +87,7 @@ IIRBase_AssociationElementByExpression::is_resolved(){
 
 IIR_Boolean 
 IIRBase_AssociationElementByExpression::is_signal(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
   if( get_actual()->is_signal() == false ){
     retval = false;
@@ -98,7 +98,7 @@ IIRBase_AssociationElementByExpression::is_signal(){
 
 IIR_Boolean 
 IIRBase_AssociationElementByExpression::is_variable(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
   if( get_actual()->is_variable() == false ){
     retval = false;

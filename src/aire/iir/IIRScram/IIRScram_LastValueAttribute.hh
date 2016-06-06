@@ -48,7 +48,7 @@ public:
   IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition *decl_type );
   virtual IIRScram *_clone();
   
-  IIR_Boolean _is_lastvalue_attribute() { return TRUE; }
+  IIR_Boolean _is_lastvalue_attribute() { return true; }
 };
 
 #endif

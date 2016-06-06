@@ -77,7 +77,7 @@ IIRScram_WaveformElement::_is_readable(){
     return _get_value()->_is_readable();
   }
   else{
-    return TRUE;
+    return true;
   }
 }
 

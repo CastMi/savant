@@ -78,7 +78,7 @@ IIRBase_SelectedWaveform::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean
 IIRBase_SelectedWaveform::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
   if( get_choice()->is_resolved() == false ){
     retval = false;
   }

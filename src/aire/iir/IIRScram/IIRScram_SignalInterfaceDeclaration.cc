@@ -69,7 +69,7 @@ void
 IIRScram_SignalInterfaceDeclaration::_type_check( IIRScram_InterfaceDeclaration::_InterfaceListType list_type ){
   IIRScram_InterfaceDeclaration::_type_check();
 
-  if( _get_subtype()->is_access_type() == TRUE || _get_subtype()->is_file_type() == TRUE ){
+  if( _get_subtype()->is_access_type() == true || _get_subtype()->is_file_type() == true ){
     ostringstream err;
     err << "Signal interface declaration |" << *_get_declarator() << "| must have a subtype "
 	<< "indication that defines a subtype that is neither an access type or a file type.";

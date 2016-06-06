@@ -45,7 +45,7 @@ public:
   IIRBase_FileTypeDefinition *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_locally_static();
-  IIR_Boolean is_file_type(){ return TRUE; }
+  IIR_Boolean is_file_type(){ return true; }
   void publish_vhdl_decl(ostream &);
 protected:
   IIRBase_FileTypeDefinition();

@@ -44,7 +44,7 @@ public:
 
   virtual IIRScram_EntityDeclaration* _get_entity();
 
-  IIR_Boolean _is_iir_library_unit(){ return TRUE; }
+  IIR_Boolean _is_iir_library_unit(){ return true; }
   IIR_Boolean _is_homograph_of( IIRScram_Declaration * );
 
   virtual void _clone( IIRScram * );

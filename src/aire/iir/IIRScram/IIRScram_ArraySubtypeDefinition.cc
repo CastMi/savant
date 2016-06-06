@@ -57,9 +57,9 @@ IIRScram_ArraySubtypeDefinition::_clone(){
 
 IIR_Boolean 
 IIRScram_ArraySubtypeDefinition::is_locally_static(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
-  if( is_unconstrained_array_type() == TRUE ){
+  if( is_unconstrained_array_type() == true ){
     retval = false;
   }
   else{
@@ -69,7 +69,7 @@ IIRScram_ArraySubtypeDefinition::is_locally_static(){
     }
     IIRScram_TypeDefinition *current_element_type = _get_element_subtype();
     ASSERT( current_element_type != NULL );
-    while( current_element_type->_is_iir_array_type_definition() == TRUE && 
+    while( current_element_type->_is_iir_array_type_definition() == true && 
 	   current_element_type->is_element() == false ){
       IIRScram_ArrayTypeDefinition *as_array_type = dynamic_cast<IIRScram_ArrayTypeDefinition *>(current_element_type);
       ASSERT( as_array_type->get_index_subtype() != NULL );

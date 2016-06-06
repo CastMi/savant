@@ -62,7 +62,7 @@ IIRBase_PhysicalLiteral::get_unit_name() {
 
 IIR_Boolean
 IIRBase_PhysicalLiteral::is_locally_static(){
-  return TRUE;
+  return true;
 }
 
 IIR_Statement *
@@ -83,7 +83,7 @@ IIRBase_PhysicalLiteral::is_resolved(){
     return false;
   }
   else{
-    return TRUE;
+    return true;
   }
 }
 

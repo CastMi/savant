@@ -52,7 +52,7 @@ public:
   void set_actual( IIR_Statement* );
 
   // This is overloaded in IIRBase_AssociationElementByExpression.
-  IIR_Boolean is_resolved(){ return TRUE; }
+  IIR_Boolean is_resolved(){ return true; }
   IIR_Boolean is_named();
   IIR_Boolean is_by_others();
 

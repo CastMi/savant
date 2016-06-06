@@ -71,7 +71,7 @@ IIRScram_EnumerationLiteral::_get_rval_set(constraint_functor *functor){
 
     current_decl = dynamic_cast<IIRScram_Declaration *>(my_decls->getElement());
     while( current_decl != NULL ){
-      if( functor == 0 || (*functor)(current_decl) == TRUE ){
+      if( functor == 0 || (*functor)(current_decl) == true ){
 	if( retval == NULL ){
 	  retval = new savant::set<IIRScram_TypeDefinition>;
 	}
@@ -145,7 +145,7 @@ IIRScram_EnumerationLiteral::_is_homograph_of( IIRScram_Declaration *compare_to 
     return false;
   }
 
-  return TRUE;
+  return true;
 }
 
 IIRScram_AttributeSpecificationList* 

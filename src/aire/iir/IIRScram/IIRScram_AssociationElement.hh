@@ -43,7 +43,7 @@ public:
   IIRScram_AssociationElement() {}
   virtual ~IIRScram_AssociationElement();
 
-  IIR_Boolean _is_association(){ return TRUE; }
+  IIR_Boolean _is_association(){ return true; }
   IIR_Boolean _is_positional();
 
   IIRScram_Statement* _get_formal();

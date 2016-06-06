@@ -52,7 +52,7 @@ IIRScram_DesignatorByAll::_get_rval_set( savant::set<IIRScram_Declaration> *pref
 
   IIRScram_Declaration *current_decl = prefix_decls->getElement();
   while( current_decl != NULL ){
-    if( current_decl->is_access_type() == TRUE ){
+    if( current_decl->is_access_type() == true ){
       IIRScram_TypeDefinition *access_to = current_decl->_get_subtype()->_get_designated_subtype();
       retval->add( access_to );
     }
@@ -80,7 +80,7 @@ IIRScram_DesignatorByAll::_get_rval_set( savant::set<IIRScram_TypeDefinition> *p
 
   IIRScram_TypeDefinition *current_type = prefix_types->getElement();
   while( current_type != NULL ){
-    if( current_type->is_access_type() == TRUE ){
+    if( current_type->is_access_type() == true ){
       IIRScram_TypeDefinition *access_to = current_type->_get_designated_subtype();
       retval->add( access_to );
     }
@@ -102,7 +102,7 @@ IIRScram_DesignatorByAll::_determine_rval_in_set( savant::set<IIRScram_TypeDefin
   IIRScram_TypeDefinition *retval = NULL;
   IIRScram_TypeDefinition *current_type = prefix_types->getElement();
   while( current_type != NULL ){
-    if( current_type->is_access_type() == TRUE ){
+    if( current_type->is_access_type() == true ){
       IIRScram_TypeDefinition *access_to = current_type->_get_subtype()->_get_designated_subtype();
       if( access_to->is_compatible( return_type ) != NULL ){
 	retval = current_type;
@@ -122,7 +122,7 @@ IIRScram_DesignatorByAll::_determine_decl_in_set( savant::set<IIRScram_Declarati
   IIRScram_Declaration *retval = NULL;
   IIRScram_Declaration *current_decl = prefix_decls->getElement();
   while( current_decl != NULL ){
-    if( current_decl->is_access_type() == TRUE ){
+    if( current_decl->is_access_type() == true ){
       IIRScram_TypeDefinition *access_to = current_decl->_get_subtype()->_get_designated_subtype();
       if( access_to->is_compatible( return_type ) != NULL ){
 	retval = current_decl;

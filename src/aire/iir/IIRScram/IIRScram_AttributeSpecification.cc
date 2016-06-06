@@ -123,10 +123,10 @@ IIRScram_AttributeSpecification::_type_check( IIRScram_DeclarationList * ){
 	decl_to_attach_to = decl_set->getElement();
 	while( decl_to_attach_to != NULL ){  
           constraint_functor *functor = _get_entity_constraint();
-	  if( (*functor)(decl_to_attach_to) == TRUE ){
+	  if( (*functor)(decl_to_attach_to) == true ){
 	    // We also need to resolve the attribute itself, and see if it 
 	    // is defined for the object that it's being attached to.
-	    if( decl_to_attach_to->_attach_attribute_specification( (IIRScram_AttributeSpecification *)this ) == TRUE ){
+	    if( decl_to_attach_to->_attach_attribute_specification( (IIRScram_AttributeSpecification *)this ) == true ){
 	      as_explicit->set_name( decl_to_attach_to );
 	    }
 	    else{
@@ -159,7 +159,7 @@ IIR_Boolean
 IIRScram_AttributeSpecification::_can_be_in_same_region( IIRScram_Declaration *to_check ){
   IIR_Boolean retval = false;
   if( to_check != 0 && to_check->get_kind() == get_kind() ){
-    retval = TRUE;
+    retval = true;
   }
 
   return retval;

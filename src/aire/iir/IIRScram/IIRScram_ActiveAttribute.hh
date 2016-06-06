@@ -46,8 +46,8 @@ public:
 
   IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );
   
-  virtual IIR_Boolean _is_active_attribute() const { return TRUE; }
-  IIR_Boolean _is_signal_attribute() const { return TRUE; }
+  virtual IIR_Boolean _is_active_attribute() const { return true; }
+  IIR_Boolean _is_signal_attribute() const { return true; }
   virtual IIRScram_ActiveAttribute* _clone() override;
 
 protected:

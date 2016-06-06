@@ -41,7 +41,7 @@ public:
 
   IIR_Boolean is_resolved();
   IIR_Boolean is_locally_static();
-  IIR_Boolean is_literal() const { return TRUE; }
+  IIR_Boolean is_literal() const { return true; }
 
 protected:
   

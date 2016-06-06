@@ -46,7 +46,7 @@ public:
   IIRScram_LibraryDeclaration();
   virtual ~IIRScram_LibraryDeclaration();
 
-  IIR_Boolean _is_iir_library_declaration(){ return TRUE; }
+  IIR_Boolean _is_iir_library_declaration(){ return true; }
 
 
   void _add_to_declarative_region( savant::set<IIRScram_Declaration> * );

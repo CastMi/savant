@@ -44,7 +44,7 @@ public:
 
   /** For the execution of a Break Statement, the condition, if present, is
       first evaluated. A break is indicated if the value of the condition
-      is TRUE or if there is no condition. [ LRM $ 8.14 - 565 ]. */
+      is true or if there is no condition. [ LRM $ 8.14 - 565 ]. */
   void set_condition(IIR* condition);
   IIR* get_condition();
 

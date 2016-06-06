@@ -39,7 +39,7 @@ class IIRScram_ValueAttribute : public virtual IIRScram_Attribute, public virtua
 public:
   IIRScram_TypeDefinition *_get_subtype();
 
-  IIR_Boolean has_suffix(){ return TRUE; }
+  IIR_Boolean has_suffix(){ return true; }
   void _set_suffix( IIRScram *new_suffix ){ IIRBase_ValueAttribute::set_suffix( new_suffix ); }
 
 protected:

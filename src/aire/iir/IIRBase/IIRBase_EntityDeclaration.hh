@@ -55,8 +55,8 @@ public:
 
   IIR *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_entity_declaration() { return TRUE; }
-  IIR_Boolean is_primary_unit() { return TRUE; }
+  IIR_Boolean is_entity_declaration() { return true; }
+  IIR_Boolean is_primary_unit() { return true; }
 
   declaration_type                      get_declaration_type();
 

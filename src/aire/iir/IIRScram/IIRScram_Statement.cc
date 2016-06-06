@@ -319,7 +319,7 @@ IIRScram_Statement::_type_check_mechanism_and_time( IIRScram_WaveformList *wavef
       ASSERT( first_waveform != NULL );
       IIRScram *time_expression = dynamic_cast<IIRScram *>(first_waveform->get_time());
       if( time_expression != NULL ){
-	ASSERT( time_expression->is_resolved() == TRUE );
+	ASSERT( time_expression->is_resolved() == true );
 	set_reject_time_expression( time_expression );
       }
     }

@@ -52,24 +52,24 @@ IIRBase_RightAttribute::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_RightAttribute::is_value_attribute() const {
-  ASSERT( is_resolved() == TRUE );
-  if( get_prefix()->is_scalar_type() == TRUE ){
+  ASSERT( is_resolved() == true );
+  if( get_prefix()->is_scalar_type() == true ){
     ASSERT( get_suffix() == NULL );
-    return TRUE;
+    return true;
   }
   else{
-    ASSERT( get_prefix()->is_array_type() == TRUE );
+    ASSERT( get_prefix()->is_array_type() == true );
     return false;
   }
 }
 
 IIR_Boolean 
 IIRBase_RightAttribute::is_function_attribute() const {
-  if( is_value_attribute() == TRUE ){
+  if( is_value_attribute() == true ){
     return false;
   }
   else{
-    return TRUE;
+    return true;
   }
 }
 
@@ -82,7 +82,7 @@ IIRBase_RightAttribute::build_attribute_name() {
 void 
 IIRBase_RightAttribute::publish_vhdl(ostream &vhdl_out) {
   ASSERT(get_prefix() != NULL);
-  ASSERT(get_prefix()->is_resolved() == TRUE);
+  ASSERT(get_prefix()->is_resolved() == true);
 
   get_prefix()->publish_vhdl(vhdl_out);
   vhdl_out << "'RIGHT(";

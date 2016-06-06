@@ -52,8 +52,8 @@ public:
 
   savant::set<IIR_Declaration> *find_declarations( IIR_Name *);
 
-  IIR_Boolean is_package_declaration(){ return TRUE; }
-  IIR_Boolean is_primary_unit(){ return TRUE; }
+  IIR_Boolean is_package_declaration(){ return true; }
+  IIR_Boolean is_primary_unit(){ return true; }
 
   IIR_Declaration          *get_prefix_declaration() { return this; }
   void publish_vhdl_decl(ostream &);

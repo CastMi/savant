@@ -54,7 +54,7 @@ public:
                             IIR_Int32   &number_of_matches,
                             IIRScram         *&first_match);
 
-  IIR_Boolean _is_iir_name(){ return TRUE; }
+  IIR_Boolean _is_iir_name(){ return true; }
 
   virtual IIR_Boolean _is_by_all(){ return false; }
 

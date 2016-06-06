@@ -38,7 +38,7 @@ public:
   IIR_Kind get_kind() const {return IIR_TRANSACTION_ATTRIBUTE;}
   const IIR_Char *get_kind_text() const {return "IIR_TransactionAttribute";}
 
-  IIR_Boolean is_signal() { return TRUE; }
+  IIR_Boolean is_signal() { return true; }
 
   IIR_TypeDefinition *get_subtype();
 

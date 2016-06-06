@@ -58,9 +58,9 @@ public:
 
   IIRScram *_rval_to_decl( IIRScram_TypeDefinition *prefix_type, IIRScram_TypeDefinition *suffix_rval );
   IIRScram *_rval_to_decl( IIRScram_Declaration *prefix_decl, IIRScram_TypeDefinition *suffix_rval );
-  IIR_Boolean _is_writable(){ return TRUE; };
-  IIR_Boolean _is_readable(){ return TRUE; };
-  IIR_Boolean _is_by_all(){ return TRUE; }
+  IIR_Boolean _is_writable(){ return true; };
+  IIR_Boolean _is_readable(){ return true; };
+  IIR_Boolean _is_by_all(){ return true; }
 };
 
 #endif

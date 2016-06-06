@@ -66,7 +66,7 @@ public:
                                                     IIRScram_SequentialStatementList *,
                                                     IIRScram_SubprogramDeclaration * );
 
-  virtual IIR_Boolean _is_iir_sequential_statement(){ return TRUE; }
+  virtual IIR_Boolean _is_iir_sequential_statement(){ return true; }
 
   virtual IIRScram_Statement *_clone();
   virtual void _clone( IIRScram_Statement * );

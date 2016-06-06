@@ -42,8 +42,8 @@ class IIRScram_VariableDeclaration : public virtual IIRScram_ObjectDeclaration, 
 public:
   IIRScram_VariableDeclaration();
 
-  IIR_Boolean _is_readable(){ return TRUE; }
-  IIR_Boolean _is_writable(){ return TRUE; }
+  IIR_Boolean _is_readable(){ return true; }
+  IIR_Boolean _is_writable(){ return true; }
 
   /** For some reason, sometimes the code generate wants a fresh clone
      generated.  */

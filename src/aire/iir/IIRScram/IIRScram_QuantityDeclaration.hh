@@ -33,7 +33,7 @@ public:
   IIRScram_QuantityDeclaration() {};
   virtual ~IIRScram_QuantityDeclaration();
 
-  IIR_Boolean _is_quantity() {return TRUE;}  
+  IIR_Boolean _is_quantity() {return true;}  
 };
 
 #endif

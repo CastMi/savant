@@ -43,11 +43,11 @@ public:
 
   IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition *decl_type );
   
-  IIR_Boolean has_suffix(){ return TRUE; }
+  IIR_Boolean has_suffix(){ return true; }
   void _set_suffix( IIRScram *new_suffix ){ IIRBase_StableAttribute::set_suffix( new_suffix ); }
 
-  IIR_Boolean _is_stable_attribute() { return TRUE; }
-  IIR_Boolean _is_signal_attribute(){ return TRUE; }
+  IIR_Boolean _is_stable_attribute() { return true; }
+  IIR_Boolean _is_signal_attribute(){ return true; }
 
 protected:
   void _resolve_suffix_special();

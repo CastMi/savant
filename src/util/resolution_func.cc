@@ -184,7 +184,7 @@ reconcile_sets( set<IIRScram_Declaration> *decls,
 	IIRScram_TypeDefinition *current_rval = rval_set->getElement();
 	while( current_rval != NULL ){
 	  if( current_decl->_get_subtype()->is_compatible( current_rval ) != NULL ){
-	    one_matched = TRUE;
+	    one_matched = true;
 	  }
 	
 	  current_rval = rval_set->getNextElement();
@@ -234,7 +234,7 @@ resolve_subprogram_decls(set<IIRScram_Declaration>              *possible_subpro
 
   IIRScram_Declaration *current_decl = possible_subprogram_decls->getElement();
   while( current_decl != NULL ){
-    ASSERT( current_decl->is_subprogram() == TRUE );
+    ASSERT( current_decl->is_subprogram() == true );
     IIRScram_SubprogramDeclaration *as_subprog = dynamic_cast<IIRScram_SubprogramDeclaration *>(current_decl);
     ASSERT(as_subprog != NULL);
     arguments_match =

@@ -46,9 +46,9 @@ public:
   virtual IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition * );
   void _clone( IIRScram_Statement * );
 
-  IIR_Boolean _is_iir_expression(){ return TRUE; }
+  IIR_Boolean _is_iir_expression(){ return true; }
 
-  IIR_Boolean _is_readable(){ return TRUE; }
+  IIR_Boolean _is_readable(){ return true; }
   IIR_Boolean _is_writable(){ return false; }
 
 protected:

@@ -36,7 +36,7 @@ public:
   IIR_Kind get_kind() const {return IIR_CONSTANT_INTERFACE_DECLARATION;}
   const IIR_Char *get_kind_text() const {return "IIR_ConstantInterfaceDeclaration";}
 
-  IIR_Boolean is_constant() { return TRUE; }
+  IIR_Boolean is_constant() { return true; }
 
   declaration_type get_declaration_type();
   void publish_vhdl_decl(ostream &);

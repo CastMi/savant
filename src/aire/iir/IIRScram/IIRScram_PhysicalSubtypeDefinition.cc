@@ -50,7 +50,7 @@ IIRScram_PhysicalSubtypeDefinition::_clone(){
 
 void 
 IIRScram_PhysicalSubtypeDefinition::_clone( IIRScram *copy_into ){
-  ASSERT( copy_into->_is_iir_physical_subtype_definition() == TRUE );
+  ASSERT( copy_into->_is_iir_physical_subtype_definition() == true );
   IIRScram_PhysicalSubtypeDefinition *as_physical_subtype = 
     dynamic_cast<IIRScram_PhysicalSubtypeDefinition *>(copy_into);
   

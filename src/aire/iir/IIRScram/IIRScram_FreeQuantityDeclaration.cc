@@ -36,7 +36,7 @@ IIRScram_FreeQuantityDeclaration::~IIRScram_FreeQuantityDeclaration() {}
 
 IIR_Boolean
 IIRScram_FreeQuantityDeclaration::_is_readable() {
-  return TRUE;
+  return true;
 }
 
 void

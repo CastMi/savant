@@ -41,7 +41,7 @@ public:
   IIRScram_SignalAssignmentStatement();
   virtual ~IIRScram_SignalAssignmentStatement();
 
-  IIR_Boolean _is_sequential_signal_assignment(){ return TRUE; }
+  IIR_Boolean _is_sequential_signal_assignment(){ return true; }
 
   IIRScram *_clone();
 

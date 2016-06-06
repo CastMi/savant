@@ -47,7 +47,7 @@ public:
 
   IIR_Statement *convert_tree(plugin_class_factory *);
  
-  IIR_Boolean is_text_literal() const { return TRUE; }
+  IIR_Boolean is_text_literal() const { return true; }
 
   IIR_TextLiteral *get_prefix_string(){ return this; }
 

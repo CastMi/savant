@@ -107,6 +107,6 @@ IIRBase_DesignatorExplicit::print( ostream &os ){
 
 void 
 IIRBase_DesignatorExplicit::publish_vhdl(ostream &vhdl_out) {
-  ASSERT(get_name()->is_resolved() == TRUE);
+  ASSERT(get_name()->is_resolved() == true);
   get_name()->publish_vhdl(vhdl_out);
 }

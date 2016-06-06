@@ -38,7 +38,7 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_LastValueAttribute";}
 
   IIR_Boolean is_signal(){ return false; }
-  IIR_Boolean is_function_attribute(){ return TRUE; }
+  IIR_Boolean is_function_attribute(){ return true; }
 
   IIR_Identifier *build_attribute_name();
   void publish_vhdl(ostream &);

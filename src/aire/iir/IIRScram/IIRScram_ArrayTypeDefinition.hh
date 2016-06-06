@@ -38,7 +38,7 @@ public:
   IIRScram_ArrayTypeDefinition();
   virtual ~IIRScram_ArrayTypeDefinition();
   
-  IIR_Boolean _is_iir_array_type_definition() { return TRUE; }
+  IIR_Boolean _is_iir_array_type_definition() { return true; }
   IIR_Int32 get_num_indexes();
 
   IIRScram_TypeDefinition *_get_element_subtype();

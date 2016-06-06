@@ -39,7 +39,7 @@ class IIRScram_Declaration;
 
 class IIRScram_AscendingAttribute : public virtual IIRScram_Attribute, public virtual IIRBase_AscendingAttribute {
 public:
-  IIR_Boolean has_suffix(){ return TRUE; }
+  IIR_Boolean has_suffix(){ return true; }
   void _set_suffix( IIRScram_Statement *new_suffix ){ IIRBase_AscendingAttribute::set_suffix( new_suffix ); }
 
   IIRScram_Declaration *_get_implicit_declaration( const string &, IIRScram_TypeDefinition * );

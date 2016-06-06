@@ -40,8 +40,8 @@ public:
   // Helper Functions
   IIRScram *_get_value();
 
-  virtual IIR_Boolean _is_readable(){ return TRUE; }
-  virtual IIR_Boolean _is_writable(){ return TRUE; }
+  virtual IIR_Boolean _is_readable(){ return true; }
+  virtual IIR_Boolean _is_writable(){ return true; }
 };
 
 #endif

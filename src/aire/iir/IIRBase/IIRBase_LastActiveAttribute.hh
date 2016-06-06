@@ -42,7 +42,7 @@ public:
 
   IIR_TypeDefinition *get_subtype();
 
-  IIR_Boolean is_function_attribute(){ return TRUE; }
+  IIR_Boolean is_function_attribute(){ return true; }
   IIR_Identifier *build_attribute_name();
   void publish_vhdl(ostream &);
 protected:

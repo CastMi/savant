@@ -54,7 +54,7 @@ public:
 
   IIR *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_object(){ return TRUE; }
+  IIR_Boolean is_object(){ return true; }
  
   IIR_SignalKind get_signal_kind();
 

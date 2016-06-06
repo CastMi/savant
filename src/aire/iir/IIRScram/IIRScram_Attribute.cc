@@ -74,7 +74,7 @@ IIRScram_Attribute::_get_suffix( ){
 
 void 
 IIRScram_Attribute::_resolve_suffix(){
-  if( _get_suffix() == NULL || _get_suffix()->is_resolved() == TRUE ) {
+  if( _get_suffix() == NULL || _get_suffix()->is_resolved() == true ) {
     return;
   }
   else{
@@ -109,7 +109,7 @@ IIRScram_Attribute::_build_range_type(){
   if( get_kind() == IIR_RANGE_ATTRIBUTE ){
     retval->set_left( left );
     retval->set_right( right );
-    if( subtype->_get_direction() == NULL || subtype->is_ascending_range() == TRUE ){
+    if( subtype->_get_direction() == NULL || subtype->is_ascending_range() == true ){
       // This is the "true" literal
       retval->set_direction( package->get_true_literal() );
     }
@@ -122,7 +122,7 @@ IIRScram_Attribute::_build_range_type(){
     ASSERT( get_kind() == IIR_REVERSE_RANGE_ATTRIBUTE );
     retval->set_left( right );
     retval->set_right( left );
-    if( subtype->_get_direction() == NULL || subtype->is_ascending_range() == TRUE ){
+    if( subtype->_get_direction() == NULL || subtype->is_ascending_range() == true ){
       retval->set_direction( package->get_true_literal() );
     }
     else{
@@ -302,11 +302,11 @@ void
 IIRScram_Attribute::_type_check( savant::set<IIRScram_TypeDefinition> * ){
   // We need to resolve our prefix. 
   _resolve_prefix();
-  if( has_suffix() == TRUE ){
+  if( has_suffix() == true ){
     _resolve_suffix();
   }
   set_subtype(_get_subtype());
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
 }
 
 void 
@@ -353,7 +353,7 @@ IIRScram_Attribute::_resolve_prefix(){
     }
     _get_prefix()->_type_check( prefix_rvals );  
     set_prefix( _get_prefix()->_rval_to_decl( prefix_rvals->getElement() ) );
-    ASSERT( _get_prefix()->is_resolved() == TRUE );
+    ASSERT( _get_prefix()->is_resolved() == true );
     
     /*
     if( _get_prefix()->get_kind() == IIR_FUNCTION_CALL ){
@@ -378,7 +378,7 @@ IIRScram_Attribute::_decl_to_decl( IIRScram_Declaration * ){
   // need to do the exact same stuff in rval_to_decl.  This should be put
   // into a function "resolve_prefix".
   _resolve_prefix();
-  if( has_suffix() == TRUE ){
+  if( has_suffix() == true ){
     _resolve_suffix();
   }
   return this;
@@ -388,13 +388,13 @@ IIRScram_Statement *
 IIRScram_Attribute::_rval_to_decl( IIRScram_TypeDefinition * ){
   IIRScram_Attribute *retval = this;
 
-  if( _get_prefix()->is_resolved() == TRUE ){
+  if( _get_prefix()->is_resolved() == true ){
     ostringstream imp_name;
     imp_name << _get_prefix();
     imp_name << "_";
     imp_name << _get_attribute_name();
     
-    ASSERT( _get_suffix() == NULL || _get_suffix()->is_resolved() == TRUE );
+    ASSERT( _get_suffix() == NULL || _get_suffix()->is_resolved() == true );
     
     string decl_name = imp_name.str();
     
@@ -405,7 +405,7 @@ IIRScram_Attribute::_rval_to_decl( IIRScram_TypeDefinition * ){
 
 void
 IIRScram_Attribute::_clone( IIRScram_Statement *copy_into ){
-  ASSERT( copy_into->_is_iir_attribute() == TRUE );
+  ASSERT( copy_into->_is_iir_attribute() == true );
   IIRScram_Name::_clone( copy_into );
 }
 
@@ -415,7 +415,7 @@ IIRScram_Attribute::_resolve_suffix_base_type_of_prefix(){
 
   if( _get_suffix() == NULL || _get_suffix()->is_resolved() == false ){
     suffix_to_process = _get_suffix();
-    ASSERT( _get_prefix()->is_resolved() == TRUE );
+    ASSERT( _get_prefix()->is_resolved() == true );
 
     // The suffix must be an expression whose type is the base type of
     // of the prefix.
@@ -432,7 +432,7 @@ IIRScram_Attribute::_resolve_suffix_base_type_of_prefix(){
       current_type = suffix_types->getNextElement();
     }
     if( current_type != NULL ){
-      ASSERT( current_type->is_scalar_type() == TRUE );
+      ASSERT( current_type->is_scalar_type() == true );
       set_suffix( _get_suffix()->_semantic_transform( current_type ) );
       _get_suffix()->_type_check( current_type );
       set_suffix( _get_suffix()->_rval_to_decl( current_type ) );
@@ -470,7 +470,7 @@ IIRScram_Attribute::_resolve_suffix_local_static_int(){
   StandardPackage       *package = _get_design_file()->get_standard_package();
   if( _get_suffix() != NULL && _get_suffix()->is_resolved() == false ){
 
-    ASSERT( _get_prefix()->is_resolved() == TRUE );
+    ASSERT( _get_prefix()->is_resolved() == true );
 
     savant::set<IIRScram_TypeDefinition> *suffix_types = suffix_to_process->_get_rval_set();
   
@@ -512,7 +512,7 @@ IIRScram_Attribute::_resolve_suffix_non_negative_time(){
 
   StandardPackage       *package = _get_design_file()->get_standard_package();
   if( _get_suffix() != NULL && _get_suffix()->is_resolved() == false ){
-    ASSERT( _get_prefix()->is_resolved() == TRUE );
+    ASSERT( _get_prefix()->is_resolved() == true );
     savant::set<IIRScram_TypeDefinition> *suffix_types = _get_suffix()->_get_rval_set();
     IIR_TypeDefinition *time_rval = package->get_time_type();
 
@@ -550,10 +550,10 @@ IIRScram_Attribute::_get_rval_set_high_low_left_right( constraint_functor *funct
     retval = new savant::set<IIRScram_TypeDefinition>;
     IIRScram_TypeDefinition *current_rval = prefix_rvals->getElement();
     while( current_rval != NULL ){
-      if( current_rval->is_array_type() == TRUE ){
+      if( current_rval->is_array_type() == true ){
 	retval->add( current_rval->_get_resolved_index_subtype() );
       }
-      else if ( current_rval->is_scalar_type() == TRUE ){
+      else if ( current_rval->is_scalar_type() == true ){
 	retval->add( current_rval );
       }
       current_rval = prefix_rvals->getNextElement();
@@ -571,14 +571,14 @@ IIRScram_Attribute::_get_rval_set_high_low_left_right( constraint_functor *funct
 
 IIRScram_TypeDefinition *
 IIRScram_Attribute::_get_subtype_high_low_left_right(){
-  ASSERT( _get_prefix()->is_resolved() == TRUE );
+  ASSERT( _get_prefix()->is_resolved() == true );
 
   IIRScram_TypeDefinition *prefix_rval = _get_prefix()->_get_subtype();
 
-  if( prefix_rval->is_array_type() == TRUE ){
+  if( prefix_rval->is_array_type() == true ){
     return prefix_rval->_get_resolved_index_subtype();
   }
-  else if ( prefix_rval->is_scalar_type() == TRUE ){
+  else if ( prefix_rval->is_scalar_type() == true ){
     return prefix_rval;
   }
   else{
@@ -656,7 +656,7 @@ IIRScram_Attribute::_get_subtype_range_attribute(){
 	  int i;
 	  for( i = 1; i < val; i++ ){
 	    current_array_type = current_array_type->_get_element_subtype();
-	    ASSERT( current_array_type->is_array_type() == TRUE );
+	    ASSERT( current_array_type->is_array_type() == true );
 	  }
 	  retval = current_array_type->_get_resolved_index_subtype();
 	}

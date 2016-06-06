@@ -39,7 +39,7 @@ public:
   const string &get_operator_string() const;
 
   Precedence get_precedence();
-  IIR_Boolean is_logical_operator(){ return TRUE; }
+  IIR_Boolean is_logical_operator(){ return true; }
   bool is_associative(IIR_Kind oper_kind);
 
 protected:

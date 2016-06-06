@@ -82,7 +82,7 @@ IIRScram *
 IIRScram_SensitizedProcessStatement::_resolve_signal_name( IIRScram *signal_name ){
   IIRScram *retval = NULL;
   
-  if( signal_name->is_resolved() == TRUE ){
+  if( signal_name->is_resolved() == true ){
     return signal_name;
   }
 
@@ -141,7 +141,7 @@ IIRScram_SensitizedProcessStatement::_resolve_signal_name( IIRScram *signal_name
     }
 
     if( retval != NULL ){
-      ASSERT( retval->is_resolved() == TRUE );
+      ASSERT( retval->is_resolved() == true );
     }
 
     break;
@@ -152,7 +152,7 @@ IIRScram_SensitizedProcessStatement::_resolve_signal_name( IIRScram *signal_name
   }
 
   delete signal_decls;
-  if( retval->_is_iir_declaration() == TRUE ){
+  if( retval->_is_iir_declaration() == true ){
     IIRScram_Attribute *my_attribute =  (dynamic_cast<IIRScram_Declaration *>(retval))->_get_attribute_name();
     if( my_attribute != NULL ){
       retval = dynamic_cast<IIRScram *>(my_attribute);

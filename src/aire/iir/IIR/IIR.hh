@@ -171,7 +171,7 @@ public:
   /** Does this node represent an "object".  (An object, according to
       the LRM, is a constant, signal, variable, or a file.)  This method
       is overriden by things like IIR_SelectedName, and
-      IIR_AliasDeclaration.  A "TRUE" from this method does NOT mean
+      IIR_AliasDeclaration.  A "true" from this method does NOT mean
       that it's safe to cast to IIR_ObjectDeclaration. */
   virtual IIR_Boolean is_object() const = 0;
 
@@ -203,7 +203,7 @@ public:
   virtual IIR_Boolean is_relational_operator() const = 0;
   virtual IIR_Boolean is_logical_operator() const = 0;
 
-  /** This returns TRUE, if the type definition, or subtype definition is
+  /** This returns true, if the type definition, or subtype definition is
       part of subtype declaration. */
   virtual IIR_Boolean is_subtype_decl() const = 0;
 

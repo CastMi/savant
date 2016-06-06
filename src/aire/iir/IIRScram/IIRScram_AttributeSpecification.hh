@@ -44,7 +44,7 @@ public:
 
   void _type_check( IIRScram_DeclarationList *declarative_region );
 
-  IIR_Boolean _is_specification(){ return TRUE; }
+  IIR_Boolean _is_specification(){ return true; }
   IIR_Boolean _can_be_in_same_region( IIRScram_Declaration * );
 
   void _set_entity_constraint( constraint_functor *functor ){
@@ -55,7 +55,7 @@ public:
     return _my_functor;
   }
 
-  IIR_Boolean                   _is_iir_attribute_specification(){ return TRUE; }
+  IIR_Boolean                   _is_iir_attribute_specification(){ return true; }
   IIRScram_Identifier           *_get_entity_class();
   IIRScram_DesignatorList       *_get_entity_name_list();
   IIRScram_Statement            *_get_value();

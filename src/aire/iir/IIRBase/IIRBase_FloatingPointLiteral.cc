@@ -206,7 +206,7 @@ IIRBase_FloatingPointLiteral::publish_vhdl(ostream &vhdl_out) {
 IIR_Boolean
 IIRBase_FloatingPointLiteral::is_negative(){
   if ( get_floating_point_value() < 0 ){
-    return TRUE;
+    return true;
   }
   return false;
 }

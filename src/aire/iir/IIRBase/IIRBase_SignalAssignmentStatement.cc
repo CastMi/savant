@@ -101,7 +101,7 @@ IIRBase_SignalAssignmentStatement::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_SignalAssignmentStatement::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
   if( get_target() && get_target()->is_resolved() == false ){
     retval = false;

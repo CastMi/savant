@@ -54,7 +54,7 @@ IIRScram_ForLoopStatement::_type_check_return_statements( savant::set<IIRScram_T
 							  IIRScram_SubprogramDeclaration *subprogram_decl ){
   IIR_Boolean retval;
 
-  ASSERT( _get_iteration_scheme() != NULL && _get_iteration_scheme()->is_resolved() == TRUE );
+  ASSERT( _get_iteration_scheme() != NULL && _get_iteration_scheme()->is_resolved() == true );
   
   _get_symbol_table()->open_scope( this );
   _get_symbol_table()->make_visible( _get_iteration_scheme());
@@ -77,7 +77,7 @@ IIRScram_ForLoopStatement::_build_iteration_scheme( IIR_TextLiteral *id,
   copy_location( id, iterator );
 
   if( subtype != NULL ){
-    ASSERT( subtype->is_scalar_type()==TRUE );
+    ASSERT( subtype->is_scalar_type()==true );
     iterator->set_subtype( subtype );
   }
   

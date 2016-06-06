@@ -95,9 +95,9 @@ IIRBase_DisconnectSpecification::publish_vhdl_decl(ostream &vhdl_out) {
 
 void 
 IIRBase_DisconnectSpecification::publish_vhdl(ostream &vhdl_out) {
-  ASSERT( get_guarded_signal_list()->is_resolved() == TRUE );
-  ASSERT( get_type_mark()->is_resolved() == TRUE );
-  ASSERT( get_time_expression()->is_resolved() == TRUE );
+  ASSERT( get_guarded_signal_list()->is_resolved() == true );
+  ASSERT( get_type_mark()->is_resolved() == true );
+  ASSERT( get_time_expression()->is_resolved() == true );
 
   vhdl_out << " disconnect ";
   get_guarded_signal_list()->publish_vhdl(vhdl_out);

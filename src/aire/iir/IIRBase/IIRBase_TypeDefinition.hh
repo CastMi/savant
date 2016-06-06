@@ -51,7 +51,7 @@ public:
   IIRBase_TypeDefinition *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_element() const;
-  IIR_Boolean is_resolved() { return TRUE; }
+  IIR_Boolean is_resolved() { return true; }
   IIR_Boolean is_anonymous();
   IIR_Boolean is_subtype();
 

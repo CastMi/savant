@@ -39,7 +39,7 @@ public:
   IIRScram_Designator() {}
   virtual ~IIRScram_Designator();
 
-  IIR_Boolean _is_designator(){ return TRUE; }
+  IIR_Boolean _is_designator(){ return true; }
 
   virtual IIRScram* _get_name();
 };

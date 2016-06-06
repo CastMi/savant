@@ -48,9 +48,9 @@ public:
   //This function publishes the implicit signal attributes
   //that are in scope for "this" declaration
   //  void _publish_cc_implicit_signal_attributes( published_file &_cc_out );
-  IIR_Boolean _is_iir_signal_declaration(){ return TRUE; }
-  IIR_Boolean _is_readable(){ return TRUE; }
-  IIR_Boolean _is_writable(){ return TRUE; }
+  IIR_Boolean _is_iir_signal_declaration(){ return true; }
+  IIR_Boolean _is_readable(){ return true; }
+  IIR_Boolean _is_writable(){ return true; }
 
   IIRScram *_clone();
   IIRScram *_get_value();

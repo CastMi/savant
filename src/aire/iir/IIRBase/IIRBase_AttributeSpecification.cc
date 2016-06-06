@@ -117,9 +117,9 @@ IIRBase_AttributeSpecification::get_declaration_type(){
 void 
 IIRBase_AttributeSpecification::publish_vhdl_decl(ostream &vhdl_out) {
   ASSERT(get_value() != NULL);
-  ASSERT(get_value()->is_resolved() == TRUE);
+  ASSERT(get_value()->is_resolved() == true);
   ASSERT(get_declaration() != NULL);
-  ASSERT(get_declaration()->is_resolved() == TRUE);
+  ASSERT(get_declaration()->is_resolved() == true);
   ASSERT(get_entity_class() != NULL);
 
   vhdl_out << "attribute ";

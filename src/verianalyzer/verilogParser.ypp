@@ -181,7 +181,7 @@ module
       my_symbol_table->open_scope(arc);
       
       IIRScram_EntityDeclaration *entity_decl = 
-      dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( TRUE, 
+      dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( true, 
 											     ent->get_declarator(), 
 											     lib_dec,
 											     my_package,

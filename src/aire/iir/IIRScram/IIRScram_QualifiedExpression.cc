@@ -53,7 +53,7 @@ IIRScram_QualifiedExpression::_get_rval_set( constraint_functor * ){
 
 IIRScram * 
 IIRScram_QualifiedExpression::_rval_to_decl( IIRScram_TypeDefinition *my_rval ){
-  ASSERT( _get_type_mark()->is_resolved() == TRUE );
+  ASSERT( _get_type_mark()->is_resolved() == true );
   ASSERT( my_rval->is_compatible( _get_type_mark() ) != NULL );
   
   if( _get_type_mark() != NULL && get_expression() != NULL ){

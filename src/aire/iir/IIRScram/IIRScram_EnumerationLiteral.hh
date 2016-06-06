@@ -46,11 +46,11 @@ public:
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
   IIRScram *_clone();
 
-  IIR_Boolean _is_enumeration_literal() { return TRUE; }
-  IIR_Boolean _is_iir_enumeration_literal(){ return TRUE; }
-  IIR_Boolean is_locally_static() { return TRUE;}
-  IIR_Boolean _is_overloadable(){ return TRUE; }
-  IIR_Boolean _is_readable(){ return TRUE; }
+  IIR_Boolean _is_enumeration_literal() { return true; }
+  IIR_Boolean _is_iir_enumeration_literal(){ return true; }
+  IIR_Boolean is_locally_static() { return true;}
+  IIR_Boolean _is_overloadable(){ return true; }
+  IIR_Boolean _is_readable(){ return true; }
   IIR_Boolean _is_writable(){ return false; }
   IIR_Boolean _is_homograph_of( IIRScram_Declaration * );
 

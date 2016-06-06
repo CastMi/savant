@@ -49,7 +49,7 @@ public:
 
   /** This method tells us if a declaration is a an IIR_SourceQuantityDeclaration. */
   IIR_Boolean _is_sourceQ() {
-    return TRUE;
+    return true;
   }
 
   // Helper Functions

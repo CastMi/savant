@@ -77,7 +77,7 @@ IIRScram_PhysicalLiteral::_get_rval_set( constraint_functor * ){
   savant::set<IIRScram_TypeDefinition> *retval;
   IIRScram_PhysicalUnit *my_unit = _get_unit_name();
   ASSERT( my_unit != NULL );
-  ASSERT( my_unit->_is_iir_declaration() == TRUE );
+  ASSERT( my_unit->_is_iir_declaration() == true );
 
   retval = new savant::set<IIRScram_TypeDefinition>( my_unit->_get_physical_type() );
 

@@ -75,7 +75,7 @@ IIRBase_TypeConversion::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean
 IIRBase_TypeConversion::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
   if( get_type_mark()->is_resolved() == false || get_expression()->is_resolved() == false ){
     retval = false;
   }
@@ -91,7 +91,7 @@ IIRBase_TypeConversion::get_subtype(){
 IIR_Boolean 
 IIRBase_TypeConversion::is_locally_static(){
   ASSERT( get_expression() != NULL );
-  ASSERT( get_expression()->is_resolved() == TRUE );
+  ASSERT( get_expression()->is_resolved() == true );
   return get_expression()->is_locally_static();
 }
 

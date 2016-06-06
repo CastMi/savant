@@ -72,7 +72,7 @@ IIRBase_EntityClassEntry::publish_vhdl(ostream &vhdl_out) {
 
   vhdl_out << get_entity_kind();
   
-  if (get_boxed() == TRUE) {
+  if (get_boxed() == true) {
     vhdl_out << " <> ";
   }
 }

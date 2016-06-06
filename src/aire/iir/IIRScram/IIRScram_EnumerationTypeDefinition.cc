@@ -66,7 +66,7 @@ IIRScram_EnumerationTypeDefinition::_clone(){
 
 void 
 IIRScram_EnumerationTypeDefinition::_clone( IIRScram *copy_into ){
-  ASSERT( copy_into->_is_iir_enumeration_type_definition() == TRUE );
+  ASSERT( copy_into->_is_iir_enumeration_type_definition() == true );
   IIRScram_EnumerationTypeDefinition *as_enumeration_type = 
     dynamic_cast<IIRScram_EnumerationTypeDefinition *>(copy_into);
 

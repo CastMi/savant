@@ -70,9 +70,9 @@ IIRBase_IndexedName::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_IndexedName::is_resolved() const {
-  if( get_prefix()->is_resolved() == TRUE && 
-      get_suffix()->is_resolved() == TRUE ){
-    return TRUE;
+  if( get_prefix()->is_resolved() == true && 
+      get_suffix()->is_resolved() == true ){
+    return true;
   }
   else{
     return false;
@@ -81,7 +81,7 @@ IIRBase_IndexedName::is_resolved() const {
 
 IIR_Boolean 
 IIRBase_IndexedName::is_signal() const {
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   return get_prefix()->is_signal();
 }
 
@@ -136,7 +136,7 @@ IIRBase_IndexedName::get_num_indexes(){
 
 IIR_Boolean 
 IIRBase_IndexedName::is_variable() const {
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   return get_prefix()->is_variable();
 }
 

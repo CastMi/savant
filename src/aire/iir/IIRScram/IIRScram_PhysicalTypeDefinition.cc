@@ -69,7 +69,7 @@ IIRScram_PhysicalTypeDefinition::_clone(){
 
 void 
 IIRScram_PhysicalTypeDefinition::_clone( IIRScram *copy_into ){
-  ASSERT( copy_into->_is_iir_physical_type_definition() == TRUE );
+  ASSERT( copy_into->_is_iir_physical_type_definition() == true );
   IIRScram_PhysicalTypeDefinition *as_physical_type = 
     dynamic_cast<IIRScram_PhysicalTypeDefinition *>(copy_into);
 

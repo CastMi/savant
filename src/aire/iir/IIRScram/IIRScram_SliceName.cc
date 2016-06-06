@@ -58,7 +58,7 @@ IIRScram_SliceName::_get_rval_set(constraint_functor *functor){
 
 void 
 IIRScram_SliceName::_type_check( savant::set<IIRScram_TypeDefinition> * ){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
 }
 
 IIR_Boolean 
@@ -78,7 +78,7 @@ IIRScram_SliceName::_get_name_type() {
 
 void 
 IIRScram_SliceName::_make_interface_visible( symbol_table *sym_tab ){
-  ASSERT( _get_prefix()->is_label() == TRUE );
+  ASSERT( _get_prefix()->is_label() == true );
   _get_prefix()->_make_interface_visible( sym_tab );
 }
 
@@ -103,7 +103,7 @@ IIRScram_SliceName::_get_suffix(){
 
 IIRScram_Declaration *
 IIRScram_SliceName::_find_formal_declaration(){
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
   ASSERT( _get_suffix() != NULL );
   ASSERT( get_suffix()->get_kind() != IIR_ASSOCIATION_LIST || 
 	  (dynamic_cast<IIRScram_AssociationList *>(get_suffix()))->size() == 1 );
@@ -112,6 +112,6 @@ IIRScram_SliceName::_find_formal_declaration(){
 
 IIRScram_List *
 IIRScram_SliceName::_get_statement_list(){
-  ASSERT( _get_prefix()->is_label() == TRUE );
+  ASSERT( _get_prefix()->is_label() == true );
   return _get_prefix()->_get_statement_list();
 }

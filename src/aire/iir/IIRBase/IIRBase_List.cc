@@ -58,7 +58,7 @@ IIRBase_List<type>::convert_node(plugin_class_factory *factory) {
 
 IIR_Boolean 
 IIRBase_List::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
 
   IIR *current_element = dynamic_cast<IIR *>(first());
   while( current_element != NULL ){

@@ -52,7 +52,7 @@ IIRScram_CaseStatement::~IIRScram_CaseStatement(){
 void
 IIRScram_CaseStatement::_type_check(){
   _type_check_case_statement_expression( _get_case_statement_alternatives() );
-  ASSERT( is_resolved() == TRUE );
+  ASSERT( is_resolved() == true );
 }
 
 IIRScram *
@@ -92,8 +92,8 @@ IIRScram_CaseStatement::_type_check_return_statements(savant::set<IIRScram_TypeD
     IIR_Boolean found_one;
     found_one = alternative->_type_check_return_statements( context_set,
 							    subprogram_decl );
-    if( found_one == TRUE ){
-      retval = TRUE;
+    if( found_one == true ){
+      retval = true;
     }
 
     alternative = dynamic_cast<IIRScram_CaseStatementAlternative *>(get_case_statement_alternatives()->successor( alternative ));

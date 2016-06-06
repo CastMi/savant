@@ -48,7 +48,7 @@ IIRBase_MultiplicationOperator::is_associative(IIR_Kind oper_kind){
   case IIR_MODULUS_OPERATOR:
     return false;                
   default:
-    return TRUE;                                                            
+    return true;                                                            
   }
 }
 

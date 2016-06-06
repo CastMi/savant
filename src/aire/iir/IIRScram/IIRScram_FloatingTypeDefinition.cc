@@ -41,7 +41,7 @@ IIRScram_FloatingTypeDefinition::_clone(){
   IIRScram_FloatingTypeDefinition *retval = NULL;
   IIRScram_TypeDefinition *temp = _get_new_subtype();
 
-  ASSERT( temp->_is_iir_floating_type_definition() == TRUE );
+  ASSERT( temp->_is_iir_floating_type_definition() == true );
   retval = dynamic_cast<IIRScram_FloatingTypeDefinition *>(temp);
   IIRScram_ScalarTypeDefinition::_clone( retval );
 

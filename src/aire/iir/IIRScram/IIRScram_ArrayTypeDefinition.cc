@@ -52,7 +52,7 @@ IIRScram_ArrayTypeDefinition::get_num_indexes() {
 
   IIRScram_TypeDefinition *current_subtype = _get_element_subtype();
   ASSERT(current_subtype != NULL);
-  while( current_subtype->is_array_type() == TRUE
+  while( current_subtype->is_array_type() == true
 	 && current_subtype->is_element() == false ){
     num_indexes++;
     current_subtype = current_subtype->_get_element_subtype();
@@ -69,7 +69,7 @@ IIRScram_ArrayTypeDefinition::_build_proper_index( IIRScram_RangeTypeDefinition 
   
   IIRScram_TypeDefinition *new_subtype =  range_type->_construct_new_subtype( NULL, range );
 
-  ASSERT( new_subtype->is_scalar_type() == TRUE );
+  ASSERT( new_subtype->is_scalar_type() == true );
 
   return dynamic_cast<IIRScram_ScalarTypeDefinition *>(new_subtype);
 }
@@ -93,10 +93,10 @@ IIRScram_ArrayTypeDefinition::_index_constrain_array( IIRScram_ScalarTypeDefinit
   retval = new IIRScram_ArraySubtypeDefinition();
   copy_location( constraint, retval );
 
-  ASSERT( current_index_type->is_scalar_type() == TRUE );
+  ASSERT( current_index_type->is_scalar_type() == true );
   retval->set_index_subtype( dynamic_cast<IIRScram_ScalarTypeDefinition *>(current_index_type) );
 
-  if( is_subtype() == TRUE ){
+  if( is_subtype() == true ){
     retval->set_base_type( get_base_type() );    
   }
   else{
@@ -127,7 +127,7 @@ IIRScram_ArrayTypeDefinition::_construct_new_subtype( IIRScram_Name             
   if( retval == NULL ){
     // We'll just make a copy of ourseleves then.
     retval = _get_new_subtype();
-    ASSERT( retval->_is_iir_array_type_definition() == TRUE );
+    ASSERT( retval->_is_iir_array_type_definition() == true );
     _clone( dynamic_cast<IIRScram_ArrayTypeDefinition *>(retval) );
     if( !is_subtype() ){
       retval->set_base_type( this );
@@ -192,7 +192,7 @@ IIRScram_ArrayTypeDefinition::_construct_constrained( IIRScram_ScalarTypeDefinit
   base_index_type->_set_resolution_function( index_subtype->_get_resolution_function() );
   base_index_type->set_type_mark( index_subtype );
   base_index_type->set_declaration( index_subtype->_get_declaration() );
-  ASSERT( base_index_type->is_scalar_type_definition() == TRUE );
+  ASSERT( base_index_type->is_scalar_type_definition() == true );
   base_type->set_index_subtype( dynamic_cast<IIRScram_ScalarTypeDefinition *>(base_index_type) );
   base_type->_get_resolved_index_subtype()->set_type_mark( index_subtype );
   base_type->_set_design_file( index_subtype->_get_design_file());
@@ -226,7 +226,7 @@ IIRScram_ArrayTypeDefinition::_clone(){
 
 void 
 IIRScram_ArrayTypeDefinition::_clone( IIRScram *my_clone ){
-  ASSERT( my_clone->_is_iir_array_type_definition() == TRUE );
+  ASSERT( my_clone->_is_iir_array_type_definition() == true );
   IIRScram_ArrayTypeDefinition *as_array_type = dynamic_cast<IIRScram_ArrayTypeDefinition *>(my_clone);
   
   as_array_type->set_index_subtype( get_index_subtype() );
@@ -239,8 +239,8 @@ void
 IIRScram_ArrayTypeDefinition::_type_check(){
   // See lines 369-372 of 1076-1993 for this rule.  It seems to be OK to declare
   // an array of access types to unconstained arrays, hence the first part of the rule.
-  if( _get_final_subtype()->_is_iir_array_type_definition() == TRUE &&
-      _get_final_subtype()->is_unconstrained_array_type() == TRUE ){
+  if( _get_final_subtype()->_is_iir_array_type_definition() == true &&
+      _get_final_subtype()->is_unconstrained_array_type() == true ){
     ostringstream err;
     err << "The element subtype indication for an array type definition must define "
 	<< "a constrained array subtype.";
@@ -282,7 +282,7 @@ IIRScram_ArrayTypeDefinition::_build_implicit_operators( savant::set<IIRScram_De
     
     // The order of the operands is result type, left type, right type.
 
-    if( _get_element_subtype()->is_discrete_type() == TRUE ){
+    if( _get_element_subtype()->is_discrete_type() == true ){
       _build_ordering_operators( add_to );
     }
     

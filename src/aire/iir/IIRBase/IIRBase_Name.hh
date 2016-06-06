@@ -54,7 +54,7 @@ public:
 
   IIR_Statement *convert_tree(plugin_class_factory *factory);
   
-  IIR_Boolean is_name() { return TRUE; };
+  IIR_Boolean is_name() { return true; };
   IIR_Boolean is_signal();
   IIR_Boolean is_object(); 
   IIR_Boolean is_variable();

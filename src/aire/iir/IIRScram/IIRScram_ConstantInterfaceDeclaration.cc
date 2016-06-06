@@ -50,7 +50,7 @@ IIRScram_ConstantInterfaceDeclaration::_clone() {
 
 void 
 IIRScram_ConstantInterfaceDeclaration::_type_check( IIRScram_InterfaceDeclaration::_InterfaceListType ){
-  if( _get_subtype()->is_access_type() == TRUE || _get_subtype()->is_file_type() == TRUE ){
+  if( _get_subtype()->is_access_type() == true || _get_subtype()->is_file_type() == true ){
     ostringstream err;
     err << "Constant interface declaration |" << *_get_declarator() << "| must have a subtype "
 	<< "indication that defines a subtype that is neither an access type or a file type.";

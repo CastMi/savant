@@ -41,7 +41,7 @@ public:
 
   IIR *convert_tree(plugin_class_factory *factory);
 
-  IIR_Boolean is_constant(){ return TRUE; }
+  IIR_Boolean is_constant(){ return true; }
   IIR_Boolean is_ascending_range();
   
   declaration_type get_declaration_type();

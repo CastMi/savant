@@ -582,7 +582,7 @@ library_manager::parse_primary_unit( IIR_LibraryDeclaration     *lib_decl,
     }
     switch( decls.size() ){
     case 0:{
-      if( complain_on_error == TRUE ){
+      if( complain_on_error == true ){
 	report_undefined_symbol( lib_decl, unit_name );
       }
       break;
@@ -1077,7 +1077,7 @@ library_manager::lookup_unit( IIR_Boolean               complain_on_error,
     ASSERT( temp_retval == NULL || temp_retval->get_kind() == unit_kind );
     retval = temp_retval;
 
-    if( retval == NULL && complain_on_error == TRUE ){
+    if( retval == NULL && complain_on_error == true ){
       ostringstream err;
       err << "No primary unit |" << *unit_name << "| found.";
       report_error( unit_name, err.str() );
@@ -1166,7 +1166,7 @@ library_manager::lookup_architecture( IIR_Boolean               complain_on_erro
     retval = parse_architecture( entity, architecture_declarator, package, factory );
   }
     
-  if(  retval == NULL && complain_on_error == TRUE ){
+  if(  retval == NULL && complain_on_error == true ){
     ostringstream err;
     err << "No architecture |" << *architecture_declarator << "| declared for entity |"
         << *entity->get_declarator() << "|.";
@@ -1182,7 +1182,7 @@ library_manager::lookup_architecture( IIR_Boolean               complain_on_erro
 				      IIR_Name                  *architecture_name){
   IIR_ArchitectureDeclaration *retval = NULL;
 
-  ASSERT( complain_on_error == TRUE ||  complain_on_error == false );
+  ASSERT( complain_on_error == true ||  complain_on_error == false );
   ASSERT( entity != NULL );
   ASSERT( architecture_name != NULL );
   ASSERT( entity->get_library() != NULL );

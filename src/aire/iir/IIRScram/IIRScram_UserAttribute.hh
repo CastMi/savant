@@ -48,7 +48,7 @@ public:
 
   IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition> * );
 
-  IIR_Boolean has_suffix(){ return TRUE; }
+  IIR_Boolean has_suffix(){ return true; }
   void _set_suffix( IIRScram *new_suffix ){ IIRBase_UserAttribute::set_suffix( new_suffix ); }
   void _resolve_suffix_special();
 

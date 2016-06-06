@@ -30,7 +30,7 @@ public:
   IIR_Kind get_kind() const {return IIR_ASSOCIATION_ELEMENT_BY_OPEN;}
   const IIR_Char *get_kind_text() const {return "IIR_AssociationElementOpen";}
 
-  IIR_Boolean is_locally_static(){ return TRUE; }
+  IIR_Boolean is_locally_static(){ return true; }
 
   ostream& print(ostream&);
   void publish_vhdl(ostream &);

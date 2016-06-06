@@ -89,7 +89,7 @@ IIRBase_WhileLoopStatement::publish_vhdl(ostream &vhdl_out) {
   publish_vhdl_stmt_label(vhdl_out);
 
   if(get_while_condition() != NULL) {
-    ASSERT(get_while_condition()->is_resolved() == TRUE);
+    ASSERT(get_while_condition()->is_resolved() == true);
     vhdl_out << "while ";
     get_while_condition()->publish_vhdl(vhdl_out);
     vhdl_out << "  ";

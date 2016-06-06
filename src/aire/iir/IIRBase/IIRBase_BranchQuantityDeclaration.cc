@@ -149,7 +149,7 @@ IIR_Boolean
 IIRBase_BranchQuantityDeclaration::_is_across_quantity() {
   if ( (get_across_aspect_identifier_list()->num_elements() != 0) && 
        (get_through_aspect_designator_list()->num_elements() == 0) ){
-    return TRUE;
+    return true;
   }
   else {
     return false;

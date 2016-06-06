@@ -97,7 +97,7 @@ symbol_lookup::build_hidden_declaration_set( IIR_Declaration *about_to_add ){
    IIRScram_Declaration *current_declaration = dynamic_cast<IIRScram_Declaration *>(current_declarations->getElement());
    while( current_declaration ){
       // There is at least one declaration with the same name visible.
-      IIR_Boolean are_homographs = TRUE;
+      IIR_Boolean are_homographs = true;
       IIR_Boolean can_be_in_same_region = false;
       if( current_declaration == about_to_add ){
          current_declaration = dynamic_cast<IIRScram_Declaration *>(current_declarations->getNextElement());
@@ -106,7 +106,7 @@ symbol_lookup::build_hidden_declaration_set( IIR_Declaration *about_to_add ){
       // If the declaration we're adding can be overloaded, then it won't
       // hide other declarations that can't be.
       are_homographs = about_to_add_scram->_is_homograph_of( current_declaration );
-      if( are_homographs == TRUE ){
+      if( are_homographs == true ){
          // There are special circumstances that two declarations that _are_
          // homographs can be in the same region.  For instance, a subprogram
          // declaration and a subprogram body, or an incomplete type

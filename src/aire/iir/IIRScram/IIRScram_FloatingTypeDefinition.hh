@@ -48,7 +48,7 @@ public:
   IIRScram_TypeDefinition *_get_new_subtype();
   IIRScram *_clone();
 
-  IIR_Boolean _is_iir_floating_type_definition(){ return TRUE; }
+  IIR_Boolean _is_iir_floating_type_definition(){ return true; }
   
   void _set_resolution_function( IIRScram_FunctionDeclaration * );
 

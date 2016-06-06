@@ -49,7 +49,7 @@ public:
   IIR_Kind get_kind() const { return   IIR_INCOMPLETE_TYPE_DEFINITION; }
   const IIR_Char *get_kind_text() const { return "IIR_IncompleteTypeDefinition"; }
 
-  IIR_Boolean is_subtype(){ return TRUE; }
+  IIR_Boolean is_subtype(){ return true; }
   
   IIR_Identifier *get_designated_type_name(){
     return my_designated_type_name;
@@ -60,7 +60,7 @@ public:
   }
 
   IIR_Boolean is_incomplete_type_definition(){
-    return TRUE;
+    return true;
   }
 
   IIR *get_value() {ASSERT(0); return NULL;}

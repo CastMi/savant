@@ -47,7 +47,7 @@ public:
 					      IIRScram_TypeDefinition *decl_type );
   virtual IIRScram *_clone();
 
-  IIR_Boolean _is_lastevent_attribute() { return TRUE; }
+  IIR_Boolean _is_lastevent_attribute() { return true; }
 };
 
 #endif

@@ -45,8 +45,8 @@ public:
   virtual ~IIRScram_ConfigurationSpecification();
   enum type_check_mode { CONFIG_SPEC, COMPONENT_INSTANT };
 
-  IIR_Boolean _is_specification() { return TRUE; }
-  IIR_Boolean _is_iir_configuration_specification() { return TRUE; }
+  IIR_Boolean _is_specification() { return true; }
+  IIR_Boolean _is_iir_configuration_specification() { return true; }
 
   IIRScram_DesignatorList *_get_instantiation_list();
 

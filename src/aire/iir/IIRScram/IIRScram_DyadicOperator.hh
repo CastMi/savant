@@ -45,7 +45,7 @@ public:
 
   //  virtual void _publish_cc_wait_data_short_circuit( published_file &_cc_out );
 
-//   /** This function returns TRUE if the operation is a short circuit
+//   /** This function returns true if the operation is a short circuit
 //       operation.  As per section 7.2 of LRM: The logical operations
 //       "and", "or", "nand" and "nor" defined for types BIT and BOOLEAN
 //       are all short-circuit operations; furthermore, these are the only

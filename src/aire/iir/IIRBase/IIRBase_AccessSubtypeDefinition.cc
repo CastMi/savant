@@ -76,7 +76,7 @@ IIRBase_AccessSubtypeDefinition::convert_tree(plugin_class_factory *factory) {
 
 IIR_Boolean
 IIRBase_AccessSubtypeDefinition::is_subtype() {
-  return TRUE;
+  return true;
 }
 
 void 

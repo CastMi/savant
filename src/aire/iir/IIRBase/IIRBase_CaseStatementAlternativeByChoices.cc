@@ -57,7 +57,7 @@ IIRBase_CaseStatementAlternativeByChoices::convert_tree(plugin_class_factory *fa
 
 IIR_Boolean 
 IIRBase_CaseStatementAlternativeByChoices::is_resolved(){
-  IIR_Boolean retval = TRUE;
+  IIR_Boolean retval = true;
   IIR_Choice *current_choice = dynamic_cast<IIR_Choice *>(get_choices()->first());
   while( current_choice != NULL ){
     if( current_choice->is_resolved() == false ){

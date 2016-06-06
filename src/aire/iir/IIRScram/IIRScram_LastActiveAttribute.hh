@@ -45,7 +45,7 @@ public:
   IIR_Boolean _is_readable();
   virtual IIRScram *_clone();
 
-  IIR_Boolean _is_lastactive_attribute() { return TRUE; }
+  IIR_Boolean _is_lastactive_attribute() { return true; }
 };
 
 #endif

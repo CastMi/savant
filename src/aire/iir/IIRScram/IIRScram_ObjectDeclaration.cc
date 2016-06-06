@@ -78,7 +78,7 @@ IIRScram_ObjectDeclaration::_type_check(){
     IIRScram_TypeDefinition *current_type = initializer_types->getElement();
     while( current_type != NULL ){
       if( current_type == _get_subtype() ){
-	exact_match = TRUE;
+	exact_match = true;
 	break;
       }
       current_type = initializer_types->getNextElement();
@@ -89,19 +89,19 @@ IIRScram_ObjectDeclaration::_type_check(){
       current_type = initializer_types->getElement();
       while( current_type != NULL ){
 	if( current_type->is_compatible( _get_subtype() ) != NULL ){
-	  one_matched = TRUE;
+	  one_matched = true;
 	  break;
 	}
 	current_type = initializer_types->getNextElement();
       }
     }
 
-    if( exact_match == TRUE ){
+    if( exact_match == true ){
       set_value( _get_value()->_semantic_transform( current_type ) );
       _get_value()->_type_check( current_type );
       set_value( _get_value()->_rval_to_decl( current_type ) );      
     }
-    else if( one_matched == TRUE ){
+    else if( one_matched == true ){
       set_value( _get_value()->_semantic_transform( _get_subtype() ) );
       _get_value()->_type_check( _get_subtype() );
       set_value( _get_value()->_rval_to_decl( _get_subtype() ) );
@@ -116,10 +116,10 @@ IIRScram_ObjectDeclaration::_type_check(){
     delete initializer_types;
   }
   // There's no initializer.
-  if( (is_interface() == false && (is_variable() == TRUE || is_signal() == TRUE))
-      || is_element() == TRUE ){
+  if( (is_interface() == false && (is_variable() == true || is_signal() == true))
+      || is_element() == true ){
     if( _get_subtype()->is_access_type() == false && 
-	_get_subtype()->is_unconstrained_array_type() == TRUE ){
+	_get_subtype()->is_unconstrained_array_type() == true ){
       ostringstream err;
       err << "A signal or variable object with an array type must be constrained.";
       report_error( this, err.str() ); 
@@ -135,7 +135,7 @@ IIRScram_ObjectDeclaration::_get_mangling_prefix(){
 
 void
 IIRScram_ObjectDeclaration::_clone( IIRScram *clone ) {
-  ASSERT( clone->_is_iir_object_declaration() == TRUE );
+  ASSERT( clone->_is_iir_object_declaration() == true );
   IIRScram_ObjectDeclaration *as_object = dynamic_cast<IIRScram_ObjectDeclaration *>(clone);
 
   IIRScram_Declaration::_clone(clone);

@@ -40,7 +40,7 @@ public:
   IIRScram_PackageBodyDeclaration();
   ~IIRScram_PackageBodyDeclaration();
 
-  IIR_Boolean _is_iir_package_body_declaration(){ return TRUE; }
+  IIR_Boolean _is_iir_package_body_declaration(){ return true; }
 
   // Wrappers for IIRBase functions
   IIRScram_DeclarationList *_get_package_declarative_part();

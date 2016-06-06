@@ -36,7 +36,7 @@ public:
   /** this function dumps the terminal declarations in the vhdl file. */ 
 
   IIR_Int32 terminal_id;
-  IIR_Boolean _is_terminal(){ return TRUE; }
+  IIR_Boolean _is_terminal(){ return true; }
   void _type_check();
 };
 
