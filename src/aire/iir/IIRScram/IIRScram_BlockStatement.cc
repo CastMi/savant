@@ -96,20 +96,20 @@ IIRScram_BlockStatement::_type_check(){
   _get_generic_map_aspect()->_resolve_and_order( _get_generic_clause(), NULL, this);
   _get_port_map_aspect()->_resolve_and_order( _get_port_clause(), NULL, this);  
 
-  _get_symbol_table()->open_scope( this );
+  _get_symbol_table()->open_scope( get_declarator() );
   _make_interface_visible(_get_symbol_table() );
   _get_block_declarative_part()->_type_check_disconnection_specifications();
   _get_block_declarative_part()->_type_check_configuration_specifications( _get_block_statement_part() );
   _get_block_declarative_part()->_type_check_attribute_specifications( _get_block_statement_part() );
-  _get_symbol_table()->close_scope( this );
+  _get_symbol_table()->close_scope( get_declarator() );
 }
 
 void 
 IIRScram_BlockStatement::_type_check_instantiate_statements(){ 
-  _get_symbol_table()->open_scope( this );
+  _get_symbol_table()->open_scope( get_declarator() );
   _make_interface_visible( _get_symbol_table() );
   _get_block_statement_part()->_type_check_instantiate_statements();
-  _get_symbol_table()->close_scope( this );
+  _get_symbol_table()->close_scope( get_declarator() );
 }
 
 void 

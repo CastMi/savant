@@ -58,7 +58,7 @@
 using std::ostringstream;
 
 symbol_table::symbol_table(StandardPackage *package, bool load_std_library){
-  global_scope = new scope_entry( NULL, NULL );
+  global_scope = new scope_entry;
   current_scope = global_scope;
   std_package = package;
 
@@ -69,7 +69,7 @@ symbol_table::symbol_table(StandardPackage *package, bool load_std_library){
 
 symbol_table::symbol_table( int table_size, StandardPackage *package , bool load_std_library) :
   visible_symbols(), hidden_symbols(){
-  global_scope = new scope_entry( NULL, NULL );
+  global_scope = new scope_entry;
   current_scope = global_scope;
   std_package = package;
   if( load_std_library == true ){
@@ -103,7 +103,7 @@ symbol_table::add_subprogram_declaration( IIR_SubprogramDeclaration *decl_ptr,
   add_declaration( decl_ptr );
   open_scope( decl_ptr );
   add_declaration( decl_ptr->get_interface_declarations());
-  if( leave_scope_open == false ){
+  if( leave_scope_open == false ) {
     close_scope( decl_ptr );
   }
 }
@@ -119,23 +119,6 @@ symbol_table::add_declaration( IIR_Declaration *decl_ptr ){
     cerr << this << " - adding declaration : |" << *scram_decl << "| - " << scram_decl;
   }
 
-  IIR *current_declarative_region =  declarative_region_stack.get_top_of_stack();
-
-  if( current_declarative_region != NULL && scram_decl->get_declarative_region() == NULL ){
-    scram_decl->set_declarative_region( current_declarative_region );
-  
-    if( debug_symbol_table ){
-      cerr << " - setting declarative region |";
-      if( scram_decl->get_declarative_region() != NULL ){
-	cerr << *scram_decl->get_declarative_region();
-      }
-      else{
-	cerr << "NULL";
-      }
-      cerr << "|.";
-    }
-  }
-
   if( debug_symbol_table ){
     cerr << endl;
   }
@@ -147,7 +130,8 @@ symbol_table::add_declaration( IIR_Declaration *decl_ptr ){
   in_scope_by_type[ scram_decl->get_declaration_type() ].append( decl_ptr );
 
   // Now, we need to add the declaration to the currently open scope.
-  get_current_scope()->add_declaration( decl_ptr );
+  ASSERT(current_scope);
+  current_scope->add_declaration( decl_ptr );
 
   visible_symbols.lookup_add( decl_ptr );
   scram_decl->_come_into_scope( this );
@@ -213,14 +197,11 @@ symbol_table::remove_from_scope(IIR_Declaration *decl_ptr){
     use_clause_entries.remove( decl_ptr );
   }
 }
-
  
 void 
 symbol_table::hide_declaration( IIR_Declaration *to_hide ){
   remove_from_visibility( to_hide );
 }
-
-
 
 bool
 symbol_table::in_scope(IIR_Declaration *decl) {
@@ -242,38 +223,41 @@ symbol_table::is_visible( IIR_Declaration *decl ){
   return same_name_list->contains( decl );
 }
 
-void 
-symbol_table::open_scope( IIR *declarative_region ){
+inline void
+symbol_table::open_scope( const IIR_Identifier* declarative_region ){
+   open_scope(declarative_region->convert_to_string());
+}
+void
+symbol_table::open_scope( const std::string& declarative_region ){
   scope_entry *new_scope =  current_scope->open_scope( declarative_region );
   current_scope = new_scope;
 
-  if( declarative_region != NULL ){
-    declarative_region_stack.push( declarative_region );
-  }
-
-  if (debug_symbol_table) {
+  if( debug_symbol_table ) {
     cerr << this << "- opening new scope ";
-    if( declarative_region != NULL ){
+    if( !declarative_region.empty() ){
       cerr << " - declarative region |" << *declarative_region << "|" << endl;
-    }
-    else{
+    } else {
       cerr << "NULL" << endl;
     }
-  }  
+  }
 }
 
-void 
-symbol_table::close_scope( IIR *declarative_region ){
+inline void
+symbol_table::close_scope( const IIR_Identifier* declarative_region ){
+   close_scope(declarative_region->convert_to_string());
+}
+void
+symbol_table::close_scope( const std::string& declarative_region ){
   if( debug_symbol_table ) {
-    cerr << this << " - closing scope";
+    cerr << this << " - closing scope ";
   }
   
-  IIR *decl_region = declarative_region_stack.pop();  
-  ASSERT( decl_region == declarative_region );
+  std::string decl_region = current_scope->get_cur_name();
+  ASSERT( !decl_region.compare(declarative_region) );
 
-  if( debug_symbol_table == true ){
-    if( decl_region != NULL ){
-      cerr << " - popping declarative region |" << *decl_region << "|." << endl;
+  if( debug_symbol_table ) {
+    if( !decl_region.empty() ) {
+      cerr << "- popping declarative region |" << decl_region << "|." << endl;
     }
     else{
       cerr << "NULL" << endl;
@@ -284,7 +268,6 @@ symbol_table::close_scope( IIR *declarative_region ){
   // we only need to pull out the declarations in this scope.  We can make some
   // assertions to be sure, however.
   ASSERT( current_scope != NULL );
-  ASSERT( current_scope->get_owner() == decl_region );
   ASSERT( current_scope->get_scopes()->getElement() == NULL || 
 	  current_scope->get_scopes()->getElement()->is_closed() == true );
   
@@ -305,63 +288,6 @@ symbol_table::close_scope( IIR *declarative_region ){
   
   current_scope->close_scope();
   current_scope = current_scope->get_previous_scope();
-}
-
-void
-symbol_table::reopen_scope( IIR * ){
-//   bool found_scope_marker = false;
-//   IIR_Declaration *last = NULL;
-  
-//   // Walk the out of scope list backwards until we hit the first (in the
-//   // list) declaration that came before this scope.  (I.e.  walk over all
-//   // of the declarations in our scope.  When we've found _that_, then we
-//   // need to walk forward again until we find the first declaration with
-//   // that same scope as it's declarative region.  We have to do it this way
-//   // since multiple scopes might have been opened/closed while the scope
-//   // we're reopening was open.
-//   IIR_Declaration *current = out_of_scope_list.last();
-//   while( current != NULL ){
-//     if( found_scope_marker == true ){
-//       if( current->_get_declarative_region() != declarative_region ){
-// 	// Move back up one.
-// 	current = outsuccessor( current );
-// 	break;
-//       }
-//     }
-//     else{
-//       if( current->_get_declarative_region() == declarative_region ){
-// 	found_scope_marker = true;
-//       }
-//     }
-//     current = out_of_scope_list.predecessor( current );
-//   }
-
-//   // So, we've walked backwards, and found the first declaration entered in
-//   // this declarative region.  Now, we need to walk forwards until we found
-
-  
-//   // If current is NULL, something bad happened.  Either the symbol table
-//   // mangled declarative regions, or someone asked to to reopen a
-//   // non-existant scope.
-//   ASSERT( current != NULL );
-
-//   // So, "current" holds the _first_ declaration that we need to readd, and
-//   // "last" holds the last.
-//   while( current != last ){
-//     out_of_scope_list.remove( current );
-//     add_declaration( current );
-//     current = out_of_scope_list.successor( current );
-//     ASSERT( current != NULL );
-//   }
-//   // Add the last one.
-//   out_of_scope_list.remove( current );
-//   add_declaration( current );
-
-}
-
-IIR *
-symbol_table::get_current_declarative_region(){
-  return declarative_region_stack.get_top_of_stack();
 }
 
 void

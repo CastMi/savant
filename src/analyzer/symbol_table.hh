@@ -30,13 +30,11 @@
 #include "symbol_lookup.hh"
 #include "stack.hh"
 #include "set.hh"
-#include "IIRScram_TypeDeclaration.hh"
 #include "IIRScram_Declaration.hh"
 #include "IIR_Declaration.hh"
 #include <iostream>
 
 using std::cout;
-using std::cerr;
 using std::endl;
 
 class IIR_DeclarationList;
@@ -46,59 +44,78 @@ class IIR_ArrayTypeDefinition;
 class IIR_RecordTypeDefinition;
 class IIR_AccessTypeDefinition;
 class IIR_SubprogramDeclaration;
+class IIR_TypeDeclaration;
 class StandardPackage;
 extern bool debug_symbol_table;
 
 // This class defines a scope in the symbol table
 class scope_entry {
    public:
-      scope_entry( scope_entry *previous_scope, IIR *scope_owner ){
-         belongs_to = scope_owner;
+      // Create a root scope
+      scope_entry()
+         : my_name(),
+           open(true) {
          declarations = new savant::stack<IIR_Declaration*>;
          scopes = new savant::set<scope_entry>;
-         open = true;
-         previous = previous_scope;
+         previous = nullptr;
       }
 
-      void add_declaration( IIR_Declaration *to_add ){
+      void add_declaration( IIR_Declaration *to_add ) {
          ASSERT( open == true );
          declarations->push( to_add );
       }
 
-      scope_entry *open_scope( IIR *to_add ){
-         scope_entry *retval = new scope_entry( this, to_add );
+      scope_entry *open_scope( std::string& name ) {
+         scope_entry *retval = new scope_entry( this, name );
          ASSERT( open == true );
          scopes->add( retval );
-
          return retval;
       }
 
-      IIR *get_owner(){
-         return belongs_to;
-      }
-
-      savant::set<scope_entry> *get_scopes(){
+      savant::set<scope_entry> *get_scopes() const {
          return scopes;
       }
 
-      savant::stack<IIR_Declaration*> *get_declarations(){
+      savant::stack<IIR_Declaration*> *get_declarations() const {
          return declarations;
       }
 
-      scope_entry *get_previous_scope(){
+      scope_entry *get_previous_scope() const {
          return previous;
       }
 
-      void close_scope(){
+      const std::string get_cur_name() const {
+         return my_name;
+      }
+
+      const std::string get_full_name() const {
+         if(my_name.empty())
+            return my_name;
+         ASSERT(previous);
+         return previous->get_cur_name() + my_name;
+      }
+
+      void close_scope() {
+         if( debug_symbol_table && !open )
+            std::cerr << "Attempts to close a scope already closed" << endl;
          open = false;
       }
 
-      IIR_Boolean is_closed(){
+      IIR_Boolean is_closed() const {
          return !open;
       }
 
    private:
-      IIR *belongs_to;
+      // Methods
+      scope_entry( scope_entry *previous_scope, const std::string& name )
+         : my_name(name),
+           open(true) {
+         declarations = new savant::stack<IIR_Declaration*>;
+         scopes = new savant::set<scope_entry>;
+         previous = previous_scope;
+      }
+      // Members
+      const std::string my_name;
       savant::stack<IIR_Declaration*> *declarations;
       savant::set<scope_entry> *scopes;
       IIR_Boolean open;
@@ -115,9 +132,9 @@ class symbol_table {
       symbol_table( int table_size, StandardPackage *package, bool load_std_library = true );
 
       /** Destructor */
-      ~symbol_table(){
-         if( debug_symbol_table == true ){
-            if (in_scope_list.num_elements() != 0){
+      ~symbol_table() {
+         if( debug_symbol_table == true ) {
+            if (in_scope_list.num_elements() != 0) {
                cout << "in_scope_list not empty at symbol table destruction:\n";
                cout << "(There are " << in_scope_list.num_elements()
                   << " left in it:)\n";
@@ -172,16 +189,11 @@ class symbol_table {
 
       //@{
       /** Methods to deal with scope */
-      void open_scope( IIR *declarative_region );
-      void close_scope( IIR *declarative_region );
+      void open_scope( const std::string& declarative_region );
+      void close_scope( const std::string& declarative_region );
+      void open_scope( const IIR_Identifier* );
+      void close_scope( const IIR_Identifier* );
       //@}
-
-      /** This method takes an out of scope symbol, and reenters all symbols
-        found in the "out of scope list" back into scope up until the next
-        "live" scope marker. */
-      void reopen_scope( IIR *declarative_region );
-
-      IIR *get_current_declarative_region();
 
       //@{
       /** The following methods return the set of declarations with the name
@@ -246,10 +258,6 @@ class symbol_table {
       dl_list<IIR_Declaration> in_scope_list;
 
       scope_entry *current_scope;
-      scope_entry *get_current_scope(){
-         return current_scope;
-      }
-
       scope_entry           *global_scope;
       StandardPackage       *std_package;
 
@@ -264,8 +272,6 @@ class symbol_table {
       savant::set<IIR_ArrayTypeDefinition> in_scope_array_types;
       savant::set<IIR_ArrayTypeDefinition> in_scope_one_d_array_types;
       savant::set<IIR_RecordTypeDefinition> in_scope_record_types;
-
-      savant::stack<IIR*> declarative_region_stack;
 
       void load_standard_library();
 };

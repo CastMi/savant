@@ -424,7 +424,7 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
   IIRScram_ConfigurationSpecification::type_check_mode mode = 
     (IIRScram_ConfigurationSpecification::type_check_mode)tmp_mode;
 
-  _get_symbol_table()->open_scope( (IIRScram *)this );
+  _get_symbol_table()->open_scope( get_declarator() );
 
   constraint_functor *functor = new is_component_declaration_functor();
   savant::set<IIRScram_Declaration> *component_decls = _get_component_name()->_symbol_lookup( functor );
@@ -507,7 +507,7 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
 		  generic_map_aspect,
 		  mode );
   }
-  _get_symbol_table()->close_scope( (IIR *)this );
+  _get_symbol_table()->close_scope( get_declarator() );
   // else it's OPEN
   //  ASSERT( is_resolved() == true );
   delete component_decls;

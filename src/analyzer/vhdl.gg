@@ -498,7 +498,7 @@ design_unit[ IIRScram_LibraryUnitList        *liblist,
   >>
   <<
     context_list = new IIRScram_DeclarationList();
-    my_symbol_table->open_scope( library_decl );
+    my_symbol_table->open_scope( library_decl->get_declarator() );
   >>
   context_clauses[context_list]
   library_unit[ library_decl ] > [unit]
@@ -769,7 +769,7 @@ architecture_body[ IIR_LibraryDeclaration *library ] > [IIRScram_ArchitectureDec
   OF
   selected_or_simple_name > [entity_name]
   <<
-    my_symbol_table->open_scope(new_arch);
+    my_symbol_table->open_scope( new_arch->get_declarator() );
     IIRScram_EntityDeclaration *entity_decl = 
       dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( true, 
 											     entity_name, 
@@ -895,7 +895,7 @@ block_configuration > [ IIRScram_BlockConfiguration *block_config ]:
     // We'll open and close a scope so that we can get rid of that stuff,
     // too. 
     $block_config = new IIRScram_BlockConfiguration();
-    my_symbol_table->open_scope( $block_config );
+    my_symbol_table->open_scope( $block_config->get_declarator() );
   >>
   for_:FOR block_specification > [ block_spec ]
   <<
@@ -1081,7 +1081,7 @@ block_statement [ IIRScram_Label *label ] > [IIRScram_BlockStatement *block]:
     $block = new IIRScram_BlockStatement();
     $block->set_label( label );
     copy_location( block_, $block );
-    my_symbol_table->open_scope( $block );
+    my_symbol_table->open_scope( $block->get_declarator() );
   >>
   { 
     L_PAREN expression > [guard_expr] R_PAREN
@@ -1170,7 +1170,7 @@ process_statement[ IIRScram_Label *label ] > [IIRScram_ProcessStatement *retval]
     L_PAREN 
     <<
       sensitive_process_stmt = new IIRScram_SensitizedProcessStatement();
-      my_symbol_table->open_scope( sensitive_process_stmt );   
+      my_symbol_table->open_scope( sensitive_process_stmt->get_declarator() );
       sensitive_process_stmt->set_label( label );
 
       copy_location( process, sensitive_process_stmt );
@@ -1182,7 +1182,7 @@ process_statement[ IIRScram_Label *label ] > [IIRScram_ProcessStatement *retval]
   <<
     if (process_stmt == NULL) {
       process_stmt = new IIRScram_ProcessStatement();
-      my_symbol_table->open_scope( process_stmt );   
+      my_symbol_table->open_scope( process_stmt->get_declarator() );
       process_stmt->set_label( label );
 
       copy_location( process, process_stmt );
@@ -1271,7 +1271,7 @@ instantiate_statement[ IIRScram_Label *label ] > [IIRScram_ComponentInstantiatio
   <<
     $retval = new IIRScram_ComponentInstantiationStatement();
     $retval->set_label( label );
-    my_symbol_table->open_scope( $retval );   
+    my_symbol_table->open_scope( $retval->get_declarator() );
     $retval->set_instantiated_unit( component_name );
     dynamic_cast<IIRScram_ComponentInstantiationStatement *>($retval)->_set_instantiation_type( IIR_COMPONENT_DECLARATION );
   >>
@@ -1290,7 +1290,7 @@ instantiate_statement[ IIRScram_Label *label ] > [IIRScram_ComponentInstantiatio
     $retval = new IIRScram_ComponentInstantiationStatement();
     copy_location( token_text2, $retval );    
     $retval->set_label( label );
-    my_symbol_table->open_scope( $retval );   
+    my_symbol_table->open_scope( $retval->get_declarator() );
 
     dynamic_cast<IIRScram_ComponentInstantiationStatement *>($retval)->_set_instantiation_type( IIR_ENTITY_DECLARATION );
   >>
@@ -1312,7 +1312,7 @@ instantiate_statement[ IIRScram_Label *label ] > [IIRScram_ComponentInstantiatio
     $retval = new IIRScram_ComponentInstantiationStatement();
     copy_location( token_text3, $retval );
     $retval->set_label( label );
-    my_symbol_table->open_scope( $retval );   
+    my_symbol_table->open_scope( $retval->get_declarator() );
     dynamic_cast<IIRScram_ComponentInstantiationStatement *>($retval)->_set_instantiation_type( IIR_CONFIGURATION_DECLARATION );
   >>
   complex_name > [component_name]
@@ -1558,7 +1558,7 @@ generate_scheme[ IIRScram_Label *label ] > [IIRScram_ConcurrentStatement *retval
   for_:FOR
   <<
     generate_for_stmt = new IIRScram_ConcurrentGenerateForStatement();
-    my_symbol_table->open_scope( generate_for_stmt );
+    my_symbol_table->open_scope( generate_for_stmt->get_declarator() );
     generate_for_stmt->set_label( label );
     copy_location( for_, generate_for_stmt );
     $retval = generate_for_stmt;
@@ -1592,7 +1592,7 @@ generate_scheme[ IIRScram_Label *label ] > [IIRScram_ConcurrentStatement *retval
 | if_:IF
   <<
     generate_if_stmt = new IIRScram_ConcurrentGenerateIfStatement();
-    my_symbol_table->open_scope( generate_if_stmt );
+    my_symbol_table->open_scope( generate_if_stmt->get_declarator() );
     generate_if_stmt->set_label( label );
     copy_location( if_, generate_if_stmt );
     $retval = generate_if_stmt;
@@ -2039,7 +2039,7 @@ for_loop_statement[ IIRScram_Label *label ] > [IIRScram_ForLoopStatement *stmt]:
     
     loop_statements.push( $stmt );
     $stmt->set_label( label );
-    my_symbol_table->open_scope( $stmt );
+    my_symbol_table->open_scope( $stmt->get_declarator() );
     $stmt->_build_iteration_scheme( id, constant_subtype );
     $stmt->_type_check();
   >>
@@ -3486,7 +3486,7 @@ record_type_definition > [IIRScram_RecordTypeDefinition *decl]:
   <<
     $decl = new IIRScram_RecordTypeDefinition();
     copy_location( record, $decl );
-    my_symbol_table->open_scope( $decl );
+    my_symbol_table->open_scope( $decl->get_declarator() );
   >>
   ( element_declaration[$decl->get_element_declarations()] )+
   <<
