@@ -67,8 +67,12 @@ public:
                               int               column_offset, 
                               int               character_offset );
 
+  // FIXME: the first version copy_location(const IIR*, IIR*)
+  // has to be removed..look the implementation and you will understand
   virtual void copy_location( const IIR *, IIR *);
-  virtual void copy_location(IIR *);
+  virtual void copy_location( IIR * );
+  virtual void copy_location( IIR_Statement * );
+  virtual void copy_location( const IIR *, IIR_Statement* );
 #ifdef SCHEMATIC_INFO
   /** The following nodes apply to schematic capture tools only and have to
       be #ifdefed in with SCHEMATIC_INFO. */

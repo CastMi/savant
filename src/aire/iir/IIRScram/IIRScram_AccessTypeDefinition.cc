@@ -28,6 +28,7 @@
 #include "IIRScram_ScalarTypeDefinition.hh"
 #include "IIRScram_ProcedureDeclaration.hh"
 #include "IIRScram_TypeDefinition.hh"
+#include "IIRScram_TypeDeclaration.hh"
 #include "error_func.hh"
 #include "symbol_table.hh"
 #include "set.hh"

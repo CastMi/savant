@@ -93,8 +93,8 @@ IIRScram_BlockStatement::_type_check(){
   }
 
   // We need to type check the port map and generic map if they have stuff in them.
-  _get_generic_map_aspect()->_resolve_and_order( _get_generic_clause(), NULL, this);
-  _get_port_map_aspect()->_resolve_and_order( _get_port_clause(), NULL, this);  
+  _get_generic_map_aspect()->_resolve_and_order( _get_generic_clause(), NULL, nullptr);
+  _get_port_map_aspect()->_resolve_and_order( _get_port_clause(), NULL, nullptr);  
 
   _get_symbol_table()->open_scope( get_declarator() );
   _make_interface_visible(_get_symbol_table() );

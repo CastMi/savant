@@ -116,6 +116,8 @@ public:
 
   virtual IIRScram_Statement *_semantic_transform( IIRScram_TypeDefinition * );
   virtual IIRScram_Statement *_semantic_transform( savant::set<IIRScram_TypeDefinition> * );
+
+  IIRScram_Label *_lookup_label( IIR_Boolean complain_on_error );
   
   /**
      Returns the library unit that contains this statement.

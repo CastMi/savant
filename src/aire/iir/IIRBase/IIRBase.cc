@@ -124,7 +124,15 @@ IIRBase::copy_location(const IIR *source, IIR *dest) {
   dest->set_base_info( source->get_design_file(), source->get_line_number(), 0 ,0 );
 #endif        
 }
-       
+
+void 
+IIRBase::copy_location(const IIR *source, IIR_Statement *dest) {}
+
+void
+IIRBase::copy_location(IIR_Statement *dest) {
+  copy_location(this, dest);
+}
+
 void
 IIRBase::copy_location(IIR *dest) {
   copy_location(this, dest);

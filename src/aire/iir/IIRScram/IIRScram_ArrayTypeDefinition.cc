@@ -25,6 +25,7 @@
 #include "IIRScram_IntegerSubtypeDefinition.hh"
 #include "IIRScram_RangeTypeDefinition.hh"
 #include "IIRScram_TextLiteral.hh"
+#include "IIRScram_TypeDeclaration.hh"
 #include "error_func.hh"
 #include "symbol_table.hh"
 #include "resolution_func.hh"

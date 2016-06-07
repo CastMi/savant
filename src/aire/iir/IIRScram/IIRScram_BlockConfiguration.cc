@@ -174,8 +174,9 @@ IIRScram_BlockConfiguration::_resolve_specification_inside_component_configurati
   if( binding_indication != NULL ){
     ASSERT( binding_indication->_is_iir_declaration() );
 
-    IIRScram *resolved = _get_block_specification()->_decl_to_decl(dynamic_cast<IIRScram_Declaration *>(binding_indication) );
-    set_block_specification( dynamic_cast<IIRScram_Declaration *>(resolved) );    
+    // FIXME: these lines are wrong
+    //IIRScram *resolved = _get_block_specification()->_decl_to_decl(dynamic_cast<IIRScram_Declaration *>(binding_indication) );
+    //set_block_specification( dynamic_cast<IIRScram_Declaration *>(resolved) );    
   }
   else{
     ostringstream err;
@@ -184,7 +185,7 @@ IIRScram_BlockConfiguration::_resolve_specification_inside_component_configurati
   }
 }
 
-void 
+void
 IIRScram_BlockConfiguration::_resolve_specification_inside_block_configuration( IIRScram_List<IIR_Statement> *,
 										IIRScram_BlockConfiguration * ){
   IIRScram_IndexedName *original_indexed_name = NULL;
@@ -193,7 +194,7 @@ IIRScram_BlockConfiguration::_resolve_specification_inside_block_configuration( 
 
   if( get_block_specification()->get_kind() == IIR_INDEXED_NAME ){
     original_indexed_name = dynamic_cast<IIRScram_IndexedName *>(_get_block_specification());
-    IIRScram *prefix = original_indexed_name->_get_prefix();
+    IIRScram_Statement *prefix = original_indexed_name->_get_prefix();
     ASSERT( prefix->_is_iir_name() == true );
     to_lookup = dynamic_cast<IIRScram_Name *>(prefix);
   }
@@ -224,8 +225,8 @@ IIRScram_BlockConfiguration::_resolve_specification_inside_block_configuration( 
     }
     IIRScram_SliceName *new_spec = new IIRScram_SliceName();
     copy_location( this, new_spec );
-    new_spec->set_prefix( my_label );
-    IIRScram *suffix = original_indexed_name->_get_suffix(); 
+    new_spec->set_label( my_label );
+    IIRScram_Statement *suffix = original_indexed_name->_get_suffix(); 
 
     suffix = suffix->_semantic_transform( dynamic_cast<IIRScram_TypeDefinition *>(package->get_savant_universal_integer()) );
     suffix->_type_check( dynamic_cast<IIRScram_TypeDefinition *>(package->get_savant_universal_integer()) );
@@ -236,7 +237,7 @@ IIRScram_BlockConfiguration::_resolve_specification_inside_block_configuration( 
     set_block_specification( new_spec );
   }
   else{
-    set_block_specification( my_label );
+    set_block_specification( my_label->get_declarator() );
   }
 }
 

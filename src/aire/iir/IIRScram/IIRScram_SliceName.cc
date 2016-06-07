@@ -82,7 +82,7 @@ IIRScram_SliceName::_make_interface_visible( symbol_table *sym_tab ){
   _get_prefix()->_make_interface_visible( sym_tab );
 }
 
-IIRScram *
+IIRScram_SliceName *
 IIRScram_SliceName::_clone(){
   IIRScram_SliceName *retval = new IIRScram_SliceName();
   IIRScram_Name::_clone( retval );
@@ -94,10 +94,10 @@ IIRScram_SliceName::_clone(){
   return retval;
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_SliceName::_get_suffix(){
   ASSERT(get_suffix() != NULL);
-  return dynamic_cast<IIRScram *>(get_suffix());
+  return dynamic_cast<IIRScram_Statement *>(get_suffix());
 }
 
 

@@ -46,8 +46,8 @@ public:
   IIR_Kind get_kind() const {return IIR_BLOCK_CONFIGURATION;}
   const IIR_Char *get_kind_text() const {return "IIR_BlockConfiguration";}
 
-  void set_block_specification( IIR *block_specification );
-  IIR* get_block_specification();
+  void set_block_specification( IIR_Statement *block_specification );
+  IIR_Statement* get_block_specification();
 
   IIR *convert_tree(plugin_class_factory *factory);
 
@@ -61,6 +61,6 @@ private:
   // List Variable(s)
   IIR_DeclarationList        *use_clause_list;
   IIR_ConfigurationItemList  *configuration_item_list;
-  IIR *block_specification;
+  IIR_Statement *block_specification;
 };
 #endif

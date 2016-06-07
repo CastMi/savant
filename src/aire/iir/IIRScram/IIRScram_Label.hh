@@ -49,7 +49,7 @@ public:
 
   IIRScram *_clone();
 
-  IIR_Boolean is_label(){ return true; }
+  IIR_Boolean is_label() const { return true; }
 
   IIRScram_AttributeSpecificationList* _get_attribute_specification_list();
 

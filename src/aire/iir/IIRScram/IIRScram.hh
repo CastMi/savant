@@ -269,9 +269,6 @@ public:
   virtual savant::set<IIRScram_Declaration> *_symbol_lookup( savant::set<IIRScram_Declaration> *);
   virtual savant::set<IIRScram_Declaration> *_symbol_lookup(constraint_functor *functor);
 
-  
-  IIRScram_Label *_lookup_label( IIR_Boolean complain_on_error );
-  
   /** These methods calculate a node's rval_set.  Either will return a
       a set with a bunch of type definitions, or will return NULL if it
       doesn't have a valid rval.  (Like for an undefined symbol, or a
@@ -372,7 +369,7 @@ public:
 
   /** Used by _type_check_configuration to resolve the port/generic map
       aspects.
-     
+
       @see IIRScram#_type_check_configuration  */
   void _resolve_map( IIRScram_InterfaceList *entity_interface_list,
 		     IIRScram_InterfaceList *component_interface_list,

@@ -54,7 +54,7 @@ public:
 
   void _resolve_and_order( IIRScram_InterfaceList *formal_list,
 			   IIRScram_InterfaceList *local_list,
-			   IIRScram               *line_info );
+			   IIRScram               *line_info = nullptr );
   
   IIR_Boolean _check_valid_arguments( IIRScram_InterfaceList    *formal_list,
 				      IIRScram_InterfaceList    *local_list);

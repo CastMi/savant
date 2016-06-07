@@ -25,7 +25,7 @@
 
 //---------------------------------------------------------------------------
 
-
+#include "IIR_Statement.hh"
 #include "IIR_DeclarationList.hh"
 #include "IIR_ConfigurationItemList.hh"
 #include "IIRBase_BlockConfiguration.hh"
@@ -39,11 +39,11 @@ IIRBase_BlockConfiguration::IIRBase_BlockConfiguration() :
 IIRBase_BlockConfiguration::~IIRBase_BlockConfiguration(){}
 
 void 
-IIRBase_BlockConfiguration::set_block_specification(IIR *block_specification){
+IIRBase_BlockConfiguration::set_block_specification(IIR_Statement *block_specification){
   this->block_specification = block_specification;
 }
  
-IIR* 
+IIR_Statement*
 IIRBase_BlockConfiguration::get_block_specification(){
   return block_specification;
 }
@@ -94,7 +94,8 @@ IIRBase_BlockConfiguration::convert_tree(plugin_class_factory *factory) {
 ostream &
 IIRBase_BlockConfiguration::print( ostream &os ){
   if( get_block_specification() != NULL ){
-    os << *get_block_specification();
+    // FIXME: operator<<
+    // os << *get_block_specification();
   }
   else{
     os << "<ANONYMOUS>";

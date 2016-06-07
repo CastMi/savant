@@ -32,6 +32,7 @@
 
 class IIR_DeclarationList;
 class IIR_ConfigurationItemList;
+class IIR_Statement;
 
 class IIR_BlockConfiguration : public virtual IIR_ConfigurationItem{
 
@@ -44,7 +45,7 @@ public:
   virtual void                          set_use_clause_list(IIR_DeclarationList *) = 0;
   virtual void                          set_configuration_item_list(IIR_ConfigurationItemList *) = 0;
 
-  virtual void set_block_specification( IIR *block_specification ) = 0;
-  virtual IIR* get_block_specification() = 0;
+  virtual void set_block_specification( IIR_Statement *block_specification ) = 0;
+  virtual IIR_Statement* get_block_specification() = 0;
 };
 #endif

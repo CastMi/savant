@@ -215,42 +215,6 @@ IIRScram::_symbol_lookup( constraint_functor *functor ){
   return retval;
 }
 
-IIRScram_Label *
-IIRScram::_lookup_label( IIR_Boolean complain_on_error ){
-  IIRScram_Label *retval = NULL;
-  
-  ASSERT( complain_on_error == true ||  complain_on_error == false );
-  
-  constraint_functor *functor = new is_label_functor;
-  savant::set<IIRScram_Declaration> *decls = _symbol_lookup( functor );
-  delete functor;
-
-  ASSERT( decls != NULL );
-  if( decls->size() == 0 && complain_on_error == true ){
-    report_undefined_symbol( (IIRScram *)this );
-  }
-
-  switch( decls->size() ){
-  case 0:{
-    ostringstream err;
-    err << "No label |" << *this << "| declared in this scope.";
-    report_error( this, err.str() );
-    break;
-  }
-  case 1:{
-    IIRScram_Declaration *temp = decls->getElement();
-    ASSERT( temp->is_label() == true );
-    retval = dynamic_cast<IIRScram_Label *>(temp);
-    break;
-  }
-  default:{
-    report_ambiguous_error( (IIRScram *)this, decls->convert_set<IIR_Declaration>() );
-  }
-  }
-
-  return retval;
-}
-
 savant::set<IIRScram_TypeDefinition> *
 IIRScram::_get_rval_set(constraint_functor * ){
   _report_undefined_scram_fn("_get_rval_set(),\nconstraint_functor *functor");

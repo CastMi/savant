@@ -163,7 +163,7 @@ IIRScram_AssociationList::_resolve_and_order( IIRScram_InterfaceList    *formal_
 					      IIRScram *line_info ){
   IIR_Boolean result = _check_or_resolve( formal_list, local_list, true );
   if( result == true ){
-    _fill_in_defaults( line_info, formal_list );
+    _fill_in_defaults( nullptr, formal_list );
   }
 }
 
@@ -697,7 +697,9 @@ IIRScram_AssociationList::_fill_in_defaults( IIRScram *line_info,
     else{
       new_association = new IIRScram_AssociationElementOpen();
     }
-    copy_location( line_info, new_association );
+    if(line_info) {
+       copy_location( line_info, new_association );
+    }
     new_association->set_formal_decl( current_formal );
 
     append( new_association );

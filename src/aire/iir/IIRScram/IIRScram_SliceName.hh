@@ -60,15 +60,15 @@ public:
 
   IIRScram_List<IIR_Statement> *_get_statement_list();
 
-  IIRScram *_clone();
+  IIRScram_SliceName *_clone();
 
-  IIRScram *_get_suffix();
+  IIRScram_Statement *_get_suffix();
 
   // (See IIRScram.hh for description)
   IIRScram_Declaration *_find_formal_declaration();
 
   // Override the undefined definition in IIRScram_Name
-  void set_subtype(IIR_TypeDefinition *type) { IIRBase::set_subtype(type); }
+  void set_subtype(IIR_TypeDefinition *type) { IIRBase_Statement::set_subtype(type); }
 };
 
 #endif
