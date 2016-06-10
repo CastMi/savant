@@ -78,7 +78,7 @@ IIRBase_SensitizedProcessStatement::publish_vhdl(ostream &vhdl_out) {
     vhdl_out << ")\n";
   }
     
-  dynamic_cast<IIRBase_DeclarationList *>(get_process_declarative_part())->publish_vhdl_decl(vhdl_out);
+  dynamic_cast<IIRBase_DeclarationList<> *>(get_process_declarative_part())->publish_vhdl_decl(vhdl_out);
   vhdl_out << "\nbegin\n";
   get_process_statement_part()->publish_vhdl(vhdl_out);
   vhdl_out << "end";

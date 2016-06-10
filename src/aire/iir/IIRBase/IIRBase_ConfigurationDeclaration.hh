@@ -24,15 +24,14 @@
 #include "IIR_ConfigurationDeclaration.hh"
 
 class IIR_BlockConfiguration;
-class IIR_DeclarationList;
 class IIR_EntityDeclaration;
 
 class IIRBase_ConfigurationDeclaration : public virtual IIRBase_LibraryUnit, public virtual IIR_ConfigurationDeclaration{
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList   *get_configuration_declarative_part();
-  void                  set_configuration_declarative_part(IIR_DeclarationList *new_configuration_declarative_part);
+  IIR_DeclarationList<> *get_configuration_declarative_part();
+  void                  set_configuration_declarative_part(IIR_DeclarationList<> *new_configuration_declarative_part);
 
   IIR_Kind get_kind() const {return IIR_CONFIGURATION_DECLARATION;}
   const IIR_Char *get_kind_text() const {return "IIR_ConfigurationDeclaration";}
@@ -59,7 +58,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList   *configuration_declarative_part;
+  IIR_DeclarationList<>   *configuration_declarative_part;
 
   IIR_BlockConfiguration *block_configuration;
   IIR_EntityDeclaration *entity;

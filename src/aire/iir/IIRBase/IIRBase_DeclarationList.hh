@@ -32,11 +32,11 @@
 
 class IIR_Declaration;
 
-class IIRBase_DeclarationList : public virtual IIRBase_List<IIR_Declaration>, public virtual IIR_DeclarationList {
-
+template <typename param = IIR_Declaration>
+class IIRBase_DeclarationList : public virtual IIRBase_List<param>, public virtual IIR_DeclarationList<param> {
 public:
   IIR_Kind get_kind() const { return IIR_DECLARATION_LIST; }
-  const IIR_Char *get_kind_text() const { return "IIR_DeclarationList"; }
+  const IIR_Char *get_kind_text() const { return "IIR_DeclarationList<>"; }
 
   savant::set<IIR_Declaration> *find_declarations( IIR_Name *  );
   savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * );
@@ -46,12 +46,12 @@ public:
      to the new region passed in.
   */
   void set_declarative_region( IIR * );
-  virtual IIR_DeclarationList* convert_node(plugin_class_factory *) { return nullptr;};
+  virtual IIR_DeclarationList<param>* convert_node(plugin_class_factory *) { return nullptr;};
 
   void publish_vhdl_decl(ostream&);
   void publish_vhdl(ostream&);
 protected:
-  IIRBase_DeclarationList();
+  IIRBase_DeclarationList() {};
   virtual ~IIRBase_DeclarationList() = 0;
   
 private:

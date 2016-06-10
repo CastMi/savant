@@ -32,7 +32,7 @@
 
 class IIR_ConstantInterfaceDeclaration;
 
-class IIR_GenericList : public virtual IIR_InterfaceList{
+class IIR_GenericList : public virtual IIR_InterfaceList {
 
 public:
   virtual ~IIR_GenericList() {}

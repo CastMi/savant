@@ -33,7 +33,7 @@
 
 class IIR_ConstantInterfaceDeclaration;
 
-class IIRBase_GenericList : public virtual IIRBase_InterfaceList, public virtual IIR_GenericList{
+class IIRBase_GenericList : public virtual IIRBase_InterfaceList, public virtual IIR_GenericList {
 
 public:
   IIR_Kind get_kind() const {return IIR_GENERIC_LIST;}

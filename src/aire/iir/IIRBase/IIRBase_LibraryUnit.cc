@@ -43,7 +43,7 @@ IIRBase_LibraryUnit::~IIRBase_LibraryUnit() {
 }
 
 // List Accessor(s)
-IIR_DeclarationList *
+IIR_DeclarationList<> *
 IIRBase_LibraryUnit::get_context_items() {
   if( context_items == 0 ){
     context_items = get_class_factory()->new_IIR_DeclarationList();
@@ -60,7 +60,7 @@ IIRBase_LibraryUnit::get_attributes() {
 }
 
 void
-IIRBase_LibraryUnit::set_context_items(IIR_DeclarationList *new_context_items) {
+IIRBase_LibraryUnit::set_context_items(IIR_DeclarationList<> *new_context_items) {
   delete context_items;
   context_items = new_context_items;
 }

@@ -30,7 +30,6 @@
 #include "IIRBase_ConfigurationItem.hh"
 #include "IIR_BlockConfiguration.hh"
 
-class IIR_DeclarationList;
 class IIR_ConfigurationItemList;
 
 class IIRBase_BlockConfiguration : public virtual IIRBase_ConfigurationItem,
@@ -38,9 +37,9 @@ class IIRBase_BlockConfiguration : public virtual IIRBase_ConfigurationItem,
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList        *get_use_clause_list();
+  IIR_DeclarationList<>      *get_use_clause_list();
   IIR_ConfigurationItemList  *get_configuration_item_list();
-  void                       set_use_clause_list(IIR_DeclarationList *new_use_clause_list);
+  void                       set_use_clause_list(IIR_DeclarationList<> *new_use_clause_list);
   void                       set_configuration_item_list(IIR_ConfigurationItemList *new_configuration_item_list);
 
   IIR_Kind get_kind() const {return IIR_BLOCK_CONFIGURATION;}
@@ -59,7 +58,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList        *use_clause_list;
+  IIR_DeclarationList<>      *use_clause_list;
   IIR_ConfigurationItemList  *configuration_item_list;
   IIR_Statement *block_specification;
 };

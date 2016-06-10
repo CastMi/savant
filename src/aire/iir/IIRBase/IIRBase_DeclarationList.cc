@@ -35,11 +35,9 @@
 #include "IIR_TypeDeclaration.hh"
 #include "IIRBase_Identifier.hh"
 
-IIRBase_DeclarationList::IIRBase_DeclarationList(){}
-IIRBase_DeclarationList::~IIRBase_DeclarationList(){}
-
+template <class type>
 savant::set<IIR_Declaration> *
-IIRBase_DeclarationList::find_declarations( IIR_Name *to_find ){
+IIRBase_DeclarationList<type>::find_declarations( IIR_Name *to_find ){
   ASSERT( to_find != NULL );
   savant::set<IIR_Declaration> *retval = NULL;
   // The following assertion holds true because an indexed name doesn't generally
@@ -95,13 +93,14 @@ IIRBase_DeclarationList::find_declarations( IIR_Name *to_find ){
   return retval;
 }
 
+template <class type>
 savant::set<IIR_Declaration> *
-IIRBase_DeclarationList::find_declarations( IIR_TextLiteral *to_find ){
+IIRBase_DeclarationList<type>::find_declarations( IIR_TextLiteral *to_find ){
   savant::set<IIR_Declaration> *retval = new savant::set<IIR_Declaration>;
   ASSERT( to_find != NULL );
   
-  for (IIR_Declaration *current = dynamic_cast<IIR_Declaration *>(first());
-       current != NULL;current = dynamic_cast<IIR_Declaration *>(successor(current))) {
+  for (IIR_Declaration *current = this->first();
+       current != NULL;current = this->successor(current)) {
     if( IIRBase_TextLiteral::cmp( current->get_declarator(), to_find ) == 0 ){
       retval->add( current );
     }
@@ -138,27 +137,30 @@ IIRBase_DeclarationList::find_declarations( IIR_TextLiteral *to_find ){
   return retval;
 }
 
+template <class type>
 void
-IIRBase_DeclarationList::set_declarative_region( IIR *new_declarative_region ){
-  IIR_Declaration *current = dynamic_cast<IIR_Declaration *>(first());
+IIRBase_DeclarationList<type>::set_declarative_region( IIR *new_declarative_region ){
+  IIR_Declaration *current = this->first();
   while( current != 0 ){
     current->set_declarative_region( new_declarative_region );
-    current = dynamic_cast<IIR_Declaration *>(successor( current ));
+    current = this->successor( current );
   }
 }
 
+template <class type>
 void
-IIRBase_DeclarationList::publish_vhdl(ostream &vhdl_out) {
-  for (IIRBase_Declaration *decl = dynamic_cast<IIRBase_Declaration *>(first());
-       decl != NULL;decl = dynamic_cast<IIRBase_Declaration *>(successor(decl))) {
+IIRBase_DeclarationList<type>::publish_vhdl(ostream &vhdl_out) {
+  for (IIR_Declaration *decl = this->first();
+       decl != NULL; decl = this->successor(decl)) {
     decl->publish_vhdl(vhdl_out);
   }
 }
 
+template <class type>
 void 
-IIRBase_DeclarationList::publish_vhdl_decl(ostream &vhdl_out) {
-  for (IIRBase_Declaration *decl = dynamic_cast<IIRBase_Declaration *>(first());
-       decl != NULL;decl = dynamic_cast<IIRBase_Declaration *>(successor(decl))) {
+IIRBase_DeclarationList<type>::publish_vhdl_decl(ostream &vhdl_out) {
+  for (IIRBase_Declaration *decl = dynamic_cast<IIRBase_Declaration*>(this->first());
+       decl != NULL; decl = dynamic_cast<IIRBase_Declaration*>(this->successor(decl))) {
     decl->publish_vhdl_decl(vhdl_out);
   }
 }

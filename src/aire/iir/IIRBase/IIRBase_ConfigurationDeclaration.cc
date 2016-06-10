@@ -58,7 +58,7 @@ IIRBase_ConfigurationDeclaration::get_entity(){
 
 
 // List Accessor(s)
-IIR_DeclarationList *
+IIR_DeclarationList<> *
 IIRBase_ConfigurationDeclaration::get_configuration_declarative_part() {
   ASSERT(configuration_declarative_part != NULL);
   return configuration_declarative_part;
@@ -66,7 +66,7 @@ IIRBase_ConfigurationDeclaration::get_configuration_declarative_part() {
 
 
 void
-IIRBase_ConfigurationDeclaration::set_configuration_declarative_part(IIR_DeclarationList *new_configuration_declarative_part) {
+IIRBase_ConfigurationDeclaration::set_configuration_declarative_part(IIR_DeclarationList<> *new_configuration_declarative_part) {
   ASSERT(new_configuration_declarative_part != NULL);
 
   delete configuration_declarative_part;
@@ -101,7 +101,7 @@ IIRBase_ConfigurationDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out << " of ";
   get_entity()->get_declarator()->publish_vhdl(vhdl_out);
   vhdl_out << " is\n";
-  dynamic_cast<IIRBase_DeclarationList *>(get_configuration_declarative_part())->publish_vhdl_decl(vhdl_out);
+  dynamic_cast<IIRBase_DeclarationList<> *>(get_configuration_declarative_part())->publish_vhdl_decl(vhdl_out);
   get_block_configuration()->publish_vhdl(vhdl_out);
   vhdl_out << " end configuration ";
   get_declarator()->publish_vhdl(vhdl_out);

@@ -145,7 +145,7 @@ symbol_table::add_declaration( IIR_Declaration *decl_ptr ){
 }
 
 void 
-symbol_table::add_declaration(IIR_DeclarationList *list_ptr) {
+symbol_table::add_declaration(IIR_DeclarationList<> *list_ptr) {
   ASSERT( list_ptr != NULL );
   IIR_Declaration *current_decl = dynamic_cast<IIR_Declaration *>(list_ptr->first());
   while( current_decl != NULL ){
@@ -354,13 +354,24 @@ symbol_table::make_visible( IIR_Declaration *decl_ptr ){
       if( physical_type->get_primary_unit() != NULL ){
 	make_visible( dynamic_cast<IIR_Declaration *>(dynamic_cast<IIRScram_PhysicalTypeDefinition *>(physical_type)->_get_primary_unit()) );
       }
-      make_visible( dynamic_cast<IIR_DeclarationList *>(physical_type->get_units()) );
+      make_visible( dynamic_cast<IIR_DeclarationList<> *>(physical_type->get_units()) );
     }
   }
 }
 
+// FIXME: find out a way to merge the following 2 methods
 void 
-symbol_table::make_visible( IIR_DeclarationList *decl_list ){
+symbol_table::make_visible( IIR_InterfaceList *decl_list ){
+  if( decl_list != NULL ){
+    IIR_Declaration *current = dynamic_cast<IIR_Declaration *>(decl_list->first());
+    while( current != NULL ){
+      make_visible( current );
+      current = dynamic_cast<IIR_Declaration *>(decl_list->successor( current ));
+    }
+  }
+}
+void
+symbol_table::make_visible( IIR_DeclarationList<> *decl_list ){
   if( decl_list != NULL ){
     IIR_Declaration *current = dynamic_cast<IIR_Declaration *>(decl_list->first());
     while( current != NULL ){

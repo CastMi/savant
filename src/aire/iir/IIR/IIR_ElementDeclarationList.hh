@@ -29,16 +29,12 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_DeclarationList.hh"
+#include "IIR_ElementDeclaration.hh"
 
-class IIR_ElementDeclaration;
-
-class IIR_ElementDeclarationList : public virtual IIR_List<IIR_ElementDeclaration>{
-
+class IIR_ElementDeclarationList : public virtual IIR_DeclarationList<IIR_ElementDeclaration> {
 public:
   virtual ~IIR_ElementDeclarationList() {}
   virtual IIR_ElementDeclarationList* convert_node(plugin_class_factory *factory) = 0;
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name *  ) { return NULL; }
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * ) { return NULL; }
-    
+
 };
 #endif

@@ -29,9 +29,9 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_Declaration.hh"
+#include "IIR_DeclarationList.hh"
 
 class IIR_InterfaceList;
-class IIR_DeclarationList;
 class IIR_SequentialStatementList;
 class IIR_AttributeSpecificationList;
 
@@ -41,11 +41,11 @@ public:
 
   // List accessor(s)
   virtual IIR_InterfaceList                     *get_interface_declarations() = 0;
-  virtual IIR_DeclarationList                   *get_subprogram_declarations() = 0;
+  virtual IIR_DeclarationList<>                 *get_subprogram_declarations() = 0;
   virtual IIR_SequentialStatementList           *get_subprogram_body() = 0;
   virtual IIR_AttributeSpecificationList        *get_attributes() = 0;
   virtual void                                  set_interface_declarations(IIR_InterfaceList *) = 0;
-  virtual void                                  set_subprogram_declarations(IIR_DeclarationList *) = 0;
+  virtual void                                  set_subprogram_declarations(IIR_DeclarationList<> *) = 0;
   virtual void                                  set_subprogram_body(IIR_SequentialStatementList *) = 0;
   virtual void                                  set_attributes(IIR_AttributeSpecificationList *) = 0;
 

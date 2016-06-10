@@ -56,7 +56,7 @@ IIRBase_ConcurrentGenerateIfStatement::get_if_condition(){
 }
 
 // List Accessor(s)
-IIR_DeclarationList *
+IIR_DeclarationList<> *
 IIRBase_ConcurrentGenerateIfStatement::get_block_declarative_part() {
   ASSERT(block_declarative_part != NULL);
   return block_declarative_part;
@@ -69,7 +69,7 @@ IIRBase_ConcurrentGenerateIfStatement::get_concurrent_statement_part() {
 }
 
 void
-IIRBase_ConcurrentGenerateIfStatement::set_block_declarative_part(IIR_DeclarationList *new_block_declarative_part) {
+IIRBase_ConcurrentGenerateIfStatement::set_block_declarative_part(IIR_DeclarationList<> *new_block_declarative_part) {
   ASSERT(new_block_declarative_part != NULL);
   block_declarative_part = new_block_declarative_part;
 }
@@ -104,7 +104,7 @@ IIRBase_ConcurrentGenerateIfStatement::publish_vhdl(ostream &vhdl_out) {
   vhdl_out << ") generate\n";
 
   if(get_block_declarative_part()->size() != 0) {
-    dynamic_cast<IIRBase_DeclarationList *>(get_block_declarative_part())->publish_vhdl_decl(vhdl_out);
+    dynamic_cast<IIRBase_DeclarationList<> *>(get_block_declarative_part())->publish_vhdl_decl(vhdl_out);
   }
 
   vhdl_out << "   begin\n";

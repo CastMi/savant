@@ -56,21 +56,6 @@ IIRBase_List<type>::convert_node(plugin_class_factory *factory) {
   return new_list;
 }
 
-IIR_Boolean 
-IIRBase_List::is_resolved(){
-  IIR_Boolean retval = true;
-
-  IIR *current_element = dynamic_cast<IIR *>(first());
-  while( current_element != NULL ){
-    if( current_element->is_resolved() == false ){
-      retval = false;
-      break;
-    }
-    current_element = dynamic_cast<IIR *>(successor( current_element ));
-  }
-
-  return retval;
-}
 
 ostream &
 IIRBase_List::print( ostream &os ){

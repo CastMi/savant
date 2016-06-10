@@ -43,12 +43,10 @@ class IIRScram_TextLiteral;
 class IIRScram_Identifier;
 class IIRScram;
 class symbol_table;
-
 class IIR;
 class IIR_Aggregate;
 class IIR_AssociationList;
 class IIR_Declaration;
-class IIR_DeclarationList;
 class IIR_EnumerationLiteral;
 class IIR_Identifier;
 class IIR_IndexedName;

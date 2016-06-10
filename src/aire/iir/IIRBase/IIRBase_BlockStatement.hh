@@ -31,7 +31,6 @@
 class IIR_GenericList;
 class IIR_AssociationList;
 class IIR_PortList;
-class IIR_DeclarationList;
 class IIR_ArchitectureStatementList;
 class IIR_SignalDeclaration;
 
@@ -43,13 +42,13 @@ public:
   IIR_AssociationList           *get_generic_map_aspect();
   IIR_PortList                  *get_port_clause();
   IIR_AssociationList           *get_port_map_aspect();
-  IIR_DeclarationList           *get_block_declarative_part();
+  IIR_DeclarationList<>         *get_block_declarative_part();
   IIR_ArchitectureStatementList *get_block_statement_part();
   void                          set_generic_clause(IIR_GenericList *new_generic_clause);
   void                          set_generic_map_aspect(IIR_AssociationList *new_generic_map_aspect);
   void                          set_port_clause(IIR_PortList *new_port_clause);
   void                          set_port_map_aspect(IIR_AssociationList *new_port_map_aspect);
-  void                          set_block_declarative_part(IIR_DeclarationList *new_block_declarative_part);
+  void                          set_block_declarative_part(IIR_DeclarationList<> *new_block_declarative_part);
   void                          set_block_statement_part(IIR_ArchitectureStatementList *new_block_statement_part);
 
   IIR_Kind get_kind() const {return IIR_BLOCK_STATEMENT;}
@@ -76,7 +75,7 @@ private:
   IIR_AssociationList                   *generic_map_aspect;
   IIR_PortList                          *port_clause;
   IIR_AssociationList                   *port_map_aspect;
-  IIR_DeclarationList                   *block_declarative_part;
+  IIR_DeclarationList<>                 *block_declarative_part;
   IIR_ArchitectureStatementList         *block_statement_part;
 
   IIR_Statement                         *guard_expression;

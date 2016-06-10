@@ -52,7 +52,7 @@ IIRBase_SubprogramDeclaration::get_interface_declarations() {
   return interface_declarations;
 }
 
-IIR_DeclarationList *
+IIR_DeclarationList<> *
 IIRBase_SubprogramDeclaration::get_subprogram_declarations() {
   ASSERT(subprogram_declarations != NULL);
   return subprogram_declarations;
@@ -77,7 +77,7 @@ IIRBase_SubprogramDeclaration::set_interface_declarations(IIR_InterfaceList *new
 }
 
 void
-IIRBase_SubprogramDeclaration::set_subprogram_declarations(IIR_DeclarationList *new_subprogram_declarations) {
+IIRBase_SubprogramDeclaration::set_subprogram_declarations(IIR_DeclarationList<> *new_subprogram_declarations) {
   ASSERT(new_subprogram_declarations != NULL);
   subprogram_declarations = new_subprogram_declarations;
 }

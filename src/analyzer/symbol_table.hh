@@ -32,12 +32,12 @@
 #include "set.hh"
 #include "IIRScram_Declaration.hh"
 #include "IIR_Declaration.hh"
+#include "IIR_DeclarationList.hh"
 #include <iostream>
 
 using std::cout;
 using std::endl;
 
-class IIR_DeclarationList;
 class IIR_PortList;
 class IIR_GenericList;
 class IIR_ArrayTypeDefinition;
@@ -45,6 +45,7 @@ class IIR_RecordTypeDefinition;
 class IIR_AccessTypeDefinition;
 class IIR_SubprogramDeclaration;
 class IIR_TypeDeclaration;
+class IIR_InterfaceList;
 class StandardPackage;
 extern bool debug_symbol_table;
 
@@ -123,7 +124,6 @@ class scope_entry {
 };
 
 class symbol_table {
-
    public:
       /** Constructor */
       symbol_table(StandardPackage *package, bool load_std_library = true );
@@ -152,7 +152,7 @@ class symbol_table {
       //** Methods to add new declarations... */
       void add_subprogram_declaration( IIR_SubprogramDeclaration *, bool leave_scope_open = false );
       void add_declaration(IIR_Declaration *);
-      void add_declaration(IIR_DeclarationList *);
+      void add_declaration(IIR_DeclarationList<> *);
       void add_declaration( savant::set<IIR_Declaration> *set_ptr);
       //@}
 
@@ -179,7 +179,8 @@ class symbol_table {
       //@{
       /** These methods make the walking of several types of lists a little
         nice. */
-      void make_visible( IIR_DeclarationList *);
+      void make_visible( IIR_InterfaceList *);
+      void make_visible( IIR_DeclarationList<> *);
       void make_visible( savant::set<IIR_Declaration> *);
       //@}
 
@@ -203,7 +204,7 @@ class symbol_table {
       }
       savant::set<IIR_Declaration> *find_set( IIR_TextLiteral *to_find ){
          return visible_symbols.find_set( to_find );
-      }  
+      }
       //@}
 
       /** We have an array of lists for each type of declaration defined in LRM

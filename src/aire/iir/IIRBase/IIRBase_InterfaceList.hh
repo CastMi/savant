@@ -33,8 +33,7 @@
 
 class IIR_InterfaceDeclaration;
 
-class IIRBase_InterfaceList : public virtual IIRBase_List<IIR_InterfaceDeclaration>, public virtual IIR_InterfaceList {
-
+class IIRBase_InterfaceList : public virtual IIRBase_DeclarationList<IIR_InterfaceDeclaration>, public virtual IIR_InterfaceList {
 public:
   IIR_Kind get_kind() const { return IIR_INTERFACE_LIST; }
   const IIR_Char *get_kind_text() const { return "IIR_InterfaceList"; }

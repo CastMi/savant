@@ -25,8 +25,6 @@
 template <class type>
 class IIRBase_List : public virtual IIR_List<type> {
 public:
-  IIR_Boolean is_resolved();
-    
   ostream &print( ostream &os );
 
   void publish_vhdl_decl(ostream & os, const char* = nullptr) {

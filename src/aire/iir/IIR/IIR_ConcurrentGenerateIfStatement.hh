@@ -29,8 +29,8 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_ConcurrentStatement.hh"
+#include "IIR_DeclarationList.hh"
 
-class IIR_DeclarationList;
 class IIR_ArchitectureStatementList;
 
 class IIR_ConcurrentGenerateIfStatement : public virtual IIR_ConcurrentStatement{
@@ -39,9 +39,9 @@ public:
   virtual ~IIR_ConcurrentGenerateIfStatement() {}
     
   // List accessor(s)
-  virtual IIR_DeclarationList           *get_block_declarative_part() = 0;
+  virtual IIR_DeclarationList<>         *get_block_declarative_part() = 0;
   virtual IIR_ArchitectureStatementList *get_concurrent_statement_part() = 0;
-  virtual void                          set_block_declarative_part(IIR_DeclarationList *) = 0;
+  virtual void                          set_block_declarative_part(IIR_DeclarationList<> *) = 0;
   virtual void                          set_concurrent_statement_part(IIR_ArchitectureStatementList *) = 0;
 
   virtual void set_if_condition( IIR *condition ) = 0;

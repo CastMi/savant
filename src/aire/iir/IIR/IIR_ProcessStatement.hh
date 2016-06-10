@@ -29,8 +29,8 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_ConcurrentStatement.hh"
+#include "IIR_DeclarationList.hh"
 
-class IIR_DeclarationList;
 class IIR_SequentialStatementList;
 
 class IIR_ProcessStatement : public virtual IIR_ConcurrentStatement{
@@ -39,9 +39,9 @@ public:
   virtual ~IIR_ProcessStatement() {}    
 
   // List accessor(s)
-  virtual IIR_DeclarationList           *get_process_declarative_part() = 0;
+  virtual IIR_DeclarationList<>           *get_process_declarative_part() = 0;
   virtual IIR_SequentialStatementList   *get_process_statement_part() = 0;
-  virtual void                          set_process_declarative_part(IIR_DeclarationList *) = 0;
+  virtual void                          set_process_declarative_part(IIR_DeclarationList<> *) = 0;
   virtual void                          set_process_statement_part(IIR_SequentialStatementList *) = 0;
 
   virtual void set_postponed( IIR_Boolean postponed) = 0;

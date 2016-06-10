@@ -31,14 +31,12 @@
 #include "IIRBase_LibraryUnit.hh"
 #include "IIR_PackageBodyDeclaration.hh"
 
-class IIR_DeclarationList;
-
 class IIRBase_PackageBodyDeclaration : public virtual IIRBase_LibraryUnit, public virtual IIR_PackageBodyDeclaration{
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList *get_package_declarative_part();
-  void                set_package_declarative_part(IIR_DeclarationList *new_package_declarative_part);
+  IIR_DeclarationList<> *get_package_declarative_part();
+  void                set_package_declarative_part(IIR_DeclarationList<> *new_package_declarative_part);
 
   IIR_Kind get_kind() const {return IIR_PACKAGE_BODY_DECLARATION;}
   const IIR_Char *get_kind_text() const {return "IIR_PackageBodyDeclaration";}
@@ -55,7 +53,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList *package_declarative_part;
+  IIR_DeclarationList<> *package_declarative_part;
 
 };
 #endif

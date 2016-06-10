@@ -1549,8 +1549,8 @@ scram_plugin_class_factory::new_IIR_ConstantInterfaceDeclaration() {
   return new IIRScram_ConstantInterfaceDeclaration();
 }
 
-IIR_DeclarationList *
-scram_plugin_class_factory::new_IIR_DeclarationList() {
+IIR_DeclarationList<> *
+scram_plugin_class_factory::new_IIR_DeclarationList<>() {
   return new IIRScram_DeclarationList();
 }
 

@@ -28,8 +28,8 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_Declaration.hh"
+#include "IIR_DeclarationList.hh"
 
-class IIR_DeclarationList;
 class IIR_AttributeSpecificationList;
 class IIR_LibraryDeclaration;
 
@@ -53,8 +53,8 @@ public:
   virtual IIR_Boolean is_secondary_unit() = 0;
 
   //@{ List accessor(s)
-  virtual IIR_DeclarationList *get_context_items() = 0;
-  virtual void set_context_items(IIR_DeclarationList *new_context_items) = 0;
+  virtual IIR_DeclarationList<> *get_context_items() = 0;
+  virtual void set_context_items(IIR_DeclarationList<> *new_context_items) = 0;
   virtual IIR_AttributeSpecificationList *get_attributes() = 0;
   virtual void set_attributes(IIR_AttributeSpecificationList *new_attributes) = 0;
   //@}

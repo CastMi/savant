@@ -30,7 +30,6 @@
 
 class IIR_GenericList;
 class IIR_PortList;
-class IIR_DeclarationList;
 class IIR_ArchitectureStatementList;
 class IIR_DesignUnitList;
 
@@ -40,13 +39,13 @@ public:
   // List Accessor(s)
   IIR_GenericList               *get_generic_clause();
   IIR_PortList                  *get_port_clause();
-  IIR_DeclarationList           *get_entity_declarative_part();
+  IIR_DeclarationList<>         *get_entity_declarative_part();
   IIR_ArchitectureStatementList *get_entity_statement_part();
   IIR_DesignUnitList            *get_architectures();
 
   void                          set_generic_clause(IIR_GenericList *new_generic_clause);
   void                          set_port_clause(IIR_PortList *new_port_clause);
-  void                          set_entity_declarative_part(IIR_DeclarationList *new_entity_declarative_part);
+  void                          set_entity_declarative_part(IIR_DeclarationList<> *new_entity_declarative_part);
   void                          set_entity_statement_part(IIR_ArchitectureStatementList *new_entity_statement_part);
   void                          set_architectures(IIR_DesignUnitList *new_architectures);
 
@@ -73,7 +72,7 @@ private:
   // List Variable(s)
   IIR_GenericList               *generic_clause;
   IIR_PortList                  *port_clause;
-  IIR_DeclarationList           *entity_declarative_part;
+  IIR_DeclarationList<>         *entity_declarative_part;
   IIR_ArchitectureStatementList *entity_statement_part;
   IIR_DesignUnitList            *architectures;
 

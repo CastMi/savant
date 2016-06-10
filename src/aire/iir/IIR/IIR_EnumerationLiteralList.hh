@@ -30,16 +30,12 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_DeclarationList.hh"
+#include "IIR_EnumerationLiteral.hh"
 
-class IIR_EnumerationLiteral;
-
-class IIR_EnumerationLiteralList :  public virtual IIR_List<IIR_EnumerationLiteral> {
-
+class IIR_EnumerationLiteralList :  public virtual IIR_DeclarationList<IIR_EnumerationLiteral> {
 public:
   virtual ~IIR_EnumerationLiteralList() {}
   virtual IIR_EnumerationLiteralList* convert_node(plugin_class_factory *factory) = 0;
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name *  ) { return NULL; }
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * ) { return NULL; }
     
 };
 #endif

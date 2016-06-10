@@ -28,16 +28,15 @@
 #include "IIRBase_ConcurrentStatement.hh"
 #include "IIR_ConcurrentGenerateIfStatement.hh"
 
-class IIR_DeclarationList;
 class IIR_ArchitectureStatementList;
 
 class IIRBase_ConcurrentGenerateIfStatement : public virtual IIRBase_ConcurrentStatement, public virtual IIR_ConcurrentGenerateIfStatement{
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList           *get_block_declarative_part();
+  IIR_DeclarationList<>         *get_block_declarative_part();
   IIR_ArchitectureStatementList *get_concurrent_statement_part();
-  void                          set_block_declarative_part(IIR_DeclarationList *new_block_declarative_part);
+  void                          set_block_declarative_part(IIR_DeclarationList<> *new_block_declarative_part);
   void                          set_concurrent_statement_part(IIR_ArchitectureStatementList *new_concurrent_statement_part);
 
   IIR_Kind get_kind() const {return IIR_CONCURRENT_GENERATE_IF_STATEMENT;}
@@ -55,7 +54,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList           *block_declarative_part;
+  IIR_DeclarationList<>         *block_declarative_part;
   IIR_ArchitectureStatementList *concurrent_statement_part;
   IIR *condition;
 };

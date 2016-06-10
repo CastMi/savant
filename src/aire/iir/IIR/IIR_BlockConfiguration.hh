@@ -29,8 +29,8 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_ConfigurationItem.hh"
+#include "IIR_DeclarationList.hh"
 
-class IIR_DeclarationList;
 class IIR_ConfigurationItemList;
 class IIR_Statement;
 
@@ -40,9 +40,9 @@ public:
   virtual ~IIR_BlockConfiguration() {}
     
   // List accessor(s)
-  virtual IIR_DeclarationList           *get_use_clause_list() = 0;
+  virtual IIR_DeclarationList<>         *get_use_clause_list() = 0;
   virtual IIR_ConfigurationItemList     *get_configuration_item_list() = 0;
-  virtual void                          set_use_clause_list(IIR_DeclarationList *) = 0;
+  virtual void                          set_use_clause_list(IIR_DeclarationList<> *) = 0;
   virtual void                          set_configuration_item_list(IIR_ConfigurationItemList *) = 0;
 
   virtual void set_block_specification( IIR_Statement *block_specification ) = 0;

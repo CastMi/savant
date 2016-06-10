@@ -66,7 +66,7 @@ IIRBase_EntityDeclaration::get_port_clause() {
   return port_clause;
 }
 
-IIR_DeclarationList *
+IIR_DeclarationList<> *
 IIRBase_EntityDeclaration::get_entity_declarative_part() {
   ASSERT(entity_declarative_part != NULL);
   return entity_declarative_part;
@@ -99,7 +99,7 @@ IIRBase_EntityDeclaration::set_port_clause(IIR_PortList *new_port_clause) {
 }
 
 void
-IIRBase_EntityDeclaration::set_entity_declarative_part(IIR_DeclarationList *new_entity_declarative_part) {
+IIRBase_EntityDeclaration::set_entity_declarative_part(IIR_DeclarationList<> *new_entity_declarative_part) {
   ASSERT(new_entity_declarative_part != NULL);
   delete entity_declarative_part;
   entity_declarative_part = new_entity_declarative_part;
@@ -186,7 +186,7 @@ IIRBase_EntityDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
     vhdl_out << ");\n";
   }
 
-  dynamic_cast<IIRBase_DeclarationList *>
+  dynamic_cast<IIRBase_DeclarationList<> *>
     (get_entity_declarative_part())->publish_vhdl_decl(vhdl_out);
 
   if( get_entity_statement_part()->size() != 0) {

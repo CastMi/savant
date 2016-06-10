@@ -25,7 +25,6 @@
 
 class IIR_BlockConfiguration;
 class IIR_EntityDeclaration;
-class IIR_DeclarationList;
 
 class IIR_ConfigurationDeclaration : public virtual IIR_LibraryUnit{
 
@@ -33,8 +32,8 @@ public:
   virtual ~IIR_ConfigurationDeclaration() {}
     
   // List accessor(s)
-  virtual IIR_DeclarationList   *get_configuration_declarative_part() = 0;
-  virtual void                  set_configuration_declarative_part(IIR_DeclarationList *) = 0;
+  virtual IIR_DeclarationList<> *get_configuration_declarative_part() = 0;
+  virtual void                  set_configuration_declarative_part(IIR_DeclarationList<> *) = 0;
 
   virtual void set_block_configuration(IIR_BlockConfiguration *block_configuration) = 0;
   virtual IIR_BlockConfiguration *get_block_configuration() = 0;

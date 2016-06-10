@@ -56,7 +56,7 @@ IIRBase_ProcessStatement::get_postponed() {
 }
 
 // List Accessor(s)
-IIR_DeclarationList *
+IIR_DeclarationList<> *
 IIRBase_ProcessStatement::get_process_declarative_part() {
   if( process_declarative_part == 0 ){
     process_declarative_part = 
@@ -78,7 +78,7 @@ IIRBase_ProcessStatement::get_process_statement_part() {
 }
 
 void
-IIRBase_ProcessStatement::set_process_declarative_part(IIR_DeclarationList *new_process_declarative_part) {
+IIRBase_ProcessStatement::set_process_declarative_part(IIR_DeclarationList<> *new_process_declarative_part) {
   ASSERT(new_process_declarative_part != NULL);
   process_declarative_part = new_process_declarative_part;
 }
@@ -116,7 +116,7 @@ IIRBase_ProcessStatement::publish_vhdl(ostream &vhdl_out) {
     vhdl_out << "postponed ";
   }
   vhdl_out << "process\n";
-  dynamic_cast<IIRBase_DeclarationList *>(get_process_declarative_part())->publish_vhdl_decl(vhdl_out);
+  dynamic_cast<IIRBase_DeclarationList<> *>(get_process_declarative_part())->publish_vhdl_decl(vhdl_out);
   vhdl_out << "\nbegin\n";
   get_process_statement_part()->publish_vhdl(vhdl_out);
   vhdl_out << "end ";

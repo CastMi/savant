@@ -28,14 +28,19 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_List.hh"
+#include "IIR_Declaration.hh"
 #include "set.hh"
+#include <type_traits>
+#include <typeinfo>
+#include <string>
 
 class IIR_Name;
-class IIR_Declaration;
 class IIR_TextLiteral;
 
-class IIR_DeclarationList : public virtual IIR_List<IIR_Declaration> {
-
+template <typename param = IIR_Declaration>
+class IIR_DeclarationList : public virtual IIR_List<param> {
+static_assert(std::is_base_of<IIR_Declaration, param>::value,
+      "ERROR: not a subclass of IIR_Declaration");
 public:
   virtual ~IIR_DeclarationList() {}
   
@@ -47,6 +52,6 @@ public:
      to the new region passed in.
   */
   virtual void set_declarative_region( IIR * ) = 0;
-  virtual IIR_DeclarationList* convert_node(plugin_class_factory *);
+  virtual IIR_DeclarationList<param>* convert_node(plugin_class_factory *) = 0;
 };
 #endif

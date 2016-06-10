@@ -49,7 +49,7 @@ IIRBase_BlockConfiguration::get_block_specification(){
 }
 
 // List Accessor(s)
-IIR_DeclarationList *
+IIR_DeclarationList<> *
 IIRBase_BlockConfiguration::get_use_clause_list() {
   ASSERT(use_clause_list != NULL);
   return use_clause_list;
@@ -62,7 +62,7 @@ IIRBase_BlockConfiguration::get_configuration_item_list() {
 }
 
 void
-IIRBase_BlockConfiguration::set_use_clause_list(IIR_DeclarationList *new_use_clause_list) {
+IIRBase_BlockConfiguration::set_use_clause_list(IIR_DeclarationList<> *new_use_clause_list) {
   ASSERT(new_use_clause_list != NULL);
   
   if (use_clause_list != NULL)

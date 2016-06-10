@@ -30,16 +30,12 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_DeclarationList.hh"
+#include "IIR_LibraryUnit.hh"
 
-class IIR_LibraryUnit;
-
-class IIR_LibraryUnitList : public virtual IIR_List<IIR_LibraryUnit> {
-
+class IIR_LibraryUnitList : public virtual IIR_DeclarationList<IIR_LibraryUnit> {
 public:
   virtual ~IIR_LibraryUnitList() {}
-  virtual IIR_LibraryUnitList* convert_node(plugin_class_factory *factory) = 0;
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name *  ) { return NULL; }
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * ) { return NULL; }
+  virtual IIR_LibraryUnitList* convert_node(plugin_class_factory *) = 0;
 
 };
 #endif

@@ -29,7 +29,6 @@
 #include "IIRBase_LibraryUnit.hh"
 #include "IIR_ArchitectureDeclaration.hh"
 
-class IIR_DeclarationList;
 class IIR_ArchitectureStatementList;
 class IIR_EntityDeclaration;
 
@@ -37,10 +36,10 @@ class IIRBase_ArchitectureDeclaration : public virtual IIRBase_LibraryUnit, publ
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList           *get_architecture_declarative_part();
+  IIR_DeclarationList<>           *get_architecture_declarative_part();
   IIR_ArchitectureStatementList *get_architecture_statement_part();
 
-  void set_architecture_declarative_part(IIR_DeclarationList *);
+  void set_architecture_declarative_part(IIR_DeclarationList<> *);
   void set_architecture_statement_part(IIR_ArchitectureStatementList *);
 
   IIR_Kind get_kind() const {return IIR_ARCHITECTURE_DECLARATION;}
@@ -68,7 +67,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList           *architecture_declarative_part;
+  IIR_DeclarationList<>         *architecture_declarative_part;
   IIR_ArchitectureStatementList *architecture_statement_part;
 
   IIR_EntityDeclaration* entity;

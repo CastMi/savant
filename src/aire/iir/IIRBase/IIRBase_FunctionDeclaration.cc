@@ -116,7 +116,7 @@ IIRBase_FunctionDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   
   if (contains_body() == true) {
     vhdl_out << " is " << endl;
-    dynamic_cast<IIRBase_DeclarationList *>
+    dynamic_cast<IIRBase_DeclarationList<> *>
       (get_subprogram_declarations())->publish_vhdl_decl(vhdl_out);
     vhdl_out << "begin" << endl;
     get_subprogram_body()->publish_vhdl(vhdl_out);

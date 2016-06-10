@@ -31,16 +31,15 @@
 #include "IIR_LibraryUnit.hh"
 
 class IIR_AttributeSpecificationList;
-class IIR_DeclarationList;
 class IIR_TypeDefinition;
 
 class IIRBase_LibraryUnit : public virtual IIRBase_Declaration, public virtual IIR_LibraryUnit{
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList                  *get_context_items();
+  IIR_DeclarationList<>                *get_context_items();
   IIR_AttributeSpecificationList       *get_attributes();
-  void                                 set_context_items(IIR_DeclarationList *new_context_items);
+  void                                 set_context_items(IIR_DeclarationList<> *new_context_items);
   void                                 set_attributes(IIR_AttributeSpecificationList *new_attributes);
 
   IIR *convert_tree(plugin_class_factory *factory);
@@ -66,7 +65,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList                  *context_items;
+  IIR_DeclarationList<>                *context_items;
   IIR_AttributeSpecificationList       *attributes;
 
 };

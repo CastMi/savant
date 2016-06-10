@@ -23,7 +23,6 @@
 // --------------------------------------------------------------------------
 
 #include "PluginStandardPackage.hh"
-
 #include "IIR_ArraySubtypeDefinition.hh"
 #include "IIR_AttributeDeclaration.hh"
 #include "IIR_DeclarationList.hh"
@@ -37,7 +36,6 @@
 #include "IIR_SubtypeDeclaration.hh"
 #include "IIR_TypeDeclaration.hh"
 #include "ScramStandardPackage.hh"
-
 #include "IIRBase_Identifier.hh"
 
 PluginStandardPackage::PluginStandardPackage( plugin_class_factory * )
@@ -287,7 +285,7 @@ PluginStandardPackage::get_std_standard_decl(){
 
 IIR_Declaration *
 PluginStandardPackage::find_item(const char *id) {
-  IIR_DeclarationList   *decl_list = get_package_declarative_part();
+  IIR_DeclarationList<> *decl_list = get_package_declarative_part();
   IIR_Declaration       *cur_decl = dynamic_cast<IIR_Declaration *>(decl_list->first());
 
   while (cur_decl != NULL) {

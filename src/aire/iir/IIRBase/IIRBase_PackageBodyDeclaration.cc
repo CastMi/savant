@@ -39,7 +39,7 @@ IIRBase_PackageBodyDeclaration::~IIRBase_PackageBodyDeclaration() {
 }
 
 // List Accessor(s)
-IIR_DeclarationList *
+IIR_DeclarationList<> *
 IIRBase_PackageBodyDeclaration::get_package_declarative_part() {
   ASSERT(package_declarative_part != NULL);
   return package_declarative_part;
@@ -47,7 +47,7 @@ IIRBase_PackageBodyDeclaration::get_package_declarative_part() {
 
 
 void
-IIRBase_PackageBodyDeclaration::set_package_declarative_part(IIR_DeclarationList *new_package_declarative_part) {
+IIRBase_PackageBodyDeclaration::set_package_declarative_part(IIR_DeclarationList<> *new_package_declarative_part) {
   ASSERT(new_package_declarative_part != NULL);
   delete package_declarative_part;
   package_declarative_part = new_package_declarative_part;
@@ -76,7 +76,7 @@ IIRBase_PackageBodyDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out << "package body ";
   get_declarator()->publish_vhdl(vhdl_out);
   vhdl_out << " is\n";
-  dynamic_cast<IIRBase_DeclarationList *>(get_package_declarative_part())->publish_vhdl_decl(vhdl_out);
+  dynamic_cast<IIRBase_DeclarationList<> *>(get_package_declarative_part())->publish_vhdl_decl(vhdl_out);
   vhdl_out << "end package body ";
   get_declarator()->publish_vhdl(vhdl_out);
   vhdl_out << ";\n";

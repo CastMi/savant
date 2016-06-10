@@ -30,17 +30,11 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_DeclarationList.hh"
+#include "IIR_InterfaceDeclaration.hh"
 
-class IIR_InterfaceDeclaration;
-
-class IIR_InterfaceList : public virtual IIR_List<IIR_InterfaceDeclaration> {
-
+class IIR_InterfaceList : public virtual IIR_DeclarationList<IIR_InterfaceDeclaration> {
 public:
   virtual ~IIR_InterfaceList() {}
-    
   virtual IIR_InterfaceList* convert_node(plugin_class_factory *);
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_Name *  );
-  virtual savant::set<IIR_Declaration> *find_declarations( IIR_TextLiteral * );
-
 };
 #endif

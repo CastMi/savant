@@ -19,6 +19,7 @@
  */
 
 #include "visitor_argument_type.hh"
+#include "IIR_DeclarationList.hh"
 
 class IIR;
 class IIR_Statement;
@@ -75,7 +76,6 @@ class IIR_ConfigurationItemList;
 class IIR_ConfigurationSpecification;
 class IIR_ConstantDeclaration;
 class IIR_ConstantInterfaceDeclaration;
-class IIR_DeclarationList;
 class IIR_DelayedAttribute;
 class IIR_DesignFile;
 class IIR_DesignFileList;
@@ -738,7 +738,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  virtual bool visit(IIR_DeclarationList *, visitor_argument_type * = nullptr ) = 0;
+  virtual bool visit(IIR_DeclarationList<> *, visitor_argument_type * = nullptr ) = 0;
 
 
   /** Visitor method for objects of type IIR_DelayedAttribute.

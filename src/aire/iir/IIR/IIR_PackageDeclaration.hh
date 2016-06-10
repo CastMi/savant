@@ -28,9 +28,10 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_LibraryUnit.hh"
+#include "IIR_DeclarationList.hh"
 
 class IIR_PackageBodyDeclaration;
-class IIR_DeclarationList;
+
 
 class IIR_PackageDeclaration : public virtual IIR_LibraryUnit{
 
@@ -38,8 +39,8 @@ public:
   virtual ~IIR_PackageDeclaration() {}
     
   // List accessor(s)
-  virtual IIR_DeclarationList           *get_package_declarative_part() = 0;
-  virtual void                          set_package_declarative_part(IIR_DeclarationList *) = 0;
+  virtual IIR_DeclarationList<>           *get_package_declarative_part() = 0;
+  virtual void                          set_package_declarative_part(IIR_DeclarationList<> *) = 0;
 
   virtual IIR_PackageBodyDeclaration *get_package_body() = 0;
   virtual void set_package_body( IIR_PackageBodyDeclaration * ) = 0;

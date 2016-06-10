@@ -32,7 +32,6 @@
 #include "IIR_SubprogramDeclaration.hh"
 
 class IIR_InterfaceList;
-class IIR_DeclarationList;
 class IIR_SequentialStatementList;
 class IIR_AttributeSpecificationList;
 
@@ -41,11 +40,11 @@ class IIRBase_SubprogramDeclaration : public virtual IIRBase_Declaration, public
 public:
   // List Accessor(s)
   IIR_InterfaceList                     *get_interface_declarations();
-  IIR_DeclarationList                   *get_subprogram_declarations();
+  IIR_DeclarationList<>                 *get_subprogram_declarations();
   IIR_SequentialStatementList           *get_subprogram_body();
   IIR_AttributeSpecificationList        *get_attributes();
   void                                  set_interface_declarations(IIR_InterfaceList *new_interface_declarations);
-  void                                  set_subprogram_declarations(IIR_DeclarationList *new_subprogram_declarations); 
+  void                                  set_subprogram_declarations(IIR_DeclarationList<> *new_subprogram_declarations); 
   void                                  set_subprogram_body(IIR_SequentialStatementList *new_subprogram_body);
   void                                  set_attributes(IIR_AttributeSpecificationList *new_attributes);
 
@@ -78,7 +77,7 @@ protected:
 private:
   // List Variable(s)
   IIR_InterfaceList                     *interface_declarations;
-  IIR_DeclarationList                   *subprogram_declarations;
+  IIR_DeclarationList<>                 *subprogram_declarations;
   IIR_SequentialStatementList           *subprogram_body;
   IIR_AttributeSpecificationList        *attributes;
 

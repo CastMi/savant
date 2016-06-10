@@ -97,7 +97,7 @@ public:
   IIR_ContributionAttribute                     *new_IIR_ContributionAttribute();
   IIR_ConstantDeclaration                       *new_IIR_ConstantDeclaration();
   IIR_ConstantInterfaceDeclaration              *new_IIR_ConstantInterfaceDeclaration();
-  IIR_DeclarationList                           *new_IIR_DeclarationList();
+  IIR_DeclarationList<>                         *new_IIR_DeclarationList<>();
   IIR_DelayedAttribute                          *new_IIR_DelayedAttribute();
   IIR_DesignatorByAll                           *new_IIR_DesignatorByAll();
   IIR_DesignatorByOthers                        *new_IIR_DesignatorByOthers();

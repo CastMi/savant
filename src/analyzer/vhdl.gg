@@ -541,11 +541,11 @@ secondary_unit[ IIR_LibraryDeclaration *library ] > [IIRScram_LibraryUnit *unit]
 | package_body[ library ] > [$unit]
 ;
 
-library_clause[IIR_DeclarationList *list]:
+library_clause[IIR_DeclarationList<> *list]:
   LIBRARY logical_library_name_list[$list] SEMI_COLON
 ;
 
-logical_library_name_list[IIR_DeclarationList *list]:
+logical_library_name_list[IIR_DeclarationList<> *list]:
   <<
     IIRScram_LibraryClause *lib = NULL;
     IIRScram_Identifier *name = NULL;
@@ -575,11 +575,11 @@ logical_name > [IIRScram_Identifier *s]:
   identifier > [$s]
 ;
 
-context_clauses[IIR_DeclarationList *list]:
+context_clauses[IIR_DeclarationList<> *list]:
   (context_item[$list])*
 ;
 
-context_item[IIR_DeclarationList *list]:
+context_item[IIR_DeclarationList<> *list]:
   library_clause[list]
 | use_clause[list]
 ;
@@ -630,11 +630,11 @@ entity_header[IIRScram_EntityDeclaration *entity]:
   { port_clause[ entity->get_port_clause() ]}
 ;
 
-entity_declarative_part[IIR_DeclarationList *decl_list]:
+entity_declarative_part[IIR_DeclarationList<> *decl_list]:
   ( entity_declarative_item[$decl_list] )*
 ;
 
-entity_declarative_item[IIR_DeclarationList *decl_list]:
+entity_declarative_item[IIR_DeclarationList<> *decl_list]:
   subprogram[ decl_list ]
 | type_declaration[ decl_list ]
 | subtype_declaration[ decl_list ]
@@ -802,7 +802,7 @@ architecture_body[ IIR_LibraryDeclaration *library ] > [IIRScram_ArchitectureDec
   >>        	  
 ;
 
-architecture_declarative_part[IIR_DeclarationList *decl_list]:
+architecture_declarative_part[IIR_DeclarationList<> *decl_list]:
   ( block_declarative_item[decl_list] )*
 ;
 
@@ -874,11 +874,11 @@ configuration_declaration[ IIR_LibraryDeclaration *library ] > [IIRScram_Configu
   >>
 ;
 
-configuration_declarative_part[IIR_DeclarationList *decl_list ]:
+configuration_declarative_part[IIR_DeclarationList<> *decl_list ]:
   (configuration_declarative_item[ $decl_list ])*
 ;
 
-configuration_declarative_item[ IIR_DeclarationList *decl_list ]:
+configuration_declarative_item[ IIR_DeclarationList<> *decl_list ]:
   use_clause[ decl_list ]
 | attribute_specification[ decl_list ]
 | group_declaration[ decl_list ]
@@ -1127,11 +1127,11 @@ block_header[IIRScram_BlockStatement *block]:
   }
 ;
 
-block_declarative_part[IIR_DeclarationList *dl]:
+block_declarative_part[IIR_DeclarationList<> *dl]:
   ( block_declarative_item[$dl] )*
 ;
 
-block_declarative_item[IIR_DeclarationList *decl_list]:
+block_declarative_item[IIR_DeclarationList<> *decl_list]:
   subprogram[ decl_list ]
 | type_declaration[ decl_list ]
 | subtype_declaration[ decl_list ]
@@ -1211,11 +1211,11 @@ process_statement[ IIRScram_Label *label ] > [IIRScram_ProcessStatement *retval]
   >>
 ;
 
-process_declarative_part[ IIR_DeclarationList *dl ]:
+process_declarative_part[ IIR_DeclarationList<> *dl ]:
   ( process_declarative_item[ $dl ] )*
 ;
 
-process_declarative_item[ IIR_DeclarationList *decl_list ]:
+process_declarative_item[ IIR_DeclarationList<> *decl_list ]:
   subprogram[ decl_list ]
 | type_declaration[ decl_list ]
 | subtype_declaration[ decl_list ]
@@ -2279,11 +2279,11 @@ package_declaration > [IIRScram_PackageDeclaration *package_decl]:
   >>
 ;
 
-package_declarative_part[IIR_DeclarationList *list ]:
+package_declarative_part[IIR_DeclarationList<> *list ]:
   ( package_declarative_item[list] )*
 ;
 
-package_declarative_item[IIR_DeclarationList *decl_list]:
+package_declarative_item[IIR_DeclarationList<> *decl_list]:
   subprogram_declaration[ decl_list ]
 | type_declaration[ decl_list ]
 | subtype_declaration[ decl_list ]
@@ -2355,11 +2355,11 @@ package_body[ IIR_LibraryDeclaration *library ] > [ IIRScram_PackageBodyDeclarat
   <<my_symbol_table->close_scope( $new_package_body );>>
 ;
 
-package_body_declarative_part[IIR_DeclarationList *decl_list]:
+package_body_declarative_part[IIR_DeclarationList<> *decl_list]:
   ( package_body_declarative_item[decl_list] )*
 ;
 
-package_body_declarative_item[IIR_DeclarationList *decl_list]:
+package_body_declarative_item[IIR_DeclarationList<> *decl_list]:
   subprogram[ decl_list ]
 | type_declaration[ decl_list ]
 | subtype_declaration[ decl_list ]
@@ -2378,7 +2378,7 @@ functions and procedures
 
 ********************************************************************** */
 
-subprogram[ IIR_DeclarationList *list]:
+subprogram[ IIR_DeclarationList<> *list]:
   <<
     IIRScram_SubprogramDeclaration   *new_subp_decl          = NULL;
     IIR_Boolean                 added_declaration       = false;
@@ -2416,7 +2416,7 @@ subprogram[ IIR_DeclarationList *list]:
   >>
 ;
 
-subprogram_declaration [IIR_DeclarationList *list]:
+subprogram_declaration [IIR_DeclarationList<> *list]:
   <<IIRScram_SubprogramDeclaration *decl = NULL;>>
   subprogram_header > [decl] SEMI_COLON
   <<
@@ -2522,11 +2522,11 @@ subprogram_body[IIRScram_SubprogramDeclaration *subp_decl]:
   }
 ;
 
-subprogram_declarative_part[ IIR_DeclarationList *dl ]:
+subprogram_declarative_part[ IIR_DeclarationList<> *dl ]:
   ( subprogram_declarative_item[ $dl ] )*
 ;
 
-subprogram_declarative_item[IIR_DeclarationList *decl_list ]:
+subprogram_declarative_item[IIR_DeclarationList<> *decl_list ]:
   subprogram[ decl_list ]
 | type_declaration[ decl_list ]
 | subtype_declaration[ decl_list ]
@@ -2581,7 +2581,7 @@ specifications
 
 ********************************************************************** */
 
-attribute_declarative_item[ IIR_DeclarationList *list ]:
+attribute_declarative_item[ IIR_DeclarationList<> *list ]:
   ATTRIBUTE 
   (
     attribute_declaration_tail[$list]
@@ -2592,7 +2592,7 @@ attribute_declarative_item[ IIR_DeclarationList *list ]:
   )
 ;
 
-attribute_declaration_tail[IIR_DeclarationList *list]:
+attribute_declaration_tail[IIR_DeclarationList<> *list]:
   <<
     IIRScram_AttributeDeclaration    *new_attribute_decl     = NULL;
     IIRScram_Identifier              *attribute_name         = NULL;
@@ -2610,7 +2610,7 @@ attribute_declaration_tail[IIR_DeclarationList *list]:
   >>
 ;
 
-attribute_specification_tail[IIR_DeclarationList *list]:
+attribute_specification_tail[IIR_DeclarationList<> *list]:
   <<
     IIRScram_AttributeSpecification  *new_attr               = NULL;
     IIRScram_Identifier              *attr_name              = NULL;
@@ -2630,7 +2630,7 @@ attribute_specification_tail[IIR_DeclarationList *list]:
   >>
 ;
 
-attribute_specification[IIR_DeclarationList *list]:
+attribute_specification[IIR_DeclarationList<> *list]:
   ATTRIBUTE attribute_specification_tail[$list]
 ;
 
@@ -2866,7 +2866,7 @@ dynamic_cast<IIRScram_Identifier *>(IIRScram_Identifier::get( "literal", 7, my_f
   )
 ;
 
-configuration_specification[IIR_DeclarationList *list]:
+configuration_specification[IIR_DeclarationList<> *list]:
   <<
     IIR                                 *component_name         = NULL;
     IIRScram_ConfigurationSpecification      *configuration_spec     = NULL;
@@ -3018,7 +3018,7 @@ port_map_aspect[IIR_AssociationList *alist]:
   L_PAREN association_list_in[$alist] R_PAREN
 ;
 
-disconnection_specification[IIR_DeclarationList *list]:
+disconnection_specification[IIR_DeclarationList<> *list]:
   <<
     IIR_DesignatorList  *signal_list            = NULL;
     IIRScram_TypeDefinition  *signal_type            = NULL;
@@ -3093,7 +3093,7 @@ scoping
 
 ********************************************************************** */
 
-use_clause[ IIR_DeclarationList *list ]:
+use_clause[ IIR_DeclarationList<> *list ]:
   <<
     IIRScram_Name *name = NULL;
     IIRScram_UseClause *new_clause = NULL;
@@ -3555,7 +3555,7 @@ declarations
 
 ********************************************************************** */
 
-type_declaration[IIR_DeclarationList *list]:
+type_declaration[IIR_DeclarationList<> *list]:
   <<
     IIRScram_TypeDeclaration         *old_incomplete_type    = NULL;
     IIRScram_Identifier              *type_name              = NULL;
@@ -3612,7 +3612,7 @@ type_definition[ IIRScram_TypeDeclaration *type_decl ] > [IIRScram_TypeDefinitio
     protected_type_declaration[type_decl] > [$s]
 ;
 
-subtype_declaration[ IIR_DeclarationList *list ]:
+subtype_declaration[ IIR_DeclarationList<> *list ]:
   <<
     IIRScram_TypeDefinition          *type_definition        = NULL;
     IIRScram_Identifier              *subtype_name           = NULL;
@@ -3862,7 +3862,7 @@ index_constraint[ IIRScram_TypeDefinition *type_definition ] > [ IIRScram_TypeDe
   >>
 ;
 
-constant_declaration[IIR_DeclarationList *list]:
+constant_declaration[IIR_DeclarationList<> *list]:
 <<
   IIRScram_ConstantDeclaration       *new_decl       = NULL;
   IIRScram_IdentifierList            *id_list        = NULL;
@@ -3908,7 +3908,7 @@ initialization > [IIRScram *s]:
   COLON_EQUAL expression > [$s]
 ;
 
-signal_declaration[IIR_DeclarationList *list]:
+signal_declaration[IIR_DeclarationList<> *list]:
   <<
     IIRScram_SignalDeclaration       *new_signal     = NULL;
     IIRScram_TypeDefinition          *subtype        = NULL;
@@ -3953,17 +3953,17 @@ signal_kind > [IIR_SignalKind kind]:
 | BUS <<$kind = IIR_BUS_KIND;>>
 ;
 
-shared_variable_declaration[IIR_DeclarationList *list]:
+shared_variable_declaration[IIR_DeclarationList<> *list]:
   SHARED VARIABLE variable_declaration_body[$list, true]
 ;
 
-variable_declaration[ IIR_DeclarationList *list ]:
+variable_declaration[ IIR_DeclarationList<> *list ]:
   <<IIR_Boolean shared = false;>>
   { SHARED <<shared = true;>> } VARIABLE 
   variable_declaration_body[$list, shared]	
 ;
 
-variable_declaration_body[IIR_DeclarationList *list, bool shared]:
+variable_declaration_body[IIR_DeclarationList<> *list, bool shared]:
   <<
     IIRScram_ObjectDeclaration       *new_decl       = NULL;
     IIRScram_IdentifierList          *id_list        = NULL;
@@ -4007,7 +4007,7 @@ variable_declaration_body[IIR_DeclarationList *list, bool shared]:
   >>
 ;
 
-file_declaration[IIR_DeclarationList *list]:
+file_declaration[IIR_DeclarationList<> *list]:
   <<
     IIRScram_FileDeclaration         *new_file               = NULL;
     IIRScram_IdentifierList          *id_list                = NULL;
@@ -4262,7 +4262,7 @@ association_element > [ IIRScram_AssociationElement *new_association ]:
   >>
 ;
 
-alias_declaration[IIR_DeclarationList *list]:
+alias_declaration[IIR_DeclarationList<> *list]:
   <<
     IIRScram_AliasDeclaration        *new_decl                       = NULL;
     IIRScram_TextLiteral             *designator                     = NULL;
@@ -4317,7 +4317,7 @@ alias_indication > [IIRScram_TypeDefinition *retval]:
 | subtype_indication > [$retval]
 ;
 
-component_declaration[IIR_DeclarationList *decl_list]:
+component_declaration[IIR_DeclarationList<> *decl_list]:
   <<
     IIRScram_ComponentDeclaration    *new_component          = NULL;
     IIRScram_Identifier              *component_name       = NULL;
@@ -4408,7 +4408,7 @@ port_list[IIR_PortList *list]:
   <<my_symbol_table->add_declaration( list );>>
 ;
 
-group_declaration[ IIR_DeclarationList *list ]:
+group_declaration[ IIR_DeclarationList<> *list ]:
   <<
     IIRScram_Identifier              *group_name             = NULL;
     IIRScram_Name                    *group_template_name    = NULL;
@@ -4432,7 +4432,7 @@ group_declaration[ IIR_DeclarationList *list ]:
   >>
 ;
 
-group_template_declaration[ IIR_DeclarationList *list ]:
+group_template_declaration[ IIR_DeclarationList<> *list ]:
   <<
     IIRScram_Identifier                      *group_name                     = NULL;
     IIRScram_GroupTemplateDeclaration        *new_group_template_decl        = new IIRScram_GroupTemplateDeclaration();
@@ -5864,7 +5864,7 @@ Grammar Rules for VHDL-AMS
 
 ********************************************************************** */
 
-nature_declaration[IIR_DeclarationList *decl_list]:
+nature_declaration[IIR_DeclarationList<> *decl_list]:
   <<
     IIRScram_Identifier              *nature_id      = NULL;
     IIRScram_NatureDeclaration       *nature_decl    = NULL;
@@ -5894,7 +5894,7 @@ nature_definition[IIRScram_NatureDeclaration *nature_decl] > [IIRScram_NatureDef
 | record_nature_definition
 ;
 
-terminal_declaration[IIR_DeclarationList *decl_list]:
+terminal_declaration[IIR_DeclarationList<> *decl_list]:
   <<
     IIRScram_IdentifierList          *id_list        = NULL;
     IIRScram_TerminalDeclaration     *new_decl       = NULL;
@@ -5924,11 +5924,11 @@ terminal_declaration[IIR_DeclarationList *decl_list]:
   >>
 ;
 
-quantity_declaration[IIR_DeclarationList *decl_list]:
+quantity_declaration[IIR_DeclarationList<> *decl_list]:
   quantity:QUANTITY quantity_declaration_tail[$decl_list]
 ;
 
-quantity_declaration_tail[IIR_DeclarationList *decl_list]:
+quantity_declaration_tail[IIR_DeclarationList<> *decl_list]:
   <<
     IIRScram_IdentifierList  *id_list        = new IIRScram_IdentifierList();
     IIRScram_TypeDefinition  *type_def       = NULL;
@@ -5947,7 +5947,7 @@ quantity_declaration_tail[IIR_DeclarationList *decl_list]:
 | branch_quantity_declaration[$decl_list]
 ;
 
-free_quantity_declaration [IIR_DeclarationList *decl_list]:
+free_quantity_declaration [IIR_DeclarationList<> *decl_list]:
   <<
     IIRScram_FreeQuantityDeclaration         *new_decl = NULL;
     IIRScram_IdentifierList                  *id_list = new IIRScram_IdentifierList();
@@ -5974,7 +5974,7 @@ free_quantity_declaration [IIR_DeclarationList *decl_list]:
   >>
 ;
 
-branch_quantity_declaration[IIR_DeclarationList *decl_list]:
+branch_quantity_declaration[IIR_DeclarationList<> *decl_list]:
   <<
     IIRScram                                         *across                 = NULL;
     IIRScram                                         *through                = NULL;
@@ -6087,7 +6087,7 @@ branch_quantity_declaration[IIR_DeclarationList *decl_list]:
   >>
 ;
 
-source_quantity_declaration [IIR_DeclarationList *list]:   
+source_quantity_declaration [IIR_DeclarationList<> *list]:   
   <<
     IIRScram_SourceQuantityDeclaration               *new_decl       = NULL;
     IIRScram_IdentifierList                          *id_list        = new IIRScram_IdentifierList();
@@ -6215,7 +6215,7 @@ source_aspect > [ IIRScram *magnitude_expr, IIRScram *phase_expr , IIRScram *noi
 | SPECTRUM simple_expression > [$magnitude_expr] COMMA simple_expression > [$phase_expr]
 ;
 
-step_limit_specification[IIR_DeclarationList *decl_list]:
+step_limit_specification[IIR_DeclarationList<> *decl_list]:
   <<
     IIRScram_Name            *type_name      = NULL;
     IIRScram_TypeDefinition  *type_def       = NULL;
@@ -6335,7 +6335,7 @@ nature_element_declaration:
   identifier_list[id_list] colon:COLON subnature_indication > [elem_subtype] SEMI_COLON
 ;
 
-subnature_declaration[IIR_DeclarationList *list]:
+subnature_declaration[IIR_DeclarationList<> *list]:
   <<
     IIRScram_TypeDefinition  *type_definition        = NULL;
     IIRScram_Identifier      *subnature_name         = NULL;
@@ -6544,7 +6544,7 @@ simultaneous_procedural_statement[IIRScram_Label *label] > [IIRScram_Simultaneou
   SEMI_COLON
 ;
 
-procedural_declarative_item[IIR_DeclarationList *decl_list]:
+procedural_declarative_item[IIR_DeclarationList<> *decl_list]:
   subprogram[decl_list]
 | type_declaration[decl_list]
 | subtype_declaration[decl_list]
@@ -6624,7 +6624,7 @@ protected_type_declaration[IIRScram_TypeDeclaration *type_decl] > [IIRScram_Type
   { simple_name > [end_name] }
 ;
 
-protected_type_declarative_item[IIR_DeclarationList *decl_list]:
+protected_type_declarative_item[IIR_DeclarationList<> *decl_list]:
   subprogram_declaration[decl_list]
 | attribute_specification[decl_list]
 | use_clause[decl_list]
@@ -6641,7 +6641,7 @@ protected_type_body[IIRScram_TypeDeclaration *type_decl] > [IIRScram_TypeDefinit
   { simple_name > [end_name] }
 ;
 
-protected_type_body_declarative_item[IIR_DeclarationList *decl_list]:
+protected_type_body_declarative_item[IIR_DeclarationList<> *decl_list]:
   subprogram[decl_list]
 | type_declaration[decl_list]
 | subtype_declaration[decl_list]

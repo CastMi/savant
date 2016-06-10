@@ -31,7 +31,7 @@
 #include "IIR_LibraryUnit.hh"
 
 class IIR_ArchitectureStatementList;
-class IIR_DeclarationList;
+
 class IIR_DesignUnitList;
 class IIR_GenericList;
 class IIR_PortList;
@@ -43,13 +43,13 @@ public:
   // List accessor(s)
   virtual IIR_GenericList               *get_generic_clause() = 0;
   virtual IIR_PortList                  *get_port_clause() = 0;
-  virtual IIR_DeclarationList           *get_entity_declarative_part() = 0;
+  virtual IIR_DeclarationList<>           *get_entity_declarative_part() = 0;
   virtual IIR_ArchitectureStatementList *get_entity_statement_part() = 0;
   virtual IIR_DesignUnitList            *get_architectures() = 0;
 
   virtual void                          set_generic_clause(IIR_GenericList *new_generic_clause) = 0;
   virtual void                          set_port_clause(IIR_PortList *new_port_clause) = 0;
-  virtual void                          set_entity_declarative_part(IIR_DeclarationList *new_entity_declarative_part) = 0;
+  virtual void                          set_entity_declarative_part(IIR_DeclarationList<> *new_entity_declarative_part) = 0;
   virtual void                          set_entity_statement_part(IIR_ArchitectureStatementList *new_entity_statement_part) = 0;
   virtual void                          set_architectures(IIR_DesignUnitList *new_architectures) = 0;
 };

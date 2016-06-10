@@ -26,6 +26,7 @@
 // --------------------------------------------------------------------------
 
 #include "IRKind.hh"
+#include "IIR_DeclarationList.hh"
 
 class IIR_AbsoluteOperator;
 class IIR_AccessSubtypeDefinition;
@@ -92,7 +93,6 @@ class IIR_ContributionAttribute;
 class IIR_ConstantDeclaration;
 class IIR_ConstantInterfaceDeclaration;
 class IIR_Declaration;
-class IIR_DeclarationList;
 class IIR_DelayedAttribute;
 class IIR_DesignatorByAll;
 class IIR_DesignatorByOthers;
@@ -355,7 +355,7 @@ public:
   virtual IIR_ContributionAttribute                     *new_IIR_ContributionAttribute() = 0;
   virtual IIR_ConstantDeclaration                       *new_IIR_ConstantDeclaration() = 0;
   virtual IIR_ConstantInterfaceDeclaration              *new_IIR_ConstantInterfaceDeclaration() = 0;
-  virtual IIR_DeclarationList                           *new_IIR_DeclarationList() = 0;
+  virtual IIR_DeclarationList<>                         *new_IIR_DeclarationList() = 0;
   virtual IIR_DelayedAttribute                          *new_IIR_DelayedAttribute() = 0;
   virtual IIR_DesignatorByAll                           *new_IIR_DesignatorByAll() = 0;
   virtual IIR_DesignatorByOthers                        *new_IIR_DesignatorByOthers() = 0;

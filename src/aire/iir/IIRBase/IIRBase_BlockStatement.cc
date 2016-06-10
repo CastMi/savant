@@ -101,7 +101,7 @@ IIRBase_BlockStatement::get_port_map_aspect() {
   return port_map_aspect;
 }
 
-IIR_DeclarationList *
+IIR_DeclarationList<> *
 IIRBase_BlockStatement::get_block_declarative_part() {
   ASSERT(block_declarative_part != NULL);
   return block_declarative_part;
@@ -142,7 +142,7 @@ IIRBase_BlockStatement::set_port_map_aspect(IIR_AssociationList *new_port_map_as
 }
 
 void
-IIRBase_BlockStatement::set_block_declarative_part(IIR_DeclarationList *new_block_declarative_part) {
+IIRBase_BlockStatement::set_block_declarative_part(IIR_DeclarationList<> *new_block_declarative_part) {
   ASSERT(new_block_declarative_part != NULL);
   delete block_declarative_part;
   block_declarative_part = new_block_declarative_part;
@@ -251,7 +251,7 @@ IIRBase_BlockStatement::publish_vhdl(ostream &vhdl_out) {
     }
   }
 
-  dynamic_cast<IIRBase_DeclarationList *>
+  dynamic_cast<IIRBase_DeclarationList<> *>
     (get_block_declarative_part())->publish_vhdl_decl(vhdl_out);
 
   vhdl_out << " begin\n";

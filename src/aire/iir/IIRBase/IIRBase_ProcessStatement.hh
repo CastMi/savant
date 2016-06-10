@@ -32,15 +32,14 @@
 #include "IIR_ProcessStatement.hh"
 
 class IIR_SequentialStatementList;
-class IIR_DeclarationList;
 
 class IIRBase_ProcessStatement : public virtual IIRBase_ConcurrentStatement,
 				 public virtual IIR_ProcessStatement{
 public:
   // List Accessor(s)
-  IIR_DeclarationList         *get_process_declarative_part();
+  IIR_DeclarationList<>       *get_process_declarative_part();
   IIR_SequentialStatementList *get_process_statement_part();
-  void                        set_process_declarative_part(IIR_DeclarationList *new_process_declarative_part);
+  void                        set_process_declarative_part(IIR_DeclarationList<> *new_process_declarative_part);
   void                        set_process_statement_part(IIR_SequentialStatementList *new_process_statement_part);
 
   IIR_Kind get_kind() const {return IIR_PROCESS_STATEMENT;}
@@ -60,7 +59,7 @@ protected:
     
 private:
   // List Variable(s)
-  IIR_DeclarationList *process_declarative_part;
+  IIR_DeclarationList<> *process_declarative_part;
   IIR_SequentialStatementList *process_statement_part;
   
   IIR_Boolean postponed;

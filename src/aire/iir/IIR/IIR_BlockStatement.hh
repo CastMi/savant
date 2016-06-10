@@ -29,10 +29,10 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_ConcurrentStatement.hh"
+#include "IIR_DeclarationList.hh"
 
 class IIR_ArchitectureStatementList;
 class IIR_AssociationList;
-class IIR_DeclarationList;
 class IIR_GenericList;
 class IIR_PortList;
 class IIR_SignalDeclaration;
@@ -47,13 +47,13 @@ public:
   virtual IIR_AssociationList                   *get_generic_map_aspect() = 0;
   virtual IIR_PortList                          *get_port_clause() = 0;
   virtual IIR_AssociationList                   *get_port_map_aspect() = 0;
-  virtual IIR_DeclarationList                   *get_block_declarative_part() = 0;
+  virtual IIR_DeclarationList<>                 *get_block_declarative_part() = 0;
   virtual IIR_ArchitectureStatementList         *get_block_statement_part() = 0;
   virtual void                                  set_generic_clause(IIR_GenericList *) = 0;
   virtual void                                  set_generic_map_aspect(IIR_AssociationList *) = 0;
   virtual void                                  set_port_clause(IIR_PortList *) = 0;
   virtual void                                  set_port_map_aspect(IIR_AssociationList *) = 0;
-  virtual void                                  set_block_declarative_part(IIR_DeclarationList *) = 0;
+  virtual void                                  set_block_declarative_part(IIR_DeclarationList<> *) = 0;
   virtual void                                  set_block_statement_part(IIR_ArchitectureStatementList *) = 0;
 
   virtual void set_guard_expression( IIR_Statement * ) = 0;

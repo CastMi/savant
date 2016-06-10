@@ -33,7 +33,7 @@
 
 class IIR_EnumerationLiteral;
 
-class IIRBase_EnumerationLiteralList : public virtual IIRBase_List<IIR_EnumerationLiteral>, public virtual IIR_EnumerationLiteralList {
+class IIRBase_EnumerationLiteralList : public virtual IIRBase_DeclarationList<IIR_EnumerationLiteral>, public virtual IIR_EnumerationLiteralList {
 
 public:
   IIR_Kind get_kind() const {return IIR_ENUMERATION_LITERAL_LIST;}

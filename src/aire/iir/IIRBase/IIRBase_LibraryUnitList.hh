@@ -33,7 +33,7 @@
 
 class IIR_LibraryUnit;
 
-class IIRBase_LibraryUnitList : public virtual IIRBase_List<IIR_LibraryUnit>, public virtual IIR_LibraryUnitList {
+class IIRBase_LibraryUnitList : public virtual IIRBase_DeclarationList<IIR_LibraryUnit>, public virtual IIR_LibraryUnitList {
 
 public:
   IIR_Kind get_kind() const { return IIR_LIBRARY_UNIT_LIST; }

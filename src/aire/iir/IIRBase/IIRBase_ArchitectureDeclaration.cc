@@ -60,7 +60,7 @@ IIRBase_ArchitectureDeclaration::get_entity() {
 
 
 // List Accessor(s)
-IIR_DeclarationList *
+IIR_DeclarationList<> *
 IIRBase_ArchitectureDeclaration::get_architecture_declarative_part() {
   ASSERT(architecture_declarative_part != NULL);
   return architecture_declarative_part;
@@ -74,7 +74,7 @@ IIRBase_ArchitectureDeclaration::get_architecture_statement_part() {
 
 
 void
-IIRBase_ArchitectureDeclaration::set_architecture_declarative_part(IIR_DeclarationList *new_architecture_declarative_part) {
+IIRBase_ArchitectureDeclaration::set_architecture_declarative_part(IIR_DeclarationList<> *new_architecture_declarative_part) {
   ASSERT(new_architecture_declarative_part != NULL);
 
   if (architecture_declarative_part != NULL)
@@ -96,7 +96,7 @@ IIRBase_ArchitectureDeclaration::convert_tree(plugin_class_factory *factory) {
   IIRBase_ArchitectureDeclaration *new_node = dynamic_cast<IIRBase_ArchitectureDeclaration *>(IIRBase_LibraryUnit::convert_tree(factory));
 
   // Process the variables
-  new_node->architecture_declarative_part = dynamic_cast<IIR_DeclarationList *>(architecture_declarative_part->convert_node(factory));
+  new_node->architecture_declarative_part = dynamic_cast<IIR_DeclarationList<> *>(architecture_declarative_part->convert_node(factory));
   new_node->architecture_statement_part = dynamic_cast<IIR_ArchitectureStatementList *>(architecture_statement_part->convert_node(factory));
   new_node->entity = dynamic_cast<IIR_EntityDeclaration *>(entity->convert_tree(factory));
 
@@ -141,7 +141,7 @@ IIRBase_ArchitectureDeclaration::publish_vhdl_decl(ostream &vhdl_out) {
   vhdl_out  << " of ";
   get_entity()->publish_vhdl(vhdl_out);
   vhdl_out << " is\n";
-  dynamic_cast<IIRBase_DeclarationList *>(get_architecture_declarative_part())->publish_vhdl_decl(vhdl_out);
+  dynamic_cast<IIRBase_DeclarationList<> *>(get_architecture_declarative_part())->publish_vhdl_decl(vhdl_out);
   vhdl_out << "\nbegin\n";
   get_architecture_statement_part()->publish_vhdl(vhdl_out);
   vhdl_out << "end architecture ";
