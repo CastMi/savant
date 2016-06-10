@@ -31,13 +31,16 @@
 //---------------------------------------------------------------------------
 
 #include "IIRBase_DeclarationList.hh"
+#include "IIRScram_List.hh"
 
 class IIRScram_AttributeSpecification;
 class IIRScram_Name;
 class IIRScram_StatementList;
 class IIRScram_TextLiteral;
+class IIR_ArchitectureStatementList;
+class IIR_SequentialStatementList;
 
-class IIRScram_DeclarationList : public virtual IIRScram_List<IIR_Declaration>, public virtual IIRBase_DeclarationList{
+class IIRScram_DeclarationList : public virtual IIRScram_List<IIR_Declaration>, public virtual IIRBase_DeclarationList<IIR_Declaration> {
 
 public:
   IIRScram_DeclarationList() {}
@@ -46,7 +49,11 @@ public:
   /** This method looks through the list, finds the configuration
       specifications, and does the appropriate type checking on them.  The
       statement list passed in is so that labels can be found if needed. */
-  void _type_check_configuration_specifications( IIRScram_List<IIR_Statement> *statement_list );
+  // FIXME: These methdods can be merged if a IIR_StatementList class is created.
+  // IIR_ArchitectureStatementList and IIR_SequentialStatementList should inherit
+  // from IIR_StatementList of course.
+  void _type_check_configuration_specifications( IIR_ArchitectureStatementList *statement_list );
+  void _type_check_configuration_specifications( IIR_SequentialStatementList *statement_list );
 
   /** This method looks through the list, finds the disconnection
       specifications, and does the appropriate type checking on them. */
@@ -55,7 +62,11 @@ public:
   /** This method looks through the list, finds the attribute
       specifications, and does the appropriate type checking on them.  The
       statement list passed in is so that labels can be found if needed. */
-  void _type_check_attribute_specifications( IIRScram_List<IIR_Statement> *statement_list );
+  // FIXME: These methdods can be merged if a IIR_StatementList class is created.
+  // IIR_ArchitectureStatementList and IIR_SequentialStatementList should inherit
+  // from IIR_StatementList of course.
+  void _type_check_attribute_specifications( IIR_ArchitectureStatementList *statement_list );
+  void _type_check_attribute_specifications( IIR_SequentialStatementList *statement_list );
 
   /** This method assumes this list is a list of context items (use clauses
       and library clauses) and makes the appropriate stuff visible in the

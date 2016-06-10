@@ -64,6 +64,8 @@ public:
   virtual IIR_Boolean _is_iir_attribute(){ return false; }
   virtual savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
 
+  IIRScram_LibraryDeclaration *_get_work_library();
+  
   virtual savant::set<IIRScram_Declaration> *_symbol_lookup();
   symbol_table *_get_symbol_table( );
   virtual IIRScram_TypeDefinition *_get_subtype();

@@ -32,7 +32,7 @@
 
 class IIRScram_WaitStatement;
 
-class IIRScram_CaseStatementAlternativeList : public virtual IIRScram_List, public virtual IIRBase_CaseStatementAlternativeList {
+class IIRScram_CaseStatementAlternativeList : public virtual IIRScram_List<IIR_CaseStatementAlternative>, public virtual IIRBase_CaseStatementAlternativeList {
 };
 
 #endif

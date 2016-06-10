@@ -30,7 +30,7 @@
 #include "savant.hh"
 #include "IIRScram_CaseStatementAlternativeByOthers.hh"
 
-IIRScram*
+IIRScram_CaseStatementAlternativeByOthers*
 IIRScram_CaseStatementAlternativeByOthers::_clone() {
   IIRScram_CaseStatementAlternativeByOthers *clone;
   clone = new IIRScram_CaseStatementAlternativeByOthers;

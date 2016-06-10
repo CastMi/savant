@@ -31,12 +31,9 @@
 #include "IIRScram_CaseStatementAlternative.hh"
 #include "IIRBase_CaseStatementAlternativeByOthers.hh"
 
-class IIRScram_List;
-
 class IIRScram_CaseStatementAlternativeByOthers : public virtual IIRScram_CaseStatementAlternative, public virtual IIRBase_CaseStatementAlternativeByOthers {
-
 public:
-  IIRScram *_clone();
+  IIRScram_CaseStatementAlternativeByOthers *_clone();
 };
 
 #endif

@@ -45,6 +45,7 @@ public:
    IIR *get_nth_element( int );
 
   void publish_vhdl(ostream &);
+  IIR_ElementDeclarationList* convert_node(plugin_class_factory *factory) = 0;
 protected:
   IIRBase_ElementDeclarationList();
   virtual ~IIRBase_ElementDeclarationList() = 0;

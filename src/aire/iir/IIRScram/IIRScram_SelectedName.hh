@@ -50,13 +50,13 @@ public:
 
   savant::set<IIRScram_Declaration> *_symbol_lookup();
   
-  IIRScram *_get_suffix();
+  IIRScram_Statement *_get_suffix();
 
   const string convert_to_library_name();
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor = 0);
-  IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
-  IIRScram *_decl_to_decl( IIRScram_Declaration * );
+  IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition * );
+  IIRScram_Statement *_decl_to_decl( IIRScram_Declaration * );
 
   IIR_Boolean is_object();
   IIR_Boolean is_configuration_declaration();
@@ -78,7 +78,7 @@ public:
   IIRScram_GenericList *_get_generic_list();
   IIRScram_PortList *_get_port_list();
 
-  IIRScram *_clone();
+  IIRScram_SelectedName *_clone();
 
   IIRScram_TypeDefinition *_get_rval_pointed_at();
 };

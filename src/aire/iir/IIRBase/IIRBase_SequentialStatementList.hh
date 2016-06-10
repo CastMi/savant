@@ -41,12 +41,11 @@ public:
   IIR_Boolean is_above_attribute_found();
 
   void publish_vhdl(ostream &);
+  IIRBase_SequentialStatementList* convert_node(plugin_class_factory *);
 protected:
   
   IIRBase_SequentialStatementList();
   virtual ~IIRBase_SequentialStatementList() = 0;
-    
-private:
 
 };
 #endif

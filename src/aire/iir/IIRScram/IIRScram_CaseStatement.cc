@@ -37,10 +37,10 @@
 #include "error_func.hh"
 #include "set.hh"
 #include <sstream>
+
 using std::ostringstream;
 
-
-IIRScram_CaseStatement::IIRScram_CaseStatement(){
+IIRScram_CaseStatement::IIRScram_CaseStatement() {
   set_case_statement_alternatives(new IIRScram_CaseStatementAlternativeList());
 }
 
@@ -56,7 +56,7 @@ IIRScram_CaseStatement::_type_check(){
 }
 
 IIRScram *
-IIRScram_CaseStatement::_handle_reconciliation( savant::set<IIRScram_TypeDefinition> *rval_set, 
+IIRScram_CaseStatement::_handle_reconciliation( savant::set<IIRScram_TypeDefinition> *rval_set,
                                                 IIRScram *node_in_consideration, char *error_part ){
   IIRScram *retval = NULL;
 
@@ -81,11 +81,11 @@ IIRScram_CaseStatement::_handle_reconciliation( savant::set<IIRScram_TypeDefinit
   return retval;
 }
 
-IIR_Boolean 
-IIRScram_CaseStatement::_type_check_return_statements(savant::set<IIRScram_TypeDefinition> *context_set, 
+IIR_Boolean
+IIRScram_CaseStatement::_type_check_return_statements(savant::set<IIRScram_TypeDefinition> *context_set,
                                                       IIRScram_SubprogramDeclaration *subprogram_decl ){
   IIR_Boolean retval = false;
-  
+
   IIRScram_CaseStatementAlternative *alternative;
   alternative = dynamic_cast<IIRScram_CaseStatementAlternative *>(get_case_statement_alternatives()->first());
   while( alternative != NULL ){
@@ -106,7 +106,7 @@ IIRScram_CaseStatement::_set_case_statement_expression( IIRScram *new_expression
   set_expression( new_expression );
 }
 
-IIRScram *
+IIRScram_CaseStatement *
 IIRScram_CaseStatement::_clone(){
   IIRScram *expr = NULL;
   IIRScram_CaseStatementAlternative *alt = NULL;

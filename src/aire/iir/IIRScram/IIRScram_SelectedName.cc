@@ -108,10 +108,10 @@ IIRScram_SelectedName::_symbol_lookup(){
   return retval;
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_SelectedName::_get_suffix(){
   ASSERT( get_suffix() != NULL );
-  return dynamic_cast<IIRScram *>(get_suffix());
+  return dynamic_cast<IIRScram_Statement *>(get_suffix());
 }
 
 const string

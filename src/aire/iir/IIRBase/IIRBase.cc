@@ -126,7 +126,7 @@ IIRBase::copy_location(const IIR *source, IIR *dest) {
 }
 
 void 
-IIRBase::copy_location(const IIR *source, IIR_Statement *dest) {}
+IIRBase::copy_location(const IIR *, IIR_Statement *) {}
 
 void
 IIRBase::copy_location(IIR_Statement *dest) {

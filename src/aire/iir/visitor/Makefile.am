@@ -31,6 +31,10 @@ noinst_LIBRARIES = libiirVisitor.a
 
 libiirVisitor_a_CPPFLAGS = \
 	-I$(top_srcdir)/src/aire/iir/IIR \
+	-I$(top_srcdir)/src/aire/iir/IIRBase \
+	-I$(top_srcdir)/src/aire/iir/IIRScram \
+	-I$(top_srcdir)/src/util \
+	-I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/aire
 
 libiirVisitor_a_SOURCES = \

@@ -16,7 +16,6 @@
 // intellectual property laws, and all other applicable laws of the
 // U.S., and the terms of this license.
 
-
 // You may modify, distribute, and use the software contained in this package
 // under the terms of the "GNU LIBRARY GENERAL PUBLIC LICENSE" version 2,
 // June 1991. A copy of this license agreement can be found in the file
@@ -33,7 +32,6 @@
 class IIR_AssociationList;
 
 class IIRBase_ComponentInstantiationStatement : public virtual IIRBase_ConcurrentStatement, public virtual IIR_ComponentInstantiationStatement{
-
 public:
   // List Accessor(s)
   IIR_AssociationList  *get_generic_map_aspect();
@@ -44,10 +42,10 @@ public:
   IIR_Kind get_kind() const {return IIR_COMPONENT_INSTANTIATION_STATEMENT;}
   const IIR_Char *get_kind_text() const {return "IIR_ComponentInstantiationStatement";}
 
-  void set_instantiated_unit( IIR *instantiated_unit );
-  IIR *get_instantiated_unit();
+  void set_instantiated_unit( IIR_Statement * );
+  IIR_Statement *get_instantiated_unit() const;
 
-  IIR_Statement *convert_tree(plugin_class_factory *factory);
+  IIRBase_ComponentInstantiationStatement *convert_tree(plugin_class_factory *);
 
   /** This returns the configuration for this component.  It can be an
       IIR_ConfigurationSpecification, or an IIR_ComponentConfiguration. */
@@ -58,13 +56,13 @@ public:
 protected:
   IIRBase_ComponentInstantiationStatement();
   virtual ~IIRBase_ComponentInstantiationStatement() = 0;
-    
+
 private:
   // List Variable(s)
   IIR_AssociationList  *generic_map_aspect;
   IIR_AssociationList  *port_map_aspect;
 
-  IIR *my_instantiated_unit;
+  IIR_Statement *my_instantiated_unit;
   IIR *my_configuration;
 };
 #endif

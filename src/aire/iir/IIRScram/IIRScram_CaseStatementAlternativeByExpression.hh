@@ -31,9 +31,7 @@
 #include "IIRScram_CaseStatementAlternative.hh"
 #include "IIRBase_CaseStatementAlternativeByExpression.hh"
 
-
 class IIRScram_Choice;
-class IIRScram_List;
 class IIRScram_TypeDefinition;
 
 class IIRScram_CaseStatementAlternativeByExpression : public virtual IIRScram_CaseStatementAlternative, public virtual IIRBase_CaseStatementAlternativeByExpression {
@@ -44,7 +42,7 @@ public:
   IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
 
-  IIRScram *_clone();
+  IIRScram_CaseStatementAlternativeByExpression *_clone();
   IIRScram_Choice* _get_choice();
 };
 

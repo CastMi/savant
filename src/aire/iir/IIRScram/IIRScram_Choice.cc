@@ -87,12 +87,12 @@ IIRScram_Choice::_type_check( savant::set<IIRScram_TypeDefinition> *context_set 
 }
 
 
-IIRScram*
+IIRScram_Choice*
 IIRScram_Choice::_clone() {
   return this;
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_Choice::_get_value() {
-  return dynamic_cast<IIRScram *>(IIRBase_Choice::get_value());
+  return dynamic_cast<IIRScram_Statement *>(get_value());
 }

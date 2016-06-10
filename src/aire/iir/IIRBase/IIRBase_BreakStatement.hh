@@ -45,8 +45,8 @@ public:
   /** For the execution of a Break Statement, the condition, if present, is
       first evaluated. A break is indicated if the value of the condition
       is true or if there is no condition. [ LRM $ 8.14 - 565 ]. */
-  void set_condition(IIR* condition);
-  IIR* get_condition();
+  void set_condition(IIR_Statement* condition);
+  IIR_Statement* get_condition() const;
 
   IIR_Boolean is_above_attribute_found();  
 
@@ -65,7 +65,7 @@ private:
   // List Variable(s)
   IIR_BreakList *break_list;
 
-  IIR* condition;
+  IIR_Statement* condition;
 
 };
 #endif

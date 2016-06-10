@@ -43,7 +43,7 @@ public:
 
   // Help Functions
   IIRScram_BreakList    *_get_break_list();
-  IIRScram              *_get_condition();
+  IIRScram_Statement    *_get_condition();
 };
 
 #endif

@@ -39,6 +39,7 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_ChoiceList";};
 
   void publish_vhdl(ostream &);
+  IIRBase_ChoiceList* convert_node(plugin_class_factory *);
 protected:
   IIRBase_ChoiceList();
   virtual ~IIRBase_ChoiceList() = 0;

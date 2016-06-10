@@ -31,3 +31,7 @@
 IIRBase_AttributeSpecificationList::IIRBase_AttributeSpecificationList(){}
 IIRBase_AttributeSpecificationList::~IIRBase_AttributeSpecificationList(){}
 
+IIR_AttributeSpecificationList*
+IIRBase_AttributeSpecificationList::convert_node(plugin_class_factory *) {
+   return nullptr;
+}

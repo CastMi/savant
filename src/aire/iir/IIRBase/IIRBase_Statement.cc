@@ -113,7 +113,7 @@ IIRBase_Statement::print( ostream &os ){
   return os;
 }
 
-IIR_TextLiteral*
+IIR_Identifier*
 IIRBase_Statement::get_declarator(){
   ASSERT (get_label() != NULL);
   return get_label()->get_declarator();

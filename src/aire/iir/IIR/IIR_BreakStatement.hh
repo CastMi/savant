@@ -42,10 +42,8 @@ public:
   /** For the execution of a Break Statement, the condition, if present, is
       first evaluated. A break is indicated if the value of the condition
       is true or if there is no condition. [ LRM $ 8.14 - 565 ]. */
-  virtual void set_condition(IIR* condition) = 0;
-  virtual IIR* get_condition() = 0;
+  virtual void set_condition(IIR_Statement* condition) = 0;
+  virtual IIR_Statement* get_condition() const = 0;
   
-protected:
-public:
 };
 #endif

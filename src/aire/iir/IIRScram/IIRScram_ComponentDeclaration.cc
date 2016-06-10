@@ -35,7 +35,7 @@ IIRScram_ComponentDeclaration::IIRScram_ComponentDeclaration() {
 
 IIRScram_ComponentDeclaration::~IIRScram_ComponentDeclaration(){}
 
-IIRScram_PortList *
+IIRScram_TypeDefinition *
 IIRScram_ComponentDeclaration::_get_port_type( int port_num ){
   ASSERT( port_num < get_local_port_clause()->size() );
   IIRScram_Declaration *port_element 

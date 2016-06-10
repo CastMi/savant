@@ -90,7 +90,7 @@ IIRBase_ArchitectureDeclaration::set_architecture_statement_part(IIR_Architectur
   architecture_statement_part = new_architecture_statement_part;
 }
 
-IIR *
+IIRBase_ArchitectureDeclaration *
 IIRBase_ArchitectureDeclaration::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ArchitectureDeclaration *new_node = dynamic_cast<IIRBase_ArchitectureDeclaration *>(IIRBase_LibraryUnit::convert_tree(factory));

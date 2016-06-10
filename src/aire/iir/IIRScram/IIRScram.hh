@@ -247,7 +247,7 @@ public:
       function defined.  */
   virtual IIRScram_FunctionDeclaration *_get_resolution_function();
 
-  IIRScram_LibraryDeclaration *_get_work_library( );
+  IIRScram_LibraryDeclaration *_get_work_library();
 
   /** These methods give derived classes a chance to generate implicit
       declarations and so forth. */

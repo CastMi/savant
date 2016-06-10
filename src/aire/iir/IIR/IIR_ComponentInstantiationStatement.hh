@@ -43,8 +43,8 @@ public:
   virtual void                  set_generic_map_aspect(IIR_AssociationList *) = 0;
   virtual void                  set_port_map_aspect(IIR_AssociationList *) = 0;
 
-  virtual void set_instantiated_unit( IIR *instantiated_unit ) = 0;
-  virtual IIR *get_instantiated_unit() = 0;
+  virtual void set_instantiated_unit( IIR_Statement *instantiated_unit ) = 0;
+  virtual IIR_Statement *get_instantiated_unit() const = 0;
 
   /** This returns the configuration for this component.  It can be an
       IIR_ConfigurationSpecification, or an IIR_ComponentConfiguration. */

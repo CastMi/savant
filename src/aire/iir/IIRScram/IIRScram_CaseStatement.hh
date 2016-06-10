@@ -43,7 +43,6 @@
 #include "IIRBase_CaseStatement.hh"
 
 template <class type> class set;
-class IIRScram_List;
 
 class IIRScram_CaseStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_CaseStatement {
 public:
@@ -60,7 +59,7 @@ public:
   IIRScram_CaseStatementAlternativeList *_get_case_statement_alternatives();
 
   void _set_case_statement_expression( IIRScram * );
-  IIRScram *_clone();
+  IIRScram_CaseStatement *_clone();
 
 private:
   // Handle error reporting in a function for both expressions and

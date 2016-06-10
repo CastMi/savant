@@ -43,11 +43,16 @@ IIRBase_SequentialStatementList::is_above_attribute_found() {
   return retval;
 }
 
-void 
+IIRBase_SequentialStatementList*
+IIRBase_SequentialStatementList::convert_node(plugin_class_factory *) {
+   return nullptr;
+}
+
+void
 IIRBase_SequentialStatementList::publish_vhdl(ostream &vhdl_out) {
   IIR_SequentialStatement *stmt = NULL;
   for (stmt = first();
-       stmt != NULL; 
+       stmt != NULL;
        stmt = successor(stmt)) {
     stmt->publish_vhdl(vhdl_out);
     vhdl_out << ";\n";

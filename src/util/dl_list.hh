@@ -40,13 +40,12 @@ using std::bind2nd;
 
 template <class type>
 class dl_list {
-  
 public:
   dl_list() : elementCount(0){
     my_iterator = my_list.begin();
   }
   ~dl_list(){}
-    
+
   int num_elements(){
     return elementCount;
   }
@@ -72,7 +71,7 @@ public:
     my_list.insert( found, new_object );
     elementCount++;
   }
-    
+
   bool remove( const type *to_remove ) {
     bool retval = false;
     typename list<type *>::iterator found = list_find( to_remove );
@@ -110,7 +109,7 @@ public:
     }
     return retval;
   }
-        
+
   type *first() {
     type *retval = 0;
     if( !my_list.empty() ){
@@ -119,7 +118,7 @@ public:
     }
     return retval;
   }
-    
+
   type *last() {
     type *retval = 0;
     if( !my_list.empty() ){

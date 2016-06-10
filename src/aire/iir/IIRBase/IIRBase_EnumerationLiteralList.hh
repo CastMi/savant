@@ -41,6 +41,7 @@ public:
 
   ostream& print(ostream&);
   void publish_vhdl(ostream &);
+  IIR_EnumerationLiteralList* convert_node(plugin_class_factory *factory) = 0;
 protected:
   IIRBase_EnumerationLiteralList();
   virtual ~IIRBase_EnumerationLiteralList() = 0;

@@ -49,10 +49,10 @@ public:
   void set_entity(IIR_EntityDeclaration *);
   IIR_EntityDeclaration* get_entity();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIRBase_ArchitectureDeclaration *convert_tree(plugin_class_factory *factory);
 
   declaration_type get_declaration_type();
-    
+
   savant::set<IIR_Declaration> *find_declarations( IIR_Name *to_find);
   IIR_Boolean is_architecture_declaration(){ return true; }
   IIR_Boolean is_secondary_unit(){ return true; }
@@ -64,7 +64,7 @@ public:
 protected:
   IIRBase_ArchitectureDeclaration();
   virtual ~IIRBase_ArchitectureDeclaration() = 0;
-    
+
 private:
   // List Variable(s)
   IIR_DeclarationList<>         *architecture_declarative_part;

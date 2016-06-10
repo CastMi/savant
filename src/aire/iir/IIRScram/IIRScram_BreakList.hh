@@ -29,7 +29,7 @@
 
 /** The extension base for BreakList. This is a list of all Break Elements
     present in a break statement. */
-class IIRScram_BreakList : public virtual IIRBase_BreakList, public virtual IIRScram_List {
+class IIRScram_BreakList : public virtual IIRBase_BreakList, public virtual IIRScram_List<IIR_BreakElement> {
   
 public:
   IIRScram_BreakList(){};

@@ -40,6 +40,7 @@ public:
 
   void publish_vhdl(ostream &);
   void publish_vhdl_decl(ostream &);
+  IIR_InterfaceList* convert_node(plugin_class_factory *);
 protected:
   IIRBase_InterfaceList();
   virtual ~IIRBase_InterfaceList() = 0;

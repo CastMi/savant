@@ -42,7 +42,7 @@ public:
   virtual ~IIRScram_DesignatorList();
     
   void _type_check_as_instantiation_list( IIRScram *instantiated_unit, 
-					  IIRScram_List<IIRScram> *,
+					  IIRScram_List<IIR_Statement> *,
 					  IIRScram *configuration );
 
   // This method walks the designator list, looking for a label for an

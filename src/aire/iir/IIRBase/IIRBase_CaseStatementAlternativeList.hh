@@ -34,16 +34,17 @@
 class IIR_CaseStatementAlternative;
 
 class IIRBase_CaseStatementAlternativeList : public virtual IIRBase_List<IIR_CaseStatementAlternative>, public virtual IIR_CaseStatementAlternativeList {
-
 public:
   IIR_Kind get_kind() const { return IIR_CASE_STATEMENT_ALTERNATIVE_LIST; }
   const IIR_Char *get_kind_text() const { return "IIR_CaseStatementAlternativeList"; }
+  IIR_Boolean is_resolved();
+  IIR_Boolean is_above_attribute_found();
+  IIR_CaseStatementAlternativeList* convert_node(plugin_class_factory *factory);
 
 protected:
   IIRBase_CaseStatementAlternativeList();
   virtual ~IIRBase_CaseStatementAlternativeList() = 0;
     
-private:
 };
 
 #endif

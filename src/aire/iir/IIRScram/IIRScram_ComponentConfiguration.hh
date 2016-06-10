@@ -43,7 +43,7 @@ public:
   IIRScram_ComponentConfiguration();  
   virtual ~IIRScram_ComponentConfiguration();
 
-  void _type_check_configuration_item( IIRScram_List<IIRScram_Statement> *, IIRScram * );
+  void _type_check_configuration_item( IIRScram_List<IIR_Statement> *, IIRScram * );
 
   IIRScram *_get_component_name( );
   void _set_component_name( IIRScram * );

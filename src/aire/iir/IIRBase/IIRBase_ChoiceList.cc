@@ -29,6 +29,11 @@
 IIRBase_ChoiceList::IIRBase_ChoiceList() {}
 IIRBase_ChoiceList::~IIRBase_ChoiceList() {}
 
+IIRBase_ChoiceList*
+IIRBase_ChoiceList::convert_node(plugin_class_factory *) {
+   return nullptr;
+}
+
 void 
 IIRBase_ChoiceList::publish_vhdl(ostream &vhdl_out) {
   register int numberOfChoices = 1;

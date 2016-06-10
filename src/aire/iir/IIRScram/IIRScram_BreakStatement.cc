@@ -28,7 +28,6 @@
 
 void
 IIRScram_BreakStatement::_type_check() {
-  IIRScram *new_condition = NULL;
   IIRScram_BreakElement *break_element =
     dynamic_cast<IIRScram_BreakElement *>(get_break_list()->first());
   while ( break_element != NULL) {
@@ -37,7 +36,7 @@ IIRScram_BreakStatement::_type_check() {
   }
   
   if ( get_condition() != NULL ){
-    new_condition = _type_check_and_resolve_boolean_condition( _get_condition() );
+    IIRScram_Statement *new_condition = _type_check_and_resolve_boolean_condition( _get_condition() );
     ASSERT( new_condition != NULL);
     ASSERT( new_condition->is_resolved() == true );
     set_condition( new_condition );
@@ -49,7 +48,7 @@ IIRScram_BreakStatement::_get_break_list() {
   return dynamic_cast<IIRScram_BreakList *>(get_break_list());
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_BreakStatement::_get_condition() {
-  return dynamic_cast<IIRScram *>(get_condition());
+  return dynamic_cast<IIRScram_Statement *>(get_condition());
 }

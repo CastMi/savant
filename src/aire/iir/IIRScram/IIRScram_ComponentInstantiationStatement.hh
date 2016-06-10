@@ -65,7 +65,6 @@ public:
   void _type_check_instantiate_statements(){ _type_check(); }
 
   IIRScram_AssociationList *_get_generic_map_aspect();  
-  IIRScram_TypeDefinition *_get_port_type( int );
 
   /** These methods provide a place for the parser to store what type
       of declaration the semantic routines should be looking for... */
@@ -79,7 +78,7 @@ public:
 
   IIRScram_Label                *_find_instantiate_label( IIRScram_SimpleName * );
 
-  IIRScram                      *_get_instantiated_unit();
+  IIRScram_Statement            *_get_instantiated_unit();
   IIRScram_AssociationList      *_get_port_map_aspect();
   IIRScram                      *_get_configuration();
 protected:

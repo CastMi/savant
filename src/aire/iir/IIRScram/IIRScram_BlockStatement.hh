@@ -41,7 +41,6 @@ class IIRScram_Name;
 class IIRScram_SignalDeclaration;
 
 class IIRScram_BlockStatement : public virtual IIRScram_ConcurrentStatement, public virtual IIRBase_BlockStatement {
-
 public:
   IIRScram_BlockStatement();
   virtual ~IIRScram_BlockStatement();
@@ -49,7 +48,7 @@ public:
   void _type_check();
 
   IIRScram_SignalDeclaration            *_get_implicit_guard_signal();
-  IIRScram_List<IIR_Statement>         *_get_statement_list();
+  IIRScram_List<IIR_Statement>          *_get_statement_list();
   IIRScram_GenericList                  *_get_generic_list();
   IIRScram_Statement                    *_get_guard_expression();
   IIRScram_GenericList                  *_get_generic_clause();

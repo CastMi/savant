@@ -63,7 +63,7 @@ IIRScram_BlockConfiguration::~IIRScram_BlockConfiguration(){}
 void 
 IIRScram_BlockConfiguration::_type_check_configuration_item( IIRScram_List<IIR_Statement> *statement_list, 
 							     IIRScram *enclosing_region ){
-  _get_symbol_table()->open_scope( this );
+  _get_symbol_table()->open_scope( get_declarator() );
   _type_check_block_specification( statement_list, enclosing_region );
   ASSERT( _get_block_specification()->is_resolved() == true );
 
@@ -75,7 +75,7 @@ IIRScram_BlockConfiguration::_type_check_configuration_item( IIRScram_List<IIR_S
 
   _get_configuration_item_list()->_type_check_configuration_item( _get_block_specification()->_get_statement_list(),
 							  this );
-  _get_symbol_table()->close_scope( this );
+  _get_symbol_table()->close_scope( get_declarator() );
 }
 
 void 

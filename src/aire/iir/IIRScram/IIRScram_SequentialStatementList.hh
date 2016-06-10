@@ -44,7 +44,7 @@
 #include "IIRScram_List.hh"
 #include "IIRBase_SequentialStatementList.hh"
 
-class IIRScram_SequentialStatementList : public virtual IIRScram_List, public virtual IIRBase_SequentialStatementList {
+class IIRScram_SequentialStatementList : public virtual IIRScram_List<IIR_SequentialStatement>, public virtual IIRBase_SequentialStatementList {
 };
 
 #endif

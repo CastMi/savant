@@ -41,7 +41,7 @@ public:
 
   IIRBase_AttributeSpecificationList();
   virtual ~IIRBase_AttributeSpecificationList() = 0;
-
+  virtual IIR_AttributeSpecificationList* convert_node(plugin_class_factory *factory);
 
 };
 #endif

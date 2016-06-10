@@ -76,11 +76,6 @@ IIRScram_ComponentInstantiationStatement::_set_instantiation_type( IIR_Kind inst
   my_instantiation_type = instantiation_type;
 }
 
-IIRScram_TypeDefinition * 
-IIRScram_ComponentInstantiationStatement::_get_port_type( int port_num ){
-  return _get_instantiated_unit()->_get_port_type( port_num );
-}
-
 IIR_Kind 
 IIRScram_ComponentInstantiationStatement::_get_instantiation_type(){
   return my_instantiation_type;
@@ -88,8 +83,8 @@ IIRScram_ComponentInstantiationStatement::_get_instantiation_type(){
 
 void 
 IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_entity(){
-  IIRScram *entity_name = 0;
-  IIRScram *arch_name = 0;
+  IIRScram_Statement *entity_name = 0;
+  IIRScram_Statement *arch_name = 0;
   IIRScram_EntityDeclaration *entity_decl = 0;
 
   if( _get_instantiated_unit()->get_kind() == IIR_INDEXED_NAME ){
@@ -321,7 +316,7 @@ IIRScram_ComponentInstantiationStatement::_get_default_binding_indication(){
   return retval;
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_ComponentInstantiationStatement::_get_instantiated_unit() {
   return dynamic_cast<IIRScram*>(IIRBase_ComponentInstantiationStatement::get_instantiated_unit());
 }

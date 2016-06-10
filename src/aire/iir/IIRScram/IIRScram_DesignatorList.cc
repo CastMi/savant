@@ -143,7 +143,7 @@ IIRScram_DesignatorList::_process_by_all_or_others( IIRScram_Declaration *instan
 
 void 
 IIRScram_DesignatorList::_type_check_as_instantiation_list( IIRScram *instantiated_unit,
-							    IIRScram_List *statement_list,
+							    IIRScram_List<IIR_Statement> *statement_list,
 							    IIRScram *configuration ){
   ASSERT( instantiated_unit != NULL );
   ASSERT( instantiated_unit->_is_iir_declaration() == true );

@@ -107,7 +107,7 @@ IIRScram_Statement::_lookup_label( IIR_Boolean complain_on_error ){
 }
 
 IIRScram *
-IIRScram_Statement::_type_check_and_resolve_boolean_condition( IIRScram *condition ){
+IIRScram_Statement::_type_check_and_resolve_boolean_condition( IIRScram_Statement *condition ){
   ASSERT( condition != NULL );
   
   if( condition->get_kind() == IIR_ASSOCIATION_ELEMENT_BY_EXPRESSION ){

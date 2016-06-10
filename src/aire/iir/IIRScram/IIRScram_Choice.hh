@@ -42,9 +42,9 @@ public:
   savant::set<IIRScram_Declaration> *_symbol_lookup();
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
 
-  IIRScram *_get_value();
+  IIRScram_Statement *_get_value();
 
-  IIRScram *_clone();
+  IIRScram_Choice *_clone();
 };
 
 #endif

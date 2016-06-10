@@ -38,7 +38,7 @@ public:
   IIRScram_ConcatenationOperator() {}
   virtual ~IIRScram_ConcatenationOperator();
 
-  IIRScram *_clone();
+  IIRScram_ConcatenationOperator *_clone();
   
 private:
   // Removes types that aren't dimensional arrays from the set passed in.

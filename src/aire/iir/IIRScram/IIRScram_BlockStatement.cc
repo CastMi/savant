@@ -130,9 +130,9 @@ IIRScram_BlockStatement::_get_block_declarative_part() {
   return dynamic_cast<IIRScram_DeclarationList *>(get_block_declarative_part());
 }
 
-IIRScram_List *
+IIRScram_List<IIR_Statement> *
 IIRScram_BlockStatement::_get_statement_list(){
-  return dynamic_cast<IIRScram_List *>(get_block_statement_part());
+  return dynamic_cast<IIRScram_List<IIR_Statement> *>(get_block_statement_part());
 }
 
 IIRScram_AssociationList *
@@ -145,9 +145,9 @@ IIRScram_BlockStatement::_get_port_map_aspect() {
   return dynamic_cast<IIRScram_AssociationList *>(get_port_map_aspect());
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_BlockStatement::_get_guard_expression() {
-  return dynamic_cast<IIRScram *>(get_guard_expression());
+  return dynamic_cast<IIRScram_Statement *>(get_guard_expression());
 }
 
 IIRScram_GenericList *

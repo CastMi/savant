@@ -46,10 +46,7 @@
 #include "IIRScram_TextLiteral.hh"
 #include "IIRScram_Statement.hh"
 #include "error_func.hh"
-
 #include "symbol_table.hh"
-
-
 
 IIRScram_ComponentConfiguration::IIRScram_ComponentConfiguration(){
   set_instantiation_list(new IIRScram_DesignatorList());
@@ -60,8 +57,8 @@ IIRScram_ComponentConfiguration::IIRScram_ComponentConfiguration(){
 IIRScram_ComponentConfiguration::~IIRScram_ComponentConfiguration(){}
 
 void
-IIRScram_ComponentConfiguration::_type_check_configuration_item( IIRScram_List *statement_list,
-								 IIRScram *enclosing_region ){
+IIRScram_ComponentConfiguration::_type_check_configuration_item( IIRScram_List<IIR_Statement> * statement_list,
+                         IIRScram *enclosing_region ){
   ASSERT( enclosing_region != NULL );
   ASSERT( enclosing_region->get_kind() == IIR_BLOCK_CONFIGURATION );
   IIRScram_BlockConfiguration *enclosing_config = dynamic_cast<IIRScram_BlockConfiguration *>(enclosing_region);

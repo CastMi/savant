@@ -56,7 +56,7 @@ IIRScram_CaseStatementAlternativeByExpression::_type_check( savant::set<IIRScram
   _get_choice()->_type_check( context_set );
 }
 
-IIRScram*
+IIRScram_CaseStatementAlternativeByExpression*
 IIRScram_CaseStatementAlternativeByExpression::_clone() {
   IIRScram_Choice *choiceclone;
   IIRScram_CaseStatementAlternativeByExpression *clone;

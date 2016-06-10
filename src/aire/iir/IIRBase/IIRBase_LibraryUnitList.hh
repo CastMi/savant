@@ -41,6 +41,7 @@ public:
   
   void publish_vhdl(ostream &);
   void publish_vhdl_in_design_library();
+  IIR_LibraryUnitList* convert_node(plugin_class_factory *);
 protected:
   IIRBase_LibraryUnitList();
   virtual ~IIRBase_LibraryUnitList() = 0;

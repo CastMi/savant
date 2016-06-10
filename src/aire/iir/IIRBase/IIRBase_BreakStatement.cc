@@ -33,12 +33,12 @@ IIRBase_BreakStatement::IIRBase_BreakStatement()
 IIRBase_BreakStatement::~IIRBase_BreakStatement(){}
 
 void
-IIRBase_BreakStatement::set_condition(IIR* condition){
+IIRBase_BreakStatement::set_condition(IIR_Statement* condition){
   this->condition = condition;
 }
 
-IIR*
-IIRBase_BreakStatement::get_condition(){
+IIR_Statement*
+IIRBase_BreakStatement::get_condition() const {
   return condition;
 }
 

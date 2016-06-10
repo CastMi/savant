@@ -30,7 +30,7 @@
 class IIR_ArchitectureStatement;
 
 class IIR_ArchitectureStatementList : public virtual IIR_List<IIR_ArchitectureStatement> {
-public:    
+public:
   IIR_ArchitectureStatementList() {};
   virtual ~IIR_ArchitectureStatementList() {};
   

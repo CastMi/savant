@@ -23,3 +23,36 @@
 
 IIRBase_CaseStatementAlternativeList::IIRBase_CaseStatementAlternativeList() {}
 IIRBase_CaseStatementAlternativeList::~IIRBase_CaseStatementAlternativeList() {}
+
+IIR_CaseStatementAlternativeList*
+IIRBase_CaseStatementAlternativeList::convert_node(plugin_class_factory*) {
+   return nullptr;
+}
+
+IIR_Boolean
+IIRBase_CaseStatementAlternativeList::is_above_attribute_found() {
+  IIR_Boolean retval = false;
+
+  IIR_CaseStatementAlternative *stmt = first();
+  while (stmt != NULL) {
+    retval = stmt->is_above_attribute_found() || retval;
+    stmt = successor(stmt);
+  }
+  return retval;
+}
+
+IIR_Boolean
+IIRBase_CaseStatementAlternativeList::is_resolved() {
+  IIR_Boolean retval = true;
+
+  IIR_CaseStatementAlternative* current_element = first();
+  while( current_element != NULL ){
+    if( current_element->is_resolved() == false ){
+      retval = false;
+      break;
+    }
+    current_element = successor( current_element );
+  }
+
+  return retval;
+}

@@ -76,6 +76,10 @@ public:
   virtual IIR_Boolean is_text_literal() const { return false; };
   virtual IIR_Boolean is_label() const { return false; };
   virtual IIR_Boolean _is_iir_attribute() const { return false; };
+  /// Is this node a configuration declaration?
+  virtual IIR_Boolean is_configuration_declaration() const { return false; }
+  /// Is this node a component declaration?
+  virtual IIR_Boolean is_component_declaration() const { return false; }
 
   virtual IIR_Declaration* get_prefix_declaration() { return nullptr; };
 
@@ -117,7 +121,7 @@ public:
       associated with this class.  The caller must not modify or delete the
       pointer returned by a call to this method virtual
   */
-  IIR_TextLiteral* get_declarator();
+  IIR_Identifier* get_declarator();
   void publish_vhdl_stmt_label(ostream &);
   void publish_vhdl_delay_mechanism( ostream &, IIR_DelayMechanism, IIR * );
 
