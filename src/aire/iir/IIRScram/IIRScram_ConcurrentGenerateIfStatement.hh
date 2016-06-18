@@ -50,7 +50,7 @@ public:
 
   IIRScram_Label *_find_instantiate_label( IIRScram_SimpleName * );
 
-  IIRScram *                                    _get_if_condition();
+  IIRScram_Statement *                          _get_if_condition();
   IIRScram_DeclarationList *                    _get_block_declarative_part();
   IIRScram_ArchitectureStatementList *          _get_concurrent_statement_part();
 };

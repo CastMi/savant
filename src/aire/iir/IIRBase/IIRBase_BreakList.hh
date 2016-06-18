@@ -36,6 +36,8 @@ public:
   }
   
   const IIR_Char *get_kind_text() const { return "IIR_BreakList"; }
+  
+  IIR_BreakList* convert_node(plugin_class_factory *factory) { return nullptr; };
 
   IIRBase_BreakList();
   virtual ~IIRBase_BreakList()= 0;

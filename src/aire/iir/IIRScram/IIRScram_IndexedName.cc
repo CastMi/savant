@@ -943,7 +943,7 @@ IIRScram_IndexedName::_process_as_type_conversion( savant::set<IIRScram_TypeDefi
 IIRScram_Statement *
 IIRScram_IndexedName::_semantic_transform( savant::set<IIRScram_TypeDefinition> *context_set ){
 
-  IIRScram *retval = NULL;
+  IIRScram_IndexedName *retval = NULL;
   
   ASSERT( _get_suffix() != NULL );   
   // OK, here's the story...  We have an indexed_name, something in

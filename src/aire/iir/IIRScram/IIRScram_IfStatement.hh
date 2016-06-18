@@ -44,7 +44,6 @@
 
 class IIRScram_DesignatorList;
 class IIRScram_Elsif;
-class IIRScram_List;
 class IIRScram_SequentialStatementList;
 class IIRScram_TypeDefinition;
 
@@ -58,16 +57,13 @@ public:
 
   IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition> *,
 					     IIRScram_SubprogramDeclaration *subprogram_decl );
-  IIRScram *_clone();
+  IIRScram_IfStatement *_clone();
 
   // Wrappers for IIRBase functions
   IIRScram_SequentialStatementList      *_get_then_sequence();
   IIRScram                              *_get_condition();
   IIRScram_Elsif                        *_get_elsif();
   IIRScram_SequentialStatementList      *_get_else_sequence();
-
-private:
-  IIRScram_List                         *_full_statement_list;
 };
 
 #endif

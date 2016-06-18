@@ -45,7 +45,6 @@
 #include "IIRBase_ProcedureCallStatement.hh"
 
 class IIRScram_DesignatorList;
-class IIRScram_List;
 
 class IIRScram_ProcedureCallStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_ProcedureCallStatement {
 public:
@@ -54,7 +53,7 @@ public:
 
   void _type_check();
 
-  IIRScram *_clone();
+  IIRScram_ProcedureCallStatement *_clone();
 
   // Wrappers for IIRBase functions
   IIRScram_AssociationList *    _get_actual_parameter_part();

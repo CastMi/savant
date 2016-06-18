@@ -46,11 +46,11 @@ IIRBase_ConcurrentGenerateIfStatement::~IIRBase_ConcurrentGenerateIfStatement(){
 }
 
 void 
-IIRBase_ConcurrentGenerateIfStatement::set_if_condition( IIR *condition ){
+IIRBase_ConcurrentGenerateIfStatement::set_if_condition( IIR_Statement *condition ){
   this->condition = condition;
 }
 
-IIR *
+IIR_Statement *
 IIRBase_ConcurrentGenerateIfStatement::get_if_condition(){
   return condition;
 }

@@ -73,7 +73,7 @@ public:
       array access (returns true) or a slice? */
   IIR_Boolean _is_array_access();
 
-  IIRScram_Statement *_semantic_transform( savant::set<IIRScram_TypeDefinition> *context_set );
+  IIRScram_IndexedName *_semantic_transform( savant::set<IIRScram_TypeDefinition> *context_set );
   IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition * );
   IIRScram_Statement *_rval_to_decl( IIRScram_Declaration *, IIRScram_TypeDefinition * );
   IIRScram_Declaration *_determine_decl_in_set( savant::set<IIRScram_Declaration> *, IIRScram_TypeDefinition * );

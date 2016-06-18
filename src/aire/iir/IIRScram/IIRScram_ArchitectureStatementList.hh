@@ -29,6 +29,7 @@
 //---------------------------------------------------------------------------
 
 #include "IIRBase_ArchitectureStatementList.hh"
+#include "IIRScram_List.hh"
 
 class IIRScram_ArchitectureStatementList : public virtual IIRScram_List<IIR_ArchitectureStatement>, public virtual IIRBase_ArchitectureStatementList {
 public:

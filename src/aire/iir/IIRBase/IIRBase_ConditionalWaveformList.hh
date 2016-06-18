@@ -40,11 +40,12 @@ public:
   IIR_Kind get_kind() const { return IIR_CONDITIONAL_WAVEFORM_LIST; }
   const IIR_Char *get_kind_text() const { return "IIR_ConditionalWaveformList"; }
 
+  IIR_Boolean is_resolved() { return false; };
+  IIR_ConditionalWaveformList* convert_node(plugin_class_factory *factory) { return nullptr; };
+
   void publish_vhdl(ostream &);
 protected:
   IIRBase_ConditionalWaveformList();
   virtual ~IIRBase_ConditionalWaveformList() = 0;
-    
-private:
 };
 #endif

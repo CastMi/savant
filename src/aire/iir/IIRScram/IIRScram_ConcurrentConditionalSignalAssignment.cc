@@ -71,8 +71,7 @@ IIRScram_ConcurrentConditionalSignalAssignment::_type_check_target_and_waveforms
   IIRScram_ConditionalWaveform *current_waveform = dynamic_cast<IIRScram_ConditionalWaveform *>(get_conditional_waveforms()->first());
   while( current_waveform != NULL ){
     if( current_waveform->get_condition() != NULL ){
-      IIRScram *resolved_condition;
-      resolved_condition =
+      IIRScram_Statement *resolved_condition =
 	_type_check_and_resolve_boolean_condition( current_waveform->_get_condition());
       current_waveform->set_condition( resolved_condition );
     }
@@ -85,7 +84,7 @@ IIRScram_ConcurrentConditionalSignalAssignment::_type_check_target_and_waveforms
 
 IIRScram_ConcurrentConditionalSignalAssignment *
 IIRScram_ConcurrentConditionalSignalAssignment::_clone() {
-  IIRScram *cstmt;
+  IIRScram_ConcurrentConditionalSignalAssignment *cstmt;
   // FIXME: I need to figure out what was supposed to happen here
   // before committing a meaningful fix
   ASSERT(false);

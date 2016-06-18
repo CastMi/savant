@@ -44,8 +44,8 @@ public:
   IIR_Kind get_kind() const {return IIR_PROCEDURE_CALL_STATEMENT;}
   const IIR_Char *get_kind_text() const {return "IIR_ProcedureCallStatement";}
 
-  void set_procedure_name( IIR* procedure_name);
-  IIR* get_procedure_name();
+  void set_procedure_name( IIR_Name* procedure_name);
+  IIR_Name* get_procedure_name();
 
   IIR_Boolean is_above_attribute_found();
 
@@ -61,7 +61,7 @@ private:
   // List Variable(s)
   IIR_AssociationList *actual_parameter_part;
   
-  IIR* procedure_name; 
+  IIR_Name* procedure_name; 
 
 };
 #endif

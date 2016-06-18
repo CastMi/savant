@@ -44,7 +44,7 @@ public:
   virtual void                          set_block_declarative_part(IIR_DeclarationList<> *) = 0;
   virtual void                          set_concurrent_statement_part(IIR_ArchitectureStatementList *) = 0;
 
-  virtual void set_if_condition( IIR *condition ) = 0;
-  virtual IIR *get_if_condition() = 0;
+  virtual void set_if_condition( IIR_Statement *condition ) = 0;
+  virtual IIR_Statement *get_if_condition() = 0;
 };
 #endif

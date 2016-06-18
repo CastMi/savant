@@ -74,10 +74,10 @@ void
 IIRScram_ConcurrentGenerateForStatement::_type_check_instantiate_statements(){
   // Put our declarations back into scope.
   ASSERT( _get_generate_parameter_specification() != NULL );
-  _get_symbol_table()->open_scope( this );
+  _get_symbol_table()->open_scope( get_label()->get_declarator());
   _get_symbol_table()->make_visible( _get_generate_parameter_specification() );
   _get_concurrent_statement_part()->_type_check_instantiate_statements();
-  _get_symbol_table()->close_scope( this );
+  _get_symbol_table()->close_scope( get_label()->get_declarator() );
 }
 
 IIRScram_DeclarationList*
@@ -85,9 +85,9 @@ IIRScram_ConcurrentGenerateForStatement::_get_declaration_list() {
   return dynamic_cast<IIRScram_DeclarationList *>(get_block_declarative_part());
 }
 
-IIRScram_List *
+IIRScram_List<IIR_Statement> *
 IIRScram_ConcurrentGenerateForStatement::_get_statement_list() {
-  return dynamic_cast<IIRScram_List *>(get_concurrent_statement_part());
+  return dynamic_cast<IIRScram_List<IIR_Statement> *>(get_concurrent_statement_part());
 }
 
 IIRScram_ConstantDeclaration *

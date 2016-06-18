@@ -43,11 +43,11 @@ IIRBase_ProcedureCallStatement::~IIRBase_ProcedureCallStatement() {
 }
 
 void 
-IIRBase_ProcedureCallStatement::set_procedure_name( IIR* procedure_name) {
+IIRBase_ProcedureCallStatement::set_procedure_name( IIR_Name* procedure_name) {
   this->procedure_name = procedure_name;
 }
 
-IIR* 
+IIR_Name*
 IIRBase_ProcedureCallStatement::get_procedure_name() {
   return procedure_name;
 }

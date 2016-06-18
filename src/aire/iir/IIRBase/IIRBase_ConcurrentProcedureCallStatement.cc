@@ -54,11 +54,11 @@ IIRBase_ConcurrentProcedureCallStatement::get_postponed(){
 }
 
 void 
-IIRBase_ConcurrentProcedureCallStatement::set_procedure_name( IIR *procedure_name ){
+IIRBase_ConcurrentProcedureCallStatement::set_procedure_name( IIR_Name *procedure_name ){
   this->procedure_name = procedure_name;
 }
 
-IIR *
+IIR_Name *
 IIRBase_ConcurrentProcedureCallStatement::get_procedure_name(){
   return procedure_name;
 }

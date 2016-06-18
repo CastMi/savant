@@ -128,6 +128,9 @@ void
 report_ambiguous_error( const IIR_Statement *error_info, savant::set<IIR_TypeDefinition> *error_set );
 
 void 
+report_ambiguous_error( const IIR_Statement *error_info, savant::set<IIR_Declaration> *error_set );
+
+void 
 report_ambiguous_error( const IIR_Declaration *prefix,
 			const IIR_Name *suffix,
 			savant::set<IIR_Declaration> *error_set );

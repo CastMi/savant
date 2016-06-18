@@ -36,7 +36,6 @@
 #include "dl_list.hh"
 
 class IIRScram_DesignatorList;
-class IIRScram_List;
 class IIRScram_ProcedureCallStatement;
 class IIRScram_SequentialStatementList;
 class IIRScram_SubprogramDeclaration;
@@ -52,7 +51,7 @@ public:
   IIR_Boolean _type_check_return_statements( savant::set<IIRScram_TypeDefinition> *,
 			     IIRScram_SubprogramDeclaration *subprogram_decl );
     
-  IIRScram *_clone();
+  IIRScram_Elsif *_clone();
 
   // Wrappers for IIRBase functions
   IIRScram_SequentialStatementList *    _get_then_sequence_of_statements();

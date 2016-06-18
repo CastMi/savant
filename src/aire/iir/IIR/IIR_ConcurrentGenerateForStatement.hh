@@ -29,6 +29,7 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_ConcurrentStatement.hh"
+#include "IIR_DeclarationList.hh"
 
 class IIR_ConstantDeclaration;
 class IIR_ArchitectureStatementList;

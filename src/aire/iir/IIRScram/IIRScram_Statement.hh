@@ -66,6 +66,13 @@ public:
 
   IIRScram_LibraryDeclaration *_get_work_library();
   
+
+  /** This method type checks the iteration scheme of IIR_ForLoopStatement
+      and IIR_ConcurrentGenerateForLoop statement.  Again, IIR is the
+      closest ancestor.  It takes the iteration scheme as param, and
+      returns the correctly resolved subtype for it. */
+  IIRScram_TypeDefinition *_type_check_iteration_scheme( IIRScram_ConstantDeclaration *iteration_scheme );
+
   virtual savant::set<IIRScram_Declaration> *_symbol_lookup();
   virtual savant::set<IIRScram_Declaration> *_symbol_lookup(constraint_functor *functor);
   symbol_table *_get_symbol_table( );

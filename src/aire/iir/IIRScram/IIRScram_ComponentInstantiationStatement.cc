@@ -153,7 +153,7 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_compone
     switch( instantiated_unit_decls->size() ){
     case 0:{
       ostringstream err;
-      // FIXME: overlo operator<<
+      // FIXME: overload operator<<
       //err << "|" << *_get_instantiated_unit() << "| was not declared as a";
       err << "|| was not declared as a";
 	
@@ -302,14 +302,14 @@ IIRScram_ComponentInstantiationStatement::_get_default_binding_indication(){
   ASSERT( _get_instantiated_unit() != 0 );
   ASSERT( _get_instantiation_type() == IIR_COMPONENT_DECLARATION );
   
-  IIRScram_Name *component_name = _get_instantiated_unit();
+  IIRScram_Statement *component_name = _get_instantiated_unit();
 
   IIRScram_ArchitectureDeclaration *arch = 0;
-  IIRScram_EntityDeclaration *entity = dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( false,
-                                                                                                                              component_name,
-                                                                                                                              _get_work_library(),
-                                                                                                                              get_design_file()->get_standard_package(),
-                                                                                                                              get_design_file()->get_class_factory()));
+  //IIRScram_EntityDeclaration *entity = dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( false,
+   //                                                                                                                           component_name,
+     //                                                                                                                         _get_work_library(),
+       //                                                                                                                       get_design_file()->get_standard_package(),
+         //                                                                                                                     get_design_file()->get_class_factory()));
   
   if( entity != 0 ){
     arch = dynamic_cast<IIRScram_ArchitectureDeclaration *>(library_manager::instance()->lookup_default_architecture( entity ));
@@ -348,7 +348,7 @@ IIRScram_ComponentInstantiationStatement::_build_default_entity_aspect(IIRScram_
   //copy_location( this, retval->get_port_map_aspect() );
   //copy_location( this, retval->get_generic_map_aspect() );
   retval->_set_design_file( _get_design_file() );
-  retval->set_component_name( get_instantiated_unit() );
+  //retval->set_component_name( get_instantiated_unit() );
   retval->set_entity_aspect( arch );
   retval->set_is_implicit( true );
   // FIXME: look at the FIXME comment in the function 

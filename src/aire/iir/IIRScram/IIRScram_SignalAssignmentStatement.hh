@@ -33,7 +33,6 @@
 #include "IIRBase_SignalAssignmentStatement.hh"
 
 class IIRScram_DesignatorList;
-class IIRScram_List;
 
 class IIRScram_SignalAssignmentStatement : public virtual IIRScram_SequentialStatement, public virtual IIRBase_SignalAssignmentStatement {
 
@@ -43,7 +42,7 @@ public:
 
   IIR_Boolean _is_sequential_signal_assignment(){ return true; }
 
-  IIRScram *_clone();
+  IIRScram_SignalAssignmentStatement *_clone();
 
   void _type_check();
 

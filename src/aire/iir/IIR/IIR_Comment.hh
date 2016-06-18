@@ -38,6 +38,7 @@ public:
   virtual void set_element( IIR_Int32 subscript, IIR_Char value ) = 0;
   virtual IIR_Char& operator[]( IIR_Int32 subscript ) = 0;
 
+  IIR_Comment *convert_tree(plugin_class_factory *) = 0;
   virtual void set_text( IIR_Char *txt, IIR_Int32 text_len ) = 0;
 
 };

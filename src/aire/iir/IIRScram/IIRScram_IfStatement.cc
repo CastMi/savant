@@ -46,7 +46,6 @@ extern bool parse_error;
 IIRScram_IfStatement::IIRScram_IfStatement() {
   set_then_sequence(new IIRScram_SequentialStatementList());
   set_else_sequence(new IIRScram_SequentialStatementList());
-  _full_statement_list = NULL;
 }
 
 IIRScram_IfStatement::~IIRScram_IfStatement(){}

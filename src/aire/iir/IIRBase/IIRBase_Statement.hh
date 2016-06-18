@@ -88,19 +88,19 @@ public:
   virtual IIR_TextLiteral *get_prefix_string() { return nullptr; };
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
-  void set_assertion_condition( IIR * );
+  void set_assertion_condition( IIR_Statement * );
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
-  void set_report_expression( IIR * );
+  void set_report_expression( IIR_Statement * );
   void copy_location( const IIR_Statement *, IIR_Statement *) {};
   void copy_location( const IIR_Statement *, IIR *) {};
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
-  void set_severity_expression( IIR * );
+  void set_severity_expression( IIR_Statement * );
 
-  virtual void set_reject_time_expression( IIR * );
+  virtual void set_reject_time_expression( IIR_Statement * );
   virtual void set_target( IIR * );
   
   virtual IIR_Statement *convert_tree(plugin_class_factory *) = 0;

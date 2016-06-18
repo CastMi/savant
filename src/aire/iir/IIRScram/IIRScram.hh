@@ -376,12 +376,6 @@ public:
 		     IIRScram_AssociationList &map,
 		     int tmp_mode );
 
-  /** This method type checks the iteration scheme of IIR_ForLoopStatement
-      and IIR_ConcurrentGenerateForLoop statement.  Again, IIR is the
-      closest ancestor.  It takes the iteration scheme as param, and
-      returns the correctly resolved subtype for it. */
-  IIRScram_TypeDefinition *_type_check_iteration_scheme( IIRScram_ConstantDeclaration *iteration_scheme );
-
   /**
      Type check/resolve this node to make sure it's valid "file open
      information".  Typically it's going to be an enumeration literal that

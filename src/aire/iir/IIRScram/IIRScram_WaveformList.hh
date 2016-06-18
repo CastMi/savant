@@ -44,7 +44,7 @@
 #include "IIRScram_List.hh"
 #include "IIRBase_WaveformList.hh"
 
-class IIRScram_WaveformList : public virtual IIRScram_List, public virtual IIRBase_WaveformList {
+class IIRScram_WaveformList : public virtual IIRScram_List<IIR_WaveformElement>, public virtual IIRBase_WaveformList {
 public:
   IIRScram_WaveformList() {}
   virtual ~IIRScram_WaveformList() {}

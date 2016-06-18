@@ -46,8 +46,8 @@ public:
   void set_postponed( IIR_Boolean postponed );
   IIR_Boolean get_postponed();
 
-  void set_procedure_name( IIR *procedure_name );
-  IIR *get_procedure_name();
+  void set_procedure_name( IIR_Name *procedure_name );
+  IIR_Name *get_procedure_name();
 
   IIR_Statement *convert_tree(plugin_class_factory *factory);
 
@@ -62,6 +62,6 @@ private:
   IIR_ArchitectureStatementList *process_statement_part;
 
   IIR_Boolean                   postponed;
-  IIR                           *procedure_name;
+  IIR_Name                      *procedure_name;
 };
 #endif

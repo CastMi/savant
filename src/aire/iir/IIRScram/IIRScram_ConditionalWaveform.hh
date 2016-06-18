@@ -34,7 +34,6 @@
 #include "IIRBase_ConditionalWaveform.hh"
 
 class IIRScram_DesigantorList;
-class IIRScram_List;
 class IIRScram_TypeDefinition;
 class IIRScram_WaveformList;
 

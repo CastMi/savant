@@ -61,7 +61,7 @@ IIRScram_ConcurrentProcedureCallStatement::_type_check(){
   // Blatantly stolen from IIRScram_ProcedureCallStatement.  Changes need to be
   // propagate back to that file.
   savant::set<IIRScram_TypeDefinition> proc_rval_set(dynamic_cast<IIRScram_TypeDefinition *>(IIRScram_ProcedureDeclaration::get_procedure_return_type())); 
-  set_procedure_name( _get_procedure_name()->_semantic_transform( &proc_rval_set ));
+  set_procedure_name( _get_procedure_name()->_semantic_transform( &proc_rval_set ) );
   
   if( get_procedure_name()->get_kind() != IIR_FUNCTION_CALL ){
     savant::set<IIRScram_Declaration> *my_decls;
@@ -92,8 +92,10 @@ IIRScram_ConcurrentProcedureCallStatement::_type_check(){
     case 0:{
       ostringstream err;
       err << "No declaration of procedure with signature matching |"
-	  << *_get_procedure_name() << "|.";
-      report_error( this, err.str() );
+	  << "|.";
+         // FIXME: overload operator<<
+	  //<< *_get_procedure_name() << "|.";
+      //report_error( this, err.str() );
       break;
     }
     case 1:{
@@ -126,9 +128,9 @@ IIRScram_ConcurrentProcedureCallStatement::_type_check(){
   ASSERT( _get_procedure_name()->is_resolved() == true );  
 }
 
-IIRScram *
+IIRScram_Name *
 IIRScram_ConcurrentProcedureCallStatement::_get_procedure_name() {
-  return dynamic_cast<IIRScram *>(get_procedure_name());
+  return dynamic_cast<IIRScram_Name *>(get_procedure_name());
 }
 
 IIRScram_AssociationList *

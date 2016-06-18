@@ -42,8 +42,8 @@ public:
   IIR_Kind get_kind() const {return IIR_CONCURRENT_GENERATE_IF_STATEMENT;}
   const IIR_Char *get_kind_text() const {return "IIR_ConcurrentGenerateIfStatement";}
 
-  void set_if_condition( IIR *condition );
-  IIR *get_if_condition();
+  void set_if_condition( IIR_Statement *condition );
+  IIR_Statement *get_if_condition();
 
   IIR_Statement *convert_tree(plugin_class_factory *factory);
 
@@ -56,6 +56,6 @@ private:
   // List Variable(s)
   IIR_DeclarationList<>         *block_declarative_part;
   IIR_ArchitectureStatementList *concurrent_statement_part;
-  IIR *condition;
+  IIR_Statement *condition;
 };
 #endif

@@ -139,7 +139,7 @@ IIRScram_ProcedureCallStatement::_type_check(){
   ASSERT( _get_procedure_name()->is_resolved() == true );  
 }
 
-IIRScram*
+IIRScram_ProcedureCallStatement*
 IIRScram_ProcedureCallStatement::_clone() {
   IIRScram_ProcedureCallStatement *callstmt = new IIRScram_ProcedureCallStatement();
 

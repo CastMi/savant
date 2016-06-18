@@ -84,19 +84,19 @@ IIRBase_Statement::_report_undefined_fn(const char *fn_name) {
 }
 
 void 
-IIRBase_Statement::set_assertion_condition( IIR * ){
+IIRBase_Statement::set_assertion_condition( IIR_Statement * ){
   _report_undefined_fn(" set_assertion_condition( IIR * )");
   ASSERT(0);
 }
 
 void 
-IIRBase_Statement::set_report_expression( IIR * ){
+IIRBase_Statement::set_report_expression( IIR_Statement * ){
   _report_undefined_fn(" set_report_expression( IIR * )");
   ASSERT(0);
 }
 
 void 
-IIRBase_Statement::set_severity_expression( IIR * ){
+IIRBase_Statement::set_severity_expression( IIR_Statement * ){
   _report_undefined_fn(":set_severity_expression( IIR * )");
   ASSERT(0);
 }
@@ -120,7 +120,7 @@ IIRBase_Statement::get_declarator(){
 }
 
 void 
-IIRBase_Statement::set_reject_time_expression( IIR * ) {
+IIRBase_Statement::set_reject_time_expression( IIR_Statement * ) {
   _report_undefined_fn("set_reject_time_expression(IIR *)");
 }
 

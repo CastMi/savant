@@ -59,14 +59,14 @@ IIRScram_ConcurrentGenerateIfStatement::_find_instantiate_label( IIRScram_Simple
   return _get_concurrent_statement_part()->_find_instantiate_label( to_find );
 }
 
-IIRScram_List *
+IIRScram_List<IIRScram_Statement> *
 IIRScram_ConcurrentGenerateIfStatement::_get_statement_list() {
-  return dynamic_cast<IIRScram_List *>(get_concurrent_statement_part());
+  return dynamic_cast<IIRScram_List<IIRScram_Statement> *>(get_concurrent_statement_part());
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_ConcurrentGenerateIfStatement::_get_if_condition() {
-  return dynamic_cast<IIRScram *>(get_if_condition());
+  return dynamic_cast<IIRScram_Statement *>(get_if_condition());
 }
 
 IIRScram_DeclarationList *

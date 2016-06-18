@@ -45,7 +45,7 @@ public:
 
   void _type_check();
 
-  IIRScram *                    _get_procedure_name();
+  IIRScram_Name *               _get_procedure_name();
   IIRScram_AssociationList *    _get_actual_parameter_part();
 };
 

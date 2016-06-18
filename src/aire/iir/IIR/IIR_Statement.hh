@@ -113,17 +113,17 @@ public:
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
-  virtual void set_assertion_condition( IIR * ) = 0;
+  virtual void set_assertion_condition( IIR_Statement * ) = 0;
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
-  virtual void set_report_expression( IIR * ) = 0;
+  virtual void set_report_expression( IIR_Statement * ) = 0;
 
   /**  This is overloaded for assertion and report statements.  Generate
       runtime error for anything else.  */
-  virtual void set_severity_expression( IIR * ) = 0;
+  virtual void set_severity_expression( IIR_Statement * ) = 0;
 
-  virtual void set_reject_time_expression( IIR * ) = 0 ;
+  virtual void set_reject_time_expression( IIR_Statement * ) = 0 ;
   virtual void set_target( IIR * ) = 0;
 };
 

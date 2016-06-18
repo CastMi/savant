@@ -76,6 +76,8 @@ public:
 
   IIRScram_Statement *_get_prefix();
 
+  IIRScram_Name *_semantic_transform( savant::set<IIRScram_TypeDefinition> * );
+  
   virtual IIRScram_Statement *_get_suffix() { return NULL; }
 
   virtual void _set_suffix(IIRScram *suffix);

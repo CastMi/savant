@@ -98,9 +98,9 @@ IIRScram_ConditionalWaveform::_type_check( savant::set<IIRScram_TypeDefinition> 
   }
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_ConditionalWaveform::_get_condition() {
-  return dynamic_cast<IIRScram *>(get_condition());
+  return dynamic_cast<IIRScram_Statement *>(get_condition());
 }
 
 IIRScram_WaveformList *

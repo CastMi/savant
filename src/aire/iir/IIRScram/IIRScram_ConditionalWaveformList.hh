@@ -33,7 +33,7 @@
 
 class IIRScram_DesignatorList;
 
-class IIRScram_ConditionalWaveformList : public virtual IIRScram_List, public virtual IIRBase_ConditionalWaveformList {
+class IIRScram_ConditionalWaveformList : public virtual IIRScram_List<IIR_ConditionalWaveform>, public virtual IIRBase_ConditionalWaveformList {
 public:
   IIRScram_ConditionalWaveformList() {};
   virtual ~IIRScram_ConditionalWaveformList();

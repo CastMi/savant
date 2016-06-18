@@ -41,7 +41,7 @@ public:
   virtual IIR_AssociationList   *get_actual_parameter_part() = 0;
   virtual void                  set_actual_parameter_part(IIR_AssociationList *) = 0;
 
-  virtual void set_procedure_name( IIR* procedure_name) = 0;
-  virtual IIR* get_procedure_name() = 0;
+  virtual void set_procedure_name( IIR_Name* procedure_name) = 0;
+  virtual IIR_Name* get_procedure_name() = 0;
 };
 #endif

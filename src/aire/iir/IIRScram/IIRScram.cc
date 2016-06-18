@@ -514,30 +514,6 @@ IIRScram::_resolve_map( IIRScram_InterfaceList *entity_interface_list,
   }
 }
 
-IIRScram_TypeDefinition *
-IIRScram::_type_check_iteration_scheme( IIRScram_ConstantDeclaration *iteration_scheme ){
-  IIRScram_TypeDefinition *retval = NULL;
-
-  ASSERT( iteration_scheme != NULL );
-  IIRScram_TypeDefinition *range_type = iteration_scheme->_get_subtype();
-  ASSERT( iteration_scheme->_get_subtype() != NULL );
-
-  if( range_type->get_kind() == IIR_RANGE_TYPE_DEFINITION ){
-    IIRScram_RangeTypeDefinition *temp = dynamic_cast<IIRScram_RangeTypeDefinition *>(range_type);
-    IIRScram_TypeDefinition *constant_base_type = temp->_determine_discrete_type();
-    if( constant_base_type != NULL ){
-      retval = constant_base_type->_construct_new_subtype( NULL, temp);
-    }
-  }
-  else{
-    // else it should be resolved.
-    ASSERT( iteration_scheme->_get_subtype()->is_resolved() == true );
-    retval = iteration_scheme->_get_subtype();
-  }
-
-  return retval;
-}
-
 IIR *
 IIRScram::_type_check_file_open_information(){
   IIR *retval = this;
