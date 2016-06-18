@@ -50,7 +50,7 @@ IIRBase_ConcurrentSelectedSignalAssignment::set_postponed( IIR_Boolean postponed
 }
 
 IIR_Boolean   
-IIRBase_ConcurrentSelectedSignalAssignment::get_postponed(){
+IIRBase_ConcurrentSelectedSignalAssignment::get_postponed() const {
   return postponed;
 }
 
@@ -60,17 +60,17 @@ IIRBase_ConcurrentSelectedSignalAssignment::set_target(IIR *target ){
 }
 
 IIR * 
-IIRBase_ConcurrentSelectedSignalAssignment::get_target(){
+IIRBase_ConcurrentSelectedSignalAssignment::get_target() const {
   return target;
 }
 
 void 
-IIRBase_ConcurrentSelectedSignalAssignment::set_expression(IIR *expr ){
+IIRBase_ConcurrentSelectedSignalAssignment::set_expression(IIR_Statement *expr ){
   expression = expr;
 }
 
-IIR * 
-IIRBase_ConcurrentSelectedSignalAssignment::get_expression(){
+IIR_Statement *
+IIRBase_ConcurrentSelectedSignalAssignment::get_expression() const {
   return expression;
 }
 
@@ -80,7 +80,7 @@ IIRBase_ConcurrentSelectedSignalAssignment::set_guarded( IIR_Boolean guarded ){
 }
 
 IIR_Boolean 
-IIRBase_ConcurrentSelectedSignalAssignment::get_guarded(){
+IIRBase_ConcurrentSelectedSignalAssignment::get_guarded() const {
   return guarded;
 }
 
@@ -90,7 +90,7 @@ IIRBase_ConcurrentSelectedSignalAssignment::set_delay_mechanism( IIR_DelayMechan
 }
 
 IIR_DelayMechanism  
-IIRBase_ConcurrentSelectedSignalAssignment::get_delay_mechanism(){
+IIRBase_ConcurrentSelectedSignalAssignment::get_delay_mechanism() const {
   return delay_mechanism;
 }
 
@@ -100,13 +100,13 @@ IIRBase_ConcurrentSelectedSignalAssignment::set_reject_time_expression( IIR *rej
 }
 
 IIR *
-IIRBase_ConcurrentSelectedSignalAssignment::get_reject_time_expression(){
+IIRBase_ConcurrentSelectedSignalAssignment::get_reject_time_expression() const {
   return reject_time_expression;
 }
 
 // List Accessor(s)
 IIR_SelectedWaveformList *
-IIRBase_ConcurrentSelectedSignalAssignment::get_selected_waveforms() {
+IIRBase_ConcurrentSelectedSignalAssignment::get_selected_waveforms() const {
   ASSERT(selected_waveforms != NULL);
   return selected_waveforms;
 }
@@ -118,7 +118,7 @@ IIRBase_ConcurrentSelectedSignalAssignment::set_selected_waveforms(IIR_SelectedW
   selected_waveforms = new_selected_waveforms;
 }
 
-IIR_Statement *
+IIR_ConcurrentSelectedSignalAssignment *
 IIRBase_ConcurrentSelectedSignalAssignment::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ConcurrentSelectedSignalAssignment *new_node = dynamic_cast<IIRBase_ConcurrentSelectedSignalAssignment *>(IIRBase_ConcurrentStatement::convert_tree(factory));

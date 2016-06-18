@@ -31,7 +31,7 @@ class IIRScram_ArchitectureStatement : public virtual IIRScram_Statement, public
 public:
   IIRScram_ArchitectureStatement();
   virtual ~IIRScram_ArchitectureStatement();
-  virtual IIRScram_Statement* _get_instantiated_unit() {
+  virtual IIRScram_Name* _get_instantiated_unit() {
     _report_undefined_scram_fn("_get_instantiated_unit()");
     return NULL;
   };

@@ -78,7 +78,7 @@ public:
 
   IIRScram_Label                *_find_instantiate_label( IIRScram_SimpleName * );
 
-  IIRScram_Statement            *_get_instantiated_unit();
+  IIRScram_Name                 *_get_instantiated_unit();
   IIRScram_AssociationList      *_get_port_map_aspect();
   IIRScram                      *_get_configuration();
 protected:
@@ -100,7 +100,7 @@ private:
       of 5.2.2 in the '93 LRM.  */
   IIRScram_ConfigurationSpecification *_get_default_binding_indication();
   /** Does the actual building for _get_default_binding_indication() */
-  IIRScram_ConfigurationSpecification *_build_default_entity_aspect( IIRScram *component_name,
+  IIRScram_ConfigurationSpecification *_build_default_entity_aspect( IIRScram_Name *component_name,
                                                                      IIRScram_ArchitectureDeclaration *arch);
 
   IIR_Kind my_instantiation_type;

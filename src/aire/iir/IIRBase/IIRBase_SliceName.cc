@@ -46,7 +46,7 @@ IIRBase_SliceName::get_suffix() const {
 }
 
 
-IIR_Statement *
+IIR_SliceName *
 IIRBase_SliceName::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_SliceName *new_node = dynamic_cast<IIRBase_SliceName *>(IIRBase_Name::convert_tree(factory));

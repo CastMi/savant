@@ -50,7 +50,7 @@ IIRBase_SelectedName::get_suffix() const {
   return suffix;
 }
 
-IIR_Statement *
+IIR_SelectedName *
 IIRBase_SelectedName::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_SelectedName *new_node = dynamic_cast<IIRBase_SelectedName *>(IIRBase_Name::convert_tree(factory));

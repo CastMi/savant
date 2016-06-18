@@ -67,7 +67,7 @@ IIRBase_TextLiteral::convert_to_library_name(){
   return convert_to_string();
 }
 
-IIR_Statement *
+IIR_TextLiteral *
 IIRBase_TextLiteral::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_TextLiteral *new_node = dynamic_cast<IIRBase_TextLiteral *>(IIRBase_Literal::convert_tree(factory));

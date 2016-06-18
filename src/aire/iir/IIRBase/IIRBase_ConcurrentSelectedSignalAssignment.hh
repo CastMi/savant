@@ -37,34 +37,34 @@ class IIRBase_ConcurrentSelectedSignalAssignment : public virtual IIRBase_Concur
 
 public:
   // List Accessor(s)
-  IIR_SelectedWaveformList *get_selected_waveforms();
+  IIR_SelectedWaveformList *get_selected_waveforms() const;
   void                     set_selected_waveforms(IIR_SelectedWaveformList *new_selected_waveforms);
 
   IIR_Kind get_kind() const { return IIR_CONCURRENT_SELECTED_SIGNAL_ASSIGNMENT; }
   const IIR_Char *get_kind_text() const {return "IIR_ConcurrentSelectedSignalAssignment";}
 
   void set_postponed(IIR_Boolean);
-  IIR_Boolean get_postponed();
+  IIR_Boolean get_postponed() const;
 
   void set_target(IIR *);
-  IIR* get_target();
+  IIR* get_target() const;
 
-  void set_expression(IIR *);
-  IIR* get_expression();
+  void set_expression(IIR_Statement *);
+  IIR_Statement* get_expression() const;
 
   void set_guarded(IIR_Boolean);
-  IIR_Boolean get_guarded();
+  IIR_Boolean get_guarded() const;
 
   void  set_delay_mechanism( IIR_DelayMechanism);
-  IIR_DelayMechanism get_delay_mechanism();
+  IIR_DelayMechanism get_delay_mechanism() const;
 
   void set_reject_time_expression( IIR *reject_time_expression );
-  IIR *get_reject_time_expression();
+  IIR *get_reject_time_expression() const;
 
-  IIR_SignalDeclaration *get_guard_signal(){ return my_guard_signal; }
+  IIR_SignalDeclaration *get_guard_signal() const{ return my_guard_signal; }
   void set_guard_signal( IIR_SignalDeclaration *gs ){ my_guard_signal =  gs; }
 
-  IIR_Statement *convert_tree(plugin_class_factory *factory);
+  IIR_ConcurrentSelectedSignalAssignment *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_resolved();
 
@@ -81,7 +81,7 @@ private:
 
   IIR_Boolean           postponed;
   IIR                   *target;
-  IIR                   *expression;
+  IIR_Statement         *expression;
   IIR_Boolean           guarded;
   IIR_DelayMechanism    delay_mechanism;
   IIR                   *reject_time_expression;

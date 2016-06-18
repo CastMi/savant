@@ -1,4 +1,3 @@
-
 // Copyright (c) 2003 The University of Cincinnati.
 // All rights reserved.
 
@@ -43,18 +42,18 @@ IIRBase_ConcurrentBreakStatement::~IIRBase_ConcurrentBreakStatement(){
 }
 
 void
-IIRBase_ConcurrentBreakStatement::set_condition(IIR* condition){
+IIRBase_ConcurrentBreakStatement::set_condition(IIR_Statement* condition){
   this->condition = condition;
 }
 
-IIR*
-IIRBase_ConcurrentBreakStatement::get_condition(){
+IIR_Statement*
+IIRBase_ConcurrentBreakStatement::get_condition() const {
   return condition;
 }
 
 // List Accessor(s)
 IIR_BreakList *
-IIRBase_ConcurrentBreakStatement::get_concurrent_break_list() {
+IIRBase_ConcurrentBreakStatement::get_concurrent_break_list() const {
   ASSERT (concurrent_break_list != NULL);
   return concurrent_break_list;
 }
@@ -70,7 +69,7 @@ IIRBase_ConcurrentBreakStatement::set_concurrent_break_list(IIR_BreakList * new_
 }
 
 IIR_DesignatorList *
-IIRBase_ConcurrentBreakStatement::get_sensitivity_list() {
+IIRBase_ConcurrentBreakStatement::get_sensitivity_list() const {
   ASSERT (sensitivity_list != NULL);
   return sensitivity_list;
 }

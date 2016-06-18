@@ -45,5 +45,6 @@ public:
   virtual void set_suffix( IIR_Statement *suffix ) = 0;
   virtual IIR_Statement *get_suffix() const = 0;
   //@}
+  virtual IIR_Name *convert_tree(plugin_class_factory *factory) = 0;
 };
 #endif

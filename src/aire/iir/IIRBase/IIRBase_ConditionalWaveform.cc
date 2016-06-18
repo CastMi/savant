@@ -27,6 +27,7 @@
 #include "savant.hh"
 #include "IIRBase_ConditionalWaveform.hh"
 #include "IIR_WaveformList.hh"
+#include "IIR_Statement.hh"
 
 IIRBase_ConditionalWaveform::IIRBase_ConditionalWaveform() :
   waveform(0) {
@@ -37,18 +38,18 @@ IIRBase_ConditionalWaveform::~IIRBase_ConditionalWaveform(){
 }
 
 void 
-IIRBase_ConditionalWaveform::set_condition( IIR *condition ){
+IIRBase_ConditionalWaveform::set_condition( IIR_Statement *condition ){
   this->condition = condition;
 }
 
-IIR *
-IIRBase_ConditionalWaveform::get_condition(){
+IIR_Statement *
+IIRBase_ConditionalWaveform::get_condition() const {
   return condition;
 }
 
 // List Accessor(s)
 IIR_WaveformList *
-IIRBase_ConditionalWaveform::get_waveform() {
+IIRBase_ConditionalWaveform::get_waveform() const {
   ASSERT(waveform != NULL);
   return waveform;
 }
@@ -61,7 +62,7 @@ IIRBase_ConditionalWaveform::set_waveform(IIR_WaveformList *new_waveform) {
   waveform = new_waveform;
 }
 
-IIR *
+IIR_ConditionalWaveform *
 IIRBase_ConditionalWaveform::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ConditionalWaveform *new_node = dynamic_cast<IIRBase_ConditionalWaveform *>(IIRBase_Tuple::convert_tree(factory));
@@ -94,7 +95,8 @@ IIRBase_ConditionalWaveform::print( ostream &os ){
 
   if( get_condition() != NULL ){
     os << "when ";
-    os << *get_condition();
+    // FIXME: overload operator<<
+    //os << *get_condition();
   }
 
   return os;

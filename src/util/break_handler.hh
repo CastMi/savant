@@ -41,26 +41,26 @@ public:
   
   /** Returns the break list. */
   IIR_BreakList*
-  get_break_list() { 
+  get_break_list() const { 
     return break_quantity_list;
   }
   
   /** Returns the sensitivity list present in the sensitivity clause of the
       concurrent Break statement. */
   IIR_DesignatorList*
-  get_sensitivity_list() { 
+  get_sensitivity_list() const {
     return break_sensitivity_list;
   }
   
   /** Returns the condition in break statement. */
-  IIR *
-  get_condition() { 
+  IIR_Statement *
+  get_condition() const {
     return break_condition;
   }
 
   /** Sets the break condition. */
   void
-  set_condition(IIR *condition) {
+  set_condition(IIR_Statement *condition) {
     break_condition = condition;
   }
   
@@ -76,12 +76,10 @@ public:
     break_sensitivity_list = designator;
   }
   
-protected:
-
 private:
   IIR_BreakList *break_quantity_list;
   IIR_DesignatorList *break_sensitivity_list;
-  IIR* break_condition;
+  IIR_Statement* break_condition;
   
 };
 #endif

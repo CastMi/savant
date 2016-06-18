@@ -36,16 +36,16 @@ class IIRBase_ConditionalWaveform : public virtual IIRBase_Tuple, public virtual
 
 public:
   // List Accessor(s)
-  IIR_WaveformList *get_waveform();
+  IIR_WaveformList *get_waveform() const;
   void             set_waveform(IIR_WaveformList *new_waveform);
 
   IIR_Kind get_kind() const {return IIR_CONDITIONAL_WAVEFORM;}
   const IIR_Char *get_kind_text() const {return "IIR_ConditionalWaveform";}
 
-  void set_condition( IIR *condition );
-  IIR *get_condition();
+  void set_condition( IIR_Statement *condition );
+  IIR_Statement *get_condition() const;
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_ConditionalWaveform *convert_tree(plugin_class_factory *factory);
  
   IIR_Boolean is_resolved();
 
@@ -59,6 +59,6 @@ private:
   // List Variable(s)
   IIR_WaveformList *waveform;
 
-  IIR *condition;
+  IIR_Statement *condition;
 };
 #endif

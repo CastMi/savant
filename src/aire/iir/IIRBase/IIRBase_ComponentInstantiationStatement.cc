@@ -41,11 +41,11 @@ IIRBase_ComponentInstantiationStatement::~IIRBase_ComponentInstantiationStatemen
 }
 
 void 
-IIRBase_ComponentInstantiationStatement::set_instantiated_unit( IIR_Statement *instantiated_unit ){
+IIRBase_ComponentInstantiationStatement::set_instantiated_unit( IIR_Name *instantiated_unit ){
   my_instantiated_unit = instantiated_unit;
 }
 
-IIR_Statement *
+IIR_Name *
 IIRBase_ComponentInstantiationStatement::get_instantiated_unit() const {
   return my_instantiated_unit;
 }
@@ -78,7 +78,7 @@ IIRBase_ComponentInstantiationStatement::set_port_map_aspect(IIR_AssociationList
   port_map_aspect = new_port_map_aspect;
 }
 
-IIRBase_ComponentInstantiationStatement *
+IIR_ComponentInstantiationStatement *
 IIRBase_ComponentInstantiationStatement::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ComponentInstantiationStatement *new_node = dynamic_cast<IIRBase_ComponentInstantiationStatement *>(IIRBase_ConcurrentStatement::convert_tree(factory));

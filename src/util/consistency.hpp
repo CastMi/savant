@@ -4,7 +4,7 @@
 #include <vector>
 #include <cstddef>
 
-class IIR;
+class IIR_Statement;
 
 class consistency {
 public:
@@ -12,8 +12,8 @@ public:
   static consistency* instance();
   ~consistency();
   
-  void add_missing( IIR* );
-  std::vector<IIR*>& get_missing();
+  void add_missing( IIR_Statement* );
+  std::vector<IIR_Statement*>& get_missing();
   size_t size() const;
   
 
@@ -22,7 +22,7 @@ private:
   consistency();
 
   // items with at least one missing element
-  std::vector<IIR*> missing;
+  std::vector<IIR_Statement*> missing;
     
 };
 

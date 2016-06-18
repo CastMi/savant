@@ -31,7 +31,7 @@
 
 IIRScram_ConcatenationOperator::~IIRScram_ConcatenationOperator() {}
 
-IIRScram*
+IIRScram_ConcatenationOperator*
 IIRScram_ConcatenationOperator::_clone() {
   IIRScram_ConcatenationOperator *clone = new IIRScram_ConcatenationOperator();
   IIRScram_DyadicOperator::_clone(clone);

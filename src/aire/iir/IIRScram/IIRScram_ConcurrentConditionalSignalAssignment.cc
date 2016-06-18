@@ -83,7 +83,7 @@ IIRScram_ConcurrentConditionalSignalAssignment::_type_check_target_and_waveforms
   }
 }
 
-IIRScram *
+IIRScram_ConcurrentConditionalSignalAssignment *
 IIRScram_ConcurrentConditionalSignalAssignment::_clone() {
   IIRScram *cstmt;
   // FIXME: I need to figure out what was supposed to happen here
@@ -95,7 +95,7 @@ IIRScram_ConcurrentConditionalSignalAssignment::_clone() {
 }
 
 IIRScram *
-IIRScram_ConcurrentConditionalSignalAssignment::_get_target(){
+IIRScram_ConcurrentConditionalSignalAssignment::_get_target() const {
   return dynamic_cast<IIRScram *>(get_target());
 }
   

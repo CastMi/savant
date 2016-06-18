@@ -131,7 +131,9 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_entity(
                                                                                                          get_design_file()->get_standard_package(),
                                                                                                          get_design_file()->get_class_factory()));
       
-    set_instantiated_unit( _get_instantiated_unit()->_decl_to_decl( entity_decl ) );
+    // FIXME: look at the FIXME comment in the function 
+    // look IIRScram_ComponentInstantiationStatement::_type_check()
+    //set_instantiated_unit( _get_instantiated_unit()->_decl_to_decl( entity_decl ) );
   }
 }
 
@@ -151,7 +153,9 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_compone
     switch( instantiated_unit_decls->size() ){
     case 0:{
       ostringstream err;
-      err << "|" << *_get_instantiated_unit() << "| was not declared as a";
+      // FIXME: overlo operator<<
+      //err << "|" << *_get_instantiated_unit() << "| was not declared as a";
+      err << "|| was not declared as a";
 	
       switch( _get_instantiation_type() ){
       case IIR_ENTITY_DECLARATION:
@@ -173,7 +177,9 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_compone
     }
     case 1:{
       IIRScram_Declaration *instantiated_decl = instantiated_unit_decls->getElement();
-      set_instantiated_unit( _get_instantiated_unit()->_decl_to_decl( instantiated_decl ) );
+      // FIXME: look at the FIXME comment in the function 
+      // look IIRScram_ComponentInstantiationStatement::_type_check()
+      // set_instantiated_unit( _get_instantiated_unit()->_decl_to_decl( instantiated_decl ) );
       if(dynamic_cast<IIRScram_ComponentDeclaration*>(get_instantiated_unit())->_get_entity() == NULL) {
          // unknown entity fo the component...perhaps a Verilog module?
          auto tmp = consistency::instance()->get_missing();
@@ -183,7 +189,7 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_compone
       break;
     }
     default:{
-      report_ambiguous_error( _get_instantiated_unit(), instantiated_unit_decls->convert_set<IIR_Declaration>() );
+      report_ambiguous_error( _get_instantiated_unit()->_get_declarator(), instantiated_unit_decls->convert_set<IIR_Declaration>() );
       break;
     }
     }
@@ -231,11 +237,19 @@ IIRScram_ComponentInstantiationStatement::_type_check(){
 
   if( _get_instantiated_unit() != NULL && _get_instantiated_unit()->is_resolved() == true ){
     // The locals are in "get_instantiated_unit()->_get_generic_list()"
-    _get_generic_map_aspect()->_resolve_and_order( _get_instantiated_unit()->_get_generic_list(),
-						   0, this );
+    // -----------------------------------------------------------------------------------
+    // FIXME: you cannot call the "_get_generic_list()" on the _get_instantiated_unit()
+    // because It is a simple identifier.
+    // The current _get_instantiated_unit() should become a _get_instantiated_unit_name()
+    // and a new function get_instantiated_unit() that returns the declaration of the
+    // real unit declaration must be added.
+    // The class Base_ComponentInstantiationStatement must be changed accordingly.
+    // -----------------------------------------------------------------------------------
+    //_get_generic_map_aspect()->_resolve_and_order( _get_instantiated_unit()->_get_generic_list(),
+	 //					   0, this );
     // The locals are in "get_instantiated_unit()->_get_port_list()"
-    _get_port_map_aspect()->_resolve_and_order( _get_instantiated_unit()->_get_port_list(),
-						0, this );
+    //_get_port_map_aspect()->_resolve_and_order( _get_instantiated_unit()->_get_port_list(),
+	 //					0, this );
   }
 }
 
@@ -269,7 +283,7 @@ IIRScram_ComponentInstantiationStatement::_build_implicit_configuration_specific
 										       IIRScram_ComponentDeclaration *compDecl) {
   IIRScram_ConfigurationSpecification *config_spec = new IIRScram_ConfigurationSpecification;
   copy_location(this, config_spec);
-  config_spec->set_component_name(compDecl);
+  config_spec->set_component_name(compDecl->get_declarator());
   config_spec->set_entity_aspect(instantiatedUnit);
 
   IIRScram_DesignatorExplicit *designator = new IIRScram_DesignatorExplicit();
@@ -288,7 +302,7 @@ IIRScram_ComponentInstantiationStatement::_get_default_binding_indication(){
   ASSERT( _get_instantiated_unit() != 0 );
   ASSERT( _get_instantiation_type() == IIR_COMPONENT_DECLARATION );
   
-  IIRScram *component_name = _get_instantiated_unit();
+  IIRScram_Name *component_name = _get_instantiated_unit();
 
   IIRScram_ArchitectureDeclaration *arch = 0;
   IIRScram_EntityDeclaration *entity = dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( false,
@@ -306,7 +320,9 @@ IIRScram_ComponentInstantiationStatement::_get_default_binding_indication(){
     }
     else{
       ostringstream err;
-      err << "Component |" << *component_name << "| has no explicit binding indication,"
+      // FIXME: overload operator<<
+      //err << "Component |" << *component_name << "| has no explicit binding indication,"
+      err << "Component || has no explicit binding indication,"
 	  << " and the default binding is broken.  While entity |" << *entity << "| "
 	  << "is a match by name, there is no cooresponding architecture";
       report_error( this, err.str() );
@@ -316,31 +332,38 @@ IIRScram_ComponentInstantiationStatement::_get_default_binding_indication(){
   return retval;
 }
 
-IIRScram_Statement *
+IIRScram_Name *
 IIRScram_ComponentInstantiationStatement::_get_instantiated_unit() {
-  return dynamic_cast<IIRScram*>(IIRBase_ComponentInstantiationStatement::get_instantiated_unit());
+  return dynamic_cast<IIRScram_Name*>(get_instantiated_unit());
 }
 
 IIRScram_ConfigurationSpecification *
-IIRScram_ComponentInstantiationStatement::_build_default_entity_aspect(IIRScram *component_name,
+IIRScram_ComponentInstantiationStatement::_build_default_entity_aspect(IIRScram_Name *component_name,
 								       IIRScram_ArchitectureDeclaration *arch){
   ASSERT( arch->_get_entity() != 0 );
 
   IIRScram_ConfigurationSpecification *retval = new IIRScram_ConfigurationSpecification();
   copy_location( this, retval );
-  copy_location( this, retval->get_port_map_aspect() );
-  copy_location( this, retval->get_generic_map_aspect() );
+  // FIXME: overload copy_location
+  //copy_location( this, retval->get_port_map_aspect() );
+  //copy_location( this, retval->get_generic_map_aspect() );
   retval->_set_design_file( _get_design_file() );
-  retval->set_component_name( IIRBase_ComponentInstantiationStatement::get_instantiated_unit() );
+  retval->set_component_name( get_instantiated_unit() );
   retval->set_entity_aspect( arch );
   retval->set_is_implicit( true );
-  retval->_get_port_map_aspect()->_build_default_map( this,
-                                                      arch->_get_entity()->_get_port_clause(),
-                                                      component_name->_get_port_list() );
+  // FIXME: look at the FIXME comment in the function 
+  // look IIRScram_ComponentInstantiationStatement::_type_check()
+  // retval->_get_port_map_aspect()->_build_default_map( this, arch->_get_entity()->_get_port_clause(), component_name->_get_port_list() );
+  // Should become
+  // retval->_get_port_map_aspect()->_build_default_map( this, arch->_get_entity()->_get_port_clause(), _get_instantiated_unit()->_get_port_list() );
+  // where the last parameter is the real declaration
 
-  retval->_get_generic_map_aspect()->_build_default_map( this,
-                                                         arch->_get_entity()->_get_generic_clause(),
-                                                         component_name->_get_generic_list() );  
+  // FIXME: look at the FIXME comment in the function 
+  // look IIRScram_ComponentInstantiationStatement::_type_check()
+  // retval->_get_generic_map_aspect()->_build_default_map( this, arch->_get_entity()->_get_generic_clause(), component_name->_get_generic_list() );  
+  // Should become
+  // retval->_get_generic_map_aspect()->_build_default_map( this, arch->_get_entity()->_get_generic_clause(), _get_instantiated_unit()->_get_generic_list() );  
+  // where the last parameter is the real declaration
   
   return retval;
 }

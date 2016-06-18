@@ -67,6 +67,7 @@ public:
   IIRScram_LibraryDeclaration *_get_work_library();
   
   virtual savant::set<IIRScram_Declaration> *_symbol_lookup();
+  virtual savant::set<IIRScram_Declaration> *_symbol_lookup(constraint_functor *functor);
   symbol_table *_get_symbol_table( );
   virtual IIRScram_TypeDefinition *_get_subtype();
 

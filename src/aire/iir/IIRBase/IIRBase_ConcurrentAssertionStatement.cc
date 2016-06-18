@@ -43,7 +43,7 @@ IIRBase_ConcurrentAssertionStatement::set_postponed( IIR_Boolean predicate ){
 }
 
 IIR_Boolean 
-IIRBase_ConcurrentAssertionStatement::get_postponed(){
+IIRBase_ConcurrentAssertionStatement::get_postponed() const {
   return predicate;
 }
 
@@ -53,7 +53,7 @@ IIRBase_ConcurrentAssertionStatement::set_assertion_condition( IIR_Statement *co
 }
 
 IIR_Statement *
-IIRBase_ConcurrentAssertionStatement::get_assertion_condition(){
+IIRBase_ConcurrentAssertionStatement::get_assertion_condition() const {
   return assertion_condition;
 }
 
@@ -63,7 +63,7 @@ IIRBase_ConcurrentAssertionStatement::set_report_expression( IIR_Statement *expr
 }
 
 IIR_Statement *
-IIRBase_ConcurrentAssertionStatement::get_report_expression(){
+IIRBase_ConcurrentAssertionStatement::get_report_expression() const {
   return report_expression;
 }
 
@@ -73,7 +73,7 @@ IIRBase_ConcurrentAssertionStatement::set_severity_expression(  IIR_Statement *e
 }
 
 IIR_Statement *
-IIRBase_ConcurrentAssertionStatement::get_severity_expression(){
+IIRBase_ConcurrentAssertionStatement::get_severity_expression() const {
   return severity_expression;
 }
 

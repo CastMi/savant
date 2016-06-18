@@ -32,7 +32,7 @@ public:
   IIR_FP32 value();
   void set_value(IIR_FP32);
 
-  IIR_Statement *convert_tree(plugin_class_factory *factory);
+  IIR_FloatingPointLiteral32 *convert_tree(plugin_class_factory *factory);
 
   void publish_vhdl(ostream &);
 protected:

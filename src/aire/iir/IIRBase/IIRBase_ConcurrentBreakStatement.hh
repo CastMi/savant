@@ -36,8 +36,8 @@ class IIRBase_ConcurrentBreakStatement : public virtual IIR_ConcurrentBreakState
   
 public:
   // List Accessor(s)
-  IIR_BreakList *get_concurrent_break_list();
-  IIR_DesignatorList *get_sensitivity_list();
+  IIR_BreakList *get_concurrent_break_list() const;
+  IIR_DesignatorList *get_sensitivity_list() const;
   void set_concurrent_break_list(IIR_BreakList *);
   void set_sensitivity_list(IIR_DesignatorList *);
 
@@ -52,8 +52,8 @@ public:
   
   /** The condition in the concurrent break statement would be the
       condition in the equivalent break statement in the process. */
-  void set_condition(IIR* condition);
-  IIR* get_condition();
+  void set_condition(IIR_Statement* condition);
+  IIR_Statement* get_condition() const;
 
   IIR_Statement *convert_tree(plugin_class_factory *factory);
   
@@ -69,7 +69,7 @@ private:
   IIR_BreakList *concurrent_break_list;
   IIR_DesignatorList *sensitivity_list;
 
-  IIR* condition;
+  IIR_Statement* condition;
 
 };
 #endif

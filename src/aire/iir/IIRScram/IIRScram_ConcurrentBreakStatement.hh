@@ -49,9 +49,9 @@ public:
   void _build_break_info();
 
   // Helper Functions
-  IIRScram_BreakList            *_get_concurrent_break_list();
-  IIRScram_DesignatorList       *_get_sensitivity_list();
-  IIRScram                      *_get_condition();
+  IIRScram_BreakList            *_get_concurrent_break_list() const;
+  IIRScram_DesignatorList       *_get_sensitivity_list() const;
+  IIRScram_Statement            *_get_condition() const;
 
 };
 

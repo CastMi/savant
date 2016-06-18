@@ -54,7 +54,7 @@ void
 IIRScram_ConcurrentBreakStatement::_type_check() {
   IIRScram *signal_decl = NULL;
   IIRScram *current_name = NULL;
-  IIRScram *new_condition = NULL;
+  IIRScram_Statement *new_condition = NULL;
   IIRScram_BreakElement *break_element 
     = dynamic_cast<IIRScram_BreakElement *>(get_concurrent_break_list()->first());
   while(break_element != NULL) {
@@ -115,16 +115,16 @@ IIRScram_ConcurrentBreakStatement::_resolve_signal_name(IIRScram *sig_name) {
 }
 
 IIRScram_BreakList *
-IIRScram_ConcurrentBreakStatement::_get_concurrent_break_list() {
+IIRScram_ConcurrentBreakStatement::_get_concurrent_break_list() const {
   return dynamic_cast<IIRScram_BreakList *>(get_concurrent_break_list());
 }
 
 IIRScram_DesignatorList *
-IIRScram_ConcurrentBreakStatement::_get_sensitivity_list() {
+IIRScram_ConcurrentBreakStatement::_get_sensitivity_list() const {
   return dynamic_cast<IIRScram_DesignatorList *>(get_sensitivity_list());
 }
 
-IIRScram *
-IIRScram_ConcurrentBreakStatement::_get_condition() {
-  return dynamic_cast<IIRScram *>(get_condition());
+IIRScram_Statement *
+IIRScram_ConcurrentBreakStatement::_get_condition() const {
+  return dynamic_cast<IIRScram_Statement *>(get_condition());
 }

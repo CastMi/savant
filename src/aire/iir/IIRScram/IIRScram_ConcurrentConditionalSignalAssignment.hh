@@ -51,7 +51,7 @@ public:
   IIRScram_SignalDeclaration *_get_guard_signal();
 
   IIRScram *_get_target();
-  IIRScram *_clone();
+  IIRScram_ConcurrentConditionalSignalAssignment *_clone();
 
   // Helper Functions
   IIRScram *                            _get_reject_time_expression();

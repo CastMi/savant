@@ -42,10 +42,10 @@ public:
   IIR_Kind get_kind() const {return IIR_COMPONENT_INSTANTIATION_STATEMENT;}
   const IIR_Char *get_kind_text() const {return "IIR_ComponentInstantiationStatement";}
 
-  void set_instantiated_unit( IIR_Statement * );
-  IIR_Statement *get_instantiated_unit() const;
+  void set_instantiated_unit( IIR_Name * );
+  IIR_Name *get_instantiated_unit() const;
 
-  IIRBase_ComponentInstantiationStatement *convert_tree(plugin_class_factory *);
+  IIR_ComponentInstantiationStatement *convert_tree(plugin_class_factory *);
 
   /** This returns the configuration for this component.  It can be an
       IIR_ConfigurationSpecification, or an IIR_ComponentConfiguration. */
@@ -62,7 +62,7 @@ private:
   IIR_AssociationList  *generic_map_aspect;
   IIR_AssociationList  *port_map_aspect;
 
-  IIR_Statement *my_instantiated_unit;
+  IIR_Name *my_instantiated_unit;
   IIR *my_configuration;
 };
 #endif

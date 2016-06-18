@@ -57,7 +57,7 @@ IIRBase_IndexedName::get_declarative_region(){
   return get_prefix_declaration()->get_declarative_region();
 }
 
-IIR_Statement *
+IIR_IndexedName *
 IIRBase_IndexedName::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_IndexedName *new_node = dynamic_cast<IIRBase_IndexedName *>(IIRBase_Name::convert_tree(factory));

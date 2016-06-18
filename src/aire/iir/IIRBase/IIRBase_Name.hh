@@ -52,7 +52,7 @@ public:
   void set_suffix( IIR_Statement *suffix );
   IIR_Statement *get_suffix() const;
 
-  IIR_Statement *convert_tree(plugin_class_factory *factory);
+  IIR_Name *convert_tree(plugin_class_factory *factory);
   
   IIR_Boolean is_name() { return true; };
   IIR_Boolean is_signal();

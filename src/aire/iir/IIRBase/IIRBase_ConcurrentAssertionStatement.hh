@@ -37,16 +37,16 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_ConcurrentAssertionStatement";}
 
   void set_postponed( IIR_Boolean predicate );
-  IIR_Boolean get_postponed();
+  IIR_Boolean get_postponed() const;
 
   void set_assertion_condition( IIR_Statement *condition );
-  IIR_Statement *get_assertion_condition();
+  IIR_Statement *get_assertion_condition() const;
 
   void set_report_expression( IIR_Statement *expression );
-  IIR_Statement *get_report_expression();
+  IIR_Statement *get_report_expression() const;
 
   void set_severity_expression(  IIR_Statement *expression );
-  IIR_Statement *get_severity_expression();
+  IIR_Statement *get_severity_expression() const;
 
   IIR_Statement *convert_tree(plugin_class_factory *factory);
 

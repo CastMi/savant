@@ -42,17 +42,17 @@ IIRScram_ConcurrentAssertionStatement::_type_check(){
   }
 }
 
-IIRScram *
-IIRScram_ConcurrentAssertionStatement::_get_assertion_condition(){ 
-  return dynamic_cast<IIRScram *>(get_assertion_condition()); 
+IIRScram_Statement *
+IIRScram_ConcurrentAssertionStatement::_get_assertion_condition() const {
+  return dynamic_cast<IIRScram_Statement *>(get_assertion_condition()); 
 }
 
-IIRScram *
-IIRScram_ConcurrentAssertionStatement::_get_report_expression(){ 
-  return dynamic_cast<IIRScram *>(get_report_expression());
+IIRScram_Statement *
+IIRScram_ConcurrentAssertionStatement::_get_report_expression() const {
+  return dynamic_cast<IIRScram_Statement *>(get_report_expression());
 }
 
-IIRScram *
-IIRScram_ConcurrentAssertionStatement::_get_severity_expression() { 
-  return dynamic_cast<IIRScram *>(get_severity_expression()); 
+IIRScram_Statement *
+IIRScram_ConcurrentAssertionStatement::_get_severity_expression() const {
+  return dynamic_cast<IIRScram_Statement *>(get_severity_expression()); 
 }

@@ -41,7 +41,7 @@ public:
   void set_suffix( IIR_Statement* suffix);
   IIR_Statement* get_suffix() const;
 
-  IIR_Statement *convert_tree(plugin_class_factory *factory);
+  IIR_SliceName *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_resolved() const;
   IIR_Boolean is_variable() const;

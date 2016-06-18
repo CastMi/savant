@@ -1,4 +1,3 @@
-
 #ifndef IIR_CONDITIONAL_WAVEFORM_HH
 #define IIR_CONDITIONAL_WAVEFORM_HH
 
@@ -38,9 +37,9 @@ public:
   virtual ~IIR_ConditionalWaveform() {}
     
   // List accessor(s)
-  virtual IIR_WaveformList *get_waveform() = 0;
+  virtual IIR_WaveformList *get_waveform() const = 0;
 
-  virtual void set_condition( IIR *condition ) = 0;
-  virtual IIR *get_condition() = 0;
+  virtual void set_condition( IIR_Statement *condition ) = 0;
+  virtual IIR_Statement *get_condition() const = 0;
 };
 #endif

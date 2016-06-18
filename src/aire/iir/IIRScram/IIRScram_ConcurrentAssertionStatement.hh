@@ -42,9 +42,9 @@ public:
   void _type_check_expression();
   void _type_check_severity();
 
-  IIRScram *_get_assertion_condition();
-  IIRScram *_get_report_expression();
-  IIRScram *_get_severity_expression();
+  IIRScram_Statement *_get_assertion_condition() const;
+  IIRScram_Statement *_get_report_expression() const;
+  IIRScram_Statement *_get_severity_expression() const;
 };
 
 #endif

@@ -30,6 +30,7 @@
 #include "IIR_AssociationList.hh"
 #include "IIR_DesignatorList.hh"
 #include "IIRBase_LibraryUnit.hh"
+#include "IIRBase_Name.hh"
 
 IIRBase_ConfigurationSpecification::IIRBase_ConfigurationSpecification() :
   instantiation_list(0),
@@ -49,11 +50,11 @@ IIRBase_ConfigurationSpecification::~IIRBase_ConfigurationSpecification(){
 }
 
 void 
-IIRBase_ConfigurationSpecification::set_component_name(IIR *component_name){
+IIRBase_ConfigurationSpecification::set_component_name(IIR_Name *component_name){
   my_component_name = component_name;
 }
 
-IIR *
+IIR_Name *
 IIRBase_ConfigurationSpecification::get_component_name(){
   return my_component_name;
 }

@@ -1,4 +1,3 @@
-
 #ifndef IIR_CONCURRENT_SELECTED_SIGNAL_ASSIGNMENT_HH
 #define IIR_CONCURRENT_SELECTED_SIGNAL_ASSIGNMENT_HH
 
@@ -40,28 +39,28 @@ public:
   virtual ~IIR_ConcurrentSelectedSignalAssignment() {}
     
   // List accessor(s)
-  virtual IIR_SelectedWaveformList      *get_selected_waveforms() = 0;
+  virtual IIR_SelectedWaveformList      *get_selected_waveforms() const = 0;
   virtual void                          set_selected_waveforms(IIR_SelectedWaveformList *) = 0;
 
   virtual void set_postponed(IIR_Boolean) = 0;
-  virtual IIR_Boolean get_postponed() = 0;
+  virtual IIR_Boolean get_postponed() const = 0;
 
   virtual void set_target(IIR *) = 0;
-  virtual IIR* get_target() = 0;
+  virtual IIR* get_target() const = 0;
 
-  virtual void set_expression(IIR *) = 0;
-  virtual IIR* get_expression() = 0;
+  virtual void set_expression(IIR_Statement *) = 0;
+  virtual IIR_Statement* get_expression() const = 0;
 
   virtual void set_guarded(IIR_Boolean) = 0;
-  virtual IIR_Boolean get_guarded() = 0;
+  virtual IIR_Boolean get_guarded() const = 0;
 
   virtual void  set_delay_mechanism( IIR_DelayMechanism) = 0;
-  virtual IIR_DelayMechanism get_delay_mechanism() = 0;
+  virtual IIR_DelayMechanism get_delay_mechanism() const = 0;
 
   virtual void set_reject_time_expression( IIR *reject_time_expression ) = 0;
-  virtual IIR *get_reject_time_expression() = 0;
+  virtual IIR *get_reject_time_expression() const = 0;
 
-  virtual IIR_SignalDeclaration *get_guard_signal() = 0;
+  virtual IIR_SignalDeclaration *get_guard_signal() const = 0;
 
 protected:
   virtual IIR_CaseStatementAlternativeList *build_alternative_list(IIR_Boolean) = 0;

@@ -46,8 +46,8 @@ public:
   virtual void                  set_generic_map_aspect(IIR_AssociationList *new_generic_map_aspect) = 0;
   virtual void                  set_port_map_aspect(IIR_AssociationList *new_port_map_aspect) = 0;
 
-  virtual void set_component_name(IIR *component_name) = 0;
-  virtual IIR *get_component_name() = 0;
+  virtual void set_component_name(IIR_Name *component_name) = 0;
+  virtual IIR_Name *get_component_name() = 0;
 
   /**
      Gets the entity aspect associated with the component specified.  This

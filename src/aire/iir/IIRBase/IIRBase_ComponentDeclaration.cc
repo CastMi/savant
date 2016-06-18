@@ -84,7 +84,7 @@ IIRBase_ComponentDeclaration::set_attributes(IIR_AttributeSpecificationList *new
   attributes = new_attributes;
 }
 
-IIR *
+IIR_ComponentDeclaration *
 IIRBase_ComponentDeclaration::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_ComponentDeclaration *new_node = dynamic_cast<IIRBase_ComponentDeclaration *>(IIRBase_Declaration::convert_tree(factory));

@@ -39,11 +39,8 @@ public:
 
   IIRBase_BreakList();
   virtual ~IIRBase_BreakList()= 0;
+  IIR_BreakList* convert_node(plugin_class_factory *) { return nullptr; };
   
   void publish_vhdl(ostream &);
-protected:
-
-private:
-  
 };
 #endif
