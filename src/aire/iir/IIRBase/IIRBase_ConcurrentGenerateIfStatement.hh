@@ -43,7 +43,7 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_ConcurrentGenerateIfStatement";}
 
   void set_if_condition( IIR_Statement *condition );
-  IIR_Statement *get_if_condition();
+  IIR_Statement *get_if_condition() const;
 
   IIR_Statement *convert_tree(plugin_class_factory *factory);
 

@@ -59,7 +59,7 @@ IIRBase_ConcurrentProcedureCallStatement::set_procedure_name( IIR_Name *procedur
 }
 
 IIR_Name *
-IIRBase_ConcurrentProcedureCallStatement::get_procedure_name(){
+IIRBase_ConcurrentProcedureCallStatement::get_procedure_name() const {
   return procedure_name;
 }
 

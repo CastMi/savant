@@ -47,8 +47,8 @@ public:
   void set_postponed( IIR_Boolean postponed );
   IIR_Boolean get_postponed();
 
-  void set_target( IIR *target );
-  IIR *get_target();
+  void set_target( IIR_Name *target );
+  IIR_Name *get_target() const;
 
   void set_guarded( IIR_Boolean guarded );
   IIR_Boolean get_guarded();
@@ -77,7 +77,7 @@ private:
   IIR_ConditionalWaveformList   *conditional_waveforms;
 
   IIR_Boolean                   postponed;
-  IIR                           *target;
+  IIR_Name                      *target;
   IIR_Boolean                   guarded;
   IIR_DelayMechanism            delay_mechanism;
   IIR                           *reject_time_expression;

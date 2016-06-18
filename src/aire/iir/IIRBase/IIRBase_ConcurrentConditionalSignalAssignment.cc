@@ -53,12 +53,12 @@ IIRBase_ConcurrentConditionalSignalAssignment::get_postponed(){
 }
 
 void 
-IIRBase_ConcurrentConditionalSignalAssignment::set_target( IIR *target ){
+IIRBase_ConcurrentConditionalSignalAssignment::set_target( IIR_Name *target ) {
   this->target = target;
 }
 
-IIR *
-IIRBase_ConcurrentConditionalSignalAssignment::get_target(){
+IIR_Name *
+IIRBase_ConcurrentConditionalSignalAssignment::get_target() const {
   return target;
 }
 

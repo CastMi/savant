@@ -57,7 +57,7 @@ public:
 
   // Wrappers for IIRBase functions
   IIRScram_AssociationList *    _get_actual_parameter_part();
-  IIRScram *                    _get_procedure_name();
+  IIRScram_Name *                    _get_procedure_name() const;
 };
 
 #endif

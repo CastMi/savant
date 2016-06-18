@@ -44,8 +44,8 @@ public:
   virtual void set_postponed( IIR_Boolean postponed ) = 0;
   virtual IIR_Boolean get_postponed() = 0;
 
-  virtual void set_target( IIR *target ) = 0;
-  virtual IIR *get_target() = 0;
+  virtual void set_target( IIR_Name *target ) = 0;
+  virtual IIR_Name *get_target() const = 0;
 
   virtual void set_guarded( IIR_Boolean guarded ) = 0;
   virtual IIR_Boolean get_guarded() = 0;

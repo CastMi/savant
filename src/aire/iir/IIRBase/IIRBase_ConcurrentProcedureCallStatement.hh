@@ -47,7 +47,7 @@ public:
   IIR_Boolean get_postponed();
 
   void set_procedure_name( IIR_Name *procedure_name );
-  IIR_Name *get_procedure_name();
+  IIR_Name *get_procedure_name() const;
 
   IIR_Statement *convert_tree(plugin_class_factory *factory);
 

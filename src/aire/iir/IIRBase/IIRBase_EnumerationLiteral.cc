@@ -55,7 +55,7 @@ IIRBase_EnumerationLiteral::set_attributes(IIR_AttributeSpecificationList *new_a
   attributes = new_attributes;
 }
 
-IIR *
+IIR_EnumerationLiteral *
 IIRBase_EnumerationLiteral::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
 

@@ -65,16 +65,16 @@ IIRScram_ConcurrentGenerateIfStatement::_get_statement_list() {
 }
 
 IIRScram_Statement *
-IIRScram_ConcurrentGenerateIfStatement::_get_if_condition() {
+IIRScram_ConcurrentGenerateIfStatement::_get_if_condition() const {
   return dynamic_cast<IIRScram_Statement *>(get_if_condition());
 }
 
-IIRScram_DeclarationList *
-IIRScram_ConcurrentGenerateIfStatement::_get_block_declarative_part() {
+IIRScram_DeclarationList<> *
+IIRScram_ConcurrentGenerateIfStatement::_get_block_declarative_part() const {
   return dynamic_cast<IIRScram_DeclarationList *>(get_block_declarative_part());
 }
 
 IIRScram_ArchitectureStatementList *
-IIRScram_ConcurrentGenerateIfStatement::_get_concurrent_statement_part() {
+IIRScram_ConcurrentGenerateIfStatement::_get_concurrent_statement_part() const {
   return dynamic_cast<IIRScram_ArchitectureStatementList *>(get_concurrent_statement_part());
 }

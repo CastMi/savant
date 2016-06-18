@@ -50,7 +50,7 @@ public:
 
   IIRScram_SignalDeclaration *_get_guard_signal();
 
-  IIRScram *_get_target();
+  IIRScram *_get_target() const;
   IIRScram_ConcurrentConditionalSignalAssignment *_clone();
 
   // Helper Functions

@@ -48,7 +48,7 @@ IIRBase_ProcedureCallStatement::set_procedure_name( IIR_Name* procedure_name) {
 }
 
 IIR_Name*
-IIRBase_ProcedureCallStatement::get_procedure_name() {
+IIRBase_ProcedureCallStatement::get_procedure_name() const {
   return procedure_name;
 }
 

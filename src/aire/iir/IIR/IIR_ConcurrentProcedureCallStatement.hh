@@ -48,6 +48,6 @@ public:
   virtual IIR_Boolean get_postponed() = 0;
 
   virtual void set_procedure_name( IIR_Name *procedure_name ) = 0;
-  virtual IIR_Name *get_procedure_name() = 0;
+  virtual IIR_Name *get_procedure_name() const = 0;
 };
 #endif

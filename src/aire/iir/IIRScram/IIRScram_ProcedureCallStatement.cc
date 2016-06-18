@@ -159,11 +159,11 @@ IIRScram_ProcedureCallStatement::_clone() {
 
 // IIRBase Function Wrapper(s)
 IIRScram_AssociationList *
-IIRScram_ProcedureCallStatement::_get_actual_parameter_part() {
+IIRScram_ProcedureCallStatement::_get_actual_parameter_part() const {
   return dynamic_cast<IIRScram_AssociationList *>(get_actual_parameter_part());
 }
 
-IIRScram *
-IIRScram_ProcedureCallStatement::_get_procedure_name() {
+IIRScram_Name *
+IIRScram_ProcedureCallStatement::_get_procedure_name() const {
   return dynamic_cast<IIRScram *>(get_procedure_name());
 }

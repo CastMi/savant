@@ -32,6 +32,7 @@
 #include "IIR_DesignUnitList.hh"
 #include "IIR_Identifier.hh"
 #include "IIRBase_EntityDeclaration.hh"
+#include "set.hh"
 
 IIRBase_EntityDeclaration::IIRBase_EntityDeclaration() :
   generic_clause(0),

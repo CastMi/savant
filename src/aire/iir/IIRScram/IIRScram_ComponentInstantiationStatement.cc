@@ -302,14 +302,10 @@ IIRScram_ComponentInstantiationStatement::_get_default_binding_indication(){
   ASSERT( _get_instantiated_unit() != 0 );
   ASSERT( _get_instantiation_type() == IIR_COMPONENT_DECLARATION );
   
-  IIRScram_Statement *component_name = _get_instantiated_unit();
+  IIRScram_Name *component_name = _get_instantiated_unit();
 
   IIRScram_ArchitectureDeclaration *arch = 0;
-  //IIRScram_EntityDeclaration *entity = dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( false,
-   //                                                                                                                           component_name,
-     //                                                                                                                         _get_work_library(),
-       //                                                                                                                       get_design_file()->get_standard_package(),
-         //                                                                                                                     get_design_file()->get_class_factory()));
+  IIRScram_EntityDeclaration *entity = dynamic_cast<IIRScram_EntityDeclaration *>(library_manager::instance()->lookup_entity( false, component_name, _get_work_library(), get_design_file()->get_standard_package(), get_design_file()->get_class_factory()));
   
   if( entity != 0 ){
     arch = dynamic_cast<IIRScram_ArchitectureDeclaration *>(library_manager::instance()->lookup_default_architecture( entity ));

@@ -51,7 +51,7 @@ IIRBase_ConcurrentGenerateIfStatement::set_if_condition( IIR_Statement *conditio
 }
 
 IIR_Statement *
-IIRBase_ConcurrentGenerateIfStatement::get_if_condition(){
+IIRBase_ConcurrentGenerateIfStatement::get_if_condition() const {
   return condition;
 }
 

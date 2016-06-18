@@ -45,7 +45,7 @@ public:
   void set_position( IIR *position );
   IIR *get_position();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_EnumerationLiteral *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_ascending_range();
   IIR_Boolean is_resolved();

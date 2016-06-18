@@ -129,11 +129,11 @@ IIRScram_ConcurrentProcedureCallStatement::_type_check(){
 }
 
 IIRScram_Name *
-IIRScram_ConcurrentProcedureCallStatement::_get_procedure_name() {
+IIRScram_ConcurrentProcedureCallStatement::_get_procedure_name() const {
   return dynamic_cast<IIRScram_Name *>(get_procedure_name());
 }
 
 IIRScram_AssociationList *
-IIRScram_ConcurrentProcedureCallStatement::_get_actual_parameter_part() {
+IIRScram_ConcurrentProcedureCallStatement::_get_actual_parameter_part() const {
   return dynamic_cast<IIRScram_AssociationList *>(get_actual_parameter_part());
 }

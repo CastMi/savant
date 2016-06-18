@@ -45,6 +45,6 @@ public:
   virtual void                          set_concurrent_statement_part(IIR_ArchitectureStatementList *) = 0;
 
   virtual void set_if_condition( IIR_Statement *condition ) = 0;
-  virtual IIR_Statement *get_if_condition() = 0;
+  virtual IIR_Statement *get_if_condition() const = 0;
 };
 #endif

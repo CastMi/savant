@@ -45,7 +45,7 @@ public:
   const IIR_Char *get_kind_text() const {return "IIR_ProcedureCallStatement";}
 
   void set_procedure_name( IIR_Name* procedure_name);
-  IIR_Name* get_procedure_name();
+  IIR_Name* get_procedure_name() const;
 
   IIR_Boolean is_above_attribute_found();
 

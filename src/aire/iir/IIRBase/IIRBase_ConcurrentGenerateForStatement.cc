@@ -29,6 +29,7 @@
 #include "IIR_ArchitectureStatementList.hh"
 #include "IIR_ConstantDeclaration.hh"
 #include "IIRBase_DeclarationList.hh"
+#include "IIRBase_TypeDefinition.hh"
 #include "IIR_Label.hh"
 #include "IIRBase_ConcurrentGenerateForStatement.hh"
 
