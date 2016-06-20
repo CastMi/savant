@@ -30,11 +30,11 @@
 
 #include "IIRBase_AssociationList.hh"
 #include "IIRScram_List.hh"
+#include "IIRScram_DeclarationList.hh"
 
 class IIRScram_AssociationElement;
 class IIRScram_ComponentInstantiationStatement;
 class IIRScram_Declaration;
-class IIRScram_DeclarationList;
 class IIRScram_IndexedName;
 class IIRScram_InterfaceDeclaration;
 class IIRScram_InterfaceList;
@@ -74,7 +74,7 @@ public:
 			   IIRScram_InterfaceList *actual_list );
   
   IIRScram_AssociationList *_clone();
-  IIRScram_Declaration * _find_declaration( IIRScram_Name *to_find, IIRScram_DeclarationList *list );
+  IIRScram_Declaration * _find_declaration( IIRScram_Name *to_find, IIRScram_DeclarationList<IIR_Declaration> *list );
   void copy_location( IIRScram_Statement* , IIRScram* );
   void copy_location( IIRScram* , IIRScram* );
   

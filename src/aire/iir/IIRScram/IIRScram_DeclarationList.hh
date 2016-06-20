@@ -32,15 +32,13 @@
 
 #include "IIRBase_DeclarationList.hh"
 #include "IIRScram_List.hh"
+#include "IIR_Declaration.hh"
 
-class IIRScram_AttributeSpecification;
-class IIRScram_Name;
-class IIRScram_StatementList;
-class IIRScram_TextLiteral;
 class IIR_ArchitectureStatementList;
 class IIR_SequentialStatementList;
 
-class IIRScram_DeclarationList : public virtual IIRScram_List<IIR_Declaration>, public virtual IIRBase_DeclarationList<IIR_Declaration> {
+template <typename param = IIR_Declaration>
+class IIRScram_DeclarationList : public virtual IIRScram_List<param>, public virtual IIRBase_DeclarationList<param> {
 
 public:
   IIRScram_DeclarationList() {}

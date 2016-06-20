@@ -60,7 +60,7 @@ public:
   */
   virtual void _type_check_resolution_function( IIRScram_TypeDefinition *subtype_indication );
 
-  IIRScram_DeclarationList *    _get_subprogram_declarations();
+  IIRScram_DeclarationList<IIR_Declaration> *    _get_subprogram_declarations();
   IIRScram_TypeDefinition*      _get_return_type();
 };
 

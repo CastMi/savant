@@ -61,6 +61,7 @@
 #include "IIRScram_TypeDefinition.hh"
 #include "IIRScram_UseClause.hh"
 #include "IIRScram_WaitStatement.hh"
+#include "IIRScram_DeclarationList.hh"
 
 #include "error_func.hh"
 #include "resolution_func.hh"
@@ -71,7 +72,7 @@
 using std::ends;
 
 IIRScram_ArchitectureDeclaration::IIRScram_ArchitectureDeclaration(){
-  set_architecture_declarative_part(new IIRScram_DeclarationList());
+  set_architecture_declarative_part(new IIRScram_DeclarationList<IIR_Declaration>());
   set_architecture_statement_part(new IIRScram_ArchitectureStatementList());
 }
 
@@ -95,9 +96,9 @@ IIRScram_ArchitectureDeclaration::_get_generic_list(){
   return _get_entity()->_get_generic_list();
 }
 
-IIRScram_DeclarationList*
+IIRScram_DeclarationList<IIR_Declaration>*
 IIRScram_ArchitectureDeclaration::_get_declaration_list() {
-  return dynamic_cast<IIRScram_DeclarationList *>(get_architecture_declarative_part());
+  return dynamic_cast<IIRScram_DeclarationList<IIR_Declaration> *>(get_architecture_declarative_part());
 }
 
 void 
@@ -230,7 +231,7 @@ IIRScram_ArchitectureDeclaration::_combine() {
 
 void
 IIRScram_ArchitectureDeclaration::_static_elaborate(IIRScram_ArchitectureDeclaration *arch, 
-						    IIRScram_DeclarationList *cfglist,
+						    IIRScram_DeclarationList<IIR_Declaration> *cfglist,
 						    char *hier_location) {
   IIRScram_Declaration *decl, *declclone, *impdecl;
 
@@ -316,9 +317,9 @@ IIRScram_ArchitectureDeclaration::_static_elaborate(IIRScram_ArchitectureDeclara
 }
 #endif
 
-IIRScram_DeclarationList *
+IIRScram_DeclarationList<IIR_Declaration> *
 IIRScram_ArchitectureDeclaration::_get_architecture_declarative_part() {
-  return dynamic_cast<IIRScram_DeclarationList *>(get_architecture_declarative_part());
+  return dynamic_cast<IIRScram_DeclarationList<IIR_Declaration> *>(get_architecture_declarative_part());
 }
 
 IIRScram_ArchitectureStatementList *

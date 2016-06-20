@@ -52,7 +52,7 @@ public:
   IIRScram_AttributeSpecificationList* _get_attribute_specification_list();
 
   // Wrappers for IIRBase functions
-  IIRScram_DeclarationList *            _get_context_items();
+  IIRScram_DeclarationList<IIR_Declaration> *            _get_context_items();
 
 protected:
   virtual ~IIRScram_LibraryUnit();

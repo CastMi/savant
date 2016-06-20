@@ -33,7 +33,6 @@
 #include "IIRBase_ConfigurationSpecification.hh"
 
 class IIRScram_ComponentInstantiationStatement;
-class IIRScram_DeclarationList;
 class IIRScram_DesignatorList;
 class IIRScram_LibraryUnit;
 class IIRScram_StatementList;

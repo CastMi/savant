@@ -26,10 +26,10 @@
 #include "IIRScram_List.hh"
 #include "savant.hh"
 
+template <class type> class IIRScram_DeclarationList;
 class IIRScram_Attribute;
 class IIRScram_AttributeSpecification;
 class IIRScram_AttributeSpecificationList;
-class IIRScram_DeclarationList;
 class IIRScram_DesignatorList;
 class IIRScram_GenericList;
 class IIRScram_Identifier;
@@ -44,11 +44,11 @@ public:
   IIRScram_Declaration();
   virtual ~IIRScram_Declaration();
   
-  IIR_Boolean _is_iir_declaration() { return true; }
+  IIR_Boolean _is_iir_declaration() const { return true; }
   virtual IIR_Boolean _is_overloadable() { return false; }
   virtual IIR_Boolean _is_specification() { return false; }
   virtual IIR_Boolean _is_implicit_operator(){ return false; }
-  virtual IIR_Boolean _is_enumeration_literal() { return false; }
+  virtual IIR_Boolean _is_enumeration_literal() const { return false; }
 
   /** This method returns true if this declaration is a homograph of the one
       passed in, and false otherwise. */
@@ -62,7 +62,7 @@ public:
       homographs can be in the same region or not. */
   virtual IIR_Boolean _can_be_in_same_region( IIRScram_Declaration * ){ return false; }
 
-  virtual IIR_Boolean _is_physical_type();
+  virtual IIR_Boolean _is_physical_type() const;
 
   virtual IIR_Boolean _designates_incomplete_type(){ return false; }
 
@@ -119,7 +119,7 @@ public:
   /** This method will add the set to this declaration's declarative
       region. */
   virtual void _add_to_declarative_region( savant::set<IIRScram_Declaration> * );
-  void _add_to_declarative_region( IIRScram_DeclarationList *, savant::set<IIRScram_Declaration> * );
+  void _add_to_declarative_region( IIRScram_DeclarationList<IIRScram_Declaration> *, savant::set<IIRScram_Declaration> * );
 
   /** The following function returns true if the declaration is in the
       process statement's declarative part. */

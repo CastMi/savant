@@ -27,7 +27,6 @@ namespace savant {
 class IIRScram_TypeDefinition;
 class IIRScram_Name;
 class IIRScram_IndexedName;
-class IIRScram_DeclarationList;
 class IIRScram_Signature;
 class IIRScram_Declaration;
 class IIRScram_TypeDeclaration;

@@ -43,7 +43,7 @@ public:
 
   /** This method tells us if a declaration is a an IIR_TypeDeclaration or
       IIR_SubtypeDeclaration. */
-  IIR_Boolean is_type() { return false; }
+  IIR_Boolean is_type() const { return false; }
 
   /** Tells us if this is a scalar type - or an object of a scalar type. */
 

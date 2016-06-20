@@ -29,8 +29,7 @@
 
 #include "IIRBase_List.hh"
 #include "IIR_DeclarationList.hh"
-
-class IIR_Declaration;
+#include "IIR_Declaration.hh"
 
 template <typename param = IIR_Declaration>
 class IIRBase_DeclarationList : public virtual IIRBase_List<param>, public virtual IIR_DeclarationList<param> {
@@ -54,7 +53,5 @@ protected:
   IIRBase_DeclarationList() {};
   virtual ~IIRBase_DeclarationList() = 0;
   
-private:
-
 };
 #endif

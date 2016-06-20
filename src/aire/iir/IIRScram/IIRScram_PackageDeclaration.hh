@@ -59,7 +59,7 @@ public:
   void _type_check();
 
   // Wrappers for IIRBase functions
-  IIRScram_DeclarationList         *_get_package_declarative_part();
+  IIRScram_DeclarationList<IIR_Declaration> *_get_package_declarative_part();
 };
 
 #endif

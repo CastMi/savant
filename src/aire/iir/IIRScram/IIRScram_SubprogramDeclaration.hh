@@ -36,9 +36,9 @@
 #include "IIRScram_Declaration.hh"
 #include "IIRBase_SubprogramDeclaration.hh"
 
+template <class type> class IIRScram_DeclarationList;
 class IIRScram_AttributeSpecificationList;
 class IIRScram_Declaration;
-class IIRScram_DeclarationList;
 class IIRScram_InterfaceList;
 class IIRScram_SequentialStatementList;
 class IIRScram_TypeDefinition;
@@ -94,9 +94,9 @@ public:
   IIRScram_List<IIR_Statement> *_get_statement_list();
 
   // Wrappers for IIRBase functions
-  IIRScram_InterfaceList *              _get_interface_declarations();
-  IIRScram_SequentialStatementList *    _get_subprogram_body();
-  IIRScram_DeclarationList *            _get_subprogram_declarations();
+  IIRScram_InterfaceList *                    _get_interface_declarations();
+  IIRScram_SequentialStatementList *          _get_subprogram_body();
+  IIRScram_DeclarationList<IIR_Declaration> * _get_subprogram_declarations();
 };
 
 #endif

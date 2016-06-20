@@ -32,8 +32,8 @@
 
 #include "IIRScram_Declaration.hh"
 #include "IIRBase_AttributeSpecification.hh"
+#include "IIRScram_DeclarationList.hh"
 
-class IIRScram_DeclarationList;
 class IIRScram_TypeDefinition;
 
 class IIRScram_AttributeSpecification : public virtual IIRScram_Declaration, public virtual IIRBase_AttributeSpecification {
@@ -42,7 +42,7 @@ public:
   IIRScram_AttributeSpecification();
   virtual ~IIRScram_AttributeSpecification();
 
-  void _type_check( IIRScram_DeclarationList *declarative_region );
+  void _type_check( IIRScram_DeclarationList<IIR_Declaration> *declarative_region );
 
   IIR_Boolean _is_specification(){ return true; }
   IIR_Boolean _can_be_in_same_region( IIRScram_Declaration * );

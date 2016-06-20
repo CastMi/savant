@@ -33,6 +33,8 @@
 #include "IIRBase_ArchitectureDeclaration.hh"
 #include "symbol_table.hh"
 
+template <class type> class IIRScram_DeclarationList;
+
 class IIRScram_ArchitectureDeclaration : public virtual IIRScram_LibraryUnit,
 					 public virtual IIRBase_ArchitectureDeclaration {
 
@@ -41,11 +43,11 @@ public:
   ~IIRScram_ArchitectureDeclaration();
 
   IIRScram_EntityDeclaration* _get_entity();
-  IIRScram_DeclarationList* _get_architecture_declarative_part();
+  IIRScram_DeclarationList<IIR_Declaration>* _get_architecture_declarative_part();
   IIRScram_ArchitectureStatementList* _get_architecture_statement_part();
 
 #ifdef PROCESS_COMBINATION
-  void _static_elaborate(IIRScram_ArchitectureDeclaration*, IIRScram_DeclarationList*,
+  void _static_elaborate(IIRScram_ArchitectureDeclaration*, IIRScram_DeclarationList<IIR_Declaration>*,
 			 char*);
   void _combine();
 #endif
@@ -62,13 +64,13 @@ public:
       specficiations such that ALL and OTHERS can be resolved, and so that
       labels that are not declared until the statement part can be resolved
       as well. */
-  IIRScram_DeclarationList *_get_component_declarations();
-  void _set_component_declarations(   IIRScram_DeclarationList * );
+  IIRScram_DeclarationList<IIR_Declaration> *_get_component_declarations();
+  void _set_component_declarations( IIRScram_DeclarationList<IIR_Declaration> * );
 
-  void _set_configuration_specifications( IIRScram_DeclarationList * );
-  IIRScram_DeclarationList *_get_configuration_specifications();
+  void _set_configuration_specifications( IIRScram_DeclarationList<IIR_Declaration> * );
+  IIRScram_DeclarationList<IIR_Declaration> *_get_configuration_specifications();
 
-  IIRScram_DeclarationList* _get_declaration_list();
+  IIRScram_DeclarationList<IIR_Declaration>* _get_declaration_list();
 };
 
 #endif

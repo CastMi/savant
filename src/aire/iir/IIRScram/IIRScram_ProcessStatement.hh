@@ -51,7 +51,7 @@ public:
 
   IIRScram_SequentialStatementList *    _get_process_statement_part();
   // Wrappers for IIRBase functions
-  IIRScram_DeclarationList *            _get_process_declarative_part();
+  IIRScram_DeclarationList<IIR_Declaration> *  _get_process_declarative_part();
 };
 
 #endif

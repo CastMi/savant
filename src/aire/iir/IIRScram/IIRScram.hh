@@ -52,7 +52,7 @@ class IIRScram_ConcurrentStatement;
 class IIRScram_ConstantDeclaration;
 class IIRScram_ContributionAttribute;
 class IIRScram_Declaration;
-class IIRScram_DeclarationList;
+template <class type> class IIRScram_DeclarationList;
 class IIRScram_Designator;
 class IIRScram_DesignatorList;
 class IIRScram_DesignFile;
@@ -449,7 +449,7 @@ public:
   IIR_Boolean _attach_attribute_specification( IIRScram_AttributeSpecification * );
   IIR_Boolean _attach_disconnection_specification( IIRScram_AttributeSpecification * );
 
-  virtual IIRScram_DeclarationList* _get_declaration_list();
+  virtual IIRScram_DeclarationList<IIR_Declaration>* _get_declaration_list();
 
   virtual void _build_reference_quantity_list(dl_list<IIRScram_ReferenceAttribute> *);
 

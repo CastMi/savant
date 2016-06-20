@@ -36,7 +36,7 @@ public:
   void _type_check();
 
   // Wrappers for IIRBase functions
-  IIRScram_DeclarationList      *_get_configuration_declarative_part();
+  IIRScram_DeclarationList<IIR_Declaration>      *_get_configuration_declarative_part();
   IIRScram_BlockConfiguration   *_get_block_configuration();
   IIRScram_EntityDeclaration    *_get_entity();
 };

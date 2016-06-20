@@ -47,15 +47,15 @@ public:
 
   void _type_check();
 
-  IIRScram_SignalDeclaration            *_get_implicit_guard_signal();
-  IIRScram_List<IIR_Statement>          *_get_statement_list();
-  IIRScram_GenericList                  *_get_generic_list();
-  IIRScram_Statement                    *_get_guard_expression();
-  IIRScram_GenericList                  *_get_generic_clause();
-  IIRScram_PortList                     *_get_port_clause();
-  IIRScram_AssociationList              *_get_port_map_aspect();
-  IIRScram_DeclarationList              *_get_block_declarative_part();
-  IIRScram_ArchitectureStatementList    *_get_block_statement_part();
+  IIRScram_SignalDeclaration                *_get_implicit_guard_signal();
+  IIRScram_List<IIR_Statement>              *_get_statement_list();
+  IIRScram_GenericList                      *_get_generic_list();
+  IIRScram_Statement                        *_get_guard_expression();
+  IIRScram_GenericList                      *_get_generic_clause();
+  IIRScram_PortList                         *_get_port_clause();
+  IIRScram_AssociationList                  *_get_port_map_aspect();
+  IIRScram_DeclarationList<IIR_Declaration> *_get_block_declarative_part();
+  IIRScram_ArchitectureStatementList        *_get_block_statement_part();
 
   IIRScram_AssociationList *_get_generic_map_aspect();
 

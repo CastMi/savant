@@ -599,7 +599,7 @@ IIRScram::_attach_disconnection_specification( IIRScram_AttributeSpecification *
   return false;
 }
 
-IIRScram_DeclarationList*
+IIRScram_DeclarationList<IIR_Declaration>*
 IIRScram::_get_declaration_list() {
   _report_undefined_scram_fn("_get_declaration_list()");
   return NULL;
