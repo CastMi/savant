@@ -177,8 +177,8 @@ IIRScram_ComponentInstantiationStatement::_resolve_instantiated_unit_for_compone
       break;
     }
     case 1:{
-      IIRScram_Declaration *instantiated_decl = instantiated_unit_decls->getElement();
-      set_instantiated_unit( _get_instantiated_unit()->_decl_to_decl( instantiated_decl ) );
+      instantiated_decl = instantiated_unit_decls->getElement();
+      set_instantiated_unit( _get_instantiated_unit()->_decl_to_decl( dynamic_cast<IIRScram_Declaration*>(instantiated_decl) ) );
       if(dynamic_cast<IIRScram_ComponentDeclaration*>(get_instantiated_unit())->_get_entity() == NULL) {
          // unknown entity fo the component...perhaps a Verilog module?
          auto tmp = consistency::instance()->get_missing();

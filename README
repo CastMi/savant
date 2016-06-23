@@ -1,3 +1,5 @@
+Savant is the first open-source digital mixed-language simulator available.
+
 These directories contain the documentation and source code for the SAVANT project.  The
 SAVANT project is an effort to build an extensible digital mixed-language, object-oriented
 compiler for the hardware description language VHDL (only the '93 language standard) and

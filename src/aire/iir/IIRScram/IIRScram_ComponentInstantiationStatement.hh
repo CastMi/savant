@@ -31,6 +31,8 @@
 //---------------------------------------------------------------------------
 
 #include "IIRScram_ConcurrentStatement.hh"
+#include "IIRScram_Declaration.hh"
+#include "IIR_Declaration.hh"
 #include "IIRBase_ComponentInstantiationStatement.hh"
 
 class IIRScram_AssociationElement;
@@ -76,7 +78,7 @@ public:
       of declaration the semantic routines should be looking for... */
   void _set_instantiation_type( IIR_Kind );
   IIR_Kind _get_instantiation_type();
-
+  
 #ifdef PROCESS_COMBINATION
   void _static_elaborate(IIRScram_ArchitectureDeclaration*, IIRScram_DeclarationList*,
 			 char*);

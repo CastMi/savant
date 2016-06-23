@@ -54,11 +54,14 @@ public:
   IIR *get_configuration();
   void set_configuration( IIR *new_config );
 
+  IIR_Declaration* get_instantiated() const { return instantiated_decl; };
+
   void publish_vhdl(ostream &);
 protected:
   IIRBase_ComponentInstantiationStatement();
   virtual ~IIRBase_ComponentInstantiationStatement() = 0;
     
+  IIR_Declaration *instantiated_decl;
 private:
   // List Variable(s)
   IIR_AssociationList  *generic_map_aspect;

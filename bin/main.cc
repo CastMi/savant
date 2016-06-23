@@ -144,14 +144,14 @@ main (int argc, char *argv[]) {
 
    if(iir_verilog_design_files_processed != NULL && iir_vhdl_design_files_processed == NULL) {
       iir_vhdl_design_files_processed = iir_verilog_design_files_processed;
-   } else if(iir_verilog_design_files_processed != NULL && iir_vhdl_design_files_processed != NULL) {
+//   } else if(iir_verilog_design_files_processed != NULL && iir_vhdl_design_files_processed != NULL) {
       // FIXME: should become something easier like:
       // iir_vhdl_design_files_processed->append(iir_verilog_design_files_processed);
-      IIR_DesignFile *tmp = dynamic_cast<IIR_DesignFile *>(iir_verilog_design_files_processed->first());
-      while( tmp != NULL ){
-         iir_vhdl_design_files_processed->append(tmp);
-         tmp = dynamic_cast<IIR_DesignFile *>(iir_vhdl_design_files_processed->successor( tmp ));
-      }
+    //  IIR_DesignFile *tmp = dynamic_cast<IIR_DesignFile *>(iir_verilog_design_files_processed->first());
+      //while( tmp != NULL ){
+        // iir_vhdl_design_files_processed->append(tmp);
+ //        tmp = dynamic_cast<IIR_DesignFile *>(iir_vhdl_design_files_processed->successor( tmp ));
+  //    }
    } else if(iir_verilog_design_files_processed == NULL && iir_vhdl_design_files_processed == NULL) {
       cerr << "Something went wrong." << endl;
       return EXIT_FAILURE;

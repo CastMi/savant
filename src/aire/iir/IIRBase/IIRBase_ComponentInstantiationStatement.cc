@@ -88,6 +88,7 @@ IIRBase_ComponentInstantiationStatement::convert_tree(plugin_class_factory *fact
   new_node->port_map_aspect = dynamic_cast<IIR_AssociationList *>(convert_node(port_map_aspect, factory));
   new_node->my_instantiated_unit = convert_node(my_instantiated_unit, factory);
   new_node->my_configuration = convert_node(my_configuration, factory);
+  new_node->instantiated_decl = dynamic_cast<IIR_Declaration*>(instantiated_decl->convert_tree( factory ));
 
   return new_node;
 }
