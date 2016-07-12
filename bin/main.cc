@@ -144,14 +144,14 @@ main (int argc, char *argv[]) {
 
    if(iir_verilog_design_files_processed != NULL && iir_vhdl_design_files_processed == NULL) {
       iir_vhdl_design_files_processed = iir_verilog_design_files_processed;
-//   } else if(iir_verilog_design_files_processed != NULL && iir_vhdl_design_files_processed != NULL) {
+   } else if(iir_verilog_design_files_processed != NULL && iir_vhdl_design_files_processed != NULL) {
       // FIXME: should become something easier like:
       // iir_vhdl_design_files_processed->append(iir_verilog_design_files_processed);
-    //  IIR_DesignFile *tmp = dynamic_cast<IIR_DesignFile *>(iir_verilog_design_files_processed->first());
-      //while( tmp != NULL ){
-        // iir_vhdl_design_files_processed->append(tmp);
- //        tmp = dynamic_cast<IIR_DesignFile *>(iir_vhdl_design_files_processed->successor( tmp ));
-  //    }
+      IIR_DesignFile *tmp = dynamic_cast<IIR_DesignFile *>(iir_verilog_design_files_processed->first());
+      while( tmp != NULL ){
+         iir_vhdl_design_files_processed->append(tmp);
+         tmp = dynamic_cast<IIR_DesignFile *>(iir_vhdl_design_files_processed->successor( tmp ));
+      }
    } else if(iir_verilog_design_files_processed == NULL && iir_vhdl_design_files_processed == NULL) {
       cerr << "Something went wrong." << endl;
       return EXIT_FAILURE;
@@ -202,8 +202,12 @@ main (int argc, char *argv[]) {
                   last_unit = true;
                }
                char **arg_list = new char *;
-               arg_list[0] = new char[10];
-               arg_list[0] = &last_unit;
+               if(last_unit) {
+                  arg_list[0] = new char[10];
+                  arg_list[0] = &last_unit;
+               } else {
+                  arg_list[0] = nullptr;
+               }
                plugin->process_tree(to_publish, 1, arg_list);
                if( verbose_output )
                   cerr << "Code generation finished." << endl;
