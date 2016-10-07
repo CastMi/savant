@@ -104,20 +104,6 @@ IIRBase_WaveformElement::is_resolved(){
   return retval;
 }
 
-ostream &
-IIRBase_WaveformElement::print( ostream &os ) {
-   // FIXME: need to overload the operator<<
-  //os << *get_value();
-
-  if (get_time() != NULL) {
-    os << " after ";
-    os << *get_time();
-    os << " ";
-  }
-
-  return os;
-}
-
 void 
 IIRBase_WaveformElement::publish_vhdl(ostream &vhdl_out) {
   get_value()->publish_vhdl(vhdl_out);

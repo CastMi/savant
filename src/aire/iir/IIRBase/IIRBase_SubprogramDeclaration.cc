@@ -134,25 +134,3 @@ IIRBase_SubprogramDeclaration::is_operator(){
     return false;
   }
 }
-
-ostream &
-IIRBase_SubprogramDeclaration::print( ostream &os ){
-  //FIXME: overload operator<<
-  //os << *get_declarator();
-  os << "(";
-
-  IIR_InterfaceDeclaration *current_param = 
-    dynamic_cast<IIR_InterfaceDeclaration *>(get_interface_declarations()->first());
-  while( current_param != NULL ){
-    os << *current_param;
-    current_param = 
-      dynamic_cast<IIR_InterfaceDeclaration *>(get_interface_declarations()->successor( current_param ));
-    if( current_param != NULL ){
-      os << ", ";
-    }
-  }
-  
-  os << ")";
-
-  return os;
-}

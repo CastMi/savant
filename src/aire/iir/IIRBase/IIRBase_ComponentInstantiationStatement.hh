@@ -51,6 +51,8 @@ public:
       IIR_ConfigurationSpecification, or an IIR_ComponentConfiguration. */
   IIR *get_configuration();
   void set_configuration( IIR *new_config );
+  
+  IIRScram_Declaration          *get_instantiated();
 
   void publish_vhdl(ostream &);
 protected:
@@ -62,6 +64,7 @@ private:
   IIR_AssociationList  *generic_map_aspect;
   IIR_AssociationList  *port_map_aspect;
 
+  IIRScram_Declaration* instantiated;
   IIR_Name *my_instantiated_unit;
   IIR *my_configuration;
 };

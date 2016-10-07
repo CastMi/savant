@@ -88,20 +88,6 @@ IIRBase_ConditionalWaveform::is_resolved(){
   return retval;
 }
 
-ostream &
-IIRBase_ConditionalWaveform::print( ostream &os ){
-   // FIXME need to overload the operator<<
-  //os << *get_waveform();
-
-  if( get_condition() != NULL ){
-    os << "when ";
-    // FIXME: overload operator<<
-    //os << *get_condition();
-  }
-
-  return os;
-}
-
 void 
 IIRBase_ConditionalWaveform::publish_vhdl(ostream &vhdl_out) {
   get_waveform()->publish_vhdl(vhdl_out);

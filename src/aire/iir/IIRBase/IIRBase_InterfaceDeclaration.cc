@@ -74,13 +74,6 @@ IIRBase_InterfaceDeclaration::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-ostream &
-IIRBase_InterfaceDeclaration::print( ostream &os ){
-   //FIXME overload operator<<
-  //os << *get_declarator();
-  return os;
-}
-
 void
 IIRBase_InterfaceDeclaration::publish_vhdl_mode(ostream &vhdl_out){
   switch( get_mode() ) {

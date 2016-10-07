@@ -118,15 +118,6 @@ IIRBase_Aggregate::is_locally_static(){
   return get_element_association_list()->is_locally_static();
 }
 
-ostream &
-IIRBase_Aggregate::print( ostream &os ){
-  os << "(";
-  os << dynamic_cast<IIRBase_AssociationList *>(get_element_association_list());
-  os << ")";
-
-  return os;
-}
-
 void 
 IIRBase_Aggregate::publish_vhdl(ostream &vhdl_out) {
   vhdl_out << " ( ";

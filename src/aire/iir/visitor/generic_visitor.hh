@@ -129,7 +129,6 @@ class IIR_ImageAttribute;
 class IIR_IndexedName;
 class IIR_InequalityOperator;
 class IIR_InstanceNameAttribute;
-class IIR_IntegerLiteral;
 class IIR_IntegerLiteral32;
 class IIR_IntegerLiteral64;
 class IIR_InterfaceList;
@@ -1216,16 +1215,6 @@ public:
       @param arg container for any argument wanted by the visitor.
   */
   virtual bool visit(IIR_InstanceNameAttribute *, visitor_argument_type * = nullptr ) = 0;
-
-
-  /** Visitor method for objects of type IIR_IntegerLiteral.
-      @return container for any return value wanted by the visitor.
-      @param node a pointer to the \Ref{AIRE-IIR} object related to this
-      visitation 
-      @param arg container for any argument wanted by the visitor.
-  */
-  virtual bool visit(IIR_IntegerLiteral *, visitor_argument_type * = nullptr ) = 0;
-
 
   /** Visitor method for objects of type IIR_IntegerLiteral32.
       @return container for any return value wanted by the visitor.

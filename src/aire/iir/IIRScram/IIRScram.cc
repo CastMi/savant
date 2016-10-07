@@ -90,7 +90,7 @@ IIRScram::_is_numeric_literal() const {
   }
 }
 
-bool
+inline bool
 IIRScram::accept( generic_visitor * visitor, visitor_argument_type * arg ) {
    ASSERT( visitor );
    return visitor->visit( this, arg );

@@ -47,8 +47,6 @@ public:
   IIR_Boolean has_suffix() { return false; }
 
   void set_subtype(IIR_TypeDefinition *type) {IIRBase_Statement::set_subtype(type);}
-  
-  ostream &print( ostream &os );
 
   /** This returns an IIR_TextLiteral with the name of whatever attribute
       was instantiated. */

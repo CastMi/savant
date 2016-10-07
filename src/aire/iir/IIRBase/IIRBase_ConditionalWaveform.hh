@@ -49,7 +49,6 @@ public:
  
   IIR_Boolean is_resolved();
 
-  ostream &print( ostream & );
   void publish_vhdl(ostream &);
 protected:
   IIRBase_ConditionalWaveform();

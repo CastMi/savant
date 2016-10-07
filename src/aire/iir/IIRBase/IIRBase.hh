@@ -268,17 +268,6 @@ public:
 
   IIRBase* converted_node;
 
-  /** The "print" method is intended to print out ONLY the raw data found
-      in the IF.  This means it should not be made to print any formatting
-      or "labels", like "NAME: foo".  An exception might be for lists that
-      it would be alright to put commas between elements, although I'm not
-      sure why anyone would want to print a list in this manner.  This
-      method is NOT meant to be a way to publish VHDL source code.  It is
-      intended more for debuging and/or the generation of error messages.
-      Also, note that every overloaded _print method should call the print
-      method of it's direct decendent. */
-  ostream &print( ostream & );
-
   virtual IIR_Identifier* get_declarator();
 
   /** This method returns the declaration of an indexed name.  If the

@@ -95,16 +95,6 @@ IIRBase_TypeConversion::is_locally_static(){
   return get_expression()->is_locally_static();
 }
 
-ostream & 
-IIRBase_TypeConversion::print( ostream &os ) {
-  os << *get_type_mark();
-  os << " ( ";
-  os << *get_expression();
-  os << " ) ";
-  
-  return os;
-}
-
 void 
 IIRBase_TypeConversion::publish_vhdl(ostream &vhdl_out) {
   get_type_mark()->get_declarator()->publish_vhdl(vhdl_out);

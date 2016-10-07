@@ -59,12 +59,6 @@ IIRBase_IntegerLiteral32::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-ostream &
-IIRBase_IntegerLiteral32::print(ostream &os) {
-  os << value();
-  return os;
-}
-
 void 
 IIRBase_IntegerLiteral32::publish_vhdl(ostream &vhdl_out) {
   vhdl_out << value();

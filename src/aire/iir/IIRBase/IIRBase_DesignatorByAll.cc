@@ -39,12 +39,6 @@ IIRBase_DesignatorByAll::is_resolved(){
   return true;
 }
 
-ostream &
-IIRBase_DesignatorByAll::print( ostream &os ){
-  os << "all";
-  return os;
-}
-
 void 
 IIRBase_DesignatorByAll::publish_vhdl(ostream &vhdl_out) {
   vhdl_out << "all";

@@ -102,7 +102,6 @@ private:
   /** Does the actual building for _get_default_binding_indication() */
   IIRScram_ConfigurationSpecification *_build_default_entity_aspect( IIRScram_Name *component_name,
                                                                      IIRScram_ArchitectureDeclaration *arch);
-
   IIR_Kind my_instantiation_type;
 };
 

@@ -42,15 +42,6 @@ IIRBase_IntegerLiteral::IIRBase_IntegerLiteral() :
 
 IIRBase_IntegerLiteral::~IIRBase_IntegerLiteral() {}
 
-const string
-IIRBase_IntegerLiteral::print( IIR_Int32 ){
-  ostringstream os;
-  os << "print(IIR_Int32) not defined for IIR node: " << get_kind_text();
-  report_error( this, os.str() );
-  return "";
-}
-
-
 void
 IIRBase_IntegerLiteral::set_base(IIR_Int32 b) {
   base = b;

@@ -80,14 +80,6 @@ IIRBase_Allocator::is_resolved(){
   return get_type_mark()->is_resolved();
 }
 
-ostream &
-IIRBase_Allocator::print( ostream &os ){
-  os << "new ";
-  os << *get_type_mark();
-
-  return os;
-}
-
 void
 IIRBase_Allocator::publish_vhdl(ostream &vhdl_out) {
   vhdl_out << "new ";

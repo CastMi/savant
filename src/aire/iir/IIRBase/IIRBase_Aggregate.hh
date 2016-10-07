@@ -50,8 +50,6 @@ public:
   IIR_Boolean is_variable( );
   IIR_Boolean is_locally_static();
 
-  ostream &print( ostream & );
-
   IIR_Declaration* get_prefix_declaration() { return NULL; }
   void publish_vhdl(ostream &);
 protected:

@@ -91,19 +91,6 @@ IIRBase_BlockConfiguration::convert_tree(plugin_class_factory *factory) {
   return new_node;
 }
 
-ostream &
-IIRBase_BlockConfiguration::print( ostream &os ){
-  if( get_block_specification() != NULL ){
-    // FIXME: operator<<
-    // os << *get_block_specification();
-  }
-  else{
-    os << "<ANONYMOUS>";
-  }
-
-  return os;
-}
-
 void 
 IIRBase_BlockConfiguration::publish_vhdl(ostream &vhdl_out) {
   vhdl_out << " for ";

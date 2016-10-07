@@ -239,12 +239,6 @@ IIRBase::get_num_indexes( ){
   return -1;
 }
 
-ostream&
-IIRBase::print(ostream& os) {
-  _report_undefined_fn("ostream& print(ostream&)");
-  return os;
-}
-
 IIR_Identifier *
 IIRBase::get_declarator() {
   ASSERT( dynamic_cast<IIR_Declaration *>(this) != NULL || get_kind() == IIR_SIMPLE_NAME);

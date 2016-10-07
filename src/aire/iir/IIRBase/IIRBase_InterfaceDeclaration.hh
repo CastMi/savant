@@ -44,7 +44,6 @@ public:
   IIR_Boolean is_interface() { return true; };
   IIR_Boolean is_object() { return true;}
 
-  ostream &print( ostream & );
   void publish_vhdl_mode(ostream &);
 protected:
   

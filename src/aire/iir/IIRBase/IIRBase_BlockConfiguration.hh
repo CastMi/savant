@@ -50,7 +50,6 @@ public:
 
   IIR *convert_tree(plugin_class_factory *factory);
 
-  ostream &print( ostream &os );
   void publish_vhdl(ostream &);
 protected:
   IIRBase_BlockConfiguration();

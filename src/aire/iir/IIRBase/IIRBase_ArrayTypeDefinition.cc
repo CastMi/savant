@@ -171,23 +171,6 @@ IIRBase_ArrayTypeDefinition::is_locally_static(){
   return retval;
 }
 
-ostream&
-IIRBase_ArrayTypeDefinition::print(ostream &os) {
-  os << "array ( " << *get_resolved_index_subtype(); 
-  
-  IIR_TypeDefinition *element_type = get_element_subtype();
-  
-  while( element_type->is_array_type() && element_type->is_anonymous() ){
-    os << ", " << *(element_type->get_resolved_index_subtype());
-    element_type = element_type->get_element_subtype();
-  }
-  
-  // FIXME: overload operator<<
-  //os << " ) of " << *(element_type->get_declarator());
-
-  return os;
-}
-
 void
 IIRBase_ArrayTypeDefinition::set_declaration( IIR_Declaration *corresponding_decl ){
   IIRBase_TypeDefinition::set_declaration( corresponding_decl );

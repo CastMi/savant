@@ -68,7 +68,6 @@ public:
   IIR_Boolean is_operator();
   IIR_Boolean has_statement_list() { return contains_body(); }
 
-  ostream &print( ostream & );
 protected:
   
   IIRBase_SubprogramDeclaration();
