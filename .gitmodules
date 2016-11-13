@@ -1,0 +1,6 @@
+[submodule "ext/clutils"]
+	path = ext/clutils
+	url = git@github.com:CastMi/clutils.git
+[submodule "ext/tyvis"]
+	path = ext/tyvis
+	url = git@github.com:CastMi/tyvis
