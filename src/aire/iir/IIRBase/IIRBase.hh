@@ -32,6 +32,9 @@ public:
       in determining the type of a node when an IIR * is
       all that's available */
   virtual IIR_Kind get_kind() const = 0;
+  
+  
+  inline bool accept( generic_visitor * visitor );
 
   /** Returns the kind of this node in text form.  This is here for output
       and debugging purposes. */

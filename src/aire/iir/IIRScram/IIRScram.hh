@@ -34,8 +34,6 @@ class include_manager;
 class published_file;
 class break_handler;
 class constraint_functor;
-class generic_visitor;
-class visitor_argument_type;
 class IIR_AboveAttribute;
 
 namespace savant {
@@ -88,21 +86,6 @@ class IIRScram : public virtual IIRBase {
 
 public:
   IIRScram();
-  /** Accepts a visitor for this node.
-
-      The visitor pattern implemented in this intermediate provides
-      support for parameter transmission by a visitor.  This capability is
-      achieved by defining the visitor pattern with a return type of void*
-      and with an input parameter of type void*.
-
-      @return bool To know whether the visit should continue or not.
-
-      @param visitor a pointer to the visitor object.
-      @param arg location for a visitor specific pointer to be passed
-      into the visitor methods.
-
-      @see generic_visitor */
-  bool accept( generic_visitor * visitor, visitor_argument_type * = nullptr );
 
   //@{
   /** These methods only apply to entities, components, etc.  (Or names

@@ -34,6 +34,7 @@ class IIR_Statement;
 class IIR_TextLiteral;
 class IIR_TypeDefinition;
 class plugin_class_factory;
+class generic_visitor;
 
 /** This is the base node definition for the intermediate form.  All nodes
     in IIR are descendants of this node.  */
@@ -45,6 +46,23 @@ public:
       in determining the type of a node when an IIR * is
       all that's available */
   virtual IIR_Kind get_kind() const = 0;
+  
+  /** Accepts a visitor for this node.
+
+      The visitor pattern implemented in this intermediate provides
+      support for parameter transmission by a visitor.  This capability is
+      achieved by defining the visitor pattern with a return type of void*
+      and with an input parameter of type void*.
+
+      @return bool To know whether the visit should continue or not.
+
+      @param visitor a pointer to the visitor object.
+      @param arg location for a visitor specific pointer to be passed
+      into the visitor methods.
+
+      @see generic_visitor
+    */
+  virtual bool accept( generic_visitor * visitor ) = 0;
 
   /** Returns the kind of this node in text form.  This is here for output
       and debugging purposes. */
@@ -319,12 +337,5 @@ public:
   virtual void publish_vhdl( ostream &os ) = 0;
 
 };
-
-
-inline 
-ostream &
-operator<<(ostream &os, IIR &is ) {
-  return is.print( os );
-}
 
 #endif

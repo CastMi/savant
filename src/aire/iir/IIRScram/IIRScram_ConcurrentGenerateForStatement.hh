@@ -32,7 +32,7 @@
 #include "IIRBase_ConcurrentGenerateForStatement.hh"
 
 class IIRScram_AssociationList;
-class IIRScram_DeclarationList;
+template <class type> class IIRScram_DeclarationList;
 class IIRScram_Label;
 class IIRScram_SimpleName;
 
@@ -49,12 +49,12 @@ public:
   IIRScram_List<IIR_Statement> *_get_statement_list();
   virtual IIRScram_AssociationList *_get_generic_map_aspect(){ return NULL; }
 
-  IIRScram_DeclarationList* _get_declaration_list();
+  IIRScram_DeclarationList<IIR_Declaration>* _get_declaration_list();
   
   IIRScram_Label *_find_instantiate_label( IIRScram_SimpleName * );
 
   IIRScram_ConstantDeclaration *                _get_generate_parameter_specification();
-  IIRScram_DeclarationList *                    _get_block_declarative_part();
+  IIRScram_DeclarationList<> *                    _get_block_declarative_part();
   IIRScram_ArchitectureStatementList *          _get_concurrent_statement_part();
 };
 

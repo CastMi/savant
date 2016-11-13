@@ -34,7 +34,7 @@
 
 class IIRScram_EnumerationLiteral;
 
-class IIRScram_EnumerationLiteralList : public virtual IIRScram_DeclarationList, public virtual IIRBase_EnumerationLiteralList {
+class IIRScram_EnumerationLiteralList : public virtual IIRScram_DeclarationList<IIR_EnumerationLiteral>, public virtual IIRBase_EnumerationLiteralList {
 
 public:
   IIRScram_EnumerationLiteralList() {}

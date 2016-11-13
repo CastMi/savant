@@ -47,7 +47,7 @@ IIRScram_BlockStatement::IIRScram_BlockStatement() {
   set_generic_map_aspect(new IIRScram_AssociationList());
   set_port_clause(new IIRScram_PortList());
   set_port_map_aspect(new IIRScram_AssociationList());
-  set_block_declarative_part(new IIRScram_DeclarationList());
+  set_block_declarative_part(new IIRScram_DeclarationList<>());
   set_block_statement_part(new IIRScram_ArchitectureStatementList());
   my_implicit_guard_signal = NULL;
 }
@@ -125,9 +125,9 @@ IIRScram_BlockStatement::_get_port_clause() {
   return dynamic_cast<IIRScram_PortList *>(get_port_clause());
 }
 
-IIRScram_DeclarationList *
+IIRScram_DeclarationList<> *
 IIRScram_BlockStatement::_get_block_declarative_part() {
-  return dynamic_cast<IIRScram_DeclarationList *>(get_block_declarative_part());
+  return dynamic_cast<IIRScram_DeclarationList<> *>(get_block_declarative_part());
 }
 
 IIRScram_List<IIR_Statement> *

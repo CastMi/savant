@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "visitor_argument_type.hh"
 #include "generic_visitor.hh"
 #include "IIR_DeclarationList.hh"
+#include <iostream>
 
 class IIR;
 class IIR_Statement;
@@ -237,7 +237,7 @@ class DumpVisitor : public generic_visitor {
 
 public: 
   /// Constructor.
-  DumpVisitor() {};
+  DumpVisitor( std::ostream& output = std::cout ) : out(output) {};
   virtual ~DumpVisitor() {};
   
   /** Visitor method for objects of type IIR_AbsoluteOperator.
@@ -246,7 +246,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AbsoluteOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AbsoluteOperator * );
 
 
   /** Visitor method for objects of type IIR_AccessSubtypeDefinition.
@@ -255,7 +255,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AccessSubtypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AccessSubtypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_AccessTypeDefinition.
@@ -264,7 +264,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AccessTypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AccessTypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_ActiveAttribute.
@@ -273,7 +273,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ActiveAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ActiveAttribute * );
 
 
   /** Visitor method for objects of type IIR_AdditionOperator.
@@ -282,7 +282,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AdditionOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AdditionOperator * );
 
 
   /** Visitor method for objects of type IIR_Aggregate.
@@ -291,7 +291,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_Aggregate *, visitor_argument_type * = nullptr );
+  bool visit(IIR_Aggregate * );
 
 
   /** Visitor method for objects of type IIR_AliasDeclaration.
@@ -300,7 +300,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AliasDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AliasDeclaration * );
 
 
   /** Visitor method for objects of type IIR_Allocator.
@@ -309,7 +309,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_Allocator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_Allocator * );
 
 
   /** Visitor method for objects of type IIR_AndOperator.
@@ -318,7 +318,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AndOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AndOperator * );
 
 
   /** Visitor method for objects of type IIR_ArchitectureDeclaration.
@@ -327,7 +327,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ArchitectureDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ArchitectureDeclaration * );
 
 
   /** Visitor method for objects of type IIR_ArchitectureStatementList.
@@ -336,7 +336,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ArchitectureStatementList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ArchitectureStatementList * );
 
 
   /** Visitor method for objects of type IIR_ArraySubtypeDefinition.
@@ -345,7 +345,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ArraySubtypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ArraySubtypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_ArrayTypeDefinition.
@@ -354,7 +354,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ArrayTypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ArrayTypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_AscendingAttribute.
@@ -363,7 +363,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AscendingAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AscendingAttribute * );
 
 
   /** Visitor method for objects of type IIR_AssertionStatement.
@@ -372,7 +372,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AssertionStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AssertionStatement * );
 
 
   /** Visitor method for objects of type IIR_AssociationElementByExpression.
@@ -381,7 +381,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AssociationElementByExpression *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AssociationElementByExpression * );
 
 
   /** Visitor method for objects of type IIR_AssociationElementOpen.
@@ -390,7 +390,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AssociationElementOpen *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AssociationElementOpen * );
 
 
   /** Visitor method for objects of type IIR_AssociationList.
@@ -399,7 +399,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AssociationList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AssociationList * );
 
 
   /** Visitor method for objects of type IIR_AttributeDeclaration.
@@ -408,7 +408,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AttributeDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AttributeDeclaration * );
 
 
   /** Visitor method for objects of type IIR_AttributeSpecification.
@@ -417,7 +417,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AttributeSpecification *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AttributeSpecification * );
 
 
   /** Visitor method for objects of type IIR_AttributeSpecificationList.
@@ -426,7 +426,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_AttributeSpecificationList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_AttributeSpecificationList * );
 
 
   /** Visitor method for objects of type IIR_BaseAttribute.
@@ -435,7 +435,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_BaseAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_BaseAttribute * );
 
 
   /** Visitor method for objects of type IIR_BitStringLiteral.
@@ -444,7 +444,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_BitStringLiteral *, visitor_argument_type * = nullptr );
+  bool visit(IIR_BitStringLiteral * );
 
 
   /** Visitor method for objects of type IIR_BlockConfiguration.
@@ -453,7 +453,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_BlockConfiguration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_BlockConfiguration * );
 
 
   /** Visitor method for objects of type IIR_BlockStatement.
@@ -462,7 +462,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_BlockStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_BlockStatement * );
 
 
   /** Visitor method for objects of type IIR_CaseStatement.
@@ -471,7 +471,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_CaseStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_CaseStatement * );
 
 
   /** Visitor method for objects of type IIR_CaseStatementAlternativeByChoices.
@@ -480,7 +480,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_CaseStatementAlternativeByChoices *, visitor_argument_type * = nullptr );
+  bool visit(IIR_CaseStatementAlternativeByChoices * );
 
 
   /** Visitor method for objects of type IIR_CaseStatementAlternativeByExpression.
@@ -489,7 +489,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_CaseStatementAlternativeByExpression *, visitor_argument_type * = nullptr );
+  bool visit(IIR_CaseStatementAlternativeByExpression * );
 
 
   /** Visitor method for objects of type IIR_CaseStatementAlternativeByOthers.
@@ -498,7 +498,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_CaseStatementAlternativeByOthers *, visitor_argument_type * = nullptr );
+  bool visit(IIR_CaseStatementAlternativeByOthers * );
 
 
   /** Visitor method for objects of type IIR_CaseStatementAlternativeList.
@@ -507,7 +507,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_CaseStatementAlternativeList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_CaseStatementAlternativeList * );
 
 
   /** Visitor method for objects of type IIR_CharacterLiteral.
@@ -516,7 +516,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_CharacterLiteral *, visitor_argument_type * = nullptr );
+  bool visit(IIR_CharacterLiteral * );
 
 
   /** Visitor method for objects of type IIR_Choice.
@@ -525,7 +525,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_Choice *, visitor_argument_type * = nullptr );
+  bool visit(IIR_Choice * );
 
 
   /** Visitor method for objects of type IIR_ChoiceList.
@@ -534,7 +534,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ChoiceList *e, visitor_argument_type * = nullptr );
+  bool visit(IIR_ChoiceList *e );
 
 
   /** Visitor method for objects of type IIR_Comment.
@@ -543,7 +543,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_Comment *, visitor_argument_type * = nullptr );
+  bool visit(IIR_Comment * );
 
 
   /** Visitor method for objects of type IIR_CommentList.
@@ -552,7 +552,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_CommentList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_CommentList * );
 
 
   /** Visitor method for objects of type IIR_ComponentConfiguration.
@@ -561,7 +561,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ComponentConfiguration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ComponentConfiguration * );
 
 
   /** Visitor method for objects of type IIR_ComponentDeclaration.
@@ -570,7 +570,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ComponentDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ComponentDeclaration * );
 
 
   /** Visitor method for objects of type IIR_ComponentInstantiationStatement.
@@ -579,7 +579,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ComponentInstantiationStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ComponentInstantiationStatement * );
 
 
   /** Visitor method for objects of type IIR_ConcatenationOperator.
@@ -588,7 +588,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConcatenationOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConcatenationOperator * );
 
 
   /** Visitor method for objects of type IIR_ConcurrentAssertionStatement.
@@ -597,7 +597,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConcurrentAssertionStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConcurrentAssertionStatement * );
 
 
   /** Visitor method for objects of type IIR_ConcurrentConditionalSignalAssignment.
@@ -606,7 +606,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConcurrentConditionalSignalAssignment *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConcurrentConditionalSignalAssignment * );
 
 
   /** Visitor method for objects of type IIR_ConcurrentGenerateForStatement.
@@ -615,7 +615,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConcurrentGenerateForStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConcurrentGenerateForStatement * );
 
 
   /** Visitor method for objects of type IIR_ConcurrentGenerateIfStatement.
@@ -624,7 +624,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConcurrentGenerateIfStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConcurrentGenerateIfStatement * );
 
 
   /** Visitor method for objects of type IIR_ConcurrentProcedureCallStatement.
@@ -633,7 +633,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConcurrentProcedureCallStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConcurrentProcedureCallStatement * );
 
 
   /** Visitor method for objects of type IIR_ConcurrentSelectedSignalAssignment.
@@ -642,7 +642,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConcurrentSelectedSignalAssignment *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConcurrentSelectedSignalAssignment * );
 
 
   /** Visitor method for objects of type IIR_ConditionalWaveform.
@@ -651,7 +651,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConditionalWaveform *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConditionalWaveform * );
 
 
   /** Visitor method for objects of type IIR_ConditionalWaveformList.
@@ -660,7 +660,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConditionalWaveformList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConditionalWaveformList * );
 
 
   /** Visitor method for objects of type IIR_ConfigurationDeclaration.
@@ -669,7 +669,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConfigurationDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConfigurationDeclaration * );
 
 
   /** Visitor method for objects of type IIR_ConfigurationItem.
@@ -678,7 +678,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConfigurationItem *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConfigurationItem * );
 
 
   /** Visitor method for objects of type IIR_ConfigurationItemList.
@@ -687,7 +687,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConfigurationItemList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConfigurationItemList * );
 
 
   /** Visitor method for objects of type IIR_ConfigurationSpecification.
@@ -696,7 +696,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConfigurationSpecification *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConfigurationSpecification * );
 
 
   /** Visitor method for objects of type IIR_ConstantDeclaration.
@@ -705,7 +705,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConstantDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConstantDeclaration * );
 
 
   /** Visitor method for objects of type IIR_ConstantInterfaceDeclaration.
@@ -714,7 +714,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ConstantInterfaceDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ConstantInterfaceDeclaration * );
 
 
   /** Visitor method for objects of type IIR_DeclarationList.
@@ -723,7 +723,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_DeclarationList<> *, visitor_argument_type * = nullptr );
+  bool visit(IIR_DeclarationList<> * );
 
 
   /** Visitor method for objects of type IIR_DelayedAttribute.
@@ -732,7 +732,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_DelayedAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_DelayedAttribute * );
 
 
   /** Visitor method for objects of type IIR_DesignFile.
@@ -741,7 +741,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_DesignFile *, visitor_argument_type * = nullptr );
+  bool visit(IIR_DesignFile * );
 
 
   /** Visitor method for objects of type IIR_DesignFileList.
@@ -750,7 +750,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_DesignFileList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_DesignFileList * );
 
 
   /** Visitor method for objects of type IIR_DesignUnitList.
@@ -759,7 +759,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_DesignUnitList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_DesignUnitList * );
 
 
   /** Visitor method for objects of type IIR_DesignatorByAll.
@@ -768,7 +768,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_DesignatorByAll *, visitor_argument_type * = nullptr );
+  bool visit(IIR_DesignatorByAll * );
 
 
   /** Visitor method for objects of type IIR_DesignatorByOthers.
@@ -777,7 +777,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_DesignatorByOthers *, visitor_argument_type * = nullptr );
+  bool visit(IIR_DesignatorByOthers * );
 
 
   /** Visitor method for objects of type IIR_DesignatorExplicit.
@@ -786,7 +786,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_DesignatorExplicit *, visitor_argument_type * = nullptr );
+  bool visit(IIR_DesignatorExplicit * );
 
 
   /** Visitor method for objects of type IIR_DesignatorList.
@@ -795,7 +795,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_DesignatorList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_DesignatorList * );
 
 
   /** Visitor method for objects of type IIR_DisconnectSpecification.
@@ -804,7 +804,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_DisconnectSpecification *, visitor_argument_type * = nullptr );
+  bool visit(IIR_DisconnectSpecification * );
 
 
   /** Visitor method for objects of type IIR_DivisionOperator.
@@ -813,7 +813,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_DivisionOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_DivisionOperator * );
 
 
   /** Visitor method for objects of type IIR_DrivingAttribute.
@@ -822,7 +822,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_DrivingAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_DrivingAttribute * );
 
 
   /** Visitor method for objects of type IIR_DrivingValueAttribute.
@@ -831,7 +831,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_DrivingValueAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_DrivingValueAttribute * );
 
 
   /** Visitor method for objects of type IIR_ElementDeclaration.
@@ -840,7 +840,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ElementDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ElementDeclaration * );
 
 
   /** Visitor method for objects of type IIR_ElementDeclarationList.
@@ -849,7 +849,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ElementDeclarationList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ElementDeclarationList * );
 
 
   /** Visitor method for objects of type IIR_Elsif.
@@ -858,7 +858,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_Elsif *, visitor_argument_type * = nullptr );
+  bool visit(IIR_Elsif * );
 
 
   /** Visitor method for objects of type IIR_EntityClassEntry.
@@ -867,7 +867,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_EntityClassEntry *, visitor_argument_type * = nullptr );
+  bool visit(IIR_EntityClassEntry * );
 
 
   /** Visitor method for objects of type IIR_EntityClassEntryList.
@@ -876,7 +876,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_EntityClassEntryList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_EntityClassEntryList * );
 
 
   /** Visitor method for objects of type IIR_EntityDeclaration.
@@ -885,7 +885,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_EntityDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_EntityDeclaration * );
 
 
   /** Visitor method for objects of type IIR_EntityNameList.
@@ -894,7 +894,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_EntityNameList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_EntityNameList * );
 
 
   /** Visitor method for objects of type IIR_EnumerationLiteral.
@@ -903,7 +903,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_EnumerationLiteral *, visitor_argument_type * = nullptr );
+  bool visit(IIR_EnumerationLiteral * );
 
 
   /** Visitor method for objects of type IIR_EnumerationLiteralList.
@@ -912,7 +912,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_EnumerationLiteralList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_EnumerationLiteralList * );
 
 
   /** Visitor method for objects of type IIR_EnumerationSubtypeDefinition.
@@ -921,7 +921,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_EnumerationSubtypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_EnumerationSubtypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_EnumerationTypeDefinition.
@@ -930,7 +930,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_EnumerationTypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_EnumerationTypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_EqualityOperator.
@@ -939,7 +939,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_EqualityOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_EqualityOperator * );
 
 
   /** Visitor method for objects of type IIR_EventAttribute.
@@ -948,7 +948,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_EventAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_EventAttribute * );
 
 
   /** Visitor method for objects of type IIR_ExitStatement.
@@ -957,7 +957,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ExitStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ExitStatement * );
 
 
   /** Visitor method for objects of type IIR_ExponentiationOperator.
@@ -966,7 +966,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ExponentiationOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ExponentiationOperator * );
 
 
   /** Visitor method for objects of type IIR_FileDeclaration.
@@ -975,7 +975,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_FileDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_FileDeclaration * );
 
 
   /** Visitor method for objects of type IIR_FileInterfaceDeclaration.
@@ -984,7 +984,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_FileInterfaceDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_FileInterfaceDeclaration * );
 
 
   /** Visitor method for objects of type IIR_FileTypeDefinition.
@@ -993,7 +993,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_FileTypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_FileTypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_FloatingPointLiteral.
@@ -1002,7 +1002,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_FloatingPointLiteral *, visitor_argument_type * = nullptr );
+  bool visit(IIR_FloatingPointLiteral * );
 
 
   /** Visitor method for objects of type IIR_FloatingPointLiteral32.
@@ -1011,7 +1011,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_FloatingPointLiteral32 *, visitor_argument_type * = nullptr );
+  bool visit(IIR_FloatingPointLiteral32 * );
 
 
   /** Visitor method for objects of type IIR_FloatingPointLiteral64.
@@ -1020,7 +1020,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_FloatingPointLiteral64 *, visitor_argument_type * = nullptr );
+  bool visit(IIR_FloatingPointLiteral64 * );
 
 
   /** Visitor method for objects of type IIR_FloatingSubtypeDefinition.
@@ -1029,7 +1029,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_FloatingSubtypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_FloatingSubtypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_FloatingTypeDefinition.
@@ -1038,7 +1038,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_FloatingTypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_FloatingTypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_ForLoopStatement.
@@ -1047,7 +1047,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ForLoopStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ForLoopStatement * );
 
 
   /** Visitor method for objects of type IIR_FunctionCall.
@@ -1056,7 +1056,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_FunctionCall *, visitor_argument_type * = nullptr );
+  bool visit(IIR_FunctionCall * );
 
 
   /** Visitor method for objects of type IIR_FunctionDeclaration.
@@ -1065,7 +1065,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_FunctionDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_FunctionDeclaration * );
 
 
   /** Visitor method for objects of type IIR_GenericList.
@@ -1074,7 +1074,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_GenericList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_GenericList * );
 
 
   /** Visitor method for objects of type IIR_GreaterThanOperator.
@@ -1083,7 +1083,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_GreaterThanOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_GreaterThanOperator * );
 
 
   /** Visitor method for objects of type IIR_GreaterThanOrEqualOperator.
@@ -1092,7 +1092,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_GreaterThanOrEqualOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_GreaterThanOrEqualOperator * );
 
 
   /** Visitor method for objects of type IIR_GroupConstituent.
@@ -1101,7 +1101,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_GroupConstituent *, visitor_argument_type * = nullptr );
+  bool visit(IIR_GroupConstituent * );
 
 
   /** Visitor method for objects of type IIR_GroupDeclaration.
@@ -1110,7 +1110,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_GroupDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_GroupDeclaration * );
 
 
   /** Visitor method for objects of type IIR_GroupTemplateDeclaration.
@@ -1119,7 +1119,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_GroupTemplateDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_GroupTemplateDeclaration * );
 
 
   /** Visitor method for objects of type IIR_HighAttribute.
@@ -1128,7 +1128,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_HighAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_HighAttribute * );
 
 
   /** Visitor method for objects of type IIR_Identifier.
@@ -1137,7 +1137,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_Identifier *, visitor_argument_type * = nullptr );
+  bool visit(IIR_Identifier * );
 
 
   /** Visitor method for objects of type IIR_IdentifierList.
@@ -1146,7 +1146,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_IdentifierList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_IdentifierList * );
 
 
   /** Visitor method for objects of type IIR_IdentityOperator.
@@ -1155,7 +1155,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_IdentityOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_IdentityOperator * );
 
 
   /** Visitor method for objects of type IIR_IfStatement.
@@ -1164,7 +1164,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_IfStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_IfStatement * );
 
 
   /** Visitor method for objects of type IIR_ImageAttribute.
@@ -1173,7 +1173,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ImageAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ImageAttribute * );
 
 
   /** Visitor method for objects of type IIR_IndexedName.
@@ -1182,7 +1182,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_IndexedName *, visitor_argument_type * = nullptr );
+  bool visit(IIR_IndexedName * );
 
 
   /** Visitor method for objects of type IIR_InequalityOperator.
@@ -1191,7 +1191,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_InequalityOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_InequalityOperator * );
 
 
   /** Visitor method for objects of type IIR_InstanceNameAttribute.
@@ -1200,7 +1200,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_InstanceNameAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_InstanceNameAttribute * );
 
 
   /** Visitor method for objects of type IIR_IntegerLiteral.
@@ -1209,7 +1209,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_IntegerLiteral *, visitor_argument_type * = nullptr );
+  bool visit(IIR_IntegerLiteral * );
 
 
   /** Visitor method for objects of type IIR_IntegerLiteral32.
@@ -1218,7 +1218,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_IntegerLiteral32 *, visitor_argument_type * = nullptr );
+  bool visit(IIR_IntegerLiteral32 * );
 
 
   /** Visitor method for objects of type IIR_IntegerLiteral64.
@@ -1227,7 +1227,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_IntegerLiteral64 *, visitor_argument_type * = nullptr );
+  bool visit(IIR_IntegerLiteral64 * );
 
 
   /** Visitor method for objects of type IIR_IntegerSubtypeDefinition.
@@ -1236,7 +1236,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_IntegerSubtypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_IntegerSubtypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_IntegerTypeDefinition.
@@ -1245,7 +1245,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_IntegerTypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_IntegerTypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_InterfaceList.
@@ -1254,7 +1254,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_InterfaceList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_InterfaceList * );
 
 
   /** Visitor method for objects of type IIR_Label.
@@ -1263,7 +1263,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_Label *, visitor_argument_type * = nullptr );
+  bool visit(IIR_Label * );
 
 
   /** Visitor method for objects of type IIR_LastActiveAttribute.
@@ -1272,7 +1272,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_LastActiveAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_LastActiveAttribute * );
 
 
   /** Visitor method for objects of type IIR_LastEventAttribute.
@@ -1281,7 +1281,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_LastEventAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_LastEventAttribute * );
 
 
   /** Visitor method for objects of type IIR_LastValueAttribute.
@@ -1290,7 +1290,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_LastValueAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_LastValueAttribute * );
 
 
   /** Visitor method for objects of type IIR_LeftAttribute.
@@ -1299,7 +1299,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_LeftAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_LeftAttribute * );
 
 
   /** Visitor method for objects of type IIR_LeftOfAttribute.
@@ -1308,7 +1308,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_LeftOfAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_LeftOfAttribute * );
 
 
   /** Visitor method for objects of type IIR_LengthAttribute.
@@ -1317,7 +1317,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_LengthAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_LengthAttribute * );
 
 
   /** Visitor method for objects of type IIR_LessThanOperator.
@@ -1326,7 +1326,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_LessThanOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_LessThanOperator * );
 
 
   /** Visitor method for objects of type IIR_LessThanOrEqualOperator.
@@ -1335,7 +1335,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_LessThanOrEqualOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_LessThanOrEqualOperator * );
 
 
   /** Visitor method for objects of type IIR_LibraryClause.
@@ -1344,7 +1344,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_LibraryClause *, visitor_argument_type * = nullptr );
+  bool visit(IIR_LibraryClause * );
 
 
   /** Visitor method for objects of type IIR_LibraryDeclaration.
@@ -1353,7 +1353,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_LibraryDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_LibraryDeclaration * );
 
 
   /** Visitor method for objects of type IIR_LibraryUnitList.
@@ -1362,7 +1362,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_LibraryUnitList*, visitor_argument_type * = nullptr );
+  bool visit(IIR_LibraryUnitList* );
 
 
   /** Visitor method for objects of type IIR_Literal.
@@ -1371,7 +1371,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_Literal *, visitor_argument_type * = nullptr );
+  bool visit(IIR_Literal * );
 
 
   /** Visitor method for objects of type IIR_LowAttribute.
@@ -1380,7 +1380,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_LowAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_LowAttribute * );
 
 
   /** Visitor method for objects of type IIR_ModulusOperator.
@@ -1389,7 +1389,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ModulusOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ModulusOperator * );
 
 
   /** Visitor method for objects of type IIR_MultiplicationOperator.
@@ -1398,7 +1398,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_MultiplicationOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_MultiplicationOperator * );
 
 
   /** Visitor method for objects of type IIR_Name.
@@ -1407,7 +1407,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_Name *, visitor_argument_type * = nullptr );
+  bool visit(IIR_Name * );
 
 
   /** Visitor method for objects of type IIR_NameList.
@@ -1416,7 +1416,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_NameList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_NameList * );
 
 
   /** Visitor method for objects of type IIR_NandOperator.
@@ -1425,7 +1425,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_NandOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_NandOperator * );
 
 
   /** Visitor method for objects of type IIR_NegationOperator.
@@ -1434,7 +1434,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_NegationOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_NegationOperator * );
 
 
   /** Visitor method for objects of type IIR_NextStatement.
@@ -1443,7 +1443,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_NextStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_NextStatement * );
 
 
   /** Visitor method for objects of type IIR_NorOperator.
@@ -1452,7 +1452,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_NorOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_NorOperator * );
 
 
   /** Visitor method for objects of type IIR_NotOperator.
@@ -1461,7 +1461,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_NotOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_NotOperator * );
 
 
   /** Visitor method for objects of type IIR_NullStatement.
@@ -1470,7 +1470,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_NullStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_NullStatement * );
 
 
   /** Visitor method for objects of type IIR_OrOperator.
@@ -1479,7 +1479,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_OrOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_OrOperator * );
 
 
   /** Visitor method for objects of type IIR_OthersInitialization.
@@ -1488,7 +1488,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_OthersInitialization *, visitor_argument_type * = nullptr );
+  bool visit(IIR_OthersInitialization * );
 
 
   /** Visitor method for objects of type IIR_PackageBodyDeclaration.
@@ -1497,7 +1497,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_PackageBodyDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_PackageBodyDeclaration * );
 
 
   /** Visitor method for objects of type IIR_PackageDeclaration.
@@ -1506,7 +1506,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_PackageDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_PackageDeclaration * );
 
 
   /** Visitor method for objects of type IIR_PathNameAttribute.
@@ -1515,7 +1515,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_PathNameAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_PathNameAttribute * );
 
 
   /** Visitor method for objects of type IIR_PhysicalLiteral.
@@ -1524,7 +1524,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_PhysicalLiteral *, visitor_argument_type * = nullptr );
+  bool visit(IIR_PhysicalLiteral * );
 
 
   /** Visitor method for objects of type IIR_PhysicalSubtypeDefinition.
@@ -1533,7 +1533,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_PhysicalSubtypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_PhysicalSubtypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_PhysicalTypeDefinition.
@@ -1542,7 +1542,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_PhysicalTypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_PhysicalTypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_PhysicalUnit.
@@ -1551,7 +1551,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_PhysicalUnit *, visitor_argument_type * = nullptr );
+  bool visit(IIR_PhysicalUnit * );
 
 
   /** Visitor method for objects of type IIR_PortList.
@@ -1560,7 +1560,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_PortList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_PortList * );
 
 
   /** Visitor method for objects of type IIR_PosAttribute.
@@ -1569,7 +1569,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_PosAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_PosAttribute * );
 
 
   /** Visitor method for objects of type IIR_PredAttribute.
@@ -1578,7 +1578,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_PredAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_PredAttribute * );
 
 
   /** Visitor method for objects of type IIR_ProcedureCallStatement.
@@ -1587,7 +1587,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ProcedureCallStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ProcedureCallStatement * );
 
 
   /** Visitor method for objects of type IIR_ProcedureDeclaration.
@@ -1596,7 +1596,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ProcedureDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ProcedureDeclaration * );
 
 
   /** Visitor method for objects of type IIR_ProcessStatement.
@@ -1605,7 +1605,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ProcessStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ProcessStatement * );
 
 
   /** Visitor method for objects of type IIR_QualifiedExpression.
@@ -1614,7 +1614,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_QualifiedExpression *, visitor_argument_type * = nullptr );
+  bool visit(IIR_QualifiedExpression * );
 
 
   /** Visitor method for objects of type IIR_QuietAttribute.
@@ -1623,7 +1623,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_QuietAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_QuietAttribute * );
 
 
   /** Visitor method for objects of type IIR_ROLOperator.
@@ -1632,7 +1632,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ROLOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ROLOperator * );
 
 
   /** Visitor method for objects of type IIR_ROROperator.
@@ -1641,7 +1641,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ROROperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ROROperator * );
 
 
   /** Visitor method for objects of type IIR_RangeAttribute.
@@ -1650,7 +1650,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_RangeAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_RangeAttribute * );
 
 
   /** Visitor method for objects of type IIR_RangeTypeDefinition.
@@ -1659,7 +1659,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_RangeTypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_RangeTypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_RecordTypeDefinition.
@@ -1668,7 +1668,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_RecordTypeDefinition *, visitor_argument_type * = nullptr );
+  bool visit(IIR_RecordTypeDefinition * );
 
 
   /** Visitor method for objects of type IIR_RemainderOperator.
@@ -1677,7 +1677,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_RemainderOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_RemainderOperator * );
 
 
   /** Visitor method for objects of type IIR_ReportStatement.
@@ -1686,7 +1686,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ReportStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ReportStatement * );
 
 
   /** Visitor method for objects of type IIR_ReturnStatement.
@@ -1695,7 +1695,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ReturnStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ReturnStatement * );
 
 
   /** Visitor method for objects of type IIR_ReverseRangeAttribute.
@@ -1704,7 +1704,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ReverseRangeAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ReverseRangeAttribute * );
 
 
   /** Visitor method for objects of type IIR_RightAttribute.
@@ -1713,7 +1713,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_RightAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_RightAttribute * );
 
 
   /** Visitor method for objects of type IIR_RightOfAttribute.
@@ -1722,7 +1722,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_RightOfAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_RightOfAttribute * );
 
 
   /** Visitor method for objects of type IIR_SLAOperator.
@@ -1731,7 +1731,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SLAOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SLAOperator * );
 
 
   /** Visitor method for objects of type IIR_SLLOperator.
@@ -1740,7 +1740,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SLLOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SLLOperator * );
 
 
   /** Visitor method for objects of type IIR_SRAOperator.
@@ -1749,7 +1749,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SRAOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SRAOperator * );
 
 
   /** Visitor method for objects of type IIR_SRLOperator.
@@ -1758,7 +1758,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SRLOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SRLOperator * );
 
 
   /** Visitor method for objects of type IIR_SelectedName.
@@ -1767,7 +1767,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SelectedName *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SelectedName * );
 
 
   /** Visitor method for objects of type IIR_SelectedNameByAll.
@@ -1776,7 +1776,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SelectedNameByAll *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SelectedNameByAll * );
 
 
   /** Visitor method for objects of type IIR_SelectedWaveform.
@@ -1785,7 +1785,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SelectedWaveform *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SelectedWaveform * );
 
 
   /** Visitor method for objects of type IIR_SelectedWaveformList.
@@ -1794,7 +1794,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SelectedWaveformList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SelectedWaveformList * );
 
 
   /** Visitor method for objects of type IIR_SensitizedProcessStatement.
@@ -1803,7 +1803,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SensitizedProcessStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SensitizedProcessStatement * );
 
 
   /** Visitor method for objects of type IIR_SequentialStatementList.
@@ -1812,7 +1812,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SequentialStatementList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SequentialStatementList * );
 
 
   /** Visitor method for objects of type IIR_SharedVariableDeclaration.
@@ -1821,7 +1821,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SharedVariableDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SharedVariableDeclaration * );
 
 
   /** Visitor method for objects of type IIR_SignalAssignmentStatement.
@@ -1830,7 +1830,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SignalAssignmentStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SignalAssignmentStatement * );
 
 
   /** Visitor method for objects of type IIR_SignalDeclaration.
@@ -1839,7 +1839,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SignalDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SignalDeclaration * );
 
 
   /** Visitor method for objects of type IIR_SignalInterfaceDeclaration.
@@ -1848,7 +1848,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SignalInterfaceDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SignalInterfaceDeclaration * );
 
 
   /** Visitor method for objects of type IIR_Signature.
@@ -1857,7 +1857,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_Signature *, visitor_argument_type * = nullptr );
+  bool visit(IIR_Signature * );
 
 
   /** Visitor method for objects of type IIR_SimpleName.
@@ -1866,7 +1866,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SimpleName *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SimpleName * );
 
 
   /** Visitor method for objects of type IIR_SimpleNameAttribute.
@@ -1875,7 +1875,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SimpleNameAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SimpleNameAttribute * );
 
 
   /** Visitor method for objects of type IIR_SliceName.
@@ -1884,7 +1884,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SliceName *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SliceName * );
 
 
   /** Visitor method for objects of type IIR_StableAttribute.
@@ -1893,7 +1893,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_StableAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_StableAttribute * );
 
 
   /** Visitor method for objects of type IIR_StringLiteral.
@@ -1902,7 +1902,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_StringLiteral *, visitor_argument_type * = nullptr );
+  bool visit(IIR_StringLiteral * );
 
 
   /** Visitor method for objects of type IIR_SubprogramDeclaration.
@@ -1911,7 +1911,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SubprogramDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SubprogramDeclaration * );
 
 
   /** Visitor method for objects of type IIR_SubtractionOperator.
@@ -1920,7 +1920,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SubtractionOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SubtractionOperator * );
 
 
   /** Visitor method for objects of type IIR_SubtypeDeclaration.
@@ -1929,7 +1929,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SubtypeDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SubtypeDeclaration * );
 
 
   /** Visitor method for objects of type IIR_SuccAttribute.
@@ -1938,7 +1938,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_SuccAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_SuccAttribute * );
 
 
   /** Visitor method for objects of type IIR_TransactionAttribute.
@@ -1947,7 +1947,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_TransactionAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_TransactionAttribute * );
 
 
   /** Visitor method for objects of type IIR_Tuple.
@@ -1956,7 +1956,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_Tuple *, visitor_argument_type * = nullptr );
+  bool visit(IIR_Tuple * );
 
 
   /** Visitor method for objects of type IIR_TypeConversion.
@@ -1965,7 +1965,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_TypeConversion *, visitor_argument_type * = nullptr );
+  bool visit(IIR_TypeConversion * );
 
 
   /** Visitor method for objects of type IIR_TypeDeclaration.
@@ -1974,7 +1974,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_TypeDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_TypeDeclaration * );
 
 
   /** Visitor method for objects of type IIR_UnitList.
@@ -1983,7 +1983,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_UnitList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_UnitList * );
 
 
   /** Visitor method for objects of type IIR_UseClause.
@@ -1992,7 +1992,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_UseClause *, visitor_argument_type * = nullptr );
+  bool visit(IIR_UseClause * );
 
 
   /** Visitor method for objects of type IIR_UserAttribute.
@@ -2001,7 +2001,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_UserAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_UserAttribute * );
 
 
   /** Visitor method for objects of type IIR_ValAttribute.
@@ -2010,7 +2010,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ValAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ValAttribute * );
 
 
   /** Visitor method for objects of type IIR_ValueAttribute.
@@ -2019,7 +2019,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_ValueAttribute *, visitor_argument_type * = nullptr );
+  bool visit(IIR_ValueAttribute * );
 
 
   /** Visitor method for objects of type IIR_VariableAssignmentStatement.
@@ -2028,7 +2028,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_VariableAssignmentStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_VariableAssignmentStatement * );
 
 
   /** Visitor method for objects of type IIR_VariableDeclaration.
@@ -2037,7 +2037,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_VariableDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_VariableDeclaration * );
 
 
   /** Visitor method for objects of type IIR_VariableInterfaceDeclaration.
@@ -2046,7 +2046,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_VariableInterfaceDeclaration *, visitor_argument_type * = nullptr );
+  bool visit(IIR_VariableInterfaceDeclaration * );
 
 
   /** Visitor method for objects of type IIR_WaitStatement.
@@ -2055,7 +2055,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_WaitStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_WaitStatement * );
 
 
   /** Visitor method for objects of type IIR_WaveformElement.
@@ -2064,7 +2064,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_WaveformElement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_WaveformElement * );
 
 
   /** Visitor method for objects of type IIR_WaveformList.
@@ -2073,7 +2073,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_WaveformList *, visitor_argument_type * = nullptr );
+  bool visit(IIR_WaveformList * );
 
 
   /** Visitor method for objects of type IIR_WhileLoopStatement.
@@ -2082,7 +2082,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_WhileLoopStatement *, visitor_argument_type * = nullptr );
+  bool visit(IIR_WhileLoopStatement * );
 
 
   /** Visitor method for objects of type IIR_XnorOperator.
@@ -2091,7 +2091,7 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_XnorOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_XnorOperator * );
 
 
   /** Visitor method for objects of type IIR_XorOperator.
@@ -2100,7 +2100,10 @@ public:
       visitation 
       @param arg container for any argument wanted by the visitor.
   */
-  bool visit(IIR_XorOperator *, visitor_argument_type * = nullptr );
+  bool visit(IIR_XorOperator * );
+
+private:
+  std::ostream& out;
 
 };
 

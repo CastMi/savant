@@ -54,7 +54,7 @@ extern bool parse_error;
 extern bool debug_symbol_table;
 
 IIRScram_BlockConfiguration::IIRScram_BlockConfiguration() {
-  set_use_clause_list(new IIRScram_DeclarationList());
+  set_use_clause_list(new IIRScram_DeclarationList<IIR_Declaration>());
   set_configuration_item_list(new IIRScram_ConfigurationItemList());  
 }
 
@@ -246,9 +246,9 @@ IIRScram_BlockConfiguration::_get_block_specification() {
   return dynamic_cast<IIRScram *>(get_block_specification());
 }
 
-IIRScram_DeclarationList *
+IIRScram_DeclarationList<IIR_Declaration> *
 IIRScram_BlockConfiguration::_get_use_clause_list() {
-  return dynamic_cast<IIRScram_DeclarationList *>(get_use_clause_list());
+  return dynamic_cast<IIRScram_DeclarationList<IIR_Declaration> *>(get_use_clause_list());
 }
 
 IIRScram_ConfigurationItemList *

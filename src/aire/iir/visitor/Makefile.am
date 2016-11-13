@@ -38,8 +38,7 @@ libiirVisitor_a_CPPFLAGS = \
 	-I$(top_srcdir)/src/aire
 
 libiirVisitor_a_SOURCES = \
-	generic_visitor.cc \
-	visitor_argument_type.cc
+	generic_visitor.cc
 
 # Location for the library installation
 # With this first command I specify the folder that the "library_include"
@@ -47,5 +46,4 @@ libiirVisitor_a_SOURCES = \
 library_includedir = $(includedir)/savant
 # Now, I specify the headers to install.
 library_include_HEADERS =  \
-	generic_visitor.hh \
-	visitor_argument_type.hh
+	generic_visitor.hh

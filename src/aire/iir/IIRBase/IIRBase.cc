@@ -28,9 +28,21 @@
 #include "savant.hh"
 #include "error_func.hh"
 #include "plugin_class_factory.hh"
+#include "DumpVisitor.hpp"
 #include <sstream>
 #include <typeinfo>
-using std::ostringstream;
+
+inline 
+std::ostream &
+operator<<(std::ostream &os, IIR &is ) {
+  is.accept(new DumpVisitor(os));
+  return os;
+}
+
+inline bool IIRBase::accept( generic_visitor * visitor ) {
+   ASSERT( visitor );
+   return visitor->visit( this );
+}
 
 IIRBase::IIRBase() : converted_node( NULL ),
                      _my_design_file( NULL ),

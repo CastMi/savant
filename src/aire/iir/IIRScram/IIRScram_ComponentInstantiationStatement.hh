@@ -38,7 +38,7 @@ class IIRScram_ComponentDeclaration;
 class IIRScram_ComponentInstantiationStatement;
 class IIRScram_ConfigurationSpecification;
 class IIRScram_EntityDeclaration;
-class IIRScram_DeclarationList;
+template <class type> class IIRScram_DeclarationList;
 class IIRScram_Label;
 class IIRScram_LibraryUnit;
 class IIRScram_SimpleName;

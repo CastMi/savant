@@ -756,7 +756,7 @@ IIRScram_AssociationList::_clone(){
 }
 
 IIRScram_Declaration *
-IIRScram_AssociationList::_find_declaration( IIRScram_Name *to_find, IIRScram_DeclarationList *list ){
+_find_declaration( IIRScram_Name *to_find, IIRScram_DeclarationList<IIR_Declaration> *list ) {
   ASSERT( to_find != NULL );
   ASSERT( list != NULL );
 

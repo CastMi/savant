@@ -28,8 +28,8 @@
 
 //---------------------------------------------------------------------------
 
-#include "IIR.hh"
 #include "dl_list.hh"
+#include "IRKind.hh"
 
 template <class type>
 class IIR_List : public dl_list<type> {

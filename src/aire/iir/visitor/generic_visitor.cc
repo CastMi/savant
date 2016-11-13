@@ -22,7 +22,7 @@
 #include <typeinfo>
 
 bool
-generic_visitor::visit( IIR * el, visitor_argument_type * ) {
+generic_visitor::visit( IIR * el ) {
   switch( el->get_kind() ) {
      default:
         std::cerr << typeid(*this).name() << " does not support the visit of the type: "
@@ -32,7 +32,7 @@ generic_visitor::visit( IIR * el, visitor_argument_type * ) {
 }
 
 bool
-generic_visitor::visit( IIR_Statement * el, visitor_argument_type * ) {
+generic_visitor::visit( IIR_Statement * el ) {
   switch( el->get_kind() ) {
      default:
         std::cerr << typeid(*this).name() << ": does not support the visit of the type: "

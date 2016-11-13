@@ -98,26 +98,6 @@ IIRBase_Attribute::is_locally_static(){
   return retval;
 }
 
-ostream &
-IIRBase_Attribute::print( ostream &os ){
-   // FIXME: implement print() in IIR_Statement
-  //get_prefix()->print( os );
-  os << "'";
-  IIR_Identifier *attribute_name = build_attribute_name();
-  if( attribute_name != 0 ){
-     // FIXME: overload operator<<
-    //os << *attribute_name;
-    delete attribute_name;
-  }
-
-  if( get_suffix() != 0 ){
-    // FIXME: overload operator<<
-    //os << "(" << *get_suffix() << ")";
-  }
-
-  return os;
-}
-
 IIR_Identifier *
 IIRBase_Attribute::build_attribute_name(){
   _report_undefined_fn("build_attribute_name()");

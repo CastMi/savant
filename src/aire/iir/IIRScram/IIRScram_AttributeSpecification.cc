@@ -56,7 +56,7 @@ IIRScram_AttributeSpecification::_get_declaration(){
 }
 
 void 
-IIRScram_AttributeSpecification::_type_check( IIRScram_DeclarationList * ){
+IIRScram_AttributeSpecification::_type_check( IIRScram_DeclarationList<IIR_Declaration> * ){
   ASSERT( get_declarator() != NULL );
 
   // First, figure out what attribute we're talking about.

@@ -36,7 +36,7 @@
 class IIRScram_ConfigurationDeclaration;
 class IIRScram_ConfigurationItemList;
 class IIRScram_ComponentConfiguration;
-class IIRScram_DeclarationList;
+template <class type> class IIRScram_DeclarationList;
 
 class IIRScram_BlockConfiguration : public virtual IIRScram_ConfigurationItem, public virtual IIRBase_BlockConfiguration {
 public:
@@ -46,7 +46,7 @@ public:
   void _type_check_configuration_item( IIRScram_List<IIR_Statement> *statement_list, IIRScram *enclosing_region );
 
   IIRScram                              *_get_block_specification();
-  IIRScram_DeclarationList              *_get_use_clause_list();
+  IIRScram_DeclarationList<IIR_Declaration>            *_get_use_clause_list();
   IIRScram_ConfigurationItemList        *_get_configuration_item_list();
 
 private:
