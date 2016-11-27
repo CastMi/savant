@@ -132,8 +132,9 @@ IIRScram_BlockConfiguration::_resolve_specification_inside_configuration_declara
   if( original_specification->get_kind() != IIR_SIMPLE_NAME &&
       original_specification->get_kind() != IIR_SELECTED_NAME ){
     ostringstream err;
-    err << "Syntax error at |" << *original_specification << "| -"
-	<< " expecting a simple or selected name.";
+    // FIXME: overload operator<<
+    //err << "Syntax error at |" << *original_specification << "| -"
+	 //<< " expecting a simple or selected name.";
     report_error( original_specification, err.str() );
     return;
   }
@@ -209,9 +210,10 @@ IIRScram_BlockConfiguration::_resolve_specification_inside_block_configuration( 
       current_statement->get_kind() != IIR_CONCURRENT_GENERATE_FOR_STATEMENT &&
       current_statement->get_kind() != IIR_CONCURRENT_GENERATE_IF_STATEMENT ){
     ostringstream err;
-    err << "A block configuration that appears within another block configuration must "
-	<< "have a block specification that specifies either a block statement label, "
-	<< "or a generate statement label. |" << *my_label << "| specifies neither.";
+    // FIXME: overload operator<<
+    //err << "A block configuration that appears within another block configuration must "
+	 // << "have a block specification that specifies either a block statement label, "
+	 // << "or a generate statement label. |" << *my_label << "| specifies neither.";
     report_error( this, err.str() );
     return;
   }

@@ -54,7 +54,7 @@ public:
   IIRScram_Label *_find_instantiate_label( IIRScram_SimpleName * );
 
   IIRScram_ConstantDeclaration *                _get_generate_parameter_specification();
-  IIRScram_DeclarationList<> *                    _get_block_declarative_part();
+  IIRScram_DeclarationList<IIR_Declaration> *   _get_block_declarative_part();
   IIRScram_ArchitectureStatementList *          _get_concurrent_statement_part();
 };
 

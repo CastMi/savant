@@ -99,9 +99,9 @@ IIRScram_ConcurrentProcedureCallStatement::_type_check(){
       break;
     }
     case 1:{
-      set_procedure_name( _get_procedure_name()->_decl_to_decl( my_decls->getElement() ) );
+      set_procedure_name( _get_procedure_name() );
 
-      IIRScram *temp_name = _get_procedure_name();
+      IIRScram_Name *temp_name = _get_procedure_name();
       ASSERT( temp_name->is_subprogram() == true );
       IIRScram_SubprogramDeclaration *my_decl = dynamic_cast<IIRScram_SubprogramDeclaration *>(temp_name);
 
@@ -118,12 +118,13 @@ IIRScram_ConcurrentProcedureCallStatement::_type_check(){
   }
   else{
     
-    IIRScram_FunctionCall *old_proc_name =  dynamic_cast<IIRScram_FunctionCall *>(get_procedure_name());
-    set_procedure_name( old_proc_name->get_implementation() );
+    IIRScram_Name *old_proc_name =  _get_procedure_name();
+    set_procedure_name( old_proc_name );
     
-    set_actual_parameter_part(dynamic_cast<IIRScram_AssociationList *>(IIRScram_List::_listcopy(old_proc_name->_get_parameter_association_list(), get_design_file()->get_class_factory())));
+    //FIXME
+    //set_actual_parameter_part(dynamic_cast<IIRScram_AssociationList *>(IIRScram_List::_listcopy(old_proc_name->_get_parameter_association_list(), get_design_file()->get_class_factory())));
 
-    delete old_proc_name;
+    //delete old_proc_name;
   }
   ASSERT( _get_procedure_name()->is_resolved() == true );  
 }

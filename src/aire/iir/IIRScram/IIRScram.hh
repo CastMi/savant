@@ -354,10 +354,10 @@ public:
       aspects.
 
       @see IIRScram#_type_check_configuration  */
-  void _resolve_map( IIRScram_InterfaceList *entity_interface_list,
-		     IIRScram_InterfaceList *component_interface_list,
-		     IIRScram_AssociationList &map,
-		     int tmp_mode );
+  //void _resolve_map( IIRScram_InterfaceList *entity_interface_list,
+  //	     IIRScram_InterfaceList *component_interface_list,
+  //	     IIRScram_AssociationList &map,
+  //		     int tmp_mode );
 
   /**
      Type check/resolve this node to make sure it's valid "file open

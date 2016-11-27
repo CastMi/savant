@@ -44,7 +44,7 @@ public:
 protected:
   IIRBase_CaseStatementAlternativeList();
   virtual ~IIRBase_CaseStatementAlternativeList() = 0;
-    
+
 };
 
 #endif

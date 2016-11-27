@@ -57,13 +57,13 @@ IIRBase_ConcurrentGenerateIfStatement::get_if_condition() const {
 
 // List Accessor(s)
 IIR_DeclarationList<> *
-IIRBase_ConcurrentGenerateIfStatement::get_block_declarative_part() {
+IIRBase_ConcurrentGenerateIfStatement::get_block_declarative_part() const {
   ASSERT(block_declarative_part != NULL);
   return block_declarative_part;
 }
 
 IIR_ArchitectureStatementList *
-IIRBase_ConcurrentGenerateIfStatement::get_concurrent_statement_part() {
+IIRBase_ConcurrentGenerateIfStatement::get_concurrent_statement_part() const {
   ASSERT(concurrent_statement_part != NULL);
   return concurrent_statement_part;
 }

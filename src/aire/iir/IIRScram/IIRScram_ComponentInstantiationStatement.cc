@@ -318,9 +318,9 @@ IIRScram_ComponentInstantiationStatement::_get_default_binding_indication(){
       ostringstream err;
       // FIXME: overload operator<<
       //err << "Component |" << *component_name << "| has no explicit binding indication,"
-      err << "Component || has no explicit binding indication,"
-	  << " and the default binding is broken.  While entity |" << *entity << "| "
-	  << "is a match by name, there is no cooresponding architecture";
+      //err << "Component || has no explicit binding indication,"
+	   // << " and the default binding is broken.  While entity |" << *entity << "| "
+	   // << "is a match by name, there is no cooresponding architecture";
       report_error( this, err.str() );
     }
   }

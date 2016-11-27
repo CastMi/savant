@@ -28,13 +28,14 @@
 #include "IIR_List.hh"
 
 class IIR_ArchitectureStatement;
+class plugin_class_factory;
 
 class IIR_ArchitectureStatementList : public virtual IIR_List<IIR_ArchitectureStatement> {
 public:
   IIR_ArchitectureStatementList() {};
   virtual ~IIR_ArchitectureStatementList() {};
   
-  virtual IIR_ArchitectureStatementList* convert_node(plugin_class_factory *factory) = 0;
+  virtual IIR_ArchitectureStatementList* convert_node(plugin_class_factory *) = 0;
 
   virtual void append_element(IIR_ArchitectureStatement*) = 0;
 };

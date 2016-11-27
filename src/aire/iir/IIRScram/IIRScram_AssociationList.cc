@@ -160,7 +160,7 @@ IIRScram_AssociationList::_process_positional_part( IIRScram_InterfaceList *form
 void
 IIRScram_AssociationList::_resolve_and_order( IIRScram_InterfaceList    *formal_list, 
 					      IIRScram_InterfaceList    *local_list,
-					      IIRScram *line_info ){
+					      IIRScram_Statement *line_info ){
   IIR_Boolean result = _check_or_resolve( formal_list, local_list, true );
   if( result == true ){
     _fill_in_defaults( nullptr, formal_list );
@@ -569,9 +569,10 @@ IIRScram_AssociationList::_check_or_resolve( IIRScram_InterfaceList     *formal_
       case 0:{
 	if( resolve == true ){
 	  ostringstream err;
-	  err << "Internal error in IIRScram_AssociationList::_check_or_resolve - "
-	      << "found no formal types for open association |" << *current_association
-	      << "|.";
+     // FIXME: overload operator<<
+	  //err << "Internal error in IIRScram_AssociationList::_check_or_resolve - "
+	  //    << "found no formal types for open association |" << *current_association
+	  //    << "|.";
 	  report_error( current_association, err.str() );
 	  abort();
 	}
@@ -735,8 +736,9 @@ IIRScram_AssociationList::_fill_in_defaults( IIRScram *line_info,
       }
       else{
 	ostringstream err;
-	err << "Internal error in IIRScram_AssociationList::_fill_in_defaults - trying"
-	    << " to reorder list and can't find declaration |" << *current_decl << "|";
+   // FIXME: overload operator<<
+	//err << "Internal error in IIRScram_AssociationList::_fill_in_defaults - trying"
+	//    << " to reorder list and can't find declaration |" << *current_decl << "|";
 	report_error( this, err.str() );
       }
       current_decl = dynamic_cast<IIRScram_InterfaceDeclaration *>(formal_list->successor( current_decl ));
@@ -800,8 +802,9 @@ IIRScram_AssociationList::_find_formal_designator( IIRScram *formal_part ){
     default:
       // The parser handed us illegal syntax.
       ostringstream err;
-      err << "Syntax error at |" << *formal_part << "| - expecting formal parameter,"
-	  << "generic, port, type conversion, or conversion function.";
+      // FIXME: overload operator<<
+      //err << "Syntax error at |" << *formal_part << "| - expecting formal parameter,"
+	   //<< "generic, port, type conversion, or conversion function.";
       report_error( formal_part, err.str() );
     }    
   }

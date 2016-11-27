@@ -104,7 +104,8 @@ IIRBase_Statement::set_severity_expression( IIR_Statement * ){
 ostream &
 IIRBase_Statement::print( ostream &os ){
   if( get_label() != NULL ){
-    os << *get_label();
+    // FIXME: overload operator<<
+    //os << *get_label();
   }
   else{
     os << "ANONYMOUS " << get_kind_text();

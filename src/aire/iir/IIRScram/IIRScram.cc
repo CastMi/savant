@@ -396,8 +396,9 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
   switch( component_decls->size() ){
   case 0:{
     ostringstream err;
-    err << "|" << *_get_component_name() 
-	<< "| was not declared as a component in this scope.";
+    //FIXME: overload operator<<
+    //err << "|" << *_get_component_name() 
+	 //<< "| was not declared as a component in this scope.";
     report_error( this, err.str() );
     return;
   }
@@ -454,15 +455,15 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
     }
     }
     
-    _resolve_map( entity_decl->_get_port_list(),
-		  my_component->_get_port_list(),
-		  port_map_aspect,
-		  mode );
+    //_resolve_map( entity_decl->_get_port_list(),
+	//	  my_component->_get_port_list(),
+//		  port_map_aspect,
+//		  mode );
 
-    _resolve_map( entity_decl->_get_generic_list(),
-		  my_component->_get_generic_list(),
-		  generic_map_aspect,
-		  mode );
+  //  _resolve_map( entity_decl->_get_generic_list(),
+	//	  my_component->_get_generic_list(),
+	//	  generic_map_aspect,
+	//	  mode );
   }
   _get_symbol_table()->close_scope( get_declarator() );
   // else it's OPEN
@@ -470,6 +471,7 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
   delete component_decls;
 }
 
+/*
 void
 IIRScram::_resolve_map( IIRScram_InterfaceList *entity_interface_list,
 			IIRScram_InterfaceList *component_interface_list,
@@ -506,6 +508,7 @@ IIRScram::_resolve_map( IIRScram_InterfaceList *entity_interface_list,
     }
   }
 }
+*/
 
 IIR *
 IIRScram::_type_check_file_open_information(){

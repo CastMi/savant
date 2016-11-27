@@ -58,8 +58,9 @@ IIRBase_CaseStatementAlternativeByExpression::is_resolved(){
 
 ostream &
 IIRBase_CaseStatementAlternativeByExpression::print( ostream &os ){
-  os << *get_choice();
-  return os;
+   // FIXME: overload operator<<
+   //os << *get_choice();
+   return os;
 }
 
 void 

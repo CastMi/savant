@@ -30,6 +30,8 @@
 
 #include "IIR_List.hh"
 
+class IIR;
+
 class IIR_EntityNameList : public virtual IIR_List<IIR> {
 
 public:

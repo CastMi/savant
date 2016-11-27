@@ -33,17 +33,15 @@
 
 class IIR_SelectedWaveform;
 
-class IIRBase_SelectedWaveformList : public virtual IIRBase_List<IIR_SelectedWaveform>, IIR_SelectedWaveformList {
+class IIRBase_SelectedWaveformList : public virtual IIRBase_List<IIR_SelectedWaveform>, public virtual IIR_SelectedWaveformList {
 public:
   IIR_Kind get_kind() const {return IIR_SELECTED_WAVEFORM_LIST;}
   const IIR_Char *get_kind_text() const {return "IIR_SelectedWaveformList";}
 
-protected:
-  IIRBase_SelectedWaveformList();
-  virtual ~IIRBase_SelectedWaveformList() = 0;
-    
-private:
+  virtual IIR_Boolean is_resolved() { return false; }
+  virtual IIR_SelectedWaveformList* convert_node(plugin_class_factory *)  { return nullptr; };
 
+  virtual ~IIRBase_SelectedWaveformList() {}
 };
 
 #endif

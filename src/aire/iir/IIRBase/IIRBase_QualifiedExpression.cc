@@ -101,13 +101,16 @@ IIRBase_QualifiedExpression::is_locally_static(){
 
 ostream &
 IIRBase_QualifiedExpression::print( ostream &os ){
-  os << *get_type_mark() << "'";
+   // FIXME: overload operator<<
+  //os << *get_type_mark() << "'";
   if( get_expression()->get_kind() == IIR_AGGREGATE ){
-    os << *get_expression();
+    // FIXME: overload operator<<
+    //os << *get_expression();
   }
   else{
     os << "( ";
-    os << *get_expression();
+    // FIXME: overload operator<<
+    //os << *get_expression();
     os << " )";
   }
 

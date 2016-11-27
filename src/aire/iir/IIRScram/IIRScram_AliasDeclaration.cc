@@ -101,8 +101,9 @@ IIRScram_AliasDeclaration::_type_check(){
 
     if( name_rvals->size() == 0 ){
       ostringstream err;
-      err << "|" << *_get_name() << "| is not of type |" << *_get_subtype() << "| - illegal alias"
-	  << " declaration.";
+      // FIXME: overload operator<<
+      //err << "|" << *_get_name() << "| is not of type |" << *_get_subtype() << "| - illegal alias"
+	   //<< " declaration.";
       report_error( this, err.str() );
       return;
     }
@@ -112,8 +113,9 @@ IIRScram_AliasDeclaration::_type_check(){
   switch( name_rvals->size() ){
   case 0:{
     ostringstream err;
-    err << "Internal error in IIRScram_AliasDeclaration::_type_check - got 0 elements for"
-	<< " name |" << *_get_name() << "|.";
+    // FIXME: overload operator<<
+    //err << "Internal error in IIRScram_AliasDeclaration::_type_check - got 0 elements for"
+	 //<< " name |" << *_get_name() << "|.";
     report_error( this, err.str() );
     break;
   }

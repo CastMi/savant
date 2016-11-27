@@ -131,8 +131,9 @@ IIRScram_AttributeSpecification::_type_check( IIRScram_DeclarationList<IIR_Decla
 	    }
 	    else{
 	      ostringstream err;
-	      err << "Object |" << *current_name << 
-		"| may not have get_attributes() associated with it.";
+         //FIXME: overload operator<<
+	      ///err << "Object |" << *current_name << 
+		   // "| may not have get_attributes() associated with it.";
 	      report_error( current_name, err.str() );
 	      goto finish;
 	    }

@@ -34,7 +34,7 @@
 class IIR_WaveformList;
 class IIR_Choice;
 
-class IIR_SelectedWaveform : public virtual IIR_Tuple{
+class IIR_SelectedWaveform : public virtual IIR_Tuple {
 public:
   virtual ~IIR_SelectedWaveform() {}    
 

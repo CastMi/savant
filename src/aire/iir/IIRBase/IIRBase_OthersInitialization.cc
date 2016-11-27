@@ -72,7 +72,8 @@ ostream &
 IIRBase_OthersInitialization::print( ostream &os ) {
   os << " others => ";
   ASSERT(get_expression() != NULL);
-  os << *get_expression();
+  // FIXME: overload operator<<
+  //os << *get_expression();
   
   return os;
 }

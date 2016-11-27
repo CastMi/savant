@@ -28,6 +28,7 @@
 //---------------------------------------------------------------------------
 
 #include "IIRBase_List.hh"
+#include "IRBasicDataTypes.hh"
 #include "IIR_ArchitectureStatementList.hh"
 
 class IIR_ArchitectureStatement;

@@ -44,7 +44,7 @@ public:
   IIRScram_ConcurrentSelectedSignalAssignment();
   virtual ~IIRScram_ConcurrentSelectedSignalAssignment();
 
-  IIRScram *_clone();
+  IIRScram_ConcurrentSelectedSignalAssignment *_clone();
 
 #ifdef PROCESS_COMBINATION
   void _static_elaborate(IIRScram_ArchitectureDeclaration*, IIRScram_DeclarationList*,
@@ -57,7 +57,7 @@ public:
   IIR_DelayMechanism _get_delay_mechanism();
   IIRScram *_get_reject_time_expression();
   IIRScram *_get_case_statement_expression();
-  void _set_case_statement_expression( IIRScram *new_expression );
+  void _set_case_statement_expression( IIRScram_Statement *new_expression );
 
   IIRScram_SignalDeclaration *_get_guard_signal();
 

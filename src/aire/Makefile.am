@@ -510,7 +510,6 @@ libaire_la_SOURCES = \
 	iir/IIRBase/IIRBase_SelectedName.cc \
 	iir/IIRBase/IIRBase_SelectedNameByAll.cc \
 	iir/IIRBase/IIRBase_SelectedWaveform.cc \
-	iir/IIRBase/IIRBase_SelectedWaveformList.cc \
 	iir/IIRBase/IIRBase_SensitizedProcessStatement.cc \
 	iir/IIRBase/IIRBase_SequentialStatement.cc \
 	iir/IIRBase/IIRBase_SequentialStatementList.cc \
@@ -770,7 +769,6 @@ libaire_la_SOURCES = \
 	iir/IIRScram/IIRScram_SelectedName.cc \
 	iir/IIRScram/IIRScram_SelectedNameByAll.cc \
 	iir/IIRScram/IIRScram_SelectedWaveform.cc \
-	iir/IIRScram/IIRScram_SelectedWaveformList.cc \
 	iir/IIRScram/IIRScram_SensitizedProcessStatement.cc \
 	iir/IIRScram/IIRScram_SequentialStatement.cc \
 	iir/IIRScram/IIRScram_SequentialStatementList.cc \

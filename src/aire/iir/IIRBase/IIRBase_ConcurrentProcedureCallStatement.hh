@@ -35,7 +35,7 @@ class IIRBase_ConcurrentProcedureCallStatement : public virtual IIRBase_Concurre
 
 public:
   // List Accessor(s)
-  IIR_AssociationList           *get_actual_parameter_part();
+  IIR_AssociationList           *get_actual_parameter_part() const;
   IIR_ArchitectureStatementList *get_process_statement_part();
   void                          set_actual_parameter_part(IIR_AssociationList *new_actual_parameter_part);
   void                          set_process_statement_part(IIR_ArchitectureStatementList *new_process_statement_part);

@@ -53,7 +53,7 @@
 
 
 IIRScram_ConcurrentGenerateForStatement::IIRScram_ConcurrentGenerateForStatement(){
-  set_block_declarative_part(new IIRScram_DeclarationList());
+  set_block_declarative_part(new IIRScram_DeclarationList<>());
   set_concurrent_statement_part(new IIRScram_ArchitectureStatementList());
 }
 
@@ -80,9 +80,9 @@ IIRScram_ConcurrentGenerateForStatement::_type_check_instantiate_statements(){
   _get_symbol_table()->close_scope( get_label()->get_declarator() );
 }
 
-IIRScram_DeclarationList*
+IIRScram_DeclarationList<>*
 IIRScram_ConcurrentGenerateForStatement::_get_declaration_list() {
-  return dynamic_cast<IIRScram_DeclarationList *>(get_block_declarative_part());
+  return dynamic_cast<IIRScram_DeclarationList<> *>(get_block_declarative_part());
 }
 
 IIRScram_List<IIR_Statement> *
@@ -95,9 +95,9 @@ IIRScram_ConcurrentGenerateForStatement::_get_generate_parameter_specification()
   return dynamic_cast<IIRScram_ConstantDeclaration *>(get_generate_parameter_specification());
 }
 
-IIRScram_DeclarationList *
+IIRScram_DeclarationList<> *
 IIRScram_ConcurrentGenerateForStatement::_get_block_declarative_part() {
-  return dynamic_cast<IIRScram_DeclarationList *>(get_block_declarative_part());
+  return dynamic_cast<IIRScram_DeclarationList<> *>(get_block_declarative_part());
 }
 
 IIRScram_ArchitectureStatementList *

@@ -44,6 +44,7 @@ public:
 
   IIR_Boolean is_value_attribute() const;
   IIR_Boolean is_function_attribute() const;
+  IIR_Boolean is_subprogram() {return false; };
   IIR_Boolean has_suffix(){ return true; }
 
   IIR_Identifier *build_attribute_name();

@@ -33,7 +33,7 @@
 #include "IIRScram_DeclarationList.hh"
 #include "IIRBase_LibraryUnitList.hh"
 
-class IIRScram_LibraryUnitList : public virtual IIRScram_DeclarationList, public virtual IIRBase_LibraryUnitList {
+class IIRScram_LibraryUnitList : public virtual IIRScram_DeclarationList<>, public virtual IIRBase_LibraryUnitList {
 };
 
 #endif

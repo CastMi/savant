@@ -43,6 +43,7 @@ public:
   void _type_check( savant::set<IIRScram_TypeDefinition> * );
   savant::set<IIRScram_TypeDefinition> *_get_rval_set(constraint_functor *functor=0); 
   
+  ostream& print(ostream& ) {};
   
   IIRScram              *_clone();
   IIRScram_ChoiceList   *_get_choices();

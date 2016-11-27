@@ -96,8 +96,9 @@ inline ostream &operator<< (ostream &os, declaration_chain &dc) {
     IIR_Declaration *current_declaration = dc.declarations.getElement();
 
     while( current_declaration != NULL ) {
-      os << " " << *dynamic_cast<IIRScram_Declaration *>(current_declaration);
-      current_declaration = dc.declarations.getNextElement();
+       // FIXME: overload operator<<
+       //os << " " << *dynamic_cast<IIRScram_Declaration *>(current_declaration);
+       current_declaration = dc.declarations.getNextElement();
     }
 
     return os;

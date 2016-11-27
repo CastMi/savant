@@ -45,6 +45,7 @@ public:
 
   IIR_Boolean is_resolved() const;
   IIR_Boolean is_variable() const;
+  IIR_Boolean is_subprogram() {return false; };
 
   // Override the undefined definition in IIRBase_Name
   void set_subtype(IIR_TypeDefinition *type) { IIRBase_Statement::set_subtype(type); }

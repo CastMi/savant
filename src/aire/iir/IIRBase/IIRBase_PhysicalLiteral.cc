@@ -96,7 +96,8 @@ IIRBase_PhysicalLiteral::get_subtype(){
 ostream & 
 IIRBase_PhysicalLiteral::print( ostream &os ) {
   if(get_abstract_literal() != NULL) {
-    os << *get_abstract_literal();
+     // FIXME: overload operator<<
+     //os << *get_abstract_literal();
   }
   os << " ";
   // FIXME: overload operator<<

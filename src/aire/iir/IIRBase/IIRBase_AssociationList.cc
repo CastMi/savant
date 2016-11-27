@@ -77,12 +77,14 @@ IIRBase_AssociationList::print( ostream &os ){
   
   IIR_AssociationElement *current = dynamic_cast<IIR_AssociationElement *>(first());
   if( current != NULL ){
-    os << *current;
+     // FIXME overload operator<<
+     //os << *current;
   }
   while( current != NULL ){
     current = dynamic_cast<IIR_AssociationElement *>(successor( current ));
     if( current != NULL ){
-      os << ", " << *current;
+       // FIXME overload operator<<
+       //os << ", " << *current;
     }
   }
   

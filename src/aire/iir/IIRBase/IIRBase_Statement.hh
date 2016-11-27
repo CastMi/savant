@@ -65,6 +65,7 @@ public:
   virtual IIR_Boolean is_signal() const { return false; }
   virtual IIR_Boolean is_name() const { return false; };
   virtual IIR_Boolean is_variable() const { return false; };
+  virtual IIR_Boolean is_subprogram() {return false; };
   virtual IIR_Boolean is_scalar_type() const { return false; };
   virtual IIR_Boolean is_logical_operator() const { return false; };
   virtual IIR_Boolean is_array_type() const { return false; };

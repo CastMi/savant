@@ -141,7 +141,8 @@ class symbol_table {
                // TODO: Remove Scram
                IIRScram_Declaration *current = dynamic_cast<IIRScram_Declaration *>(in_scope_list.first());
                while( current != NULL ){
-                  cout << *current << endl;
+                  // FIXME: overload operator<<
+                  //cout << *current << endl;
                   current = dynamic_cast<IIRScram_Declaration *>(in_scope_list.successor( current ));
                }
             }

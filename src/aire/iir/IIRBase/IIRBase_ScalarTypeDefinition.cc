@@ -214,7 +214,8 @@ IIRBase_ScalarTypeDefinition::print( ostream &os ){
   }
   else{
     if( get_left() != NULL ){
-      os << *get_base_type_left();
+      // FIXME: overload operator<<
+      //os << *get_base_type_left();
     }
     if( is_ascending_range() == true ){
       os << " to ";
@@ -223,7 +224,8 @@ IIRBase_ScalarTypeDefinition::print( ostream &os ){
       os << " downto ";
     }
     if( get_right() != NULL ){
-      os << *get_base_type_right();
+      // FIXME: overload operator<<
+      //os << *get_base_type_right();
     }
   }
   return os;

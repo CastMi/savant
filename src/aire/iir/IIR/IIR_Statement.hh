@@ -55,8 +55,11 @@ public:
   virtual IIR_TypeDefinition *get_subtype() = 0;
   /** For assertion statements this method is overloaded to return the
       assertion condtion.  For anything else it returns 0. */
+  // FIXME: most of these methods is_* need to be implemented correctly...for the time
+  // being they will not return the correct value.
   virtual IIR_Statement *get_assertion_condition() = 0;
   virtual IIR_Boolean is_locally_static() = 0;
+  virtual IIR_Boolean is_subprogram() = 0;
   virtual IIR_Boolean is_scalar_type() const = 0;
   virtual IIR_Boolean is_array_type() const = 0;
   virtual IIR_Boolean is_signal() const = 0;

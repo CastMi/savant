@@ -27,8 +27,10 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_List.hh"
+#include "IRBasicDataTypes.hh"
 
 class IIR_Comment;
+class plugin_class_factory;
 
 class IIR_CommentList : public virtual IIR_List<IIR_Comment> {
 

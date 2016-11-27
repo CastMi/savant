@@ -22,7 +22,7 @@
 
 #include "IIRBase_List.hh"
 #include "IIR_BreakList.hh"
-  
+
 class IIR_BreakElement;
 
 /** The extension base for BreakList. This is a list of all Break Elements

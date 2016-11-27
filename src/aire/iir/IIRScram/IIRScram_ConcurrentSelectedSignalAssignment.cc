@@ -97,12 +97,10 @@ IIRScram_ConcurrentSelectedSignalAssignment::_read_alternative_list( IIRScram_Ca
   ASSERT( alt_list != NULL );
   ASSERT( alt_list->size() == get_selected_waveforms()->size() );
 
-  IIRScram_SelectedWaveform *current_waveform = NULL;
-  IIRScram_CaseStatementAlternative *current_alt = NULL;
+  IIRScram_SelectedWaveform *current_waveform = dynamic_cast<IIRScram_SelectedWaveform *>(get_selected_waveforms()->first());
+  IIRScram_CaseStatementAlternative *current_alt = dynamic_cast<IIRScram_CaseStatementAlternative *>(alt_list->first());
 
-  current_waveform = dynamic_cast<IIRScram_SelectedWaveform *>(get_selected_waveforms()->first());
-  current_alt = dynamic_cast<IIRScram_CaseStatementAlternative *>(alt_list->first());
-  while( current_waveform != NULL ){
+  while( current_waveform != NULL ) {
     ASSERT( current_alt != NULL );
 
     ASSERT( current_alt->_is_iir_case_statement_alternative() == true );
@@ -115,13 +113,13 @@ IIRScram_ConcurrentSelectedSignalAssignment::_read_alternative_list( IIRScram_Ca
 
 
 
-IIRScram *
+IIRScram_ConcurrentSelectedSignalAssignment *
 IIRScram_ConcurrentSelectedSignalAssignment::_clone() {
   // FIXME: I need to figure out what was supposed to happen here
   // before committing a meaningful fix
   ASSERT(false);
 
-  IIRScram *cstmt;
+  IIRScram_ConcurrentSelectedSignalAssignment *cstmt;
   //  cstmt = _transmute();
   cstmt = _clone();
   return cstmt;
@@ -169,7 +167,7 @@ IIRScram_ConcurrentSelectedSignalAssignment::_get_delay_mechanism(){
 }
 
 void 
-IIRScram_ConcurrentSelectedSignalAssignment::_set_case_statement_expression( IIRScram *new_expression ){
+IIRScram_ConcurrentSelectedSignalAssignment::_set_case_statement_expression( IIRScram_Statement *new_expression ){
   set_expression( new_expression );
 }
 

@@ -54,7 +54,7 @@ IIRBase_ProcedureCallStatement::get_procedure_name() const {
 
 // List Accessor(s)
 IIR_AssociationList *
-IIRBase_ProcedureCallStatement::get_actual_parameter_part() {
+IIRBase_ProcedureCallStatement::get_actual_parameter_part() const {
   ASSERT(actual_parameter_part != NULL);
   return actual_parameter_part;
 }

@@ -170,8 +170,9 @@ IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *m
 
 	if( element_decls == NULL ){
 	  ostringstream err;
-	  err << "Internal error - |" << *current_formal << "| was not found in record type |"
-	      << *my_type << "| in IIRScram_Aggregate::_rval_to_decl_process_named_part.";
+     // FIXME: overload operator<<
+	  //err << "Internal error - |" << *current_formal << "| was not found in record type |"
+	  //    << *my_type << "| in IIRScram_Aggregate::_rval_to_decl_process_named_part.";
 	  report_error( this, err.str() );
 	}
 	else{
@@ -207,9 +208,10 @@ IIRScram_Aggregate::_rval_to_decl_process_named_part( IIRScram_TypeDefinition *m
 	}
 	else{
 	  ostringstream err;
-	  err << "Internal error - unexpected formal node type " << current_formal->get_kind_text()
-	      << "(node == |" << *current_formal << "|)"
-	      << " in IIRScram_Aggregate::_rval_to_decl_process_named_part.";
+     // FIXME: overload operator<<
+	  //err << "Internal error - unexpected formal node type " << current_formal->get_kind_text()
+	  //    << "(node == |" << *current_formal << "|)"
+	  //    << " in IIRScram_Aggregate::_rval_to_decl_process_named_part.";
 	  report_error( this, err.str() );
 	}
       }

@@ -30,6 +30,9 @@
 
 #include "IIR_List.hh"
 
+class IIR;
+class plugin_class_factory;
+
 class IIR_DesignUnitList : public virtual IIR_List<IIR> {
 
 public:

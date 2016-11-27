@@ -34,8 +34,8 @@ class IIRBase_ConcurrentGenerateIfStatement : public virtual IIRBase_ConcurrentS
 
 public:
   // List Accessor(s)
-  IIR_DeclarationList<>         *get_block_declarative_part();
-  IIR_ArchitectureStatementList *get_concurrent_statement_part();
+  IIR_DeclarationList<>         *get_block_declarative_part() const;
+  IIR_ArchitectureStatementList *get_concurrent_statement_part() const;
   void                          set_block_declarative_part(IIR_DeclarationList<> *new_block_declarative_part);
   void                          set_concurrent_statement_part(IIR_ArchitectureStatementList *new_concurrent_statement_part);
 

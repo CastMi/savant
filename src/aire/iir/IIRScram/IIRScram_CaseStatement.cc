@@ -63,8 +63,9 @@ IIRScram_CaseStatement::_handle_reconciliation( savant::set<IIRScram_TypeDefinit
   switch( rval_set->size() ){
   case 0:{
     ostringstream err;
-    err << "|" << *node_in_consideration << "| is not a valid " << error_part 
-	<< " in a case statement.";
+    // FIXME: overload operator<<
+    //err << "|" << *node_in_consideration << "| is not a valid " << error_part 
+	 // << " in a case statement.";
     report_error( this, err.str() );
     break;
   }

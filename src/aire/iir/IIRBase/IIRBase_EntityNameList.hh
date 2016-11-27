@@ -27,6 +27,7 @@
 
 //---------------------------------------------------------------------------
 
+#include "IRBasicDataTypes.hh"
 #include "IIRBase_List.hh"
 #include "IIR_EntityNameList.hh"
 

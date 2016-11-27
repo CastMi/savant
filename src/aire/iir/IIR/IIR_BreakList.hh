@@ -26,8 +26,10 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_List.hh"
+#include "IRBasicDataTypes.hh"
   
 class IIR_BreakElement;
+class plugin_class_factory; 
 
 /** The extension base for BreakList. This is a list of all Break Elements
     present in a break statement. */

@@ -30,8 +30,10 @@
 //---------------------------------------------------------------------------
 
 #include "IIR_List.hh"
+#include "IRBasicDataTypes.hh"
 
 class IIR_CaseStatementAlternative;
+class plugin_class_factory;
 
 class IIR_CaseStatementAlternativeList : public virtual IIR_List<IIR_CaseStatementAlternative> {
 

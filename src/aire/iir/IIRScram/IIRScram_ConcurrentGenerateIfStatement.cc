@@ -33,7 +33,7 @@
 #include "IIRScram_Label.hh"
 
 IIRScram_ConcurrentGenerateIfStatement::IIRScram_ConcurrentGenerateIfStatement(){
-  set_block_declarative_part(new IIRScram_DeclarationList());
+  set_block_declarative_part(new IIRScram_DeclarationList<>());
   set_concurrent_statement_part(new IIRScram_ArchitectureStatementList());
 }
 
@@ -49,9 +49,9 @@ IIRScram_ConcurrentGenerateIfStatement::_type_check(){
   _get_block_declarative_part()->_type_check_attribute_specifications( _get_concurrent_statement_part() );
 }
 
-IIRScram_DeclarationList*
+IIRScram_DeclarationList<>*
 IIRScram_ConcurrentGenerateIfStatement::_get_declaration_list() {
-  return dynamic_cast<IIRScram_DeclarationList *>(get_block_declarative_part());
+  return dynamic_cast<IIRScram_DeclarationList<> *>(get_block_declarative_part());
 }
 
 IIRScram_Label *
@@ -71,7 +71,7 @@ IIRScram_ConcurrentGenerateIfStatement::_get_if_condition() const {
 
 IIRScram_DeclarationList<> *
 IIRScram_ConcurrentGenerateIfStatement::_get_block_declarative_part() const {
-  return dynamic_cast<IIRScram_DeclarationList *>(get_block_declarative_part());
+  return dynamic_cast<IIRScram_DeclarationList<> *>(get_block_declarative_part());
 }
 
 IIRScram_ArchitectureStatementList *

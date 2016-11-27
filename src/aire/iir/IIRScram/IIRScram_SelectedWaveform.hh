@@ -34,7 +34,6 @@
 #include "IIRBase_SelectedWaveform.hh"
 
 class IIRScram_DesignatorList;
-class IIRScram_List;
 class IIRScram_WaveformList;
 
 class IIRScram_SelectedWaveform : public virtual IIRScram_Tuple, public virtual IIRBase_SelectedWaveform {

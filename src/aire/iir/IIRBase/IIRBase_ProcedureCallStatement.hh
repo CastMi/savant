@@ -37,7 +37,7 @@ class IIRBase_ProcedureCallStatement : public virtual IIRBase_SequentialStatemen
 
 public:
   // List Accessor(s)
-  IIR_AssociationList *get_actual_parameter_part();
+  IIR_AssociationList *get_actual_parameter_part() const;
   void                set_actual_parameter_part(IIR_AssociationList *new_actual_parameter_part);
 
 

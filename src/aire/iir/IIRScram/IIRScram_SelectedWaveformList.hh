@@ -29,11 +29,10 @@
 //---------------------------------------------------------------------------
 
 #include "IIRScram_List.hh"
+#include "IIR_SelectedWaveform.hh"
 #include "IIRBase_SelectedWaveformList.hh"
 
-class IIRScram_DesignatorList;
-
-class IIRScram_SelectedWaveformList : public virtual IIRScram_List, public virtual IIRBase_SelectedWaveformList {
+class IIRScram_SelectedWaveformList : public virtual IIRScram_List<IIR_SelectedWaveform>, public virtual IIRBase_SelectedWaveformList {
 };
 
 #endif

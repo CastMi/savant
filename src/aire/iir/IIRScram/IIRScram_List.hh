@@ -29,11 +29,13 @@
 
 //---------------------------------------------------------------------------
 
+#include "IRBasicDataTypes.hh"
 #include "IIRBase_List.hh"
 
 class IIRScram_Label;
 class IIRScram_SimpleName;
 class symbol_table;
+class plugin_class_factory;
 
 template <class type>
 class IIRScram_List : public virtual IIRBase_List<type> {
