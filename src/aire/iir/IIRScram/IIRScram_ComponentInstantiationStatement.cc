@@ -332,6 +332,10 @@ IIRScram_Name *
 IIRScram_ComponentInstantiationStatement::_get_instantiated_unit() {
   return dynamic_cast<IIRScram_Name*>(get_instantiated_unit());
 }
+IIRScram_Declaration *
+IIRScram_ComponentInstantiationStatement::_get_instantiated() {
+  return dynamic_cast<IIRScram_Declaration*>(get_instantiated_unit());
+}
 
 IIRScram_ConfigurationSpecification *
 IIRScram_ComponentInstantiationStatement::_build_default_entity_aspect(IIRScram_Name *component_name,

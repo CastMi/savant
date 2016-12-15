@@ -49,8 +49,7 @@ IIRScram_DisconnectSpecification::IIRScram_DisconnectSpecification() {
 
 IIRScram_DisconnectSpecification::~IIRScram_DisconnectSpecification(){}
 
-void 
-IIRScram_DisconnectSpecification::_type_check( IIRScram_DeclarationList * ){
+void IIRScram_DisconnectSpecification::_type_check( IIRScram_DeclarationList<IIR_Declaration> *declarative_region ) {
   ASSERT( get_guarded_signal_list()->size() > 0 );
   ASSERT( get_time_expression() != NULL );
   ASSERT( get_type_mark() != NULL );
@@ -73,8 +72,9 @@ IIRScram_DisconnectSpecification::_type_check( IIRScram_DeclarationList * ){
       switch( signal_types->size() ){
       case 0:{
 	ostringstream err;
-	err << "No signal |" << *current_designator << "| of type << " << _get_type_mark()
-	    << " defined in this scope.";
+   // FIXME: overload operator<<
+	//err << "No signal |" << *current_designator << "| of type << " << _get_type_mark()
+	//    << " defined in this scope.";
 	report_error( current_designator, err.str() );
 	goto next;
       }
@@ -88,14 +88,16 @@ IIRScram_DisconnectSpecification::_type_check( IIRScram_DeclarationList * ){
 
 	if( new_designator->is_locally_static() == false ){
 	  ostringstream err;
-	  err << "Signal |" << *current_designator << "| is not locally static.  Only "
-	      << "locally static signals are allowed in disconnection specifications.";
+     // FIXME: overload operator<<
+	  //err << "Signal |" << *current_designator << "| is not locally static.  Only "
+	  //    << "locally static signals are allowed in disconnection specifications.";
 	  report_error( current_designator, err.str() );
 	}
 	if( new_designator->is_guard_signal() == false ){
 	  ostringstream err;
-	  err << "Signal |" << *current_designator << "| is not a guarded signal.  Only "
-	      << "guard signals are allowed in disconnection specifications.";
+     // FIXME: overload operator<<
+	  //err << "Signal |" << *current_designator << "| is not a guarded signal.  Only "
+	  //    << "guard signals are allowed in disconnection specifications.";
 	  report_error( current_designator, err.str() );
 	}
 
@@ -109,7 +111,8 @@ IIRScram_DisconnectSpecification::_type_check( IIRScram_DeclarationList * ){
     }
     else{
       ostringstream err;
-      err << "No support for disconnection specifications with OTHERS or ALL yet!";
+     // FIXME: overload operator<<
+      //err << "No support for disconnection specifications with OTHERS or ALL yet!";
       report_error( current_designator, err.str() );
       abort();
     } 
@@ -131,7 +134,8 @@ IIRScram_DisconnectSpecification::_type_check( IIRScram_DeclarationList * ){
   switch( time_expression_types->size() ){
   case 0:{
     ostringstream err;
-    err << "Expression |" << *_get_time_expression() << "| must have builtin type TIME";
+    // FIXME: overload operator<<
+    //err << "Expression |" << *_get_time_expression() << "| must have builtin type TIME";
     report_error( get_time_expression(), err.str() );
     goto finish;
   }

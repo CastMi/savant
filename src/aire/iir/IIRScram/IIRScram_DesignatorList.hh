@@ -52,16 +52,16 @@ public:
   // instantiate statement that instantiates "instantiated_unit".  When
   // finding one, it returns the label.
   IIRScram_Label *_process_instantiate_statement( IIRScram_Declaration *instantiated_unit,
-                                                  IIRScram *statement );
+                                                  IIRScram_Statement *statement );
 
 private:
   void _process_by_all_or_others( IIRScram_Declaration *instantiated_unit,
-				  IIRScram_List<IIRScram> *,
+				  IIRScram_List<IIR_Statement> *,
 				  IIR_Boolean by_all,
 				  IIRScram *configuration );
 
   void _process_explicit_list( IIRScram_Declaration *instantiated_unit, 
-			       IIRScram_List<IIRScram> *,
+			       IIRScram_List<IIR_Statement> *,
 			       IIRScram *configuration );    
 };
 

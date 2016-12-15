@@ -31,6 +31,7 @@
 #include "IIRScram_ComponentInstantiationStatement.hh"
 #include "IIRScram_DesignatorExplicit.hh"
 #include "IIRScram_Label.hh"
+#include "IIRScram_List.hh"
 #include "IIRScram_SimpleName.hh"
 #include "IIRScram_Statement.hh"
 #include "IIRScram_TextLiteral.hh"
@@ -44,7 +45,7 @@ IIRScram_DesignatorList::~IIRScram_DesignatorList() {}
 
 IIRScram_Label *
 IIRScram_DesignatorList::_process_instantiate_statement( IIRScram_Declaration *instantiated_unit,
-							 IIRScram *statement ){
+							 IIRScram_Statement *statement ){
   ASSERT( instantiated_unit  );
   ASSERT( statement );
 
@@ -52,8 +53,8 @@ IIRScram_DesignatorList::_process_instantiate_statement( IIRScram_Declaration *i
 
   if( statement->get_kind() == IIR_COMPONENT_INSTANTIATION_STATEMENT ){
     IIRScram_ComponentInstantiationStatement *as_instantiate_statement = dynamic_cast<IIRScram_ComponentInstantiationStatement *>(statement);
-    ASSERT( as_instantiate_statement->_get_instantiated_unit()->_is_iir_declaration() == true );
-    if( as_instantiate_statement->_get_instantiated_unit() == instantiated_unit ){
+    ASSERT( as_instantiate_statement->_get_instantiated()->_is_iir_declaration() == true );
+    if( as_instantiate_statement->_get_instantiated() == instantiated_unit ){
       ASSERT( as_instantiate_statement->_get_label() != NULL );
       ASSERT( as_instantiate_statement->_get_label()->_get_statement() != NULL );
       retval = as_instantiate_statement->_get_label();
@@ -65,29 +66,31 @@ IIRScram_DesignatorList::_process_instantiate_statement( IIRScram_Declaration *i
 
 void 
 IIRScram_DesignatorList::_process_explicit_list( IIRScram_Declaration *instantiated_unit,
-						 IIRScram_List *statement_list,
+						 IIRScram_List<IIR_Statement> *statement_list,
 						 IIRScram *configuration ){
-  IIRScram_SimpleName *label_name = NULL;
-  (void)instantiated_unit;  // quiet down the compiler
 
   IIRScram_Designator *current_designator = dynamic_cast<IIRScram_Designator *>(first());
   while( current_designator != NULL ){
     ASSERT( current_designator->get_kind() == IIR_DESIGNATOR_EXPLICIT );
     IIRScram_DesignatorExplicit *explicit_designator = dynamic_cast<IIRScram_DesignatorExplicit *>(current_designator);
-    ASSERT( explicit_designator->get_name() != NULL );
+    ASSERT( explicit_designator->get_name() );
     ASSERT( explicit_designator->get_name()->get_kind() == IIR_SIMPLE_NAME );
-    label_name = dynamic_cast<IIRScram_SimpleName *>(explicit_designator->get_name());
+    IIRScram_SimpleName *label_name = dynamic_cast<IIRScram_SimpleName *>(explicit_designator->get_name());
 
     IIRScram_Label *instantiate_label = statement_list->_find_instantiate_label( label_name );
 
     if( instantiate_label == NULL ){
       ostringstream err;
-      err << "No label |" << *label_name << "| found.";
+      // FIXME: overload operator<<
+      //err << "No label |" << *label_name << "| found.";
       report_error( label_name, err.str() );
       break;
     }
     else{
-      explicit_designator->set_name( label_name->_decl_to_decl( instantiate_label ) );
+      // FIXME: It is likely that we need a fix here
+      // original was:
+      //explicit_designator->set_name( label_name->_decl_to_decl( instantiate_label ) );
+      explicit_designator->set_name( instantiate_label );
       ASSERT( instantiate_label->get_statement()->get_kind() ==
 	      IIR_COMPONENT_INSTANTIATION_STATEMENT );
       IIRScram_ComponentInstantiationStatement *statement = NULL;
@@ -100,13 +103,13 @@ IIRScram_DesignatorList::_process_explicit_list( IIRScram_Declaration *instantia
 
 void 
 IIRScram_DesignatorList::_process_by_all_or_others( IIRScram_Declaration *instantiated_unit,
-						    IIRScram_List *statement_list,
+						    IIRScram_List<IIR_Statement> *statement_list,
 						    IIR_Boolean by_all,
 						    IIRScram *configuration ){
   IIRScram_DesignatorList new_designator_list;
   IIRScram_Label *new_label = NULL;
 
-  IIRScram *current_statement = dynamic_cast<IIRScram *>(statement_list->first());
+  IIRScram_Statement *current_statement = dynamic_cast<IIRScram_Statement *>(statement_list->first());
   while( current_statement != NULL ){
     new_label = _process_instantiate_statement( instantiated_unit, 
 						current_statement );
@@ -117,13 +120,14 @@ IIRScram_DesignatorList::_process_by_all_or_others( IIRScram_Declaration *instan
       statement = dynamic_cast<IIRScram_ComponentInstantiationStatement *>(new_label->get_statement());
       if( by_all == true || statement->_get_configuration() == NULL ){
 	IIRScram_DesignatorExplicit *new_designator = new IIRScram_DesignatorExplicit();
-	copy_location( new_label, new_designator );
+   // FIXME
+	//copy_location( new_label, new_designator );
 	new_designator->set_name( new_label );
 	statement->set_configuration( configuration );
 	new_designator_list.append( new_designator );
       }
     }
-    current_statement = dynamic_cast<IIRScram *>(statement_list->successor( current_statement ));
+    current_statement = dynamic_cast<IIRScram_Statement *>(statement_list->successor( current_statement ));
   }
 
   if( new_designator_list.size() > 0 ){

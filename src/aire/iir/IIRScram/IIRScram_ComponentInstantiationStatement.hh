@@ -79,6 +79,7 @@ public:
   IIRScram_Label                *_find_instantiate_label( IIRScram_SimpleName * );
 
   IIRScram_Name                 *_get_instantiated_unit();
+  IIRScram_Declaration          *_get_instantiated();
   IIRScram_AssociationList      *_get_port_map_aspect();
   IIRScram                      *_get_configuration();
 protected:
