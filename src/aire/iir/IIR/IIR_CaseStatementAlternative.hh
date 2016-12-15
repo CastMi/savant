@@ -32,7 +32,7 @@
 
 class IIR_SequentialStatementList;
 
-class IIR_CaseStatementAlternative : public virtual IIR_Tuple{
+class IIR_CaseStatementAlternative : public virtual IIR_Tuple {
 
 public:
   virtual ~IIR_CaseStatementAlternative() {}

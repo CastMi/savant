@@ -250,7 +250,7 @@ IIRBase_TypeDefinition::print( ostream &os ){
   return os;
 }
 
-IIR_Identifier *
+IIR_TextLiteral *
 IIRBase_TypeDefinition::get_declarator(){
   if( get_declaration() != NULL ){
     return get_declaration()->get_declarator();

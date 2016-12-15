@@ -34,7 +34,7 @@
 
 class IIR_WaveformList;
 
-class IIRBase_SelectedWaveform : public virtual IIRBase_Tuple, public virtual IIR_SelectedWaveform{
+class IIRBase_SelectedWaveform : public virtual IIRBase_Tuple, public virtual IIR_SelectedWaveform {
 public:
   // List Accessor(s)
   IIR_WaveformList      *get_waveform();
@@ -43,10 +43,10 @@ public:
   IIR_Kind get_kind() const { return IIR_SELECTED_WAVEFORM; }
   const IIR_Char *get_kind_text() const { return "IIR_SelectedWaveform"; }
 
-  IIR_Choice *get_choice();
-  void set_choice( IIR_Choice * );
+  IIR_CaseStatementAlternative *get_choice() = 0;
+  void set_choice( IIR_CaseStatementAlternative * ) = 0;
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_SelectedWaveform *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean                   is_resolved();
 
@@ -59,6 +59,6 @@ private:
   // List Variable(s)
   IIR_WaveformList *waveform;
 
-  IIR_Choice *my_choice;
+  IIR_CaseStatementAlternative* my_choice;
 };
 #endif

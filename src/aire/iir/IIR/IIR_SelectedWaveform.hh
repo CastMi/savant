@@ -32,7 +32,7 @@
 #include "IIR_Tuple.hh"
 
 class IIR_WaveformList;
-class IIR_Choice;
+class IIR_CaseStatementAlternative;
 
 class IIR_SelectedWaveform : public virtual IIR_Tuple {
 public:
@@ -42,7 +42,7 @@ public:
   virtual IIR_WaveformList      *get_waveform() = 0;
   virtual void                  set_waveform(IIR_WaveformList *) = 0;
 
-  virtual IIR_Choice *get_choice() = 0;
-  virtual void set_choice( IIR_Choice * ) = 0;
+  virtual IIR_CaseStatementAlternative *get_choice() = 0;
+  virtual void set_choice( IIR_CaseStatementAlternative * ) = 0;
 };
 #endif

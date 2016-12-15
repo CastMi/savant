@@ -271,7 +271,7 @@ public:
 
   IIRBase* converted_node;
 
-  virtual IIR_Identifier* get_declarator();
+  virtual IIR_TextLiteral* get_declarator();
 
   /** This method returns the declaration of an indexed name.  If the
       prefix is a declaration, returns it, or else, gets the declaration of

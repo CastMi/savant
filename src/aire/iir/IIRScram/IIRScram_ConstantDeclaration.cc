@@ -33,6 +33,7 @@
 
 #include "IIRScram_ConstantDeclaration.hh"
 #include "IIRScram_ScalarTypeDefinition.hh"
+#include "IIRScram_Statement.hh"
 
 IIRScram_ConstantDeclaration::~IIRScram_ConstantDeclaration() {}
 
@@ -41,9 +42,9 @@ IIRScram_ConstantDeclaration::_clone() {
   return this;
 }
 
-IIRScram*
+IIRScram_Statement*
 IIRScram_ConstantDeclaration::_get_value() {
-  return dynamic_cast<IIRScram *>(IIRBase_ConstantDeclaration::get_value());
+  return dynamic_cast<IIRScram_Statement *>(get_value());
 }
 
 IIR_Boolean 

@@ -39,7 +39,7 @@
 #include "IIRScram_DesignatorList.hh"
 #include "IIRScram_Label.hh"
 #include "IIRScram_TextLiteral.hh"
-
+#include "IIRScram_Name.hh"
 
 IIRScram_ConfigurationSpecification::IIRScram_ConfigurationSpecification() {
   set_instantiation_list(new IIRScram_DesignatorList());
@@ -49,9 +49,9 @@ IIRScram_ConfigurationSpecification::IIRScram_ConfigurationSpecification() {
 
 IIRScram_ConfigurationSpecification::~IIRScram_ConfigurationSpecification(){}
 
+template<typename T>
 void 
-IIRScram_ConfigurationSpecification::_type_check( IIRScram_List *statement_list,
-						  type_check_mode mode ) {
+IIRScram_ConfigurationSpecification::_type_check( IIRScram_List<T> *statement_list, type_check_mode mode ) {
   // This doesn't type check the instantiation list...
   _type_check_configuration( *_get_port_map_aspect(), *_get_generic_map_aspect(), mode );
   // This does.
@@ -60,16 +60,13 @@ IIRScram_ConfigurationSpecification::_type_check( IIRScram_List *statement_list,
                                                                 this );
 }
 
-
-
-IIRScram *
-IIRScram_ConfigurationSpecification::_get_component_name( ){
-  return dynamic_cast<IIRScram *>(get_component_name());
+IIRScram_Name *
+IIRScram_ConfigurationSpecification::_get_component_name(){
+  return dynamic_cast<IIRScram_Name *>(get_component_name());
 }
 
-
 void 
-IIRScram_ConfigurationSpecification::_set_component_name( IIRScram *name  ){
+IIRScram_ConfigurationSpecification::_set_component_name( IIRScram_Name *name  ){
   set_component_name( name );
 }
 

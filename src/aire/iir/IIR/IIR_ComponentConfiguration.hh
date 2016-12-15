@@ -53,8 +53,8 @@ public:
      Prior to type check, this node will contain a descendant of IIR_Name.
      After type checking, it will contain an IIR_ComponentDeclaration.
   */
-  virtual IIR *get_component_name() = 0;
-  virtual void set_component_name( IIR *component_name ) = 0;
+  virtual IIR_Name *get_component_name() = 0;
+  virtual void set_component_name( IIR_Name *component_name ) = 0;
   
   /**
      Gets the entity aspect associated with the component specified.  This

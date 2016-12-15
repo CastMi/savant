@@ -40,7 +40,7 @@ public:
   IIR_SequentialStatementList *get_sequence_of_statements();
   void                        set_sequence_of_statements(IIR_SequentialStatementList *new_sequence_of_statements);
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_CaseStatementAlternative* convert_tree(plugin_class_factory *factory);
 
   void publish_vhdl_alternative(ostream &, IIR_Choice *);
 protected:

@@ -77,13 +77,13 @@ IIRScram_ComponentConfiguration::_type_check_configuration_item( IIRScram_List<I
                                                                 this );
 }
 
-IIRScram *
-IIRScram_ComponentConfiguration::_get_component_name( ){
-  return dynamic_cast<IIRScram *>(get_component_name());
+IIRScram_Name *
+IIRScram_ComponentConfiguration::_get_component_name(){
+  return dynamic_cast<IIRScram_Name *>(get_component_name());
 }
 
 void 
-IIRScram_ComponentConfiguration::_set_component_name( IIRScram *name ){
+IIRScram_ComponentConfiguration::_set_component_name( IIRScram_Name *name ){
   set_component_name( name );
 }
 

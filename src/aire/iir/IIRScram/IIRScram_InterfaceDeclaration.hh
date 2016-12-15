@@ -64,7 +64,7 @@ public:
   virtual void _type_check( _InterfaceListType ) = 0;
   virtual void _type_check( );
 
-  IIRScram * _get_value();
+  IIRScram_Statement * _get_value();
 };
 
 #endif

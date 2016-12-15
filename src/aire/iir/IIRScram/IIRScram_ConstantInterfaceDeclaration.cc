@@ -52,8 +52,9 @@ void
 IIRScram_ConstantInterfaceDeclaration::_type_check( IIRScram_InterfaceDeclaration::_InterfaceListType ){
   if( _get_subtype()->is_access_type() == true || _get_subtype()->is_file_type() == true ){
     ostringstream err;
-    err << "Constant interface declaration |" << *_get_declarator() << "| must have a subtype "
-	<< "indication that defines a subtype that is neither an access type or a file type.";
+    // FIXME: overload operator<<
+    //err << "Constant interface declaration |" << *_get_declarator() << "| must have a subtype "
+	 // << "indication that defines a subtype that is neither an access type or a file type.";
     report_error( this, err.str() );
   }
   
@@ -65,7 +66,7 @@ IIRScram_ConstantInterfaceDeclaration::_build_generic_parameter_set(savant::set<
   to_build->add(this);
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_ConstantInterfaceDeclaration::_get_value() {
-  return dynamic_cast<IIRScram *>(IIRBase_InterfaceDeclaration::get_value());
+  return dynamic_cast<IIRScram_Statement *>(get_value());
 }

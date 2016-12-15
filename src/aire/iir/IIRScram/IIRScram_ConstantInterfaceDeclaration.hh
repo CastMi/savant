@@ -47,7 +47,7 @@ public:
 
   void _type_check( IIRScram_InterfaceDeclaration::_InterfaceListType );
 
-  IIRScram * _get_value();
+  IIRScram_Statement * _get_value();
 
 private:
   IIR_Int32 _stmt_node_index;

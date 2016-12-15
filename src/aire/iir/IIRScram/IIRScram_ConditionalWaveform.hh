@@ -48,8 +48,8 @@ public:
   IIRScram *_rval_to_decl( IIRScram_TypeDefinition * );
   IIRScram *_semantic_transform( savant::set<IIRScram_TypeDefinition> * );
 
-  IIRScram_Statement *          _get_condition() const;
-  IIRScram_WaveformList *       _get_waveform() const;
+  IIRScram_Statement *          _get_condition();
+  IIRScram_WaveformList *       _get_waveform();
 };
 
 #endif

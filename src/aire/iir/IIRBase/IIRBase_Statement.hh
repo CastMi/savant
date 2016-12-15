@@ -122,7 +122,7 @@ public:
       associated with this class.  The caller must not modify or delete the
       pointer returned by a call to this method virtual
   */
-  IIR_Identifier* get_declarator();
+  IIR_TextLiteral* get_declarator();
   void publish_vhdl_stmt_label(ostream &);
   void publish_vhdl_delay_mechanism( ostream &, IIR_DelayMechanism, IIR * );
 

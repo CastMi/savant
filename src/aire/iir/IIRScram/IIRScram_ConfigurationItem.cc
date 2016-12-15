@@ -33,6 +33,6 @@
 #include "savant.hh"
 
 void
-IIRScram_ConfigurationItem::_type_check_configuration_item( IIRScram_List *, IIRScram * ) {
+IIRScram_ConfigurationItem::_type_check_configuration_item( IIRScram_List<IIR_Statement> *, IIRScram * ) {
   _report_undefined_scram_fn("_type_check_configuration_item( IIRScram_List *, IIRScram * )");
 }

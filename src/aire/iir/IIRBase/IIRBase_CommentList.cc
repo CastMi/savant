@@ -34,6 +34,11 @@ IIRBase_CommentList::append_element(IIR_Comment* to_append) {
   IIRBase_List<IIR_Comment>::append( to_append );
 }
 
+IIR_CommentList*
+IIRBase_CommentList::convert_node(plugin_class_factory *) {
+   return nullptr;
+}
+
 void 
 IIRBase_CommentList::publish_vhdl(ostream &vhdl_out) {
   IIRBase_Comment *comment = dynamic_cast<IIRBase_Comment *>(first());

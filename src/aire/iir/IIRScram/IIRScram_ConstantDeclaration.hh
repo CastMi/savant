@@ -45,7 +45,7 @@ public:
   
   IIRScram *_clone();
 
-  IIRScram* _get_value();
+  IIRScram_Statement* _get_value();
 };
 
 #endif

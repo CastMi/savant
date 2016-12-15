@@ -33,8 +33,7 @@
 #include "IIRScram_Declaration.hh"
 #include "IIRBase_DisconnectSpecification.hh"
 
-class IIRScram_DeclarationList;
-class IIRScram_List;
+class IIRScram_DeclarationList<IIR_Declaration>;
 
 class IIRScram_DisconnectSpecification : public virtual IIRScram_Declaration, public virtual IIRBase_DisconnectSpecification {
 
@@ -47,7 +46,7 @@ public:
   }
 
   IIR_Boolean _is_iir_disconnect_specification(){ return true; }
-  void _type_check( IIRScram_DeclarationList *declarative_region );
+  void _type_check( IIRScram_DeclarationList<IIR_Declaration> *declarative_region );
   
   // Wrappers for IIRBase functions
   IIRScram_DesignatorList *     _get_guarded_signal_list();

@@ -1,4 +1,3 @@
-
 #ifndef IIR_CHOICE_HH
 #define IIR_CHOICE_HH
 
@@ -17,7 +16,6 @@
 // intellectual property laws, and all other applicable laws of the
 // U.S., and the terms of this license.
 
-
 // You may modify, distribute, and use the software contained in this package
 // under the terms of the "GNU LIBRARY GENERAL PUBLIC LICENSE" version 2,
 // June 1991. A copy of this license agreement can be found in the file
@@ -29,8 +27,7 @@
 
 #include "IIR_Tuple.hh"
 
-class IIR_Choice : public virtual IIR_Tuple{
-
+class IIR_Choice : public virtual IIR_Tuple {
 public:
   virtual ~IIR_Choice() {}
 

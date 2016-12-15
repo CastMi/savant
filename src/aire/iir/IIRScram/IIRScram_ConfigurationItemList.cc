@@ -36,7 +36,7 @@
 IIRScram_ConfigurationItemList::~IIRScram_ConfigurationItemList(){}
 
 void
-IIRScram_ConfigurationItemList::_type_check_configuration_item( IIRScram_List *statement_list,
+IIRScram_ConfigurationItemList::_type_check_configuration_item( IIRScram_List<IIR_Statement> *statement_list,
 								IIRScram *enclosing_region ){
   ASSERT( enclosing_region != NULL );
   IIRScram_ConfigurationItem *configuration_item = first();

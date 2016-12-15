@@ -1,4 +1,3 @@
-
 // Copyright (c) 2002-2003 The University of Cincinnati.
 // All rights reserved.
 
@@ -41,8 +40,8 @@
 
 
 IIRScram_TypeDefinition *
-IIRScram_ContributionAttribute::_get_subtype(){
-  IIRScram *my_prefix = _get_prefix();
+IIRScram_ContributionAttribute::_get_subtype() {
+  IIRScram_Statement *my_prefix = _get_prefix();
   savant::set<IIRScram_Declaration> *terminal_decl_set = my_prefix->_symbol_lookup();
   IIRScram_Declaration *term_decl = NULL;
   if (terminal_decl_set == NULL) {
@@ -65,7 +64,8 @@ IIRScram_ContributionAttribute::_get_subtype(){
   }
     break;
   case 1: {
-    set_prefix(terminal_decl_set->getElement());
+    // FIXME
+    //set_prefix(terminal_decl_set->getElement());
   }
     break;
   default: {

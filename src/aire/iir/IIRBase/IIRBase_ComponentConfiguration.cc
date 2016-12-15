@@ -30,6 +30,7 @@
 #include "IIR_DesignatorList.hh"
 #include "IIRBase_LibraryUnit.hh"
 #include "IIRBase_ComponentConfiguration.hh"
+#include "IIRBase_Name.hh"
 #include "savant.hh"
 
 IIRBase_ComponentConfiguration::IIRBase_ComponentConfiguration() :
@@ -52,11 +53,11 @@ IIRBase_ComponentConfiguration::~IIRBase_ComponentConfiguration(){
 }
 
 void 
-IIRBase_ComponentConfiguration::set_component_name( IIR *component_name ){
+IIRBase_ComponentConfiguration::set_component_name( IIR_Name *component_name ){
   my_component_name = component_name;
 }
 
-IIR *
+IIR_Name *
 IIRBase_ComponentConfiguration::get_component_name(){
   return my_component_name;
 }

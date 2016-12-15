@@ -34,7 +34,6 @@
 #include "IIRScram_Declaration.hh"
 #include "IIRBase_LibraryClause.hh"
 
-class IIRScram_List;
 class IIRScram_LibraryDeclaration;
 
 class IIRScram_LibraryClause : public virtual IIRScram_Declaration,

@@ -42,6 +42,8 @@ public:
     return "IIR_WaveformList";
   }
 
+  IIR_WaveformList* convert_node(plugin_class_factory *factory) { return nullptr; };
+  IIR_Boolean is_resolved() { return false; };
   IIR_Boolean is_above_attribute_found();
   void publish_vhdl(ostream &);
 protected:

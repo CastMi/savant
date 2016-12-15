@@ -117,13 +117,11 @@ IIRScram_Declaration::_symbol_lookup( savant::set<IIRScram_Declaration> * ){
 }
 
 IIR_Boolean 
-IIRScram_Declaration::_is_physical_type(){
-  if( _get_subtype() != NULL ){
+IIRScram_Declaration::_is_physical_type() {
+  if( _get_subtype() != NULL ) {
     return _get_subtype()->_is_physical_type();
   }
-  else{
-    return false;
-  }
+  return false;
 }
 
 IIRScram_Attribute *
@@ -165,8 +163,7 @@ void
 IIRScram_Declaration::_clone(IIRScram *cl) {
   IIRScram_Declaration *clone = dynamic_cast<IIRScram_Declaration*>(cl);
   IIRScram::_clone(clone);
-  IIRScram_TextLiteral *declclone = dynamic_cast<IIRScram_TextLiteral *>(_get_declarator()->_clone());
-  clone->set_declarator(declclone);
+  clone->set_declarator( dynamic_cast<IIRScram_TextLiteral *>(_get_declarator()->_clone() ));
 
   clone->set_is_visible( is_visible() );
   clone->set_is_implicit( is_implicit_declaration() );
@@ -185,8 +182,8 @@ IIRScram_Declaration::_add_to_declarative_region( savant::set<IIRScram_Declarati
 }
 
 void 
-IIRScram_Declaration::_add_to_declarative_region( IIRScram_DeclarationList *region,
-						  savant::set<IIRScram_Declaration> *set_to_add ){
+IIRScram_Declaration::_add_to_declarative_region( IIRScram_DeclarationList<IIR_Declaration> *region,
+                    savant::set<IIRScram_Declaration> *set_to_add ) {
   ASSERT( set_to_add != NULL );
   
   IIRScram_Declaration *current_decl = NULL;
@@ -230,19 +227,19 @@ IIRScram_Declaration::_add_declarations_in_initializations() {
 void
 IIRScram_Declaration::_add_declaration_and_open_scope( ){
   _get_symbol_table()->add_declaration( (IIRScram_Declaration *)this);
-  _get_symbol_table()->open_scope( this );
+  _get_symbol_table()->open_scope( get_declarator() );
 }
 
 
 void
-IIRScram_Declaration::_add_declaration( ){
+IIRScram_Declaration::_add_declaration(){
   _get_symbol_table()->add_declaration( this );
 }
 
 
 void
 IIRScram_Declaration::_close_scope( ){
-  _get_symbol_table()->close_scope( this );
+  _get_symbol_table()->close_scope( get_declarator() );
 }
 
 

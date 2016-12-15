@@ -32,6 +32,7 @@
 #include "IIRScram_DesignatorExplicit.hh"
 #include "IIRScram_Label.hh"
 #include "IIRScram_SimpleName.hh"
+#include "IIRScram_Statement.hh"
 #include "IIRScram_TextLiteral.hh"
 #include "error_func.hh"
 #include "set.hh"
@@ -44,14 +45,13 @@ IIRScram_DesignatorList::~IIRScram_DesignatorList() {}
 IIRScram_Label *
 IIRScram_DesignatorList::_process_instantiate_statement( IIRScram_Declaration *instantiated_unit,
 							 IIRScram *statement ){
-  ASSERT( instantiated_unit != NULL );
-  ASSERT( statement != NULL );
+  ASSERT( instantiated_unit  );
+  ASSERT( statement );
 
   IIRScram_Label *retval = NULL;
 
   if( statement->get_kind() == IIR_COMPONENT_INSTANTIATION_STATEMENT ){
-    IIRScram_ComponentInstantiationStatement *as_instantiate_statement = NULL;
-    as_instantiate_statement = dynamic_cast<IIRScram_ComponentInstantiationStatement *>(statement);
+    IIRScram_ComponentInstantiationStatement *as_instantiate_statement = dynamic_cast<IIRScram_ComponentInstantiationStatement *>(statement);
     ASSERT( as_instantiate_statement->_get_instantiated_unit()->_is_iir_declaration() == true );
     if( as_instantiate_statement->_get_instantiated_unit() == instantiated_unit ){
       ASSERT( as_instantiate_statement->_get_label() != NULL );
@@ -142,7 +142,7 @@ IIRScram_DesignatorList::_process_by_all_or_others( IIRScram_Declaration *instan
 }
 
 void 
-IIRScram_DesignatorList::_type_check_as_instantiation_list( IIRScram *instantiated_unit,
+IIRScram_DesignatorList::_type_check_as_instantiation_list( IIRScram_Statement *instantiated_unit,
 							    IIRScram_List<IIR_Statement> *statement_list,
 							    IIRScram *configuration ){
   ASSERT( instantiated_unit != NULL );

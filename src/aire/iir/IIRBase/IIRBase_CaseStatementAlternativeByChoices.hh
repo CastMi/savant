@@ -41,7 +41,7 @@ public:
   IIR_Kind get_kind() const { return IIR_CASE_STATEMENT_ALTERNATIVE_BY_CHOICES; }
   const IIR_Char *get_kind_text() const { return "IIR_CaseStatementAlternativeByChoices"; }
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_CaseStatementAlternativeByChoices *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_resolved();
   void publish_vhdl(ostream &);

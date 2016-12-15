@@ -46,7 +46,7 @@ IIRScram_ConcurrentGenerateIfStatement::~IIRScram_ConcurrentGenerateIfStatement(
 void 
 IIRScram_ConcurrentGenerateIfStatement::_type_check(){
   set_if_condition( _type_check_and_resolve_boolean_condition( _get_if_condition() ) );
-  _get_block_declarative_part()->_type_check_attribute_specifications( _get_concurrent_statement_part() );
+  _get_block_declarative_part()->_type_check_attribute_specifications();
 }
 
 IIRScram_DeclarationList<>*

@@ -35,6 +35,7 @@ class published_file;
 class break_handler;
 class constraint_functor;
 class IIR_AboveAttribute;
+class IIRScram_Name;
 
 namespace savant {
   template <class type> class set;
@@ -113,7 +114,7 @@ public:
   virtual IIR_Boolean _is_enumeration_literal() const { return false; }
   virtual IIR_Boolean _is_numeric_literal() const;
   virtual IIR_Boolean _is_numeric_type() const { return false; }
-  virtual IIR_Boolean _is_physical_type() const { return false; }
+  virtual IIR_Boolean _is_physical_type() { return false; }
   virtual IIR_Boolean _is_attribute() const;
 
   /** @name Node Type Queries
@@ -367,8 +368,8 @@ public:
   */
   IIR *_type_check_file_open_information();
 
-  virtual IIRScram *_get_component_name( );
-  virtual void _set_component_name( IIRScram_Statement * );
+  virtual IIRScram_Name *_get_component_name( );
+  virtual void _set_component_name( IIRScram_Name * );
 
   /** Calls "get_entity_aspect" on nodes that define it.  Generates an
       error for any other node. */
@@ -440,7 +441,7 @@ public:
 
   // IIRScram level wrapper functions
   IIRScram_Identifier* _get_file_name();
-  IIRScram_Identifier* _get_declarator();
+  IIRScram_TextLiteral* _get_declarator();
 protected:
   // Return a cast pointer to the design file
   IIRScram_DesignFile *_get_my_design_file(); 

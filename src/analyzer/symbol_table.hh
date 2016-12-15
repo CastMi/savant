@@ -193,8 +193,8 @@ class symbol_table {
       /** Methods to deal with scope */
       void open_scope( const std::string& declarative_region );
       void close_scope( const std::string& declarative_region );
-      void open_scope( const IIR_Identifier* );
-      void close_scope( const IIR_Identifier* );
+      void open_scope( const IIR_TextLiteral* );
+      void close_scope( const IIR_TextLiteral* );
       //@}
 
       //@{

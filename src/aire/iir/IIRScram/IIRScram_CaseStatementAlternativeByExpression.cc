@@ -38,7 +38,7 @@ IIRScram_CaseStatementAlternativeByExpression::_get_rval_set( constraint_functor
 }
 
 
-IIRScram *
+IIRScram_CaseStatementAlternativeByExpression*
 IIRScram_CaseStatementAlternativeByExpression::_rval_to_decl( IIRScram_TypeDefinition *my_typedef){
   ASSERT( _get_choice() != NULL );
   set_choice( dynamic_cast<IIRScram_Choice *>(_get_choice()->_rval_to_decl( my_typedef )) );

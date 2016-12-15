@@ -31,7 +31,7 @@
 #include "IIRScram_List.hh"
 #include "IIRBase_DesignUnitList.hh"
 
-class IIRScram_DesignUnitList : public virtual IIRScram_List, public virtual IIRBase_DesignUnitList {
+class IIRScram_DesignUnitList : public virtual IIRScram_List<IIR>, public virtual IIRBase_DesignUnitList {
 public:
   IIRScram_DesignUnitList() {};
   virtual ~IIRScram_DesignUnitList();

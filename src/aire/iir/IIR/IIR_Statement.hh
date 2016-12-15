@@ -76,7 +76,7 @@ public:
   virtual IIR_Boolean is_text_literal() const = 0;
   virtual IIR_Declaration *_find_formal_declaration();
   virtual IIR_SignalKind get_signal_kind() const = 0;
-  virtual IIR_Identifier *get_declarator() = 0;
+  virtual IIR_TextLiteral *get_declarator() = 0;
   /// Is this node a configuration declaration?
   virtual IIR_Boolean is_configuration_declaration() const = 0;
   /// Is this node a component declaration?

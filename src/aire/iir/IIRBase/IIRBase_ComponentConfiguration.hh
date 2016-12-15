@@ -54,8 +54,8 @@ public:
      Prior to type check, this node will contain a descendant of IIR_Name.
      After type checking, it will contain an IIR_ComponentDeclaration.
   */
-  IIR *get_component_name();
-  void set_component_name( IIR *component_name );
+  IIR_Name *get_component_name();
+  void set_component_name( IIR_Name *component_name );
   
   /**
      Gets the entity aspect associated with the component specified.  This
@@ -96,7 +96,7 @@ private:
   */
   IIR_AssociationList     *port_map_aspect;
 
-  IIR *my_component_name;
+  IIR_Name *my_component_name;
   IIR_LibraryUnit *my_entity_aspect;
   IIR_BlockConfiguration *my_block_configuration;
 };

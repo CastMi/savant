@@ -97,7 +97,7 @@ public:
 
   ostream &print( ostream & );
 
-  IIR_Identifier* get_declarator();
+  IIR_TextLiteral* get_declarator();
   virtual void publish_vhdl(ostream &);
 
   /**

@@ -42,8 +42,8 @@ class IIR_Declaration : public virtual IIR {
 public:
   virtual ~IIR_Declaration() {};
 
-  virtual void set_declarator( IIR_Identifier* ) = 0;
-  virtual IIR_Identifier* get_declarator() = 0;
+  virtual void set_declarator( IIR_TextLiteral* ) = 0;
+  virtual IIR_TextLiteral* get_declarator() = 0;
 
   /** This enumeration defines all of the types of declarations.  The
       enumeration LAST_TYPE is so that we can get the number of elements in

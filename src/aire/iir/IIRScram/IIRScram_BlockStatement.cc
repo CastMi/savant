@@ -100,7 +100,7 @@ IIRScram_BlockStatement::_type_check(){
   _make_interface_visible(_get_symbol_table() );
   _get_block_declarative_part()->_type_check_disconnection_specifications();
   _get_block_declarative_part()->_type_check_configuration_specifications( _get_block_statement_part() );
-  _get_block_declarative_part()->_type_check_attribute_specifications( _get_block_statement_part() );
+  _get_block_declarative_part()->_type_check_attribute_specifications();
   _get_symbol_table()->close_scope( get_declarator() );
 }
 

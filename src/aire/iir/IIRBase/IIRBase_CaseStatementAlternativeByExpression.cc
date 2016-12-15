@@ -36,7 +36,7 @@ IIRBase_CaseStatementAlternativeByExpression::get_choice() {
   return choice;
 }
 
-IIR *
+IIR_CaseStatementAlternativeByExpression *
 IIRBase_CaseStatementAlternativeByExpression::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_CaseStatementAlternativeByExpression *new_node = dynamic_cast<IIRBase_CaseStatementAlternativeByExpression *>(IIRBase_CaseStatementAlternative::convert_tree(factory));

@@ -53,10 +53,11 @@ public:
   // of the declarative region this sepcification appears in.  It is used for
   // finding component instantiation statements, so it can resolve ALL and
   // OTHERS.
-  void _type_check( IIRScram_List<IIR_Statement*> *statment_list, type_check_mode mode );
+  template<typename T>
+  void _type_check( IIRScram_List<T> *statment_list, type_check_mode mode );
 
-  IIRScram *_get_component_name( );
-  void _set_component_name( IIRScram * );
+  IIRScram_Name *_get_component_name();
+  void _set_component_name( IIRScram_Name * );
   IIRScram_LibraryUnit *_get_entity_aspect();
 
   // Wrapper Functions

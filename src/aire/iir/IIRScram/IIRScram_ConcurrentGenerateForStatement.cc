@@ -65,7 +65,7 @@ IIRScram_ConcurrentGenerateForStatement::~IIRScram_ConcurrentGenerateForStatemen
 
 void 
 IIRScram_ConcurrentGenerateForStatement::_type_check(){
-  _get_block_declarative_part()->_type_check_attribute_specifications( _get_concurrent_statement_part() );
+  _get_block_declarative_part()->_type_check_attribute_specifications();
   ASSERT( get_generate_parameter_specification() != NULL );  
   _get_generate_parameter_specification()->set_subtype( _type_check_iteration_scheme( _get_generate_parameter_specification() ) );
 }

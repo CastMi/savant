@@ -44,7 +44,7 @@ IIRBase_CaseStatementAlternative::set_sequence_of_statements(IIR_SequentialState
   sequence_of_statements = new_sequence_of_statements;
 }
 
-IIR *
+IIR_CaseStatementAlternative *
 IIRBase_CaseStatementAlternative::convert_tree(plugin_class_factory *factory) {
   // Get the node itself
   IIRBase_CaseStatementAlternative *new_node = dynamic_cast<IIRBase_CaseStatementAlternative *>(IIRBase_Tuple::convert_tree(factory));

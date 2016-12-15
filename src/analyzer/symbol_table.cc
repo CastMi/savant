@@ -224,7 +224,7 @@ symbol_table::is_visible( IIR_Declaration *decl ){
 }
 
 inline void
-symbol_table::open_scope( const IIR_Identifier* declarative_region ){
+symbol_table::open_scope( const IIR_TextLiteral* declarative_region ){
    open_scope(declarative_region->convert_to_string());
 }
 void
@@ -243,7 +243,7 @@ symbol_table::open_scope( const std::string& declarative_region ){
 }
 
 inline void
-symbol_table::close_scope( const IIR_Identifier* declarative_region ){
+symbol_table::close_scope( const IIR_TextLiteral* declarative_region ){
    close_scope(declarative_region->convert_to_string());
 }
 void

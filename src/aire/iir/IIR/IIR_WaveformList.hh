@@ -34,10 +34,12 @@ class IIR_WaveformElement;
 
 class IIR_WaveformList : public virtual IIR_List<IIR_WaveformElement> {
 public:
-  virtual ~IIR_WaveformList() {}
+  IIR_WaveformList() {};
+  virtual ~IIR_WaveformList() {};
   virtual IIR_WaveformList* convert_node(plugin_class_factory *factory) = 0;
   virtual IIR_Boolean is_resolved() = 0;
   virtual IIR_Boolean is_above_attribute_found() = 0;
     
 };
+
 #endif

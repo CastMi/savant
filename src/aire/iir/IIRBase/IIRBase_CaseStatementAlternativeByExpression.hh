@@ -42,7 +42,7 @@ public:
   void set_choice(IIR_Choice* c);
   IIR_Choice* get_choice();
 
-  IIR *convert_tree(plugin_class_factory *factory);
+  IIR_CaseStatementAlternativeByExpression *convert_tree(plugin_class_factory *factory);
 
   IIR_Boolean is_resolved();
   

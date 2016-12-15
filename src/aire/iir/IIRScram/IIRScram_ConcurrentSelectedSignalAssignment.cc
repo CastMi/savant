@@ -107,7 +107,7 @@ IIRScram_ConcurrentSelectedSignalAssignment::_read_alternative_list( IIRScram_Ca
     current_waveform->set_choice( current_alt );
 
     current_alt = dynamic_cast<IIRScram_CaseStatementAlternative *>(alt_list->successor( current_alt ));
-    current_waveform = dynamic_cast<IIRScram_SelectedWaveform *>(get_selected_waveforms()->successor( current_waveform ));    
+    current_waveform = dynamic_cast<IIRScram_SelectedWaveform *>(get_selected_waveforms()->successor( current_waveform ));
   }
 }
 

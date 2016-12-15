@@ -62,7 +62,7 @@ public:
       homographs can be in the same region or not. */
   virtual IIR_Boolean _can_be_in_same_region( IIRScram_Declaration * ){ return false; }
 
-  virtual IIR_Boolean _is_physical_type() const;
+  virtual IIR_Boolean _is_physical_type();
 
   virtual IIR_Boolean _designates_incomplete_type(){ return false; }
 
@@ -119,7 +119,7 @@ public:
   /** This method will add the set to this declaration's declarative
       region. */
   virtual void _add_to_declarative_region( savant::set<IIRScram_Declaration> * );
-  void _add_to_declarative_region( IIRScram_DeclarationList<IIRScram_Declaration> *, savant::set<IIRScram_Declaration> * );
+  void _add_to_declarative_region( IIRScram_DeclarationList<IIR_Declaration> *, savant::set<IIRScram_Declaration> * );
 
   /** The following function returns true if the declaration is in the
       process statement's declarative part. */

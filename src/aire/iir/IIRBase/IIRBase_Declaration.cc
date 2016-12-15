@@ -42,12 +42,12 @@ IIRBase_Declaration::~IIRBase_Declaration(){
 }
 
 void 
-IIRBase_Declaration::set_declarator( IIR_Identifier *new_declarator ){
+IIRBase_Declaration::set_declarator( IIR_TextLiteral *new_declarator ){
   ASSERT ( new_declarator != NULL );
   declarator = new_declarator;  
 }
 
-IIR_Identifier *
+IIR_TextLiteral *
 IIRBase_Declaration::get_declarator(){
   return declarator;
 }

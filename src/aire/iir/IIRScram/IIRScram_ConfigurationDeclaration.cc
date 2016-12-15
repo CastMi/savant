@@ -25,16 +25,17 @@
 #include "IIRScram_Identifier.hh"
 
 IIRScram_ConfigurationDeclaration::IIRScram_ConfigurationDeclaration() {
-  set_configuration_declarative_part(new IIRScram_DeclarationList());
+   set_configuration_declarative_part(new IIRScram_DeclarationList<>());
 }
 
 IIRScram_ConfigurationDeclaration::~IIRScram_ConfigurationDeclaration() {
-  //Release the list memory
-  delete get_configuration_declarative_part();
+   //Release the list memory
+   delete get_configuration_declarative_part();
 }
 
 void 
-IIRScram_ConfigurationDeclaration::_make_interface_visible( symbol_table * ){}
+IIRScram_ConfigurationDeclaration::_make_interface_visible( symbol_table * ) {
+}
 
 void 
 IIRScram_ConfigurationDeclaration::_type_check(){
@@ -42,20 +43,20 @@ IIRScram_ConfigurationDeclaration::_type_check(){
     _get_block_configuration()->_type_check_configuration_item( NULL, this );
   }
   _get_configuration_declarative_part()->_type_check_configuration_specifications( NULL );
-  _get_configuration_declarative_part()->_type_check_attribute_specifications( NULL );
+  _get_configuration_declarative_part()->_type_check_attribute_specifications();
 }
 
 IIRScram_BlockConfiguration *
 IIRScram_ConfigurationDeclaration::_get_block_configuration() {
-  return dynamic_cast<IIRScram_BlockConfiguration *>(get_block_configuration());
+   return dynamic_cast<IIRScram_BlockConfiguration *>(get_block_configuration());
 }
 
-IIRScram_DeclarationList *
+IIRScram_DeclarationList<IIR_Declaration> *
 IIRScram_ConfigurationDeclaration::_get_configuration_declarative_part() {
-  return dynamic_cast<IIRScram_DeclarationList *>(get_configuration_declarative_part());
+   return dynamic_cast<IIRScram_DeclarationList<> *>(get_configuration_declarative_part());
 }
 
 IIRScram_EntityDeclaration *
 IIRScram_ConfigurationDeclaration::_get_entity() {
-  return dynamic_cast<IIRScram_EntityDeclaration *>(get_entity());
+   return dynamic_cast<IIRScram_EntityDeclaration *>(get_entity());
 }

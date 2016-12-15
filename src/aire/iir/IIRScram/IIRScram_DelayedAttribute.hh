@@ -43,8 +43,8 @@ public:
   IIR_Boolean is_signal(){ return true; }
 
   IIR_Boolean has_suffix(){ return true; }
-  void _set_suffix( IIRScram *new_suffix );
-  IIRScram *_get_suffix();
+  void _set_suffix( IIRScram_Statement *new_suffix );
+  IIRScram_Statement *_get_suffix();
 
   IIRScram_TypeDefinition *_get_subtype();
 

@@ -251,7 +251,7 @@ IIRBase::get_num_indexes( ){
   return -1;
 }
 
-IIR_Identifier *
+IIR_TextLiteral *
 IIRBase::get_declarator() {
   ASSERT( dynamic_cast<IIR_Declaration *>(this) != NULL || get_kind() == IIR_SIMPLE_NAME);
   _report_undefined_fn("get_declarator()");

@@ -49,10 +49,10 @@ IIRScram_DelayedAttribute::_resolve_suffix_special(){
 }
 
 void 
-IIRScram_DelayedAttribute::_set_suffix( IIRScram *new_suffix ) {  
+IIRScram_DelayedAttribute::_set_suffix( IIRScram_Statement *new_suffix ) {  
   IIRBase_DelayedAttribute::set_suffix( new_suffix ); 
 }
-IIRScram *
+IIRScram_Statement *
 IIRScram_DelayedAttribute::_get_suffix() { 
-  return dynamic_cast<IIRScram *>(IIRBase_DelayedAttribute::get_suffix()); 
+  return dynamic_cast<IIRScram_Statement *>(IIRBase_DelayedAttribute::get_suffix()); 
 }

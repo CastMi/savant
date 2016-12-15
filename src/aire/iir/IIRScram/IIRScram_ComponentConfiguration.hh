@@ -45,8 +45,8 @@ public:
 
   void _type_check_configuration_item( IIRScram_List<IIR_Statement> *, IIRScram * );
 
-  IIRScram *_get_component_name( );
-  void _set_component_name( IIRScram * );
+  IIRScram_Name *_get_component_name( );
+  void _set_component_name( IIRScram_Name * );
   IIRScram_LibraryUnit *_get_entity_aspect();
 
   IIRScram_DesignatorList *     _get_instantiation_list();

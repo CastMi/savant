@@ -30,18 +30,21 @@
 //---------------------------------------------------------------------------
 
 #include "IIRBase_DesignatorList.hh"
+#include "IIRScram_List.hh"
+#include "IRBasicDataTypes.hh"
 
-class IIRScram_DesignatorList;
 class IIRScram_Label;
-class IIRScram_StatementList;
-class IIRScram_TextLiteral;
+class IIRScram_Statement;
+class IIRScram_Declaration;
+class IIRScram;
+class IIR_Statement;
 
 class IIRScram_DesignatorList : public virtual IIRBase_DesignatorList {
 public:
   IIRScram_DesignatorList() {}
   virtual ~IIRScram_DesignatorList();
     
-  void _type_check_as_instantiation_list( IIRScram *instantiated_unit, 
+  void _type_check_as_instantiation_list( IIRScram_Statement *instantiated_unit, 
 					  IIRScram_List<IIR_Statement> *,
 					  IIRScram *configuration );
 

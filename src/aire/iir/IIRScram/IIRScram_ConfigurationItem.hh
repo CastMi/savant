@@ -37,7 +37,7 @@ class IIRScram_ConfigurationItem : public virtual IIRScram_Tuple, public virtual
 public:
   IIR_Boolean _is_iir_configuration_item() { return true; }
 
-  virtual void _type_check_configuration_item( IIRScram_List<IIRScram_Statement> *statement_list, IIRScram *enclosing_region );
+  virtual void _type_check_configuration_item( IIRScram_List<IIR_Statement> *statement_list, IIRScram *enclosing_region );
 };
 
 #endif

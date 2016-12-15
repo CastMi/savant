@@ -295,14 +295,14 @@ IIRScram::_rval_to_decl( IIRScram_Declaration *, IIRScram_TypeDefinition * ){
   return NULL;
 }
 
-IIRScram *
-IIRScram::_get_component_name( ){
+IIRScram_Name *
+IIRScram::_get_component_name(){
   _report_undefined_scram_fn("_get_component_name()");
   return NULL;
 }
 
 void 
-IIRScram::_set_component_name( IIRScram_Statement * ){
+IIRScram::_set_component_name( IIRScram_Name * ){
   _report_undefined_scram_fn("_set_component_name()");
 }
 
@@ -404,7 +404,7 @@ IIRScram::_type_check_configuration( IIRScram_AssociationList &port_map_aspect,
   }
   case 1:{
     my_component = dynamic_cast<IIRScram_ComponentDeclaration *>(component_decls->getElement());
-    _set_component_name( _get_component_name()->_decl_to_decl( my_component ) );
+    _set_component_name( _get_component_name() );
     if( debug_symbol_table == true ){
       cerr << "Type checking configuration - about to make |" << 
 	_get_component_name() << "| visible." << endl;
@@ -595,7 +595,7 @@ IIRScram::_attach_disconnection_specification( IIRScram_AttributeSpecification *
   return false;
 }
 
-IIRScram_DeclarationList<IIR_Declaration>*
+IIRScram_DeclarationList<IIR_Declaration> *
 IIRScram::_get_declaration_list() {
   _report_undefined_scram_fn("_get_declaration_list()");
   return NULL;
@@ -657,8 +657,8 @@ IIRScram::_get_file_name(){
   return dynamic_cast<IIRScram_Identifier *>(get_file_name());
 }
 
-IIRScram_Identifier *
+IIRScram_TextLiteral *
 IIRScram::_get_declarator() {
-  return dynamic_cast<IIRScram_Identifier *>(get_declarator());
+  return dynamic_cast<IIRScram_TextLiteral *>(get_declarator());
 }
 

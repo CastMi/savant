@@ -30,7 +30,7 @@
 #include "IIRScram_List.hh"
 #include "IIRBase_DesignFileList.hh"
 
-class IIRScram_DesignFileList : public virtual IIRScram_List, public virtual IIRBase_DesignFileList {
+class IIRScram_DesignFileList : public virtual IIRScram_List<IIR_DesignFile>, public virtual IIRBase_DesignFileList {
 public:
   IIRScram_DesignFileList() {};
   virtual ~IIRScram_DesignFileList();

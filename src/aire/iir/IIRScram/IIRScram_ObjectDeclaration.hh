@@ -63,7 +63,7 @@ public:
 
   /** The only object declaration that doesn't have a value is a file type
       declaration... */
-  virtual IIRScram *_get_value() { return NULL; }
+  virtual IIRScram_Statement *_get_value() { return nullptr; }
   IIRScram_AttributeSpecificationList *_get_attribute_specification_list();
   /**  Doesn't need to do anything at all. */
   void _publish_cc_include( published_file & ){}

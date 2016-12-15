@@ -53,7 +53,7 @@ public:
   IIR_Boolean _is_writable(){ return true; }
 
   IIRScram *_clone();
-  IIRScram *_get_value();
+  IIRScram_Statement *_get_value();
 
   /** For some reason, sometimes the code generate wants a fresh clone
      generated.  */

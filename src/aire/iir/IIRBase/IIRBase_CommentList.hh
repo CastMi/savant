@@ -39,6 +39,7 @@ public:
   void append_element(IIR_Comment*);
 
   void publish_vhdl(ostream &);
+  IIR_CommentList* convert_node(plugin_class_factory *);
 protected:
   IIRBase_CommentList();
   virtual ~IIRBase_CommentList() = 0;
