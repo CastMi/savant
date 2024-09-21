@@ -33,7 +33,7 @@
 
 IIRScram_DivisionOperator::~IIRScram_DivisionOperator() {}
 
-IIRScram*
+IIRScram_DivisionOperator*
 IIRScram_DivisionOperator::_clone() {
   IIRScram_DivisionOperator *clone = new IIRScram_DivisionOperator();
   IIRScram_DyadicOperator::_clone(clone);

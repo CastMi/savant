@@ -30,9 +30,12 @@
 
 IIRScram_AndOperator::~IIRScram_AndOperator() {}
 
-IIRScram_Statement *
+IIRScram_AndOperator *
 IIRScram_AndOperator::_clone() {
+  return nullptr;
+  /*
   IIRScram_AndOperator *clone = new IIRScram_AndOperator();
   IIRScram_DyadicOperator::_clone(clone);
   return clone;
+  */
 }

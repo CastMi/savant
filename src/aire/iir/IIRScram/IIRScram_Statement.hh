@@ -50,7 +50,6 @@ class IIRScram_Statement : public virtual IIRBase_Statement {
 public:
   virtual ~IIRScram_Statement() = 0;
   virtual IIRScram_Statement *_clone();
-  virtual void _clone( IIRScram_Statement *);
   virtual void _type_check();
   virtual void _type_check( IIRScram_TypeDefinition * );
   virtual void _type_check( savant::set<IIRScram_TypeDefinition> * );

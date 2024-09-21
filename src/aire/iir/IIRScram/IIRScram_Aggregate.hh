@@ -53,7 +53,7 @@ public:
   IIR_Boolean _is_readable( );
   IIR_Boolean _is_writable( );
 
-  IIRScram_Statement *_clone();
+  IIRScram_Aggregate *_clone();
 
   // Helper Functions
   IIRScram_AssociationList *_get_element_association_list();

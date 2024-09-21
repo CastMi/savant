@@ -34,7 +34,7 @@ public:
   IIRScram_AdditionOperator() {}
   virtual ~IIRScram_AdditionOperator() {}
 
-  IIRScram_Statement *_clone();
+  IIRScram_AdditionOperator *_clone();
 };
 
 #endif

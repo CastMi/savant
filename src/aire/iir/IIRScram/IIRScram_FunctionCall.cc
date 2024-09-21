@@ -100,8 +100,9 @@ IIRScram_FunctionCall::_get_rval_set( constraint_functor *functor ){
   return _get_implementation()->_get_rval_set(functor);
 }
 
-IIRScram*
+IIRScram_FunctionCall*
 IIRScram_FunctionCall::_clone() {
+  ASSERT(false);
   IIRScram_FunctionCall *funccall = new IIRScram_FunctionCall();
 
   IIRScram_Expression::_clone(funccall);

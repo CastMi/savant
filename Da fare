@@ -1,0 +1,15 @@
+1) parse_architecture->build_arch_file_name
+FIX in IIRBase_Identifier... dovrebbe essere const
+
+2) rimuovere la release() function...viene usata solo in:
+- symbol_lookup.cc
+- IIRScram_ConcurrentSelectedSignalAssignment.cc
+- IIRScram_Operator.cc
+
+3) Per risolvere il problema della "Error trying to publish..." devo guardare:
+- library_manager::get_file_handle() -> per qualche motivo file_handle oppure file_handle->good() non vanno bene
+- library_manager::parse_into_work_dir()
+
+4) Controllare ereditarietà funzioni static
+
+5) Fixare i warning dei test che rompono

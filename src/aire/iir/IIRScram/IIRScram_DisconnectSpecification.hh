@@ -51,7 +51,7 @@ public:
   // Wrappers for IIRBase functions
   IIRScram_DesignatorList *     _get_guarded_signal_list();
   IIRScram_TypeDefinition *     _get_type_mark();
-  IIRScram *                    _get_time_expression();
+  IIRScram_Statement *          _get_time_expression();
 };
 
 #endif

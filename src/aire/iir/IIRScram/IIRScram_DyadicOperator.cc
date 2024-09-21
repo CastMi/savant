@@ -1,4 +1,3 @@
-
 // Copyright (c) 1996-2003 The University of Cincinnati.  
 // All rights reserved.
 
@@ -40,10 +39,10 @@
 #include "IIRScram_TypeDefinition.hh"
 #include "IIRScram_TerminalDeclaration.hh"
 
-
 using std::cerr;
 
 IIRScram_DyadicOperator::~IIRScram_DyadicOperator() {}
+IIRScram_DyadicOperator::IIRScram_DyadicOperator() {}
 
 const string
 IIRScram_DyadicOperator::_get_function_name() const {
@@ -163,17 +162,18 @@ IIRScram_DyadicOperator::_get_function_name() const {
 }
 
 IIRScram_AssociationList *
-IIRScram_DyadicOperator::_build_argument_list(){
+IIRScram_DyadicOperator::_build_argument_list() {
   IIRScram_AssociationList *retval = new IIRScram_AssociationList;
   //  copy_location( this, retval );
   
   IIRScram_AssociationElementByExpression *new_assoc = new IIRScram_AssociationElementByExpression();
-  copy_location( _get_left_operand(), new_assoc );
+  // FIXME
+  //copy_location( _get_left_operand(), new_assoc );
   new_assoc->set_actual( _get_left_operand() );
   retval->append( new_assoc );
 
   new_assoc = new IIRScram_AssociationElementByExpression();
-  copy_location( _get_right_operand(), new_assoc );
+  //copy_location( _get_right_operand(), new_assoc );
   new_assoc->set_actual( _get_right_operand() );
   retval->append( new_assoc );
 
@@ -181,7 +181,7 @@ IIRScram_DyadicOperator::_build_argument_list(){
 }
 
 IIR_Boolean
-IIRScram_DyadicOperator::_is_readable(){
+IIRScram_DyadicOperator::_is_readable() {
   if( _get_left_operand() && _get_left_operand()->_is_readable() == true &&
       _get_right_operand() && _get_right_operand()->_is_readable() == true ){
     return true;
@@ -192,30 +192,26 @@ IIRScram_DyadicOperator::_is_readable(){
 }
 
 void
-IIRScram_DyadicOperator::_clone( IIRScram *copy_into ){
+IIRScram_DyadicOperator::_clone( IIRScram_Statement *copy_into ) {
   ASSERT( dynamic_cast<IIRScram_DyadicOperator *>(copy_into) );
   
   IIRScram_DyadicOperator *as_dyadic = dynamic_cast<IIRScram_DyadicOperator *>(copy_into);
 
-  IIRScram *cloneop;
-
   // Copy the base info
-  IIRScram_Expression::_clone( copy_into );
+  //IIRScram_Expression::_clone( copy_into );
 
   // Implementation
   as_dyadic->IIRBase_DyadicOperator::set_implementation( _get_implementation() );
   
   // Left
-  cloneop = _get_left_operand()->_clone();
-  as_dyadic->set_left_operand( cloneop );
+  as_dyadic->set_left_operand( _get_left_operand()->_clone() );
 
   // Right
-  cloneop = _get_right_operand()->_clone();
-  as_dyadic->set_right_operand( cloneop );
+  as_dyadic->set_right_operand( _get_right_operand()->_clone() );
 }
 
 void 
-IIRScram_DyadicOperator::_type_check_operands(){
+IIRScram_DyadicOperator::_type_check_operands() {
   ASSERT( _get_implementation() != NULL );
   ASSERT( _get_implementation()->_get_interface_declarations()->size() == 2 );
 
@@ -238,7 +234,7 @@ IIRScram_DyadicOperator::_type_check_operands(){
 }
 
 IIRScram *
-IIRScram_DyadicOperator::_rval_to_decl( IIRScram_TypeDefinition *my_rval ){
+IIRScram_DyadicOperator::_rval_to_decl( IIRScram_TypeDefinition *my_rval ) {
   if( _get_implementation() == NULL ){
     set_left_operand( _get_left_operand()->_semantic_transform( my_rval ) );
     _get_left_operand()->_type_check( my_rval );
@@ -260,14 +256,14 @@ IIRScram_DyadicOperator::_build_reference_quantity_list(dl_list<IIRScram_Referen
   _get_right_operand()->_build_reference_quantity_list(reference_quantity_list);
 }
 
-IIRScram *
+IIRScram_Expression *
 IIRScram_DyadicOperator::_get_left_operand() {
-  return dynamic_cast<IIRScram *>(get_left_operand());
+  return dynamic_cast<IIRScram_Expression *>(get_left_operand());
 }
 
-IIRScram *
+IIRScram_Expression *
 IIRScram_DyadicOperator::_get_right_operand() {
-  return dynamic_cast<IIRScram *>(get_right_operand());
+  return dynamic_cast<IIRScram_Expression *>(get_right_operand());
 }
 
 IIRScram_SubprogramDeclaration *

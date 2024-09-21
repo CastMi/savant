@@ -41,7 +41,7 @@ class IIRScram_SubprogramDeclaration;
 class IIRScram_DyadicOperator : public virtual IIRScram_Operator,
 				public virtual IIRBase_DyadicOperator {
 public:
-  IIRScram_DyadicOperator() {};
+  IIRScram_DyadicOperator();
 
   //  virtual void _publish_cc_wait_data_short_circuit( published_file &_cc_out );
 
@@ -51,14 +51,14 @@ public:
 //       are all short-circuit operations; furthermore, these are the only
 //       short-circuit operations.  */
 //   virtual IIR_Boolean _is_short_circuit();
-  
+
   const string _get_function_name() const;
 
   IIR_Boolean _is_readable();
 
   void _resolve_operands( IIRScram_TypeDefinition *left_type, IIRScram_TypeDefinition *right_type );
 
-  void _resolve_operand( IIRScram *(IIRScram_DyadicOperator::*get_method)(), 
+  void _resolve_operand( IIRScram *(IIRScram_DyadicOperator::*get_method)(),
 			 void (IIRScram_DyadicOperator::*set_method)( IIRScram *),
 			 IIRScram_TypeDefinition *operand_type );
 
@@ -67,8 +67,8 @@ public:
   IIRScram_Statement *_rval_to_decl( IIRScram_TypeDefinition *my_rval );
 
   // Wrappers
-  IIRScram *_get_left_operand();
-  IIRScram *_get_right_operand();
+  IIRScram_Expression *_get_left_operand();
+  IIRScram_Expression *_get_right_operand();
   IIRScram_SubprogramDeclaration *_get_implementation();
   void _build_reference_quantity_list(dl_list<IIRScram_ReferenceAttribute> *);
 

@@ -33,7 +33,7 @@ public:
   IIRScram_DivisionOperator() {}
   virtual ~IIRScram_DivisionOperator();
 
-  IIRScram *_clone();
+  IIRScram_DivisionOperator *_clone();
 };
 
 #endif

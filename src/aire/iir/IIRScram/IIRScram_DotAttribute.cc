@@ -30,7 +30,7 @@ using std::endl;
 
 IIRScram_TypeDefinition *
 IIRScram_DotAttribute::_get_subtype() {
-  IIRScram *my_prefix = _get_prefix();
+  IIRScram_Statement *my_prefix = _get_prefix();
   savant::set<IIRScram_Declaration> *quantity_decl_set = NULL;
   quantity_decl_set = my_prefix->_symbol_lookup();
   IIRScram_Declaration *quan_decl = NULL;
@@ -55,7 +55,8 @@ IIRScram_DotAttribute::_get_subtype() {
   }
     break;
   case 1: {
-    set_prefix(quantity_decl_set->getElement());
+    // FIXME
+    //set_prefix(quantity_decl_set->getElement());
   }
     break;
   default: {

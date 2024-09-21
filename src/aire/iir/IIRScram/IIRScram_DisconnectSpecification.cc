@@ -33,6 +33,7 @@
 #include "IIRScram_PhysicalSubtypeDefinition.hh"
 #include "IIRScram_DesignatorList.hh"
 #include "IIRScram_Designator.hh"
+#include "IIRScram_Statement.hh"
 
 #include "constraint_functors.hh"
 #include "error_func.hh"
@@ -170,7 +171,7 @@ IIRScram_DisconnectSpecification::_get_type_mark() {
   return dynamic_cast<IIRScram_TypeDefinition *>(get_type_mark());
 }
 
-IIRScram *
+IIRScram_Statement *
 IIRScram_DisconnectSpecification::_get_time_expression() {
-  return dynamic_cast<IIRScram *>(get_time_expression());
+  return dynamic_cast<IIRScram_Statement *>(get_time_expression());
 }

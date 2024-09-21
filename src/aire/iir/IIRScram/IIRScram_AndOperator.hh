@@ -37,7 +37,7 @@ public:
   IIRScram_AndOperator() {}
   virtual ~IIRScram_AndOperator();
 
-  IIRScram_Statement *_clone();
+  IIRScram_AndOperator *_clone();
 };
 
 #endif

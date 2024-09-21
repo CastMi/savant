@@ -33,6 +33,7 @@
 #include "IIRScram_ScalarTypeDefinition.hh"
 #include "IIRScram_ArrayTypeDefinition.hh"
 
+IIRScram_Expression::IIRScram_Expression() {};
 IIRScram_Expression::~IIRScram_Expression() {}
 
 IIRScram *
@@ -43,11 +44,15 @@ IIRScram_Expression::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
   return this;
 }
 
-void
-IIRScram_Expression::_clone( IIRScram *copy_into ){
+IIRScram_Expression*
+IIRScram_Expression::_clone(){
+  ASSERT(false);
+  return new IIRScram_Expression();
+  /*
   ASSERT( copy_into->_is_iir_expression() == true );
   IIRScram_Expression *as_expression = dynamic_cast<IIRScram_Expression *>(copy_into);
   IIRScram::_clone( copy_into );
   // clone IIRScram_Expression info
   as_expression->set_subtype( _get_subtype() );
+  */
 }

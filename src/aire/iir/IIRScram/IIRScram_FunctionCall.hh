@@ -57,7 +57,7 @@ public:
 
   savant::set<IIRScram_Declaration> *_symbol_lookup();
 
-  IIRScram_Statement *_clone();
+  IIRScram_FunctionCall *_clone();
   IIR_Mode _get_mode();
 
   // (See IIRScram.hh for description)

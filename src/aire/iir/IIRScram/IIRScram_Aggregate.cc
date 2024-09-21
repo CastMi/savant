@@ -319,9 +319,11 @@ IIRScram_Aggregate::_rval_to_decl( IIRScram_TypeDefinition *my_type ){
 
 // This method publishes a default range to the aggregate.  The default range
 // is not specified in the LRM.  I used (1, to, n) -- SK.
-
-IIRScram_Statement *
+IIRScram_Aggregate *
 IIRScram_Aggregate::_clone(){
+  ASSERT(false);
+  return nullptr;
+  /*
   IIRScram_Aggregate *retval = new IIRScram_Aggregate();
   IIRScram_Expression::_clone( retval );
 
@@ -335,6 +337,7 @@ IIRScram_Aggregate::_clone(){
   retval->set_element_association_list(new_list);
 
   return retval;
+  */
 }
 
 IIRScram_AssociationList *
